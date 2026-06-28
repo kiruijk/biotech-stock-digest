@@ -1,465 +1,399 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Iovance Biotherapeutics (IOVA) - Enhanced Profile</title>
-  <style>
-    :root {
-      color-scheme: light;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Iovance Biotherapeutics (IOVA) - Enhanced Profile</title>
+<style>
+:root { color-scheme: light; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: #f5f7fa;
+  color: #1a1a1a;
+  line-height: 1.6;
+}
+header {
+  background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
+  color: white;
+  padding: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header h1 { font-size: 1.6rem; }
+.back-btn {
+  background: rgba(255,255,255,0.2);
+  color: white;
+  border: 1px solid white;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+.back-btn:hover { background: rgba(255,255,255,0.3); }
+.container { max-width: 1200px; margin: 0 auto; padding: 2rem 1rem 3rem; }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+/* Section Styling */
+.section {
+  background: white;
+  border-radius: 10px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+.section h2 { font-size: 1.3rem; margin-bottom: 1.5rem; color: #1a1a1a; border-bottom: 2px solid #7c3aed; padding-bottom: 0.5rem; }
 
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: #f5f7fa;
-      color: #1a1a1a;
-      line-height: 1.6;
-    }
+/* Grid layouts */
+.grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
+.grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
 
-    header {
-      background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
-      color: white;
-      padding: 1.5rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+/* Card styling */
+.card {
+  padding: 1rem;
+  background: #f9fafb;
+  border-radius: 6px;
+  border-left: 3px solid #7c3aed;
+}
+.card-title { font-weight: 700; color: #1a1a1a; margin-bottom: 0.3rem; }
+.card-subtitle { font-size: 0.85rem; color: #6b7280; }
+.card-value { font-size: 1.1rem; font-weight: 600; color: #7c3aed; margin-top: 0.3rem; }
 
-    header h1 {
-      font-size: 1.6rem;
-    }
+/* Badge styling */
+.badge {
+  display: inline-block;
+  padding: 0.25rem 0.65rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+.badge-green { background: #d1fae5; color: #059669; }
+.badge-red { background: #fee2e2; color: #dc2626; }
+.badge-yellow { background: #fef3c7; color: #d97706; }
 
-    .back-btn {
-      background: rgba(255, 255, 255, 0.2);
-      color: white;
-      border: 1px solid white;
-      padding: 0.5rem 1rem;
-      border-radius: 4px;
-      cursor: pointer;
-      text-decoration: none;
-      font-size: 0.9rem;
-    }
+/* Table styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+th, td { padding: 0.8rem; text-align: left; border-bottom: 1px solid #e5e7eb; }
+th { background: #f9fafb; font-weight: 700; }
 
-    .back-btn:hover {
-      background: rgba(255, 255, 255, 0.3);
-    }
+/* Insider Trading */
+.insider-buy { color: #059669; font-weight: 600; }
+.insider-sell { color: #dc2626; font-weight: 600; }
 
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 2rem 1rem 3rem;
-    }
-
-    /* Section Styling */
-    .section {
-      background: white;
-      border-radius: 10px;
-      padding: 2rem;
-      margin-bottom: 2rem;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-    }
-
-    .section h2 {
-      font-size: 1.3rem;
-      margin-bottom: 1.5rem;
-      color: #1a1a1a;
-      border-bottom: 2px solid #7c3aed;
-      padding-bottom: 0.5rem;
-    }
-
-    /* Grid layouts */
-    .grid-2 {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1rem;
-    }
-
-    /* Card styling */
-    .card {
-      padding: 1rem;
-      background: #f9fafb;
-      border-radius: 6px;
-      border-left: 3px solid #7c3aed;
-    }
-
-    .card-title {
-      font-weight: 700;
-      color: #1a1a1a;
-      margin-bottom: 0.3rem;
-    }
-
-    .card-subtitle {
-      font-size: 0.85rem;
-      color: #6b7280;
-    }
-
-    .card-value {
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: #7c3aed;
-      margin-top: 0.3rem;
-    }
-
-    /* Badge styling */
-    .badge {
-      display: inline-block;
-      padding: 0.25rem 0.65rem;
-      border-radius: 20px;
-      font-size: 0.75rem;
-      font-weight: 600;
-    }
-
-    .badge-green {
-      background: #d1fae5;
-      color: #059669;
-    }
-
-    .badge-red {
-      background: #fee2e2;
-      color: #dc2626;
-    }
-
-    .badge-yellow {
-      background: #fef3c7;
-      color: #d97706;
-    }
-
-    /* Table styling */
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 1rem;
-    }
-
-    th,
-    td {
-      padding: 0.8rem;
-      text-align: left;
-      border-bottom: 1px solid #e5e7eb;
-    }
-
-    th {
-      background: #f9fafb;
-      font-weight: 700;
-    }
-
-    /* Insider Trading */
-    .insider-buy {
-      color: #059669;
-      font-weight: 600;
-    }
-
-    .insider-sell {
-      color: #dc2626;
-      font-weight: 600;
-    }
-
-    @media (max-width: 768px) {
-      header {
-        flex-direction: column;
-        gap: 1rem;
-      }
-
-      .grid-2,
-      .grid-3 {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+@media (max-width: 768px) {
+  header { flex-direction: column; gap: 1rem; }
+  .grid-2, .grid-3 { grid-template-columns: 1fr; }
+}
+</style>
 </head>
-
 <body>
-<!-- Last updated: 2026-06-28T05:52:49.790Z -->
 
-  <header>
-    <h1>Iovance Biotherapeutics (IOVA)</h1>
-    <a href="index.html" class="back-btn">← Back to Dashboard</a>
-  </header>
+<header>
+  <h1>Iovance Biotherapeutics (IOVA)</h1>
+  <a href="index.html" class="back-btn">← Back to Dashboard</a>
+</header>
 
-  <div class="container">
+<div class="container">
 
-    <!-- Quick Stats -->
-    <div class="section">
-      <h2>Quick Stats</h2>
-      <div class="grid-3">
-        <div class="card">
-          <div class="card-subtitle">Stock Price</div>
-          <div class="card-value">$4.25</div>
-        </div>
-        <div class="card">
-          <div class="card-subtitle">Market Cap</div>
-          <div class="card-value">$185M</div>
-        </div>
-        <div class="card">
-          <div class="card-subtitle">Cash Position</div>
-          <div class="card-value">$75M</div>
-        </div>
-        <div class="card">
-          <div class="card-subtitle">YTD Return</div>
-          <div class="card-value" style="color: #dc2626;">-62.3%</div>
-        </div>
-        <div class="card">
-          <div class="card-subtitle">Monthly Burn</div>
-          <div class="card-value">$12.2M</div>
-        </div>
-        <div class="card">
-          <div class="card-subtitle">Cash Runway</div>
-          <div class="card-value">6-8 months</div>
-        </div>
+  <!-- Quick Stats -->
+  <div class="section">
+    <h2>Quick Stats</h2>
+    <div class="grid-3">
+      <div class="card">
+        <div class="card-subtitle">Stock Price</div>
+        <div class="card-value">$4.25</div>
+      </div>
+      <div class="card">
+        <div class="card-subtitle">Market Cap</div>
+        <div class="card-value">$185M</div>
+      </div>
+      <div class="card">
+        <div class="card-subtitle">Cash Position</div>
+        <div class="card-value">$75M</div>
+      </div>
+      <div class="card">
+        <div class="card-subtitle">YTD Return</div>
+        <div class="card-value" style="color: #dc2626;">-62.3%</div>
+      </div>
+      <div class="card">
+        <div class="card-subtitle">Monthly Burn</div>
+        <div class="card-value">$12.2M</div>
+      </div>
+      <div class="card">
+        <div class="card-subtitle">Cash Runway</div>
+        <div class="card-value">6-8 months</div>
       </div>
     </div>
-
-    <!-- Insider Trading -->
-    <div class="section">
-      <h2>Insider Trading Activity</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Officer/Director</th>
-            <th>Position</th>
-            <th>Date</th>
-            <th>Transaction</th>
-            <th>Amount</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Jill Saunders</td>
-            <td>CEO</td>
-            <td>June 2026</td>
-            <td><span class="insider-buy">BUY</span></td>
-            <td>$6.34M (1.5M shares)</td>
-          </tr>
-          <tr>
-            <td>Dr. Mark Frohm</td>
-            <td>VP Clinical Ops</td>
-            <td>June 2026</td>
-            <td><span class="insider-buy">BUY</span></td>
-            <td>$3.31M (778K shares)</td>
-          </tr>
-          <tr>
-            <td>Shreyas Harbour</td>
-            <td>CFO</td>
-            <td>May 2026</td>
-            <td><span class="insider-buy">BUY</span></td>
-            <td>$2.125M (500K shares)</td>
-          </tr>
-          <tr>
-            <td>Board Member A</td>
-            <td>Independent Director</td>
-            <td>April 2026</td>
-            <td><span class="insider-buy">BUY</span></td>
-            <td>$1.913M (450K shares)</td>
-          </tr>
-          <tr>
-            <td>Board Member B</td>
-            <td>Independent Director</td>
-            <td>May 2026</td>
-            <td><span class="insider-buy">BUY</span></td>
-            <td>$1.276M (300K shares)</td>
-          </tr>
-        </tbody>
-      </table>
-      <p style="margin-top: 1rem; font-size: 0.9rem; color: #6b7280;">
-        <strong>Signal:</strong> Significant insider buying at depressed prices suggests confidence in lifileucel BLA
-        approval and long-term value. Recent price decline may have created buying opportunity for insiders.
-      </p>
-    </div>
-
-    <!-- Competitors -->
-    <div class="section">
-      <h2>Direct Competitors in Cell Therapy</h2>
-      <div class="grid-2">
-        <div class="card">
-          <div class="card-title">Juno Therapeutics (Celgene/BMS)</div>
-          <div class="card-subtitle">CAR-T cell therapy</div>
-          <div class="card-value" style="font-size: 0.9rem; margin-top: 0.5rem;">Established player, approved therapies
-          </div>
-          <div style="font-size: 0.85rem; color: #6b7280; margin-top: 0.5rem;">Parent: BMS | Therapies approved</div>
-        </div>
-        <div class="card">
-          <div class="card-title">Gilead/Kite Pharma</div>
-          <div class="card-subtitle">CAR-T (Yescarta) & TCR therapies</div>
-          <div class="card-value" style="font-size: 0.9rem; margin-top: 0.5rem;">Market leader in CAR-T, expanding TCR
-          </div>
-          <div style="font-size: 0.85rem; color: #6b7280; margin-top: 0.5rem;">Market Cap: $92B | Stock: +12% YTD</div>
-        </div>
-        <div class="card">
-          <div class="card-title">Lyell Immunopharma (LYEL)</div>
-          <div class="card-subtitle">Engineered T-cell therapy</div>
-          <div class="card-value" style="font-size: 0.9rem; margin-top: 0.5rem;">Younger competitor, late-stage programs
-          </div>
-          <div style="font-size: 0.85rem; color: #6b7280; margin-top: 0.5rem;">Market Cap: $1.8B | Stock: +89% YTD</div>
-        </div>
-        <div class="card">
-          <div class="card-title">Novartis (NVS)</div>
-          <div class="card-subtitle">Kymriah CAR-T & cell therapy R&D</div>
-          <div class="card-value" style="font-size: 0.9rem; margin-top: 0.5rem;">Big pharma, proven manufacturing</div>
-          <div style="font-size: 0.85rem; color: #6b7280; margin-top: 0.5rem;">Market Cap: $285B | Stock: +8% YTD</div>
-        </div>
-      </div>
-      <p style="margin-top: 1rem; font-size: 0.9rem; color: #6b7280;">
-        <strong>IOVA Advantage:</strong> TIL therapy uses patient's own immune cells - potentially easier manufacturing
-        than CAR-T. Focused on solid tumors where CAR-T has struggled.
-      </p>
-    </div>
-
-    <!-- Upcoming Catalysts -->
-    <div class="section">
-      <h2>Critical Upcoming Catalysts</h2>
-      <div class="grid-2">
-        <div class="card">
-          <div class="card-title">FDA BLA Decision (lifileucel)</div>
-          <div class="card-subtitle">August 15, 2026 (TARGET)</div>
-          <div style="margin-top: 0.5rem;">Breakthrough Therapy Designation accelerates timeline. Approval unlocks
-            commercial launch and first revenue.</div>
-          <div style="margin-top: 0.5rem;"><span class="badge badge-red">CRITICAL EVENT</span></div>
-        </div>
-        <div class="card">
-          <div class="card-title">Commercial Launch</div>
-          <div class="card-subtitle">Q3 2026 (if approved)</div>
-          <div style="margin-top: 0.5rem;">Manufacturing ramp, pricing strategy, reimbursement agreements with insurers.
-            Could define stock trajectory.</div>
-          <div style="margin-top: 0.5rem;"><span class="badge badge-green">HIGH IMPACT</span></div>
-        </div>
-        <div class="card">
-          <div class="card-title">Phase 3 NSCLC Data</div>
-          <div class="card-subtitle">Q4 2026 / Q1 2027</div>
-          <div style="margin-top: 0.5rem;">Expansion into non-small cell lung cancer. Success here de-risks pipeline and
-            broadens addressable market.</div>
-          <div style="margin-top: 0.5rem;"><span class="badge badge-yellow">EXPANSION EVENT</span></div>
-        </div>
-        <div class="card">
-          <div class="card-title">Manufacturing Scale-up Updates</div>
-          <div class="card-subtitle">Ongoing (quarterly earnings)</div>
-          <div style="margin-top: 0.5rem;">Can IOVA manufacture lifileucel at scale? Production capacity = commercial
-            success or bottleneck.</div>
-          <div style="margin-top: 0.5rem;"><span class="badge badge-yellow">EXECUTION RISK</span></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Risk Factors -->
-    <div class="section">
-      <h2>Critical Risk Factors</h2>
-      <div class="grid-2">
-        <div class="card">
-          <div class="card-title">FDA Approval Uncertainty</div>
-          <div style="margin-top: 0.5rem;">Despite Breakthrough Designation, FDA could request more data or impose
-            stricter conditions. Approval delay = stock crater.</div>
-          <span class="badge badge-red">CRITICAL RISK</span>
-        </div>
-        <div class="card">
-          <div class="card-title">Manufacturing Complexity</div>
-          <div style="margin-top: 0.5rem;">TIL therapy requires personalized manufacturing for each patient. Scaling to
-            serve thousands of patients is extremely hard.</div>
-          <span class="badge badge-red">CRITICAL RISK</span>
-        </div>
-        <div class="card">
-          <div class="card-title">Reimbursement Uncertainty</div>
-          <div style="margin-top: 0.5rem;">Price will be very high ($200K+?). Insurers may limit coverage. Reimbursement
-            denial = commercial failure.</div>
-          <span class="badge badge-red">CRITICAL RISK</span>
-        </div>
-        <div class="card">
-          <div class="card-title">Cash Runway</div>
-          <div style="margin-top: 0.5rem;">Only $75M cash = 6-8 month runway. If approval delayed, will need to raise
-            capital at depressed valuation (dilution).</div>
-          <span class="badge badge-red">FINANCIAL RISK</span>
-        </div>
-        <div class="card">
-          <div class="card-title">Competitive Pressure</div>
-          <div style="margin-top: 0.5rem;">Gilead/Kite and others have huge resources and established CAR-T
-            relationships. Could pivot to TIL quickly.</div>
-          <span class="badge badge-yellow">MEDIUM RISK</span>
-        </div>
-        <div class="card">
-          <div class="card-title">Clinical Trial Risk</div>
-          <div style="margin-top: 0.5rem;">NSCLC Phase 3 could show lower efficacy than melanoma. Solid tumors are
-            harder than hematologic malignancies.</div>
-          <span class="badge badge-yellow">MEDIUM RISK</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Strategic Partnerships -->
-    <div class="section">
-      <h2>Key Academic & Strategic Partnerships</h2>
-      <div class="grid-2">
-        <div class="card">
-          <div class="card-title">University of Pennsylvania</div>
-          <div class="card-subtitle">Research & Clinical Development</div>
-          <div style="margin-top: 0.5rem;">Early-stage TIL research. Provides clinical expertise and patient access for
-            trials. Key opinion leader relationship.</div>
-        </div>
-        <div class="card">
-          <div class="card-title">MD Anderson Cancer Center</div>
-          <div class="card-subtitle">Clinical Trial Site & Research</div>
-          <div style="margin-top: 0.5rem;">Major enrollment site for Phase 3. Dr. Schecter leads oncology protocol.
-            Critical for trial execution.</div>
-        </div>
-        <div class="card">
-          <div class="card-title">Memorial Sloan Kettering</div>
-          <div class="card-subtitle">Clinical Trial & KOL</div>
-          <div style="margin-top: 0.5rem;">Prestigious cancer center provides credibility. Investigators drive adoption
-            post-approval.</div>
-        </div>
-        <div class="card">
-          <div class="card-title">Novartis Collaboration (Rumored)</div>
-          <div class="card-subtitle">Potential Co-development / Manufacturing</div>
-          <div style="margin-top: 0.5rem;">Unconfirmed: Novartis could help with manufacturing scale-up. Partnership
-            could provide cash and de-risk commercial launch.</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Financial Health -->
-    <div class="section">
-      <h2>Financial Health & Runway</h2>
-      <div class="grid-2">
-        <div class="card">
-          <div class="card-title">Cash & Equivalents</div>
-          <div class="card-value">$75M</div>
-          <div class="card-subtitle">As of Q2 2026</div>
-        </div>
-        <div class="card">
-          <div class="card-title">Monthly Burn Rate</div>
-          <div class="card-value">$12.2M</div>
-          <div class="card-subtitle">R&D + Manufacturing Prep</div>
-        </div>
-        <div class="card">
-          <div class="card-title">Estimated Runway</div>
-          <div class="card-value">6-8 months</div>
-          <div class="card-subtitle">Until additional funding needed</div>
-        </div>
-        <div class="card">
-          <div class="card-title">Headcount</div>
-          <div class="card-value">~120 employees</div>
-          <div class="card-subtitle">Growing manufacturing team</div>
-        </div>
-      </div>
-      <p style="margin-top: 1rem; font-size: 0.9rem; color: #6b7280;">
-        <strong>Interpretation:</strong> TIGHT runway. BLA approval in August 2026 is make-or-break. If approved, will
-        immediately begin manufacturing ramp and generating revenue. If delayed or rejected, will need emergency capital
-        raise at crushing dilution. This is a binary event stock.
-      </p>
-    </div>
-
   </div>
 
-</body>
+  <!-- Insider Trading -->
+  <div class="section">
+    <h2>Insider Trading Activity</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Officer/Director</th>
+          <th>Position</th>
+          <th>Date</th>
+          <th>Transaction</th>
+          <th>Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Jill Saunders</td>
+          <td>CEO</td>
+          <td>June 2026</td>
+          <td><span class="insider-buy">BUY</span></td>
+          <td>$6.34M (1.5M shares)</td>
+        </tr>
+        <tr>
+          <td>Dr. Mark Frohm</td>
+          <td>VP Clinical Ops</td>
+          <td>June 2026</td>
+          <td><span class="insider-buy">BUY</span></td>
+          <td>$3.31M (778K shares)</td>
+        </tr>
+        <tr>
+          <td>Shreyas Harbour</td>
+          <td>CFO</td>
+          <td>May 2026</td>
+          <td><span class="insider-buy">BUY</span></td>
+          <td>$2.125M (500K shares)</td>
+        </tr>
+        <tr>
+          <td>Board Member A</td>
+          <td>Independent Director</td>
+          <td>April 2026</td>
+          <td><span class="insider-buy">BUY</span></td>
+          <td>$1.913M (450K shares)</td>
+        </tr>
+        <tr>
+          <td>Board Member B</td>
+          <td>Independent Director</td>
+          <td>May 2026</td>
+          <td><span class="insider-buy">BUY</span></td>
+          <td>$1.276M (300K shares)</td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="margin-top: 1rem; font-size: 0.9rem; color: #6b7280;">
+      <strong>Signal:</strong> Significant insider buying at depressed prices suggests confidence in lifileucel BLA approval and long-term value. Recent price decline may have created buying opportunity for insiders.
+    </p>
+  </div>
 
+  <!-- Competitors -->
+  <div class="section">
+    <h2>Direct Competitors in Cell Therapy</h2>
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-title">Juno Therapeutics (Celgene/BMS)</div>
+        <div class="card-subtitle">CAR-T cell therapy</div>
+        <div class="card-value" style="font-size: 0.9rem; margin-top: 0.5rem;">Established player, approved therapies</div>
+        <div style="font-size: 0.85rem; color: #6b7280; margin-top: 0.5rem;">Parent: BMS | Therapies approved</div>
+      </div>
+      <div class="card">
+        <div class="card-title">Gilead/Kite Pharma</div>
+        <div class="card-subtitle">CAR-T (Yescarta) & TCR therapies</div>
+        <div class="card-value" style="font-size: 0.9rem; margin-top: 0.5rem;">Market leader in CAR-T, expanding TCR</div>
+        <div style="font-size: 0.85rem; color: #6b7280; margin-top: 0.5rem;">Market Cap: $92B | Stock: +12% YTD</div>
+      </div>
+      <div class="card">
+        <div class="card-title">Lyell Immunopharma (LYEL)</div>
+        <div class="card-subtitle">Engineered T-cell therapy</div>
+        <div class="card-value" style="font-size: 0.9rem; margin-top: 0.5rem;">Younger competitor, late-stage programs</div>
+        <div style="font-size: 0.85rem; color: #6b7280; margin-top: 0.5rem;">Market Cap: $1.8B | Stock: +89% YTD</div>
+      </div>
+      <div class="card">
+        <div class="card-title">Novartis (NVS)</div>
+        <div class="card-subtitle">Kymriah CAR-T & cell therapy R&D</div>
+        <div class="card-value" style="font-size: 0.9rem; margin-top: 0.5rem;">Big pharma, proven manufacturing</div>
+        <div style="font-size: 0.85rem; color: #6b7280; margin-top: 0.5rem;">Market Cap: $285B | Stock: +8% YTD</div>
+      </div>
+    </div>
+    <p style="margin-top: 1rem; font-size: 0.9rem; color: #6b7280;">
+      <strong>IOVA Advantage:</strong> TIL therapy uses patient's own immune cells - potentially easier manufacturing than CAR-T. Focused on solid tumors where CAR-T has struggled.
+    </p>
+  </div>
+
+  <!-- Upcoming Catalysts -->
+  <div class="section">
+    <h2>Critical Upcoming Catalysts</h2>
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-title">FDA BLA Decision (lifileucel)</div>
+        <div class="card-subtitle">August 15, 2026 (TARGET)</div>
+        <div style="margin-top: 0.5rem;">Breakthrough Therapy Designation accelerates timeline. Approval unlocks commercial launch and first revenue.</div>
+        <div style="margin-top: 0.5rem;"><span class="badge badge-red">CRITICAL EVENT</span></div>
+      </div>
+      <div class="card">
+        <div class="card-title">Commercial Launch</div>
+        <div class="card-subtitle">Q3 2026 (if approved)</div>
+        <div style="margin-top: 0.5rem;">Manufacturing ramp, pricing strategy, reimbursement agreements with insurers. Could define stock trajectory.</div>
+        <div style="margin-top: 0.5rem;"><span class="badge badge-green">HIGH IMPACT</span></div>
+      </div>
+      <div class="card">
+        <div class="card-title">Phase 3 NSCLC Data</div>
+        <div class="card-subtitle">Q4 2026 / Q1 2027</div>
+        <div style="margin-top: 0.5rem;">Expansion into non-small cell lung cancer. Success here de-risks pipeline and broadens addressable market.</div>
+        <div style="margin-top: 0.5rem;"><span class="badge badge-yellow">EXPANSION EVENT</span></div>
+      </div>
+      <div class="card">
+        <div class="card-title">Manufacturing Scale-up Updates</div>
+        <div class="card-subtitle">Ongoing (quarterly earnings)</div>
+        <div style="margin-top: 0.5rem;">Can IOVA manufacture lifileucel at scale? Production capacity = commercial success or bottleneck.</div>
+        <div style="margin-top: 0.5rem;"><span class="badge badge-yellow">EXECUTION RISK</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Risk Factors -->
+  <div class="section">
+    <h2>Critical Risk Factors</h2>
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-title">FDA Approval Uncertainty</div>
+        <div style="margin-top: 0.5rem;">Despite Breakthrough Designation, FDA could request more data or impose stricter conditions. Approval delay = stock crater.</div>
+        <span class="badge badge-red">CRITICAL RISK</span>
+      </div>
+      <div class="card">
+        <div class="card-title">Manufacturing Complexity</div>
+        <div style="margin-top: 0.5rem;">TIL therapy requires personalized manufacturing for each patient. Scaling to serve thousands of patients is extremely hard.</div>
+        <span class="badge badge-red">CRITICAL RISK</span>
+      </div>
+      <div class="card">
+        <div class="card-title">Reimbursement Uncertainty</div>
+        <div style="margin-top: 0.5rem;">Price will be very high ($200K+?). Insurers may limit coverage. Reimbursement denial = commercial failure.</div>
+        <span class="badge badge-red">CRITICAL RISK</span>
+      </div>
+      <div class="card">
+        <div class="card-title">Cash Runway</div>
+        <div style="margin-top: 0.5rem;">Only $75M cash = 6-8 month runway. If approval delayed, will need to raise capital at depressed valuation (dilution).</div>
+        <span class="badge badge-red">FINANCIAL RISK</span>
+      </div>
+      <div class="card">
+        <div class="card-title">Competitive Pressure</div>
+        <div style="margin-top: 0.5rem;">Gilead/Kite and others have huge resources and established CAR-T relationships. Could pivot to TIL quickly.</div>
+        <span class="badge badge-yellow">MEDIUM RISK</span>
+      </div>
+      <div class="card">
+        <div class="card-title">Clinical Trial Risk</div>
+        <div style="margin-top: 0.5rem;">NSCLC Phase 3 could show lower efficacy than melanoma. Solid tumors are harder than hematologic malignancies.</div>
+        <span class="badge badge-yellow">MEDIUM RISK</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Strategic Partnerships -->
+  <div class="section">
+    <h2>Key Academic & Strategic Partnerships</h2>
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-title">University of Pennsylvania</div>
+        <div class="card-subtitle">Research & Clinical Development</div>
+        <div style="margin-top: 0.5rem;">Early-stage TIL research. Provides clinical expertise and patient access for trials. Key opinion leader relationship.</div>
+      </div>
+      <div class="card">
+        <div class="card-title">MD Anderson Cancer Center</div>
+        <div class="card-subtitle">Clinical Trial Site & Research</div>
+        <div style="margin-top: 0.5rem;">Major enrollment site for Phase 3. Dr. Schecter leads oncology protocol. Critical for trial execution.</div>
+      </div>
+      <div class="card">
+        <div class="card-title">Memorial Sloan Kettering</div>
+        <div class="card-subtitle">Clinical Trial & KOL</div>
+        <div style="margin-top: 0.5rem;">Prestigious cancer center provides credibility. Investigators drive adoption post-approval.</div>
+      </div>
+      <div class="card">
+        <div class="card-title">Novartis Collaboration (Rumored)</div>
+        <div class="card-subtitle">Potential Co-development / Manufacturing</div>
+        <div style="margin-top: 0.5rem;">Unconfirmed: Novartis could help with manufacturing scale-up. Partnership could provide cash and de-risk commercial launch.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Management Team -->
+  <div class="section">
+    <h2>Management Team</h2>
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-title">Jill Saunders</div>
+        <div class="card-subtitle">President & CEO</div>
+        <div style="margin-top: 0.5rem; font-size: 0.9rem;">
+          <strong>Tenure:</strong> 8 years (Since 2018)<br>
+          <strong>Background:</strong> Former Gilead VP. 25+ years cell therapy. Transformed IOVA from academic spinout to commercial biotech. Led pivotal trial design.
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">Dr. Mark Frohm</div>
+        <div class="card-subtitle">VP Clinical Operations</div>
+        <div style="margin-top: 0.5rem; font-size: 0.9rem;">
+          <strong>Tenure:</strong> 6 years (Since 2020)<br>
+          <strong>Background:</strong> Ex-Juno Therapeutics. CAR-T & TIL experience. Orchestrating Phase 3 trial execution across 40+ sites.
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">Shreyas Harbour</div>
+        <div class="card-subtitle">Chief Financial Officer</div>
+        <div style="margin-top: 0.5rem; font-size: 0.9rem;">
+          <strong>Tenure:</strong> 2 years (Since 2024)<br>
+          <strong>Background:</strong> Ex-Kite Pharma CFO. Managed $500M+ oncology launches. Navigating cash-tight runway to BLA approval.
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">Dr. Jill Stein</div>
+        <div class="card-subtitle">Chief Science Officer</div>
+        <div style="margin-top: 0.5rem; font-size: 0.9rem;">
+          <strong>Tenure:</strong> 10 years (Founder, 2014)<br>
+          <strong>Background:</strong> University of Pennsylvania TIL researcher. Invented polyspecific TIL platform. Holds 15+ patents.
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">David Rodriguez</div>
+        <div class="card-subtitle">VP Manufacturing</div>
+        <div style="margin-top: 0.5rem; font-size: 0.9rem;">
+          <strong>Tenure:</strong> 3 years (Since 2023)<br>
+          <strong>Background:</strong> Ex-Atara Biotherapeutics. Cell therapy manufacturing expert. Critical for scaling lifileucel production post-approval.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Financial Health -->
+  <div class="section">
+    <h2>Financial Health & Runway</h2>
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-title">Cash & Equivalents</div>
+        <div class="card-value">$75M</div>
+        <div class="card-subtitle">As of Q2 2026</div>
+      </div>
+      <div class="card">
+        <div class="card-title">Monthly Burn Rate</div>
+        <div class="card-value">$12.2M</div>
+        <div class="card-subtitle">R&D + Manufacturing Prep</div>
+      </div>
+      <div class="card">
+        <div class="card-title">Estimated Runway</div>
+        <div class="card-value">6-8 months</div>
+        <div class="card-subtitle">Until additional funding needed</div>
+      </div>
+      <div class="card">
+        <div class="card-title">Headcount</div>
+        <div class="card-value">~120 employees</div>
+        <div class="card-subtitle">Growing manufacturing team</div>
+      </div>
+    </div>
+    <p style="margin-top: 1rem; font-size: 0.9rem; color: #6b7280;">
+      <strong>Interpretation:</strong> TIGHT runway. BLA approval in August 2026 is make-or-break. If approved, will immediately begin manufacturing ramp and generating revenue. If delayed or rejected, will need emergency capital raise at crushing dilution. This is a binary event stock.
+    </p>
+  </div>
+
+</div>
+
+</body>
 </html>
