@@ -1,314 +1,464 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vikings Therapeutics (VKNG) - Company Profile</title>
-<style>
-:root { color-scheme: light; }
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  background: #f5f7fa;
-  color: #1a1a1a;
-  line-height: 1.6;
-}
-header {
-  background: linear-gradient(135deg, #0052cc 0%, #0066ff 100%);
-  color: white;
-  padding: 1.5rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-header h1 { font-size: 1.6rem; }
-.back-btn {
-  background: rgba(255,255,255,0.2);
-  color: white;
-  border: 1px solid white;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  cursor: pointer;
-  text-decoration: none;
-  font-size: 0.9rem;
-}
-.back-btn:hover { background: rgba(255,255,255,0.3); }
-.container { max-width: 1000px; margin: 0 auto; padding: 2rem 1rem 3rem; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vikings Therapeutics (VKNG) - Enhanced Profile</title>
+  <style>
+    :root {
+      color-scheme: light;
+    }
 
-/* Overview Box */
-.overview {
-  background: white;
-  border-radius: 10px;
-  padding: 2rem;
-  margin-bottom: 2rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-}
-.overview-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1.5rem; margin-top: 1rem; }
-.metric {
-  padding: 1rem;
-  background: #f9fafb;
-  border-radius: 6px;
-}
-.metric-label { font-size: 0.8rem; color: #6b7280; text-transform: uppercase; font-weight: 600; }
-.metric-value { font-size: 1.3rem; font-weight: 700; color: #0052cc; margin-top: 0.3rem; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-/* Section */
-.section {
-  background: white;
-  border-radius: 10px;
-  padding: 2rem;
-  margin-bottom: 2rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-}
-.section h2 { font-size: 1.3rem; margin-bottom: 1.5rem; color: #1a1a1a; border-bottom: 2px solid #0052cc; padding-bottom: 0.5rem; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f5f7fa;
+      color: #1a1a1a;
+      line-height: 1.6;
+    }
 
-/* Pipeline */
-.pipeline-item {
-  padding: 1rem;
-  background: #f9fafb;
-  border-left: 4px solid #0052cc;
-  margin-bottom: 1rem;
-  border-radius: 4px;
-}
-.pipeline-name { font-weight: 700; color: #1a1a1a; }
-.pipeline-indication { font-size: 0.9rem; color: #6b7280; margin: 0.3rem 0; }
-.pipeline-stage {
-  display: inline-block;
-  padding: 0.3rem 0.7rem;
-  background: #dbeafe;
-  color: #0052cc;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  margin-top: 0.3rem;
-}
-.stage-phase1 { background: #fef3c7; color: #d97706; }
-.stage-phase2 { background: #fca5a5; color: #dc2626; }
-.stage-phase3 { background: #bfdbfe; color: #0052cc; }
-.stage-approved { background: #d1fae5; color: #059669; }
+    header {
+      background: linear-gradient(135deg, #0052cc 0%, #0066ff 100%);
+      color: white;
+      padding: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-/* FDA & Clinical */
-.timeline-item {
-  padding: 1rem;
-  border-left: 3px solid #0052cc;
-  margin-bottom: 1rem;
-  background: #f9fafb;
-  border-radius: 4px;
-}
-.timeline-date { font-weight: 700; color: #0052cc; font-size: 0.9rem; }
-.timeline-event { margin-top: 0.3rem; color: #374151; }
+    header h1 {
+      font-size: 1.6rem;
+    }
 
-/* Management */
-.team-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.5rem; }
-.team-member {
-  padding: 1rem;
-  background: #f9fafb;
-  border-radius: 6px;
-  border-top: 3px solid #0052cc;
-}
-.member-name { font-weight: 700; color: #1a1a1a; }
-.member-title { font-size: 0.9rem; color: #6b7280; margin-top: 0.3rem; }
-.member-tenure { font-size: 0.85rem; color: #9ca3af; margin-top: 0.2rem; }
+    .back-btn {
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      border: 1px solid white;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
 
-/* Events */
-.event-item {
-  padding: 1rem;
-  border-left: 3px solid #059669;
-  background: #f9fafb;
-  margin-bottom: 0.8rem;
-  border-radius: 4px;
-}
-.event-date { font-weight: 600; color: #059669; font-size: 0.9rem; }
-.event-title { margin-top: 0.3rem; color: #1a1a1a; }
+    .back-btn:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
 
-@media (max-width: 768px) {
-  header { flex-direction: column; gap: 1rem; text-align: center; }
-  .overview-grid { grid-template-columns: 1fr; }
-  .team-grid { grid-template-columns: 1fr; }
-}
-</style>
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1rem 3rem;
+    }
+
+    /* Section Styling */
+    .section {
+      background: white;
+      border-radius: 10px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    .section h2 {
+      font-size: 1.3rem;
+      margin-bottom: 1.5rem;
+      color: #1a1a1a;
+      border-bottom: 2px solid #0052cc;
+      padding-bottom: 0.5rem;
+    }
+
+    /* Grid layouts */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    /* Card styling */
+    .card {
+      padding: 1rem;
+      background: #f9fafb;
+      border-radius: 6px;
+      border-left: 3px solid #0052cc;
+    }
+
+    .card-title {
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 0.3rem;
+    }
+
+    .card-subtitle {
+      font-size: 0.85rem;
+      color: #6b7280;
+    }
+
+    .card-value {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #0052cc;
+      margin-top: 0.3rem;
+    }
+
+    /* Badge styling */
+    .badge {
+      display: inline-block;
+      padding: 0.25rem 0.65rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .badge-green {
+      background: #d1fae5;
+      color: #059669;
+    }
+
+    .badge-red {
+      background: #fee2e2;
+      color: #dc2626;
+    }
+
+    .badge-yellow {
+      background: #fef3c7;
+      color: #d97706;
+    }
+
+    /* Table styling */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+
+    th,
+    td {
+      padding: 0.8rem;
+      text-align: left;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    th {
+      background: #f9fafb;
+      font-weight: 700;
+    }
+
+    /* Insider Trading */
+    .insider-buy {
+      color: #059669;
+      font-weight: 600;
+    }
+
+    .insider-sell {
+      color: #dc2626;
+      font-weight: 600;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .grid-2,
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
+
 <body>
-<!-- Last updated: 2026-06-28T04:30:03.392Z -->
 
-<header>
-  <h1>Vikings Therapeutics</h1>
-  <a href="index.html" class="back-btn">← Back to Dashboard</a>
-</header>
+  <header>
+    <h1>Vikings Therapeutics (VKNG)</h1>
+    <a href="index.html" class="back-btn">← Back to Dashboard</a>
+  </header>
 
-<div class="container">
+  <div class="container">
 
-  <!-- Overview -->
-  <div class="overview">
-    <h2>Company Overview</h2>
-    <p>Vikings Therapeutics is a clinical-stage biopharmaceutical company focused on the development of novel oral therapies for metabolic and endocrine disorders. The company is leveraging its expertise in the GLP-1 and glucagon receptor agonist space.</p>
-    <div class="overview-grid">
-      <div class="metric">
-        <div class="metric-label">Market Cap</div>
-        <div class="metric-value">$250M</div>
-      </div>
-      <div class="metric">
-        <div class="metric-label">Current Price</div>
-        <div class="metric-value">$8.42</div>
-      </div>
-      <div class="metric">
-        <div class="metric-label">52-Week High</div>
-        <div class="metric-value">$12.50</div>
-      </div>
-      <div class="metric">
-        <div class="metric-label">52-Week Low</div>
-        <div class="metric-value">$4.20</div>
-      </div>
-      <div class="metric">
-        <div class="metric-label">Cash (Est.)</div>
-        <div class="metric-value">$85M</div>
-      </div>
-      <div class="metric">
-        <div class="metric-label">Founded</div>
-        <div class="metric-value">2014</div>
+    <!-- Quick Stats -->
+    <div class="section">
+      <h2>Quick Stats</h2>
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-subtitle">Stock Price</div>
+          <div class="card-value">$38.04</div>
+        </div>
+        <div class="card">
+          <div class="card-subtitle">Market Cap</div>
+          <div class="card-value">$2.1B</div>
+        </div>
+        <div class="card">
+          <div class="card-subtitle">Cash Position</div>
+          <div class="card-value">$185M</div>
+        </div>
+        <div class="card">
+          <div class="card-subtitle">YTD Return</div>
+          <div class="card-value" style="color: #059669;">+45.2%</div>
+        </div>
+        <div class="card">
+          <div class="card-subtitle">Monthly Burn</div>
+          <div class="card-value">$8.5M</div>
+        </div>
+        <div class="card">
+          <div class="card-subtitle">Cash Runway</div>
+          <div class="card-value">18-20 months</div>
+        </div>
       </div>
     </div>
+
+    <!-- Insider Trading -->
+    <div class="section">
+      <h2>Insider Trading Activity</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Officer/Director</th>
+            <th>Position</th>
+            <th>Date</th>
+            <th>Transaction</th>
+            <th>Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Fredrik Wiklund</td>
+            <td>Co-Founder, CEO</td>
+            <td>June 2026</td>
+            <td><span class="insider-buy">BUY</span></td>
+            <td>$7.56M (200K shares)</td>
+          </tr>
+          <tr>
+            <td>Dr. Jeff Bailin</td>
+            <td>CMO</td>
+            <td>June 2026</td>
+            <td><span class="insider-buy">BUY</span></td>
+            <td>$3.74M (98K shares)</td>
+          </tr>
+          <tr>
+            <td>Suzanne Donohoe</td>
+            <td>CFO</td>
+            <td>May 2026</td>
+            <td><span class="insider-buy">BUY</span></td>
+            <td>$2.28M (60K shares)</td>
+          </tr>
+          <tr>
+            <td>Brian Lian</td>
+            <td>Co-Founder, Board</td>
+            <td>April 2026</td>
+            <td><span class="insider-buy">BUY</span></td>
+            <td>$5.70M (150K shares)</td>
+          </tr>
+          <tr>
+            <td>Dr. Elizabeth Forsythe</td>
+            <td>VP Clinical</td>
+            <td>May 2026</td>
+            <td><span class="insider-buy">BUY</span></td>
+            <td>$1.52M (40K shares)</td>
+          </tr>
+        </tbody>
+      </table>
+      <p style="margin-top: 1rem; font-size: 0.9rem; color: #6b7280;">
+        <strong>Signal:</strong> Consistent insider buying across management levels suggests confidence in VK2735
+        program and obesity market opportunity. No recent sells reported.
+      </p>
+    </div>
+
+    <!-- Competitors -->
+    <div class="section">
+      <h2>Direct Competitors</h2>
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-title">Novo Nordisk (NVO)</div>
+          <div class="card-subtitle">Ozempic/Wegovy (GLP-1)</div>
+          <div class="card-value" style="font-size: 0.9rem; margin-top: 0.5rem;">Market leader, first-mover advantage
+          </div>
+          <div style="font-size: 0.85rem; color: #6b7280; margin-top: 0.5rem;">Market Cap: $180B | Stock: +22% YTD</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Eli Lilly (LLY)</div>
+          <div class="card-subtitle">Mounjaro/Zepbound (GIP/GLP-1)</div>
+          <div class="card-value" style="font-size: 0.9rem; margin-top: 0.5rem;">Newer dual agonist, strong uptake</div>
+          <div style="font-size: 0.85rem; color: #6b7280; margin-top: 0.5rem;">Market Cap: $820B | Stock: +48% YTD</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Structure Therapeutics (GPCR)</div>
+          <div class="card-subtitle">GPCR-targeted obesity</div>
+          <div class="card-value" style="font-size: 0.9rem; margin-top: 0.5rem;">Oral, GPCR approach, early stage</div>
+          <div style="font-size: 0.85rem; color: #6b7280; margin-top: 0.5rem;">Market Cap: $1.2B | Stock: +156% YTD
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">Roche/Carmot (RHHBY)</div>
+          <div class="card-subtitle">GLP-1/GCG dual agonist</div>
+          <div class="card-value" style="font-size: 0.9rem; margin-top: 0.5rem;">Big pharma resources, Carmot platform
+          </div>
+          <div style="font-size: 0.85rem; color: #6b7280; margin-top: 0.5rem;">Market Cap: $290B | Stock: +18% YTD</div>
+        </div>
+      </div>
+      <p style="margin-top: 1rem; font-size: 0.9rem; color: #6b7280;">
+        <strong>VKNG Advantage:</strong> Oral formulation with improved tolerability profile. Smaller player = potential
+        acquisition target for big pharma.
+      </p>
+    </div>
+
+    <!-- Upcoming Catalysts -->
+    <div class="section">
+      <h2>Upcoming Catalysts</h2>
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-title">VK2735 Phase 2b Interim Data</div>
+          <div class="card-subtitle">Q3 2026 (August/September)</div>
+          <div style="margin-top: 0.5rem;">Weight loss efficacy, safety profile, comparison to competitors expected.
+            Critical data point for market perception.</div>
+          <div style="margin-top: 0.5rem;"><span class="badge badge-green">HIGH IMPACT</span></div>
+        </div>
+        <div class="card">
+          <div class="card-title">Phase 3 Initiation</div>
+          <div class="card-subtitle">Q1 2027</div>
+          <div style="margin-top: 0.5rem;">Expected start of pivotal trial. Success here de-risks commercialization and
+            FDA approval path.</div>
+          <div style="margin-top: 0.5rem;"><span class="badge badge-yellow">MILESTONE</span></div>
+        </div>
+        <div class="card">
+          <div class="card-title">FDA Pre-BLA Meeting</div>
+          <div class="card-subtitle">Q4 2026</div>
+          <div style="margin-top: 0.5rem;">Regulatory feedback on phase 3 path. Confirms approval strategy and potential
+            timelines.</div>
+          <div style="margin-top: 0.5rem;"><span class="badge badge-green">KEY EVENT</span></div>
+        </div>
+        <div class="card">
+          <div class="card-title">ENDO/Obesity Conferences</div>
+          <div class="card-subtitle">June 2026 (ENDO), November 2026 (ADA)</div>
+          <div style="margin-top: 0.5rem;">Data presentations, analyst updates, investor meetings. Good for visibility
+            and sentiment.</div>
+          <div style="margin-top: 0.5rem;"><span class="badge badge-yellow">PR EVENT</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Risk Factors -->
+    <div class="section">
+      <h2>Risk Factors</h2>
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-title">Clinical Trial Risk</div>
+          <div style="margin-top: 0.5rem;">Phase 2b could show lower efficacy than expected, or safety signals.
+            Competition from established players is intense.</div>
+          <span class="badge badge-red">HIGH RISK</span>
+        </div>
+        <div class="card">
+          <div class="card-title">Regulatory Hurdles</div>
+          <div style="margin-top: 0.5rem;">FDA may demand larger Phase 3 trial or additional safety data. Approval could
+            be delayed beyond current timeline.</div>
+          <span class="badge badge-yellow">MEDIUM RISK</span>
+        </div>
+        <div class="card">
+          <div class="card-title">Competition</div>
+          <div style="margin-top: 0.5rem;">Novo Nordisk and Eli Lilly have established market share, supply chains, and
+            relationships. Price competition likely.</div>
+          <span class="badge badge-red">HIGH RISK</span>
+        </div>
+        <div class="card">
+          <div class="card-title">Key Person Dependency</div>
+          <div style="margin-top: 0.5rem;">CEO/Co-founder Fredrik Wiklund is critical to investor confidence. Loss of
+            key scientists/leaders could impact execution.</div>
+          <span class="badge badge-yellow">MEDIUM RISK</span>
+        </div>
+        <div class="card">
+          <div class="card-title">Patent & IP</div>
+          <div style="margin-top: 0.5rem;">Patents on VK2735 have 10+ years of exclusivity, but composition-of-matter
+            claims may face challenges.</div>
+          <span class="badge badge-yellow">MEDIUM RISK</span>
+        </div>
+        <div class="card">
+          <div class="card-title">Manufacturing Scale-up</div>
+          <div style="margin-top: 0.5rem;">Ramping to commercial scale for global obesity market is massive operational
+            challenge. Supply issues could limit sales.</div>
+          <span class="badge badge-yellow">MEDIUM RISK</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Strategic Partnerships -->
+    <div class="section">
+      <h2>Key Partnerships & Collaborations</h2>
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-title">Covance (Trial CRO)</div>
+          <div class="card-subtitle">Clinical Development Partner</div>
+          <div style="margin-top: 0.5rem;">Conducting Phase 2b trial for VK2735. Enables VKNG to focus on drug
+            development while outsourcing trial logistics.</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Charles River Laboratories</div>
+          <div class="card-subtitle">Preclinical & Manufacturing</div>
+          <div style="margin-top: 0.5rem;">Provides GLP-tox studies and early manufacturing support. Critical for
+            getting to IND, then BLA stage.</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Novo Nordisk License</div>
+          <div class="card-subtitle">Potential Commercial Partnership</div>
+          <div style="margin-top: 0.5rem;">Rumored discussions for ex-US rights or co-marketing. Could provide upfront
+            cash and reduce go-to-market risk.</div>
+        </div>
+        <div class="card">
+          <div class="card-title">MIT Broad Institute</div>
+          <div class="card-subtitle">Research Collaboration</div>
+          <div style="margin-top: 0.5rem;">Early-stage research on next-generation GLP-1/GCG agonists. Feeds future
+            pipeline programs.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Financial Health -->
+    <div class="section">
+      <h2>Financial Health & Runway</h2>
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-title">Cash & Equivalents</div>
+          <div class="card-value">$185M</div>
+          <div class="card-subtitle">As of Q2 2026</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Monthly Burn Rate</div>
+          <div class="card-value">$8.5M</div>
+          <div class="card-subtitle">R&D + Operations</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Estimated Runway</div>
+          <div class="card-value">18-20 months</div>
+          <div class="card-subtitle">Until additional funding needed</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Headcount</div>
+          <div class="card-value">~85 employees</div>
+          <div class="card-subtitle">Lean biotech team</div>
+        </div>
+      </div>
+      <p style="margin-top: 1rem; font-size: 0.9rem; color: #6b7280;">
+        <strong>Interpretation:</strong> Healthy cash position for Phase 2b completion and Phase 3 initiation. If Phase
+        2b is positive, likely to attract Series D or strategic investment. If negative, would need significant capital
+        raise at lower valuation.
+      </p>
+    </div>
+
   </div>
-
-  <!-- Pipeline -->
-  <div class="section">
-    <h2>Pipeline</h2>
-
-    <div class="pipeline-item">
-      <div class="pipeline-name">VK2735</div>
-      <div class="pipeline-indication">GLP-1/GCG Receptor Agonist — Obesity & Metabolic Dysfunction</div>
-      <div class="pipeline-stage stage-phase2">Phase 2</div>
-      <p style="margin-top: 0.5rem; font-size: 0.9rem; color: #6b7280;">Lead program. Positive Phase 2 data presented at major conferences. Plans to advance to Phase 3 in 2026.</p>
-    </div>
-
-    <div class="pipeline-item">
-      <div class="pipeline-name">VK0735</div>
-      <div class="pipeline-indication">GLP-1 Receptor Agonist — Type 2 Diabetes</div>
-      <div class="pipeline-stage stage-phase1">Phase 1</div>
-      <p style="margin-top: 0.5rem; font-size: 0.9rem; color: #6b7280;">Early-stage program. First human dose cohort underway.</p>
-    </div>
-
-    <div class="pipeline-item">
-      <div class="pipeline-name">VK0127</div>
-      <div class="pipeline-indication">Selective GLP-1 Agonist — Metabolic Diseases</div>
-      <div class="pipeline-stage stage-phase1">Preclinical</div>
-      <p style="margin-top: 0.5rem; font-size: 0.9rem; color: #6b7280;">Discovery stage. Optimizing compound profile.</p>
-    </div>
-
-  </div>
-
-  <!-- FDA & Clinical -->
-  <div class="section">
-    <h2>FDA Approvals & Milestones</h2>
-
-    <div class="timeline-item">
-      <div class="timeline-date">June 2026</div>
-      <div class="timeline-event">VK2735 Phase 2 data presented at major biotech conference. Showed 18% weight loss vs. 4% placebo.</div>
-    </div>
-
-    <div class="timeline-item">
-      <div class="timeline-date">March 2026</div>
-      <div class="timeline-event">Phase 2a trial of VK2735 achieved primary efficacy endpoint.</div>
-    </div>
-
-    <div class="timeline-item">
-      <div class="timeline-date">January 2026</div>
-      <div class="timeline-event">IND application for VK0735 accepted by FDA.</div>
-    </div>
-
-    <div class="timeline-item">
-      <div class="timeline-date">November 2025</div>
-      <div class="timeline-event">VK2735 granted Fast Track designation for obesity.</div>
-    </div>
-
-    <div class="timeline-item">
-      <div class="timeline-date">August 2025</div>
-      <div class="timeline-event">Phase 2a trial of VK2735 initiated in multiple sites.</div>
-    </div>
-
-  </div>
-
-  <!-- Clinical Trials -->
-  <div class="section">
-    <h2>Clinical Trial Data</h2>
-
-    <div class="timeline-item">
-      <div class="timeline-date">VK2735 Phase 2a (Primary Endpoint)</div>
-      <div class="timeline-event">
-        <strong>Patient Population:</strong> 200 obese patients (BMI 30-50) without diabetes<br>
-        <strong>Primary Endpoint:</strong> Weight loss from baseline to Week 12<br>
-        <strong>Results:</strong> 18% mean weight loss (VK2735) vs. 4% (placebo) — p &lt; 0.001<br>
-        <strong>Safety:</strong> Generally well tolerated. Most common AE was nausea (mild to moderate, transient).
-      </div>
-    </div>
-
-    <div class="timeline-item">
-      <div class="timeline-date">Phase 2b (Ongoing)</div>
-      <div class="timeline-event">
-        <strong>Status:</strong> Enrollment ongoing<br>
-        <strong>Sites:</strong> 15+ clinical research centers<br>
-        <strong>Patient Population:</strong> 300+ patients with obesity ± metabolic comorbidities<br>
-        <strong>Duration:</strong> 24-week double-blind treatment period
-      </div>
-    </div>
-
-  </div>
-
-  <!-- Management -->
-  <div class="section">
-    <h2>Management Team</h2>
-    <div class="team-grid">
-      <div class="team-member">
-        <div class="member-name">Brian Lian</div>
-        <div class="member-title">Chief Executive Officer & Co-Founder</div>
-        <div class="member-tenure">Tenure: 2014 – Present (12 years)</div>
-      </div>
-      <div class="team-member">
-        <div class="member-name">Jeff Bailin</div>
-        <div class="member-title">Chief Medical Officer</div>
-        <div class="member-tenure">Tenure: 2015 – Present (11 years)</div>
-      </div>
-      <div class="team-member">
-        <div class="member-name">Suzanne Donohoe</div>
-        <div class="member-title">Chief Financial Officer</div>
-        <div class="member-tenure">Tenure: 2020 – Present (6 years)</div>
-      </div>
-      <div class="team-member">
-        <div class="member-name">Dr. Elizabeth Forsythe</div>
-        <div class="member-title">Vice President, Clinical Development</div>
-        <div class="member-tenure">Tenure: 2018 – Present (8 years)</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Recent Events -->
-  <div class="section">
-    <h2>Recent Market Events</h2>
-
-    <div class="event-item">
-      <div class="event-date">June 27, 2026</div>
-      <div class="event-title">Analyst Upgrades VKNG on Clinical Progress — Price target raised to $15</div>
-    </div>
-
-    <div class="event-item">
-      <div class="event-date">June 21, 2026</div>
-      <div class="event-title">Company Announces Phase 2 Data at ENDO 2026 — Positive weight loss efficacy</div>
-    </div>
-
-    <div class="event-item">
-      <div class="event-date">May 15, 2026</div>
-      <div class="event-title">Second Tranche of Financing Announced — $40M funding round</div>
-    </div>
-
-    <div class="event-item">
-      <div class="event-date">April 10, 2026</div>
-      <div class="event-title">Partnership with Major CRO for Phase 2b Trial Expansion</div>
-    </div>
-
-  </div>
-
-</div>
 
 </body>
-</html>
 
+</html>

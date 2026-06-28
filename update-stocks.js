@@ -5,9 +5,10 @@ const https = require('https');
 
 // API Keys from environment variables
 const FINNHUB_KEY = process.env.FINNHUB_API_KEY;
+const NEWSAPI_KEY = process.env.NEWSAPI_KEY;
 
-if (!FINNHUB_KEY) {
-  console.error('ERROR: Missing API key. Set FINNHUB_API_KEY environment variable.');
+if (!FINNHUB_KEY || !NEWSAPI_KEY) {
+  console.error('ERROR: Missing API keys. Set FINNHUB_API_KEY and NEWSAPI_KEY environment variables.');
   process.exit(1);
 }
 
@@ -84,55 +85,34 @@ const demoNews = {
   ]
 };
 
-// Fetch raw HTTP response (for RSS)
-function fetchRaw(url) {
-  return new Promise((resolve, reject) => {
-    const follow = (u) => {
-      const mod = u.startsWith('https') ? require('https') : require('http');
-      mod.get(u, { headers: { 'User-Agent': 'Mozilla/5.0' } }, (res) => {
-        if (res.statusCode >= 300 && res.statusCode < 400 && res.headers.location) {
-          return follow(res.headers.location);
-        }
-        let data = '';
-        res.on('data', (chunk) => { data += chunk; });
-        res.on('end', () => resolve(data));
-      }).on('error', reject);
-    };
-    follow(url);
-  });
-}
-
-// Fetch news from Google News RSS
+// Fetch news from NewsAPI
 async function getNews(symbol, company) {
   try {
-    const query = encodeURIComponent(`${company} stock`);
-    const url = `https://news.google.com/rss/search?q=${query}&hl=en-US&gl=US&ceid=US:en`;
-    const xml = await fetchRaw(url);
+    const query = `${company}`;
+    const url = `https://newsapi.org/v2/everything?q=${encodeURIComponent(query)}&sortBy=publishedAt&language=en&pageSize=3&apiKey=${NEWSAPI_KEY}`;
+    const data = await fetchData(url);
 
-    const items = [];
-    const itemRegex = /<item>([\s\S]*?)<\/item>/g;
-    let match;
-    while ((match = itemRegex.exec(xml)) !== null && items.length < 3) {
-      const item = match[1];
-      const title = (item.match(/<title><!\[CDATA\[(.*?)\]\]><\/title>/) || item.match(/<title>(.*?)<\/title>/))?.[1] || '';
-      const link = (item.match(/<link>(.*?)<\/link>/) || [])[1] || '#';
-      const pubDate = (item.match(/<pubDate>(.*?)<\/pubDate>/) || [])[1] || '';
-      const source = (item.match(/<source[^>]*>(.*?)<\/source>/) || [])[1] || 'Google News';
-      const date = pubDate ? new Date(pubDate).toISOString().split('T')[0] : new Date().toISOString().split('T')[0];
-
-      if (title && link !== '#') {
-        items.push({ title, source, date, summary: `Latest news about ${company}.`, url: link });
-      }
-    }
-
-    if (items.length === 0) {
+    if (!data.articles || data.articles.length === 0) {
       console.warn(`⚠️  No news found for ${symbol}, using demo news`);
       return demoNews[symbol] || [];
     }
 
-    console.log(`✓ Google News returned ${items.length} articles for ${symbol}`);
-    console.log(`  First article URL: ${items[0].url}`);
-    return items;
+    console.log(`✓ NewsAPI returned ${data.articles.length} articles for ${symbol}`);
+
+    const articles = data.articles.slice(0, 3).map(article => ({
+      title: article.title,
+      source: article.source.name || 'News Source',
+      date: article.publishedAt.split('T')[0],
+      summary: article.description || article.content || 'No summary available.',
+      url: article.url  // NewsAPI returns this as 'url'
+    }));
+
+    // Debug: log first article to check URL
+    if (articles.length > 0) {
+      console.log(`  First article URL: ${articles[0].url}`);
+    }
+
+    return articles;
   } catch (err) {
     console.warn(`⚠️  Error fetching news for ${symbol}: ${err.message}`);
     console.warn(`   Using demo news`);
@@ -140,15 +120,57 @@ async function getNews(symbol, company) {
   }
 }
 
-// Calculate YTD, MTD, WTD returns (using reasonable estimates)
-function calculateReturns(symbol, price) {
-  // Use realistic returns based on symbol
-  const returns = {
-    VKNG: { ytd: 45.2, mtd: 8.5, wtd: 3.2 },
-    IOVA: { ytd: -62.3, mtd: -15.5, wtd: -8.2 }
-  };
+// Calculate YTD, MTD, WTD returns from historical candle data
+async function calculateReturns(symbol, currentPrice) {
+  try {
+    const now = new Date();
+    const yearStart = new Date(now.getFullYear(), 0, 1); // Jan 1
+    const monthStart = new Date(now.getFullYear(), now.getMonth(), 1); // 1st of month
+    const weekStart = new Date(now);
+    weekStart.setDate(now.getDate() - now.getDay()); // Start of week (Sunday)
 
-  return returns[symbol] || { ytd: 0, mtd: 0, wtd: 0 };
+    const toTimestamp = Math.floor(Date.now() / 1000);
+
+    // Fetch year-to-date candles
+    const ytdFrom = Math.floor(yearStart.getTime() / 1000);
+    const ytdUrl = `https://finnhub.io/api/v1/stock/candle?symbol=${symbol}&resolution=D&from=${ytdFrom}&to=${toTimestamp}&token=${FINNHUB_KEY}`;
+    const ytdData = await fetchData(ytdUrl);
+
+    let ytd = 0;
+    if (ytdData.o && ytdData.o.length > 0) {
+      const yearOpenPrice = ytdData.o[0]; // First candle's open
+      ytd = ((currentPrice - yearOpenPrice) / yearOpenPrice) * 100;
+    }
+
+    // Fetch month-to-date candles
+    const mtdFrom = Math.floor(monthStart.getTime() / 1000);
+    const mtdUrl = `https://finnhub.io/api/v1/stock/candle?symbol=${symbol}&resolution=D&from=${mtdFrom}&to=${toTimestamp}&token=${FINNHUB_KEY}`;
+    const mtdData = await fetchData(mtdUrl);
+
+    let mtd = 0;
+    if (mtdData.o && mtdData.o.length > 0) {
+      const monthOpenPrice = mtdData.o[0];
+      mtd = ((currentPrice - monthOpenPrice) / monthOpenPrice) * 100;
+    }
+
+    // Fetch week-to-date candles
+    const wtdFrom = Math.floor(weekStart.getTime() / 1000);
+    const wtdUrl = `https://finnhub.io/api/v1/stock/candle?symbol=${symbol}&resolution=D&from=${wtdFrom}&to=${toTimestamp}&token=${FINNHUB_KEY}`;
+    const wtdData = await fetchData(wtdUrl);
+
+    let wtd = 0;
+    if (wtdData.o && wtdData.o.length > 0) {
+      const weekOpenPrice = wtdData.o[0];
+      wtd = ((currentPrice - weekOpenPrice) / weekOpenPrice) * 100;
+    }
+
+    console.log(`  Returns: YTD=${ytd.toFixed(2)}%, MTD=${mtd.toFixed(2)}%, WTD=${wtd.toFixed(2)}%`);
+
+    return { ytd: parseFloat(ytd.toFixed(2)), mtd: parseFloat(mtd.toFixed(2)), wtd: parseFloat(wtd.toFixed(2)) };
+  } catch (err) {
+    console.warn(`⚠️  Error calculating returns for ${symbol}: ${err.message}`);
+    return { ytd: 0, mtd: 0, wtd: 0 };
+  }
 }
 
 // Update HTML with new data
@@ -168,7 +190,7 @@ async function updateHTML() {
 
     const company = symbol === 'VKNG' ? 'Vikings Therapeutics' : 'Iovance Biotherapeutics';
     const news = await getNews(symbol, company);
-    const returns = calculateReturns(symbol, price.price);
+    const returns = await calculateReturns(symbol, price.price);
 
     stockData[symbol] = {
       symbol,
