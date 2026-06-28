@@ -40,7 +40,7 @@ header p { font-size: 0.9rem; opacity: 0.85; }
 .positive { color: #059669; background: #d1fae5; }
 .negative { color: #dc2626; background: #fee2e2; }
 .neutral { color: #6b7280; background: #f3f4f6; }
-.metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.8rem; }
+.metrics { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.6rem; }
 .metric {
   text-align: center;
   padding: 0.8rem;
@@ -136,7 +136,7 @@ header p { font-size: 0.9rem; opacity: 0.85; }
 
 @media (max-width: 768px) {
   .stock-grid { grid-template-columns: 1fr; }
-  .metrics { grid-template-columns: 1fr; }
+  .metrics { grid-template-columns: repeat(2, 1fr); }
   .news-grid { grid-template-columns: 1fr; }
   header h1 { font-size: 1.4rem; }
 }
@@ -181,9 +181,11 @@ const demoData = {
     price: 8.42,
     change: 0.15,
     changePercent: 1.81,
+    oneDay: 1.81,
+    fiveDay: 0,
+    oneMonth: 0,
+    sixMonth: 0,
     ytd: -15.3,
-    mtd: 2.1,
-    wtd: 0.8,
     news: [
       {
         title: 'Vikings Therapeutics Presents Phase 2 Data for VK2735 in Obesity',
@@ -207,9 +209,11 @@ const demoData = {
     price: 4.25,
     change: 0.04,
     changePercent: 0.95,
+    oneDay: 0.95,
+    fiveDay: 48.6,
+    oneMonth: 48.6,
+    sixMonth: 48.6,
     ytd: 52.88,
-    mtd: 3.41,
-    wtd: 0.71,
     news: [
       {
         title: 'Iovance Reports TIL Therapy Clinical Trial Results',
@@ -240,14 +244,16 @@ function formatTime(date) {
 function renderStocks(stocks) {
   const container = document.getElementById('stocks-container');
   let html = '<div class="stock-grid">';
+  const profileLinks = { VKNG: 'vkng.html', IOVA: 'iova.html' };
 
   for (const symbol in stocks) {
     const stock = stocks[symbol];
     const changeClass = stock.change > 0 ? 'positive' : stock.change < 0 ? 'negative' : 'neutral';
     const changeSign = stock.change >= 0 ? '+' : '';
+    const profileUrl = profileLinks[symbol] || '#';
 
     html += `
-      <div class="stock-card">
+      <div class="stock-card" style="cursor: pointer; transition: transform 0.2s;" onclick="window.location.href='${profileUrl}'">`
         <div class="stock-header">
           <div>
             <div class="stock-symbol">${stock.symbol}</div>
@@ -260,23 +266,38 @@ function renderStocks(stocks) {
         </div>
         <div class="metrics">
           <div class="metric">
+            <div class="metric-label">1D</div>
+            <div class="metric-value" style="color: ${stock.oneDay >= 0 ? '#059669' : '#dc2626'};">
+              ${stock.oneDay >= 0 ? '+' : ''}${stock.oneDay.toFixed(2)}%
+            </div>
+          </div>
+          <div class="metric">
+            <div class="metric-label">5D</div>
+            <div class="metric-value" style="color: ${stock.fiveDay >= 0 ? '#059669' : '#dc2626'};">
+              ${stock.fiveDay >= 0 ? '+' : ''}${stock.fiveDay.toFixed(2)}%
+            </div>
+          </div>
+          <div class="metric">
+            <div class="metric-label">1M</div>
+            <div class="metric-value" style="color: ${stock.oneMonth >= 0 ? '#059669' : '#dc2626'};">
+              ${stock.oneMonth >= 0 ? '+' : ''}${stock.oneMonth.toFixed(2)}%
+            </div>
+          </div>
+          <div class="metric">
+            <div class="metric-label">6M</div>
+            <div class="metric-value" style="color: ${stock.sixMonth >= 0 ? '#059669' : '#dc2626'};">
+              ${stock.sixMonth >= 0 ? '+' : ''}${stock.sixMonth.toFixed(2)}%
+            </div>
+          </div>
+          <div class="metric">
             <div class="metric-label">YTD</div>
             <div class="metric-value" style="color: ${stock.ytd >= 0 ? '#059669' : '#dc2626'};">
               ${stock.ytd >= 0 ? '+' : ''}${stock.ytd.toFixed(2)}%
             </div>
           </div>
-          <div class="metric">
-            <div class="metric-label">MTD</div>
-            <div class="metric-value" style="color: ${stock.mtd >= 0 ? '#059669' : '#dc2626'};">
-              ${stock.mtd >= 0 ? '+' : ''}${stock.mtd.toFixed(2)}%
-            </div>
-          </div>
-          <div class="metric">
-            <div class="metric-label">WTD</div>
-            <div class="metric-value" style="color: ${stock.wtd >= 0 ? '#059669' : '#dc2626'};">
-              ${stock.wtd >= 0 ? '+' : ''}${stock.wtd.toFixed(2)}%
-            </div>
-          </div>
+        </div>
+        <div style="text-align: center; margin-top: 1rem; font-size: 0.85rem; color: #0052cc; font-weight: 600;">
+          View Profile →
         </div>
       </div>
     `;
