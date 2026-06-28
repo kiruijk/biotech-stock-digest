@@ -241,13 +241,16 @@ function renderStocks(stocks) {
   const container = document.getElementById('stocks-container');
   let html = '<div class="stock-grid">';
 
+  const profileLinks = { VKNG: 'vkng.html', IOVA: 'iova.html' };
+
   for (const symbol in stocks) {
     const stock = stocks[symbol];
     const changeClass = stock.change > 0 ? 'positive' : stock.change < 0 ? 'negative' : 'neutral';
     const changeSign = stock.change >= 0 ? '+' : '';
+    const profileUrl = profileLinks[symbol] || '#';
 
     html += `
-      <div class="stock-card">
+      <div class="stock-card" style="cursor: pointer; transition: transform 0.2s;" onclick="window.location.href='${profileUrl}'">
         <div class="stock-header">
           <div>
             <div class="stock-symbol">${stock.symbol}</div>
@@ -277,6 +280,9 @@ function renderStocks(stocks) {
               ${stock.wtd >= 0 ? '+' : ''}${stock.wtd.toFixed(2)}%
             </div>
           </div>
+        </div>
+        <div style="text-align: center; margin-top: 1rem; font-size: 0.85rem; color: #0052cc; font-weight: 600;">
+          View Profile →
         </div>
       </div>
     `;
