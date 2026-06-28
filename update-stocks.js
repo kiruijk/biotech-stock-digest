@@ -246,6 +246,16 @@ async function getReturns(symbol, quote, currentPrice) {
 }
 
 // Update HTML with new data
+// Cash positions from latest quarterly filings (Yahoo Finance balance sheet unavailable)
+const cashPositions = {
+  VKTX: 185e6,  // Q1 2026: $185M
+  IOVA: 75e6    // Q1 2026: $75M
+};
+
+async function getCashPosition(symbol) {
+  return cashPositions[symbol] || null;
+}
+
 // Fetch monthly burn rate from quarterly net income (Yahoo Finance)
 async function getMonthlyBurn(symbol) {
   try {
@@ -290,6 +300,7 @@ async function updateHTML() {
     const news = await getNews(symbol, company);
     const returns = await getReturns(symbol, quote, price.price);
     const monthlyBurn = await getMonthlyBurn(symbol);
+    const cashPosition = await getCashPosition(symbol);
 
     stockData[symbol] = {
       symbol,
@@ -299,6 +310,7 @@ async function updateHTML() {
       changePercent: parseFloat(price.changePercent.toFixed(2)),
       marketCap: price.marketCap,
       monthlyBurn: monthlyBurn,
+      cashPosition: cashPosition,
       oneDay: returns.oneDay,
       fiveDay: returns.fiveDay,
       oneMonth: returns.oneMonth,
@@ -370,12 +382,34 @@ function updateProfilePage(filename, data) {
     (_, tag) => `${tag}${formatMarketCap(data.marketCap)}`
   );
 
-  // Update monthly burn
+  // Update monthly burn (Quick Stats card)
   if (data.monthlyBurn) {
     const burnStr = `$${(data.monthlyBurn / 1e6).toFixed(1)}M/mo`;
     html = html.replace(
       /(<div class="card-value"[^>]*data-field="monthlyBurn"[^>]*>)[^<]*/,
       (_, tag) => `${tag}${burnStr}`
+    );
+  }
+
+  // Update Financial Health section
+  if (data.cashPosition) {
+    html = html.replace(
+      /(<div class="card-value"[^>]*data-field="cashPosition"[^>]*>)[^<]*/,
+      (_, tag) => `${tag}${formatMarketCap(data.cashPosition)}`
+    );
+  }
+  if (data.monthlyBurn) {
+    html = html.replace(
+      /(<div class="card-value"[^>]*data-field="burnRate"[^>]*>)[^<]*/,
+      (_, tag) => `${tag}$${(data.monthlyBurn / 1e6).toFixed(1)}M`
+    );
+  }
+  if (data.cashPosition && data.monthlyBurn) {
+    const runwayMonths = data.cashPosition / data.monthlyBurn;
+    const runwayStr = `${runwayMonths.toFixed(0)} months`;
+    html = html.replace(
+      /(<div class="card-value"[^>]*data-field="runway"[^>]*>)[^<]*/,
+      (_, tag) => `${tag}${runwayStr}`
     );
   }
 
