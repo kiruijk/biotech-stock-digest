@@ -1,32 +1,35 @@
-
 name: Update Stock Data Daily
- 
+
 on:
+  push:
+    branches:
+      - main
+
   schedule:
     # Run daily at 4:15 PM ET (8:15 PM UTC) on weekdays
-    - cron: '15 20 * * MON-FRI'
-  workflow_dispatch:  # Allow manual trigger
- 
+    - cron: "15 20 * * MON-FRI"
+  workflow_dispatch: # Allow manual trigger
+
 jobs:
   update-stocks:
     runs-on: ubuntu-latest
- 
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
- 
+
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
- 
+          node-version: "18"
+
       - name: Run stock update script
         env:
           FINNHUB_API_KEY: ${{ secrets.FINNHUB_API_KEY }}
         run: node update-stocks.js
- 
+
       - name: Commit and push changes
         run: |
           git config --local user.name "Stock Bot"
