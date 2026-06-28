@@ -6,7 +6,7 @@
   "scripts": {
     "update": "node update-stocks.js"
   },
-  "keywords": ["biotech", "stocks", "vkng", "iova"],
+  "keywords": ["biotech", "stocks", "vktx", "iova"],
   "author": "James",
   "license": "MIT",
   "dependencies": {
