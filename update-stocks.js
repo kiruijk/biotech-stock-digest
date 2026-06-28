@@ -164,7 +164,7 @@ async function updateHTML() {
 
   // Update index.html
   console.log('\nUpdating index.html...');
-  let indexHTML = fs.readFileSync('stock-digest-index.html', 'utf8');
+  let indexHTML = fs.readFileSync('index.html', 'utf8');
 
   const dataJSON = JSON.stringify(stockData, null, 2);
   const dataSnippet = `// Demo data with realistic biotech company info\nconst demoData = ${dataJSON};`;
@@ -174,7 +174,7 @@ async function updateHTML() {
     dataSnippet
   );
 
-  fs.writeFileSync('stock-digest-index.html', indexHTML);
+  fs.writeFileSync('index.html', indexHTML);
 
   // Update profile pages
   console.log('Updating profile pages...');
