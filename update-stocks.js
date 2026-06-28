@@ -5,10 +5,9 @@ const https = require('https');
 
 // API Keys from environment variables
 const FINNHUB_KEY = process.env.FINNHUB_API_KEY;
-const NEWSAPI_KEY = process.env.NEWSAPI_KEY;
 
-if (!FINNHUB_KEY || !NEWSAPI_KEY) {
-  console.error('ERROR: Missing API keys. Set FINNHUB_API_KEY and NEWSAPI_KEY environment variables.');
+if (!FINNHUB_KEY) {
+  console.error('ERROR: Missing API key. Set FINNHUB_API_KEY environment variable.');
   process.exit(1);
 }
 
@@ -85,29 +84,29 @@ const demoNews = {
   ]
 };
 
-// Fetch news from NewsAPI
+// Fetch news from Finnhub company news endpoint
 async function getNews(symbol, company) {
   try {
-    const query = `${company}`;
-    const url = `https://newsapi.org/v2/everything?q=${encodeURIComponent(query)}&sortBy=publishedAt&language=en&pageSize=3&apiKey=${NEWSAPI_KEY}`;
+    const to = new Date().toISOString().split('T')[0];
+    const from = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0];
+    const url = `https://finnhub.io/api/v1/company-news?symbol=${symbol}&from=${from}&to=${to}&token=${FINNHUB_KEY}`;
     const data = await fetchData(url);
 
-    if (!data.articles || data.articles.length === 0) {
+    if (!Array.isArray(data) || data.length === 0) {
       console.warn(`⚠️  No news found for ${symbol}, using demo news`);
       return demoNews[symbol] || [];
     }
 
-    console.log(`✓ NewsAPI returned ${data.articles.length} articles for ${symbol}`);
+    console.log(`✓ Finnhub returned ${data.length} articles for ${symbol}`);
 
-    const articles = data.articles.slice(0, 3).map(article => ({
-      title: article.title,
-      source: article.source.name || 'News Source',
-      date: article.publishedAt.split('T')[0],
-      summary: article.description || article.content || 'No summary available.',
-      url: article.url  // NewsAPI returns this as 'url'
+    const articles = data.slice(0, 3).map(article => ({
+      title: article.headline,
+      source: article.source || 'Finnhub News',
+      date: new Date(article.datetime * 1000).toISOString().split('T')[0],
+      summary: article.summary || 'No summary available.',
+      url: article.url
     }));
 
-    // Debug: log first article to check URL
     if (articles.length > 0) {
       console.log(`  First article URL: ${articles[0].url}`);
     }

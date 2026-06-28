@@ -27,7 +27,6 @@ jobs:
       - name: Run stock update script
         env:
           FINNHUB_API_KEY: ${{ secrets.FINNHUB_API_KEY }}
-          NEWSAPI_KEY: ${{ secrets.NEWSAPI_KEY }}
         run: node update-stocks.js
 
       - name: Commit and push changes
