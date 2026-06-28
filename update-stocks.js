@@ -189,60 +189,55 @@ async function getNews(symbol, company) {
 // Fetch returns from Yahoo Finance (1D, 5D, 1M, 6M, YTD)
 async function getReturns(symbol, quote, currentPrice) {
   try {
+    const now = new Date();
+
+    const sixMonthsAgo = new Date(now);
+    sixMonthsAgo.setMonth(sixMonthsAgo.getMonth() - 6);
+
+    const oneMonthAgo = new Date(now);
+    oneMonthAgo.setMonth(oneMonthAgo.getMonth() - 1);
+
+    const fiveDaysAgo = new Date(now);
+    fiveDaysAgo.setDate(fiveDaysAgo.getDate() - 7); // 7 calendar days covers 5 trading days
+
+    const yearStart = new Date(now.getFullYear(), 0, 1);
+
     const returns = {
       oneDay: parseFloat((quote.regularMarketChangePercent || 0).toFixed(2)),
-      ytd: 0,
       fiveDay: 0,
       oneMonth: 0,
-      sixMonth: 0
+      sixMonth: 0,
+      ytd: 0
     };
-
-    // Try to get YTD from quote
-    if (quote.ytdReturn) {
-      returns.ytd = parseFloat((quote.ytdReturn * 100).toFixed(2));
-    }
-
-    // Fetch historical data for 5D, 1M, 6M calculations
-    const now = new Date();
-    const sixMonthsAgo = new Date(now.setMonth(now.getMonth() - 6));
-    const oneMonthAgo = new Date(now.setMonth(now.getMonth() + 5)); // Reset month
-    oneMonthAgo.setMonth(oneMonthAgo.getMonth() - 1);
-    const fiveDaysAgo = new Date(now);
-    fiveDaysAgo.setDate(fiveDaysAgo.getDate() - 5);
 
     const historicalData = await getHistoricalData(symbol, sixMonthsAgo);
 
     if (historicalData && historicalData.length > 0) {
-      // 6M: first data point
-      const sixMQuote = historicalData[0];
-      if (sixMQuote.open) {
-        returns.sixMonth = parseFloat((((currentPrice - sixMQuote.open) / sixMQuote.open) * 100).toFixed(2));
-      }
+      // Sort oldest → newest
+      const sorted = [...historicalData].sort((a, b) => new Date(a.date) - new Date(b.date));
 
-      // 1M: find quote ~1 month ago
-      const oneMonthQuote = historicalData.find(q => new Date(q.date) <= oneMonthAgo);
-      if (oneMonthQuote && oneMonthQuote.open) {
-        returns.oneMonth = parseFloat((((currentPrice - oneMonthQuote.open) / oneMonthQuote.open) * 100).toFixed(2));
-      }
+      // Use .close for return calculations (most recent price of that day)
+      const calcReturn = (pastClose) =>
+        parseFloat((((currentPrice - pastClose) / pastClose) * 100).toFixed(2));
 
-      // 5D: find quote ~5 days ago
-      const fiveDayQuote = historicalData.find(q => new Date(q.date) <= fiveDaysAgo);
-      if (fiveDayQuote && fiveDayQuote.open) {
-        returns.fiveDay = parseFloat((((currentPrice - fiveDayQuote.open) / fiveDayQuote.open) * 100).toFixed(2));
-      }
+      // 6M: oldest data point
+      if (sorted[0]?.close) returns.sixMonth = calcReturn(sorted[0].close);
 
-      // YTD: if not from quote, calculate from year start
-      if (returns.ytd === 0) {
-        const yearStart = new Date(new Date().getFullYear(), 0, 1);
-        const yearStartQuote = historicalData.find(q => new Date(q.date) >= yearStart);
-        if (yearStartQuote && yearStartQuote.open) {
-          returns.ytd = parseFloat((((currentPrice - yearStartQuote.open) / yearStartQuote.open) * 100).toFixed(2));
-        }
-      }
+      // 1M, 5D, YTD: most recent quote on or before the target date
+      const findClosest = (targetDate) =>
+        [...sorted].reverse().find(q => new Date(q.date) <= targetDate);
+
+      const oneMonthQuote = findClosest(oneMonthAgo);
+      if (oneMonthQuote?.close) returns.oneMonth = calcReturn(oneMonthQuote.close);
+
+      const fiveDayQuote = findClosest(fiveDaysAgo);
+      if (fiveDayQuote?.close) returns.fiveDay = calcReturn(fiveDayQuote.close);
+
+      const ytdQuote = sorted.find(q => new Date(q.date) >= yearStart);
+      if (ytdQuote?.close) returns.ytd = calcReturn(ytdQuote.close);
     }
 
     console.log(`    1D: ${returns.oneDay}% | 5D: ${returns.fiveDay}% | 1M: ${returns.oneMonth}% | 6M: ${returns.sixMonth}% | YTD: ${returns.ytd}%`);
-
     return returns;
   } catch (err) {
     console.warn(`⚠️  Error fetching returns for ${symbol}: ${err.message}`);
@@ -300,8 +295,20 @@ async function updateHTML() {
 
   console.log('\nData calculated successfully');
 
-  // Update profile pages if they exist
-  const profilePages = { VKTX: 'vkng-enhanced.html', IOVA: 'iova-enhanced.html' };
+  // Update index.html
+  console.log('Updating index.html...');
+  let indexHTML = fs.readFileSync('index.html', 'utf8');
+  const dataJSON = JSON.stringify(stockData, null, 2)
+    .replace(/^/gm, '      ')  // indent to match surrounding code
+    .trim();
+  indexHTML = indexHTML.replace(
+    /const demoData = \{[\s\S]*?^    \};/m,
+    `const demoData = ${dataJSON};`
+  );
+  fs.writeFileSync('index.html', indexHTML);
+
+  // Update profile pages
+  const profilePages = { VKTX: 'vktx.html', IOVA: 'iova.html' };
   for (const [symbol, filename] of Object.entries(profilePages)) {
     if (stockData[symbol] && fs.existsSync(filename)) {
       console.log(`  Updating ${filename}...`);
