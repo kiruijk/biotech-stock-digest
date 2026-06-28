@@ -97,13 +97,22 @@ async function getNews(symbol, company) {
       return demoNews[symbol] || [];
     }
 
-    return data.articles.slice(0, 3).map(article => ({
+    console.log(`✓ NewsAPI returned ${data.articles.length} articles for ${symbol}`);
+
+    const articles = data.articles.slice(0, 3).map(article => ({
       title: article.title,
       source: article.source.name || 'News Source',
       date: article.publishedAt.split('T')[0],
       summary: article.description || article.content || 'No summary available.',
-      url: article.url
+      url: article.url  // NewsAPI returns this as 'url'
     }));
+
+    // Debug: log first article to check URL
+    if (articles.length > 0) {
+      console.log(`  First article URL: ${articles[0].url}`);
+    }
+
+    return articles;
   } catch (err) {
     console.warn(`⚠️  Error fetching news for ${symbol}: ${err.message}`);
     console.warn(`   Using demo news`);
