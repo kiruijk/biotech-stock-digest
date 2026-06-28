@@ -1,400 +1,465 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vikings Therapeutics (VKNG) - Enhanced Profile</title>
-<style>
-:root { color-scheme: light; }
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  background: #f5f7fa;
-  color: #1a1a1a;
-  line-height: 1.6;
-}
-header {
-  background: linear-gradient(135deg, #0052cc 0%, #0066ff 100%);
-  color: white;
-  padding: 1.5rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-header h1 { font-size: 1.6rem; }
-.back-btn {
-  background: rgba(255,255,255,0.2);
-  color: white;
-  border: 1px solid white;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  cursor: pointer;
-  text-decoration: none;
-  font-size: 0.9rem;
-}
-.back-btn:hover { background: rgba(255,255,255,0.3); }
-.container { max-width: 1200px; margin: 0 auto; padding: 2rem 1rem 3rem; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vikings Therapeutics (VKNG) - Enhanced Profile</title>
+  <style>
+    :root {
+      color-scheme: light;
+    }
 
-/* Section Styling */
-.section {
-  background: white;
-  border-radius: 10px;
-  padding: 2rem;
-  margin-bottom: 2rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-}
-.section h2 { font-size: 1.3rem; margin-bottom: 1.5rem; color: #1a1a1a; border-bottom: 2px solid #0052cc; padding-bottom: 0.5rem; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-/* Grid layouts */
-.grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
-.grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f5f7fa;
+      color: #1a1a1a;
+      line-height: 1.6;
+    }
 
-/* Card styling */
-.card {
-  padding: 1rem;
-  background: #f9fafb;
-  border-radius: 6px;
-  border-left: 3px solid #0052cc;
-}
-.card-title { font-weight: 700; color: #1a1a1a; margin-bottom: 0.3rem; }
-.card-subtitle { font-size: 0.85rem; color: #6b7280; }
-.card-value { font-size: 1.1rem; font-weight: 600; color: #0052cc; margin-top: 0.3rem; }
+    header {
+      background: linear-gradient(135deg, #0052cc 0%, #0066ff 100%);
+      color: white;
+      padding: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-/* Badge styling */
-.badge {
-  display: inline-block;
-  padding: 0.25rem 0.65rem;
-  border-radius: 20px;
-  font-size: 0.75rem;
-  font-weight: 600;
-}
-.badge-green { background: #d1fae5; color: #059669; }
-.badge-red { background: #fee2e2; color: #dc2626; }
-.badge-yellow { background: #fef3c7; color: #d97706; }
+    header h1 {
+      font-size: 1.6rem;
+    }
 
-/* Table styling */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 1rem;
-}
-th, td { padding: 0.8rem; text-align: left; border-bottom: 1px solid #e5e7eb; }
-th { background: #f9fafb; font-weight: 700; }
+    .back-btn {
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      border: 1px solid white;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
 
-/* Insider Trading */
-.insider-buy { color: #059669; font-weight: 600; }
-.insider-sell { color: #dc2626; font-weight: 600; }
+    .back-btn:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
 
-@media (max-width: 768px) {
-  header { flex-direction: column; gap: 1rem; }
-  .grid-2, .grid-3 { grid-template-columns: 1fr; }
-}
-</style>
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1rem 3rem;
+    }
+
+    /* Section Styling */
+    .section {
+      background: white;
+      border-radius: 10px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    .section h2 {
+      font-size: 1.3rem;
+      margin-bottom: 1.5rem;
+      color: #1a1a1a;
+      border-bottom: 2px solid #0052cc;
+      padding-bottom: 0.5rem;
+    }
+
+    /* Grid layouts */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    /* Card styling */
+    .card {
+      padding: 1rem;
+      background: #f9fafb;
+      border-radius: 6px;
+      border-left: 3px solid #0052cc;
+    }
+
+    .card-title {
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 0.3rem;
+    }
+
+    .card-subtitle {
+      font-size: 0.85rem;
+      color: #6b7280;
+    }
+
+    .card-value {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #0052cc;
+      margin-top: 0.3rem;
+    }
+
+    /* Badge styling */
+    .badge {
+      display: inline-block;
+      padding: 0.25rem 0.65rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .badge-green {
+      background: #d1fae5;
+      color: #059669;
+    }
+
+    .badge-red {
+      background: #fee2e2;
+      color: #dc2626;
+    }
+
+    .badge-yellow {
+      background: #fef3c7;
+      color: #d97706;
+    }
+
+    /* Table styling */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+
+    th,
+    td {
+      padding: 0.8rem;
+      text-align: left;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    th {
+      background: #f9fafb;
+      font-weight: 700;
+    }
+
+    /* Insider Trading */
+    .insider-buy {
+      color: #059669;
+      font-weight: 600;
+    }
+
+    .insider-sell {
+      color: #dc2626;
+      font-weight: 600;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .grid-2,
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
+
 <body>
-<!-- Last updated: 2026-06-28T06:03:46.481Z -->
+<!-- Last updated: 2026-06-28T06:21:29.333Z -->
 
-<header>
-  <h1>Vikings Therapeutics (VKNG)</h1>
-  <a href="index.html" class="back-btn">← Back to Dashboard</a>
-</header>
+  <header>
+    <h1>Vikings Therapeutics (VKNG)</h1>
+    <a href="index.html" class="back-btn">← Back to Dashboard</a>
+  </header>
 
-<div class="container">
+  <div class="container">
 
-  <!-- Quick Stats -->
-  <div class="section">
-    <h2>Quick Stats</h2>
-    <div class="grid-3">
-      <div class="card">
-        <div class="card-subtitle">Stock Price</div>
-        <div class="card-value">$38.04</div>
-      </div>
-      <div class="card">
-        <div class="card-subtitle">Market Cap</div>
-        <div class="card-value">$2.1B</div>
-      </div>
-      <div class="card">
-        <div class="card-subtitle">Cash Position</div>
-        <div class="card-value">$185M</div>
-      </div>
-      <div class="card">
-        <div class="card-subtitle">YTD Return</div>
-        <div class="card-value" style="color: #059669;">+45.2%</div>
-      </div>
-      <div class="card">
-        <div class="card-subtitle">Monthly Burn</div>
-        <div class="card-value">$8.5M</div>
-      </div>
-      <div class="card">
-        <div class="card-subtitle">Cash Runway</div>
-        <div class="card-value">18-20 months</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Insider Trading -->
-  <div class="section">
-    <h2>Insider Trading Activity</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Officer/Director</th>
-          <th>Position</th>
-          <th>Date</th>
-          <th>Transaction</th>
-          <th>Amount</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Fredrik Wiklund</td>
-          <td>Co-Founder, CEO</td>
-          <td>June 2026</td>
-          <td><span class="insider-buy">BUY</span></td>
-          <td>$7.56M (200K shares)</td>
-        </tr>
-        <tr>
-          <td>Dr. Jeff Bailin</td>
-          <td>CMO</td>
-          <td>June 2026</td>
-          <td><span class="insider-buy">BUY</span></td>
-          <td>$3.74M (98K shares)</td>
-        </tr>
-        <tr>
-          <td>Suzanne Donohoe</td>
-          <td>CFO</td>
-          <td>May 2026</td>
-          <td><span class="insider-buy">BUY</span></td>
-          <td>$2.28M (60K shares)</td>
-        </tr>
-        <tr>
-          <td>Brian Lian</td>
-          <td>Co-Founder, Board</td>
-          <td>April 2026</td>
-          <td><span class="insider-buy">BUY</span></td>
-          <td>$5.70M (150K shares)</td>
-        </tr>
-        <tr>
-          <td>Dr. Elizabeth Forsythe</td>
-          <td>VP Clinical</td>
-          <td>May 2026</td>
-          <td><span class="insider-buy">BUY</span></td>
-          <td>$1.52M (40K shares)</td>
-        </tr>
-      </tbody>
-    </table>
-    <p style="margin-top: 1rem; font-size: 0.9rem; color: #6b7280;">
-      <strong>Signal:</strong> Consistent insider buying across management levels suggests confidence in VK2735 program and obesity market opportunity. No recent sells reported.
-    </p>
-  </div>
-
-  <!-- Competitors -->
-  <div class="section">
-    <h2>Direct Competitors</h2>
-    <div class="grid-2">
-      <div class="card">
-        <div class="card-title">Novo Nordisk (NVO)</div>
-        <div class="card-subtitle">Ozempic/Wegovy (GLP-1)</div>
-        <div class="card-value" style="font-size: 0.9rem; margin-top: 0.5rem;">Market leader, first-mover advantage</div>
-        <div style="font-size: 0.85rem; color: #6b7280; margin-top: 0.5rem;">Market Cap: $180B | Stock: +22% YTD</div>
-      </div>
-      <div class="card">
-        <div class="card-title">Eli Lilly (LLY)</div>
-        <div class="card-subtitle">Mounjaro/Zepbound (GIP/GLP-1)</div>
-        <div class="card-value" style="font-size: 0.9rem; margin-top: 0.5rem;">Newer dual agonist, strong uptake</div>
-        <div style="font-size: 0.85rem; color: #6b7280; margin-top: 0.5rem;">Market Cap: $820B | Stock: +48% YTD</div>
-      </div>
-      <div class="card">
-        <div class="card-title">Structure Therapeutics (GPCR)</div>
-        <div class="card-subtitle">GPCR-targeted obesity</div>
-        <div class="card-value" style="font-size: 0.9rem; margin-top: 0.5rem;">Oral, GPCR approach, early stage</div>
-        <div style="font-size: 0.85rem; color: #6b7280; margin-top: 0.5rem;">Market Cap: $1.2B | Stock: +156% YTD</div>
-      </div>
-      <div class="card">
-        <div class="card-title">Roche/Carmot (RHHBY)</div>
-        <div class="card-subtitle">GLP-1/GCG dual agonist</div>
-        <div class="card-value" style="font-size: 0.9rem; margin-top: 0.5rem;">Big pharma resources, Carmot platform</div>
-        <div style="font-size: 0.85rem; color: #6b7280; margin-top: 0.5rem;">Market Cap: $290B | Stock: +18% YTD</div>
-      </div>
-    </div>
-    <p style="margin-top: 1rem; font-size: 0.9rem; color: #6b7280;">
-      <strong>VKNG Advantage:</strong> Oral formulation with improved tolerability profile. Smaller player = potential acquisition target for big pharma.
-    </p>
-  </div>
-
-  <!-- Upcoming Catalysts -->
-  <div class="section">
-    <h2>Upcoming Catalysts</h2>
-    <div class="grid-2">
-      <div class="card">
-        <div class="card-title">VK2735 Phase 2b Interim Data</div>
-        <div class="card-subtitle">Q3 2026 (August/September)</div>
-        <div style="margin-top: 0.5rem;">Weight loss efficacy, safety profile, comparison to competitors expected. Critical data point for market perception.</div>
-        <div style="margin-top: 0.5rem;"><span class="badge badge-green">HIGH IMPACT</span></div>
-      </div>
-      <div class="card">
-        <div class="card-title">Phase 3 Initiation</div>
-        <div class="card-subtitle">Q1 2027</div>
-        <div style="margin-top: 0.5rem;">Expected start of pivotal trial. Success here de-risks commercialization and FDA approval path.</div>
-        <div style="margin-top: 0.5rem;"><span class="badge badge-yellow">MILESTONE</span></div>
-      </div>
-      <div class="card">
-        <div class="card-title">FDA Pre-BLA Meeting</div>
-        <div class="card-subtitle">Q4 2026</div>
-        <div style="margin-top: 0.5rem;">Regulatory feedback on phase 3 path. Confirms approval strategy and potential timelines.</div>
-        <div style="margin-top: 0.5rem;"><span class="badge badge-green">KEY EVENT</span></div>
-      </div>
-      <div class="card">
-        <div class="card-title">ENDO/Obesity Conferences</div>
-        <div class="card-subtitle">June 2026 (ENDO), November 2026 (ADA)</div>
-        <div style="margin-top: 0.5rem;">Data presentations, analyst updates, investor meetings. Good for visibility and sentiment.</div>
-        <div style="margin-top: 0.5rem;"><span class="badge badge-yellow">PR EVENT</span></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Risk Factors -->
-  <div class="section">
-    <h2>Risk Factors</h2>
-    <div class="grid-2">
-      <div class="card">
-        <div class="card-title">Clinical Trial Risk</div>
-        <div style="margin-top: 0.5rem;">Phase 2b could show lower efficacy than expected, or safety signals. Competition from established players is intense.</div>
-        <span class="badge badge-red">HIGH RISK</span>
-      </div>
-      <div class="card">
-        <div class="card-title">Regulatory Hurdles</div>
-        <div style="margin-top: 0.5rem;">FDA may demand larger Phase 3 trial or additional safety data. Approval could be delayed beyond current timeline.</div>
-        <span class="badge badge-yellow">MEDIUM RISK</span>
-      </div>
-      <div class="card">
-        <div class="card-title">Competition</div>
-        <div style="margin-top: 0.5rem;">Novo Nordisk and Eli Lilly have established market share, supply chains, and relationships. Price competition likely.</div>
-        <span class="badge badge-red">HIGH RISK</span>
-      </div>
-      <div class="card">
-        <div class="card-title">Key Person Dependency</div>
-        <div style="margin-top: 0.5rem;">CEO/Co-founder Fredrik Wiklund is critical to investor confidence. Loss of key scientists/leaders could impact execution.</div>
-        <span class="badge badge-yellow">MEDIUM RISK</span>
-      </div>
-      <div class="card">
-        <div class="card-title">Patent & IP</div>
-        <div style="margin-top: 0.5rem;">Patents on VK2735 have 10+ years of exclusivity, but composition-of-matter claims may face challenges.</div>
-        <span class="badge badge-yellow">MEDIUM RISK</span>
-      </div>
-      <div class="card">
-        <div class="card-title">Manufacturing Scale-up</div>
-        <div style="margin-top: 0.5rem;">Ramping to commercial scale for global obesity market is massive operational challenge. Supply issues could limit sales.</div>
-        <span class="badge badge-yellow">MEDIUM RISK</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- Strategic Partnerships -->
-  <div class="section">
-    <h2>Key Partnerships & Collaborations</h2>
-    <div class="grid-2">
-      <div class="card">
-        <div class="card-title">Covance (Trial CRO)</div>
-        <div class="card-subtitle">Clinical Development Partner</div>
-        <div style="margin-top: 0.5rem;">Conducting Phase 2b trial for VK2735. Enables VKNG to focus on drug development while outsourcing trial logistics.</div>
-      </div>
-      <div class="card">
-        <div class="card-title">Charles River Laboratories</div>
-        <div class="card-subtitle">Preclinical & Manufacturing</div>
-        <div style="margin-top: 0.5rem;">Provides GLP-tox studies and early manufacturing support. Critical for getting to IND, then BLA stage.</div>
-      </div>
-      <div class="card">
-        <div class="card-title">Novo Nordisk License</div>
-        <div class="card-subtitle">Potential Commercial Partnership</div>
-        <div style="margin-top: 0.5rem;">Rumored discussions for ex-US rights or co-marketing. Could provide upfront cash and reduce go-to-market risk.</div>
-      </div>
-      <div class="card">
-        <div class="card-title">MIT Broad Institute</div>
-        <div class="card-subtitle">Research Collaboration</div>
-        <div style="margin-top: 0.5rem;">Early-stage research on next-generation GLP-1/GCG agonists. Feeds future pipeline programs.</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Management Team -->
-  <div class="section">
-    <h2>Management Team</h2>
-    <div class="grid-2">
-      <div class="card">
-        <div class="card-title">Fredrik Wiklund</div>
-        <div class="card-subtitle">Co-Founder & CEO</div>
-        <div style="margin-top: 0.5rem; font-size: 0.9rem;">
-          <strong>Tenure:</strong> 12 years (Since 2014)<br>
-          <strong>Background:</strong> PhD Biochemistry, founded VKNG with vision to solve metabolic diseases. Led company from preclinical through Phase 2.
+    <!-- Quick Stats -->
+    <div class="section">
+      <h2>Quick Stats</h2>
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-subtitle">Stock Price</div>
+          <div class="card-value">$38.04</div>
         </div>
-      </div>
-      <div class="card">
-        <div class="card-title">Dr. Jeff Bailin</div>
-        <div class="card-subtitle">Chief Medical Officer</div>
-        <div style="margin-top: 0.5rem; font-size: 0.9rem;">
-          <strong>Tenure:</strong> 5 years (Since 2021)<br>
-          <strong>Background:</strong> Former Novo Nordisk CMO. 20+ years obesity/GLP-1 experience. Key architect of VK2735 clinical strategy.
+        <div class="card">
+          <div class="card-subtitle">Market Cap</div>
+          <div class="card-value">$2.1B</div>
         </div>
-      </div>
-      <div class="card">
-        <div class="card-title">Suzanne Donohoe</div>
-        <div class="card-subtitle">Chief Financial Officer</div>
-        <div style="margin-top: 0.5rem; font-size: 0.9rem;">
-          <strong>Tenure:</strong> 3 years (Since 2023)<br>
-          <strong>Background:</strong> Ex-Gilead CFO. Strong capital markets expertise. Managed $150M Series C fundraising.
+        <div class="card">
+          <div class="card-subtitle">Cash Position</div>
+          <div class="card-value">$185M</div>
         </div>
-      </div>
-      <div class="card">
-        <div class="card-title">Brian Lian</div>
-        <div class="card-subtitle">Co-Founder & Board Member</div>
-        <div style="margin-top: 0.5rem; font-size: 0.9rem;">
-          <strong>Tenure:</strong> 12 years (Since 2014)<br>
-          <strong>Background:</strong> Co-founder, PhD Chemistry. Leads drug discovery platform. Multiple patents on GLP-1/GCG chemistry.
+        <div class="card">
+          <div class="card-subtitle">YTD Return</div>
+          <div class="card-value" style="color: #059669;">+45.2%</div>
         </div>
-      </div>
-      <div class="card">
-        <div class="card-title">Dr. Elizabeth Forsythe</div>
-        <div class="card-subtitle">VP Clinical Development</div>
-        <div style="margin-top: 0.5rem; font-size: 0.9rem;">
-          <strong>Tenure:</strong> 4 years (Since 2022)<br>
-          <strong>Background:</strong> Ex-Eli Lilly Phase 3 lead. Overseeing Phase 2b trial execution and Phase 3 design.
+        <div class="card">
+          <div class="card-subtitle">Monthly Burn</div>
+          <div class="card-value">$8.5M</div>
+        </div>
+        <div class="card">
+          <div class="card-subtitle">Cash Runway</div>
+          <div class="card-value">18-20 months</div>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- Financial Health -->
-  <div class="section">
-    <h2>Financial Health & Runway</h2>
-    <div class="grid-2">
-      <div class="card">
-        <div class="card-title">Cash & Equivalents</div>
-        <div class="card-value">$185M</div>
-        <div class="card-subtitle">As of Q2 2026</div>
+    <!-- Insider Trading -->
+    <div class="section">
+      <h2>Insider Trading Activity</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Officer/Director</th>
+            <th>Position</th>
+            <th>Date</th>
+            <th>Transaction</th>
+            <th>Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Fredrik Wiklund</td>
+            <td>Co-Founder, CEO</td>
+            <td>June 2026</td>
+            <td><span class="insider-buy">BUY</span></td>
+            <td>$7.56M (200K shares)</td>
+          </tr>
+          <tr>
+            <td>Dr. Jeff Bailin</td>
+            <td>CMO</td>
+            <td>June 2026</td>
+            <td><span class="insider-buy">BUY</span></td>
+            <td>$3.74M (98K shares)</td>
+          </tr>
+          <tr>
+            <td>Suzanne Donohoe</td>
+            <td>CFO</td>
+            <td>May 2026</td>
+            <td><span class="insider-buy">BUY</span></td>
+            <td>$2.28M (60K shares)</td>
+          </tr>
+          <tr>
+            <td>Brian Lian</td>
+            <td>Co-Founder, Board</td>
+            <td>April 2026</td>
+            <td><span class="insider-buy">BUY</span></td>
+            <td>$5.70M (150K shares)</td>
+          </tr>
+          <tr>
+            <td>Dr. Elizabeth Forsythe</td>
+            <td>VP Clinical</td>
+            <td>May 2026</td>
+            <td><span class="insider-buy">BUY</span></td>
+            <td>$1.52M (40K shares)</td>
+          </tr>
+        </tbody>
+      </table>
+      <p style="margin-top: 1rem; font-size: 0.9rem; color: #6b7280;">
+        <strong>Signal:</strong> Consistent insider buying across management levels suggests confidence in VK2735
+        program and obesity market opportunity. No recent sells reported.
+      </p>
+    </div>
+
+    <!-- Competitors -->
+    <div class="section">
+      <h2>Direct Competitors</h2>
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-title">Novo Nordisk (NVO)</div>
+          <div class="card-subtitle">Ozempic/Wegovy (GLP-1)</div>
+          <div class="card-value" style="font-size: 0.9rem; margin-top: 0.5rem;">Market leader, first-mover advantage
+          </div>
+          <div style="font-size: 0.85rem; color: #6b7280; margin-top: 0.5rem;">Market Cap: $180B | Stock: +22% YTD</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Eli Lilly (LLY)</div>
+          <div class="card-subtitle">Mounjaro/Zepbound (GIP/GLP-1)</div>
+          <div class="card-value" style="font-size: 0.9rem; margin-top: 0.5rem;">Newer dual agonist, strong uptake</div>
+          <div style="font-size: 0.85rem; color: #6b7280; margin-top: 0.5rem;">Market Cap: $820B | Stock: +48% YTD</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Structure Therapeutics (GPCR)</div>
+          <div class="card-subtitle">GPCR-targeted obesity</div>
+          <div class="card-value" style="font-size: 0.9rem; margin-top: 0.5rem;">Oral, GPCR approach, early stage</div>
+          <div style="font-size: 0.85rem; color: #6b7280; margin-top: 0.5rem;">Market Cap: $1.2B | Stock: +156% YTD
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">Roche/Carmot (RHHBY)</div>
+          <div class="card-subtitle">GLP-1/GCG dual agonist</div>
+          <div class="card-value" style="font-size: 0.9rem; margin-top: 0.5rem;">Big pharma resources, Carmot platform
+          </div>
+          <div style="font-size: 0.85rem; color: #6b7280; margin-top: 0.5rem;">Market Cap: $290B | Stock: +18% YTD</div>
+        </div>
       </div>
-      <div class="card">
-        <div class="card-title">Monthly Burn Rate</div>
-        <div class="card-value">$8.5M</div>
-        <div class="card-subtitle">R&D + Operations</div>
-      </div>
-      <div class="card">
-        <div class="card-title">Estimated Runway</div>
-        <div class="card-value">18-20 months</div>
-        <div class="card-subtitle">Until additional funding needed</div>
-      </div>
-      <div class="card">
-        <div class="card-title">Headcount</div>
-        <div class="card-value">~85 employees</div>
-        <div class="card-subtitle">Lean biotech team</div>
+      <p style="margin-top: 1rem; font-size: 0.9rem; color: #6b7280;">
+        <strong>VKNG Advantage:</strong> Oral formulation with improved tolerability profile. Smaller player = potential
+        acquisition target for big pharma.
+      </p>
+    </div>
+
+    <!-- Upcoming Catalysts -->
+    <div class="section">
+      <h2>Upcoming Catalysts</h2>
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-title">VK2735 Phase 2b Interim Data</div>
+          <div class="card-subtitle">Q3 2026 (August/September)</div>
+          <div style="margin-top: 0.5rem;">Weight loss efficacy, safety profile, comparison to competitors expected.
+            Critical data point for market perception.</div>
+          <div style="margin-top: 0.5rem;"><span class="badge badge-green">HIGH IMPACT</span></div>
+        </div>
+        <div class="card">
+          <div class="card-title">Phase 3 Initiation</div>
+          <div class="card-subtitle">Q1 2027</div>
+          <div style="margin-top: 0.5rem;">Expected start of pivotal trial. Success here de-risks commercialization and
+            FDA approval path.</div>
+          <div style="margin-top: 0.5rem;"><span class="badge badge-yellow">MILESTONE</span></div>
+        </div>
+        <div class="card">
+          <div class="card-title">FDA Pre-BLA Meeting</div>
+          <div class="card-subtitle">Q4 2026</div>
+          <div style="margin-top: 0.5rem;">Regulatory feedback on phase 3 path. Confirms approval strategy and potential
+            timelines.</div>
+          <div style="margin-top: 0.5rem;"><span class="badge badge-green">KEY EVENT</span></div>
+        </div>
+        <div class="card">
+          <div class="card-title">ENDO/Obesity Conferences</div>
+          <div class="card-subtitle">June 2026 (ENDO), November 2026 (ADA)</div>
+          <div style="margin-top: 0.5rem;">Data presentations, analyst updates, investor meetings. Good for visibility
+            and sentiment.</div>
+          <div style="margin-top: 0.5rem;"><span class="badge badge-yellow">PR EVENT</span></div>
+        </div>
       </div>
     </div>
-    <p style="margin-top: 1rem; font-size: 0.9rem; color: #6b7280;">
-      <strong>Interpretation:</strong> Healthy cash position for Phase 2b completion and Phase 3 initiation. If Phase 2b is positive, likely to attract Series D or strategic investment. If negative, would need significant capital raise at lower valuation.
-    </p>
-  </div>
 
-</div>
+    <!-- Risk Factors -->
+    <div class="section">
+      <h2>Risk Factors</h2>
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-title">Clinical Trial Risk</div>
+          <div style="margin-top: 0.5rem;">Phase 2b could show lower efficacy than expected, or safety signals.
+            Competition from established players is intense.</div>
+          <span class="badge badge-red">HIGH RISK</span>
+        </div>
+        <div class="card">
+          <div class="card-title">Regulatory Hurdles</div>
+          <div style="margin-top: 0.5rem;">FDA may demand larger Phase 3 trial or additional safety data. Approval could
+            be delayed beyond current timeline.</div>
+          <span class="badge badge-yellow">MEDIUM RISK</span>
+        </div>
+        <div class="card">
+          <div class="card-title">Competition</div>
+          <div style="margin-top: 0.5rem;">Novo Nordisk and Eli Lilly have established market share, supply chains, and
+            relationships. Price competition likely.</div>
+          <span class="badge badge-red">HIGH RISK</span>
+        </div>
+        <div class="card">
+          <div class="card-title">Key Person Dependency</div>
+          <div style="margin-top: 0.5rem;">CEO/Co-founder Fredrik Wiklund is critical to investor confidence. Loss of
+            key scientists/leaders could impact execution.</div>
+          <span class="badge badge-yellow">MEDIUM RISK</span>
+        </div>
+        <div class="card">
+          <div class="card-title">Patent & IP</div>
+          <div style="margin-top: 0.5rem;">Patents on VK2735 have 10+ years of exclusivity, but composition-of-matter
+            claims may face challenges.</div>
+          <span class="badge badge-yellow">MEDIUM RISK</span>
+        </div>
+        <div class="card">
+          <div class="card-title">Manufacturing Scale-up</div>
+          <div style="margin-top: 0.5rem;">Ramping to commercial scale for global obesity market is massive operational
+            challenge. Supply issues could limit sales.</div>
+          <span class="badge badge-yellow">MEDIUM RISK</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Strategic Partnerships -->
+    <div class="section">
+      <h2>Key Partnerships & Collaborations</h2>
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-title">Covance (Trial CRO)</div>
+          <div class="card-subtitle">Clinical Development Partner</div>
+          <div style="margin-top: 0.5rem;">Conducting Phase 2b trial for VK2735. Enables VKNG to focus on drug
+            development while outsourcing trial logistics.</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Charles River Laboratories</div>
+          <div class="card-subtitle">Preclinical & Manufacturing</div>
+          <div style="margin-top: 0.5rem;">Provides GLP-tox studies and early manufacturing support. Critical for
+            getting to IND, then BLA stage.</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Novo Nordisk License</div>
+          <div class="card-subtitle">Potential Commercial Partnership</div>
+          <div style="margin-top: 0.5rem;">Rumored discussions for ex-US rights or co-marketing. Could provide upfront
+            cash and reduce go-to-market risk.</div>
+        </div>
+        <div class="card">
+          <div class="card-title">MIT Broad Institute</div>
+          <div class="card-subtitle">Research Collaboration</div>
+          <div style="margin-top: 0.5rem;">Early-stage research on next-generation GLP-1/GCG agonists. Feeds future
+            pipeline programs.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Financial Health -->
+    <div class="section">
+      <h2>Financial Health & Runway</h2>
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-title">Cash & Equivalents</div>
+          <div class="card-value">$185M</div>
+          <div class="card-subtitle">As of Q2 2026</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Monthly Burn Rate</div>
+          <div class="card-value">$8.5M</div>
+          <div class="card-subtitle">R&D + Operations</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Estimated Runway</div>
+          <div class="card-value">18-20 months</div>
+          <div class="card-subtitle">Until additional funding needed</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Headcount</div>
+          <div class="card-value">~85 employees</div>
+          <div class="card-subtitle">Lean biotech team</div>
+        </div>
+      </div>
+      <p style="margin-top: 1rem; font-size: 0.9rem; color: #6b7280;">
+        <strong>Interpretation:</strong> Healthy cash position for Phase 2b completion and Phase 3 initiation. If Phase
+        2b is positive, likely to attract Series D or strategic investment. If negative, would need significant capital
+        raise at lower valuation.
+      </p>
+    </div>
+
+  </div>
 
 </body>
+
 </html>

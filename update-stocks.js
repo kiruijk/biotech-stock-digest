@@ -3,24 +3,20 @@
 const fs = require('fs');
 const https = require('https');
 
-const STOCKS = ['VKNG', 'IOVA'];
-
-// Fetch data from API
-function fetchData(url) {
-  return new Promise((resolve, reject) => {
-    https.get(url, (res) => {
-      let data = '';
-      res.on('data', (chunk) => { data += chunk; });
-      res.on('end', () => {
-        try {
-          resolve(JSON.parse(data));
-        } catch (e) {
-          reject(e);
-        }
-      });
-    }).on('error', reject);
-  });
+// Check if yahoo-finance2 is installed
+let yahooFinance;
+try {
+  const YahooFinanceModule = require('yahoo-finance2').default || require('yahoo-finance2');
+  // Try to instantiate or use directly
+  yahooFinance = typeof YahooFinanceModule === 'function' ? new YahooFinanceModule({ suppressNotices: ['yahooSurvey', 'ripHistorical'] }) : YahooFinanceModule;
+} catch (err) {
+  console.error('ERROR: Failed to load yahoo-finance2');
+  console.error(`  ${err.message}`);
+  console.error('Make sure it\'s installed: npm install yahoo-finance2');
+  process.exit(1);
 }
+
+const STOCKS = ['VKNG', 'IOVA'];
 
 // Fallback demo prices
 const demoPrices = {
@@ -28,28 +24,17 @@ const demoPrices = {
   IOVA: { price: 4.25, change: -0.18, changePercent: -4.06, high52: 11.50, low52: 3.80 }
 };
 
-// Fetch stock price and historical data from Yahoo Finance
+// Fetch stock price from Yahoo Finance using yahoo-finance2
 async function getStockPrice(symbol) {
   try {
-    // Use Yahoo Finance API (no key required)
-    const url = `https://query1.finance.yahoo.com/v10/finance/quoteSummary/${symbol}?modules=price,summaryDetail`;
-    const data = await fetchData(url);
-
-    if (!data.quoteSummary || !data.quoteSummary.result || !data.quoteSummary.result[0]) {
-      console.warn(`⚠️  No data from Yahoo Finance for ${symbol}, using fallback price`);
-      return demoPrices[symbol];
-    }
-
-    const result = data.quoteSummary.result[0];
-    const price = result.price;
-    const summary = result.summaryDetail;
+    const quote = await yahooFinance.quote(symbol);
 
     return {
-      price: price.regularMarketPrice?.raw || demoPrices[symbol].price,
-      change: (price.regularMarketPrice?.raw || 0) - (price.regularMarketPreviousClose?.raw || 0),
-      changePercent: price.regularMarketChangePercent?.raw || demoPrices[symbol].changePercent,
-      high52: summary.fiftyTwoWeekHigh?.raw || demoPrices[symbol].high52,
-      low52: summary.fiftyTwoWeekLow?.raw || demoPrices[symbol].low52
+      price: quote.regularMarketPrice || demoPrices[symbol].price,
+      change: (quote.regularMarketPrice || 0) - (quote.regularMarketPreviousClose || 0),
+      changePercent: quote.regularMarketChangePercent || demoPrices[symbol].changePercent,
+      high52: quote.fiftyTwoWeekHigh || demoPrices[symbol].high52,
+      low52: quote.fiftyTwoWeekLow || demoPrices[symbol].low52
     };
   } catch (err) {
     console.warn(`⚠️  Error fetching price for ${symbol}: ${err.message}`);
@@ -58,24 +43,21 @@ async function getStockPrice(symbol) {
   }
 }
 
-// Fetch historical chart data from Yahoo Finance for returns calculation
+// Fetch historical data from Yahoo Finance
 async function getHistoricalData(symbol, startDate) {
   try {
-    const period1 = Math.floor(startDate.getTime() / 1000);
-    const period2 = Math.floor(Date.now() / 1000);
-    const url = `https://query1.finance.yahoo.com/v7/finance/chart/${symbol}?period1=${period1}&period2=${period2}&interval=1d`;
-    const data = await fetchData(url);
+    const endDate = new Date();
+    const quotes = await yahooFinance.historical(symbol, {
+      period1: startDate,
+      period2: endDate,
+      interval: '1d'
+    });
 
-    if (data.chart?.result?.[0]?.timestamp) {
-      const result = data.chart.result[0];
-      console.log(`    ✓ Got ${result.timestamp.length} candles for ${symbol}`);
-      return result;
-    } else if (data.chart?.error) {
-      console.warn(`    ⚠️  Yahoo Finance error for ${symbol}: ${data.chart.error.description}`);
-      return null;
+    if (quotes && quotes.length > 0) {
+      console.log(`    ✓ Got ${quotes.length} days of historical data for ${symbol}`);
+      return quotes;
     } else {
-      console.warn(`    ⚠️  Unexpected response format for ${symbol}`);
-      console.warn(`       Response keys: ${Object.keys(data).join(', ')}`);
+      console.warn(`    ⚠️  No historical data for ${symbol}`);
       return null;
     }
   } catch (err) {
@@ -124,15 +106,13 @@ function fetchRaw(url) {
   });
 }
 
-// Fetch news from Yahoo Finance
+// Fetch news from Yahoo Finance using yahoo-finance2
 async function getYahooNews(symbol) {
   try {
-    const url = `https://query1.finance.yahoo.com/v10/finance/quoteSummary/${symbol}?modules=news`;
-    const data = await fetchData(url);
+    const quote = await yahooFinance.quote(symbol);
 
-    if (data.quoteSummary?.result?.[0]?.news?.news) {
-      const news = data.quoteSummary.result[0].news.news;
-      return news.slice(0, 3).map(item => ({
+    if (quote.news && Array.isArray(quote.news)) {
+      return quote.news.slice(0, 3).map(item => ({
         title: item.title,
         source: item.publisher || 'Yahoo Finance',
         date: new Date(item.providerPublishTime * 1000).toISOString().split('T')[0],
@@ -142,6 +122,7 @@ async function getYahooNews(symbol) {
     }
     return [];
   } catch (err) {
+    // Silently fail, we'll use Google News
     return [];
   }
 }
@@ -206,7 +187,7 @@ async function getNews(symbol, company) {
 }
 
 // Calculate YTD, MTD, WTD returns from historical data
-async function calculateReturns(symbol, currentPrice) {
+async function calculateReturns(symbol, currentPrice, dailyChangePercent) {
   try {
     const now = new Date();
     const yearStart = new Date(now.getFullYear(), 0, 1); // Jan 1
@@ -215,39 +196,43 @@ async function calculateReturns(symbol, currentPrice) {
     weekStart.setDate(now.getDate() - now.getDay()); // Start of week (Sunday)
 
     // Fetch historical data from year start
-    const chartData = await getHistoricalData(symbol, yearStart);
+    const quotes = await getHistoricalData(symbol, yearStart);
 
     let ytd = 0, mtd = 0, wtd = 0;
 
-    if (chartData && chartData.timestamp && chartData.open) {
-      const timestamps = chartData.timestamp;
-      const opens = chartData.open;
-      const closes = chartData.close;
-
+    if (quotes && quotes.length > 0) {
       // YTD: from first data point
-      if (opens.length > 0 && opens[0]) {
-        const yearOpenPrice = opens[0];
+      const firstQuote = quotes[0];
+      if (firstQuote.open) {
+        const yearOpenPrice = firstQuote.open;
         ytd = ((currentPrice - yearOpenPrice) / yearOpenPrice) * 100;
         console.log(`    YTD: ${yearOpenPrice} -> ${currentPrice} = ${ytd.toFixed(2)}%`);
       }
 
-      // MTD: find first timestamp >= month start
-      const mtdIndex = timestamps.findIndex(ts => new Date(ts * 1000) >= monthStart);
-      if (mtdIndex >= 0 && opens[mtdIndex]) {
-        const monthOpenPrice = opens[mtdIndex];
+      // MTD: find first quote >= month start
+      const mtdQuote = quotes.find(q => new Date(q.date) >= monthStart);
+      if (mtdQuote && mtdQuote.open) {
+        const monthOpenPrice = mtdQuote.open;
         mtd = ((currentPrice - monthOpenPrice) / monthOpenPrice) * 100;
         console.log(`    MTD: ${monthOpenPrice} -> ${currentPrice} = ${mtd.toFixed(2)}%`);
       }
 
-      // WTD: find first timestamp >= week start
-      const wtdIndex = timestamps.findIndex(ts => new Date(ts * 1000) >= weekStart);
-      if (wtdIndex >= 0 && opens[wtdIndex]) {
-        const weekOpenPrice = opens[wtdIndex];
+      // WTD: find first quote >= week start (or use most recent if none in this week)
+      let wtdQuote = quotes.find(q => new Date(q.date) >= weekStart);
+      if (!wtdQuote && quotes.length > 0) {
+        // If no data this week, use last available quote
+        wtdQuote = quotes[quotes.length - 1];
+      }
+      if (wtdQuote && wtdQuote.open) {
+        const weekOpenPrice = wtdQuote.open;
         wtd = ((currentPrice - weekOpenPrice) / weekOpenPrice) * 100;
         console.log(`    WTD: ${weekOpenPrice} -> ${currentPrice} = ${wtd.toFixed(2)}%`);
       }
     } else {
-      console.warn(`    ⚠️  No historical data for ${symbol}`);
+      console.warn(`    ⚠️  No historical data for ${symbol}, using fallback estimate`);
+      // Fallback: use daily change as approximation for weekly
+      wtd = dailyChangePercent;
+      // For MTD/YTD, we don't have data so leave as 0
     }
 
     console.log(`  Returns: YTD=${ytd.toFixed(2)}%, MTD=${mtd.toFixed(2)}%, WTD=${wtd.toFixed(2)}%`);
@@ -276,7 +261,7 @@ async function updateHTML() {
 
     const company = symbol === 'VKNG' ? 'Vikings Therapeutics' : 'Iovance Biotherapeutics';
     const news = await getNews(symbol, company);
-    const returns = await calculateReturns(symbol, price.price);
+    const returns = await calculateReturns(symbol, price.price, price.changePercent);
 
     stockData[symbol] = {
       symbol,
