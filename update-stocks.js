@@ -318,7 +318,20 @@ async function updateHTML() {
 function updateProfilePage(filename, data) {
   let html = fs.readFileSync(filename, 'utf8');
 
-  // Update timestamp only (to avoid regex issues with complex HTML)
+  // Update YTD return value
+  const ytdSign = data.ytd >= 0 ? '+' : '';
+  const ytdColor = data.ytd >= 0 ? '#059669' : '#dc2626';
+  html = html.replace(
+    /(<div class="card-subtitle">YTD Return<\/div>[\s\S]*?<div style="font-size: 0\.85rem[^"]*"[^>]*>Year-to-Date<\/div>\s*<div class="card-value"[^>]*>)[^<]*/,
+    `$1${ytdSign}${data.ytd}%`
+  );
+  // Also update the color
+  html = html.replace(
+    /(<div class="card-subtitle">YTD Return<\/div>[\s\S]*?<div class="card-value" style="color: )#[0-9a-f]+/,
+    `$1${ytdColor}`
+  );
+
+  // Update timestamp
   const timestamp = new Date().toISOString();
   if (!html.includes('<!-- Last updated:')) {
     html = html.replace('<body>', `<body>\n<!-- Last updated: ${timestamp} -->`);
