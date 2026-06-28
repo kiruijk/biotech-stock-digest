@@ -263,7 +263,8 @@ async function updateHTML() {
     const price = {
       price: quote.regularMarketPrice || 0,
       change: (quote.regularMarketPrice || 0) - (quote.regularMarketPreviousClose || 0),
-      changePercent: quote.regularMarketChangePercent || 0
+      changePercent: quote.regularMarketChangePercent || 0,
+      marketCap: quote.marketCap || null
     };
 
     const company = symbol === 'VKTX' ? 'Vikings Therapeutics' : 'Iovance Biotherapeutics';
@@ -276,6 +277,7 @@ async function updateHTML() {
       price: parseFloat(price.price.toFixed(2)),
       change: parseFloat(price.change.toFixed(2)),
       changePercent: parseFloat(price.changePercent.toFixed(2)),
+      marketCap: price.marketCap,
       oneDay: returns.oneDay,
       fiveDay: returns.fiveDay,
       oneMonth: returns.oneMonth,
@@ -322,20 +324,35 @@ async function updateHTML() {
 }
 
 // Update individual profile page
+function formatMarketCap(value) {
+  if (!value) return 'N/A';
+  if (value >= 1e9) return `$${(value / 1e9).toFixed(1)}B`;
+  if (value >= 1e6) return `$${(value / 1e6).toFixed(0)}M`;
+  return `$${value.toLocaleString()}`;
+}
+
 function updateProfilePage(filename, data) {
   let html = fs.readFileSync(filename, 'utf8');
 
-  // Update YTD return value
-  const ytdSign = data.ytd >= 0 ? '+' : '';
-  const ytdColor = data.ytd >= 0 ? '#059669' : '#dc2626';
+  const sign = (n) => n >= 0 ? '+' : '';
+  const color = (n) => n >= 0 ? '#059669' : '#dc2626';
+
+  // Update price
   html = html.replace(
-    /(<div class="card-subtitle">YTD Return<\/div>[\s\S]*?<div style="font-size: 0\.85rem[^"]*"[^>]*>Year-to-Date<\/div>\s*<div class="card-value"[^>]*>)[^<]*/,
-    `$1${ytdSign}${data.ytd}%`
+    /(<div class="card-value"[^>]*data-field="price"[^>]*>)[^<]*/,
+    (_, tag) => `${tag}$${data.price}`
   );
-  // Also update the color
+
+  // Update market cap
   html = html.replace(
-    /(<div class="card-subtitle">YTD Return<\/div>[\s\S]*?<div class="card-value" style="color: )#[0-9a-f]+/,
-    `$1${ytdColor}`
+    /(<div class="card-value"[^>]*data-field="marketCap"[^>]*>)[^<]*/,
+    (_, tag) => `${tag}${formatMarketCap(data.marketCap)}`
+  );
+
+  // Update YTD: value and color
+  html = html.replace(
+    /(<div class="card-value"[^>]*data-field="ytd"[^>]*style="color: )#[0-9a-f]+(">)[^<]*/,
+    (_, pre, close) => `${pre}${color(data.ytd)}${close}${sign(data.ytd)}${data.ytd}%`
   );
 
   // Update timestamp
