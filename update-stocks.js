@@ -67,9 +67,17 @@ async function getHistoricalData(symbol, startDate) {
     const data = await fetchData(url);
 
     if (data.chart?.result?.[0]?.timestamp) {
-      return data.chart.result[0];
+      const result = data.chart.result[0];
+      console.log(`    ✓ Got ${result.timestamp.length} candles for ${symbol}`);
+      return result;
+    } else if (data.chart?.error) {
+      console.warn(`    ⚠️  Yahoo Finance error for ${symbol}: ${data.chart.error.description}`);
+      return null;
+    } else {
+      console.warn(`    ⚠️  Unexpected response format for ${symbol}`);
+      console.warn(`       Response keys: ${Object.keys(data).join(', ')}`);
+      return null;
     }
-    return null;
   } catch (err) {
     console.warn(`    ⚠️  Error fetching historical data for ${symbol}: ${err.message}`);
     return null;
