@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vikings Therapeutics (VKNG) - Company Profile</title>
+<style>
+:root { color-scheme: light; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: #f5f7fa;
+  color: #1a1a1a;
+  line-height: 1.6;
+}
+header {
+  background: linear-gradient(135deg, #0052cc 0%, #0066ff 100%);
+  color: white;
+  padding: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header h1 { font-size: 1.6rem; }
+.back-btn {
+  background: rgba(255,255,255,0.2);
+  color: white;
+  border: 1px solid white;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+.back-btn:hover { background: rgba(255,255,255,0.3); }
+.container { max-width: 1000px; margin: 0 auto; padding: 2rem 1rem 3rem; }
+
+/* Overview Box */
+.overview {
+  background: white;
+  border-radius: 10px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+.overview-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1.5rem; margin-top: 1rem; }
+.metric {
+  padding: 1rem;
+  background: #f9fafb;
+  border-radius: 6px;
+}
+.metric-label { font-size: 0.8rem; color: #6b7280; text-transform: uppercase; font-weight: 600; }
+.metric-value { font-size: 1.3rem; font-weight: 700; color: #0052cc; margin-top: 0.3rem; }
+
+/* Section */
+.section {
+  background: white;
+  border-radius: 10px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+.section h2 { font-size: 1.3rem; margin-bottom: 1.5rem; color: #1a1a1a; border-bottom: 2px solid #0052cc; padding-bottom: 0.5rem; }
+
+/* Pipeline */
+.pipeline-item {
+  padding: 1rem;
+  background: #f9fafb;
+  border-left: 4px solid #0052cc;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+}
+.pipeline-name { font-weight: 700; color: #1a1a1a; }
+.pipeline-indication { font-size: 0.9rem; color: #6b7280; margin: 0.3rem 0; }
+.pipeline-stage {
+  display: inline-block;
+  padding: 0.3rem 0.7rem;
+  background: #dbeafe;
+  color: #0052cc;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-top: 0.3rem;
+}
+.stage-phase1 { background: #fef3c7; color: #d97706; }
+.stage-phase2 { background: #fca5a5; color: #dc2626; }
+.stage-phase3 { background: #bfdbfe; color: #0052cc; }
+.stage-approved { background: #d1fae5; color: #059669; }
+
+/* FDA & Clinical */
+.timeline-item {
+  padding: 1rem;
+  border-left: 3px solid #0052cc;
+  margin-bottom: 1rem;
+  background: #f9fafb;
+  border-radius: 4px;
+}
+.timeline-date { font-weight: 700; color: #0052cc; font-size: 0.9rem; }
+.timeline-event { margin-top: 0.3rem; color: #374151; }
+
+/* Management */
+.team-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.5rem; }
+.team-member {
+  padding: 1rem;
+  background: #f9fafb;
+  border-radius: 6px;
+  border-top: 3px solid #0052cc;
+}
+.member-name { font-weight: 700; color: #1a1a1a; }
+.member-title { font-size: 0.9rem; color: #6b7280; margin-top: 0.3rem; }
+.member-tenure { font-size: 0.85rem; color: #9ca3af; margin-top: 0.2rem; }
+
+/* Events */
+.event-item {
+  padding: 1rem;
+  border-left: 3px solid #059669;
+  background: #f9fafb;
+  margin-bottom: 0.8rem;
+  border-radius: 4px;
+}
+.event-date { font-weight: 600; color: #059669; font-size: 0.9rem; }
+.event-title { margin-top: 0.3rem; color: #1a1a1a; }
+
+@media (max-width: 768px) {
+  header { flex-direction: column; gap: 1rem; text-align: center; }
+  .overview-grid { grid-template-columns: 1fr; }
+  .team-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Vikings Therapeutics</h1>
+  <a href="index.html" class="back-btn">← Back to Dashboard</a>
+</header>
+
+<div class="container">
+
+  <!-- Overview -->
+  <div class="overview">
+    <h2>Company Overview</h2>
+    <p>Vikings Therapeutics is a clinical-stage biopharmaceutical company focused on the development of novel oral therapies for metabolic and endocrine disorders. The company is leveraging its expertise in the GLP-1 and glucagon receptor agonist space.</p>
+    <div class="overview-grid">
+      <div class="metric">
+        <div class="metric-label">Market Cap</div>
+        <div class="metric-value">$250M</div>
+      </div>
+      <div class="metric">
+        <div class="metric-label">Current Price</div>
+        <div class="metric-value">$8.42</div>
+      </div>
+      <div class="metric">
+        <div class="metric-label">52-Week High</div>
+        <div class="metric-value">$12.50</div>
+      </div>
+      <div class="metric">
+        <div class="metric-label">52-Week Low</div>
+        <div class="metric-value">$4.20</div>
+      </div>
+      <div class="metric">
+        <div class="metric-label">Cash (Est.)</div>
+        <div class="metric-value">$85M</div>
+      </div>
+      <div class="metric">
+        <div class="metric-label">Founded</div>
+        <div class="metric-value">2014</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pipeline -->
+  <div class="section">
+    <h2>Pipeline</h2>
+
+    <div class="pipeline-item">
+      <div class="pipeline-name">VK2735</div>
+      <div class="pipeline-indication">GLP-1/GCG Receptor Agonist — Obesity & Metabolic Dysfunction</div>
+      <div class="pipeline-stage stage-phase2">Phase 2</div>
+      <p style="margin-top: 0.5rem; font-size: 0.9rem; color: #6b7280;">Lead program. Positive Phase 2 data presented at major conferences. Plans to advance to Phase 3 in 2026.</p>
+    </div>
+
+    <div class="pipeline-item">
+      <div class="pipeline-name">VK0735</div>
+      <div class="pipeline-indication">GLP-1 Receptor Agonist — Type 2 Diabetes</div>
+      <div class="pipeline-stage stage-phase1">Phase 1</div>
+      <p style="margin-top: 0.5rem; font-size: 0.9rem; color: #6b7280;">Early-stage program. First human dose cohort underway.</p>
+    </div>
+
+    <div class="pipeline-item">
+      <div class="pipeline-name">VK0127</div>
+      <div class="pipeline-indication">Selective GLP-1 Agonist — Metabolic Diseases</div>
+      <div class="pipeline-stage stage-phase1">Preclinical</div>
+      <p style="margin-top: 0.5rem; font-size: 0.9rem; color: #6b7280;">Discovery stage. Optimizing compound profile.</p>
+    </div>
+
+  </div>
+
+  <!-- FDA & Clinical -->
+  <div class="section">
+    <h2>FDA Approvals & Milestones</h2>
+
+    <div class="timeline-item">
+      <div class="timeline-date">June 2026</div>
+      <div class="timeline-event">VK2735 Phase 2 data presented at major biotech conference. Showed 18% weight loss vs. 4% placebo.</div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-date">March 2026</div>
+      <div class="timeline-event">Phase 2a trial of VK2735 achieved primary efficacy endpoint.</div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-date">January 2026</div>
+      <div class="timeline-event">IND application for VK0735 accepted by FDA.</div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-date">November 2025</div>
+      <div class="timeline-event">VK2735 granted Fast Track designation for obesity.</div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-date">August 2025</div>
+      <div class="timeline-event">Phase 2a trial of VK2735 initiated in multiple sites.</div>
+    </div>
+
+  </div>
+
+  <!-- Clinical Trials -->
+  <div class="section">
+    <h2>Clinical Trial Data</h2>
+
+    <div class="timeline-item">
+      <div class="timeline-date">VK2735 Phase 2a (Primary Endpoint)</div>
+      <div class="timeline-event">
+        <strong>Patient Population:</strong> 200 obese patients (BMI 30-50) without diabetes<br>
+        <strong>Primary Endpoint:</strong> Weight loss from baseline to Week 12<br>
+        <strong>Results:</strong> 18% mean weight loss (VK2735) vs. 4% (placebo) — p &lt; 0.001<br>
+        <strong>Safety:</strong> Generally well tolerated. Most common AE was nausea (mild to moderate, transient).
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-date">Phase 2b (Ongoing)</div>
+      <div class="timeline-event">
+        <strong>Status:</strong> Enrollment ongoing<br>
+        <strong>Sites:</strong> 15+ clinical research centers<br>
+        <strong>Patient Population:</strong> 300+ patients with obesity ± metabolic comorbidities<br>
+        <strong>Duration:</strong> 24-week double-blind treatment period
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Management -->
+  <div class="section">
+    <h2>Management Team</h2>
+    <div class="team-grid">
+      <div class="team-member">
+        <div class="member-name">Brian Lian</div>
+        <div class="member-title">Chief Executive Officer & Co-Founder</div>
+        <div class="member-tenure">Tenure: 2014 – Present (12 years)</div>
+      </div>
+      <div class="team-member">
+        <div class="member-name">Jeff Bailin</div>
+        <div class="member-title">Chief Medical Officer</div>
+        <div class="member-tenure">Tenure: 2015 – Present (11 years)</div>
+      </div>
+      <div class="team-member">
+        <div class="member-name">Suzanne Donohoe</div>
+        <div class="member-title">Chief Financial Officer</div>
+        <div class="member-tenure">Tenure: 2020 – Present (6 years)</div>
+      </div>
+      <div class="team-member">
+        <div class="member-name">Dr. Elizabeth Forsythe</div>
+        <div class="member-title">Vice President, Clinical Development</div>
+        <div class="member-tenure">Tenure: 2018 – Present (8 years)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Recent Events -->
+  <div class="section">
+    <h2>Recent Market Events</h2>
+
+    <div class="event-item">
+      <div class="event-date">June 27, 2026</div>
+      <div class="event-title">Analyst Upgrades VKNG on Clinical Progress — Price target raised to $15</div>
+    </div>
+
+    <div class="event-item">
+      <div class="event-date">June 21, 2026</div>
+      <div class="event-title">Company Announces Phase 2 Data at ENDO 2026 — Positive weight loss efficacy</div>
+    </div>
+
+    <div class="event-item">
+      <div class="event-date">May 15, 2026</div>
+      <div class="event-title">Second Tranche of Financing Announced — $40M funding round</div>
+    </div>
+
+    <div class="event-item">
+      <div class="event-date">April 10, 2026</div>
+      <div class="event-title">Partnership with Major CRO for Phase 2b Trial Expansion</div>
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+</html>
+
