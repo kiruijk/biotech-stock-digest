@@ -186,61 +186,67 @@ async function getNews(symbol, company) {
   }
 }
 
-// Calculate YTD, MTD, WTD returns from historical data
-async function calculateReturns(symbol, currentPrice, dailyChangePercent) {
+// Fetch returns from Yahoo Finance (1D, 5D, 1M, 6M, YTD)
+async function getReturns(symbol, quote, currentPrice) {
   try {
-    const now = new Date();
-    const yearStart = new Date(now.getFullYear(), 0, 1); // Jan 1
-    const monthStart = new Date(now.getFullYear(), now.getMonth(), 1); // 1st of month
-    const weekStart = new Date(now);
-    weekStart.setDate(now.getDate() - now.getDay()); // Start of week (Sunday)
+    const returns = {
+      oneDay: parseFloat((quote.regularMarketChangePercent || 0).toFixed(2)),
+      ytd: 0,
+      fiveDay: 0,
+      oneMonth: 0,
+      sixMonth: 0
+    };
 
-    // Fetch historical data from year start
-    const quotes = await getHistoricalData(symbol, yearStart);
-
-    let ytd = 0, mtd = 0, wtd = 0;
-
-    if (quotes && quotes.length > 0) {
-      // YTD: from first data point
-      const firstQuote = quotes[0];
-      if (firstQuote.open) {
-        const yearOpenPrice = firstQuote.open;
-        ytd = ((currentPrice - yearOpenPrice) / yearOpenPrice) * 100;
-        console.log(`    YTD: ${yearOpenPrice} -> ${currentPrice} = ${ytd.toFixed(2)}%`);
-      }
-
-      // MTD: find first quote >= month start
-      const mtdQuote = quotes.find(q => new Date(q.date) >= monthStart);
-      if (mtdQuote && mtdQuote.open) {
-        const monthOpenPrice = mtdQuote.open;
-        mtd = ((currentPrice - monthOpenPrice) / monthOpenPrice) * 100;
-        console.log(`    MTD: ${monthOpenPrice} -> ${currentPrice} = ${mtd.toFixed(2)}%`);
-      }
-
-      // WTD: find first quote >= week start (or use most recent if none in this week)
-      let wtdQuote = quotes.find(q => new Date(q.date) >= weekStart);
-      if (!wtdQuote && quotes.length > 0) {
-        // If no data this week, use last available quote
-        wtdQuote = quotes[quotes.length - 1];
-      }
-      if (wtdQuote && wtdQuote.open) {
-        const weekOpenPrice = wtdQuote.open;
-        wtd = ((currentPrice - weekOpenPrice) / weekOpenPrice) * 100;
-        console.log(`    WTD: ${weekOpenPrice} -> ${currentPrice} = ${wtd.toFixed(2)}%`);
-      }
-    } else {
-      console.warn(`    ⚠️  No historical data for ${symbol}, using fallback estimate`);
-      // Fallback: use daily change as approximation for weekly
-      wtd = dailyChangePercent;
-      // For MTD/YTD, we don't have data so leave as 0
+    // Try to get YTD from quote
+    if (quote.ytdReturn) {
+      returns.ytd = parseFloat((quote.ytdReturn * 100).toFixed(2));
     }
 
-    console.log(`  Returns: YTD=${ytd.toFixed(2)}%, MTD=${mtd.toFixed(2)}%, WTD=${wtd.toFixed(2)}%`);
+    // Fetch historical data for 5D, 1M, 6M calculations
+    const now = new Date();
+    const sixMonthsAgo = new Date(now.setMonth(now.getMonth() - 6));
+    const oneMonthAgo = new Date(now.setMonth(now.getMonth() + 5)); // Reset month
+    oneMonthAgo.setMonth(oneMonthAgo.getMonth() - 1);
+    const fiveDaysAgo = new Date(now);
+    fiveDaysAgo.setDate(fiveDaysAgo.getDate() - 5);
 
-    return { ytd: parseFloat(ytd.toFixed(2)), mtd: parseFloat(mtd.toFixed(2)), wtd: parseFloat(wtd.toFixed(2)) };
+    const historicalData = await getHistoricalData(symbol, sixMonthsAgo);
+
+    if (historicalData && historicalData.length > 0) {
+      // 6M: first data point
+      const sixMQuote = historicalData[0];
+      if (sixMQuote.open) {
+        returns.sixMonth = parseFloat((((currentPrice - sixMQuote.open) / sixMQuote.open) * 100).toFixed(2));
+      }
+
+      // 1M: find quote ~1 month ago
+      const oneMonthQuote = historicalData.find(q => new Date(q.date) <= oneMonthAgo);
+      if (oneMonthQuote && oneMonthQuote.open) {
+        returns.oneMonth = parseFloat((((currentPrice - oneMonthQuote.open) / oneMonthQuote.open) * 100).toFixed(2));
+      }
+
+      // 5D: find quote ~5 days ago
+      const fiveDayQuote = historicalData.find(q => new Date(q.date) <= fiveDaysAgo);
+      if (fiveDayQuote && fiveDayQuote.open) {
+        returns.fiveDay = parseFloat((((currentPrice - fiveDayQuote.open) / fiveDayQuote.open) * 100).toFixed(2));
+      }
+
+      // YTD: if not from quote, calculate from year start
+      if (returns.ytd === 0) {
+        const yearStart = new Date(new Date().getFullYear(), 0, 1);
+        const yearStartQuote = historicalData.find(q => new Date(q.date) >= yearStart);
+        if (yearStartQuote && yearStartQuote.open) {
+          returns.ytd = parseFloat((((currentPrice - yearStartQuote.open) / yearStartQuote.open) * 100).toFixed(2));
+        }
+      }
+    }
+
+    console.log(`    1D: ${returns.oneDay}% | 5D: ${returns.fiveDay}% | 1M: ${returns.oneMonth}% | 6M: ${returns.sixMonth}% | YTD: ${returns.ytd}%`);
+
+    return returns;
   } catch (err) {
-    console.warn(`⚠️  Error calculating returns for ${symbol}: ${err.message}`);
-    return { ytd: 0, mtd: 0, wtd: 0 };
+    console.warn(`⚠️  Error fetching returns for ${symbol}: ${err.message}`);
+    return { oneDay: 0, fiveDay: 0, oneMonth: 0, sixMonth: 0, ytd: 0 };
   }
 }
 
@@ -252,16 +258,22 @@ async function updateHTML() {
 
   for (const symbol of STOCKS) {
     console.log(`  ${symbol}...`);
-    const price = await getStockPrice(symbol);
+    const quote = await yahooFinance.quote(symbol);
 
-    if (!price) {
-      console.warn(`  Failed to fetch price for ${symbol}`);
+    if (!quote) {
+      console.warn(`  Failed to fetch quote for ${symbol}`);
       continue;
     }
 
+    const price = {
+      price: quote.regularMarketPrice || 0,
+      change: (quote.regularMarketPrice || 0) - (quote.regularMarketPreviousClose || 0),
+      changePercent: quote.regularMarketChangePercent || 0
+    };
+
     const company = symbol === 'VKNG' ? 'Vikings Therapeutics' : 'Iovance Biotherapeutics';
     const news = await getNews(symbol, company);
-    const returns = await calculateReturns(symbol, price.price, price.changePercent);
+    const returns = await getReturns(symbol, quote, price.price);
 
     stockData[symbol] = {
       symbol,
@@ -269,9 +281,11 @@ async function updateHTML() {
       price: parseFloat(price.price.toFixed(2)),
       change: parseFloat(price.change.toFixed(2)),
       changePercent: parseFloat(price.changePercent.toFixed(2)),
-      ytd: parseFloat(returns.ytd),
-      mtd: parseFloat(returns.mtd),
-      wtd: parseFloat(returns.wtd),
+      oneDay: returns.oneDay,
+      fiveDay: returns.fiveDay,
+      oneMonth: returns.oneMonth,
+      sixMonth: returns.sixMonth,
+      ytd: returns.ytd,
       news: news.length > 0 ? news : [
         {
           title: `${company} - No recent news`,
@@ -285,17 +299,17 @@ async function updateHTML() {
   }
 
   // Note: index.html typically has hardcoded data
-  // Profile pages (vkng.html, iova.html) are updated below
+  // Profile pages (vkng-enhanced.html, iova-enhanced.html) are updated below
   console.log('\nData calculated successfully');
 
   // Update profile pages (enhanced versions)
   console.log('Updating profile pages...');
 
   if (stockData.VKNG) {
-    updateProfilePage('vkng.html', stockData.VKNG);
+    updateProfilePage('vkng-enhanced.html', stockData.VKNG);
   }
   if (stockData.IOVA) {
-    updateProfilePage('iova.html', stockData.IOVA);
+    updateProfilePage('iova-enhanced.html', stockData.IOVA);
   }
 
   console.log('\n✅ Stock data updated successfully!');
