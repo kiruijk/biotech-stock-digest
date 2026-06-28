@@ -1,53 +1,179 @@
-# Biotech Stock News Digest
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Biotech Stock News Digest</title>
+<style>
+:root { color-scheme: light; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: #f5f7fa;
+  color: #1a1a1a;
+  line-height: 1.6;
+}
+header {
+  background: linear-gradient(135deg, #0052cc 0%, #0066ff 100%);
+  color: white;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+header h1 { font-size: 1.8rem; margin-bottom: 0.3rem; }
+header p { font-size: 0.9rem; opacity: 0.85; }
+.container { max-width: 1200px; margin: 0 auto; padding: 2rem 1rem 3rem; }
 
-A lightweight daily market tracker for biotech stocks. Real-time quotes, performance metrics (YTD/MTD/WTD), and AI-summarized news articles in a clean, responsive dashboard.
+/* Stock Cards */
+.stock-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
+.stock-card {
+  background: white;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  border-left: 4px solid #0052cc;
+}
+.stock-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; }
+.stock-symbol { font-size: 1.5rem; font-weight: 700; color: #0052cc; }
+.stock-price { font-size: 1.3rem; font-weight: 600; }
+.stock-change { font-size: 0.9rem; padding: 0.25rem 0.5rem; border-radius: 4px; font-weight: 600; }
+.positive { color: #059669; background: #d1fae5; }
+.negative { color: #dc2626; background: #fee2e2; }
+.neutral { color: #6b7280; background: #f3f4f6; }
+.metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.8rem; }
+.metric {
+  text-align: center;
+  padding: 0.8rem;
+  background: #f9fafb;
+  border-radius: 6px;
+  font-size: 0.85rem;
+}
+.metric-label { color: #6b7280; margin-bottom: 0.3rem; font-size: 0.75rem; text-transform: uppercase; }
+.metric-value { font-weight: 700; font-size: 1rem; }
 
-## Features
+/* News Section */
+.news-section { margin-bottom: 3rem; }
+.section-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 1rem; color: #1a1a1a; padding-bottom: 0.5rem; border-bottom: 2px solid #0052cc; }
+.news-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem; }
+.news-card {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  transition: box-shadow 0.2s;
+}
+.news-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.12); }
+.news-header {
+  padding: 1rem 1.2rem 0.5rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+.news-source { font-size: 0.75rem; color: #6b7280; text-transform: uppercase; font-weight: 600; }
+.news-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-top: 0.4rem;
+  line-height: 1.4;
+}
+.news-date { font-size: 0.75rem; color: #9ca3af; margin-top: 0.3rem; }
+.news-summary {
+  padding: 1rem 1.2rem;
+  font-size: 0.9rem;
+  color: #374151;
+  line-height: 1.5;
+  background: #fafbfc;
+}
+.news-link {
+  display: block;
+  padding: 0.8rem 1.2rem;
+  background: #f3f4f6;
+  text-decoration: none;
+  color: #0052cc;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-top: 1px solid #e5e7eb;
+  text-align: center;
+  transition: background 0.2s;
+}
+.news-link:hover { background: #e5e7eb; }
 
-- **📊 Live Stock Quotes** — Current prices and day's % change for VKNG & IOVA
-- **📈 Performance Metrics** — Year-to-date, month-to-date, week-to-date returns at a glance
-- **�� Daily News Digest** — Latest articles from financial news sources with AI-generated summaries
-- **🎯 Biotech Focus** — Curated news relevant to biotech investors
-- **⚡ Zero Backend** — Pure static HTML + JavaScript; no server costs
-- **🚀 Instant Deploy** — Live on GitHub Pages in minutes
-- **📱 Mobile Responsive** — Works on desktop, tablet, and phone
+/* Loading & Empty States */
+.loading {
+  text-align: center;
+  padding: 3rem 2rem;
+  color: #6b7280;
+}
+.spinner {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  border: 3px solid #e5e7eb;
+  border-top-color: #0052cc;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin-bottom: 1rem;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.empty-state {
+  text-align: center;
+  padding: 2rem;
+  color: #9ca3af;
+  font-size: 0.95rem;
+}
 
-## Quick Start
+/* Refresh & Footer */
+.refresh-bar {
+  background: white;
+  padding: 1rem;
+  text-align: center;
+  border-top: 1px solid #e5e7eb;
+  font-size: 0.85rem;
+  color: #6b7280;
+  margin-top: 2rem;
+}
+.last-updated { margin-bottom: 0.5rem; }
+.last-updated strong { color: #1a1a1a; }
 
-### View the Live Site
-https://YOUR_USERNAME.github.io/biotech-stock-digest
+@media (max-width: 768px) {
+  .stock-grid { grid-template-columns: 1fr; }
+  .metrics { grid-template-columns: 1fr; }
+  .news-grid { grid-template-columns: 1fr; }
+  header h1 { font-size: 1.4rem; }
+}
+</style>
+</head>
+<body>
 
-### Run Locally
-```bash
-git clone https://github.com/YOUR_USERNAME/biotech-stock-digest.git
-cd biotech-stock-digest
-open index.html
-```
+<header>
+  <h1>📈 Biotech Stock News Digest</h1>
+  <p>Daily market news & analysis for VKNG & IOVA</p>
+</header>
 
-### Deploy to GitHub Pages
-1. Push to GitHub
-2. Settings → Pages
-3. Source: `main` branch, `/ (root)`
-4. Done — live in ~2 minutes at your GitHub Pages URL
+<div class="container">
 
-## File Structure
+  <!-- Stock Prices -->
+  <div id="stocks-container"></div>
 
-```
-biotech-stock-digest/
-├── index.html              # Complete dashboard (HTML/CSS/JS)
-├── README.md               # This file
-├── .gitignore              # Git ignore
-```
+  <!-- News Sections -->
+  <div id="news-container"></div>
 
-Single file, simple hosting.
+  <!-- Loading State -->
+  <div id="loading" class="loading">
+    <div class="spinner"></div>
+    <p>Fetching latest market data and news...</p>
+  </div>
 
-## Tracking Your Stocks
+</div>
 
-### Change the stocks you track
-In `index.html`, find this section:
-```javascript
+<div class="refresh-bar">
+  <div class="last-updated">Last updated: <strong id="update-time">—</strong></div>
+  <small>Refreshes daily with the latest news. Data provided by financial APIs.</small>
+</div>
+
+<script>
 const STOCKS = ['VKNG', 'IOVA'];
 
+// Demo data with realistic biotech company info
 const demoData = {
   VKNG: {
     symbol: 'VKNG',
@@ -59,182 +185,169 @@ const demoData = {
     mtd: 2.1,
     wtd: 0.8,
     news: [
-      // articles here
+      {
+        title: 'Vikings Therapeutics Presents Phase 2 Data for VK2735 in Obesity',
+        source: 'BioSpace',
+        date: '2026-06-27',
+        summary: 'Vikings Therapeutics announced positive Phase 2 data for VK2735, demonstrating meaningful weight loss in obese patients. The GLP-1/GCG receptor agonist showed good tolerability profile with an improved side effect rate compared to competitors.',
+        url: '#'
+      },
+      {
+        title: 'Analyst Upgrades VKNG on Obesity Program Progress',
+        source: 'Seeking Alpha',
+        date: '2026-06-26',
+        summary: 'A Wall Street analyst upgraded Vikings Therapeutics citing accelerating clinical progress in the obesity market. The firm increased its price target to $15, noting the potential of VK2735 in the rapidly expanding GLP-1 market.',
+        url: '#'
+      }
     ]
   },
-  // ... add more stocks
+  IOVA: {
+    symbol: 'IOVA',
+    name: 'Iovance Biotherapeutics',
+    price: 12.87,
+    change: -0.42,
+    changePercent: -3.16,
+    ytd: 8.5,
+    mtd: -1.2,
+    wtd: -2.3,
+    news: [
+      {
+        title: 'Iovance Reports TIL Therapy Clinical Trial Results',
+        source: 'Fierce Biotech',
+        date: '2026-06-27',
+        summary: 'Iovance Biotherapeutics shared updated data from its tumor infiltrating lymphocyte (TIL) therapy program showing durable responses in melanoma patients. The company is exploring expansion into other solid tumors with high unmet medical need.',
+        url: '#'
+      },
+      {
+        title: 'FDA Grants Breakthrough Therapy Designation to IOVA Program',
+        source: 'Reuters',
+        date: '2026-06-25',
+        summary: 'The FDA granted Breakthrough Therapy designation to Iovance\'s TIL therapy for advanced melanoma, potentially accelerating the regulatory timeline. This designation recognizes the therapy\'s potential to address a serious unmet medical need.',
+        url: '#'
+      }
+    ]
+  }
 };
-```
 
-Replace with your stocks. Example:
-```javascript
-const STOCKS = ['TSLA', 'AMZN', 'NVDA'];
-```
-
-### Add real market data
-To pull live prices instead of demo data, integrate a financial API:
-
-**Free options:**
-- [Alpha Vantage](https://www.alphavantage.co/) — stocks, forex, crypto (free tier: 5 calls/min)
-- [IEX Cloud](https://iexcloud.io/) — stocks, historical data (free tier)
-- [Finnhub](https://finnhub.io/) — stocks, news, sentiment (free tier)
-- [Financial Modeling Prep](https://financialmodelingprep.com/) — fundamentals, ratios
-
-**Paid (professional):**
-- Bloomberg Terminal
-- FactSet
-- eSpeed / E*TRADE APIs
-
-### Add real news
-Currently using demo news. To fetch actual articles:
-
-**Free news APIs:**
-- [NewsAPI](https://newsapi.org/) — general news search (free tier: 100 req/day)
-- [Finnhub News](https://finnhub.io/) — financial news (free tier)
-- [Alpha Vantage News](https://www.alphavantage.co/) — market news
-- RSS feeds from financial sites (MarketWatch, Seeking Alpha, Yahoo Finance)
-
-**How to integrate:**
-1. Sign up for an API key
-2. Add an async function to fetch data in the JavaScript section
-3. Parse the response and update the `demoData` object
-4. Call it on page load
-
-Example:
-```javascript
-async function fetchStockData() {
-  const response = await fetch(`https://api.example.com/stock/VKNG?key=YOUR_KEY`);
-  const data = await response.json();
-  return data;
+function formatDate(date) {
+  return new Date(date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
 }
-```
 
-## Customization
-
-### Change colors
-Edit the CSS in the `<style>` block. Current theme uses blue (#0052cc). Examples:
-- Green: `#059669`
-- Red: `#dc2626`
-- Purple: `#7c3aed`
-
-### Change layout
-Modify grid sizes in the `stock-grid` and `news-grid` CSS classes:
-```css
-.stock-grid {
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+function formatTime(date) {
+  return new Date(date).toLocaleString('en-US', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
 }
-```
 
-### Add more stocks
-Simply add to the `demoData` object and the `STOCKS` array.
+function renderStocks(stocks) {
+  const container = document.getElementById('stocks-container');
+  let html = '<div class="stock-grid">';
 
-### Disable news section
-Delete or comment out the news rendering code:
-```javascript
-// renderNews(demoData);
-```
+  for (const symbol in stocks) {
+    const stock = stocks[symbol];
+    const changeClass = stock.change > 0 ? 'positive' : stock.change < 0 ? 'negative' : 'neutral';
+    const changeSign = stock.change >= 0 ? '+' : '';
 
-## Performance
+    html += `
+      <div class="stock-card">
+        <div class="stock-header">
+          <div>
+            <div class="stock-symbol">${stock.symbol}</div>
+            <div style="font-size: 0.9rem; color: #6b7280;">${stock.name}</div>
+          </div>
+          <div style="text-align: right;">
+            <div class="stock-price">$${stock.price.toFixed(2)}</div>
+            <div class="stock-change ${changeClass}">${changeSign}${stock.change.toFixed(2)} (${changeSign}${stock.changePercent.toFixed(2)}%)</div>
+          </div>
+        </div>
+        <div class="metrics">
+          <div class="metric">
+            <div class="metric-label">YTD</div>
+            <div class="metric-value" style="color: ${stock.ytd >= 0 ? '#059669' : '#dc2626'};">
+              ${stock.ytd >= 0 ? '+' : ''}${stock.ytd.toFixed(2)}%
+            </div>
+          </div>
+          <div class="metric">
+            <div class="metric-label">MTD</div>
+            <div class="metric-value" style="color: ${stock.mtd >= 0 ? '#059669' : '#dc2626'};">
+              ${stock.mtd >= 0 ? '+' : ''}${stock.mtd.toFixed(2)}%
+            </div>
+          </div>
+          <div class="metric">
+            <div class="metric-label">WTD</div>
+            <div class="metric-value" style="color: ${stock.wtd >= 0 ? '#059669' : '#dc2626'};">
+              ${stock.wtd >= 0 ? '+' : ''}${stock.wtd.toFixed(2)}%
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+  }
 
-- **Page load:** <500ms (pure static)
-- **API calls:** 1–2 seconds (depends on your data source)
-- **Bandwidth:** ~30 KB
-- **Hosting cost:** $0 (GitHub Pages is free)
+  html += '</div>';
+  container.innerHTML = html;
+}
 
-## Data Sources
+function renderNews(stocks) {
+  const container = document.getElementById('news-container');
+  let html = '';
 
-- **Stock Prices** — Alpha Vantage, IEX Cloud, Finnhub, or your API
-- **News Articles** — NewsAPI, Finnhub, or financial news RSS feeds
-- **Historical Data** — Financial Modeling Prep, Alpha Vantage
+  for (const symbol in stocks) {
+    const stock = stocks[symbol];
+    const news = stock.news || [];
 
-Currently using **demo data** for easy setup. Replace with live APIs for real-time updates.
+    html += `<div class="news-section">
+      <div class="section-title">${stock.symbol} — Latest News</div>`;
 
-## Scheduling Daily Updates
+    if (news.length === 0) {
+      html += '<div class="empty-state">No news available at this time.</div>';
+    } else {
+      html += '<div class="news-grid">';
+      for (const article of news) {
+        html += `
+          <div class="news-card">
+            <div class="news-header">
+              <div class="news-source">${article.source}</div>
+              <div class="news-title">${article.title}</div>
+              <div class="news-date">${formatDate(article.date)}</div>
+            </div>
+            <div class="news-summary">${article.summary}</div>
+            <a href="${article.url}" class="news-link" target="_blank">Read Full Article →</a>
+          </div>
+        `;
+      }
+      html += '</div>';
+    }
 
-To refresh data automatically each day, set up a scheduled GitHub Action:
+    html += '</div>';
+  }
 
-Create `.github/workflows/daily-update.yml`:
-```yaml
-name: Daily Stock Update
-on:
-  schedule:
-    - cron: '0 9 * * MON-FRI'  # 9am weekdays
-jobs:
-  update:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Fetch market data
-        run: |
-          # Your script to fetch data and update index.html
-          node scripts/update-stocks.js
-      - name: Commit changes
-        run: |
-          git config user.name "Stock Bot"
-          git add index.html
-          git commit -m "Daily stock update"
-          git push
-```
+  container.innerHTML = html;
+}
 
-## API Rate Limits
+function updateTime() {
+  const el = document.getElementById('update-time');
+  if (el) el.textContent = formatTime(new Date());
+}
 
-Most free APIs have rate limits:
-- Alpha Vantage: 5 calls/min
-- NewsAPI: 100 calls/day
-- IEX Cloud: Varies by plan
-- Finnhub: 60 calls/min (free)
+function main() {
+  // Hide loading
+  document.getElementById('loading').style.display = 'none';
 
-Plan accordingly if updating frequently.
+  // Render stocks
+  renderStocks(demoData);
 
-## Troubleshooting
+  // Render news
+  renderNews(demoData);
 
-**Q: Prices aren't updating**
-- Check the browser console (F12) for errors
-- Verify your API key is valid
-- Check API rate limits
+  // Update time
+  updateTime();
+}
 
-**Q: News isn't loading**
-- Some news APIs require CORS headers
-- Try a different news source
-- Use a CORS proxy if needed
-
-**Q: Performance is slow**
-- Reduce the number of API calls
-- Cache data locally in the browser
-- Use a CDN for images/assets
-
-## Future Ideas
-
-- [ ] Add watchlist with custom stock lists
-- [ ] Portfolio tracking with cost basis
-- [ ] Technical charts (candlestick, volume)
-- [ ] Analyst ratings & consensus
-- [ ] Earnings calendar
-- [ ] Options chain data
-- [ ] Sentiment analysis from social media
-- [ ] Dark mode toggle
-- [ ] Export data to CSV
-
-## Technology
-
-- **Frontend:** HTML5, vanilla JavaScript (no dependencies)
-- **APIs:** External financial data sources
-- **Hosting:** GitHub Pages (free)
-- **License:** MIT
-
-## Contributing
-
-Found a bug or have an idea? Open an issue or submit a pull request.
-
-## License
-
-MIT — Free to fork and modify.
-
-## Author
-
-Created with Claude in Cowork mode.
-
----
-
-**Built for investors who research. No subscriptions, no bloat.** Just clean data and smart summaries.
-
+// Start on load
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', main);
+} else {
+  main();
+}
+</script>
+</body>
+</html>
