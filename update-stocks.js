@@ -171,6 +171,8 @@ async function calculateReturns(symbol, currentPrice) {
     if (ytdData.o && ytdData.o.length > 0) {
       const yearOpenPrice = ytdData.o[0]; // First candle's open
       ytd = ((currentPrice - yearOpenPrice) / yearOpenPrice) * 100;
+    } else {
+      console.warn(`    ⚠️  No YTD candle data for ${symbol}`);
     }
 
     // Fetch month-to-date candles
@@ -182,6 +184,8 @@ async function calculateReturns(symbol, currentPrice) {
     if (mtdData.o && mtdData.o.length > 0) {
       const monthOpenPrice = mtdData.o[0];
       mtd = ((currentPrice - monthOpenPrice) / monthOpenPrice) * 100;
+    } else {
+      console.warn(`    ⚠️  No MTD candle data for ${symbol}`);
     }
 
     // Fetch week-to-date candles
@@ -193,6 +197,8 @@ async function calculateReturns(symbol, currentPrice) {
     if (wtdData.o && wtdData.o.length > 0) {
       const weekOpenPrice = wtdData.o[0];
       wtd = ((currentPrice - weekOpenPrice) / weekOpenPrice) * 100;
+    } else {
+      console.warn(`    ⚠️  No WTD candle data for ${symbol}`);
     }
 
     console.log(`  Returns: YTD=${ytd.toFixed(2)}%, MTD=${mtd.toFixed(2)}%, WTD=${wtd.toFixed(2)}%`);
