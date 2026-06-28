@@ -1,0 +1,42 @@
+name: Update Stock Data Daily
+
+on:
+  schedule:
+    # Run daily at 4:15 PM ET (8:15 PM UTC)
+    - cron: "15 20 * * MON-FRI"
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  update-stocks:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+
+      - name: Run stock update script
+        env:
+          FINNHUB_API_KEY: ${{ secrets.FINNHUB_API_KEY }}
+          NEWSAPI_KEY: ${{ secrets.NEWSAPI_KEY }}
+        run: node update-stocks.js
+
+      - name: Commit and push changes
+        run: |
+          git config user.name "Stock Bot"
+          git config user.email "bot@github.com"
+          git add index.html vkng.html iova.html
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "🤖 Update stock prices and news - $(date +'%Y-%m-%d %H:%M:%S')"
+            git push origin main
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
