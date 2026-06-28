@@ -4,7 +4,7 @@ A lightweight daily market tracker for biotech stocks. Real-time quotes, perform
 
 ## Features
 
-- **📊 Live Stock Quotes** — Current prices and day's % change for VKNG & IOVA
+- **📊 Live Stock Quotes** — Current prices and day's % change for VKTX & IOVA
 - **📈 Performance Metrics** — Year-to-date, month-to-date, week-to-date returns at a glance
 - **�� Daily News Digest** — Latest articles from financial news sources with AI-generated summaries
 - **🎯 Biotech Focus** — Curated news relevant to biotech investors
@@ -46,11 +46,11 @@ Single file, simple hosting.
 ### Change the stocks you track
 In `index.html`, find this section:
 ```javascript
-const STOCKS = ['VKNG', 'IOVA'];
+const STOCKS = ['VKTX', 'IOVA'];
 
 const demoData = {
-  VKNG: {
-    symbol: 'VKNG',
+  VKTX: {
+    symbol: 'VKTX',
     name: 'Vikings Therapeutics',
     price: 8.42,
     change: 0.15,
@@ -103,7 +103,7 @@ Currently using demo news. To fetch actual articles:
 Example:
 ```javascript
 async function fetchStockData() {
-  const response = await fetch(`https://api.example.com/stock/VKNG?key=YOUR_KEY`);
+  const response = await fetch(`https://api.example.com/stock/VKTX?key=YOUR_KEY`);
   const data = await response.json();
   return data;
 }

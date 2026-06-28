@@ -1,6 +1,6 @@
 # Automatic Stock Data Updates
 
-This setup automatically updates VKNG & IOVA stock prices and news every weekday at 4:15 PM ET (market close).
+This setup automatically updates VKTX & IOVA stock prices and news every weekday at 4:15 PM ET (market close).
 
 ## What Happens
 
@@ -107,7 +107,7 @@ Examples:
 
 Edit `update-stocks.js`:
 ```javascript
-const STOCKS = ['VKNG', 'IOVA', 'CRSP'];  // Add CRSP
+const STOCKS = ['VKTX', 'IOVA', 'CRSP'];  // Add CRSP
 ```
 
 Then create a profile page for the new stock (copy vkng.html, update the data).

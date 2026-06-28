@@ -16,11 +16,11 @@ try {
   process.exit(1);
 }
 
-const STOCKS = ['VKNG', 'IOVA'];
+const STOCKS = ['VKTX', 'IOVA'];
 
 // Fallback demo prices
 const demoPrices = {
-  VKNG: { price: 38.04, change: 1.25, changePercent: 3.39, high52: 45.20, low52: 12.50 },
+  VKTX: { price: 38.04, change: 1.25, changePercent: 3.39, high52: 45.20, low52: 12.50 },
   IOVA: { price: 4.25, change: -0.18, changePercent: -4.06, high52: 11.50, low52: 3.80 }
 };
 
@@ -68,7 +68,7 @@ async function getHistoricalData(symbol, startDate) {
 
 // Fallback news
 const demoNews = {
-  VKNG: [
+  VKTX: [
     {
       title: 'Vikings Therapeutics Presents Phase 2 Data for VK2735 in Obesity',
       source: 'BioSpace',
@@ -271,7 +271,7 @@ async function updateHTML() {
       changePercent: quote.regularMarketChangePercent || 0
     };
 
-    const company = symbol === 'VKNG' ? 'Vikings Therapeutics' : 'Iovance Biotherapeutics';
+    const company = symbol === 'VKTX' ? 'Vikings Therapeutics' : 'Iovance Biotherapeutics';
     const news = await getNews(symbol, company);
     const returns = await getReturns(symbol, quote, price.price);
 
@@ -298,23 +298,20 @@ async function updateHTML() {
     };
   }
 
-  // Note: index.html typically has hardcoded data
-  // Profile pages (vkng-enhanced.html, iova-enhanced.html) are updated below
   console.log('\nData calculated successfully');
 
-  // Update profile pages (enhanced versions)
-  console.log('Updating profile pages...');
-
-  if (stockData.VKNG) {
-    updateProfilePage('vkng-enhanced.html', stockData.VKNG);
+  // Update profile pages if they exist
+  const profilePages = { VKTX: 'vkng-enhanced.html', IOVA: 'iova-enhanced.html' };
+  for (const [symbol, filename] of Object.entries(profilePages)) {
+    if (stockData[symbol] && fs.existsSync(filename)) {
+      console.log(`  Updating ${filename}...`);
+      updateProfilePage(filename, stockData[symbol]);
+    }
   }
-  if (stockData.IOVA) {
-    updateProfilePage('iova-enhanced.html', stockData.IOVA);
-  }
 
-  console.log('\n✅ Stock data updated successfully!');
-  console.log(`VKNG: $${stockData.VKNG?.price} ${stockData.VKNG?.changePercent >= 0 ? '+' : ''}${stockData.VKNG?.changePercent}%`);
-  console.log(`IOVA: $${stockData.IOVA?.price} ${stockData.IOVA?.changePercent >= 0 ? '+' : ''}${stockData.IOVA?.changePercent}%`);
+  console.log('\n✅ Stock data updated!');
+  if (stockData.VKTX) console.log(`VKTX: $${stockData.VKTX.price} ${stockData.VKTX.changePercent >= 0 ? '+' : ''}${stockData.VKTX.changePercent}% | YTD: ${stockData.VKTX.ytd}%`);
+  if (stockData.IOVA) console.log(`IOVA: $${stockData.IOVA.price} ${stockData.IOVA.changePercent >= 0 ? '+' : ''}${stockData.IOVA.changePercent}% | YTD: ${stockData.IOVA.ytd}%`);
 }
 
 // Update individual profile page
