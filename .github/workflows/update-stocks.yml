@@ -1,17 +1,10 @@
 name: Update Stock Data Daily
 
 on:
-  push:
-    branches:
-      - main
-
   schedule:
     # Run daily at 4:15 PM ET (8:15 PM UTC) on weekdays
     - cron: "15 20 * * MON-FRI"
   workflow_dispatch: # Allow manual trigger
-
-permissions:
-  contents: write
 
 jobs:
   update-stocks:
@@ -28,9 +21,10 @@ jobs:
         with:
           node-version: "18"
 
+      - name: Install dependencies
+        run: npm install
+
       - name: Run stock update script
-        env:
-          FINNHUB_API_KEY: ${{ secrets.FINNHUB_API_KEY }}
         run: node update-stocks.js
 
       - name: Commit and push changes
