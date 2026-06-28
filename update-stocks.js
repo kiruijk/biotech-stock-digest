@@ -3,19 +3,6 @@
 const fs = require('fs');
 const https = require('https');
 
-// API Keys from environment variables
-const FINNHUB_KEY = process.env.FINNHUB_API_KEY;
-const NEWSAPI_KEY = process.env.NEWSAPI_KEY;
-
-if (!FINNHUB_KEY) {
-  console.error('ERROR: Missing FINNHUB_API_KEY. Set FINNHUB_API_KEY environment variable.');
-  process.exit(1);
-}
-
-if (!NEWSAPI_KEY) {
-  console.warn('⚠️  NEWSAPI_KEY not set. Will use fallback demo news.');
-}
-
 const STOCKS = ['VKNG', 'IOVA'];
 
 // Fetch data from API
@@ -41,29 +28,51 @@ const demoPrices = {
   IOVA: { price: 4.25, change: -0.18, changePercent: -4.06, high52: 11.50, low52: 3.80 }
 };
 
-// Fetch stock price from Finnhub
+// Fetch stock price and historical data from Yahoo Finance
 async function getStockPrice(symbol) {
   try {
-    const url = `https://finnhub.io/api/v1/quote?symbol=${symbol}&token=${FINNHUB_KEY}`;
+    // Use Yahoo Finance API (no key required)
+    const url = `https://query1.finance.yahoo.com/v10/finance/quoteSummary/${symbol}?modules=price,summaryDetail`;
     const data = await fetchData(url);
 
-    // Check if we got valid data
-    if (!data || data.c === undefined) {
-      console.warn(`⚠️  No data from API for ${symbol}, using fallback price`);
+    if (!data.quoteSummary || !data.quoteSummary.result || !data.quoteSummary.result[0]) {
+      console.warn(`⚠️  No data from Yahoo Finance for ${symbol}, using fallback price`);
       return demoPrices[symbol];
     }
 
+    const result = data.quoteSummary.result[0];
+    const price = result.price;
+    const summary = result.summaryDetail;
+
     return {
-      price: data.c || demoPrices[symbol].price,
-      change: data.d || demoPrices[symbol].change,
-      changePercent: data.dp || demoPrices[symbol].changePercent,
-      high52: data.h52 || demoPrices[symbol].high52,
-      low52: data.l52 || demoPrices[symbol].low52
+      price: price.regularMarketPrice?.raw || demoPrices[symbol].price,
+      change: (price.regularMarketPrice?.raw || 0) - (price.regularMarketPreviousClose?.raw || 0),
+      changePercent: price.regularMarketChangePercent?.raw || demoPrices[symbol].changePercent,
+      high52: summary.fiftyTwoWeekHigh?.raw || demoPrices[symbol].high52,
+      low52: summary.fiftyTwoWeekLow?.raw || demoPrices[symbol].low52
     };
   } catch (err) {
     console.warn(`⚠️  Error fetching price for ${symbol}: ${err.message}`);
     console.warn(`   Using fallback price`);
     return demoPrices[symbol];
+  }
+}
+
+// Fetch historical chart data from Yahoo Finance for returns calculation
+async function getHistoricalData(symbol, startDate) {
+  try {
+    const period1 = Math.floor(startDate.getTime() / 1000);
+    const period2 = Math.floor(Date.now() / 1000);
+    const url = `https://query1.finance.yahoo.com/v7/finance/chart/${symbol}?period1=${period1}&period2=${period2}&interval=1d`;
+    const data = await fetchData(url);
+
+    if (data.chart?.result?.[0]?.timestamp) {
+      return data.chart.result[0];
+    }
+    return null;
+  } catch (err) {
+    console.warn(`    ⚠️  Error fetching historical data for ${symbol}: ${err.message}`);
+    return null;
   }
 }
 
@@ -89,7 +98,7 @@ const demoNews = {
   ]
 };
 
-// Fetch raw HTTP response (for RSS parsing)
+// Fetch raw HTTP response (for RSS/HTML parsing)
 function fetchRaw(url) {
   return new Promise((resolve, reject) => {
     const follow = (u) => {
@@ -107,8 +116,30 @@ function fetchRaw(url) {
   });
 }
 
+// Fetch news from Yahoo Finance
+async function getYahooNews(symbol) {
+  try {
+    const url = `https://query1.finance.yahoo.com/v10/finance/quoteSummary/${symbol}?modules=news`;
+    const data = await fetchData(url);
+
+    if (data.quoteSummary?.result?.[0]?.news?.news) {
+      const news = data.quoteSummary.result[0].news.news;
+      return news.slice(0, 3).map(item => ({
+        title: item.title,
+        source: item.publisher || 'Yahoo Finance',
+        date: new Date(item.providerPublishTime * 1000).toISOString().split('T')[0],
+        summary: item.summary || 'Financial news',
+        url: item.link
+      }));
+    }
+    return [];
+  } catch (err) {
+    return [];
+  }
+}
+
 // Fetch news from Google News RSS
-async function getNews(symbol, company) {
+async function getGoogleNews(company) {
   try {
     const query = encodeURIComponent(`${company} stock`);
     const url = `https://news.google.com/rss/search?q=${query}&hl=en-US&gl=US&ceid=US:en`;
@@ -130,20 +161,35 @@ async function getNews(symbol, company) {
       }
     }
 
-    if (items.length === 0) {
+    return items;
+  } catch (err) {
+    return [];
+  }
+}
+
+// Combine news from multiple sources
+async function getNews(symbol, company) {
+  try {
+    const yahooNews = await getYahooNews(symbol);
+    const googleNews = await getGoogleNews(company);
+    const allNews = [...yahooNews, ...googleNews];
+
+    if (allNews.length === 0) {
       console.warn(`⚠️  No news found for ${symbol}, using demo news`);
       return demoNews[symbol] || [];
     }
 
-    // Sort by date (newest first)
-    items.sort((a, b) => new Date(b.date) - new Date(a.date));
+    // Remove duplicates and sort by date (newest first)
+    const uniqueNews = Array.from(new Map(allNews.map(item => [item.title, item])).values());
+    uniqueNews.sort((a, b) => new Date(b.date) - new Date(a.date));
 
-    console.log(`✓ Google News returned ${items.length} articles for ${symbol}`);
-    if (items.length > 0) {
-      console.log(`  Latest: ${items[0].title} (${items[0].date})`);
+    const topNews = uniqueNews.slice(0, 3);
+    console.log(`✓ Fetched ${topNews.length} articles from Yahoo Finance & Google News for ${symbol}`);
+    if (topNews.length > 0) {
+      console.log(`  Latest: ${topNews[0].title} (${topNews[0].date})`);
     }
 
-    return items;
+    return topNews;
   } catch (err) {
     console.warn(`⚠️  Error fetching news for ${symbol}: ${err.message}`);
     console.warn(`   Using demo news`);
@@ -151,7 +197,7 @@ async function getNews(symbol, company) {
   }
 }
 
-// Calculate YTD, MTD, WTD returns from historical candle data
+// Calculate YTD, MTD, WTD returns from historical data
 async function calculateReturns(symbol, currentPrice) {
   try {
     const now = new Date();
@@ -160,45 +206,40 @@ async function calculateReturns(symbol, currentPrice) {
     const weekStart = new Date(now);
     weekStart.setDate(now.getDate() - now.getDay()); // Start of week (Sunday)
 
-    const toTimestamp = Math.floor(Date.now() / 1000);
+    // Fetch historical data from year start
+    const chartData = await getHistoricalData(symbol, yearStart);
 
-    // Fetch year-to-date candles
-    const ytdFrom = Math.floor(yearStart.getTime() / 1000);
-    const ytdUrl = `https://finnhub.io/api/v1/stock/candle?symbol=${symbol}&resolution=D&from=${ytdFrom}&to=${toTimestamp}&token=${FINNHUB_KEY}`;
-    const ytdData = await fetchData(ytdUrl);
+    let ytd = 0, mtd = 0, wtd = 0;
 
-    let ytd = 0;
-    if (ytdData.o && ytdData.o.length > 0) {
-      const yearOpenPrice = ytdData.o[0]; // First candle's open
-      ytd = ((currentPrice - yearOpenPrice) / yearOpenPrice) * 100;
+    if (chartData && chartData.timestamp && chartData.open) {
+      const timestamps = chartData.timestamp;
+      const opens = chartData.open;
+      const closes = chartData.close;
+
+      // YTD: from first data point
+      if (opens.length > 0 && opens[0]) {
+        const yearOpenPrice = opens[0];
+        ytd = ((currentPrice - yearOpenPrice) / yearOpenPrice) * 100;
+        console.log(`    YTD: ${yearOpenPrice} -> ${currentPrice} = ${ytd.toFixed(2)}%`);
+      }
+
+      // MTD: find first timestamp >= month start
+      const mtdIndex = timestamps.findIndex(ts => new Date(ts * 1000) >= monthStart);
+      if (mtdIndex >= 0 && opens[mtdIndex]) {
+        const monthOpenPrice = opens[mtdIndex];
+        mtd = ((currentPrice - monthOpenPrice) / monthOpenPrice) * 100;
+        console.log(`    MTD: ${monthOpenPrice} -> ${currentPrice} = ${mtd.toFixed(2)}%`);
+      }
+
+      // WTD: find first timestamp >= week start
+      const wtdIndex = timestamps.findIndex(ts => new Date(ts * 1000) >= weekStart);
+      if (wtdIndex >= 0 && opens[wtdIndex]) {
+        const weekOpenPrice = opens[wtdIndex];
+        wtd = ((currentPrice - weekOpenPrice) / weekOpenPrice) * 100;
+        console.log(`    WTD: ${weekOpenPrice} -> ${currentPrice} = ${wtd.toFixed(2)}%`);
+      }
     } else {
-      console.warn(`    ⚠️  No YTD candle data for ${symbol}`);
-    }
-
-    // Fetch month-to-date candles
-    const mtdFrom = Math.floor(monthStart.getTime() / 1000);
-    const mtdUrl = `https://finnhub.io/api/v1/stock/candle?symbol=${symbol}&resolution=D&from=${mtdFrom}&to=${toTimestamp}&token=${FINNHUB_KEY}`;
-    const mtdData = await fetchData(mtdUrl);
-
-    let mtd = 0;
-    if (mtdData.o && mtdData.o.length > 0) {
-      const monthOpenPrice = mtdData.o[0];
-      mtd = ((currentPrice - monthOpenPrice) / monthOpenPrice) * 100;
-    } else {
-      console.warn(`    ⚠️  No MTD candle data for ${symbol}`);
-    }
-
-    // Fetch week-to-date candles
-    const wtdFrom = Math.floor(weekStart.getTime() / 1000);
-    const wtdUrl = `https://finnhub.io/api/v1/stock/candle?symbol=${symbol}&resolution=D&from=${wtdFrom}&to=${toTimestamp}&token=${FINNHUB_KEY}`;
-    const wtdData = await fetchData(wtdUrl);
-
-    let wtd = 0;
-    if (wtdData.o && wtdData.o.length > 0) {
-      const weekOpenPrice = wtdData.o[0];
-      wtd = ((currentPrice - weekOpenPrice) / weekOpenPrice) * 100;
-    } else {
-      console.warn(`    ⚠️  No WTD candle data for ${symbol}`);
+      console.warn(`    ⚠️  No historical data for ${symbol}`);
     }
 
     console.log(`  Returns: YTD=${ytd.toFixed(2)}%, MTD=${mtd.toFixed(2)}%, WTD=${wtd.toFixed(2)}%`);
@@ -283,13 +324,7 @@ async function updateHTML() {
 function updateProfilePage(filename, data) {
   let html = fs.readFileSync(filename, 'utf8');
 
-  // Update price in header metric
-  html = html.replace(
-    /<div class="metric-value">\$[\d.]+<\/div>(\s*<\/div>\s*<div class="metric">[\s\S]*?Current Price)/,
-    `<div class="metric-value">$${data.price}</div>$1`
-  );
-
-  // Update last updated timestamp in a comment (optional)
+  // Update timestamp in a comment
   const timestamp = new Date().toISOString();
   if (!html.includes('<!-- Last updated:')) {
     html = html.replace('<body>', `<body>\n<!-- Last updated: ${timestamp} -->`);
