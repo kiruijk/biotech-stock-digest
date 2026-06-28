@@ -246,6 +246,25 @@ async function getReturns(symbol, quote, currentPrice) {
 }
 
 // Update HTML with new data
+// Fetch monthly burn rate from quarterly net income (Yahoo Finance)
+async function getMonthlyBurn(symbol) {
+  try {
+    const summary = await yahooFinance.quoteSummary(symbol, {
+      modules: ['cashflowStatementHistoryQuarterly']
+    });
+    const stmt = summary.cashflowStatementHistoryQuarterly?.cashflowStatements?.[0];
+    if (stmt && stmt.netIncome && stmt.netIncome < 0) {
+      const monthly = Math.abs(stmt.netIncome) / 3;
+      console.log(`    Monthly burn (${symbol}): $${(monthly / 1e6).toFixed(1)}M/month`);
+      return monthly;
+    }
+    return null;
+  } catch (err) {
+    console.warn(`    ⚠️  Could not fetch burn rate for ${symbol}`);
+    return null;
+  }
+}
+
 async function updateHTML() {
   const stockData = {};
 
@@ -270,6 +289,7 @@ async function updateHTML() {
     const company = symbol === 'VKTX' ? 'Vikings Therapeutics' : 'Iovance Biotherapeutics';
     const news = await getNews(symbol, company);
     const returns = await getReturns(symbol, quote, price.price);
+    const monthlyBurn = await getMonthlyBurn(symbol);
 
     stockData[symbol] = {
       symbol,
@@ -278,6 +298,7 @@ async function updateHTML() {
       change: parseFloat(price.change.toFixed(2)),
       changePercent: parseFloat(price.changePercent.toFixed(2)),
       marketCap: price.marketCap,
+      monthlyBurn: monthlyBurn,
       oneDay: returns.oneDay,
       fiveDay: returns.fiveDay,
       oneMonth: returns.oneMonth,
@@ -348,6 +369,15 @@ function updateProfilePage(filename, data) {
     /(<div class="card-value"[^>]*data-field="marketCap"[^>]*>)[^<]*/,
     (_, tag) => `${tag}${formatMarketCap(data.marketCap)}`
   );
+
+  // Update monthly burn
+  if (data.monthlyBurn) {
+    const burnStr = `$${(data.monthlyBurn / 1e6).toFixed(1)}M/mo`;
+    html = html.replace(
+      /(<div class="card-value"[^>]*data-field="monthlyBurn"[^>]*>)[^<]*/,
+      (_, tag) => `${tag}${burnStr}`
+    );
+  }
 
   // Update YTD: value and color
   html = html.replace(
