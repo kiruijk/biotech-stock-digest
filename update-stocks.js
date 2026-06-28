@@ -288,17 +288,29 @@ async function updateHTML() {
   console.log('\nUpdating index.html...');
   let indexHTML = fs.readFileSync('index.html', 'utf8');
 
-  const dataJSON = JSON.stringify(stockData, null, 2);
-  const dataSnippet = `// Demo data with realistic biotech company info\nconst demoData = ${dataJSON};`;
-
-  indexHTML = indexHTML.replace(
-    /\/\/ Demo data with realistic biotech company info[\s\S]*?^};/m,
-    dataSnippet
-  );
+  // Update individual stock data in the HTML
+  for (const symbol in stockData) {
+    const data = stockData[symbol];
+    // Update YTD
+    indexHTML = indexHTML.replace(
+      new RegExp(`(${symbol}[\\s\\S]*?YTD[\\s\\S]*?<[^>]*>)[^<]+(</[^>]*>)`, 'i'),
+      `$1+${data.ytd}%$2`
+    );
+    // Update MTD
+    indexHTML = indexHTML.replace(
+      new RegExp(`(${symbol}[\\s\\S]*?MTD[\\s\\S]*?<[^>]*>)[^<]+(</[^>]*>)`, 'i'),
+      `$1+${data.mtd}%$2`
+    );
+    // Update WTD
+    indexHTML = indexHTML.replace(
+      new RegExp(`(${symbol}[\\s\\S]*?WTD[\\s\\S]*?<[^>]*>)[^<]+(</[^>]*>)`, 'i'),
+      `$1+${data.wtd}%$2`
+    );
+  }
 
   fs.writeFileSync('index.html', indexHTML);
 
-  // Update profile pages
+  // Update profile pages (enhanced versions)
   console.log('Updating profile pages...');
 
   if (stockData.VKNG) {
@@ -317,7 +329,26 @@ async function updateHTML() {
 function updateProfilePage(filename, data) {
   let html = fs.readFileSync(filename, 'utf8');
 
-  // Update timestamp in a comment
+  // Update Quick Stats values (YTD, MTD, WTD)
+  // YTD
+  html = html.replace(
+    /YTD Return<\/div>\s*<div[^>]*>[\d.+-]+%/,
+    `YTD Return</div>\n        <div style="font-size: 0.85rem; color: #6b7280; margin-bottom: 0.5rem;">Year-to-Date</div>\n        <div class="card-value" style="color: ${data.ytd >= 0 ? '#059669' : '#dc2626'};">${data.ytd >= 0 ? '+' : ''}${data.ytd}%`
+  );
+
+  // MTD
+  html = html.replace(
+    /Monthly Burn[\s\S]*?<div class="card-value">[^<]*/,
+    `Monthly Burn</div>\n        <div class="card-subtitle">R&D + Operations</div>\n        <div class="card-value">${data.mtd >= 0 ? '+' : ''}${data.mtd}%`
+  );
+
+  // WTD
+  html = html.replace(
+    /WTD[\s\S]*?<div class="card-value">[^<]*/,
+    `WTD</div>\n        <div class="card-subtitle">Week-to-Date</div>\n        <div class="card-value" style="color: ${data.wtd >= 0 ? '#059669' : '#dc2626'};">${data.wtd >= 0 ? '+' : ''}${data.wtd}%`
+  );
+
+  // Update timestamp
   const timestamp = new Date().toISOString();
   if (!html.includes('<!-- Last updated:')) {
     html = html.replace('<body>', `<body>\n<!-- Last updated: ${timestamp} -->`);
