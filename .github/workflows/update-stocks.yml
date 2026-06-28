@@ -38,7 +38,7 @@ jobs:
         run: |
           git config --local user.name "Stock Bot"
           git config --local user.email "bot@github.com"
-          git add index.html vkng.html iova.html
+          git add index.html vktx.html iova.html
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else
