@@ -89,40 +89,61 @@ const demoNews = {
   ]
 };
 
-// Fetch news from NewsAPI
+// Fetch raw HTTP response (for RSS parsing)
+function fetchRaw(url) {
+  return new Promise((resolve, reject) => {
+    const follow = (u) => {
+      const mod = u.startsWith('https') ? require('https') : require('http');
+      mod.get(u, { headers: { 'User-Agent': 'Mozilla/5.0' } }, (res) => {
+        if (res.statusCode >= 300 && res.statusCode < 400 && res.headers.location) {
+          return follow(res.headers.location);
+        }
+        let data = '';
+        res.on('data', (chunk) => { data += chunk; });
+        res.on('end', () => resolve(data));
+      }).on('error', reject);
+    };
+    follow(url);
+  });
+}
+
+// Fetch news from Google News RSS
 async function getNews(symbol, company) {
-  // If no API key, use demo news
-  if (!NEWSAPI_KEY) {
-    console.log(`  Using demo news for ${symbol} (no NEWSAPI_KEY)`);
-    return demoNews[symbol] || [];
-  }
-
   try {
-    const query = `${company}`;
-    const url = `https://newsapi.org/v2/everything?q=${encodeURIComponent(query)}&sortBy=publishedAt&language=en&pageSize=3&apiKey=${NEWSAPI_KEY}`;
-    const data = await fetchData(url);
+    const query = encodeURIComponent(`${company} stock`);
+    const url = `https://news.google.com/rss/search?q=${query}&hl=en-US&gl=US&ceid=US:en`;
+    const xml = await fetchRaw(url);
+    const items = [];
+    const itemRegex = /<item>([\s\S]*?)<\/item>/g;
+    let match;
 
-    if (!data.articles || data.articles.length === 0) {
+    while ((match = itemRegex.exec(xml)) !== null && items.length < 3) {
+      const item = match[1];
+      const title = (item.match(/<title><!\[CDATA\[(.*?)\]\]><\/title>/) || item.match(/<title>(.*?)<\/title>/))?.[1] || '';
+      const link = (item.match(/<link>(.*?)<\/link>/) || [])[1] || '#';
+      const pubDate = (item.match(/<pubDate>(.*?)<\/pubDate>/) || [])[1] || '';
+      const source = (item.match(/<source[^>]*>(.*?)<\/source>/) || [])[1] || 'Google News';
+      const date = pubDate ? new Date(pubDate).toISOString().split('T')[0] : new Date().toISOString().split('T')[0];
+
+      if (title && link !== '#') {
+        items.push({ title, source, date, summary: `Latest news about ${company}.`, url: link });
+      }
+    }
+
+    if (items.length === 0) {
       console.warn(`⚠️  No news found for ${symbol}, using demo news`);
       return demoNews[symbol] || [];
     }
 
-    console.log(`✓ NewsAPI returned ${data.articles.length} articles for ${symbol}`);
+    // Sort by date (newest first)
+    items.sort((a, b) => new Date(b.date) - new Date(a.date));
 
-    const articles = data.articles.slice(0, 3).map(article => ({
-      title: article.title,
-      source: article.source.name || 'News Source',
-      date: article.publishedAt.split('T')[0],
-      summary: article.description || article.content || 'No summary available.',
-      url: article.url  // NewsAPI returns this as 'url'
-    }));
-
-    // Debug: log first article to check URL
-    if (articles.length > 0) {
-      console.log(`  First article URL: ${articles[0].url}`);
+    console.log(`✓ Google News returned ${items.length} articles for ${symbol}`);
+    if (items.length > 0) {
+      console.log(`  Latest: ${items[0].title} (${items[0].date})`);
     }
 
-    return articles;
+    return items;
   } catch (err) {
     console.warn(`⚠️  Error fetching news for ${symbol}: ${err.message}`);
     console.warn(`   Using demo news`);
