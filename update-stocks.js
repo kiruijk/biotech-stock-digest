@@ -7,9 +7,13 @@ const https = require('https');
 const FINNHUB_KEY = process.env.FINNHUB_API_KEY;
 const NEWSAPI_KEY = process.env.NEWSAPI_KEY;
 
-if (!FINNHUB_KEY || !NEWSAPI_KEY) {
-  console.error('ERROR: Missing API keys. Set FINNHUB_API_KEY and NEWSAPI_KEY environment variables.');
+if (!FINNHUB_KEY) {
+  console.error('ERROR: Missing FINNHUB_API_KEY. Set FINNHUB_API_KEY environment variable.');
   process.exit(1);
+}
+
+if (!NEWSAPI_KEY) {
+  console.warn('⚠️  NEWSAPI_KEY not set. Will use fallback demo news.');
 }
 
 const STOCKS = ['VKNG', 'IOVA'];
@@ -87,6 +91,12 @@ const demoNews = {
 
 // Fetch news from NewsAPI
 async function getNews(symbol, company) {
+  // If no API key, use demo news
+  if (!NEWSAPI_KEY) {
+    console.log(`  Using demo news for ${symbol} (no NEWSAPI_KEY)`);
+    return demoNews[symbol] || [];
+  }
+
   try {
     const query = `${company}`;
     const url = `https://newsapi.org/v2/everything?q=${encodeURIComponent(query)}&sortBy=publishedAt&language=en&pageSize=3&apiKey=${NEWSAPI_KEY}`;
