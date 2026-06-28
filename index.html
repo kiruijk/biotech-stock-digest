@@ -1,260 +1,400 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Biotech Stock News Digest</title>
-<style>
-:root { color-scheme: light; }
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  background: #f5f7fa;
-  color: #1a1a1a;
-  line-height: 1.6;
-}
-header {
-  background: linear-gradient(135deg, #0052cc 0%, #0066ff 100%);
-  color: white;
-  padding: 2rem 1.5rem;
-  text-align: center;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-header h1 { font-size: 1.8rem; margin-bottom: 0.3rem; }
-header p { font-size: 0.9rem; opacity: 0.85; }
-.container { max-width: 1200px; margin: 0 auto; padding: 2rem 1rem 3rem; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biotech Stock News Digest</title>
+  <style>
+    :root {
+      color-scheme: light;
+    }
 
-/* Stock Cards */
-.stock-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
-.stock-card {
-  background: white;
-  border-radius: 10px;
-  padding: 1.5rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  border-left: 4px solid #0052cc;
-}
-.stock-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; }
-.stock-symbol { font-size: 1.5rem; font-weight: 700; color: #0052cc; }
-.stock-price { font-size: 1.3rem; font-weight: 600; }
-.stock-change { font-size: 0.9rem; padding: 0.25rem 0.5rem; border-radius: 4px; font-weight: 600; }
-.positive { color: #059669; background: #d1fae5; }
-.negative { color: #dc2626; background: #fee2e2; }
-.neutral { color: #6b7280; background: #f3f4f6; }
-.metrics { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.6rem; }
-.metric {
-  text-align: center;
-  padding: 0.8rem;
-  background: #f9fafb;
-  border-radius: 6px;
-  font-size: 0.85rem;
-}
-.metric-label { color: #6b7280; margin-bottom: 0.3rem; font-size: 0.75rem; text-transform: uppercase; }
-.metric-value { font-weight: 700; font-size: 1rem; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-/* News Section */
-.news-section { margin-bottom: 3rem; }
-.section-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 1rem; color: #1a1a1a; padding-bottom: 0.5rem; border-bottom: 2px solid #0052cc; }
-.news-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem; }
-.news-card {
-  background: white;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-  transition: box-shadow 0.2s;
-}
-.news-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.12); }
-.news-header {
-  padding: 1rem 1.2rem 0.5rem;
-  border-bottom: 1px solid #e5e7eb;
-}
-.news-source { font-size: 0.75rem; color: #6b7280; text-transform: uppercase; font-weight: 600; }
-.news-title {
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: #1a1a1a;
-  margin-top: 0.4rem;
-  line-height: 1.4;
-}
-.news-date { font-size: 0.75rem; color: #9ca3af; margin-top: 0.3rem; }
-.news-summary {
-  padding: 1rem 1.2rem;
-  font-size: 0.9rem;
-  color: #374151;
-  line-height: 1.5;
-  background: #fafbfc;
-}
-.news-link {
-  display: block;
-  padding: 0.8rem 1.2rem;
-  background: #f3f4f6;
-  text-decoration: none;
-  color: #0052cc;
-  font-size: 0.85rem;
-  font-weight: 600;
-  border-top: 1px solid #e5e7eb;
-  text-align: center;
-  transition: background 0.2s;
-}
-.news-link:hover { background: #e5e7eb; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f5f7fa;
+      color: #1a1a1a;
+      line-height: 1.6;
+    }
 
-/* Loading & Empty States */
-.loading {
-  text-align: center;
-  padding: 3rem 2rem;
-  color: #6b7280;
-}
-.spinner {
-  display: inline-block;
-  width: 32px;
-  height: 32px;
-  border: 3px solid #e5e7eb;
-  border-top-color: #0052cc;
-  border-radius: 50%;
-  animation: spin 0.8s linear infinite;
-  margin-bottom: 1rem;
-}
-@keyframes spin { to { transform: rotate(360deg); } }
-.empty-state {
-  text-align: center;
-  padding: 2rem;
-  color: #9ca3af;
-  font-size: 0.95rem;
-}
+    header {
+      background: linear-gradient(135deg, #0052cc 0%, #0066ff 100%);
+      color: white;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
 
-/* Refresh & Footer */
-.refresh-bar {
-  background: white;
-  padding: 1rem;
-  text-align: center;
-  border-top: 1px solid #e5e7eb;
-  font-size: 0.85rem;
-  color: #6b7280;
-  margin-top: 2rem;
-}
-.last-updated { margin-bottom: 0.5rem; }
-.last-updated strong { color: #1a1a1a; }
+    header h1 {
+      font-size: 1.8rem;
+      margin-bottom: 0.3rem;
+    }
 
-@media (max-width: 768px) {
-  .stock-grid { grid-template-columns: 1fr; }
-  .metrics { grid-template-columns: repeat(2, 1fr); }
-  .news-grid { grid-template-columns: 1fr; }
-  header h1 { font-size: 1.4rem; }
-}
-</style>
+    header p {
+      font-size: 0.9rem;
+      opacity: 0.85;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1rem 3rem;
+    }
+
+    /* Stock Cards */
+    .stock-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .stock-card {
+      background: white;
+      border-radius: 10px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      border-left: 4px solid #0052cc;
+    }
+
+    .stock-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+    }
+
+    .stock-symbol {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #0052cc;
+    }
+
+    .stock-price {
+      font-size: 1.3rem;
+      font-weight: 600;
+    }
+
+    .stock-change {
+      font-size: 0.9rem;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+
+    .positive {
+      color: #059669;
+      background: #d1fae5;
+    }
+
+    .negative {
+      color: #dc2626;
+      background: #fee2e2;
+    }
+
+    .neutral {
+      color: #6b7280;
+      background: #f3f4f6;
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0.6rem;
+    }
+
+    .metric {
+      text-align: center;
+      padding: 0.8rem;
+      background: #f9fafb;
+      border-radius: 6px;
+      font-size: 0.85rem;
+    }
+
+    .metric-label {
+      color: #6b7280;
+      margin-bottom: 0.3rem;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+    }
+
+    .metric-value {
+      font-weight: 700;
+      font-size: 1rem;
+    }
+
+    /* News Section */
+    .news-section {
+      margin-bottom: 3rem;
+    }
+
+    .section-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: #1a1a1a;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid #0052cc;
+    }
+
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .news-card {
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+      transition: box-shadow 0.2s;
+    }
+
+    .news-card:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    }
+
+    .news-header {
+      padding: 1rem 1.2rem 0.5rem;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .news-source {
+      font-size: 0.75rem;
+      color: #6b7280;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .news-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-top: 0.4rem;
+      line-height: 1.4;
+    }
+
+    .news-date {
+      font-size: 0.75rem;
+      color: #9ca3af;
+      margin-top: 0.3rem;
+    }
+
+    .news-summary {
+      padding: 1rem 1.2rem;
+      font-size: 0.9rem;
+      color: #374151;
+      line-height: 1.5;
+      background: #fafbfc;
+    }
+
+    .news-link {
+      display: block;
+      padding: 0.8rem 1.2rem;
+      background: #f3f4f6;
+      text-decoration: none;
+      color: #0052cc;
+      font-size: 0.85rem;
+      font-weight: 600;
+      border-top: 1px solid #e5e7eb;
+      text-align: center;
+      transition: background 0.2s;
+    }
+
+    .news-link:hover {
+      background: #e5e7eb;
+    }
+
+    /* Loading & Empty States */
+    .loading {
+      text-align: center;
+      padding: 3rem 2rem;
+      color: #6b7280;
+    }
+
+    .spinner {
+      display: inline-block;
+      width: 32px;
+      height: 32px;
+      border: 3px solid #e5e7eb;
+      border-top-color: #0052cc;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin-bottom: 1rem;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 2rem;
+      color: #9ca3af;
+      font-size: 0.95rem;
+    }
+
+    /* Refresh & Footer */
+    .refresh-bar {
+      background: white;
+      padding: 1rem;
+      text-align: center;
+      border-top: 1px solid #e5e7eb;
+      font-size: 0.85rem;
+      color: #6b7280;
+      margin-top: 2rem;
+    }
+
+    .last-updated {
+      margin-bottom: 0.5rem;
+    }
+
+    .last-updated strong {
+      color: #1a1a1a;
+    }
+
+    @media (max-width: 768px) {
+      .stock-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .metrics {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .news-grid {
+        grid-template-columns: 1fr;
+      }
+
+      header h1 {
+        font-size: 1.4rem;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<header>
-  <h1>📈 Biotech Stock News Digest</h1>
-  <p>Daily market news & analysis for VKNG & IOVA</p>
-</header>
+  <header>
+    <h1>📈 Biotech Stock News Digest</h1>
+    <p>Daily market news & analysis for VKTX & IOVA</p>
+  </header>
 
-<div class="container">
+  <div class="container">
 
-  <!-- Stock Prices -->
-  <div id="stocks-container"></div>
+    <!-- Stock Prices -->
+    <div id="stocks-container"></div>
 
-  <!-- News Sections -->
-  <div id="news-container"></div>
+    <!-- News Sections -->
+    <div id="news-container"></div>
 
-  <!-- Loading State -->
-  <div id="loading" class="loading">
-    <div class="spinner"></div>
-    <p>Fetching latest market data and news...</p>
+    <!-- Loading State -->
+    <div id="loading" class="loading">
+      <div class="spinner"></div>
+      <p>Fetching latest market data and news...</p>
+    </div>
+
   </div>
 
-</div>
+  <div class="refresh-bar">
+    <div class="last-updated">Last updated: <strong id="update-time">—</strong></div>
+    <small>Refreshes daily with the latest news. Data provided by financial APIs.</small>
+  </div>
 
-<div class="refresh-bar">
-  <div class="last-updated">Last updated: <strong id="update-time">—</strong></div>
-  <small>Refreshes daily with the latest news. Data provided by financial APIs.</small>
-</div>
+  <script>
+    const STOCKS = ['VKTX', 'IOVA'];
 
-<script>
-const STOCKS = ['VKNG', 'IOVA'];
-
-// Demo data with realistic biotech company info
-const demoData = {
-  VKNG: {
-    symbol: 'VKNG',
-    name: 'Vikings Therapeutics',
-    price: 8.42,
-    change: 0.15,
-    changePercent: 1.81,
-    oneDay: 1.81,
-    fiveDay: 0,
-    oneMonth: 0,
-    sixMonth: 0,
-    ytd: -15.3,
-    news: [
-      {
-        title: 'Vikings Therapeutics Presents Phase 2 Data for VK2735 in Obesity',
-        source: 'BioSpace',
-        date: '2026-06-27',
-        summary: 'Vikings Therapeutics announced positive Phase 2 data for VK2735, demonstrating meaningful weight loss in obese patients. The GLP-1/GCG receptor agonist showed good tolerability profile with an improved side effect rate compared to competitors.',
-        url: '#'
+    // Demo data with realistic biotech company info
+    const demoData = {
+      VKTX: {
+        symbol: 'VKTX',
+        name: 'Vikings Therapeutics',
+        price: 8.42,
+        change: 0.15,
+        changePercent: 1.81,
+        oneDay: 1.81,
+        fiveDay: 0,
+        oneMonth: 0,
+        sixMonth: 0,
+        ytd: -15.3,
+        news: [
+          {
+            title: 'Vikings Therapeutics Presents Phase 2 Data for VK2735 in Obesity',
+            source: 'BioSpace',
+            date: '2026-06-27',
+            summary: 'Vikings Therapeutics announced positive Phase 2 data for VK2735, demonstrating meaningful weight loss in obese patients. The GLP-1/GCG receptor agonist showed good tolerability profile with an improved side effect rate compared to competitors.',
+            url: '#'
+          },
+          {
+            title: 'Analyst Upgrades VKTX on Obesity Program Progress',
+            source: 'Seeking Alpha',
+            date: '2026-06-26',
+            summary: 'A Wall Street analyst upgraded Vikings Therapeutics citing accelerating clinical progress in the obesity market. The firm increased its price target to $15, noting the potential of VK2735 in the rapidly expanding GLP-1 market.',
+            url: '#'
+          }
+        ]
       },
-      {
-        title: 'Analyst Upgrades VKNG on Obesity Program Progress',
-        source: 'Seeking Alpha',
-        date: '2026-06-26',
-        summary: 'A Wall Street analyst upgraded Vikings Therapeutics citing accelerating clinical progress in the obesity market. The firm increased its price target to $15, noting the potential of VK2735 in the rapidly expanding GLP-1 market.',
-        url: '#'
+      IOVA: {
+        symbol: 'IOVA',
+        name: 'Iovance Biotherapeutics',
+        price: 4.25,
+        change: 0.04,
+        changePercent: 0.95,
+        oneDay: 0.95,
+        fiveDay: 48.6,
+        oneMonth: 48.6,
+        sixMonth: 48.6,
+        ytd: 52.88,
+        news: [
+          {
+            title: 'Iovance Reports TIL Therapy Clinical Trial Results',
+            source: 'Fierce Biotech',
+            date: '2026-06-27',
+            summary: 'Iovance Biotherapeutics shared updated data from its tumor infiltrating lymphocyte (TIL) therapy program showing durable responses in melanoma patients. The company is exploring expansion into other solid tumors with high unmet medical need.',
+            url: '#'
+          },
+          {
+            title: 'FDA Grants Breakthrough Therapy Designation to IOVA Program',
+            source: 'Reuters',
+            date: '2026-06-25',
+            summary: 'The FDA granted Breakthrough Therapy designation to Iovance\'s TIL therapy for advanced melanoma, potentially accelerating the regulatory timeline. This designation recognizes the therapy\'s potential to address a serious unmet medical need.',
+            url: '#'
+          }
+        ]
       }
-    ]
-  },
-  IOVA: {
-    symbol: 'IOVA',
-    name: 'Iovance Biotherapeutics',
-    price: 4.25,
-    change: 0.04,
-    changePercent: 0.95,
-    oneDay: 0.95,
-    fiveDay: 48.6,
-    oneMonth: 48.6,
-    sixMonth: 48.6,
-    ytd: 52.88,
-    news: [
-      {
-        title: 'Iovance Reports TIL Therapy Clinical Trial Results',
-        source: 'Fierce Biotech',
-        date: '2026-06-27',
-        summary: 'Iovance Biotherapeutics shared updated data from its tumor infiltrating lymphocyte (TIL) therapy program showing durable responses in melanoma patients. The company is exploring expansion into other solid tumors with high unmet medical need.',
-        url: '#'
-      },
-      {
-        title: 'FDA Grants Breakthrough Therapy Designation to IOVA Program',
-        source: 'Reuters',
-        date: '2026-06-25',
-        summary: 'The FDA granted Breakthrough Therapy designation to Iovance\'s TIL therapy for advanced melanoma, potentially accelerating the regulatory timeline. This designation recognizes the therapy\'s potential to address a serious unmet medical need.',
-        url: '#'
-      }
-    ]
-  }
-};
+    };
 
-function formatDate(date) {
-  return new Date(date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-}
+    function formatDate(date) {
+      return new Date(date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+    }
 
-function formatTime(date) {
-  return new Date(date).toLocaleString('en-US', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
-}
+    function formatTime(date) {
+      return new Date(date).toLocaleString('en-US', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+    }
 
-function renderStocks(stocks) {
-  const container = document.getElementById('stocks-container');
-  let html = '<div class="stock-grid">';
-  const profileLinks = { VKNG: 'vkng.html', IOVA: 'iova.html' };
+    function renderStocks(stocks) {
+      const container = document.getElementById('stocks-container');
+      let html = '<div class="stock-grid">';
+      const profileLinks = { VKTX: 'vkng.html', IOVA: 'iova.html' };
 
-  for (const symbol in stocks) {
-    const stock = stocks[symbol];
-    const changeClass = stock.change > 0 ? 'positive' : stock.change < 0 ? 'negative' : 'neutral';
-    const changeSign = stock.change >= 0 ? '+' : '';
-    const profileUrl = profileLinks[symbol] || '#';
+      for (const symbol in stocks) {
+        const stock = stocks[symbol];
+        const changeClass = stock.change > 0 ? 'positive' : stock.change < 0 ? 'negative' : 'neutral';
+        const changeSign = stock.change >= 0 ? '+' : '';
+        const profileUrl = profileLinks[symbol] || '#';
 
-    html += `
+        html += `
       <div class="stock-card" style="cursor: pointer; transition: transform 0.2s;" onclick="window.location.href='${profileUrl}'">`
-        <div class="stock-header">
+          < div class="stock-header" >
           <div>
             <div class="stock-symbol">${stock.symbol}</div>
             <div style="font-size: 0.9rem; color: #6b7280;">${stock.name}</div>
@@ -263,7 +403,7 @@ function renderStocks(stocks) {
             <div class="stock-price">$${stock.price.toFixed(2)}</div>
             <div class="stock-change ${changeClass}">${changeSign}${stock.change.toFixed(2)} (${changeSign}${stock.changePercent.toFixed(2)}%)</div>
           </div>
-        </div>
+        </div >
         <div class="metrics">
           <div class="metric">
             <div class="metric-label">1D</div>
@@ -299,8 +439,8 @@ function renderStocks(stocks) {
         <div style="text-align: center; margin-top: 1rem; font-size: 0.85rem; color: #0052cc; font-weight: 600;">
           View Profile →
         </div>
-      </div>
-    `;
+      </div >
+          `;
   }
 
   html += '</div>';
@@ -315,8 +455,8 @@ function renderNews(stocks) {
     const stock = stocks[symbol];
     const news = stock.news || [];
 
-    html += `<div class="news-section">
-      <div class="section-title">${stock.symbol} — Latest News</div>`;
+    html += `< div class="news-section" >
+          <div class="section-title">${stock.symbol} — Latest News</div>`;
 
     if (news.length === 0) {
       html += '<div class="empty-state">No news available at this time.</div>';
@@ -324,7 +464,7 @@ function renderNews(stocks) {
       html += '<div class="news-grid">';
       for (const article of news) {
         html += `
-          <div class="news-card">
+            < div class="news-card" >
             <div class="news-header">
               <div class="news-source">${article.source}</div>
               <div class="news-title">${article.title}</div>
@@ -332,7 +472,7 @@ function renderNews(stocks) {
             </div>
             <div class="news-summary">${article.summary}</div>
             <a href="${article.url}" class="news-link" target="_blank">Read Full Article →</a>
-          </div>
+          </div >
         `;
       }
       html += '</div>';
@@ -369,6 +509,7 @@ if (document.readyState === 'loading') {
 } else {
   main();
 }
-</script>
+  </script>
 </body>
+
 </html>
