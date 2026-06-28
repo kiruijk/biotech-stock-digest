@@ -393,8 +393,8 @@
         const profileUrl = profileLinks[symbol] || '#';
 
         html += `
-      <div class="stock-card" style="cursor: pointer; transition: transform 0.2s;" onclick="window.location.href='${profileUrl}'">`
-          < div class="stock-header" >
+      <div class="stock-card" style="cursor: pointer; transition: transform 0.2s;" onclick="window.location.href='${profileUrl}'">
+          <div class="stock-header">
           <div>
             <div class="stock-symbol">${stock.symbol}</div>
             <div style="font-size: 0.9rem; color: #6b7280;">${stock.name}</div>
@@ -403,7 +403,7 @@
             <div class="stock-price">$${stock.price.toFixed(2)}</div>
             <div class="stock-change ${changeClass}">${changeSign}${stock.change.toFixed(2)} (${changeSign}${stock.changePercent.toFixed(2)}%)</div>
           </div>
-        </div >
+        </div>
         <div class="metrics">
           <div class="metric">
             <div class="metric-label">1D</div>
@@ -439,7 +439,7 @@
         <div style="text-align: center; margin-top: 1rem; font-size: 0.85rem; color: #0052cc; font-weight: 600;">
           View Profile →
         </div>
-      </div >
+      </div>
           `;
   }
 
@@ -455,7 +455,7 @@ function renderNews(stocks) {
     const stock = stocks[symbol];
     const news = stock.news || [];
 
-    html += `< div class="news-section" >
+    html += `<div class="news-section">
           <div class="section-title">${stock.symbol} — Latest News</div>`;
 
     if (news.length === 0) {
@@ -464,7 +464,7 @@ function renderNews(stocks) {
       html += '<div class="news-grid">';
       for (const article of news) {
         html += `
-            < div class="news-card" >
+            <div class="news-card">
             <div class="news-header">
               <div class="news-source">${article.source}</div>
               <div class="news-title">${article.title}</div>
@@ -472,7 +472,7 @@ function renderNews(stocks) {
             </div>
             <div class="news-summary">${article.summary}</div>
             <a href="${article.url}" class="news-link" target="_blank">Read Full Article →</a>
-          </div >
+          </div>
         `;
       }
       html += '</div>';
