@@ -6,6 +6,9 @@ on:
     - cron: "15 20 * * MON-FRI"
   workflow_dispatch: # Allow manual trigger
 
+permissions:
+  contents: write
+
 jobs:
   update-stocks:
     runs-on: ubuntu-latest
