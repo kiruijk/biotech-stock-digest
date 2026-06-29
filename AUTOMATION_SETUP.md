@@ -7,7 +7,7 @@ This setup automatically updates VKTX & IOVA stock prices and news every weekday
 - **Every weekday at 4:15 PM ET**, GitHub Actions runs a script that:
   1. Fetches live stock prices from Finnhub
   2. Fetches latest news from NewsAPI
-  3. Updates `stock-digest-index.html`, `vkng.html`, and `iova.html`
+  3. Updates `index.html`, `vktx.html`, and `iova.html`
   4. Automatically commits and pushes the changes
   5. Your live site refreshes with new data within minutes
 
@@ -51,7 +51,7 @@ biotech-stock-digest/
 │       └── update-stocks.yml
 ├── update-stocks.js
 ├── index.html
-├── vkng.html
+├── vktx.html
 ├── iova.html
 ├── README.md
 └── .gitignore
@@ -81,8 +81,8 @@ biotech-stock-digest/
 - **News:** NewsAPI (1000+ financial news sources)
 
 **What Gets Updated:**
-- `stock-digest-index.html` — prices and news on dashboard
-- `vkng.html` — Vikings profile page
+- `index.html` — prices and news on dashboard
+- `vktx.html` — Vikings profile page
 - `iova.html` — Iovance profile page
 
 ## Customization
