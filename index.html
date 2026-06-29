@@ -286,7 +286,7 @@
 
   <header>
     <h1>📈 Biotech Stock News Digest</h1>
-    <p>Daily market news & analysis for VKTX & IOVA</p>
+    <p>Daily market news & analysis for VKTX, IOVA & REPL</p>
   </header>
 
   <div class="container">
@@ -311,7 +311,7 @@
   </div>
 
   <script>
-    const STOCKS = ['VKTX', 'IOVA'];
+    const STOCKS = ['VKTX', 'IOVA', 'REPL'];
 
     // Demo data with realistic biotech company info
     const demoData = {
@@ -384,6 +384,34 @@
               "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxOMGcwQ0xlRjlvSC0wNnM2LU03Mjg5cV9BdDdid3BxU3JWelJIbVBvMTlfV2g5bGQwTS1SM0VVa21wVjZSeE9lX3VtZHBwUl9qYUNubkRqTmJPQlZqSkdFMzZGNmd0cVc1UDFyNnFVQTRxME5FUTVjUlpzaTZnRzVSR3pFX1ljcVlKcV8waFdXaWJXdlNUYnRjMlNjeDFtY01qbUZsYlFqYXE?oc=5"
             }
           ]
+        },
+        "REPL": {
+          "symbol": "REPL",
+          "name": "Replimune Group",
+          "price": 24.00,
+          "change": 0.50,
+          "changePercent": 2.13,
+          "oneDay": 2.13,
+          "fiveDay": 3.50,
+          "oneMonth": -5.20,
+          "sixMonth": -18.40,
+          "ytd": -12.10,
+          "news": [
+            {
+              "title": "Replimune Presents Updated IGNYTE Trial Data at ASCO 2026",
+              "source": "BioSpace",
+              "date": "2026-06-03",
+              "summary": "Replimune shared updated Phase 2 data for RP1 (vusolimogene oderparepvec) plus pembrolizumab in anti-PD1 failed melanoma, showing durable complete responses.",
+              "url": "#"
+            },
+            {
+              "title": "Replimune Files BLA for RP1 in Advanced Melanoma",
+              "source": "Fierce Biotech",
+              "date": "2026-05-20",
+              "summary": "Replimune Group submitted a Biologics License Application to the FDA for vusolimogene oderparepvec based on IGNYTE Phase 2 results, leveraging Breakthrough Therapy Designation.",
+              "url": "#"
+            }
+          ]
         }
       };
 
@@ -398,7 +426,7 @@
     function renderStocks(stocks) {
       const container = document.getElementById('stocks-container');
       let html = '<div class="stock-grid">';
-      const profileLinks = { VKTX: 'vktx.html', IOVA: 'iova.html' };
+      const profileLinks = { VKTX: 'vktx.html', IOVA: 'iova.html', REPL: 'repl.html' };
 
       for (const symbol in stocks) {
         const stock = stocks[symbol];

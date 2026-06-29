@@ -16,12 +16,13 @@ try {
   process.exit(1);
 }
 
-const STOCKS = ['VKTX', 'IOVA'];
+const STOCKS = ['VKTX', 'IOVA', 'REPL'];
 
 // Fallback demo prices
 const demoPrices = {
   VKTX: { price: 38.04, change: 1.25, changePercent: 3.39, high52: 45.20, low52: 12.50 },
-  IOVA: { price: 4.25, change: -0.18, changePercent: -4.06, high52: 11.50, low52: 3.80 }
+  IOVA: { price: 4.25, change: -0.18, changePercent: -4.06, high52: 11.50, low52: 3.80 },
+  REPL: { price: 24.00, change: 0.50, changePercent: 2.13, high52: 35.00, low52: 14.00 }
 };
 
 // Fetch stock price from Yahoo Finance using yahoo-finance2
@@ -68,6 +69,15 @@ async function getHistoricalData(symbol, startDate) {
 
 // Fallback news
 const demoNews = {
+  REPL: [
+    {
+      title: 'Replimune Presents RP1 Phase 2 Data in Anti-PD1 Failed Melanoma',
+      source: 'BioSpace',
+      date: new Date().toISOString().split('T')[0],
+      summary: 'Replimune shared updated IGNYTE trial data showing durable responses with vusolimogene oderparepvec plus pembrolizumab in patients who failed prior checkpoint therapy.',
+      url: '#'
+    }
+  ],
   VKTX: [
     {
       title: 'Vikings Therapeutics Presents Phase 2 Data for VK2735 in Obesity',
@@ -249,7 +259,8 @@ async function getReturns(symbol, quote, currentPrice) {
 // Cash positions from latest quarterly filings (Yahoo Finance balance sheet unavailable)
 const cashPositions = {
   VKTX: 185e6,  // Q1 2026: $185M
-  IOVA: 75e6    // Q1 2026: $75M
+  IOVA: 75e6,   // Q1 2026: $75M
+  REPL: 350e6   // Q1 2026: $350M
 };
 
 async function getCashPosition(symbol) {
@@ -296,7 +307,7 @@ async function updateHTML() {
       marketCap: quote.marketCap || null
     };
 
-    const company = symbol === 'VKTX' ? 'Vikings Therapeutics' : 'Iovance Biotherapeutics';
+    const company = symbol === 'VKTX' ? 'Vikings Therapeutics' : symbol === 'IOVA' ? 'Iovance Biotherapeutics' : 'Replimune Group';
     const news = await getNews(symbol, company);
     const returns = await getReturns(symbol, quote, price.price);
     const monthlyBurn = await getMonthlyBurn(symbol);
@@ -343,7 +354,7 @@ async function updateHTML() {
   fs.writeFileSync('index.html', indexHTML);
 
   // Update profile pages
-  const profilePages = { VKTX: 'vktx.html', IOVA: 'iova.html' };
+  const profilePages = { VKTX: 'vktx.html', IOVA: 'iova.html', REPL: 'repl.html' };
   for (const [symbol, filename] of Object.entries(profilePages)) {
     if (stockData[symbol] && fs.existsSync(filename)) {
       console.log(`  Updating ${filename}...`);
@@ -354,6 +365,7 @@ async function updateHTML() {
   console.log('\n✅ Stock data updated!');
   if (stockData.VKTX) console.log(`VKTX: $${stockData.VKTX.price} ${stockData.VKTX.changePercent >= 0 ? '+' : ''}${stockData.VKTX.changePercent}% | YTD: ${stockData.VKTX.ytd}%`);
   if (stockData.IOVA) console.log(`IOVA: $${stockData.IOVA.price} ${stockData.IOVA.changePercent >= 0 ? '+' : ''}${stockData.IOVA.changePercent}% | YTD: ${stockData.IOVA.ytd}%`);
+  if (stockData.REPL) console.log(`REPL: $${stockData.REPL.price} ${stockData.REPL.changePercent >= 0 ? '+' : ''}${stockData.REPL.changePercent}% | YTD: ${stockData.REPL.ytd}%`);
 }
 
 // Update individual profile page

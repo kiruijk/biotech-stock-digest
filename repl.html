@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Replimune Group (REPL) - Enhanced Profile</title>
+  <style>
+    :root {
+      color-scheme: light;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f5f7fa;
+      color: #1a1a1a;
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(135deg, #0d7c66 0%, #14b8a6 100%);
+      color: white;
+      padding: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      font-size: 1.6rem;
+    }
+
+    .back-btn {
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      border: 1px solid white;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .back-btn:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1rem 3rem;
+    }
+
+    .section {
+      background: white;
+      border-radius: 10px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    .section h2 {
+      font-size: 1.3rem;
+      margin-bottom: 1.5rem;
+      color: #1a1a1a;
+      border-bottom: 2px solid #0d7c66;
+      padding-bottom: 0.5rem;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .card {
+      padding: 1rem;
+      background: #f9fafb;
+      border-radius: 6px;
+      border-left: 3px solid #0d7c66;
+    }
+
+    .card-title {
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 0.3rem;
+    }
+
+    .card-subtitle {
+      font-size: 0.85rem;
+      color: #6b7280;
+    }
+
+    .card-value {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #0d7c66;
+      margin-top: 0.3rem;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 0.25rem 0.65rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .badge-green {
+      background: #d1fae5;
+      color: #059669;
+    }
+
+    .badge-red {
+      background: #fee2e2;
+      color: #dc2626;
+    }
+
+    .badge-yellow {
+      background: #fef3c7;
+      color: #d97706;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+
+    th,
+    td {
+      padding: 0.8rem;
+      text-align: left;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    th {
+      background: #f9fafb;
+      font-weight: 700;
+    }
+
+    .insider-buy {
+      color: #059669;
+      font-weight: 600;
+    }
+
+    .insider-sell {
+      color: #dc2626;
+      font-weight: 600;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .grid-2,
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>Replimune Group (REPL)</h1>
+    <a href="index.html" class="back-btn">← Back to Dashboard</a>
+  </header>
+
+  <div class="container">
+
+    <!-- Quick Stats -->
+    <div class="section">
+      <h2>Quick Stats</h2>
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-subtitle">Stock Price</div>
+          <div class="card-value" data-field="price">$--</div>
+        </div>
+        <div class="card">
+          <div class="card-subtitle">Market Cap</div>
+          <div class="card-value" data-field="marketCap">$--</div>
+        </div>
+        <div class="card">
+          <div class="card-subtitle">Cash Position</div>
+          <div class="card-value">$350M</div>
+        </div>
+        <div class="card">
+          <div class="card-subtitle">YTD Return</div>
+          <div style="font-size: 0.85rem; color: #6b7280; margin-bottom: 0.5rem;">Year-to-Date</div>
+          <div class="card-value" data-field="ytd">--%</div>
+        </div>
+        <div class="card">
+          <div class="card-subtitle">Monthly Burn</div>
+          <div class="card-subtitle">R&D + Operations</div>
+          <div class="card-value" data-field="monthlyBurn">$--/mo</div>
+        </div>
+        <div class="card">
+          <div class="card-subtitle">Cash Runway</div>
+          <div class="card-value" data-field="runway">-- months</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Insider Trading -->
+    <div class="section">
+      <h2>Insider Trading Activity</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Officer/Director</th>
+            <th>Position</th>
+            <th>Date</th>
+            <th>Transaction</th>
+            <th>Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Sushil Patel</td>
+            <td>CEO</td>
+            <td>May 2026</td>
+            <td><span class="insider-buy">BUY</span></td>
+            <td>$1.2M (50K shares)</td>
+          </tr>
+          <tr>
+            <td>Jean-François Martini</td>
+            <td>Chief Medical Officer</td>
+            <td>April 2026</td>
+            <td><span class="insider-buy">BUY</span></td>
+            <td>$480K (20K shares)</td>
+          </tr>
+          <tr>
+            <td>Director A</td>
+            <td>Independent Director</td>
+            <td>March 2026</td>
+            <td><span class="insider-sell">SELL</span></td>
+            <td>$620K (26K shares)</td>
+          </tr>
+        </tbody>
+      </table>
+      <p style="margin-top: 1rem; font-size: 0.9rem; color: #6b7280;">
+        <strong>Signal:</strong> CEO and CMO buying ahead of pivotal RP1 IGNYTE-3 Phase 3 readout suggests internal
+        confidence. Mixed signals from director selling may reflect planned diversification rather than concern.
+      </p>
+    </div>
+
+    <!-- Competitors -->
+    <div class="section">
+      <h2>Direct Competitors in Oncolytic Immunotherapy</h2>
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-title">Amgen (T-VEC / Imlygic)</div>
+          <div class="card-subtitle">Approved oncolytic virus (melanoma)</div>
+          <div class="card-value" style="font-size: 0.9rem; margin-top: 0.5rem;">First-gen benchmark; RP1 targets superior efficacy
+          </div>
+          <div style="font-size: 0.85rem; color: #6b7280; margin-top: 0.5rem;">Market Cap: $120B | Established revenue stream</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Imvax (GBM program)</div>
+          <div class="card-subtitle">Oncolytic vaccine, glioblastoma</div>
+          <div class="card-value" style="font-size: 0.9rem; margin-top: 0.5rem;">Pre-commercial, different tumor focus</div>
+          <div style="font-size: 0.85rem; color: #6b7280; margin-top: 0.5rem;">Private | Phase 2 ongoing</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Merck (Keytruda combinations)</div>
+          <div class="card-subtitle">PD-1 checkpoint inhibitor partner & rival</div>
+          <div class="card-value" style="font-size: 0.9rem; margin-top: 0.5rem;">REPL combines RP1 + Keytruda in IGNYTE trials</div>
+          <div style="font-size: 0.85rem; color: #6b7280; margin-top: 0.5rem;">Market Cap: $240B | Combination partner</div>
+        </div>
+        <div class="card">
+          <div class="card-title">CG Oncology (CGEN)</div>
+          <div class="card-subtitle">Oncolytic virus for bladder cancer</div>
+          <div class="card-value" style="font-size: 0.9rem; margin-top: 0.5rem;">Different indication; competitive funding landscape</div>
+          <div style="font-size: 0.85rem; color: #6b7280; margin-top: 0.5rem;">Market Cap: ~$500M | Pre-revenue</div>
+        </div>
+      </div>
+      <p style="margin-top: 1rem; font-size: 0.9rem; color: #6b7280;">
+        <strong>REPL Advantage:</strong> RP1 (vusolimogene oderparepvec) carries GALV-GP R- fusogenic protein that
+        enhances immunogenic cell death — potentially superior immune activation vs T-VEC. Combination with pembrolizumab
+        (Keytruda) addresses checkpoint-resistant melanoma.
+      </p>
+    </div>
+
+    <!-- Upcoming Catalysts -->
+    <div class="section">
+      <h2>Critical Upcoming Catalysts</h2>
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-title">BLA Filing for RP1 (vusolimogene oderparepvec)</div>
+          <div class="card-subtitle">Expected H2 2026</div>
+          <div style="margin-top: 0.5rem;">Based on IGNYTE Phase 2 data in anti-PD1-failed melanoma. FDA Breakthrough
+            Therapy Designation granted. BLA acceptance = near-term stock catalyst.</div>
+          <div style="margin-top: 0.5rem;"><span class="badge badge-red">CRITICAL EVENT</span></div>
+        </div>
+        <div class="card">
+          <div class="card-title">IGNYTE-3 Phase 3 Enrollment Completion</div>
+          <div class="card-subtitle">2026–2027</div>
+          <div style="margin-top: 0.5rem;">Confirmatory Phase 3 trial. Full enrollment milestone signals execution and
+            maintains regulatory momentum toward potential accelerated approval conversion.</div>
+          <div style="margin-top: 0.5rem;"><span class="badge badge-green">HIGH IMPACT</span></div>
+        </div>
+        <div class="card">
+          <div class="card-title">RP2 / RP3 Clinical Updates</div>
+          <div class="card-subtitle">Q3–Q4 2026</div>
+          <div style="margin-top: 0.5rem;">Next-gen oncolytic virus programs. Positive data expands pipeline narrative
+            and reduces single-asset risk.</div>
+          <div style="margin-top: 0.5rem;"><span class="badge badge-yellow">PIPELINE EVENT</span></div>
+        </div>
+        <div class="card">
+          <div class="card-title">Potential Partnership / Licensing Deal</div>
+          <div class="card-subtitle">Ongoing discussions</div>
+          <div style="margin-top: 0.5rem;">BD activity with large pharma for commercialization rights or co-promotion.
+            A deal would validate platform and extend runway significantly.</div>
+          <div style="margin-top: 0.5rem;"><span class="badge badge-green">HIGH IMPACT</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Risk Factors -->
+    <div class="section">
+      <h2>Critical Risk Factors</h2>
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-title">Regulatory Path Uncertainty</div>
+          <div style="margin-top: 0.5rem;">RP1 BLA is based on Phase 2 accelerated approval pathway. FDA may require
+            Phase 3 confirmatory data before approval, delaying commercialization by 1–2 years.</div>
+          <span class="badge badge-red">CRITICAL RISK</span>
+        </div>
+        <div class="card">
+          <div class="card-title">Single-Asset Concentration</div>
+          <div style="margin-top: 0.5rem;">Near-term value is almost entirely driven by RP1. Any setback — clinical,
+            regulatory, or commercial — has outsized impact on stock price.</div>
+          <span class="badge badge-red">CRITICAL RISK</span>
+        </div>
+        <div class="card">
+          <div class="card-title">Reimbursement & Pricing Pressure</div>
+          <div style="margin-top: 0.5rem;">Oncolytic therapy pricing will face scrutiny. Competing with established
+            immunotherapy combinations (Keytruda + chemo) limits pricing power.</div>
+          <span class="badge badge-red">HIGH RISK</span>
+        </div>
+        <div class="card">
+          <div class="card-title">Cash Runway & Dilution Risk</div>
+          <div style="margin-top: 0.5rem;">Burn rate is substantial. If BLA filing or approval is delayed, additional
+            capital raise likely needed. Dilution at current price would be punishing.</div>
+          <span class="badge badge-red">FINANCIAL RISK</span>
+        </div>
+        <div class="card">
+          <div class="card-title">Merck Keytruda Dependency</div>
+          <div style="margin-top: 0.5rem;">Key trial uses pembrolizumab combination. Any changes to Merck collaboration
+            terms or Keytruda label could affect REPL's program.</div>
+          <span class="badge badge-yellow">MEDIUM RISK</span>
+        </div>
+        <div class="card">
+          <div class="card-title">Manufacturing Scalability</div>
+          <div style="margin-top: 0.5rem;">Viral vector manufacturing is complex. Commercial-scale production of RP1
+            requires validated CMO partnerships and consistent yield.</div>
+          <span class="badge badge-yellow">MEDIUM RISK</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Strategic Partnerships -->
+    <div class="section">
+      <h2>Key Academic & Strategic Partnerships</h2>
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-title">Merck (Keytruda)</div>
+          <div class="card-subtitle">Clinical Collaboration Agreement</div>
+          <div style="margin-top: 0.5rem;">Co-investigation of RP1 + pembrolizumab across IGNYTE trials. Merck supplies
+            Keytruda at no cost in exchange for data rights. Critical for trial economics.</div>
+        </div>
+        <div class="card">
+          <div class="card-title">MD Anderson Cancer Center</div>
+          <div class="card-subtitle">Clinical Trial & KOL Site</div>
+          <div style="margin-top: 0.5rem;">Major enrollment site for IGNYTE-3. Provides regulatory-grade data and
+            builds KOL network for post-approval adoption in melanoma.</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Moffitt Cancer Center</div>
+          <div class="card-subtitle">Translational Research</div>
+          <div style="margin-top: 0.5rem;">Tumor immunology collaboration. Biomarker research to identify patient
+            populations most likely to respond to RP1 therapy.</div>
+        </div>
+        <div class="card">
+          <div class="card-title">AstraZeneca (Durvalumab)</div>
+          <div class="card-subtitle">Combination Study Partner</div>
+          <div style="margin-top: 0.5rem;">Exploring RP1 + durvalumab (PD-L1) combinations in solid tumors. Broadens
+            combination immunotherapy landscape beyond Keytruda.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Financial Health -->
+    <div class="section">
+      <h2>Financial Health & Runway</h2>
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-title">Cash & Equivalents</div>
+          <div class="card-value" data-field="cashPosition">$350M</div>
+          <div class="card-subtitle">As of Q1 2026</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Monthly Burn Rate</div>
+          <div class="card-value" data-field="burnRate">$--</div>
+          <div class="card-subtitle">R&D + Clinical Ops</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Estimated Runway</div>
+          <div class="card-value" data-field="runway">-- months</div>
+          <div class="card-subtitle">Until additional funding needed</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Headcount</div>
+          <div class="card-value">~200 employees</div>
+          <div class="card-subtitle">Expanding clinical & CMC team</div>
+        </div>
+      </div>
+      <p style="margin-top: 1rem; font-size: 0.9rem; color: #6b7280;">
+        <strong>Interpretation:</strong> Replimune has a reasonable cash buffer relative to near-term catalysts. Key
+        question is whether the BLA filing and approval timeline keeps cash from running critically low before first
+        revenue. A partnership or licensing deal in 2026 would significantly de-risk the balance sheet.
+      </p>
+    </div>
+
+  </div>
+
+</body>
+
+</html>
