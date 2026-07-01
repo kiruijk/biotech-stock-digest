@@ -348,7 +348,7 @@ async function updateHTML() {
     .replace(/^/gm, '      ')  // indent to match surrounding code
     .trim();
   indexHTML = indexHTML.replace(
-    /const demoData = \{[\s\S]*?^    \};/m,
+    /const demoData = \{[\s\S]*?^\s*\};/m,
     `const demoData = ${dataJSON};`
   );
   fs.writeFileSync('index.html', indexHTML);
