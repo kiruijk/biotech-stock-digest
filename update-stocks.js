@@ -23,7 +23,7 @@ const STOCKS = [
 ];
 
 const COMPANY_NAMES = {
-  VKTX: 'Vikings Therapeutics',
+  VKTX: 'Viking Therapeutics',
   IOVA: 'Iovance Biotherapeutics',
   REPL: 'Replimune Group',
   KLRA: 'Kailera Therapeutics',
@@ -51,36 +51,6 @@ const COMPANY_NAMES = {
   CTMX: 'CytomX Therapeutics',
   CMPX: 'Compass Therapeutics'
 };
-
-// Fallback demo prices
-const demoPrices = {
-  VKTX: { price: 38.04, change: 1.25, changePercent: 3.39, high52: 45.20, low52: 12.50 },
-  IOVA: { price: 4.25, change: -0.18, changePercent: -4.06, high52: 11.50, low52: 3.80 },
-  REPL: { price: 24.00, change: 0.50, changePercent: 2.13, high52: 35.00, low52: 14.00 },
-  KLRA: { price: 12.73, change: -0.06, changePercent: -0.47, high52: 28.23, low52: 11.84 },
-  NTLA: { price: 12.13, change: -0.56, changePercent: -4.45, high52: 28.25, low52: 7.95 },
-  CGON: { price: 72.30, change: -5.44, changePercent: -7.00, high52: 80.97, low52: 35.64 },
-  IMCR: { price: 31.40, change: -1.02, changePercent: -3.15, high52: 40.72, low52: 27.55 }
-};
-
-// Fetch stock price from Yahoo Finance using yahoo-finance2
-async function getStockPrice(symbol) {
-  try {
-    const quote = await yahooFinance.quote(symbol);
-
-    return {
-      price: quote.regularMarketPrice || demoPrices[symbol].price,
-      change: (quote.regularMarketPrice || 0) - (quote.regularMarketPreviousClose || 0),
-      changePercent: quote.regularMarketChangePercent || demoPrices[symbol].changePercent,
-      high52: quote.fiftyTwoWeekHigh || demoPrices[symbol].high52,
-      low52: quote.fiftyTwoWeekLow || demoPrices[symbol].low52
-    };
-  } catch (err) {
-    console.warn(`⚠️  Error fetching price for ${symbol}: ${err.message}`);
-    console.warn(`   Using fallback price`);
-    return demoPrices[symbol];
-  }
-}
 
 // Fetch historical data from Yahoo Finance
 async function getHistoricalData(symbol, startDate) {
@@ -118,10 +88,10 @@ const demoNews = {
   ],
   VKTX: [
     {
-      title: 'Vikings Therapeutics Presents Phase 2 Data for VK2735 in Obesity',
+      title: 'Viking Therapeutics Presents Phase 2 Data for VK2735 in Obesity',
       source: 'BioSpace',
       date: new Date().toISOString().split('T')[0],
-      summary: 'Vikings Therapeutics announced positive Phase 2 data for VK2735, demonstrating meaningful weight loss in obese patients.',
+      summary: 'Viking Therapeutics announced positive Phase 2 data for VK2735, demonstrating meaningful weight loss in obese patients.',
       url: '#'
     }
   ],
@@ -199,7 +169,7 @@ async function getYahooNews(symbol) {
       return quote.news.slice(0, 3).map(item => ({
         title: item.title,
         source: item.publisher || 'Yahoo Finance',
-        date: new Date(item.providerPublishTime * 1000).toISOString().split('T')[0],
+        date: new Date(item.providerPublishTime * 1000).toISOString(),
         summary: item.summary || 'Financial news',
         url: item.link
       }));
@@ -227,7 +197,7 @@ async function getGoogleNews(company) {
       const link = (item.match(/<link>(.*?)<\/link>/) || [])[1] || '#';
       const pubDate = (item.match(/<pubDate>(.*?)<\/pubDate>/) || [])[1] || '';
       const source = (item.match(/<source[^>]*>(.*?)<\/source>/) || [])[1] || 'Google News';
-      const date = pubDate ? new Date(pubDate).toISOString().split('T')[0] : new Date().toISOString().split('T')[0];
+      const date = pubDate ? new Date(pubDate).toISOString() : new Date().toISOString();
 
       if (title && link !== '#') {
         items.push({ title, source, date, summary: `Latest news about ${company}.`, url: link });
@@ -270,66 +240,75 @@ async function getNews(symbol, company) {
   }
 }
 
-// Fetch returns from Yahoo Finance (1D, 5D, 1M, 6M, YTD)
+// Round to 2 decimals, passing null/undefined through as null
+const round2 = (n) => (n == null ? null : parseFloat(n.toFixed(2)));
+
+// Return periods shown on the dashboard. Each maps a field name to the date the
+// return is measured from; 1D comes straight from the quote.
+const RETURN_PERIODS = {
+  fiveDay: (now) => daysAgo(now, 7),  // 7 calendar days covers 5 trading days
+  oneMonth: (now) => monthsAgo(now, 1),
+  sixMonth: (now) => monthsAgo(now, 6),
+  ytd: (now) => new Date(now.getFullYear() - 1, 11, 31),  // last close of prior year
+  oneYear: (now) => monthsAgo(now, 12),
+  threeYear: (now) => monthsAgo(now, 36),
+  fiveYear: (now) => monthsAgo(now, 60),
+  tenYear: (now) => monthsAgo(now, 120)
+};
+
+function daysAgo(now, n) {
+  const d = new Date(now);
+  d.setDate(d.getDate() - n);
+  return d;
+}
+
+function monthsAgo(now, n) {
+  const d = new Date(now);
+  d.setMonth(d.getMonth() - n);
+  return d;
+}
+
+// Fetch returns from Yahoo Finance for 1D plus every period in RETURN_PERIODS
 async function getReturns(symbol, quote, currentPrice) {
+  // null means "unavailable" (rendered as —), distinct from a real 0% return
+  const returns = { oneDay: round2(quote.regularMarketChangePercent) };
+  for (const field of Object.keys(RETURN_PERIODS)) returns[field] = null;
+
   try {
     const now = new Date();
-
-    const sixMonthsAgo = new Date(now);
-    sixMonthsAgo.setMonth(sixMonthsAgo.getMonth() - 6);
-
-    const oneMonthAgo = new Date(now);
-    oneMonthAgo.setMonth(oneMonthAgo.getMonth() - 1);
-
-    const fiveDaysAgo = new Date(now);
-    fiveDaysAgo.setDate(fiveDaysAgo.getDate() - 7); // 7 calendar days covers 5 trading days
-
-    const yearStart = new Date(now.getFullYear(), 0, 1);
-
-    const returns = {
-      oneDay: parseFloat((quote.regularMarketChangePercent || 0).toFixed(2)),
-      fiveDay: 0,
-      oneMonth: 0,
-      sixMonth: 0,
-      ytd: 0
-    };
-
-    // Fetch back to whichever is earlier (Jan 1 or 6 months ago) so both 6M and YTD are covered
-    const historyStart = yearStart < sixMonthsAgo ? yearStart : sixMonthsAgo;
+    const targets = Object.fromEntries(
+      Object.entries(RETURN_PERIODS).map(([field, getDate]) => [field, getDate(now)])
+    );
+    // Fetch a little before the oldest target so there's a close on or before it
+    const historyStart = daysAgo(new Date(Math.min(...Object.values(targets))), 10);
     const historicalData = await getHistoricalData(symbol, historyStart);
 
     if (historicalData && historicalData.length > 0) {
       // Sort oldest → newest
-      const sorted = [...historicalData].sort((a, b) => new Date(a.date) - new Date(b.date));
+      const sorted = historicalData
+        .filter(q => q.close != null)
+        .sort((a, b) => new Date(a.date) - new Date(b.date));
 
-      // Use .close for return calculations (most recent price of that day)
-      const calcReturn = (pastClose) =>
-        parseFloat((((currentPrice - pastClose) / pastClose) * 100).toFixed(2));
+      // Most recent close on or before the target date. Returns null when the stock's
+      // history doesn't reach back that far (e.g. a recent IPO), rather than silently
+      // measuring from the first trading day.
+      const closeAt = (target) => {
+        const q = [...sorted].reverse().find(q => new Date(q.date) <= target);
+        return q ? q.close : null;
+      };
 
-      // 6M, 1M, 5D: most recent quote on or before the target date
-      // (falls back to the oldest quote for recent IPOs with shorter history)
-      const findClosest = (targetDate) =>
-        [...sorted].reverse().find(q => new Date(q.date) <= targetDate) || sorted[0];
-
-      const sixMonthQuote = findClosest(sixMonthsAgo);
-      if (sixMonthQuote?.close) returns.sixMonth = calcReturn(sixMonthQuote.close);
-
-      const oneMonthQuote = findClosest(oneMonthAgo);
-      if (oneMonthQuote?.close) returns.oneMonth = calcReturn(oneMonthQuote.close);
-
-      const fiveDayQuote = findClosest(fiveDaysAgo);
-      if (fiveDayQuote?.close) returns.fiveDay = calcReturn(fiveDayQuote.close);
-
-      const ytdQuote = sorted.find(q => new Date(q.date) >= yearStart);
-      if (ytdQuote?.close) returns.ytd = calcReturn(ytdQuote.close);
+      for (const [field, target] of Object.entries(targets)) {
+        const pastClose = closeAt(target);
+        if (pastClose) returns[field] = round2(((currentPrice - pastClose) / pastClose) * 100);
+      }
     }
 
-    console.log(`    1D: ${returns.oneDay}% | 5D: ${returns.fiveDay}% | 1M: ${returns.oneMonth}% | 6M: ${returns.sixMonth}% | YTD: ${returns.ytd}%`);
-    return returns;
+    const fmt = (v) => (v == null ? '—' : `${v}%`);
+    console.log(`    1D: ${fmt(returns.oneDay)} | 5D: ${fmt(returns.fiveDay)} | 1M: ${fmt(returns.oneMonth)} | 6M: ${fmt(returns.sixMonth)} | YTD: ${fmt(returns.ytd)} | 1Y: ${fmt(returns.oneYear)} | 3Y: ${fmt(returns.threeYear)} | 5Y: ${fmt(returns.fiveYear)} | 10Y: ${fmt(returns.tenYear)}`);
   } catch (err) {
     console.warn(`⚠️  Error fetching returns for ${symbol}: ${err.message}`);
-    return { oneDay: 0, fiveDay: 0, oneMonth: 0, sixMonth: 0, ytd: 0 };
   }
+  return returns;
 }
 
 // Update HTML with new data
@@ -388,8 +367,29 @@ async function getMonthlyBurn(symbol) {
   }
 }
 
+// Read the data embedded in index.html by the previous run, so a ticker whose
+// fetch fails can keep its last good values (flagged stale) instead of disappearing
+function readPreviousData() {
+  try {
+    const html = fs.readFileSync('index.html', 'utf8');
+    const match = html.match(/const demoData = (\{[\s\S]*?^\s*\});/m);
+    return match ? JSON.parse(match[1]) : {};
+  } catch (err) {
+    console.warn(`⚠️  Could not read previous data from index.html: ${err.message}`);
+    return {};
+  }
+}
+
 async function updateHTML() {
   const stockData = {};
+  const previousData = readPreviousData();
+
+  const keepPrevious = (symbol) => {
+    const prev = previousData[symbol];
+    if (!prev) return;
+    console.warn(`  Keeping last good data for ${symbol} (marked stale)`);
+    stockData[symbol] = { ...prev, stale: true, staleSince: prev.staleSince || prev.updatedAt || null };
+  };
 
   console.log('Fetching stock data...');
 
@@ -400,19 +400,21 @@ async function updateHTML() {
       quote = await yahooFinance.quote(symbol);
     } catch (err) {
       console.warn(`  Failed to fetch quote for ${symbol}: ${err.message}`);
+      keepPrevious(symbol);
       continue;
     }
 
-    if (!quote) {
-      console.warn(`  Failed to fetch quote for ${symbol}`);
+    if (quote?.regularMarketPrice == null) {
+      console.warn(`  No price in quote for ${symbol}`);
+      keepPrevious(symbol);
       continue;
     }
 
     const price = {
-      price: quote.regularMarketPrice || 0,
-      change: (quote.regularMarketPrice || 0) - (quote.regularMarketPreviousClose || 0),
-      changePercent: quote.regularMarketChangePercent || 0,
-      marketCap: quote.marketCap || null
+      price: quote.regularMarketPrice,
+      change: quote.regularMarketPreviousClose != null ? quote.regularMarketPrice - quote.regularMarketPreviousClose : null,
+      changePercent: quote.regularMarketChangePercent ?? null,
+      marketCap: quote.marketCap ?? null
     };
 
     const company = COMPANY_NAMES[symbol] || symbol;
@@ -424,17 +426,14 @@ async function updateHTML() {
     stockData[symbol] = {
       symbol,
       name: company,
-      price: parseFloat(price.price.toFixed(2)),
-      change: parseFloat(price.change.toFixed(2)),
-      changePercent: parseFloat(price.changePercent.toFixed(2)),
+      price: round2(price.price),
+      change: round2(price.change),
+      changePercent: round2(price.changePercent),
+      updatedAt: new Date().toISOString(),
       marketCap: price.marketCap,
       monthlyBurn: monthlyBurn,
       cashPosition: cashPosition,
-      oneDay: returns.oneDay,
-      fiveDay: returns.fiveDay,
-      oneMonth: returns.oneMonth,
-      sixMonth: returns.sixMonth,
-      ytd: returns.ytd,
+      ...returns,
       news: news.length > 0 ? news : [
         {
           title: `${company} - No recent news`,
@@ -464,7 +463,8 @@ async function updateHTML() {
   // Update profile pages
   for (const symbol of STOCKS) {
     const filename = `${symbol.toLowerCase()}.html`;
-    if (stockData[symbol] && fs.existsSync(filename)) {
+    // Stale entries keep whatever the profile page already shows
+    if (stockData[symbol] && !stockData[symbol].stale && fs.existsSync(filename)) {
       console.log(`  Updating ${filename}...`);
       updateProfilePage(filename, stockData[symbol]);
     }
@@ -473,7 +473,7 @@ async function updateHTML() {
   console.log('\n✅ Stock data updated!');
   for (const symbol of STOCKS) {
     const d = stockData[symbol];
-    if (d) console.log(`${symbol}: $${d.price} ${d.changePercent >= 0 ? '+' : ''}${d.changePercent}% | YTD: ${d.ytd}%`);
+    if (d) console.log(`${symbol}: $${d.price} ${d.changePercent >= 0 ? '+' : ''}${d.changePercent}% | YTD: ${d.ytd == null ? '—' : d.ytd + '%'}${d.stale ? ' (STALE)' : ''}`);
   }
 }
 
@@ -537,10 +537,12 @@ function updateProfilePage(filename, data) {
     );
   }
 
-  // Update YTD: value and color
+  // Update YTD: value and color (— in gray when the stock has no history back to Jan 1)
   html = html.replace(
     /(<div class="card-value"[^>]*data-field="ytd"[^>]*style="color: )#[0-9a-f]+(;?">)[^<]*/,
-    (_, pre, close) => `${pre}${color(data.ytd)}${close}${sign(data.ytd)}${data.ytd}%`
+    (_, pre, close) => data.ytd == null
+      ? `${pre}#6b7280${close}—`
+      : `${pre}${color(data.ytd)}${close}${sign(data.ytd)}${data.ytd}%`
   );
 
   // Update timestamp

@@ -42,17 +42,90 @@
     }
 
     .container {
-      max-width: 1200px;
+      max-width: 1400px;
       margin: 0 auto;
       padding: 2rem 1rem 3rem;
+    }
+
+    /* Two-column layout: ranked stocks | news */
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .news-column {
+      position: sticky;
+      top: 1rem;
+      max-height: calc(100vh - 2rem);
+      overflow-y: auto;
+      padding-right: 0.5rem;
+    }
+
+    .column-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid #0052cc;
+    }
+
+    .column-subtitle {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #6b7280;
+      margin-left: 0.4rem;
     }
 
     /* Stock Cards */
     .stock-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.25rem;
-      margin-bottom: 2rem;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .period-picker {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-bottom: 1rem;
+    }
+
+    .period-btn {
+      padding: 0.35rem 0.7rem;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      background: white;
+      color: #374151;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .period-btn:hover {
+      border-color: #0052cc;
+      color: #0052cc;
+    }
+
+    .period-btn.active {
+      background: #0052cc;
+      border-color: #0052cc;
+      color: white;
+    }
+
+    .metric-active {
+      background: #e0ebff;
+      box-shadow: inset 0 0 0 1px #0052cc;
+    }
+
+    .stock-rank {
+      display: inline-block;
+      min-width: 2rem;
+      margin-right: 0.4rem;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #9ca3af;
     }
 
     .stock-card {
@@ -105,13 +178,13 @@
 
     .metrics {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 0.4rem;
+      grid-template-columns: repeat(9, 1fr);
+      gap: 0.3rem;
     }
 
     .metric {
       text-align: center;
-      padding: 0.5rem 0.25rem;
+      padding: 0.45rem 0.1rem;
       background: #f9fafb;
       border-radius: 6px;
     }
@@ -126,27 +199,32 @@
 
     .metric-value {
       font-weight: 700;
-      font-size: 0.88rem;
+      font-size: 0.78rem;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 1200px) {
+      .metrics {
+        grid-template-columns: repeat(5, 1fr);
+      }
     }
 
     /* News Section */
     .news-section {
-      margin-bottom: 3rem;
+      margin-bottom: 2rem;
     }
 
     .section-title {
-      font-size: 1.2rem;
+      font-size: 1rem;
       font-weight: 700;
-      margin-bottom: 1rem;
+      margin-bottom: 0.75rem;
       color: #1a1a1a;
-      padding-bottom: 0.5rem;
-      border-bottom: 2px solid #0052cc;
     }
 
     .news-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
     }
 
     .news-card {
@@ -164,6 +242,27 @@
     .news-header {
       padding: 1rem 1.2rem 0.5rem;
       border-bottom: 1px solid #e5e7eb;
+    }
+
+    .news-meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .ticker-tag {
+      padding: 0.1rem 0.45rem;
+      border-radius: 4px;
+      background: #e0ebff;
+      color: #0052cc;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .ticker-tag:hover {
+      background: #c7dbff;
     }
 
     .news-source {
@@ -262,13 +361,22 @@
       color: #1a1a1a;
     }
 
-    @media (max-width: 768px) {
-      .stock-grid {
+    @media (max-width: 900px) {
+      .layout {
         grid-template-columns: 1fr;
       }
 
+      .news-column {
+        position: static;
+        max-height: none;
+        overflow-y: visible;
+        padding-right: 0;
+      }
+    }
+
+    @media (max-width: 768px) {
       .metrics {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
       }
 
       .news-grid {
@@ -278,6 +386,16 @@
       header h1 {
         font-size: 1.4rem;
       }
+    }
+    .stale-badge {
+      margin-left: 0.5rem;
+      padding: 0.1rem 0.45rem;
+      border-radius: 4px;
+      background: #fef3c7;
+      color: #b45309;
+      font-size: 0.65rem;
+      font-weight: 700;
+      vertical-align: middle;
     }
   </style>
 </head>
@@ -291,11 +409,20 @@
 
   <div class="container">
 
-    <!-- Stock Prices -->
-    <div id="stocks-container"></div>
+    <div class="layout">
+      <!-- Stock Prices, ranked by today's performance -->
+      <section class="stocks-column">
+        <div class="column-title">Top Movers <span class="column-subtitle" id="rank-subtitle">ranked by 1-day change</span></div>
+        <div class="period-picker" id="period-picker" role="group" aria-label="Rank stocks by period"></div>
+        <div id="stocks-container"></div>
+      </section>
 
-    <!-- News Sections -->
-    <div id="news-container"></div>
+      <!-- News Sections -->
+      <aside class="news-column">
+        <div class="column-title">Latest News <span class="column-subtitle">newest first</span></div>
+        <div id="news-container"></div>
+      </aside>
+    </div>
 
     <!-- Loading State -->
     <div id="loading" class="loading">
@@ -317,75 +444,85 @@
     const demoData = {
         "VKTX": {
           "symbol": "VKTX",
-          "name": "Vikings Therapeutics",
-          "price": 41.07,
-          "change": 0.22,
-          "changePercent": 0.54,
-          "marketCap": 4790936064,
+          "name": "Viking Therapeutics",
+          "price": 41.78,
+          "change": 0.93,
+          "changePercent": 2.28,
+          "updatedAt": "2026-09-23T19:07:29.651Z",
+          "marketCap": 4873759744,
           "monthlyBurn": 42674000,
           "cashPosition": 185000000,
-          "oneDay": 0.54,
-          "fiveDay": 39.13,
-          "oneMonth": 21.19,
-          "sixMonth": 26.18,
-          "ytd": 15.95,
+          "oneDay": 2.28,
+          "fiveDay": 41.53,
+          "oneMonth": 23.28,
+          "sixMonth": 28.36,
+          "ytd": 18.29,
+          "oneYear": 67.32,
+          "threeYear": 224.38,
+          "fiveYear": 538.84,
+          "tenYear": 3138.76,
           "news": [
             {
-              "title": "Analysts Have a $92 Target on Viking Therapeutics. Here's What Has to Go Right to Get There. - The Motley Fool",
-              "source": "The Motley Fool",
-              "date": "2026-09-10",
-              "summary": "Latest news about Vikings Therapeutics.",
-              "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNWE5Cd1JMWUMzRzJPWXFLdDhaNS03eU5qWUNsQ2V2UmdQUmh3SzFtRG1IMHdoZ1hhZnZ2eFRXRDVzcXlXdnlPM2JLcnJOMzVpdHB0NjBwZGhQTDRzMExlOVR6UzA2YzA0T1dyOWRWVExkSGE0eW5XcEpFOEhXTkV6X2pxa1BTcjMyTXZDbGJiZWJIZDc5X0xfUg?oc=5"
-            },
-            {
-              "title": "Viking Therapeutics Stock (VKTX) Opinions on Phase 3 Obesity Drug Data Timing - quiverquant.com",
-              "source": "quiverquant.com",
-              "date": "2026-08-28",
-              "summary": "Latest news about Vikings Therapeutics.",
-              "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQWjgyZ0hRM21fVWE2aDdQeTlQUk8zRmFleUl5R01OcjBHTXo4Yktvak9MbEItbWVXZnI5TTVjVTczUFNPelB2dkY5X1kwMjlyYVRGSEtjZHFqUU94TDZtaE5zQ25DNWxuUUx2ZG5nUC1LbXJfb3dsUDN1QlpfQ2ozQXpLelAySVBoZkhiZE9aZ2RvcWVJaTA0em53WVptZHhlazR4djdzamZ2Z25PVWV2aTNfUFg?oc=5"
-            },
-            {
-              "title": "Should You Buy Viking Therapeutics Stock on the Dip? Wall Street Is Screaming \"Yes.\" - Yahoo Finance",
+              "title": "Viking Therapeutics Stock Surges 36% Following Weight Loss Drug Study Results - Yahoo Finance",
               "source": "Yahoo Finance",
-              "date": "2026-07-18",
-              "summary": "Latest news about Vikings Therapeutics.",
-              "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNcGp3YnNOREN0LXZQdXY3VXFMeDZwQ19NRVNZandoSWo5RnZya0hHN214QkVyaXgzUEtqcmJEVXQtaG1RRWsyM1owSzA5V0lDYW9rUUt5c1liYWVyd1Y2UEg3dUw5a3hhdUE3VzFwTklaNm5ZNDJpb0E1dDZRNGt5MDVabnpUWDdNV2hsMUdYbXFvdk9zMWJvZGtNVXU1V1U?oc=5"
+              "date": "2026-09-23T12:38:19.000Z",
+              "summary": "Latest news about Viking Therapeutics.",
+              "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPaGY4MmZObXVsaHZMNGIta3ZwemVPUkVMcHpCRVl4SlpVeWdkcTRGMjNvczlUazJTMHh3aDNQTm9fTVdLeGsxX19WcTVJUG9QdXM3ZUFDeE1hNkpHSEstaVhsTldNRkxKangxaUdCaWQ5SjhsVFFuU3RVLS0xY2JOcnBWbFNsS0pac2tNR2lhN3VLbEMtcUpPN1hvZGM?oc=5"
+            },
+            {
+              "title": "Viking Therapeutics (VKTX) Reports VK2735 Trial Data, Is The Stock Fully Priced? - Yahoo Finance",
+              "source": "Yahoo Finance",
+              "date": "2026-09-23T09:14:27.000Z",
+              "summary": "Latest news about Viking Therapeutics.",
+              "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxOVkxhSk5QN0MtUmVaVFViWlpNRW01MGJMcmdqdTFkYUxaVHNnVmNoemFkc3ZoZ0dpSzZTTWRsMWwxbDNZcER6RlNQREJuc1l2ME1wc3BwVnRjWGdjUDlHU3JjRUgzZ3BSaURqMkFWdERYdXhwcW14ZUtqQzZBcjJTWVkyeFRIdVFrcWJHbnhfdDhsdndfMTNKNktDa0RwUzQyTWc?oc=5"
+            },
+            {
+              "title": "Sandisk, Lennar, Viking Therapeutics, Shopify, GameStop, and More Stocks That Explain Today’s Market - Barron's",
+              "source": "Barron's",
+              "date": "2026-09-22T20:34:00.000Z",
+              "summary": "Latest news about Viking Therapeutics.",
+              "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9Cblh5VTY3T1cxMkFueE1LU3RZNHQyOWVyd0dNdW5mSW5UaVprVFM4ZVNBSVpJclRSTWY1cDRvLVB3aVdzRWJRNDltX3MzZER3a0lqc09EX19fSDBmX1p0RnhHTDQ?oc=5"
             }
           ]
         },
         "IOVA": {
           "symbol": "IOVA",
           "name": "Iovance Biotherapeutics",
-          "price": 10.39,
-          "change": -0.25,
-          "changePercent": -2.3,
-          "marketCap": 4708638208,
+          "price": 10.38,
+          "change": -0.26,
+          "changePercent": -2.4,
+          "updatedAt": "2026-09-23T19:07:30.601Z",
+          "marketCap": 4704108544,
           "monthlyBurn": 15771666.666666666,
           "cashPosition": 75000000,
-          "oneDay": -2.3,
-          "fiveDay": 5.32,
-          "oneMonth": 25.39,
-          "sixMonth": 186.36,
-          "ytd": 312.5,
+          "oneDay": -2.4,
+          "fiveDay": 5.22,
+          "oneMonth": 25.27,
+          "sixMonth": 186.09,
+          "ytd": 274.91,
+          "oneYear": 401.69,
+          "threeYear": 113.24,
+          "fiveYear": -59.43,
+          "tenYear": 29.97,
           "news": [
             {
               "title": "IOVA Stock Slump Takes Wall Street, Retail By Surprise — Here’s Why - Stocktwits",
               "source": "Stocktwits",
-              "date": "2026-09-22",
+              "date": "2026-09-22T08:16:27.000Z",
               "summary": "Latest news about Iovance Biotherapeutics.",
               "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxQWWw1ampPTzk1VlpUYnh2NjJtcnRxcmZiVEl2b19mWUhyWjJMa1JTWmYtUGtsZlRGLVZNaWw3OWtzRndXVWg0cUVmY09QbUhXUTFyaC1rNFJ3UWdMTUJ2Yzkxc1hoblRhUzRnTEpxcnp2dEtOczFCTUtKYTloSTBEcEdITjkyZ0tWODY5VXZKQ3dld2hORFdVb3V6emduTWVyTWd4cC1sOUFWTGRsLUhXR1Z6N0Q0VWlVMGNpY2N2U3dPWjBxV1E?oc=5"
             },
             {
               "title": "Iovance Biotherapeutics Stock: 6 Straight Green Days, Up 26% - Trefis",
               "source": "Trefis",
-              "date": "2026-09-21",
+              "date": "2026-09-21T05:26:21.000Z",
               "summary": "Latest news about Iovance Biotherapeutics.",
               "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQWGZRa3BpVWxoMGU1TjJJZHlhaDVFUkRDNEFvaTVZV3U3SEhEUEhPZnM5VzhyYUJZTDNjWC01aXc1Rm4wRWFZTXMtVzlPYzd3WU9KYVAyTG1UZUVXZU4xQW9UbEFIem1NVEROUERPUHUyU3lsVUhGZGpVTUNTMldzYjd2S1N2dE5YQl9OU3VqYlFodFN6XzN0bHJiZ05mYmNQWFBOdjl5N2lCdnFZMUdvbWVvN2NpSTJmV2c?oc=5"
             },
             {
               "title": "Iovance Biotherapeutics (IOVA) Stock Fair Value Edges Higher On Amtagvi Margin Progress - Yahoo Finance",
               "source": "Yahoo Finance",
-              "date": "2026-09-19",
+              "date": "2026-09-19T16:12:11.000Z",
               "summary": "Latest news about Iovance Biotherapeutics.",
               "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNRy1nekU5SjY4THJhRUlTTjJnWlFlekZkU01wVUh6QXppUVBRR2o5bWY4OEZEcEt6NEd4M2hZVzQ4ZW5OejQ0aDhrYXNYRHN6czB2R0tLUUVUbHJGcWwxeWNES2lRSDVROTJyZlRHVERZeXlzeFBwZFhuSnNaNkpwaHExWEEySFNXeWdpZ3dyRTZENC1lN25sWlFVRkU1ekdtSmc?oc=5"
             }
@@ -394,36 +531,41 @@
         "REPL": {
           "symbol": "REPL",
           "name": "Replimune Group",
-          "price": 12.94,
-          "change": -0.53,
-          "changePercent": -3.93,
-          "marketCap": 1219202048,
+          "price": 12.97,
+          "change": -0.5,
+          "changePercent": -3.67,
+          "updatedAt": "2026-09-23T19:07:31.552Z",
+          "marketCap": 1222499712,
           "monthlyBurn": 24405666.666666668,
           "cashPosition": 350000000,
-          "oneDay": -3.93,
-          "fiveDay": -0.15,
-          "oneMonth": -12.39,
-          "sixMonth": 85.39,
-          "ytd": 45.39,
+          "oneDay": -3.67,
+          "fiveDay": 0.12,
+          "oneMonth": -12.15,
+          "sixMonth": 85.89,
+          "ytd": 32.13,
+          "oneYear": 199.65,
+          "threeYear": -22.68,
+          "fiveYear": -61.46,
+          "tenYear": null,
           "news": [
             {
               "title": "REPL UPCOMING DEADLINE: Levi &amp; Korsinsky Alerts Replimune Group, Inc. Stockholders of Securities Class Action - Contact the Firm - Morningstar",
               "source": "Morningstar",
-              "date": "2026-09-23",
+              "date": "2026-09-23T14:07:00.000Z",
               "summary": "Latest news about Replimune Group.",
               "url": "https://news.google.com/rss/articles/CBMijwJBVV95cUxPQ0ZucjJGMXcwWlZkXzlhYzBJcURpSzR1bTM5Y2hNbkROa2FUTXg4SHN1WHA5Y0xVQW01YTdXNHI0a25SanQ3clJTUjlXdFlTTnR4cFBYXy1aN2FVSGhEZjVXeWpBSU5LSGFzX3JUQlhjOFRyZ05TTVdfWEpsbDNtQ3pOcVhPVURocEk4c19GWGRQZE1tdk1YaUJYbEw4d3dLWld5TkVVeVRFaXdwUXlpdVpDMHQ5NWZTbFhLOUlpX0ZpS2YzZEdvSkN0RnJRQVpnSk5CYXlDZ19FS2x0X1FhcDF3U2hNb1ZyejVkMS1HZ0tVXzg0bm1rZWpzWGJaMXdMdmFiRGtVeXRYTWdvX3NR?oc=5"
             },
             {
               "title": "How More Authorized Shares Will Impact Replimune Group (REPL) Stock Investors - simplywall.st",
               "source": "simplywall.st",
-              "date": "2026-09-22",
+              "date": "2026-09-22T12:52:40.000Z",
               "summary": "Latest news about Replimune Group.",
               "url": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxQeDQ2d1FGZGgxcEQ1UHhqbWFfc1pSUlg1YWNOeGxhSEpqSVBESlFteVgzREM3ZFlHZUo4bFl2TVR3c21JMzY3M2g2VWpzM2RSdzEtRkw0VUlCak9iZWFTX25EMFVlclRkamxLMG4yVW9lWlFJVGdEX2hFclJXVm9pUTVlZWZsV295YktYYWxDeGpHQ2M2Ym9rWUhwX2lHc2Y1MFdobHRvYW9DX205NzFTOXFobnByek9oSVBLS2s0MFFveVhpblRUazhycDYwLUU0Z2ktRlFzODhrNXVMZmRhYVF30gHnAUFVX3lxTE13QlBBMWxPLXV3U19Fb1dKY2stcVN4b3g2Y2NOTmZHRTFkWVI4WHhrQ1V0eXBjTlhMUXJKRGY3QnpZWVZZajNqR3ZUZU1RRTM4Z0F3ZHBMdjgtYjBOUXdZLUdMUGNXelFzTjZYY29xODNjck1LTndtbVJLZnVjNTZrMzRQTXhscDRSUHVnUy0zX25tdnE5OTZ1SDRCTHAwOHFEb2liRmxBMXpURWhaczVzRWEydXdYbS1YWDZPVU8zU0NBdkdDR0lJVFVvdldXOHR5dDd0UmM4QS1rVndsZkVBX2NEQk92Yw?oc=5"
             },
             {
-              "title": "Replimune Shares Crash Following FDA Review of Melanoma Treatment - pharmexec.com",
-              "source": "pharmexec.com",
-              "date": "2026-07-29",
+              "title": "Replimune Shares Crash Following FDA Review of Melanoma Treatment - Pharmaceutical Executive",
+              "source": "Pharmaceutical Executive",
+              "date": "2026-07-29T07:00:00.000Z",
               "summary": "Latest news about Replimune Group.",
               "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxQdnFpQmRSVkQwOUw0WEs5clZ4TWpfTWZzLWlFY1dqNUhURFdwUUpzTnkyV3UzbWlwNUQxWUJKTlMxMTNrMmhvRmp5eFJtSjY1bDRxbm1KbFhsZjdOa09UY3pPVS1tYUg1SjhtanQ3cFpmTm5QR3hsU1ZGXzUzVXpCdUVZZGdRSjI5bno0?oc=5"
             }
@@ -435,33 +577,38 @@
           "price": 12.86,
           "change": 0.07,
           "changePercent": 0.55,
+          "updatedAt": "2026-09-23T19:07:32.407Z",
           "marketCap": 1667217664,
           "monthlyBurn": 26288333.333333332,
           "cashPosition": 1171800000,
           "oneDay": 0.55,
           "fiveDay": 1.26,
           "oneMonth": -25.1,
-          "sixMonth": -50.54,
-          "ytd": -50.54,
+          "sixMonth": null,
+          "ytd": null,
+          "oneYear": null,
+          "threeYear": null,
+          "fiveYear": null,
+          "tenYear": null,
           "news": [
             {
               "title": "Kailera at bernstein healthcare forum: betting on obesity differentiation By Investing.com - Investing.com Nigeria",
               "source": "Investing.com Nigeria",
-              "date": "2026-09-23",
+              "date": "2026-09-23T14:56:15.000Z",
               "summary": "Latest news about Kailera Therapeutics.",
               "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxQQnRaSndCbXotWnhmMHBuNW9ydDdUQkxfVU5hZ3hrSGMxaFVSMVNJVlJ2ZVcyZ2h3Q19CcGpqOUJqX3k0X0Y5cTRESFg2WVljcjhxaXhkX0plb2hFbDRxM19jeXNBS1ctd1JmQ2NwUkhCakR2RXkwVjNIRmRvbkxNYzV6UV96V3JHcTYzRHRRdGVEV0hXOVd5YnRmSXd2d19MWnBhS3pGTFFidW5rcmprMnVPWFFZOGlrRGotb2RoTk4tRV8xcFhZOWV1ckdtUQ?oc=5"
             },
             {
               "title": "Top Kailera Therapeutics (KLRA) Competitors 2026 - MarketBeat",
               "source": "MarketBeat",
-              "date": "2026-09-22",
+              "date": "2026-09-22T17:11:06.000Z",
               "summary": "Latest news about Kailera Therapeutics.",
               "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQaGFVU2FGcG0wTDhueG5uZUMwZjl5ZFJBSlp6UlRNS2JYSzlsblRqQW1rR2J0b2dkWTlVTWdlNDNRWUMzb003Ml92dFZ3NFI1R1dyN2RXRnF1TlNSV1lfTEFTLTcybTYteFhBanRIcm5iaF9qSGJSWDFuOTJBYzk4NA?oc=5"
             },
             {
               "title": "Kailera Therapeutics: The Record-Breaking Obesity IPO Big Pharma Cannot Ignore - Yahoo Finance",
               "source": "Yahoo Finance",
-              "date": "2026-08-18",
+              "date": "2026-08-18T07:00:00.000Z",
               "summary": "Latest news about Kailera Therapeutics.",
               "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxOM1FiY0FxWktRZzg2WEpIb2Nnb3BrUHZXNHh0eTNRXzYzdWZfbVg0a0hRcFBvaTkzdzFOVU53aXpjWlZFcGNfVVFqUlhCWFZfMTFxMWFHWEN5SVlJR2VPbDZ1Q0huU0lZTVRtWHFkdElUTUFrdURGNkc0eVhBREpjZngzeXFZVGFfMEhvb3N3MmhaRk5KTi0ydG9jeTZUWmVoR1dCenNIMzQ?oc=5"
             }
@@ -472,34 +619,39 @@
           "name": "Intellia Therapeutics",
           "price": 12.06,
           "change": -0.63,
-          "changePercent": -4.96,
-          "marketCap": 1689927936,
+          "changePercent": -4.93,
+          "updatedAt": "2026-09-23T19:07:33.320Z",
+          "marketCap": 1690628480,
           "monthlyBurn": 35544666.666666664,
           "cashPosition": 628400000,
-          "oneDay": -4.96,
-          "fiveDay": 4.96,
-          "oneMonth": -6.07,
-          "sixMonth": -8.01,
-          "ytd": 30.94,
+          "oneDay": -4.93,
+          "fiveDay": 5,
+          "oneMonth": -6.04,
+          "sixMonth": -7.97,
+          "ytd": 33.17,
+          "oneYear": -29.36,
+          "threeYear": -62.75,
+          "fiveYear": -92.23,
+          "tenYear": -30.26,
           "news": [
             {
               "title": "Why Is NTLA Stock Jumping 5% Premarket Today? - Stocktwits",
               "source": "Stocktwits",
-              "date": "2026-09-23",
+              "date": "2026-09-23T08:00:33.000Z",
               "summary": "Latest news about Intellia Therapeutics.",
               "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQSTVhQmlQRWl3MU5TSkZuWnhzQWtEUXVvVXVJTWlaRWtSMm5TRFByam04QXREOVRkSmhnNUpfUlRpTDN5b0Rkd1Z2Q2ZaVkVxX3AyQndreWpnRnJicXlVMjNxY0pPWXB3UXJGZWtyZmYyOGdVaklMQkI2elc1bDU1c3B6akNhdmZDTlo4eERJY0J0VlNiVE1EMTJLLUdVdnRMSVRURmJVWkg?oc=5"
             },
             {
               "title": "Intellia Therapeutics (NTLA) Stock Gets FDA Priority Review For Lonvo Z Gene Editing Therapy - Yahoo Finance",
               "source": "Yahoo Finance",
-              "date": "2026-09-22",
+              "date": "2026-09-22T13:20:07.000Z",
               "summary": "Latest news about Intellia Therapeutics.",
               "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNZ3V2My1feF9qMlJJTGVJRWFleEYyQXB2UTk5Q3pVSHZseXV0OUVvRmxIcTBtN2tkVlY3X0hWcjNuclZ4ZFB5SE5tRVRrZEtzRlQ1UVlBcXFIdm0wNTBuRmtUMWFUODB5eDEtdEVUaGhaT3hQS0NTdjRXa3Jlckhqei16T1JiVldpdXRER2k4Nzh4VVVQRkFhNzB3eVVWSkk?oc=5"
             },
             {
               "title": "Intellia Therapeutics Announces Second Quarter 2026 Financial Results and Business Updates - Intellia Therapeutics",
               "source": "Intellia Therapeutics",
-              "date": "2026-08-06",
+              "date": "2026-08-06T07:00:00.000Z",
               "summary": "Latest news about Intellia Therapeutics.",
               "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxNUHh1NmhCZFRJM2FMdUU0bTZ2SFRibTlHcFplWkpoRVFORVBhWEJPYk10dU5KX2o5cTd2cXhZRGZQX1gyUjhiSVFMd0tmYUVoTVQ0cVBDMXdvSVlUZE51d244WFVDTkdvNk9XU19RYW51OXZWM2NnT0JfTEg1WG5XUm5UUTVFRm9oWk43NllSS1JPVHg4Wmp2U0JnbGJRQkZmd0dFWFd6TU9FMXVITjZ5WFdlYWNpeVd6YXl4Yzd2aw?oc=5"
             }
@@ -508,36 +660,41 @@
         "CGON": {
           "symbol": "CGON",
           "name": "CG Oncology",
-          "price": 72.06,
-          "change": -5.68,
-          "changePercent": -7.31,
-          "marketCap": 6387425280,
+          "price": 72.04,
+          "change": -5.7,
+          "changePercent": -7.33,
+          "updatedAt": "2026-09-23T19:07:34.152Z",
+          "marketCap": 6385652736,
           "monthlyBurn": 26352000,
           "cashPosition": 1028000000,
-          "oneDay": -7.31,
-          "fiveDay": -2.78,
-          "oneMonth": -9.71,
-          "sixMonth": 10.93,
-          "ytd": 72.43,
+          "oneDay": -7.33,
+          "fiveDay": -2.81,
+          "oneMonth": -9.74,
+          "sixMonth": 10.9,
+          "ytd": 79.34,
+          "oneYear": 96.29,
+          "threeYear": null,
+          "fiveYear": null,
+          "tenYear": null,
           "news": [
             {
-              "title": "After $7.9M sale, CG Oncology (NASDAQ: CGON) officer plans more stock trades - Stock Titan",
-              "source": "Stock Titan",
-              "date": "2026-09-21",
+              "title": "After $7.9M sale, CG Oncology (NASDAQ: CGON) officer plans more stock trades - stocktitan.net",
+              "source": "stocktitan.net",
+              "date": "2026-09-21T20:05:02.000Z",
               "summary": "Latest news about CG Oncology.",
               "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNWmE5dEg5VXdVV05hWXFZSlRVck9zQjd1T2pnY1IzX3R2ZXVKNmg1ZW1KZFBDMHN4LTlqbzlubFkwSmFRSVIzU00tSmI0Z0tUMEh4dFhtM28xVFRuQVdvckVNTjlWQnFqc2tKZWJPVFUxcFEwX3drb2hjMVBCczhXakszWGgyOUhZeGhSOUlmWlptaUMxN0xV?oc=5"
             },
             {
               "title": "CG Oncology (CGON) Stock Looks Fully Priced After A 160% Run - Yahoo Finance",
               "source": "Yahoo Finance",
-              "date": "2026-09-03",
+              "date": "2026-09-03T07:00:00.000Z",
               "summary": "Latest news about CG Oncology.",
               "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxOOVYyNl9wS09RR0YwcHpUcFowTVExdFJFdklpaHBvTVI3ejBDZHgtU1g0NGJKWURCVHNfM2V5dFZNTFY4YVVUX3NBeXpUTGxZU0FoNENOWllyYXVvZzNKQzF2SUJlTUtLMnRvU3UtaVBTTmJrRzlranNDMnZPZXUwRERLSEFOS2tfMzV3LWQ4TWhtcHUtdEtnVw?oc=5"
             },
             {
               "title": "CG Oncology: Priced To Perfection On Future Pipeline Success - Seeking Alpha",
               "source": "Seeking Alpha",
-              "date": "2026-07-19",
+              "date": "2026-07-19T07:00:00.000Z",
               "summary": "Latest news about CG Oncology.",
               "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxON08xS1RRSzFlQzZNVy1PaWxhTTNmRUNoQmZVdUc2VEViYWQ5NWREbndreUNRTGFGOURwUmJhbS1mRjI2cHlwUWdsYnoxS1FhNXdzRERON0RXQVZKbWtCQUVWV2p0MmlzSWRuT0x3cGQ5VURfUlVESWxkTXcwRWFzUFFtWmhHd0hUaGpzbTIyRWI0aGltM3JFbnZXNmloU2Nzd2c?oc=5"
             }
@@ -546,36 +703,41 @@
         "IMCR": {
           "symbol": "IMCR",
           "name": "Immunocore",
-          "price": 31.54,
-          "change": -0.88,
-          "changePercent": -2.71,
-          "marketCap": 1624266368,
+          "price": 31.52,
+          "change": -0.9,
+          "changePercent": -2.78,
+          "updatedAt": "2026-09-23T19:07:34.867Z",
+          "marketCap": 1623236352,
           "monthlyBurn": 269333.3333333333,
           "cashPosition": 880200000,
-          "oneDay": -2.71,
-          "fiveDay": -0.16,
-          "oneMonth": -14.48,
-          "sixMonth": 3.92,
-          "ytd": -6.63,
+          "oneDay": -2.78,
+          "fiveDay": -0.22,
+          "oneMonth": -14.53,
+          "sixMonth": 3.86,
+          "ytd": -7.57,
+          "oneYear": -8.43,
+          "threeYear": -39.43,
+          "fiveYear": -11.98,
+          "tenYear": null,
           "news": [
             {
               "title": "Immunocore stock holds at USD 32.18 as earnings remain mixed - AD HOC NEWS",
               "source": "AD HOC NEWS",
-              "date": "2026-09-23",
+              "date": "2026-09-23T02:34:06.000Z",
               "summary": "Latest news about Immunocore.",
               "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxNcm1vUW9Ub1NQTHpoRkNtWGJCWVRQdTJ0bUpoYWhtbEM3SHVGVEEzb1k2cWNPdDBDbTFGZThFOGJaQ2d1bjh5T2p5VktSUTBwRnZMZE9Jd0tJQ1p1NGszSURUTGx6bkVKcHMxd2c4c3g1OWNJaC1HVm9zUTQ4Z1c0eW5WNXMtcmdqVFdvd1pqQ0VYeWhOODB4THlKNGl6c3k3d21RTXlyYVYzbHdfRGh0OXZEbjJyZ2laV1Vr?oc=5"
             },
             {
               "title": "Is Full Trial Enrollment Altering The Investment Case For Immunocore Stock (IMCR)? - simplywall.st",
               "source": "simplywall.st",
-              "date": "2026-09-21",
+              "date": "2026-09-21T20:42:04.000Z",
               "summary": "Latest news about Immunocore.",
               "url": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxORERtVUVYWDRMTjM3OXZONlJFZVdOYjNhb3M1eTM4dm5WVUFhQmhTOGZfc0xiMTZEaFlTWTBWM2VxTFRFVy00UkY3ZDYwVHMyZ2k5SjlaX0d1cVJrTS1CWFBGU1labGJqT0JuVXozb0psWS1NbkxyS2sxYjBScWdzUUp6NTBqS1JTeTV6R2c1T0RkZWNoeUVpSXRQdnFOTmtqT3VJd3NWUV8ycjJYLU5LZlNuQk5jNEJ0dkZjZnRydnpSZmFXNDA2a1AzaHotSy1mOXVEcU50bWEzZHpRaWQ0TmRRTkJweWd30gHuAUFVX3lxTE1nclF2bmg4YXBObjdlcjBnWnRqZHhoajNZUzBYSDN1cDdidHVjNlltNUE5TVYxTk81TENJZlVQeGVSN05jMzVyaVhkaWxqTGhJM2ZHNmFrWFVNUG5sV3pDX0hDUW9teENGb2JWV0lrR1IwUVBnbFZOcG84WkpuZVBab1BWY1ZmeUJQbGo0MWMxTDBMcTEwSkpxTVcxdG9scXlsa1lKWWJMTEZQUm9FOWc0dEdjOVl0em9fdFZGU0JpeTZwcEdPaEUxTGlQZFV6dGNjRURNdjZDSnRVejBSSTZndDlra19Rb3NrTzZxcVE?oc=5"
             },
             {
               "title": "Is Immunocore Stock Attractive After Kimmtrak's Strong Sales Growth? - Yahoo Finance",
               "source": "Yahoo Finance",
-              "date": "2026-07-27",
+              "date": "2026-07-27T07:00:00.000Z",
               "summary": "Latest news about Immunocore.",
               "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxNbnQwb2RBNWF2R19CazNaVkU3Qi1FQkFrSldQY2t5VVdmakFVREJ5Vzh3dXJjUjNCSUNQaFFZcV81YUg0bEdhbVBsSWhuTENuVmREaHRKbVppUnFqdmhtTDdiMlo4ZmVmYVUwOFU4Y3RrQWcyd3duRDF1X21Ca3NWUVBQazZlbHFzb1ZLc3h5MEtnTUNfVDk1cTNQbnpsS0kyVGdJcFRFUURxYU93dFE?oc=5"
             }
@@ -584,36 +746,41 @@
         "GPCR": {
           "symbol": "GPCR",
           "name": "Structure Therapeutics",
-          "price": 35.51,
-          "change": -1.4,
-          "changePercent": -3.79,
-          "marketCap": 2532212992,
+          "price": 35.4,
+          "change": -1.51,
+          "changePercent": -4.09,
+          "updatedAt": "2026-09-23T19:07:35.719Z",
+          "marketCap": 2524368896,
           "monthlyBurn": 35386333.333333336,
           "cashPosition": 1300000000,
-          "oneDay": -3.79,
-          "fiveDay": 0.03,
-          "oneMonth": -27.66,
-          "sixMonth": -27.62,
-          "ytd": -47.87,
+          "oneDay": -4.09,
+          "fiveDay": -0.28,
+          "oneMonth": -27.89,
+          "sixMonth": -27.84,
+          "ytd": -47.77,
+          "oneYear": 47.44,
+          "threeYear": 4.12,
+          "fiveYear": null,
+          "tenYear": null,
           "news": [
+            {
+              "title": "Structure Therapeutics (GPCR) CMO sells shares under preset plan - stocktitan.net",
+              "source": "stocktitan.net",
+              "date": "2026-09-22T22:00:26.000Z",
+              "summary": "Latest news about Structure Therapeutics.",
+              "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQeThJdHo0OHR5NzJZVk9hbW1tUms4aC1KRHV0S3QzSm91cHJRWWZmUkFYUm5GUlpNdGlpc3p2WVdXcXNEc25tVTVmOTBnN3N2N0VMc0hCaXBEMERUMWE3Ulk0SHg1ZWRpOEhFWlZaalJabzVETWh3ZG83cGNsMjhzeHl2ZEJjdUtpeXduYmVTWldfbjJpX0pSNFRPRzljR0tvdG5DeHVmRWo4dG9XUlBNV2t2dUVoNnl2UElTbg?oc=5"
+            },
             {
               "title": "Structure Therapeutics (GPCR) Gains Fresh Obesity Trial Backing Following Data That Keeps Valuation In Focus - Yahoo Finance",
               "source": "Yahoo Finance",
-              "date": "2026-09-22",
+              "date": "2026-09-22T11:13:17.000Z",
               "summary": "Latest news about Structure Therapeutics.",
               "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQZFNqZ0ctWk1USjdHNHg1ZElXTUdyOHQ2NldvSm9rTm9mUVd2X1RBQWlwRWE5Y1pfQXlUMnQ3R1VlZHJSN2JkZmNJdUttRGw3Um4xZUpHQzNfMXE5WkVuUF90c1J4YklaZ3Q0QUZ2WWdGQjJDbXpGeF94MkxRR09EZmM0N2ZYOTVBRVFVX0VweElTQzlBMUxQeXdPZGp2Y1dFeHc?oc=5"
             },
             {
-              "title": "Structure Therapeutics Inc. (GPCR) Stock Analysis: Exploring a Biotech with a 187% Potential Upside - DirectorsTalk Interviews",
-              "source": "DirectorsTalk Interviews",
-              "date": "2026-09-22",
-              "summary": "Latest news about Structure Therapeutics.",
-              "url": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxQeU94VEhCWl9mdWxyVjRpOTB3T0lQSlBkN1VxTkdvSXNnaVp5aGk5ZVpXSHBMZ0QzQk1iNkNSZkpNbUE2cy1lMDhNbjhxdGVUaGxMVWxQR1h5eWc3Vzl4WVFLcmNvaEdpYlNYMHpSem0xU05FZVlBdTRRTHhkYm9GNnVQbUxIY25HSjlnV2hncVo5ZjNPU3RmNUU2Qi1uMUxQVGN2b1k5TlowVjY2ajNJQWgwQVZpRHpESmF5NkI2ajU4RzlyS3VTWmRkbnNfdzA2WFNMUnFvc2kwYkZiMnc?oc=5"
-            },
-            {
               "title": "GPCR News | STRUCTURE THERAPEUTICS INC (NASDAQ:GPCR) - ChartMill",
               "source": "ChartMill",
-              "date": "2026-09-19",
+              "date": "2026-09-19T00:08:09.000Z",
               "summary": "Latest news about Structure Therapeutics.",
               "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9BcWltMEs3ZnM2MWFfdFowZ1o1YzZVRVBKUmdyZGJfWDRWX2cxb0dQOVpuSEp6bVp3c0dwQ0xFcnBLaXljaVFqOEpLQ1ZrRkhYWXdZTXdiOFZ1dVE?oc=5"
             }
@@ -624,34 +791,39 @@
           "name": "Altimmune",
           "price": 3.19,
           "change": -0.22,
-          "changePercent": -6.42,
-          "marketCap": 620744896,
+          "changePercent": -6.3,
+          "updatedAt": "2026-09-23T19:07:36.652Z",
+          "marketCap": 621484032,
           "monthlyBurn": 7608333.333333333,
           "cashPosition": 519000000,
-          "oneDay": -6.42,
-          "fiveDay": -1.51,
-          "oneMonth": 2.61,
-          "sixMonth": -7.23,
-          "ytd": -9.08,
+          "oneDay": -6.3,
+          "fiveDay": -1.39,
+          "oneMonth": 2.73,
+          "sixMonth": -7.12,
+          "ytd": -11.5,
+          "oneYear": -15.7,
+          "threeYear": 22.41,
+          "fiveYear": -79.31,
+          "tenYear": null,
           "news": [
             {
               "title": "Altimmune, Inc. (ALT) Stock Price, News, Quote &amp; History - Yahoo! Finance Canada",
               "source": "Yahoo! Finance Canada",
-              "date": "2026-09-23",
+              "date": "2026-09-23T12:01:02.000Z",
               "summary": "Latest news about Altimmune.",
               "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE5wcjZPSU8yOUdHZVIzem80N01wQ3ptME5mU0hYUlREQW5kUVI1ZVFDNTN0Q0JaNkVDSWROSXBKQWJkcXF4cl9MTU5qNWFFT3pV?oc=5"
             },
             {
               "title": "ALT Stock Reverses Early Gains On Positive Alcohol Use Trial — But Wall Street, Retail Investors Dismiss Selloff - Stocktwits",
               "source": "Stocktwits",
-              "date": "2026-09-22",
+              "date": "2026-09-22T03:16:25.000Z",
               "summary": "Latest news about Altimmune.",
               "url": "https://news.google.com/rss/articles/CBMigwJBVV95cUxPaVNzQndzYkV2YXhtTUVhN0pIQUFwVTV5ZVZnY1BEUWZIU0o1VC1FOEpQTHZQSzNhNGR2MzAtSm5jd2VtNVI4bDU4eVlhdzE1QkpGWGFpN2t6R25WMkFSUnRUNEQtTF9ldHRmb25ZYXVhanR0ZzlTQXlISlV2MHJzcmpadXVhTG9kcTVTZ3MwT0lDYmVKXzFXMHh4VTdXWkxFdFFrSk1seVBjV21kbDQwWF9ROUhQMW9YdllYekNCd3M5emJSb25LSmpGc09OT2xDUGdocHFQRExONGkxUEZkUFYyeE9hYXM3OXZhZ0VnYW85bTc2emxwVWFnd1d4NjB3dXdj?oc=5"
             },
             {
               "title": "Leerink initiates Altimmune stock coverage citing liver drug data - Investing.com",
               "source": "Investing.com",
-              "date": "2026-06-22",
+              "date": "2026-06-22T07:00:00.000Z",
               "summary": "Latest news about Altimmune.",
               "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxNald3U25jZ3lwcU1ieFhMamE2RlFBWlcxcWd2cVRHNDktQ3p0QTN0aGQ5WTJ4WVFkdGhtb3FaclR6UDdCd3p3dnI3LWZPQndsRk9xeWV6c2hHazg2eThxQ0U1MjlaMlRCU3Q1NHVSbC1kb0Z4dVNUQXhJMGpwZVo5RnpwZDNqTUprX21HNWVDN3RwbHIwMG5KV2NWZXc5NWtaWTg5dVQ3VmxhdC1Id01mekZ4ZWxJRlpRdUZvZWkwNHFYdlE?oc=5"
             }
@@ -662,34 +834,39 @@
           "name": "Wave Life Sciences",
           "price": 3.98,
           "change": -0.36,
-          "changePercent": -8.39,
+          "changePercent": -8.38,
+          "updatedAt": "2026-09-23T19:07:37.617Z",
           "marketCap": 785236992,
           "monthlyBurn": 23118333.333333332,
           "cashPosition": 490600000,
-          "oneDay": -8.39,
+          "oneDay": -8.38,
           "fiveDay": -11.64,
           "oneMonth": -24.67,
           "sixMonth": -65.71,
-          "ytd": -75.02,
+          "ytd": -76.76,
+          "oneYear": -41.65,
+          "threeYear": -26.75,
+          "fiveYear": -34.46,
+          "tenYear": -88.39,
           "news": [
             {
               "title": "JPMorgan resumes Wave Life Sciences stock rating at Neutral - Investing.com",
               "source": "Investing.com",
-              "date": "2026-09-23",
+              "date": "2026-09-23T07:48:09.000Z",
               "summary": "Latest news about Wave Life Sciences.",
               "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQTFJOVmFISGQ3cTdoWUFYMm42d0VaWTRsQ1hSVnFIRFU2OWM4Ry1aZFRXN1ZlZWlUY0x0aVJIU0lNRXB0TkpRdVk4VzNxcG4tbUpZaFA1THd6cTA4NURjV2VEdFFCVU13V3FVQ05MY1VHMlJXOWJtcXNJdWExUVo3cWdCQVgtSXdsWW9iTmJNcXRlYmYyVzVOMnNuTHF4ZVNDTjU5TnhaNmtXTXBqTGpvNm1RZE4xQUhxWlBz?oc=5"
             },
             {
-              "title": "Wave Life Sciences Appoints Monika Vnuk as Chief Business Officer - quiverquant.com",
-              "source": "quiverquant.com",
-              "date": "2026-09-22",
+              "title": "Wave Life Sciences: An Fairly Valued RNA Opportunity - Seeking Alpha",
+              "source": "Seeking Alpha",
+              "date": "2026-08-12T07:00:00.000Z",
               "summary": "Latest news about Wave Life Sciences.",
-              "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNSVFyMTV2LWxYem1aVFhnaDI0MjVpb2d2TkNmdlpkM1Zld0E5TERkSV81Q2R2QzZ0Qm81SjF4aE8zZGgzaU5BdjRpeDFqa2Mwb3k1Z2FEd1dzZmZ5WnBKZ2lldGllNGF6UzZMamwwcmc5WVFDS2hGZmN2S3MyRFJ5VkZGdldwblVxbGJuanpCV1g3Yk01N3lpa00ya1JPU2c?oc=5"
+              "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNdndhY0hLaGpGYzFWUndyRmNKQ2NKaE1TWkJyM0pWcEx5LVFYRDZsYlJMdmFTZFotZ3BGcGVucWFSRUFKZGJLTmFGaDJDT1l1VXozTE9DLWRwTmFVYi1qYThxdWxOdmlQRThGMzJ6QzI5R19BX1RXR1JJdGtHeTNobF91NFhSanN3RGZuajg4ZFVJNGl6SUdr?oc=5"
             },
             {
               "title": "Wave Life Sciences (WVE) Stock Looks Cheap On Price But Expensive On Sales - Yahoo Finance",
               "source": "Yahoo Finance",
-              "date": "2026-07-23",
+              "date": "2026-07-23T07:00:00.000Z",
               "summary": "Latest news about Wave Life Sciences.",
               "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxPaFMtNkJFUjBsUmF1OE5uU0tpYWJyVllGU01VMmIzWm0tY1Bfb3N6Ql9CS0Mya25HTUpMbmpxcFZHNFpNTDUyV1JGcjlCRmdBRTZJMEtEdlhzSUZEV0xkMF9DOThlS2c2WmttM3NOWTlWUHFZcmZDcWZHSldBVTVUVDhVdlVhMjZCZ2E1RWEzUDFYcVpOWDlfdw?oc=5"
             }
@@ -698,36 +875,41 @@
         "SEPN": {
           "symbol": "SEPN",
           "name": "Septerna",
-          "price": 37.99,
-          "change": -2.39,
-          "changePercent": -5.92,
-          "marketCap": 1773257344,
+          "price": 38.17,
+          "change": -2.21,
+          "changePercent": -5.47,
+          "updatedAt": "2026-09-23T19:07:38.435Z",
+          "marketCap": 1781659008,
           "monthlyBurn": 4344666.666666667,
           "cashPosition": 516500000,
-          "oneDay": -5.92,
-          "fiveDay": -1.17,
-          "oneMonth": -5.02,
-          "sixMonth": 59.76,
-          "ytd": 35.78,
+          "oneDay": -5.47,
+          "fiveDay": -0.7,
+          "oneMonth": -4.57,
+          "sixMonth": 60.51,
+          "ytd": 37.4,
+          "oneYear": 137.67,
+          "threeYear": null,
+          "fiveYear": null,
+          "tenYear": null,
           "news": [
             {
               "title": "Ra Capital Management sells $63.45m in Septerna stock - Investing.com",
               "source": "Investing.com",
-              "date": "2026-08-14",
+              "date": "2026-08-14T07:00:00.000Z",
               "summary": "Latest news about Septerna.",
               "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPQmE4dWl1NElRLUF6V1VEVC1DZjNpT2lXNWpicTA4V0g5azBTYVBOeG94bFNmMWNMdUFvRk9kQ3ZUc05UWTRMRU1ZencxR2NYc0NET3ZZbngyRW1WbjBWd3RlMmE4LWpNZnZNeFJqSWU0S3hPSHB5TmJ4NE9pdFlwZVU3eTBEZi1WeTNrTzl5V1BFT2VFTzhpZmhYTk1EZTc0RXFGSG5HeHZtN2ZzTGpuSzV6emNPaDg?oc=5"
             },
             {
               "title": "Is Septerna a Stock to Sell After an Insider Let Go of 15,000 Shares? - The Motley Fool",
               "source": "The Motley Fool",
-              "date": "2026-06-29",
+              "date": "2026-06-29T07:00:00.000Z",
               "summary": "Latest news about Septerna.",
               "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQOGJ3dE92a1lKc2VMWjlVWkMtSHpoSHM3UHpNMDBLbEM3VHYxd0RuaUE1aUFaNjRpd05DeDZHNEpscTFEcl85V3JkLWgtVml2eFRySEhWZWJoSDFvaXJpam9HNm1LU3pmdUYwTjZ1dkpmQjlLRE5OQndsNHQydXl1SUxOM2JtX1huM3R3a3dRZ1JNX1RjWl94enRNYmlFNFhPQzZ5TjEzRWozSzlOSTJjYVpyaTdyNDR0S0E?oc=5"
             },
             {
               "title": "Party Time: Brokers Just Made Major Increases To Their Septerna, Inc. (NASDAQ:SEPN) Earnings Forecasts - Yahoo Finance",
               "source": "Yahoo Finance",
-              "date": "2026-05-17",
+              "date": "2026-05-17T07:00:00.000Z",
               "summary": "Latest news about Septerna.",
               "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxQNUZyR3E3WkNKX0l5MWpraTBOWWtDeEl6ZXRmZzF1LXVFVFVQVnJ1VXJDaFYyRnAtamlwNG5HbXQ3a0FBTExKby0wUHBMd1FVRVhjOV94aWJYY3pRc1p3QjR0bWpBZHdmT0dPTUNtLW5DN2JuaG4wRVNrZ2NfVFl5cS11TWwzMHlveHNrUzRxMmQ5MWhSdHk3bQ?oc=5"
             }
@@ -739,6 +921,7 @@
           "price": 1.94,
           "change": -0.09,
           "changePercent": -4.68,
+          "updatedAt": "2026-09-23T19:07:39.398Z",
           "marketCap": 515024512,
           "monthlyBurn": 13037000,
           "cashPosition": 201600000,
@@ -746,26 +929,30 @@
           "fiveDay": 3.48,
           "oneMonth": -19.71,
           "sixMonth": 38.21,
-          "ytd": 3.48,
+          "ytd": -1.78,
+          "oneYear": 43.33,
+          "threeYear": -17.31,
+          "fiveYear": -71.12,
+          "tenYear": null,
           "news": [
             {
-              "title": "Autolus Therapeutics plc SEC Filing (Sep 23, 2026) - Stock Titan",
-              "source": "Stock Titan",
-              "date": "2026-09-23",
+              "title": "Autolus Therapeutics plc SEC Filing (Sep 23, 2026) - stocktitan.net",
+              "source": "stocktitan.net",
+              "date": "2026-09-23T10:19:38.000Z",
               "summary": "Latest news about Autolus Therapeutics.",
               "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxQWW9iZk52Y3d2dlpkb0c5aTdJd25jemxmb0pmT1lYdTN1VGdvM0dKbGloX2w1ck9DRl9xN2hGVDJnWWZDaFRNMTI1bTZBRzZxLU1Kd2NUOURmdTFweF9PRVFYWmlLQUMybFp2SXBPaEtaSkRfWDB0UjloOW1jS2R0X083VjBHcTlmeHpGVVhKb0psaE51WThMa1J5ZHFRT0VxZ1FXUFNpWQ?oc=5"
             },
             {
               "title": "Autolus Therapeutics plc (AUTL) Stock Analysis: A Biotech Pioneer with a Staggering 354% Potential Upside - DirectorsTalk Interviews",
               "source": "DirectorsTalk Interviews",
-              "date": "2026-09-18",
+              "date": "2026-09-18T09:17:17.000Z",
               "summary": "Latest news about Autolus Therapeutics.",
               "url": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxNVXoxZWNNMkFRRkZkN1pfTkQ2dDkyb2Q5b3BqU2dVMlFWSDY3S05DTTZSeGF3NVlIRmx1WUh0Z0RMQ3VGQjV6Q2x0enRwQlpMUkczNS1GU0pCaE5OS3Zoc1l4bWpqcEZOTkhaWG03V082NXhRX2VtYm5jeHM1MHV1Sm95YWpTSlhWU001cmpPbE1SaVFpZUR1SFlzeXBsMDRUbVc0YnZheDg0Q0JwX3ZhVzQ4Z1hwcV9tYmlBRXdOT1J4QzdlODduSWREdFM1U19OYV9KLW51R0xubWFlY1BkXzJXejhiaGs?oc=5"
             },
             {
               "title": "Autolus Therapeutics (AUTL) Stock Sees Split Analyst Revisions After Early Aucatyzl Launch Signals - Yahoo Finance",
               "source": "Yahoo Finance",
-              "date": "2026-06-24",
+              "date": "2026-06-24T07:00:00.000Z",
               "summary": "Latest news about Autolus Therapeutics.",
               "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxPNUVtYTVjNFUtLU9yZUdLSDMyc1V2X2R2amFlWkQ5VmNDQlhxSnBManN0emctU29oX1F0OGVwbnc4dl9acU94aXVNRUQ2TGVkMW9mR1NfNVNuTkNZUjRQNldYWmx3a3B0V0RQbGJZTUFySHRPV1Z3cGpXel9CWENXeW5VekJvdGNRVjl4c3F0ck16eDVYQzM5amRNU2N5UzlrQlVj?oc=5"
             }
@@ -776,34 +963,39 @@
           "name": "Allogene Therapeutics",
           "price": 1.68,
           "change": -0.03,
-          "changePercent": -2.05,
-          "marketCap": 578697216,
+          "changePercent": -1.75,
+          "updatedAt": "2026-09-23T19:07:40.328Z",
+          "marketCap": 580424640,
           "monthlyBurn": 14202333.333333334,
           "cashPosition": 423600000,
-          "oneDay": -2.05,
-          "fiveDay": -0.89,
-          "oneMonth": -19.86,
-          "sixMonth": -31.35,
-          "ytd": 24.07,
+          "oneDay": -1.75,
+          "fiveDay": -0.59,
+          "oneMonth": -19.62,
+          "sixMonth": -31.15,
+          "ytd": 28.24,
+          "oneYear": 43.59,
+          "threeYear": -53.97,
+          "fiveYear": -93.92,
+          "tenYear": null,
           "news": [
             {
               "title": "ALLO News | ALLOGENE THERAPEUTICS INC (NASDAQ:ALLO) - ChartMill",
               "source": "ChartMill",
-              "date": "2026-09-16",
+              "date": "2026-09-16T13:58:03.000Z",
               "summary": "Latest news about Allogene Therapeutics.",
               "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE5KbTBkX01HTnZ6aER3X2tuU01GNjZHOEkzZHRFdmNtYWVSWmRXSHBrcVRqbnlfQ1hDQnJoYmszYWZycHc3S1ZiUVc1eEZFVllMckdkMVVmSXZfZTQ?oc=5"
             },
             {
               "title": "Is Allogene Therapeutics (ALLO) Stock Outpacing Its Medical Peers This Year? - Yahoo Finance",
               "source": "Yahoo Finance",
-              "date": "2026-08-17",
+              "date": "2026-08-17T07:00:00.000Z",
               "summary": "Latest news about Allogene Therapeutics.",
               "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxQM1JwcWtBb25yV2Q5T0NxRWNpX2t2RDl0YmxkR1lTWXY4UGMxYWU4N2t0SzJJZjY1TURocGhtSU9LWWZrR0dwV3ViZWNHeTRDemowTjYxTkVuWnlWbzdYeGRTNllTRkRlcUx0QVRTbk04TnhJZlkyTkVCTDlkOFF6Z0lwWm5nMXo0TFdzc0lYVllPb2tYVE5zSVdoc1BTSzdpZDk4ZUFB?oc=5"
             },
             {
-              "title": "Watkins Advises on Allogene Therapeutics’ US$200.4 Million Public Offering of Common Stock - lw.com",
-              "source": "lw.com",
-              "date": "2026-04-16",
+              "title": "Watkins Advises on Allogene Therapeutics’ US$200.4 Million Public Offering of Common Stock - Latham &amp; Watkins LLP",
+              "source": "Latham &amp; Watkins LLP",
+              "date": "2026-04-16T07:00:00.000Z",
               "summary": "Latest news about Allogene Therapeutics.",
               "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQNWNobGI1U2dmZkl6aGswY3Ytd2hndGlsQjNBOGNFOEM2WjdoalRoUnlROXM1MzZSd0tqVjVJd3Y1NDlnNUtKTUJUT1Y1dHZKYzRuMEI1empySXJfZWdhZmFhMlQ2eEJtRXhxbDVmZzlucTg4dHdRcmVhMGN0Vk5seWYtQlF2WW5NRVhJRmROSkN5Zk83ekpqd3lvMGVTSzRJbHVxS2NWdUFtb2E3QzVLOFZEY1E?oc=5"
             }
@@ -812,36 +1004,41 @@
         "IMTX": {
           "symbol": "IMTX",
           "name": "Immatics",
-          "price": 8.62,
-          "change": -0.25,
-          "changePercent": -2.82,
-          "marketCap": 1312180096,
+          "price": 8.61,
+          "change": -0.26,
+          "changePercent": -2.93,
+          "updatedAt": "2026-09-23T19:07:41.010Z",
+          "marketCap": 1310657792,
           "monthlyBurn": 24129116.666666668,
           "cashPosition": 448200000,
-          "oneDay": -2.82,
-          "fiveDay": -0.23,
-          "oneMonth": -3.47,
-          "sixMonth": -9.36,
-          "ytd": -17.51,
+          "oneDay": -2.93,
+          "fiveDay": -0.35,
+          "oneMonth": -3.58,
+          "sixMonth": -9.46,
+          "ytd": -14.5,
+          "oneYear": 20.93,
+          "threeYear": -26.47,
+          "fiveYear": -36.97,
+          "tenYear": null,
           "news": [
             {
               "title": "Immatics stock holds at USD 8.77 as analysts see upside - AD HOC NEWS",
               "source": "AD HOC NEWS",
-              "date": "2026-09-23",
+              "date": "2026-09-23T07:02:59.000Z",
               "summary": "Latest news about Immatics.",
               "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOcmFOVVZvMHNqRU5Cd19jbG1yM2E1WGZoN3Q1Q1JzZm1jLV8yS2pZbkRUYnRnSHNpNmxscEJuRTFTYmxiUzB0SUVIZDhObGF0MFRnR3YxZW9PY2J4WlozS2ZmbG1xMXJfeHREQm93azhPdzZvYnhZa0JXYVhnd1NzVnBTSWd3SzNOWGR0a1hkUDVSNnJ2VHF6OXQyZ0trb2RCNWJTbm04MjhkbUdjbWNSejFDd24?oc=5"
             },
             {
               "title": "Immatics (IMTX) Stock Forecast and Price Target 2026 - MarketBeat",
               "source": "MarketBeat",
-              "date": "2026-09-18",
+              "date": "2026-09-18T07:00:00.000Z",
               "summary": "Latest news about Immatics.",
               "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE9WZnZvaUtPbVR6UEY3V09WYm9SRy1KS0FSWGo2UF9oNWFqV09pLU8tYklmdXQtQThhbWlkbmNseGFTYTBqNWtQTWZfWm1BSWxyS2E1YmczdngwRGxuaHVSQXVnS3BTQQ?oc=5"
             },
             {
               "title": "Immatics Announces $150 Million Underwritten Offering - Yahoo Finance",
               "source": "Yahoo Finance",
-              "date": "2026-08-25",
+              "date": "2026-08-25T07:00:00.000Z",
               "summary": "Latest news about Immatics.",
               "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxOek1FLUpxY3JzY2RrSzZxeWVqQW5CdjlwQW9OOVVoSWJDOTIzTW5wRUZtbnk3WW1YRW5uU0psckFwZWVkUVg5UC1UVG1yaEg0eFpKSnBjLUx4ZTFkOVdQMTRjdmtJWHlKNVM4REpIMHdwNGJYRktQd3RrbjZXS1lfMXdtMzd1bHZSMnUyd0psbGRFUllLWlZhY2Q1TW1kSkwxdktOc2ZXaw?oc=5"
             }
@@ -850,36 +1047,41 @@
         "JANX": {
           "symbol": "JANX",
           "name": "Janux Therapeutics",
-          "price": 16.41,
-          "change": -1.06,
-          "changePercent": -6.07,
-          "marketCap": 1003254400,
+          "price": 16.39,
+          "change": -1.08,
+          "changePercent": -6.18,
+          "updatedAt": "2026-09-23T19:07:41.801Z",
+          "marketCap": 1002031680,
           "monthlyBurn": 7324000,
           "cashPosition": 970900000,
-          "oneDay": -6.07,
-          "fiveDay": 1.02,
-          "oneMonth": -5.64,
-          "sixMonth": 18.06,
-          "ytd": 20.22,
+          "oneDay": -6.18,
+          "fiveDay": 0.89,
+          "oneMonth": -5.75,
+          "sixMonth": 17.91,
+          "ytd": 18.51,
+          "oneYear": -28.68,
+          "threeYear": 70.73,
+          "fiveYear": -28.33,
+          "tenYear": null,
           "news": [
             {
               "title": "Janux Therapeutics: It's Too Early To Tell If Prostate Cancer Program Can Succeed (JANX) - Seeking Alpha",
               "source": "Seeking Alpha",
-              "date": "2026-09-18",
+              "date": "2026-09-18T16:46:52.000Z",
               "summary": "Latest news about Janux Therapeutics.",
               "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxNaVBnckpEdUE1WWxCS1E3SkJ3bG5faDJOcVBGdnBiYXNDRkZjekVtNWNEeE1URHZnbVI4YTlFUmprNG5DYldPR0lycV9BT0UxWGFVdnRHU1l0c0pldW1XRDZEa0I0VVF0SVp5ZUotZVFZSkwyMXZTY0M5TlNqZ2RESzBlOUNOYTIzUEtzYlRORkRKMFVON2dpZUVRTUl2eXJFSlNNdHV1SGJ3WFNWa3NadVA4N0xxTHBsVzRqdw?oc=5"
             },
             {
               "title": "Phase 1 Trial Start Might Change The Case For Investing In Janux Therapeutics Stock (JANX) - simplywall.st",
               "source": "simplywall.st",
-              "date": "2026-09-16",
+              "date": "2026-09-16T18:36:14.000Z",
               "summary": "Latest news about Janux Therapeutics.",
               "url": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxPc3BZVnBkMmQ5bDA0cEJmaW1zMUJ4R3FLLUp6Y0JsdzZidEpSbVkwY2pYOW9hY2lBeDN5T2tRU1ZGR3dMNW81Y3YzTXRqY3lvLVFFQU5IbmxGWG1OcXUxTzg2WVRwWUdpMExGNWtnaEl5bF9BOXZZSXNab2M5MG5mMlEzeE4waEprUTZWcHN0ZVd0MElBd3dFWC1nX1JNa1ZKNGhFZlBLdFktWU9zUFpyaktQQWdMLUxVS211cENMVGtJV09EelFhZXhjaHZGY2tEVUdvX0YwTWlwVW1ZM3lvejRKanlfbFHSAewBQVVfeXFMTkkxNWhRN1k3MlRJMUk0M3ZKT3dHNGlqTndKMGFqODNJY3h4cjVNNk5HQWNaaEhWT2pDNWdZSmp4bEs2bDFxTHVxa2FfS25RZXJLSDRRellqTkdacWhSUEZQbUxMd1dBdmhLOGlXalc0Rk1wbXJmVWV3ZFhOMHBaSlNLU0ZlaVhjSVYybGFPTThGTDREVm5XcW9vVUprdUJuNktmSUI0SU5EN3BrYjFEaXkzZ0hnLWVQY2d3TTZvV2tVT2JUaVduT2JUdTVTQ2pGRVVsdW1ON3ZmSEZJMWNJTk9Tb0NrZWRTTEZZQ0E?oc=5"
             },
             {
               "title": "Wall Street Analysts Predict a 155.82% Upside in Janux Therapeutics (JANX): Here's What You Should Know - Yahoo Finance",
               "source": "Yahoo Finance",
-              "date": "2026-05-28",
+              "date": "2026-05-28T07:00:00.000Z",
               "summary": "Latest news about Janux Therapeutics.",
               "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxPTWhweV9vbVpoeFI4NGRyYzhDT1JRNVEzV1g1V2ZXTndlLWVpQmk2OGs1czczT3lORVphM1pCUDF1OUl5ZGtEamdmdHpEQW10aXlYVUdEaGxUd0RuLU44cmVtY0I5eFdqSXVsR1c1T2VHYlZfS1k1MUp4enVPX2ZZRk5BTUYzdy10VFVJT1ZLeHRhZUxFRGtDM0ZVdEpRZw?oc=5"
             }
@@ -890,34 +1092,39 @@
           "name": "Candel Therapeutics",
           "price": 11.63,
           "change": -0.22,
-          "changePercent": -1.85,
+          "changePercent": -1.86,
+          "updatedAt": "2026-09-23T19:07:42.601Z",
           "marketCap": 889910976,
           "monthlyBurn": 12968333.333333334,
           "cashPosition": 201600000,
-          "oneDay": -1.85,
+          "oneDay": -1.86,
           "fiveDay": 5.54,
           "oneMonth": -11.42,
           "sixMonth": 133.07,
-          "ytd": 113.79,
+          "ytd": 103.68,
+          "oneYear": 119.85,
+          "threeYear": 920.18,
+          "fiveYear": 16.3,
+          "tenYear": null,
           "news": [
             {
               "title": "Candel Therapeutics: Strong Buy On Aglatimagene Prostate Cancer BLA Filing In Q4 (CADL) - Seeking Alpha",
               "source": "Seeking Alpha",
-              "date": "2026-09-22",
+              "date": "2026-09-22T18:50:47.000Z",
               "summary": "Latest news about Candel Therapeutics.",
               "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxNQm9VNjZEUURFVE13bU1tSVJTVkV6NllBamhQODVzOEk5TE9ZTmtjOXMwRHhBRER4UnVsOGhCb0xsdkJoU0hRaHk1ZGdKeTk5T3ItM1VJZ2Q1cU1hLVlwUjNzdlpYMXlGOE5zUExQYVk1XzQtaVZyYWh0T1BJRkh3R1JKWXdCa1Z2RklycTJoSHJtUTkxUzY5UUdPWm5KVFlUT2pHbnJQem9fWEZaVFlTcXVScnhzdEw1N20zQQ?oc=5"
             },
             {
               "title": "Why is Candel Therapeutics stock surging today? - Investing.com",
               "source": "Investing.com",
-              "date": "2026-09-21",
+              "date": "2026-09-21T21:58:57.000Z",
               "summary": "Latest news about Candel Therapeutics.",
               "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxQcUdZbDhCelJHT3dwVXpwU3NvcjROQ090YTgtVjYtOVBjVWw3dmZiLVJqNm1WQjZiM1B3UkowX0dKTHhWNTdZX0NYTW51dDR2SWNWaVFaMnZMYk5yNVU2TmJzOVJVOU1oX2tVR2o4QTJHMm5aX1VBZWsxZmRlTzY3dWtwVnplU3hid05NSm03V1RXSkRwMzNUWmg2VzIzZzhqbGJfblk1OVZiMmoy?oc=5"
             },
             {
               "title": "Candel Therapeutics (CADL) Faces Bigger Losses As Its Valuation Still Looks Pricey - Yahoo Finance",
               "source": "Yahoo Finance",
-              "date": "2026-08-20",
+              "date": "2026-08-20T07:00:00.000Z",
               "summary": "Latest news about Candel Therapeutics.",
               "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxPOG9CQks5UGZDS3J5MXdMeE0zTlVhSGl3WW9pODB3bkpJMUNKWDF0WkE3cGg5eXJROFpaLWV6bjVtdXk1Sk5TNF85M1JpTzZIcE1LZU9SeGJyanRpWnhQSi1SZTJBV0E4M1ZnWGhuUnZfWEdodVFYTzM0bWlGMmVGVk9FREZoTV9PTng5NjRRWnlfUWNfTy03WFM0bU00ZlQ3cDFGTQ?oc=5"
             }
@@ -928,34 +1135,39 @@
           "name": "enGene Therapeutics",
           "price": 2,
           "change": -0.05,
-          "changePercent": -2.68,
-          "marketCap": 133697552,
+          "changePercent": -2.44,
+          "updatedAt": "2026-09-23T19:07:43.482Z",
+          "marketCap": 134032632,
           "monthlyBurn": 10833666.666666666,
           "cashPosition": 266300000,
-          "oneDay": -2.68,
-          "fiveDay": 4.45,
-          "oneMonth": 12.08,
-          "sixMonth": -72.71,
-          "ytd": -77.46,
+          "oneDay": -2.44,
+          "fiveDay": 4.71,
+          "oneMonth": 12.36,
+          "sixMonth": -72.64,
+          "ytd": -77.65,
+          "oneYear": -70.41,
+          "threeYear": -81.72,
+          "fiveYear": null,
+          "tenYear": null,
           "news": [
             {
               "title": "EnGene Therapeutics Inc.(NasdaqCM: ENGN) dropped from S&amp;P Global BMI Index - marketscreener.com",
               "source": "marketscreener.com",
-              "date": "2026-09-21",
+              "date": "2026-09-21T02:53:07.000Z",
               "summary": "Latest news about enGene Therapeutics.",
               "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxPSWN3di1nODB3Y3JrUlpXQXlOZ0xfTnQ5UTZzQmlScXFidEN3Z3ZHNmctWTB2MmxJTzN5a180SW56ZVRybGpHTXJDXzZGX0xXSGltQV9waUttLTEwV2dPdVdsRE9XNXhNUUJnLWViV0hiejRyUFA3cmoyQmJPMzN1Z2t2QUtNV2VtX0xnSUlhQU1uNENjU0ZGNmd1WVUyZDFDU21BTGNhTVpkZFpuWVNZSzFQYWNVdURrQTJ3TjJtWDRoQQ?oc=5"
             },
             {
               "title": "enGene Therapeutics: The Market Overreacted To The Latest Trial Results (NASDAQ:ENGN) - Seeking Alpha",
               "source": "Seeking Alpha",
-              "date": "2026-06-08",
+              "date": "2026-06-08T07:00:00.000Z",
               "summary": "Latest news about enGene Therapeutics.",
               "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxPVWFabC1mTzkwY1NKOXVuMnN4MElVX204Q19HNUw0VE1ZNllKU1J4WlViMnVITEtDc3dmeUdHVFRIUVR1SEN2eTk4b1hfdDgxVTN2VkFUUDNqLUpaQy1PejIwZ3R5alJlTUJYc3NRd2U3MnVjZ0VFRnJMeDMyM1I0MFU2SWtPai1DUGF4X091WkR3cWVfVExnRlFZaGt3NE0yLUdnSUNETkVVWFlneklUTFpNMA?oc=5"
             },
             {
               "title": "A Look At enGene Therapeutics (ENGN) Valuation After LEGEND Trial Update And Legal Investigations - Yahoo Finance",
               "source": "Yahoo Finance",
-              "date": "2026-05-10",
+              "date": "2026-05-10T07:00:00.000Z",
               "summary": "Latest news about enGene Therapeutics.",
               "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxNdDFzTjhsV2hUcFNyNFZ3aml3WlVnbTRrZUJoazFEcnNoTUNnV1BzbVByNjJ4VWZvN1VqaDM1RTVjMWVDRWx4WnRKR2dwZWRYM0tYV1BUc1g4NzdCUW1Rc0pDRzA4T2lUcGZvdVhiV20xUDFCRGhTOEZ2NElNUDJOMl9FWWQyWmtPVEZqcE9Na3FqNFFVOHBRb2s1eFc3Nk9ONW5WNXNrWQ?oc=5"
             }
@@ -964,36 +1176,41 @@
         "URGN": {
           "symbol": "URGN",
           "name": "UroGen Pharma",
-          "price": 41.24,
-          "change": -1.52,
-          "changePercent": -3.55,
-          "marketCap": 2015834496,
+          "price": 41.13,
+          "change": -1.63,
+          "changePercent": -3.81,
+          "updatedAt": "2026-09-23T19:07:44.357Z",
+          "marketCap": 2010457600,
           "monthlyBurn": 4783666.666666667,
           "cashPosition": 108000000,
-          "oneDay": -3.55,
-          "fiveDay": -5.17,
-          "oneMonth": -11.99,
-          "sixMonth": 138.38,
-          "ytd": 81.59,
+          "oneDay": -3.81,
+          "fiveDay": -5.43,
+          "oneMonth": -12.23,
+          "sixMonth": 137.75,
+          "ytd": 77.51,
+          "oneYear": 130.03,
+          "threeYear": 162.14,
+          "fiveYear": 139.97,
+          "tenYear": null,
           "news": [
             {
               "title": "UroGen Pharma (URGN) Stock May Still Trade At A Discount To Sales - simplywall.st",
               "source": "simplywall.st",
-              "date": "2026-09-13",
+              "date": "2026-09-13T02:33:33.000Z",
               "summary": "Latest news about UroGen Pharma.",
               "url": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxPR1RrN3lORFZRMmNhT0lBS1lNQk54bEdhN05ybDI4VVFVUlRnQ016YWd6dXdJRmRtcTN0S05yZmJfbFgwVVMwMzNNNi03alV5Tm1xcHhhaWZUbjdBXzNsa1pFb0ljZG0yamFwR2tRd28xUFp3VkNWaHF5TVJoNHc1c21KR0lFY09RWjYyYy1qTHg4SFJTMGtxYjRJdU9QZ0Fnam9ENFUzSlRJMjg0dThhVkpJaHR2WENhdkhqSHh0Um5CTlhXM2FjTGVVQlFXRkdIMDVHR0VteWZhSDN0WEVrWtIB5gFBVV95cUxPdzMtUWo0N2F6UWlPdEJhaGU3bUtfVGlvM0U2N0dQaEFfalp0NUcteFBMbHJwa1h4eVZZWkhvaE8zcWFYdXA0cUxJMktaSkJ4YnlMRS1QdXo4TXpQb2lvUHI0dE53a1lUdEJKVjhhdTFGdU1mV3EtMFQ5OXJvYllFWU1hei1zSmlHVWYySjVWWEdCdWNfYkJlUkJpVlE0azVsZ19hSTdKRjgwdzFOM19xcUJnZ1dMdmZLWWVuSVRsSDdpcVI2X1llOU5mYnZSeXpJYVRkSVlMSlNQSkJhWTJETldHUlMyQQ?oc=5"
             },
             {
               "title": "Urogen Pharma (URGN) is a Great Momentum Stock: Should You Buy? - Yahoo Finance",
               "source": "Yahoo Finance",
-              "date": "2026-07-07",
+              "date": "2026-07-07T07:00:00.000Z",
               "summary": "Latest news about UroGen Pharma.",
               "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNUnpKaXZhcjRUdFFGTENlRy1HV1lKNzJfMXFwVFI0R2tVcExKaVdDTmpLenM0cXd0SzNUT3NnQU5SeXIxejJRRzhWZV90VW94R3NQTXZJa09oeElfQzBXUC1qMXVYaEdRV29WUkpFZXdtQWp5M005UXdCSHoxNUVHZFMxWWlTeElqYlNvS3dCdFRLby1qb252TE5yZVA4VG8?oc=5"
             },
             {
               "title": "Is UroGen Pharma a Stock to Sell After Its Chief Medical Officer Let Go of 10,000 Shares? - The Motley Fool",
               "source": "The Motley Fool",
-              "date": "2026-06-30",
+              "date": "2026-06-30T07:00:00.000Z",
               "summary": "Latest news about UroGen Pharma.",
               "url": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxPczZiWVd5NXNPN3diR1hiUDh5eDk0ZlA4SEZ0RmlMbmhxMlp1TzR2WVBxWklMWWtETGpYNWZhQWFBd0ZWcFJWOVZ1LUdTaG5DRC1WdVZxOTY4QVhzTHhWR0V5aDJIQ01GX2E2a2tHdXZFeS11LV9wOVhsd0ZHSDVlRkdEVWhGLVp5R3lBQXh6WVpMYUI5VDYtODJKWUlpWFduU2VFZ0NLOXRnQ0JvMnFjeXgzV1N1VDRCa1prZGFSY003U2tvVngxSGFqRW1pU0VpZGlENg?oc=5"
             }
@@ -1002,36 +1219,41 @@
         "ONCY": {
           "symbol": "ONCY",
           "name": "Oncolytics Biotech",
-          "price": 0.68,
+          "price": 0.67,
           "change": -0.04,
-          "changePercent": -5.28,
-          "marketCap": 86146096,
+          "changePercent": -5.64,
+          "updatedAt": "2026-09-23T19:07:45.472Z",
+          "marketCap": 85827320,
           "monthlyBurn": 4381120,
           "cashPosition": 4100000,
-          "oneDay": -5.28,
-          "fiveDay": -12.26,
-          "oneMonth": -19.57,
-          "sixMonth": -28.88,
-          "ytd": -31.06,
+          "oneDay": -5.64,
+          "fiveDay": -12.58,
+          "oneMonth": -19.87,
+          "sixMonth": -29.15,
+          "ytd": -24.37,
+          "oneYear": -47,
+          "threeYear": -68.84,
+          "fiveYear": -69.12,
+          "tenYear": -74.7,
           "news": [
             {
               "title": "H.C. Wainwright reiterates Oncolytics Biotech stock rating on trial progress - Investing.com",
               "source": "Investing.com",
-              "date": "2026-07-14",
+              "date": "2026-07-14T07:00:00.000Z",
               "summary": "Latest news about Oncolytics Biotech.",
               "url": "https://news.google.com/rss/articles/CBMizwFBVV95cUxPOUJUemNmTVAwTzZsUC0ycnptaW5mREN3V0JQdlA1Q2N1M0tKTVJSeUl1MW1DOFpSSnJJZjBER1hlZ2lNcUdlNXJLcFVpODlyYVNHdTJ1NThIUThEbEQwRWliQVZzelVscmdrS1RwZnQ2cVdaallzUlJ2MGFBUE5FTW14dkc0Tk9pUERGODNoQ0Z0VzVwWVZnNUZFck5WSUt6NWlGQjhvOTRHbzZLZkhZNGFNSHFIWVdCT29CNGJuTHIwc2ZpcW1Na09uUndfT2c?oc=5"
             },
             {
-              "title": "ONCY Forecast — Price Target — Prediction for 2027 - TradingView",
-              "source": "TradingView",
-              "date": "2026-06-26",
+              "title": "ONCY Forecast — Price Target — Prediction for 2027 - tradingview.com",
+              "source": "tradingview.com",
+              "date": "2026-06-26T01:41:06.000Z",
               "summary": "Latest news about Oncolytics Biotech.",
               "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE1WVjBpa1FzVUhqVlJabTdiNjRPQk9OVDNiX1VhVDlMRkpWU2tybUNZal9PMEFoQi1fYkp5Y1lKLXBzM1VncWxDelVONUZfYklseElWOFphVVFfc1c5cnlrdThsd3RZbjBfelhvU1laUmphNFEzZ0EzS0R3?oc=5"
             },
             {
               "title": "Oncolytics Biotech (ONCY) Valuation Check As New Pelareorep RAS Combo Data Draws Investor Attention - Yahoo Finance",
               "source": "Yahoo Finance",
-              "date": "2026-06-04",
+              "date": "2026-06-04T07:00:00.000Z",
               "summary": "Latest news about Oncolytics Biotech.",
               "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxONUpKUEZFa1RaZ204S0ZscmxlNUwtWldhQlU2Zl9adzdfM1lGTjVYSFh0SHRfRVlVMmZuQ3Y0OVZDbEVGN0N1YkRyU0hIX1YyWFRPU1N2MkxtRVVuU3p6TnhZVkhaaE1JeEFpV3FXa196V3pHQ1RfU1JVVmRGR0JzdFFrVXRPa09tZXZQSGVCNjQ4NEx0REtOZWMtWXB5NEREcHFGZjV4NHh3LVA5?oc=5"
             }
@@ -1040,36 +1262,41 @@
         "CRSP": {
           "symbol": "CRSP",
           "name": "CRISPR Therapeutics",
-          "price": 55.95,
-          "change": -3.09,
-          "changePercent": -5.22,
-          "marketCap": 5409470464,
+          "price": 55.79,
+          "change": -3.24,
+          "changePercent": -5.49,
+          "updatedAt": "2026-09-23T19:07:46.692Z",
+          "marketCap": 5394483200,
           "monthlyBurn": 40977000,
           "cashPosition": 2360000000,
-          "oneDay": -5.22,
-          "fiveDay": 7.15,
-          "oneMonth": -5.97,
-          "sixMonth": 19.34,
-          "ytd": 4.05,
+          "oneDay": -5.49,
+          "fiveDay": 6.86,
+          "oneMonth": -6.24,
+          "sixMonth": 19.01,
+          "ytd": 4.89,
+          "oneYear": -8.18,
+          "threeYear": 22.64,
+          "fiveYear": -53.99,
+          "tenYear": null,
           "news": [
             {
               "title": "CRISPR Therapeutics AG (CRSP) stock price, news, quote and history - Yahoo Finance Singapore",
               "source": "Yahoo Finance Singapore",
-              "date": "2026-09-23",
+              "date": "2026-09-23T13:32:55.000Z",
               "summary": "Latest news about CRISPR Therapeutics.",
               "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFBCcTNHbThhaEJuTmlSaVZHQWRVYmhMUEdfWUpkRmowSkkybzhOV25HUjlfX1NtOVprODhma0NfdWgtb0tVYXRLNlFWS3plUDN4LUE?oc=5"
             },
             {
               "title": "CRISPR Therapeutics stock trades below targets despite approved gene therapy; analyst sees 85% upside potential. - Pluang",
               "source": "Pluang",
-              "date": "2026-09-23",
+              "date": "2026-09-23T12:34:24.000Z",
               "summary": "Latest news about CRISPR Therapeutics.",
               "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxPOHFINU9EdDNaWnZDXzhWZkFHdllsM2dlZXNGek8xWUNJVnJLSjJjOWQwZ09qdXlZVVhLT2hzRmIwcmUxRVgySFVTVTVOdGRUVC1oUWtOakUyQk56eW1iX1JybnpxSFpteVRsWU54SGh6NDFDczNtbThJQnlwcnZMaHpOaWZjOWZRdTlEa1R5NXRKU0tPTU80VEtSQXNXTnJkaGlR?oc=5"
             },
             {
               "title": "CRISPR Therapeutics Traded Sideways and Down for 12 Months: One Wall Street Pro Expects 85% Gains Soon - 24/7 Wall St.",
               "source": "24/7 Wall St.",
-              "date": "2026-09-23",
+              "date": "2026-09-23T12:22:00.000Z",
               "summary": "Latest news about CRISPR Therapeutics.",
               "url": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxQWk1nY01FMHZGVWV2SUhISHJmNDdNd0o2R2FPUFFCcWdBY2VTMXUwcEFnRWFjQnk4Y0EydVJjZm9yN2NnbmVaNnNXVjFiMVRzV1RtVFNwaFpmTFJBODU3cXpqc3pzWVFsZDl3MmFmaDd0VUZmQ21BeUhjZkptaG1IYTZVOHMwMWU1RDV1blJLT2FRMUQzZ2tISWVpcEhiQVZtT3hVSVlDN29LRzI4SVNXeThZUno1VVIwQ0xqSVpoc0lzcmZFc05GR2dBYmw0bHJzQThNV1liZk9FQVdj?oc=5"
             }
@@ -1078,74 +1305,84 @@
         "BEAM": {
           "symbol": "BEAM",
           "name": "Beam Therapeutics",
-          "price": 24.4,
-          "change": -1.53,
-          "changePercent": -5.9,
-          "marketCap": 2520218880,
+          "price": 24.42,
+          "change": -1.51,
+          "changePercent": -5.82,
+          "updatedAt": "2026-09-23T19:07:47.433Z",
+          "marketCap": 2522284800,
           "monthlyBurn": 40892666.666666664,
           "cashPosition": 1200000000,
-          "oneDay": -5.9,
-          "fiveDay": 5.63,
-          "oneMonth": -18.01,
-          "sixMonth": -3.06,
-          "ytd": -10.1,
+          "oneDay": -5.82,
+          "fiveDay": 5.71,
+          "oneMonth": -17.94,
+          "sixMonth": -2.98,
+          "ytd": -12.22,
+          "oneYear": 2.91,
+          "threeYear": 2.78,
+          "fiveYear": -75.11,
+          "tenYear": null,
           "news": [
             {
               "title": "BEAM Stock Price, Quote &amp; Chart - ChartMill",
               "source": "ChartMill",
-              "date": "2026-09-08",
+              "date": "2026-09-08T22:35:29.000Z",
               "summary": "Latest news about Beam Therapeutics.",
               "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTFBGSW44dkFEek8zVG5QUlVqd25tNHNnWDd4c3pvWWRFSTJZS2I3WmtIeXJFX09tVWFyZHplWW5qWHVyUHdXY1FPVllhT0ZZTXhFTFNnU1dROXFmWTgtX0hF?oc=5"
             },
             {
               "title": "Beam Therapeutics (BEAM) Stock May Look Stretched As Sales Expectations Climb - Yahoo Finance",
               "source": "Yahoo Finance",
-              "date": "2026-08-26",
+              "date": "2026-08-26T07:00:00.000Z",
               "summary": "Latest news about Beam Therapeutics.",
               "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxOWVplLVdEdFhZM2IwV1R5UzRUek1BU1FIZzVTRWpWbzJZcHZDa3JocU5OX0hpaGNORDdobTI2OWl6Z1UwcmZ6U1pPdVdPcWVLdDlQbVJGMnMzemo1MUJKOUQ3NEdhcG5hN3NGX3VpRmtFUUJjbmVTSHEyTmFic09RbDU5bWN2SmYwRDFzak1LcUljcEhOR1VLc3YtREdDUQ?oc=5"
             },
             {
-              "title": "Why is Beam Therapeutics stock sliding today? - Investing.com",
-              "source": "Investing.com",
-              "date": "2026-07-08",
+              "title": "9 Red Days In A Row: Beam Therapeutics Stock Is Down 31% - Trefis",
+              "source": "Trefis",
+              "date": "2026-07-21T07:00:00.000Z",
               "summary": "Latest news about Beam Therapeutics.",
-              "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxOZlA3UmdRSW5nTW5lUFJqdVBueDN2TjRmSVNOSnZrLWFEWVJ2QW1WOWN6ZzdUQXhicllHakI4d3o1S1pVQk15bTR1X3RIeG9ZVkJPcFRxTWZtdFVxZFBoUHl6LUtlMy1ZVDIydDBjQUl6VHF6a1Y1VkZ0aktFVXhYT0dTNkZ5em0zQ29DMnlxQW40dV94SURpVjJ4WWd6clBKYVp6M08xY0Q2Zw?oc=5"
+              "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxOZkFFLUJyaDZrVzhCQWwyd1AyWkt3Ujk0LVZfSnVQOEkyR2NXWV9MdUUxYmdKYTE3YmV3ZnI2aVN5Mk9ENnNpcDFLaU5BV3NUYktFZDlUOGpMNWh6a2ltWnpKWWlVQWdtaUFJblpjeXktbTB1V1RVbkFmZjNaQlE3d1Z2bXIxMGRQVWRwdDZZY0lBaDU1TmdhU285N3J3alo5R2pGSm1LSEZ5WVA5eE50ZEFMRFROQQ?oc=5"
             }
           ]
         },
         "PRME": {
           "symbol": "PRME",
           "name": "Prime Medicine",
-          "price": 3.19,
-          "change": -0.35,
-          "changePercent": -10.03,
-          "marketCap": 577685312,
+          "price": 3.17,
+          "change": -0.37,
+          "changePercent": -10.31,
+          "updatedAt": "2026-09-23T19:07:48.232Z",
+          "marketCap": 575871552,
           "monthlyBurn": 14036333.333333334,
           "cashPosition": 108800000,
-          "oneDay": -10.03,
-          "fiveDay": 6.17,
-          "oneMonth": -6.05,
-          "sixMonth": -11.03,
-          "ytd": -9.77,
+          "oneDay": -10.31,
+          "fiveDay": 5.83,
+          "oneMonth": -6.34,
+          "sixMonth": -11.31,
+          "ytd": -7.7,
+          "oneYear": -41.09,
+          "threeYear": -71.34,
+          "fiveYear": null,
+          "tenYear": null,
           "news": [
             {
               "title": "Prime Medicine (NASDAQ:PRME) Stock Price Down 7.5% - Should You Sell? - MarketBeat",
               "source": "MarketBeat",
-              "date": "2026-09-23",
+              "date": "2026-09-23T18:47:47.000Z",
               "summary": "Latest news about Prime Medicine.",
               "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxQQXo4X0p3NGVrRnZQd2VEMzFtM1Y4N1VEcFpCQVl4c2E0UTBBV0lOUmNzSUppamtHMjVwTVpDWlhia1FReVp0cVJRMmZuTEEya0tlMmtzdzdBMERGWWhMWDlPUERlNG5BcmtJbFRNTlkxUlU5TjYxZkNYNXdaZENTQXBZOUNRZURyMEdZLTJ0M084UV9mOEVqaXprbFQtcUNJSVFLWFRaWm1jb1ZmdTcyUVpSTktkek1YT0pHWjdJVQ?oc=5"
             },
             {
               "title": "Prime Medicine: Soon In The Clinic (NASDAQ:PRME) - Seeking Alpha",
               "source": "Seeking Alpha",
-              "date": "2026-08-15",
+              "date": "2026-08-15T07:00:00.000Z",
               "summary": "Latest news about Prime Medicine.",
               "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1ja1RobG96Ulp4aFlDX01RQ01GVWhuMEhvMEtOQmYzc2lNdkxEVWh0MTJWQ2JFOEZnODJya2ptNmw3TEZwRDR1ZjdsUDRYaXF0SHV1cUl3dUljY3FTLXVMeUpKZ3hKUDJBNTN4YUJjcFJ3d1YwbEhCenFvSElMMGc?oc=5"
             },
             {
               "title": "Prime Medicine, Inc. (PRME) May Report Negative Earnings: Know the Trend Ahead of Q2 Release - Yahoo Finance",
               "source": "Yahoo Finance",
-              "date": "2026-07-30",
+              "date": "2026-07-30T07:00:00.000Z",
               "summary": "Latest news about Prime Medicine.",
               "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxONUl2N3lMY1pUcFdkTWVoODdicktBUm9uWXF5NVV0X1MwSmp3ZTVMc29EVkg0OFpLVC1uVS13UnllUENJR01JY1cxdmdSTE0zY3lMU0JKTjVoZlp5bnptMnRXQTl4TVFNcU5jelRpdmk4R2lseS1nWFFXSUNxdHd2d3lpdjgtbTk1ZFpISmhVNGJrYmxOa3p3?oc=5"
             }
@@ -1157,6 +1394,7 @@
           "price": 1.3,
           "change": -0.04,
           "changePercent": -2.99,
+          "updatedAt": "2026-09-23T19:07:49.007Z",
           "marketCap": 139369760,
           "monthlyBurn": 8094000,
           "cashPosition": 113800000,
@@ -1165,25 +1403,29 @@
           "oneMonth": -21.69,
           "sixMonth": -30.11,
           "ytd": -18.24,
+          "oneYear": -30.11,
+          "threeYear": -74.46,
+          "fiveYear": -95.09,
+          "tenYear": null,
           "news": [
             {
-              "title": "BlackRock (NYSE: BLK) reports 7.2% beneficial stake in Caribou Biosciences (CRBU) - Stock Titan",
-              "source": "Stock Titan",
-              "date": "2026-07-27",
+              "title": "BlackRock (NYSE: BLK) reports 7.2% beneficial stake in Caribou Biosciences (CRBU) - stocktitan.net",
+              "source": "stocktitan.net",
+              "date": "2026-07-27T07:00:00.000Z",
               "summary": "Latest news about Caribou Biosciences.",
               "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxNRS1ZRUU4enpxOHBMM3BoSEV5ZHBqRVdiR3lWcV9TdTJqVUtLdDctdUZZQld0SVZTaWppbVFYLUIwb0V3dWlCMHpiZXYzWlNxbkxjQlliWTFDbm1YSVl2QmRYay1EMkY5dXFrc1lkMVFZVWFQSG1YbEdfejRCOXFrallXcC1FSFo5QVJNZWFUbHVsVkdZMW5XXzFnVnNPeWhGY0tiNVBXaUVRV2dIcXZXRXphNG5DVG5mTWtoWi1VM3V3bmYxYjQwN2VR?oc=5"
             },
             {
-              "title": "CRBU Forecast — Price Target — Prediction for 2027 - TradingView",
-              "source": "TradingView",
-              "date": "2026-06-25",
+              "title": "CRBU Forecast — Price Target — Prediction for 2027 - tradingview.com",
+              "source": "tradingview.com",
+              "date": "2026-06-25T14:29:21.000Z",
               "summary": "Latest news about Caribou Biosciences.",
               "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE9jdHgzVXBfSjVzUWRuNUhRN1U4TDNOX0NRT0REdk1kRzFLc3hlcnpNbWQyMWNkVXcycVFzVjV4UGdoZmZOSVdNdk8wTlRxc2VxdzBjS1lpajhXbHJQM3pwQlNfTW8wZ0NILUUtZ1NBUF9RSWs1NVVYUnln?oc=5"
             },
             {
               "title": "Caribou Biosciences (CRBU) Gets A Higher Target As Confidence In Its Pipeline Grows - Yahoo Finance",
               "source": "Yahoo Finance",
-              "date": "2026-05-31",
+              "date": "2026-05-31T07:00:00.000Z",
               "summary": "Latest news about Caribou Biosciences.",
               "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxOX2NDNnlNT1RPV2gxWGs5X1N3c1pFblI3Y3J4eUEtOWNOdG9TajFwd1p5X2Y0THBzdDRRVkgxdlRvV05SLWZiQjZ3T1FjNXVCTUhCY2x2QjNUSy13QTQ4YU9IMElzNGthb3VJUFBzWERJNmJndU5jazVRYmVaQWVtbjhyS0VNcmxHX1Rta3o3VmZHR0ZjRlFtQlEzTHNpbThyNUhtQ1Q4eEM?oc=5"
             }
@@ -1192,36 +1434,41 @@
         "IDYA": {
           "symbol": "IDYA",
           "name": "IDEAYA Biosciences",
-          "price": 37.14,
-          "change": -2.57,
-          "changePercent": -6.47,
-          "marketCap": 3583619584,
+          "price": 37.24,
+          "change": -2.47,
+          "changePercent": -6.22,
+          "updatedAt": "2026-09-23T19:07:49.907Z",
+          "marketCap": 3593268736,
           "monthlyBurn": 37484000,
           "cashPosition": 1240000000,
-          "oneDay": -6.47,
-          "fiveDay": -1.56,
-          "oneMonth": -6.38,
-          "sixMonth": 17.38,
-          "ytd": 9.72,
+          "oneDay": -6.22,
+          "fiveDay": -1.3,
+          "oneMonth": -6.13,
+          "sixMonth": 17.7,
+          "ytd": 7.91,
+          "oneYear": 43.62,
+          "threeYear": 34.78,
+          "fiveYear": 50.4,
+          "tenYear": null,
           "news": [
             {
               "title": "Cantor Fitzgerald reiterates Ideaya Biosciences stock rating - Investing.com",
               "source": "Investing.com",
-              "date": "2026-09-22",
+              "date": "2026-09-22T13:04:16.000Z",
               "summary": "Latest news about IDEAYA Biosciences.",
               "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxORHpmMFdqNWtSN0tlcFhPbXJ3M0E1dWRMa3hXZ1dOOWh4QzZmN3hsVlNTbi0wWUtYLTROZ2c4cWZOVWlMaWJQeXZoZ3pGZ1A4QlByZW0tYlhmWXJoM1ZkaDZIcGFEY1c5a1BGSzBVLUtsMFJISGlaU3JaM0o5bDBfWlF1SkZrTl9RaHR2ZnVlZFRxODllaFlfN1ctVFZPZXZGVEViLURiVk5rZ05OczVpT0ZfeXlqczNFMmJaYQ?oc=5"
             },
             {
               "title": "Does First Phase 3 Dosing Change The Bull Case For IDEAYA Biosciences Stock (IDYA)? - simplywall.st",
               "source": "simplywall.st",
-              "date": "2026-09-19",
+              "date": "2026-09-19T05:23:34.000Z",
               "summary": "Latest news about IDEAYA Biosciences.",
               "url": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxNTm1aUWlPWFBraUVYNWxfX3dCeU5hZHJCZ2xCanNDUWFqMWpVOUVHUC1aT2RoVW9pZXNubWJlekNOS0VCSk9FaDEtbkotc2lweC1SeTZuZjFGTWlzN1BEUkJYU2ctRDREbVREaEhjUWtPaXdDa2d1M3ljMU5rWXdRUXU2ZU9lamNzT3h2cGk3c1M3LW91MGd4dWx3Vi1LSnRqT3AzRFFwNjZ0MHQ0YmJfOWltbllMOVFpMVFNY1FLUXczX19uZzBrNlVrVTBaM2dYS0FVRERfZDBKX1ByRXBjSWhaTlNoVEXSAewBQVVfeXFMUDhnaDQwVnBXSGVRRklEcC1IbDdQNnhMcVRqSHhMVHEwTXlCdUV1eDBUR2xid2p6SldicldSUFVpV0hudDBKNFlKSkhYeWtXdlRoWF9YSVFoOThvSnNMdGI4Q25wWno2a1BKTUhGc1lnc3lLLWhCNEFudFZZRWp4WEJrdm9QMWR6MHFBbEdNdVUwVS1KbzZBZkhMU3habGllUlRsazI5STk0bGF4SWVNMDZmUy1WVFMwaTJXd1RBMEFYTGJXbU5lMVJOcG1mTy15QkZORk9YekRtQU9nTnQ1eU1RdmszT0oyVHViNmc?oc=5"
             },
             {
               "title": "Is IDEAYA Biosciences, Inc. (IDYA) A Good Stock To Buy Now? - Yahoo Finance",
               "source": "Yahoo Finance",
-              "date": "2026-05-03",
+              "date": "2026-05-03T07:00:00.000Z",
               "summary": "Latest news about IDEAYA Biosciences.",
               "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxQdEhSYV9uUndPVmx1UVVaZ2k2b3ZrU28xemhMMXVyRDZZWlZ0U0IteGFEUElEazE0NXJPVDVJZlBHc01EdjZRS09zVjFXWnd3eGpGZk90ZXhGN2E3R0Jub01mSUtjT1N4cG00eUthYWtCYU1UMGRWVW9vLW56YnM4VW9Va2d2ZVNwZi1mdkZNQ29WdHNhWm92WGFsaXhlQQ?oc=5"
             }
@@ -1230,36 +1477,41 @@
         "VIR": {
           "symbol": "VIR",
           "name": "Vir Biotechnology",
-          "price": 11.05,
-          "change": -0.45,
-          "changePercent": -3.91,
-          "marketCap": 1869836288,
+          "price": 11.06,
+          "change": -0.44,
+          "changePercent": -3.83,
+          "updatedAt": "2026-09-23T19:07:50.832Z",
+          "marketCap": 1871528448,
           "monthlyBurn": null,
           "cashPosition": 1010000000,
-          "oneDay": -3.91,
-          "fiveDay": 5.04,
-          "oneMonth": 12.99,
-          "sixMonth": 25,
-          "ytd": 86.03,
+          "oneDay": -3.83,
+          "fiveDay": 5.13,
+          "oneMonth": 13.09,
+          "sixMonth": 25.11,
+          "ytd": 89.38,
+          "oneYear": 113.93,
+          "threeYear": 18.29,
+          "fiveYear": -75.25,
+          "tenYear": null,
           "news": [
             {
               "title": "One NASDAQ - Listed Biotechnology Stock at Resistance Level – VIR - kalkine.ca",
               "source": "kalkine.ca",
-              "date": "2026-09-23",
+              "date": "2026-09-23T12:59:14.000Z",
               "summary": "Latest news about Vir Biotechnology.",
               "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxOM3B3ZjB2Z1o4MU1tNWxYOGk3d2l4cm9PdFZ0b25HRFNUeXZ4YzlCZ1AtQTN2Vk12THNlN1Z1cG52RXliY0hHVUxKdzFGNUwyY0hEMy1PVERoZE1zaklaWmdiSXdPcTh2Si1aVS1jeUtKaXR0T0lBNWF1NXVkcWRZZGZwWHVqX0VZeHpBMVNsSHlVa0ZVU3JQb3c4T2ttREU?oc=5"
             },
             {
               "title": "Vir Biotechnology Stock Price Forecast. Should You Buy VIR? - StockInvest.us",
               "source": "StockInvest.us",
-              "date": "2026-09-18",
+              "date": "2026-09-18T22:22:11.000Z",
               "summary": "Latest news about Vir Biotechnology.",
               "url": "https://news.google.com/rss/articles/CBMiR0FVX3lxTE5oTVhCREtNRHlRUmxES1R3V3pSek1vMnRlcXhEUWNqS0ljMDBYUVNQYkwycTFiMFBka1FLZGhCS1VxYzZBVGw0?oc=5"
             },
             {
               "title": "Is Vir Biotechnology, Inc. (VIR) A Good Stock To Buy Now? - Yahoo Finance",
               "source": "Yahoo Finance",
-              "date": "2026-06-07",
+              "date": "2026-06-07T07:00:00.000Z",
               "summary": "Latest news about Vir Biotechnology.",
               "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxObFlKOVRaUmp2TlJndFh5RlJHMU1EOFBBS3A1Wjh5bi1ZcU93dU5GYmpaQUdWdVNPcTUwcGNDa0N0UTJYRFRQa2toMTBILXotOC1HWXkwdG9RaHdXWDYxbmV2WGpLZDZsUWdEMkl5VVNHZXRCblB3UU5ub3pFeHVzQTFvOWE1TV9CNmF3RzQ1VXFrVWVhYTZCdFVuSQ?oc=5"
             }
@@ -1268,36 +1520,41 @@
         "CTMX": {
           "symbol": "CTMX",
           "name": "CytomX Therapeutics",
-          "price": 2.67,
-          "change": -0.27,
-          "changePercent": -9.01,
-          "marketCap": 582880576,
+          "price": 2.69,
+          "change": -0.25,
+          "changePercent": -8.33,
+          "updatedAt": "2026-09-23T19:07:51.572Z",
+          "marketCap": 587238528,
           "monthlyBurn": 6888666.666666667,
           "cashPosition": 330300000,
-          "oneDay": -9.01,
-          "fiveDay": -3.25,
-          "oneMonth": -18.45,
-          "sixMonth": -40.02,
-          "ytd": -37.06,
+          "oneDay": -8.33,
+          "fiveDay": -2.53,
+          "oneMonth": -17.84,
+          "sixMonth": -39.57,
+          "ytd": -35.22,
+          "oneYear": 27.73,
+          "threeYear": 110.55,
+          "fiveYear": -50.46,
+          "tenYear": -82.77,
           "news": [
             {
               "title": "CytomX Therapeutics stock gains 6.52 percent on September 23 - AD HOC NEWS",
               "source": "AD HOC NEWS",
-              "date": "2026-09-23",
+              "date": "2026-09-23T12:05:48.000Z",
               "summary": "Latest news about CytomX Therapeutics.",
               "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxPQWc5TDVzUmE4VlVWdkY1Z0E3bE1lQXJPaW14S2pCZWtBdWhkT0tGRHc1ZVY5bHBUVGtDc3YzOHFsdVRha3dLR0hEb2NiaUhDb1FZVHlGRHNqbnY2VW1nVDNzMXBwQndFZ2pVRXgxUFpNeXhGM1FkeHdTVUlSYWR1eEVJdkU4N1ItWDNrRmkzSUpPeUQxU0ZLa1NBVUlTZEh4emNLamI0T01GRHFKaXptWWd6QWJySk8xR1lr?oc=5"
             },
             {
               "title": "CytomX Therapeutics (CTMX) Upgraded to Buy: Here's Why - Yahoo Finance",
               "source": "Yahoo Finance",
-              "date": "2026-07-08",
+              "date": "2026-07-08T07:00:00.000Z",
               "summary": "Latest news about CytomX Therapeutics.",
               "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxOQnVqUUhuMndLVkFDaE9wemtpTGdleENrZ0E3TFRJZUNadEFCNC1PTk5Fc3lqV2ZxdUwwX2VEcmp4Y3ZxUm4ycDhsZHd1YmpMYmRxWnRHOTdFVHpabWZLcm5mWnJIc3dfM0pNdGxwckQ0UjhWZlRIalNiMl9wUS0tOElkQ0s2eTZ5enhGQXZNSmoyTVV5bkRaTFJ3b2tIVnZPMlI3Sg?oc=5"
             },
             {
-              "title": "Watkins Advises CytomX Therapeutics on US$250 Million Offering of Common Stock and Pre‑Funded Warrants - lw.com",
-              "source": "lw.com",
-              "date": "2026-03-18",
+              "title": "Watkins Advises CytomX Therapeutics on US$250 Million Offering of Common Stock and Pre‑Funded Warrants - Latham &amp; Watkins LLP",
+              "source": "Latham &amp; Watkins LLP",
+              "date": "2026-03-18T07:00:00.000Z",
               "summary": "Latest news about CytomX Therapeutics.",
               "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxQMElZbXUxR19OUlc1SUtVNzU3eTQ1bFlIanptT0dMU0VnMGNVS1hOMjc3WFRhMmpHbi1vc0Zodmc0dk5VR2s5WlZOMDhucHJJNUc4b0hIMkdFOGpMbm5hSWo5X094VzlXcGpkUEhyVmVGdDJ5dDBvemItOWRnZVFyZkdiMG9jU19FU1FaTWlTdjg3SzVFbVNuVWNKb3hKd2NIbk40UUlTVUpVbS16MVp3WWpBak1BSXd4b2kwYWxxMTYyTlE?oc=5"
             }
@@ -1308,36 +1565,41 @@
           "name": "Compass Therapeutics",
           "price": 1.17,
           "change": -0.07,
-          "changePercent": -6.05,
-          "marketCap": 209802416,
+          "changePercent": -5.67,
+          "updatedAt": "2026-09-23T19:07:52.532Z",
+          "marketCap": 210702864,
           "monthlyBurn": 8384666.666666667,
           "cashPosition": 180000000,
-          "oneDay": -6.05,
-          "fiveDay": -36.34,
-          "oneMonth": -51.46,
-          "sixMonth": -76.88,
-          "ytd": -77.47,
+          "oneDay": -5.67,
+          "fiveDay": -36.07,
+          "oneMonth": -51.25,
+          "sixMonth": -76.79,
+          "ytd": -78.25,
+          "oneYear": -65.33,
+          "threeYear": -40.31,
+          "fiveYear": -66.57,
+          "tenYear": null,
           "news": [
             {
               "title": "Compass Therapeutics stock downgraded at Wedbush (CMPX:NASDAQ) - Seeking Alpha",
               "source": "Seeking Alpha",
-              "date": "2026-09-23",
+              "date": "2026-09-23T15:03:13.000Z",
               "summary": "Latest news about Compass Therapeutics.",
               "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxOMURleTh5MlhQUDBjeUk0UUhXQ1pzZFdLMGJ1aEVzeXJoZC12SUE5aVFuaFJxbVQ1a2lFVDhYbVNqZWtHd05GeFpkTzY3WWwySGk4dGt6R0d1dXlZelN0T3Bjc25aUjFxZmszd3ZvR0F2Y0k0RnVYYUhlSUdvYlVCQ0d0MC1PUW9ZX0pj?oc=5"
             },
             {
               "title": "Citizens cuts Compass Therapeutics stock price target on FDA trial request - Investing.com",
               "source": "Investing.com",
-              "date": "2026-09-23",
+              "date": "2026-09-23T09:44:03.000Z",
               "summary": "Latest news about Compass Therapeutics.",
               "url": "https://news.google.com/rss/articles/CBMizwFBVV95cUxQNWFsR2N3d3gxZUoxTUtOSVI4RzNDbG1ySmZ2eThoWFBkR1BYUkdUakhYdHUtRE5IaVRMQnQtTXVnZFl0WEtLajZhcllLU2haeUdaZEtyakNDc0w2NHhrM18zcVJ0Qll6QmVLNU9Xb1g1SU9PRVpWZF95b3ViSVBYT18xV0ZGX2RoLXZkN3NlRWd5bEZ2LWxVMEpWYjhPQjJBY3VXQXlsNVVRamw3YUVSSDJFZ3lSY0tpR3NtWm8tZWUwS2R2TDk2eW1oZXlXN0E?oc=5"
             },
             {
-              "title": "HC Wainwright &amp; Co. maintains Buy rating on Compass Therapeutics, $12 price target - TradingView",
-              "source": "TradingView",
-              "date": "2026-09-23",
+              "title": "Why Did Compass Therapeutics Stock Plunge Today? - Compass Therapeutics (NASDAQ:CMPX) - Benzinga",
+              "source": "Benzinga",
+              "date": "2026-09-22T18:02:26.000Z",
               "summary": "Latest news about Compass Therapeutics.",
-              "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxPc2ZwMTZLalJ6eFhRVU5KWmNZeVlGOWNsNllrZWtxZHhTZEZoelYtRTBVMUI2bzdoQjlMVF9pem5SeVBUcFRQbndGNlBZVkU1VjBVZHpkWndYMVdvRFBHbmFvc1NOWlNWSVd3SzNVaUM4U1h6Y09sWnMxa0VqTUZuRTR2N1lvQlNWa3VzUTctNkU5bldLWHBLLVVJYTE2Y250MFZkT0hhTlM0dXZURjNIY2xwdUxudGhYRUFVRlpKOE9SeE9nVVZkRnBUSW9MVGR4QzdPTnpn?oc=5"
+              "url": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxNYlBGLXZXZTM3d3lMRlpFTWlsYU5OSFFlel82MlRVSU1MUmxQZ1RteE5TNzJLN1FaUUFOUUZTd1dfdXZzSU42WnF3eDJONFR6LXgtbDVOc3g1WHh3WmowZms5aDRJd3haTGZINGVXc1JHUlFnQmIyTVVCWGhSanVUUHZVOEZfZG45U2IwZndySTVNdHVYNnRjT1hzeHYwRno3YTFVZGlNN0FxWElnR20wYjdEWHF5TVAtQzNGVnAxbGVPTkVaaklrQjh6MUlvUTNNVzJqVw?oc=5"
             }
           ]
         }
@@ -1351,104 +1613,157 @@
       return new Date(date).toLocaleString('en-US', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
     }
 
-    function renderStocks(stocks) {
+    // null = data unavailable, shown as — (a real 0% still shows as +0.00%)
+    function formatPct(value) {
+      return value == null ? '—' : `${value >= 0 ? '+' : ''}${value.toFixed(2)}%`;
+    }
+
+    function pctColor(value) {
+      return value == null ? '#6b7280' : value >= 0 ? '#059669' : '#dc2626';
+    }
+
+    const PERIODS = [
+      { label: '1D', field: 'oneDay', name: '1-day' },
+      { label: '5D', field: 'fiveDay', name: '5-day' },
+      { label: '1M', field: 'oneMonth', name: '1-month' },
+      { label: '6M', field: 'sixMonth', name: '6-month' },
+      { label: 'YTD', field: 'ytd', name: 'year-to-date' },
+      { label: '1Y', field: 'oneYear', name: '1-year' },
+      { label: '3Y', field: 'threeYear', name: '3-year' },
+      { label: '5Y', field: 'fiveYear', name: '5-year' },
+      { label: '10Y', field: 'tenYear', name: '10-year' }
+    ];
+
+    // Remember the viewer's chosen period between visits (best effort)
+    function loadPeriod() {
+      try {
+        const saved = localStorage.getItem('rankPeriod');
+        return PERIODS.find(p => p.label === saved) || PERIODS[0];
+      } catch (err) {
+        return PERIODS[0];
+      }
+    }
+
+    function savePeriod(period) {
+      try { localStorage.setItem('rankPeriod', period.label); } catch (err) { /* ignore */ }
+    }
+
+    let period = loadPeriod();
+
+    // Best performer for the selected period first; stocks with no data for it go last
+    function rankBy(stocks, field) {
+      return Object.values(stocks).sort((a, b) => {
+        if (a[field] == null) return 1;
+        if (b[field] == null) return -1;
+        return b[field] - a[field];
+      });
+    }
+
+    function renderPeriodPicker() {
+      const picker = document.getElementById('period-picker');
+      picker.innerHTML = PERIODS.map(p => `
+        <button type="button" class="period-btn${p === period ? ' active' : ''}" data-period="${p.label}" aria-pressed="${p === period}">${p.label}</button>
+      `).join('');
+      picker.onclick = (e) => {
+        const btn = e.target.closest('.period-btn');
+        if (!btn) return;
+        period = PERIODS.find(p => p.label === btn.dataset.period);
+        savePeriod(period);
+        renderRanking();
+      };
+    }
+
+    function renderRanking() {
+      document.getElementById('rank-subtitle').textContent = `ranked by ${period.name} return`;
+      renderPeriodPicker();
+      renderStocks(rankBy(demoData, period.field));
+    }
+
+    function renderStocks(ranked) {
       const container = document.getElementById('stocks-container');
       let html = '<div class="stock-grid">';
 
-      for (const symbol in stocks) {
-        const stock = stocks[symbol];
+      ranked.forEach((stock, i) => {
+        const symbol = stock.symbol;
         const changeClass = stock.change > 0 ? 'positive' : stock.change < 0 ? 'negative' : 'neutral';
         const changeSign = stock.change >= 0 ? '+' : '';
+        const changeText = stock.change == null ? '—' : `${changeSign}${stock.change.toFixed(2)} (${formatPct(stock.changePercent)})`;
+        const staleBadge = stock.stale
+          ? `<span class="stale-badge" title="Latest fetch failed; showing data from ${stock.staleSince ? formatTime(stock.staleSince) : 'a previous run'}">STALE</span>`
+          : '';
         const profileUrl = `${symbol.toLowerCase()}.html`;
 
         html += `
       <div class="stock-card" style="cursor: pointer; transition: transform 0.2s;" onclick="window.location.href='${profileUrl}'">
           <div class="stock-header">
           <div>
-            <div class="stock-symbol">${stock.symbol}</div>
+            <div class="stock-symbol"><span class="stock-rank">#${i + 1}</span>${stock.symbol}${staleBadge}</div>
             <div style="font-size: 0.9rem; color: #6b7280;">${stock.name}</div>
           </div>
           <div style="text-align: right;">
-            <div class="stock-price">$${stock.price.toFixed(2)}</div>
-            <div class="stock-change ${changeClass}">${changeSign}${stock.change.toFixed(2)} (${changeSign}${stock.changePercent.toFixed(2)}%)</div>
+            <div class="stock-price">${stock.price == null ? '—' : `$${stock.price.toFixed(2)}`}</div>
+            <div class="stock-change ${changeClass}">${changeText}</div>
           </div>
         </div>
         <div class="metrics">
-          <div class="metric">
-            <div class="metric-label">1D</div>
-            <div class="metric-value" style="color: ${stock.oneDay >= 0 ? '#059669' : '#dc2626'};">
-              ${stock.oneDay >= 0 ? '+' : ''}${stock.oneDay.toFixed(2)}%
-            </div>
-          </div>
-          <div class="metric">
-            <div class="metric-label">5D</div>
-            <div class="metric-value" style="color: ${stock.fiveDay >= 0 ? '#059669' : '#dc2626'};">
-              ${stock.fiveDay >= 0 ? '+' : ''}${stock.fiveDay.toFixed(2)}%
-            </div>
-          </div>
-          <div class="metric">
-            <div class="metric-label">1M</div>
-            <div class="metric-value" style="color: ${stock.oneMonth >= 0 ? '#059669' : '#dc2626'};">
-              ${stock.oneMonth >= 0 ? '+' : ''}${stock.oneMonth.toFixed(2)}%
-            </div>
-          </div>
-          <div class="metric">
-            <div class="metric-label">6M</div>
-            <div class="metric-value" style="color: ${stock.sixMonth >= 0 ? '#059669' : '#dc2626'};">
-              ${stock.sixMonth >= 0 ? '+' : ''}${stock.sixMonth.toFixed(2)}%
-            </div>
-          </div>
-          <div class="metric">
-            <div class="metric-label">YTD</div>
-            <div class="metric-value" style="color: ${stock.ytd >= 0 ? '#059669' : '#dc2626'};">
-              ${stock.ytd >= 0 ? '+' : ''}${stock.ytd.toFixed(2)}%
-            </div>
-          </div>
+          ${PERIODS.map(({ label, field }) => [label, stock[field], field === period.field]).map(([label, value, active]) => `
+          <div class="metric${active ? ' metric-active' : ''}">
+            <div class="metric-label">${label}</div>
+            <div class="metric-value" style="color: ${pctColor(value)};">${formatPct(value)}</div>
+          </div>`).join('')}
         </div>
         <div style="text-align: center; margin-top: 1rem; font-size: 0.85rem; color: #0052cc; font-weight: 600;">
           View Profile →
         </div>
       </div>
           `;
-  }
+  });
 
   html += '</div>';
   container.innerHTML = html;
 }
 
+// One feed across all tickers, newest first. An article that matches several
+// tickers is shown once with a tag for each.
 function renderNews(stocks) {
   const container = document.getElementById('news-container');
-  let html = '';
+  const articles = new Map();
 
-  for (const symbol in stocks) {
-    const stock = stocks[symbol];
-    const news = stock.news || [];
-
-    html += `<div class="news-section">
-          <div class="section-title">${stock.symbol} — Latest News</div>`;
-
-    if (news.length === 0) {
-      html += '<div class="empty-state">No news available at this time.</div>';
-    } else {
-      html += '<div class="news-grid">';
-      for (const article of news) {
-        html += `
-            <div class="news-card">
-            <div class="news-header">
-              <div class="news-source">${article.source}</div>
-              <div class="news-title">${article.title}</div>
-              <div class="news-date">${formatDate(article.date)}</div>
-            </div>
-            <div class="news-summary">${article.summary}</div>
-            <a href="${article.url}" class="news-link" target="_blank">Read Full Article →</a>
-          </div>
-        `;
-      }
-      html += '</div>';
+  for (const stock of Object.values(stocks)) {
+    for (const article of stock.news || []) {
+      if (!article.url || article.url === '#') continue;  // skip "no recent news" placeholders
+      const key = article.url;
+      if (!articles.has(key)) articles.set(key, { ...article, tickers: [] });
+      articles.get(key).tickers.push(stock.symbol);
     }
-
-    html += '</div>';
   }
+
+  const feed = [...articles.values()].sort((a, b) => new Date(b.date) - new Date(a.date));
+  if (feed.length === 0) {
+    container.innerHTML = '<div class="empty-state">No news available at this time.</div>';
+    return;
+  }
+
+  let html = '<div class="news-grid">';
+  for (const article of feed) {
+    const tags = article.tickers
+      .map(t => `<a class="ticker-tag" href="${t.toLowerCase()}.html">${t}</a>`)
+      .join('');
+    // Generic "Latest news about X." summaries add nothing next to the ticker tag
+    const summary = /^Latest news about /.test(article.summary || '') ? '' : `<div class="news-summary">${article.summary}</div>`;
+    html += `
+      <div class="news-card">
+        <div class="news-header">
+          <div class="news-meta">${tags}<span class="news-source">${article.source}</span></div>
+          <div class="news-title">${article.title}</div>
+          <div class="news-date">${formatDate(article.date)}</div>
+        </div>
+        ${summary}
+        <a href="${article.url}" class="news-link" target="_blank" rel="noopener">Read Full Article →</a>
+      </div>
+    `;
+  }
+  html += '</div>';
 
   container.innerHTML = html;
 }
@@ -1462,10 +1777,7 @@ function main() {
   // Hide loading
   document.getElementById('loading').style.display = 'none';
 
-  // Render stocks
-  renderStocks(demoData);
-
-  // Render news
+  renderRanking();
   renderNews(demoData);
 
   // Update time
