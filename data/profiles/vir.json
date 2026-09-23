@@ -1,0 +1,90 @@
+{
+  "symbol": "VIR",
+  "reviewed": "2026-09-23",
+  "overview": [
+    "<strong>Vir Biotechnology (VIR)</strong> is a San Francisco-based company focused on chronic viral disease and oncology.",
+    "In <strong>hepatitis delta</strong>, the most severe form of viral hepatitis, Vir's combination of tobevibart (antibody) and elebsiran (siRNA) achieved undetectable virus in 88% of Phase 2 patients. The Phase 3 <strong>ECLIPSE</strong> program reads out topline data from ECLIPSE 1 in Q4 2026 and ECLIPSE 2/3 in Q1 2027. In oncology, Vir's masked T cell engagers, led by <strong>VIR-5500</strong> (PSMA) in prostate cancer, are partnered with Astellas.",
+    "<strong>Investor thesis:</strong> Hepatitis delta has limited U.S. treatment options, making ECLIPSE a major binary event. The Astellas deal ($240M upfront plus a $75M equity investment) produced a profitable Q2 and lifted cash to ~$1.01B."
+  ],
+  "competitors": [
+    {
+      "name": "Gilead Sciences (GILD)",
+      "product": "Hepcludex (bulevirtide)",
+      "note": "Approved in Europe for hepatitis delta"
+    },
+    {
+      "name": "Janux Therapeutics (JANX)",
+      "product": "JANX007 (masked PSMA TCE)",
+      "note": "Direct competitor to VIR-5500"
+    },
+    {
+      "name": "Amgen (AMGN)",
+      "product": "Xaluritamig (STEAP1 TCE)",
+      "note": "Prostate cancer T cell engager"
+    }
+  ],
+  "advantage": "Potential best-in-class hepatitis delta regimen with high viral suppression, plus a big pharma partner funding prostate cancer development.",
+  "catalysts": [
+    {
+      "title": "ECLIPSE 1 Topline",
+      "timing": "Q4 2026",
+      "description": "First Phase 3 hepatitis delta readout.",
+      "impact": "HIGH IMPACT",
+      "color": "green"
+    },
+    {
+      "title": "ECLIPSE 2 & 3 Topline",
+      "timing": "Q1 2027",
+      "description": "Completes the Phase 3 dataset.",
+      "impact": "HIGH IMPACT",
+      "color": "green"
+    },
+    {
+      "title": "VIR-5500 Dose Expansion",
+      "timing": "Ongoing",
+      "description": "Informs pivotal trial design with Astellas.",
+      "impact": "MILESTONE",
+      "color": "yellow"
+    }
+  ],
+  "risks": [
+    {
+      "title": "Phase 3 Binary",
+      "description": "Hepatitis delta results drive most near-term value.",
+      "level": "HIGH"
+    },
+    {
+      "title": "Market Size",
+      "description": "U.S. hepatitis delta diagnosis rates are low; commercial uptake uncertain.",
+      "level": "MEDIUM"
+    },
+    {
+      "title": "Oncology Competition",
+      "description": "Crowded masked TCE and PSMA space.",
+      "level": "MEDIUM"
+    },
+    {
+      "title": "One-Time Profit",
+      "description": "Q2 net income came from an upfront payment, not recurring revenue.",
+      "level": "MEDIUM"
+    }
+  ],
+  "partners": [
+    {
+      "name": "Astellas",
+      "role": "VIR-5500 Collaboration",
+      "description": "$240M upfront plus $75M equity investment at $10.36/share."
+    },
+    {
+      "name": "Alnylam",
+      "role": "Elebsiran Source",
+      "description": "Elebsiran came from Vir's siRNA collaboration with Alnylam."
+    },
+    {
+      "name": "Sanofi",
+      "role": "Masked TCE Licensor",
+      "description": "Source of the PRO-XTEN masked T cell engager platform."
+    }
+  ],
+  "interpretation": "~$1.01B in cash funds operations into 2H 2028. Q2 was profitable thanks to the Astellas upfront, so burn and runway can't be calculated from that quarter."
+}

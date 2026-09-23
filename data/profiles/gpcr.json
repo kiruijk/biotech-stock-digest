@@ -1,0 +1,90 @@
+{
+  "symbol": "GPCR",
+  "reviewed": "2026-09-23",
+  "overview": [
+    "<strong>Structure Therapeutics (GPCR)</strong> is a South San Francisco-based clinical-stage company founded by CEO Raymond Stevens that uses structure-based drug discovery to design oral small molecules against G protein-coupled receptors (GPCRs) — the receptor family behind GLP-1 and most metabolic hormones.",
+    "Its lead program, <strong>aleniglipron</strong>, is a once-daily oral small-molecule GLP-1 receptor agonist for obesity. Unlike peptides, small molecules are cheaper to manufacture at scale and have no food/water dosing restrictions. The first patients have been dosed in the Phase 3 <strong>ACCOMPLISH</strong> program, while the ACCESS open-label extension and several supplementary trials continue to generate data.",
+    "<strong>Investor thesis:</strong> GPCR is one of the few independent companies with a late-stage oral small-molecule GLP-1, a format big pharma is racing to own. With $1.3B in cash funding operations through the end of 2028 and a newly hired Chief Commercial Officer, the company is positioning to compete directly with Lilly's orforglipron. Phase 2 ACCESS II showed up to 16.3% weight loss, yet the stock is down roughly half in 2026 as investors question whether an independent company can win share against Lilly and Novo."
+  ],
+  "competitors": [
+    {
+      "name": "Eli Lilly (LLY)",
+      "product": "Orforglipron (oral small-molecule GLP-1)",
+      "note": "Most advanced direct competitor in the same format"
+    },
+    {
+      "name": "Novo Nordisk (NVO)",
+      "product": "Oral semaglutide (peptide)",
+      "note": "Incumbent oral GLP-1 option"
+    },
+    {
+      "name": "Viking Therapeutics (VKTX)",
+      "product": "Oral VK2735 (GLP-1/GIP)",
+      "note": "Small-cap oral obesity peer"
+    },
+    {
+      "name": "Kailera Therapeutics (KLRA)",
+      "product": "KAI-7535 (oral small-molecule GLP-1)",
+      "note": "Phase 2 oral small-molecule competitor"
+    }
+  ],
+  "advantage": "A fully owned, Phase 3 oral small-molecule GLP-1 plus a structure-based discovery engine for next-generation oral metabolic drugs.",
+  "catalysts": [
+    {
+      "title": "ACCESS OLE 72-Week Data",
+      "timing": "Q3 2026",
+      "description": "Long-term weight-loss durability and tolerability for aleniglipron.",
+      "impact": "HIGH IMPACT",
+      "color": "green"
+    },
+    {
+      "title": "Body Composition, T2D/Obesity & SWITCH Data",
+      "timing": "Q4 2026",
+      "description": "Supplementary trials covering lean-mass effects, diabetes and switching from injectables.",
+      "impact": "MILESTONE",
+      "color": "yellow"
+    },
+    {
+      "title": "ACCOMPLISH Phase 3 Enrollment",
+      "timing": "2026–2027",
+      "description": "Pace of enrollment in the registrational program.",
+      "impact": "MILESTONE",
+      "color": "yellow"
+    }
+  ],
+  "risks": [
+    {
+      "title": "Competition",
+      "description": "Lilly and Novo have far greater resources and are ahead with oral options.",
+      "level": "HIGH"
+    },
+    {
+      "title": "Tolerability",
+      "description": "GI side effects and dropout rates will be scrutinized versus orforglipron.",
+      "level": "HIGH"
+    },
+    {
+      "title": "Rising Burn",
+      "description": "Q2 2026 net loss of $106.2M vs. $61.7M a year earlier as Phase 3 ramps.",
+      "level": "MEDIUM"
+    },
+    {
+      "title": "Commercialization",
+      "description": "Launching alone in obesity requires a large sales force; a partner may be needed.",
+      "level": "MEDIUM"
+    }
+  ],
+  "partners": [
+    {
+      "name": "ACCOMPLISH Phase 3 Program",
+      "role": "Registrational Trials",
+      "description": "Global Phase 3 program for aleniglipron in chronic weight management."
+    },
+    {
+      "name": "In-House Discovery Platform",
+      "role": "Structure-Based GPCR Design",
+      "description": "Proprietary engine behind aleniglipron and follow-on oral metabolic programs."
+    }
+  ],
+  "interpretation": "$1.3B in cash is guided to fund operations and key milestones, including the Phase 3 program, through the end of 2028."
+}

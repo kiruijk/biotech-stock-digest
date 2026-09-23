@@ -1,0 +1,85 @@
+{
+  "symbol": "ONCY",
+  "reviewed": "2026-09-23",
+  "overview": [
+    "<strong>Oncolytics Biotech (ONCY)</strong> is a San Diego-based company developing <strong>pelareorep</strong>, an intravenously delivered reovirus that primes the immune system against tumors.",
+    "The main focus is first-line metastatic <strong>pancreatic cancer</strong>. Oncolytics has agreed with the FDA on the design of a pivotal study of pelareorep plus standard chemotherapy, supported by biomarker data from the GOBLET study. Pelareorep is also being studied in colorectal and anal cancers.",
+    "<strong>Investor thesis:</strong> ONCY is a highly speculative micro-cap. Cash was only $4.1M at June 30, 2026, against a $18.7M net loss in the first half of the year, so a financing or partnership is needed urgently. Heavy dilution is likely."
+  ],
+  "competitors": [
+    {
+      "name": "Standard Chemotherapy",
+      "product": "Gemcitabine/nab-paclitaxel, FOLFIRINOX",
+      "note": "First-line pancreatic cancer standard"
+    },
+    {
+      "name": "Revolution Medicines (RVMD)",
+      "product": "Daraxonrasib (RAS inhibitor)",
+      "note": "Late-stage targeted therapy in pancreatic cancer"
+    },
+    {
+      "name": "CG Oncology (CGON)",
+      "product": "Cretostimogene",
+      "note": "Oncolytic virus peer (bladder cancer)"
+    }
+  ],
+  "advantage": "Intravenous delivery allows pelareorep to reach metastatic disease, and FDA alignment on a pivotal design is in place.",
+  "catalysts": [
+    {
+      "title": "Financing / Partnership",
+      "timing": "Near-term",
+      "description": "Required to fund operations and the pivotal study.",
+      "impact": "CRITICAL",
+      "color": "red"
+    },
+    {
+      "title": "Pivotal Pancreatic Study Launch",
+      "timing": "2026",
+      "description": "Start of registration trial with standard-of-care chemo.",
+      "impact": "HIGH IMPACT",
+      "color": "green"
+    },
+    {
+      "title": "GI Cancer Data",
+      "timing": "Ongoing",
+      "description": "Colorectal and anal cancer updates.",
+      "impact": "MILESTONE",
+      "color": "yellow"
+    }
+  ],
+  "risks": [
+    {
+      "title": "Going Concern",
+      "description": "$4.1M in cash against ~$9M quarterly burn.",
+      "level": "HIGH"
+    },
+    {
+      "title": "Dilution",
+      "description": "Any raise at current prices would be heavily dilutive.",
+      "level": "HIGH"
+    },
+    {
+      "title": "Nasdaq Listing",
+      "description": "Share price below $1 risks delisting without a reverse split.",
+      "level": "HIGH"
+    },
+    {
+      "title": "Clinical",
+      "description": "Pancreatic cancer has a long history of late-stage failures.",
+      "level": "HIGH"
+    }
+  ],
+  "partners": [
+    {
+      "name": "GOBLET Study",
+      "role": "Phase 1/2 Platform Trial",
+      "description": "Tests pelareorep combinations across GI cancers."
+    },
+    {
+      "name": "FDA Alignment",
+      "role": "Regulatory",
+      "description": "Agreed pivotal study design in first-line pancreatic cancer."
+    }
+  ],
+  "interpretation": "With only a few million dollars in cash, runway is measured in months, not years; the runway figure should be read as a warning."
+}

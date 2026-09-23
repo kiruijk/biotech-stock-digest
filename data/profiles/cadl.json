@@ -1,0 +1,92 @@
+{
+  "symbol": "CADL",
+  "reviewed": "2026-09-23",
+  "overview": [
+    "<strong>Candel Therapeutics (CADL)</strong> is a Needham, Massachusetts-based company developing viral immunotherapies that are injected into tumors to trigger an immune response against the cancer.",
+    "Lead asset <strong>aglatimagene besadenovec (CAN-2409)</strong>, an adenovirus given with an oral prodrug, significantly improved disease-free survival when added to radiotherapy in a Phase 3 trial in localized, intermediate- to high-risk <strong>prostate cancer</strong>, published in The Lancet Oncology. Candel plans to submit a BLA in Q4 2026. A Phase 3 in stage IV non-small cell lung cancer (<strong>AURORA</strong>) started in June 2026, and <strong>linoserpaturev (CAN-3110)</strong> is in Phase 1b for recurrent glioblastoma.",
+    "<strong>Investor thesis:</strong> CADL could deliver the first new immunotherapy approval in localized prostate cancer, a large market. The near-term swing factors are manufacturing validation and the BLA."
+  ],
+  "competitors": [
+    {
+      "name": "Standard of Care",
+      "product": "Radiotherapy ± hormone therapy",
+      "note": "Current standard aglatimagene is added to"
+    },
+    {
+      "name": "Novartis (NVS)",
+      "product": "Pluvicto (PSMA radioligand)",
+      "note": "Moving into earlier prostate cancer settings"
+    },
+    {
+      "name": "CG Oncology (CGON)",
+      "product": "Cretostimogene (oncolytic virus)",
+      "note": "Oncolytic immunotherapy peer (bladder cancer)"
+    }
+  ],
+  "advantage": "Positive randomized Phase 3 data published in a top journal, and an off-the-shelf approach that adds to existing radiotherapy workflows.",
+  "catalysts": [
+    {
+      "title": "ASTRO Biomarker Data",
+      "timing": "Q3 2026",
+      "description": "Extended biomarker analysis from the prostate Phase 3.",
+      "impact": "PR EVENT",
+      "color": "yellow"
+    },
+    {
+      "title": "Prostate Cancer BLA Submission",
+      "timing": "Q4 2026",
+      "description": "First regulatory filing for aglatimagene.",
+      "impact": "HIGH IMPACT",
+      "color": "green"
+    },
+    {
+      "title": "Glioblastoma Long-Term Survival Data",
+      "timing": "Q4 2026",
+      "description": "Linoserpaturev Phase 1b update.",
+      "impact": "MILESTONE",
+      "color": "yellow"
+    },
+    {
+      "title": "Potential Launch",
+      "timing": "2027",
+      "description": "Commercial launch if approved.",
+      "impact": "KEY EVENT",
+      "color": "green"
+    }
+  ],
+  "risks": [
+    {
+      "title": "Manufacturing / CMC",
+      "description": "Process validation must be completed before the BLA.",
+      "level": "HIGH"
+    },
+    {
+      "title": "Commercial Build",
+      "description": "Small team (~55 employees) must build or partner for launch.",
+      "level": "MEDIUM"
+    },
+    {
+      "title": "Runway",
+      "description": "Cash lasts into Q1 2028; launch costs may require additional capital.",
+      "level": "MEDIUM"
+    },
+    {
+      "title": "Regulatory",
+      "description": "The FDA may scrutinize the DFS endpoint and subgroup consistency.",
+      "level": "MEDIUM"
+    }
+  ],
+  "partners": [
+    {
+      "name": "enLIGHTEN Platform",
+      "role": "In-House Discovery",
+      "description": "HSV-based discovery platform for new solid tumor candidates."
+    },
+    {
+      "name": "AURORA Phase 3",
+      "role": "NSCLC Trial",
+      "description": "Stage IV lung cancer registrational trial, first site activated June 2026."
+    }
+  ],
+  "interpretation": "$201.6M in cash funds operations into Q1 2028. Net loss runs well above actual cash use — Q2's $38.9M loss included a $12.2M non-cash warrant revaluation — so the burn shown here uses operating cash flow instead."
+}

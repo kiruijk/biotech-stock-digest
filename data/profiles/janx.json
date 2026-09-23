@@ -1,0 +1,85 @@
+{
+  "symbol": "JANX",
+  "reviewed": "2026-09-23",
+  "overview": [
+    "<strong>Janux Therapeutics (JANX)</strong> is a San Diego-based company developing <strong>TRACTr</strong> masked T cell engagers. They stay inactive in the bloodstream and switch on only in the tumor, aiming to widen the therapeutic window of T cell engagers in solid tumors.",
+    "Lead program <strong>JANX007</strong> targets PSMA in metastatic castration-resistant prostate cancer (mCRPC); Phase 1b is enrolling taxane-naïve monotherapy and darolutamide combination cohorts. <strong>JANX014</strong> is also in Phase 1 in mCRPC, and <strong>JANX011</strong> is in a healthy volunteer study. The EGFR-targeted <strong>JANX008</strong> was discontinued after Phase 1a.",
+    "<strong>Investor thesis:</strong> JANX trades close to its $970.9M cash balance, so the market assigns little value to its platform. Positive Phase 1b data in earlier-line prostate cancer could re-rate the stock."
+  ],
+  "competitors": [
+    {
+      "name": "Vir Biotechnology (VIR)",
+      "product": "VIR-5500 (masked PSMA TCE)",
+      "note": "Direct masked PSMA engager, partnered with Astellas"
+    },
+    {
+      "name": "Amgen (AMGN)",
+      "product": "Xaluritamig (STEAP1 TCE)",
+      "note": "Advanced prostate cancer T cell engager"
+    },
+    {
+      "name": "Novartis (NVS)",
+      "product": "Pluvicto (PSMA radioligand)",
+      "note": "Approved PSMA-targeted therapy in mCRPC"
+    }
+  ],
+  "advantage": "Nearly $1B in cash and a masking approach designed to reduce cytokine release syndrome, a key limitation for T cell engagers in solid tumors.",
+  "catalysts": [
+    {
+      "title": "JANX007 Phase 1b Updates",
+      "timing": "2026–2027",
+      "description": "Data from taxane-naïve and darolutamide combination cohorts.",
+      "impact": "HIGH IMPACT",
+      "color": "green"
+    },
+    {
+      "title": "JANX014 Phase 1 Progress",
+      "timing": "2026–2027",
+      "description": "Next-generation prostate program.",
+      "impact": "MILESTONE",
+      "color": "yellow"
+    },
+    {
+      "title": "JANX011 Healthy Volunteer Data",
+      "timing": "2026–2027",
+      "description": "Early read on a non-oncology application of the platform.",
+      "impact": "MILESTONE",
+      "color": "yellow"
+    }
+  ],
+  "risks": [
+    {
+      "title": "Efficacy Durability",
+      "description": "Investors want deeper, more durable PSA and radiographic responses.",
+      "level": "HIGH"
+    },
+    {
+      "title": "Competition",
+      "description": "Vir/Astellas and Amgen are advancing competing prostate T cell engagers.",
+      "level": "HIGH"
+    },
+    {
+      "title": "Pipeline Attrition",
+      "description": "JANX008 has already been discontinued.",
+      "level": "MEDIUM"
+    },
+    {
+      "title": "Capital Allocation",
+      "description": "Investors may push for buybacks or deals if clinical progress stalls.",
+      "level": "MEDIUM"
+    }
+  ],
+  "partners": [
+    {
+      "name": "Merck",
+      "role": "Research Collaboration",
+      "description": "Collaboration applying Janux technology to Merck targets."
+    },
+    {
+      "name": "TRACTr Platform",
+      "role": "In-House Technology",
+      "description": "Tumor-activated masking platform for T cell engagers."
+    }
+  ],
+  "interpretation": "$970.9M in cash against a ~$22M quarterly loss gives a very long runway; the market value is roughly equal to cash."
+}

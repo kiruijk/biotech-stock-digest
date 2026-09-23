@@ -1,0 +1,90 @@
+{
+  "symbol": "AUTL",
+  "reviewed": "2026-09-23",
+  "overview": [
+    "<strong>Autolus Therapeutics (AUTL)</strong> is a London-based commercial-stage CAR-T company. Its product <strong>AUCATZYL (obecabtagene autoleucel, obe-cel)</strong> is approved for adults with relapsed/refractory B-cell acute lymphoblastic leukemia (ALL).",
+    "AUCATZYL uses a fast off-rate CD19 binder designed to reduce the severe immune toxicities seen with other CAR-Ts. Q2 2026 net product revenue was $45.7M (+119% year over year), and full-year guidance was raised to $140–150M. Obe-cel is also in trials for <strong>lupus nephritis</strong>, pediatric ALL and progressive <strong>multiple sclerosis</strong>.",
+    "<strong>Investor thesis:</strong> AUTL is a launch-execution story with autoimmune optionality. Revenue is growing quickly and gross margins are improving, but the company still burns cash; a $250M Perceptive credit facility ($75M drawn) adds flexibility."
+  ],
+  "competitors": [
+    {
+      "name": "Gilead / Kite (GILD)",
+      "product": "Tecartus (brexu-cel)",
+      "note": "Approved CAR-T in adult ALL"
+    },
+    {
+      "name": "Amgen (AMGN)",
+      "product": "Blincyto (blinatumomab)",
+      "note": "CD19 bispecific standard in ALL"
+    },
+    {
+      "name": "Kyverna Therapeutics (KYTX)",
+      "product": "CD19 CAR-T in autoimmune",
+      "note": "Competitor in lupus/autoimmune CAR-T"
+    },
+    {
+      "name": "Cabaletta Bio (CABA)",
+      "product": "Rese-cel (CD19 CAR-T)",
+      "note": "Autoimmune CAR-T competitor"
+    }
+  ],
+  "advantage": "Differentiated safety profile with lower rates of severe CRS/ICANS, which supports outpatient use and expansion into autoimmune disease.",
+  "catalysts": [
+    {
+      "title": "Quarterly AUCATZYL Sales",
+      "timing": "Each quarter",
+      "description": "Tracking against the $140–150M FY2026 guidance.",
+      "impact": "KEY EVENT",
+      "color": "green"
+    },
+    {
+      "title": "Lupus Nephritis Data",
+      "timing": "2026–2027",
+      "description": "Early autoimmune data would broaden the obe-cel opportunity.",
+      "impact": "HIGH IMPACT",
+      "color": "green"
+    },
+    {
+      "title": "Pediatric ALL & MS Trials",
+      "timing": "Ongoing",
+      "description": "Label expansion and new indication progress.",
+      "impact": "MILESTONE",
+      "color": "yellow"
+    }
+  ],
+  "risks": [
+    {
+      "title": "Cash Burn",
+      "description": "Cash fell from $229.4M to $201.6M in one quarter; profitability is not yet reached.",
+      "level": "HIGH"
+    },
+    {
+      "title": "Launch Execution",
+      "description": "CAR-T uptake depends on treatment-center capacity and manufacturing reliability.",
+      "level": "MEDIUM"
+    },
+    {
+      "title": "Competition",
+      "description": "Bispecifics and other CAR-Ts compete in ALL; autoimmune CAR-T is crowded.",
+      "level": "MEDIUM"
+    },
+    {
+      "title": "Debt",
+      "description": "Credit facility adds leverage and repayment obligations.",
+      "level": "MEDIUM"
+    }
+  ],
+  "partners": [
+    {
+      "name": "Perceptive Advisors",
+      "role": "Credit Facility",
+      "description": "Up to $250M five-year interest-only facility; $75M funded at close."
+    },
+    {
+      "name": "BioNTech",
+      "role": "Strategic Investor & Collaborator",
+      "description": "Equity investor with collaboration on CAR-T development and commercial infrastructure."
+    }
+  ],
+  "interpretation": "$201.6M in cash plus access to additional debt; rising revenue and gross margins should narrow the burn over time."
+}

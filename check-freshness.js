@@ -7,10 +7,8 @@ const fs = require('fs');
 
 const MAX_STALE = 3;
 
-const html = fs.readFileSync('index.html', 'utf8');
-const data = JSON.parse(html.match(/const demoData = (\{[\s\S]*?^\s*\});/m)[1]);
-const src = fs.readFileSync('update-stocks.js', 'utf8');
-const stocks = JSON.parse(src.match(/const STOCKS = (\[[\s\S]*?\]);/)[1].replace(/'/g, '"'));
+const data = JSON.parse(fs.readFileSync('data/market.json', 'utf8'));
+const stocks = JSON.parse(fs.readFileSync('data/universe.json', 'utf8')).stocks.map(s => s.symbol);
 
 const missing = stocks.filter(symbol => !data[symbol]);
 const stale = stocks.filter(symbol => data[symbol]?.stale);

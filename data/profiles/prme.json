@@ -1,0 +1,85 @@
+{
+  "symbol": "PRME",
+  "reviewed": "2026-09-23",
+  "overview": [
+    "<strong>Prime Medicine (PRME)</strong> is a Cambridge, Massachusetts-based company co-founded by David Liu to develop <strong>prime editing</strong>, a \"search-and-replace\" gene editing technology that can correct a wide range of mutations without double-strand DNA breaks.",
+    "Prime has refocused on liver diseases. <strong>PM577a</strong> for Wilson's disease has IND and CTA clearance, with a global Phase 1/2 study starting in 2H 2026 and data in 2027. <strong>PM647</strong> for alpha-1 antitrypsin deficiency (AATD) is expected to file an IND/CTA in Q3 2026.",
+    "<strong>Investor thesis:</strong> PRME offers the broadest editing technology but is still pre-clinical data in its focus areas. With $108.8M in cash and runway only into 2027, financing is a near-term overhang."
+  ],
+  "competitors": [
+    {
+      "name": "Beam Therapeutics (BEAM)",
+      "product": "BEAM-302 (AATD)",
+      "note": "Pivotal-stage AATD base editing"
+    },
+    {
+      "name": "Wave Life Sciences (WVE)",
+      "product": "WVE-006 (AATD)",
+      "note": "RNA editing in AATD"
+    },
+    {
+      "name": "Ultragenyx (RARE)",
+      "product": "UX701 (Wilson's gene therapy)",
+      "note": "AAV gene therapy in Wilson's disease"
+    }
+  ],
+  "advantage": "Prime editing can in principle correct ~90% of known disease-causing mutations, giving it the widest range of any editing approach.",
+  "catalysts": [
+    {
+      "title": "PM647 IND/CTA Filing",
+      "timing": "Q3 2026",
+      "description": "Entry into the clinic for AATD.",
+      "impact": "MILESTONE",
+      "color": "yellow"
+    },
+    {
+      "title": "PM577a Phase 1/2 Start",
+      "timing": "2H 2026",
+      "description": "First-in-human Wilson's disease study.",
+      "impact": "MILESTONE",
+      "color": "yellow"
+    },
+    {
+      "title": "PM577a Initial Data",
+      "timing": "2027",
+      "description": "First clinical proof of in vivo prime editing.",
+      "impact": "HIGH IMPACT",
+      "color": "green"
+    }
+  ],
+  "risks": [
+    {
+      "title": "Funding",
+      "description": "Runway only into 2027; dilution likely.",
+      "level": "HIGH"
+    },
+    {
+      "title": "Early Stage",
+      "description": "No in vivo clinical data yet in lead indications.",
+      "level": "HIGH"
+    },
+    {
+      "title": "Competition",
+      "description": "Beam is years ahead in AATD.",
+      "level": "MEDIUM"
+    },
+    {
+      "title": "Strategic Resets",
+      "description": "Prior pipeline reprioritizations have reduced investor confidence.",
+      "level": "MEDIUM"
+    }
+  ],
+  "partners": [
+    {
+      "name": "Bristol Myers Squibb",
+      "role": "Ex Vivo T Cell Collaboration",
+      "description": "Prime editing for cell therapy applications."
+    },
+    {
+      "name": "Cystic Fibrosis Foundation",
+      "role": "Funding Partner",
+      "description": "Support for cystic fibrosis prime editing research."
+    }
+  ],
+  "interpretation": "$108.8M in cash with runway into 2027 — the company will likely need new capital before meaningful clinical data."
+}

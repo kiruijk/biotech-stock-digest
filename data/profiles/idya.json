@@ -1,0 +1,85 @@
+{
+  "symbol": "IDYA",
+  "reviewed": "2026-09-23",
+  "overview": [
+    "<strong>IDEAYA Biosciences (IDYA)</strong> is a South San Francisco-based precision oncology company focused on synthetic lethality and targeted therapies.",
+    "Lead drug <strong>darovasertib</strong>, a PKC inhibitor combined with crizotinib, met its primary endpoint in the registrational <strong>OptimUM-02</strong> trial in metastatic uveal melanoma, cutting the risk of progression by 58% in HLA-A2-negative patients. IDEAYA is submitting an NDA under the FDA's Real-Time Oncology Review for potential accelerated approval, with completion expected in 2H 2026. The pipeline also includes a DLL3-targeting ADC in a registrational trial and MTAP/KRAS combination studies.",
+    "<strong>Investor thesis:</strong> IDYA is transitioning to commercial stage in uveal melanoma, where darovasertib complements KIMMTRAK (which only serves HLA-A2-positive patients). A June 2026 raise brought cash to ~$1.24B."
+  ],
+  "competitors": [
+    {
+      "name": "Immunocore (IMCR)",
+      "product": "KIMMTRAK (HLA-A2+ uveal melanoma)",
+      "note": "Approved, but only for HLA-A2-positive patients"
+    },
+    {
+      "name": "Delcath Systems (DLTH)",
+      "product": "Hepzato (liver-directed)",
+      "note": "Approved for uveal melanoma liver metastases"
+    },
+    {
+      "name": "Amgen (AMGN)",
+      "product": "Imdelltra (DLL3 bispecific)",
+      "note": "Competitor for the DLL3 ADC program"
+    }
+  ],
+  "advantage": "First registrational success in HLA-A2-negative metastatic uveal melanoma, a population with no targeted approved option.",
+  "catalysts": [
+    {
+      "title": "Darovasertib NDA Completion",
+      "timing": "2H 2026",
+      "description": "Rolling RTOR submission for accelerated approval.",
+      "impact": "HIGH IMPACT",
+      "color": "green"
+    },
+    {
+      "title": "FDA Approval Decision",
+      "timing": "2027 (est.)",
+      "description": "First commercial product.",
+      "impact": "KEY EVENT",
+      "color": "green"
+    },
+    {
+      "title": "DLL3 ADC Registrational Trial",
+      "timing": "Ongoing",
+      "description": "Second late-stage program.",
+      "impact": "MILESTONE",
+      "color": "yellow"
+    }
+  ],
+  "risks": [
+    {
+      "title": "Commercial Launch",
+      "description": "First launch for the company; uveal melanoma is a small market.",
+      "level": "MEDIUM"
+    },
+    {
+      "title": "Overall Survival",
+      "description": "Final OS data needed for full approval.",
+      "level": "MEDIUM"
+    },
+    {
+      "title": "Pipeline Breadth",
+      "description": "Valuation depends on expanding beyond uveal melanoma.",
+      "level": "MEDIUM"
+    },
+    {
+      "title": "Burn",
+      "description": "Q2 2026 net loss of $112.5M.",
+      "level": "MEDIUM"
+    }
+  ],
+  "partners": [
+    {
+      "name": "Pfizer",
+      "role": "Crizotinib Supply",
+      "description": "Darovasertib is combined with Pfizer's crizotinib (Xalkori)."
+    },
+    {
+      "name": "GSK",
+      "role": "Synthetic Lethality Collaboration",
+      "description": "Partnership on synthetic lethality programs."
+    }
+  ],
+  "interpretation": "~$1.24B in cash after a $345M June 2026 offering is ample to fund a launch and pipeline expansion."
+}

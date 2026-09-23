@@ -1,0 +1,97 @@
+{
+  "symbol": "CTMX",
+  "reviewed": "2026-09-23",
+  "overview": [
+    "<strong>CytomX Therapeutics (CTMX)</strong> is a South San Francisco-based company whose PROBODY platform masks antibodies and drug conjugates so they activate mainly in tumors, sparing healthy tissue.",
+    "Lead program <strong>varsetatug masetecan (Varseta-M, CX-2051)</strong> is an EpCAM-directed antibody-drug conjugate. EpCAM is a well-known tumor target that has been hard to drug because of toxicity in normal tissue. Phase 1 monotherapy enrollment in colorectal cancer is complete (113 patients), with a data update expected by end of 2026 and a registrational study planned for 1H 2027. <strong>CX-801</strong>, a masked interferon, is in Phase 1 in melanoma.",
+    "<strong>Investor thesis:</strong> Varseta-M could open a new target class in late-line colorectal cancer and other GI tumors. Partner revenue (including $37M from Regeneron in July 2026) supports a runway into 2H 2028."
+  ],
+  "competitors": [
+    {
+      "name": "Takeda (TKPYY)",
+      "product": "Fruzaqla (fruquintinib)",
+      "note": "Late-line colorectal cancer standard"
+    },
+    {
+      "name": "Taiho",
+      "product": "Lonsurf + bevacizumab",
+      "note": "Late-line colorectal cancer standard"
+    },
+    {
+      "name": "Bayer",
+      "product": "Stivarga (regorafenib)",
+      "note": "Late-line colorectal cancer option"
+    }
+  ],
+  "advantage": "Masking technology may finally make EpCAM — expressed on most GI cancers — safely targetable with a potent ADC.",
+  "catalysts": [
+    {
+      "title": "Varseta-M Phase 1 CRC Update",
+      "timing": "By end of 2026",
+      "description": "Response rates and durability in 113 patients.",
+      "impact": "HIGH IMPACT",
+      "color": "green"
+    },
+    {
+      "title": "Chemo Combination Study Start",
+      "timing": "Q4 2026",
+      "description": "Phase 1/2 Varseta-M combinations.",
+      "impact": "MILESTONE",
+      "color": "yellow"
+    },
+    {
+      "title": "Registrational Study Start",
+      "timing": "1H 2027",
+      "description": "Pivotal trial in colorectal cancer.",
+      "impact": "KEY EVENT",
+      "color": "green"
+    },
+    {
+      "title": "CX-801 Combination Data",
+      "timing": "1H 2027",
+      "description": "Masked interferon + pembrolizumab in melanoma.",
+      "impact": "MILESTONE",
+      "color": "yellow"
+    }
+  ],
+  "risks": [
+    {
+      "title": "Clinical",
+      "description": "Late-line colorectal cancer has a low bar but a history of failures.",
+      "level": "HIGH"
+    },
+    {
+      "title": "Toxicity",
+      "description": "EpCAM targeting has historically caused GI and liver toxicity.",
+      "level": "HIGH"
+    },
+    {
+      "title": "Share Price Decline",
+      "description": "Stock has fallen sharply in 2026.",
+      "level": "MEDIUM"
+    },
+    {
+      "title": "Partner Dependency",
+      "description": "Collaboration revenue is lumpy.",
+      "level": "MEDIUM"
+    }
+  ],
+  "partners": [
+    {
+      "name": "Regeneron",
+      "role": "Bispecific Collaboration",
+      "description": "Expanded partnership; $37M received July 2026."
+    },
+    {
+      "name": "Amgen",
+      "role": "Collaboration",
+      "description": "Masked T cell engager partnership."
+    },
+    {
+      "name": "Bristol Myers Squibb, Moderna, Astellas",
+      "role": "Collaborations",
+      "description": "Additional platform partnerships."
+    }
+  ],
+  "interpretation": "$330.3M in cash funds operations to at least 2H 2028."
+}

@@ -1,0 +1,78 @@
+{
+  "symbol": "SEPN",
+  "reviewed": "2026-09-23",
+  "overview": [
+    "<strong>Septerna (SEPN)</strong> is a South San Francisco-based biotech whose Native Complex platform recreates GPCRs in their natural state to discover oral small-molecule drugs for targets previously reachable only by injectable peptides.",
+    "The lead wholly owned program, <strong>SEP-479</strong>, is an oral small-molecule PTH1R agonist for hypoparathyroidism. Early pharmacokinetics support once-daily dosing (~3–4 day half-life), with SAD/MAD data expected in Q1 2027. Septerna also has a <strong>Novo Nordisk collaboration</strong> to discover oral small molecules for obesity, type 2 diabetes and cardiometabolic disease, which generated $26.7M of revenue in Q2 2026.",
+    "<strong>Investor thesis:</strong> SEPN is a platform bet on turning peptide hormones into pills. The Novo deal validates the approach and provides non-dilutive funding, while $516.5M in cash funds operations at least into 2029."
+  ],
+  "competitors": [
+    {
+      "name": "Ascendis Pharma (ASND)",
+      "product": "Yorvipath (palopegteriparatide)",
+      "note": "Approved once-daily injectable PTH for hypoparathyroidism"
+    },
+    {
+      "name": "MBX Biosciences (MBXB)",
+      "product": "Canvuparatide (weekly PTH prodrug)",
+      "note": "Clinical-stage injectable competitor"
+    },
+    {
+      "name": "Structure Therapeutics (GPCR)",
+      "product": "Oral GPCR small molecules",
+      "note": "Closest platform peer in oral metabolic drugs"
+    }
+  ],
+  "advantage": "Potential first oral PTH therapy — a meaningful convenience advantage over daily injections — plus big pharma validation from Novo Nordisk.",
+  "catalysts": [
+    {
+      "title": "Novo Collaboration Milestones",
+      "timing": "Ongoing",
+      "description": "Research milestone payments as programs advance.",
+      "impact": "MILESTONE",
+      "color": "yellow"
+    },
+    {
+      "title": "SEP-479 SAD/MAD Data",
+      "timing": "Q1 2027",
+      "description": "First human data on safety and PTH-like activity.",
+      "impact": "HIGH IMPACT",
+      "color": "green"
+    }
+  ],
+  "risks": [
+    {
+      "title": "Early Stage",
+      "description": "SEP-479 is in Phase 1; a predecessor PTH1R program was discontinued.",
+      "level": "HIGH"
+    },
+    {
+      "title": "VC Selling Overhang",
+      "description": "Large holders have been reducing positions.",
+      "level": "MEDIUM"
+    },
+    {
+      "title": "Partner Dependency",
+      "description": "Obesity upside depends on Novo Nordisk's priorities.",
+      "level": "MEDIUM"
+    },
+    {
+      "title": "Valuation",
+      "description": "Market cap reflects platform expectations ahead of clinical proof.",
+      "level": "MEDIUM"
+    }
+  ],
+  "partners": [
+    {
+      "name": "Novo Nordisk",
+      "role": "Obesity & Cardiometabolic Collaboration",
+      "description": "Oral small molecules against specified GPCR targets; $195M upfront plus milestones."
+    },
+    {
+      "name": "Native Complex Platform",
+      "role": "In-House Technology",
+      "description": "Proprietary GPCR discovery engine."
+    }
+  ],
+  "interpretation": "$516.5M in cash plus Novo collaboration revenue funds operations at least into 2029."
+}

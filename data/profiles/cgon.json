@@ -1,0 +1,103 @@
+{
+  "symbol": "CGON",
+  "reviewed": "2026-09-23",
+  "overview": [
+    "<strong>CG Oncology (CGON)</strong> is a Dallas, Texas-based late-stage biotech focused on bladder cancer. Founded in 2010 as Cold Genesys, it is developing a single product candidate across multiple non-muscle invasive bladder cancer (NMIBC) settings.",
+    "<strong>Cretostimogene grenadenorepvec</strong> is an oncolytic immunotherapy delivered directly into the bladder. It is designed to replicate in and kill tumor cells while stimulating an anti-tumor immune response. Results from the pivotal <strong>BOND-003</strong> trial in high-risk BCG-unresponsive NMIBC with carcinoma in situ were published in The Lancet Oncology in July 2026, and the company expects to complete its BLA in Q4 2026.",
+    "The second Phase 3, <strong>PIVOT-006</strong>, tests cretostimogene as adjuvant therapy in intermediate-risk NMIBC — a larger population — and has accrued the vast majority of target events with topline data expected near term. <strong>CORE-008</strong>, a multi-cohort Phase 2, extends into BCG-exposed and BCG-naïve high-risk disease.",
+    "<strong>Investor thesis:</strong> CGON is a pure-play bet on becoming a bladder-sparing standard of care in NMIBC. With ~$1B in cash and runway through 2029, it can fund the launch independently. The key questions are whether PIVOT-006 expands the label into intermediate-risk disease and how cretostimogene competes with J&amp;J's TAR-200 and ImmunityBio's Anktiva."
+  ],
+  "competitors": [
+    {
+      "name": "Johnson & Johnson (JNJ)",
+      "product": "TAR-200 (gemcitabine releasing system)",
+      "note": "Big pharma intravesical competitor in BCG-unresponsive NMIBC"
+    },
+    {
+      "name": "ImmunityBio (IBRX)",
+      "product": "Anktiva + BCG",
+      "note": "Approved IL-15 agonist in BCG-unresponsive NMIBC with CIS"
+    },
+    {
+      "name": "Ferring",
+      "product": "Adstiladrin (nadofaragene)",
+      "note": "Approved intravesical gene therapy"
+    },
+    {
+      "name": "enGene (ENGN)",
+      "product": "Detalimogene (non-viral gene therapy)",
+      "note": "Emerging intravesical competitor"
+    }
+  ],
+  "advantage": "Strong complete-response data with a favorable tolerability profile, a second Phase 3 targeting the larger intermediate-risk population, and one of the strongest balance sheets among small/mid-cap oncology biotechs.",
+  "catalysts": [
+    {
+      "title": "PIVOT-006 Phase 3 Topline Data",
+      "timing": "Near-term (2H 2026)",
+      "description": "Adjuvant therapy in intermediate-risk NMIBC; positive data would substantially expand the addressable market.",
+      "impact": "HIGH IMPACT",
+      "color": "green"
+    },
+    {
+      "title": "BLA Completion",
+      "timing": "Q4 2026",
+      "description": "Completion of the BLA for high-risk BCG-unresponsive NMIBC.",
+      "impact": "KEY EVENT",
+      "color": "green"
+    },
+    {
+      "title": "CORE-008 Durability Data",
+      "timing": "2026",
+      "description": "Durability data across high-risk BCG-exposed and BCG-naïve cohorts.",
+      "impact": "MILESTONE",
+      "color": "yellow"
+    },
+    {
+      "title": "FDA Approval Decision",
+      "timing": "2027 (est.)",
+      "description": "Timing depends on BLA acceptance and review designation.",
+      "impact": "HIGH IMPACT",
+      "color": "green"
+    }
+  ],
+  "risks": [
+    {
+      "title": "Single-Asset Company",
+      "description": "The entire valuation rests on cretostimogene; a setback in PIVOT-006 or the BLA would hit hard.",
+      "level": "HIGH"
+    },
+    {
+      "title": "Competitive Market",
+      "description": "J&amp;J, ImmunityBio and Ferring already have or are nearing approved options in the same setting.",
+      "level": "HIGH"
+    },
+    {
+      "title": "Manufacturing",
+      "description": "Viral immunotherapy manufacturing (CMC) is complex; CMC costs are already driving higher R&D spend.",
+      "level": "MEDIUM"
+    },
+    {
+      "title": "Valuation",
+      "description": "At ~$6.4B market cap, much of the approval scenario appears priced in.",
+      "level": "MEDIUM"
+    },
+    {
+      "title": "Commercial Build-Out",
+      "description": "Rising G&A ($29.0M in Q2 2026) reflects a first-time launch build that must reach urologists effectively.",
+      "level": "MEDIUM"
+    }
+  ],
+  "partners": [
+    {
+      "name": "Expanded Access Program",
+      "role": "North America",
+      "description": "Provides cretostimogene to eligible patients outside trials ahead of approval."
+    },
+    {
+      "name": "Clinical Trial Network",
+      "role": "Urology & Oncology Sites",
+      "description": "BOND-003, PIVOT-006 and CORE-008 are run across U.S. and international urology centers."
+    }
+  ],
+  "interpretation": "~$1.0B in cash with management guidance through 2029 means CGON can fund a U.S. launch without needing to raise capital, removing a common overhang for single-asset biotechs."
+}

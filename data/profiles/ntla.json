@@ -1,0 +1,113 @@
+{
+  "symbol": "NTLA",
+  "reviewed": "2026-09-23",
+  "overview": [
+    "<strong>Intellia Therapeutics (NTLA)</strong> is a Cambridge, Massachusetts-based genome editing company co-founded in 2014 by Nobel laureate Jennifer Doudna. It develops in vivo CRISPR/Cas9 therapies delivered by lipid nanoparticles to the liver, aiming for one-time, potentially curative treatments.",
+    "The nearest-term asset is <strong>lonvo-z (NTLA-2002)</strong> for hereditary angioedema (HAE). In the Phase 3 HAELO trial, a single infusion reduced attacks by 87% versus placebo, met all key secondary endpoints and was published in the New England Journal of Medicine. Intellia expects FDA acceptance of the BLA in 2H 2026 and a U.S. launch in 1H 2027 — which would make it the first in vivo CRISPR therapy on the market.",
+    "The larger opportunity is <strong>nex-z (NTLA-2001)</strong> for transthyretin (ATTR) amyloidosis, partnered with Regeneron. Phase 3 MAGNITUDE (cardiomyopathy) and MAGNITUDE-2 (polyneuropathy) enrollment was paused over liver safety and has since resumed; new genomic analysis links a specific HLA allele to elevated liver enzymes, which could help manage the risk.",
+    "<strong>Investor thesis:</strong> NTLA is a bet that one-time gene editing can displace chronic therapies. A clean lonvo-z launch would validate the platform commercially, while nex-z offers much larger upside in ATTR if the safety question is resolved. The stock has fallen sharply from its highs as investors weigh the nex-z safety overhang and competition from established ATTR drugs."
+  ],
+  "competitors": [
+    {
+      "name": "Takeda (TAK)",
+      "product": "Takhzyro (HAE prophylaxis)",
+      "note": "Standard-of-care injectable HAE prevention"
+    },
+    {
+      "name": "BioCryst (BCRX)",
+      "product": "Orladeyo (oral HAE prophylaxis)",
+      "note": "Convenient once-daily oral option"
+    },
+    {
+      "name": "Alnylam (ALNY)",
+      "product": "Amvuttra (ATTR RNAi)",
+      "note": "Approved in ATTR cardiomyopathy and polyneuropathy"
+    },
+    {
+      "name": "BridgeBio (BBIO)",
+      "product": "Attruby (ATTR stabilizer)",
+      "note": "Oral stabilizer competing in ATTR-CM"
+    }
+  ],
+  "advantage": "One-time treatment versus lifelong dosing. Lonvo-z's 87% attack reduction from a single infusion is a compelling pitch to HAE patients tired of chronic injections or daily pills.",
+  "catalysts": [
+    {
+      "title": "Lonvo-z BLA Acceptance",
+      "timing": "2H 2026",
+      "description": "FDA acceptance of the HAE filing and assignment of a PDUFA date.",
+      "impact": "KEY EVENT",
+      "color": "green"
+    },
+    {
+      "title": "MAGNITUDE-2 Enrollment Complete",
+      "timing": "2H 2026",
+      "description": "Completion of the nex-z Phase 3 polyneuropathy trial enrollment.",
+      "impact": "MILESTONE",
+      "color": "yellow"
+    },
+    {
+      "title": "Lonvo-z U.S. Launch",
+      "timing": "1H 2027",
+      "description": "First commercial in vivo CRISPR therapy; early uptake will set the tone for the platform.",
+      "impact": "HIGH IMPACT",
+      "color": "green"
+    },
+    {
+      "title": "Nex-z Safety Updates",
+      "timing": "Ongoing",
+      "description": "Any new liver safety signals in MAGNITUDE trials would weigh heavily on the stock.",
+      "impact": "RISK EVENT",
+      "color": "red"
+    }
+  ],
+  "risks": [
+    {
+      "title": "Nex-z Liver Safety",
+      "description": "Phase 3 enrollment was previously paused over liver safety; any recurrence could threaten the ATTR program.",
+      "level": "HIGH"
+    },
+    {
+      "title": "Commercial Execution",
+      "description": "Intellia has never launched a product; pricing and reimbursement for a one-time gene therapy are untested in HAE.",
+      "level": "MEDIUM"
+    },
+    {
+      "title": "Competition",
+      "description": "Established ATTR drugs (Amvuttra, Attruby, tafamidis) and multiple HAE options set a high bar.",
+      "level": "HIGH"
+    },
+    {
+      "title": "Cash Burn",
+      "description": "Q2 2026 net loss of $106.6M; guidance funds operations into 2028, but a launch plus Phase 3 trials are expensive.",
+      "level": "MEDIUM"
+    },
+    {
+      "title": "Regulatory",
+      "description": "First-of-kind in vivo editing filing may draw extra FDA scrutiny on long-term safety follow-up.",
+      "level": "MEDIUM"
+    }
+  ],
+  "partners": [
+    {
+      "name": "Regeneron Pharmaceuticals",
+      "role": "Nex-z Co-Development Partner",
+      "description": "Shares development costs and economics for nex-z in ATTR amyloidosis."
+    },
+    {
+      "name": "Kyverna Therapeutics",
+      "role": "Licensing Partner",
+      "description": "Allogeneic CD19 CAR-T for B cell-mediated autoimmune diseases."
+    },
+    {
+      "name": "AvenCell Therapeutics",
+      "role": "Licensing Partner",
+      "description": "Allogeneic universal CAR-T cell therapies."
+    },
+    {
+      "name": "ReCode Therapeutics",
+      "role": "Research Collaboration",
+      "description": "Genomic medicines for cystic fibrosis."
+    }
+  ],
+  "interpretation": "$628M in cash (bolstered by a $195M April 2026 offering) is guided to last at least into 2028, past the expected lonvo-z launch. The runway shown here assumes the latest quarter's cash burn continues unchanged; management's guidance also factors in expected revenue and cost savings."
+}

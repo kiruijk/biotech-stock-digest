@@ -1,0 +1,103 @@
+{
+  "symbol": "REPL",
+  "reviewed": "2026-09-23",
+  "overview": [
+    "<strong>Replimune Group (REPL)</strong> is a Woburn, Massachusetts-based company developing oncolytic immunotherapies: modified herpes viruses that infect and kill tumor cells and trigger an immune response.",
+    "On August 6, 2026, the FDA granted accelerated approval to <strong>Tudriqev (vusolimogene oderparepvec, RP1)</strong> with nivolumab for advanced melanoma that has progressed on anti-PD-1 therapy. The approval came on the third attempt, after two complete response letters and a 10–3 favorable FDA advisory committee vote on July 30. In the IGNYTE trial, the combination showed a 33.6% response rate, 24.8-month median duration of response and 32.9-month median overall survival. Replimune expected product on the market within about 60 days of approval and raised $150M to fund the launch.",
+    "The confirmatory Phase 3 <strong>IGNYTE-3</strong> (~400 patients) is ongoing. <strong>RP2</strong>, which adds an anti-CTLA-4 component, is in the registration-directed Phase 2/3 <strong>REVEAL</strong> trial in metastatic uveal melanoma (~280 patients).",
+    "<strong>Investor thesis:</strong> After a long regulatory fight, REPL is now a launch story. Uptake of an off-the-shelf, injectable option among community oncologists will drive the stock, alongside IGNYTE-3 (needed to keep the accelerated approval) and RP2 in uveal melanoma."
+  ],
+  "competitors": [
+    {
+      "name": "Iovance (IOVA)",
+      "product": "Amtagvi (TIL cell therapy)",
+      "note": "Approved in the same post-PD-1 melanoma setting; requires surgery and cell manufacturing"
+    },
+    {
+      "name": "Bristol Myers Squibb (BMY)",
+      "product": "Opdualag, Opdivo + Yervoy",
+      "note": "Checkpoint standard of care"
+    },
+    {
+      "name": "Immatics (IMTX)",
+      "product": "Anzu-cel (PRAME TCR-T)",
+      "note": "Phase 3 melanoma cell therapy"
+    },
+    {
+      "name": "Immunocore (IMCR) / IDEAYA (IDYA)",
+      "product": "KIMMTRAK / darovasertib",
+      "note": "Uveal melanoma competitors for RP2"
+    }
+  ],
+  "advantage": "An off-the-shelf therapy injected in the clinic, with no cell manufacturing or hospitalization, which makes it easier to use outside major cancer centers than Amtagvi.",
+  "catalysts": [
+    {
+      "title": "Tudriqev U.S. Launch",
+      "timing": "Q4 2026",
+      "description": "Product availability expected ~60 days after the August 6 approval.",
+      "impact": "KEY EVENT",
+      "color": "green"
+    },
+    {
+      "title": "First Quarterly Sales",
+      "timing": "Early 2027",
+      "description": "The first read on launch uptake.",
+      "impact": "HIGH IMPACT",
+      "color": "green"
+    },
+    {
+      "title": "IGNYTE-3 Confirmatory Trial",
+      "timing": "Ongoing",
+      "description": "Required to convert accelerated approval to full approval.",
+      "impact": "MILESTONE",
+      "color": "yellow"
+    },
+    {
+      "title": "REVEAL (RP2, Uveal Melanoma)",
+      "timing": "Ongoing",
+      "description": "Registration-directed trial vs. ipilimumab + nivolumab.",
+      "impact": "MILESTONE",
+      "color": "yellow"
+    }
+  ],
+  "risks": [
+    {
+      "title": "Launch Execution",
+      "description": "First commercial launch, competing for the same patients as Amtagvi.",
+      "level": "HIGH"
+    },
+    {
+      "title": "Confirmatory Risk",
+      "description": "Accelerated approval can be withdrawn if IGNYTE-3 fails.",
+      "level": "MEDIUM"
+    },
+    {
+      "title": "Regulatory History",
+      "description": "FDA reviewers raised concerns about the single-arm IGNYTE data during two prior rejections.",
+      "level": "MEDIUM"
+    },
+    {
+      "title": "Litigation",
+      "description": "Law firms are advertising a securities class action against the company.",
+      "level": "MEDIUM"
+    },
+    {
+      "title": "Cash Burn",
+      "description": "Cash fell from $268.9M to $195.3M in one quarter before the $150M raise.",
+      "level": "MEDIUM"
+    }
+  ],
+  "partners": [
+    {
+      "name": "Bristol Myers Squibb",
+      "role": "Combination Partner Drug",
+      "description": "Tudriqev is approved in combination with BMS's Opdivo (nivolumab)."
+    },
+    {
+      "name": "RPx Platform",
+      "role": "In-House Technology",
+      "description": "Proprietary HSV-1 backbone behind RP1 and RP2."
+    }
+  ],
+  "interpretation": "$195.3M in cash at June 30, 2026, plus a $150M financing completed after the approval, to fund the launch and IGNYTE-3."
+}

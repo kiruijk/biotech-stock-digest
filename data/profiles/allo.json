@@ -1,0 +1,90 @@
+{
+  "symbol": "ALLO",
+  "reviewed": "2026-09-23",
+  "overview": [
+    "<strong>Allogene Therapeutics (ALLO)</strong> is a South San Francisco-based developer of allogeneic (\"off-the-shelf\") CAR-T cell therapies made from healthy donor cells, avoiding the weeks-long manufacturing of patient-specific CAR-T.",
+    "Lead program <strong>cemacabtagene ansegedleucel (cema-cel)</strong> is in the pivotal <strong>ALPHA3</strong> trial as first-line consolidation for large B-cell lymphoma patients who still have minimal residual disease (MRD) after chemotherapy. At the interim futility analysis, 58.3% of cema-cel patients became MRD-negative versus 16.7% on observation, with no CRS or ICANS. FDA granted RMAT and Fast Track designations. <strong>ALLO-329</strong> targets autoimmune diseases, with data expected in Q4 2026.",
+    "<strong>Investor thesis:</strong> ALLO is a bet that off-the-shelf CAR-T can move into earlier-line treatment where autologous therapy is impractical. With $423.6M in cash and runway into 2029, it can reach the mid-2027 EFS update."
+  ],
+  "competitors": [
+    {
+      "name": "Caribou Biosciences (CRBU)",
+      "product": "Vispa-cel (allogeneic CD19 CAR-T)",
+      "note": "Closest allogeneic CAR-T peer in LBCL"
+    },
+    {
+      "name": "Gilead / Kite (GILD)",
+      "product": "Yescarta (autologous CAR-T)",
+      "note": "Standard-of-care CAR-T in LBCL"
+    },
+    {
+      "name": "Bristol Myers Squibb (BMY)",
+      "product": "Breyanzi (autologous CAR-T)",
+      "note": "Approved LBCL CAR-T"
+    },
+    {
+      "name": "Roche / AbbVie",
+      "product": "Columvi, Epkinly (bispecifics)",
+      "note": "Off-the-shelf bispecific antibodies"
+    }
+  ],
+  "advantage": "Off-the-shelf availability with a clean safety profile, targeting a first-line MRD+ niche where no CAR-T is approved.",
+  "catalysts": [
+    {
+      "title": "ALLO-329 Autoimmune Data",
+      "timing": "Q4 2026",
+      "description": "First clinical update from the RESOLUTION trial.",
+      "impact": "KEY EVENT",
+      "color": "green"
+    },
+    {
+      "title": "ALPHA3 EFS Update",
+      "timing": "Mid-2027",
+      "description": "Event-free survival — the endpoint that matters for approval.",
+      "impact": "HIGH IMPACT",
+      "color": "green"
+    },
+    {
+      "title": "ALPHA3 Enrollment Complete",
+      "timing": "End of 2027",
+      "description": "About 100 sites expected by year-end 2026.",
+      "impact": "MILESTONE",
+      "color": "yellow"
+    }
+  ],
+  "risks": [
+    {
+      "title": "Durability",
+      "description": "Allogeneic CAR-T persistence has historically trailed autologous products.",
+      "level": "HIGH"
+    },
+    {
+      "title": "Long Timeline",
+      "description": "Enrollment completes end of 2027; approval is years away.",
+      "level": "MEDIUM"
+    },
+    {
+      "title": "Competition",
+      "description": "Bispecifics and autologous CAR-T are well entrenched.",
+      "level": "HIGH"
+    },
+    {
+      "title": "Low Share Price",
+      "description": "Sub-$2 stock may face listing pressure and dilution risk.",
+      "level": "MEDIUM"
+    }
+  ],
+  "partners": [
+    {
+      "name": "Servier",
+      "role": "Cema-cel Rights",
+      "description": "Allogene holds cema-cel rights through its agreement with Servier."
+    },
+    {
+      "name": "Cellectis",
+      "role": "Technology Licensor",
+      "description": "TALEN gene-editing technology used in Allogene's allogeneic platform."
+    }
+  ],
+  "interpretation": "$423.6M in cash with runway into 2029 covers the ALPHA3 interim EFS update."
+}

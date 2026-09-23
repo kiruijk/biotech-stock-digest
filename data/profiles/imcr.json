@@ -1,0 +1,103 @@
+{
+  "symbol": "IMCR",
+  "reviewed": "2026-09-23",
+  "overview": [
+    "<strong>Immunocore Holdings (IMCR)</strong> is a commercial-stage biotech headquartered in Abingdon, UK, that pioneered ImmTAX — soluble T cell receptor bispecifics that redirect the immune system to target cancer, infectious disease and autoimmune disease. Founded in 1999, it trades on Nasdaq.",
+    "Its first product, <strong>KIMMTRAK (tebentafusp)</strong>, is approved for unresectable or metastatic uveal melanoma and has shown a doubling of five-year survival. KIMMTRAK generated $115.9M in Q2 2026 net sales (up 18% year over year), bringing Immunocore close to break-even — a rarity among the stocks tracked here.",
+    "The pipeline centers on melanoma expansion: <strong>TEBE-AM</strong> (tebentafusp in previously treated cutaneous melanoma, Phase 3, topline data by end of 2026), <strong>PRISM-MEL-301</strong> (brenetafusp + nivolumab in first-line cutaneous melanoma, Phase 3) and <strong>ATOM</strong> (adjuvant uveal melanoma, Phase 3). Earlier programs target PRAME-positive tumors, HIV, type 1 diabetes and dermatology.",
+    "<strong>Investor thesis:</strong> IMCR offers a de-risked, revenue-generating base with Phase 3 upside. Success in cutaneous melanoma — a much larger market than uveal melanoma — would transform the growth outlook. The main risks are TEBE-AM execution and whether the platform extends beyond melanoma."
+  ],
+  "competitors": [
+    {
+      "name": "Iovance (IOVA)",
+      "product": "Amtagvi (TIL therapy)",
+      "note": "Approved cell therapy in post-PD-1 advanced melanoma"
+    },
+    {
+      "name": "Bristol Myers Squibb (BMY)",
+      "product": "Opdualag (nivolumab + relatlimab)",
+      "note": "First-line advanced melanoma standard"
+    },
+    {
+      "name": "IDEAYA Biosciences (IDYA)",
+      "product": "Darovasertib (PKC inhibitor)",
+      "note": "Emerging uveal melanoma competitor"
+    },
+    {
+      "name": "Delcath Systems (DLTH)",
+      "product": "Hepzato (liver-directed melphalan)",
+      "note": "Approved for uveal melanoma liver metastases"
+    }
+  ],
+  "advantage": "KIMMTRAK is the only approved therapy with an overall survival benefit in metastatic uveal melanoma, providing growing revenue that funds three Phase 3 trials without heavy dilution.",
+  "catalysts": [
+    {
+      "title": "TEBE-AM Phase 3 Topline Data",
+      "timing": "End of 2026",
+      "description": "Tebentafusp in previously treated cutaneous melanoma (540 patients) — the key 2026 binary event.",
+      "impact": "HIGH IMPACT",
+      "color": "green"
+    },
+    {
+      "title": "Phase 1/2 Data Presentations",
+      "timing": "2H 2026",
+      "description": "Updates on PRAME and infectious-disease programs.",
+      "impact": "MILESTONE",
+      "color": "yellow"
+    },
+    {
+      "title": "IMC-U120AI CTA/IND Filing",
+      "timing": "2H 2026",
+      "description": "Entry of the CD1a x PD1 dermatology candidate into the clinic.",
+      "impact": "MILESTONE",
+      "color": "yellow"
+    },
+    {
+      "title": "Quarterly KIMMTRAK Sales",
+      "timing": "Each quarter",
+      "description": "Continued double-digit growth supports the valuation floor.",
+      "impact": "KEY EVENT",
+      "color": "green"
+    }
+  ],
+  "risks": [
+    {
+      "title": "TEBE-AM Readout",
+      "description": "A negative result in cutaneous melanoma would cap KIMMTRAK's growth to the small uveal melanoma market.",
+      "level": "HIGH"
+    },
+    {
+      "title": "Single-Product Revenue",
+      "description": "All revenue comes from KIMMTRAK; any pricing or competitive pressure directly affects the business.",
+      "level": "MEDIUM"
+    },
+    {
+      "title": "HLA Restriction",
+      "description": "ImmTAX drugs require HLA-A*02:01-positive patients, limiting the addressable population to roughly half of patients.",
+      "level": "MEDIUM"
+    },
+    {
+      "title": "Competition in Melanoma",
+      "description": "Cutaneous melanoma is crowded with checkpoint inhibitors and cell therapies.",
+      "level": "MEDIUM"
+    },
+    {
+      "title": "Platform Breadth",
+      "description": "Programs outside oncology (HIV, type 1 diabetes, dermatology) remain early-stage and unproven.",
+      "level": "MEDIUM"
+    }
+  ],
+  "partners": [
+    {
+      "name": "EORTC",
+      "role": "ATOM Trial Sponsor",
+      "description": "European cancer research organization sponsoring the Phase 3 adjuvant uveal melanoma trial."
+    },
+    {
+      "name": "University of Florida",
+      "role": "Research Collaboration",
+      "description": "Preclinical work on pancreatic beta cells supporting the type 1 diabetes program."
+    }
+  ],
+  "interpretation": "Immunocore is essentially break-even (Q2 2026 net loss of just $0.8M) with $880M in cash, so its runway is effectively unlimited at current spending. The investment question is growth, not financing."
+}

@@ -1,0 +1,90 @@
+{
+  "symbol": "ENGN",
+  "reviewed": "2026-09-23",
+  "overview": [
+    "<strong>enGene Therapeutics (ENGN)</strong> is a Montreal-based company developing non-viral gene therapies delivered directly into the bladder.",
+    "Lead program <strong>detalimogene voraplasmid</strong> delivers the immune-stimulating IL-12 gene into bladder tissue for BCG-unresponsive non-muscle invasive bladder cancer (NMIBC). In May 2026, interim Phase 2 <strong>LEGEND</strong> data showed a 54% complete response rate at any time but weak durability (25% at 12 months by Kaplan-Meier estimate), and the stock fell over 80%. enGene still plans to begin its BLA submission in Q4 2026 and is testing a surfactant-enhanced version to improve durability.",
+    "<strong>Investor thesis:</strong> ENGN is now a deep-value, high-risk situation. Its ~$0.1B market cap is well below its $266.3M cash, so investors are assigning negative value to the pipeline. Any evidence of better durability could drive a sharp recovery."
+  ],
+  "competitors": [
+    {
+      "name": "CG Oncology (CGON)",
+      "product": "Cretostimogene",
+      "note": "Leading intravesical immunotherapy with stronger durability data"
+    },
+    {
+      "name": "Johnson & Johnson (JNJ)",
+      "product": "TAR-200 (Inlexzo)",
+      "note": "Approved intravesical gemcitabine system"
+    },
+    {
+      "name": "ImmunityBio (IBRX)",
+      "product": "Anktiva + BCG",
+      "note": "Approved in BCG-unresponsive NMIBC"
+    },
+    {
+      "name": "Ferring",
+      "product": "Adstiladrin (nadofaragene)",
+      "note": "Approved intravesical gene therapy"
+    }
+  ],
+  "advantage": "Non-viral delivery is simpler to manufacture and handle than viral therapies, and the cash balance exceeds the company's market value.",
+  "catalysts": [
+    {
+      "title": "Surfactant Cohort Webinar",
+      "timing": "October 15, 2026",
+      "description": "Preclinical data and enrollment guidance for the surfactant cohort.",
+      "impact": "PR EVENT",
+      "color": "yellow"
+    },
+    {
+      "title": "LEGEND Data Update",
+      "timing": "Q4 2026",
+      "description": "Updated durability data.",
+      "impact": "HIGH IMPACT",
+      "color": "green"
+    },
+    {
+      "title": "BLA Submission Start",
+      "timing": "Q4 2026",
+      "description": "Following a planned pre-BLA meeting.",
+      "impact": "KEY EVENT",
+      "color": "green"
+    }
+  ],
+  "risks": [
+    {
+      "title": "Durability",
+      "description": "A 12-month CR rate of ~25% trails competitors and may limit approvability or uptake.",
+      "level": "HIGH"
+    },
+    {
+      "title": "Competitive Market",
+      "description": "Several approved and late-stage options already exist in BCG-unresponsive NMIBC.",
+      "level": "HIGH"
+    },
+    {
+      "title": "Litigation",
+      "description": "Shareholder-rights investigations followed the May 2026 drop.",
+      "level": "MEDIUM"
+    },
+    {
+      "title": "Strategic Uncertainty",
+      "description": "Market value below cash invites activist or strategic-alternative pressure.",
+      "level": "MEDIUM"
+    }
+  ],
+  "partners": [
+    {
+      "name": "Forbion",
+      "role": "Major Shareholder",
+      "description": "European life sciences investor and >10% holder."
+    },
+    {
+      "name": "Dually Derived Vector Platform",
+      "role": "In-House Technology",
+      "description": "Non-viral gene delivery to mucosal tissues."
+    }
+  ],
+  "interpretation": "$266.3M in cash (as of July 31, 2026, fiscal Q3) is guided to fund operations into 2H 2029 — well above the company's market value."
+}

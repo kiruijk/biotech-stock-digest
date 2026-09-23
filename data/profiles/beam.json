@@ -1,0 +1,90 @@
+{
+  "symbol": "BEAM",
+  "reviewed": "2026-09-23",
+  "overview": [
+    "<strong>Beam Therapeutics (BEAM)</strong> is a Cambridge, Massachusetts-based pioneer of <strong>base editing</strong>, a precision gene editing technology that changes single DNA letters without cutting both strands of DNA.",
+    "<strong>BEAM-302</strong>, an in vivo base editor for alpha-1 antitrypsin deficiency (AATD), dosed its first patient in a global pivotal cohort; updated data were chosen for a late-breaking oral presentation at ERS 2026. <strong>Risto-cel (BEAM-101)</strong>, an ex vivo therapy for sickle cell disease, has completed dosing in its Phase 1/2 BEACON trial, with a BLA possible as early as year-end 2026.",
+    "<strong>Investor thesis:</strong> BEAM has two late-stage shots: an in vivo AATD therapy that could be a one-time cure, and a potentially best-in-class SCD product. $1.2B in cash plus a Sixth Street facility funds operations into mid-2029."
+  ],
+  "competitors": [
+    {
+      "name": "CRISPR Therapeutics (CRSP)",
+      "product": "CASGEVY (SCD)",
+      "note": "Approved incumbent in SCD"
+    },
+    {
+      "name": "Wave Life Sciences (WVE)",
+      "product": "WVE-006 (RNA editing, AATD)",
+      "note": "AATD competitor"
+    },
+    {
+      "name": "Prime Medicine (PRME)",
+      "product": "PM647 (prime editing, AATD)",
+      "note": "Earlier-stage AATD editing"
+    },
+    {
+      "name": "Korro Bio (KRRO)",
+      "product": "RNA editing for AATD",
+      "note": "Emerging competitor"
+    }
+  ],
+  "advantage": "Leading base editing IP and the most advanced in vivo AATD editing program.",
+  "catalysts": [
+    {
+      "title": "BEAM-302 ERS Presentation",
+      "timing": "September 2026",
+      "description": "Late-breaking oral presentation of updated Phase 1/2 data.",
+      "impact": "KEY EVENT",
+      "color": "green"
+    },
+    {
+      "title": "Risto-cel BLA Submission",
+      "timing": "As early as YE2026",
+      "description": "First regulatory filing for a base-edited therapy.",
+      "impact": "HIGH IMPACT",
+      "color": "green"
+    },
+    {
+      "title": "BEAM-302 Pivotal Enrollment",
+      "timing": "2026–2027",
+      "description": "Progress in the global pivotal cohort.",
+      "impact": "MILESTONE",
+      "color": "yellow"
+    }
+  ],
+  "risks": [
+    {
+      "title": "Commercial Headwinds in SCD",
+      "description": "Ex vivo gene therapies have seen slow uptake.",
+      "level": "MEDIUM"
+    },
+    {
+      "title": "Long-Term Safety",
+      "description": "Permanent edits need long-term follow-up; any off-target signal would be damaging.",
+      "level": "MEDIUM"
+    },
+    {
+      "title": "Burn",
+      "description": "Q2 2026 net loss of $122.7M.",
+      "level": "MEDIUM"
+    },
+    {
+      "title": "AATD Competition",
+      "description": "Multiple editing modalities target the same mutation.",
+      "level": "MEDIUM"
+    }
+  ],
+  "partners": [
+    {
+      "name": "Sixth Street",
+      "role": "Credit Facility",
+      "description": "Additional $200M expected to be drawn, supporting runway into mid-2029."
+    },
+    {
+      "name": "ESCAPE Conditioning Platform",
+      "role": "In-House",
+      "description": "Antibody-based conditioning to replace chemotherapy for ex vivo editing."
+    }
+  ],
+  "interpretation": "$1.2B in cash plus a $200M expected Sixth Street draw funds operations into mid-2029."
+}

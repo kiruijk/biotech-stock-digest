@@ -1,0 +1,115 @@
+{
+  "symbol": "KLRA",
+  "reviewed": "2026-09-23",
+  "overview": [
+    "<strong>Kailera Therapeutics (KLRA)</strong> is a Waltham, Massachusetts-based clinical-stage biotech focused on obesity and related metabolic conditions. Founded in 2024, the company holds exclusive global rights outside Greater China to four metabolic assets licensed from Jiangsu Hengrui Pharmaceuticals, and listed on Nasdaq in April 2026.",
+    "The lead program, <strong>ribupatide injection (KAI-9531)</strong>, is a once-weekly GLP-1/GIP receptor dual agonist — the same mechanism as Eli Lilly's Mounjaro/Zepbound — now in the global Phase 3 KaiNETIC program enrolling 3,700+ participants. A Phase 2b high-dose trial is fully enrolled, and an oral formulation (<strong>ribupatide oral, KAI-9531-T</strong>) has an active IND with Phase 3 planned for 1H 2027.",
+    "Behind ribupatide sit <strong>KAI-7535</strong>, an oral small-molecule GLP-1 receptor agonist in a global Phase 2 obesity trial, and <strong>KAI-4729</strong>, an injectable GLP-1/GIP/glucagon tri-agonist expected to enter Phase 1 in 2026. The mix of injectable peptides, oral peptides and oral small molecules gives Kailera multiple shots on goal across formats.",
+    "<strong>Investor thesis:</strong> KLRA is a well-funded late-stage obesity play with a pipeline that mirrors the Lilly playbook (dual agonist → oral → tri-agonist). Hengrui's parallel trials in China provide an additional data stream. The key debate is differentiation: ribupatide must show weight loss and tolerability competitive with tirzepatide to win share, and pivotal Phase 3 data isn't expected until 2028. The stock trades well below its April 2026 IPO-era levels after reports of GI side effects."
+  ],
+  "competitors": [
+    {
+      "name": "Eli Lilly (LLY)",
+      "product": "Mounjaro/Zepbound (GLP-1/GIP)",
+      "note": "Market leader with the same dual-agonist mechanism"
+    },
+    {
+      "name": "Novo Nordisk (NVO)",
+      "product": "Ozempic/Wegovy (GLP-1)",
+      "note": "Incumbent with oral semaglutide option"
+    },
+    {
+      "name": "Viking Therapeutics (VKTX)",
+      "product": "VK2735 (GLP-1/GIP)",
+      "note": "Closest small-cap peer — injectable and oral dual agonist"
+    },
+    {
+      "name": "Amgen (AMGN)",
+      "product": "MariTide (GLP-1/GIPR antibody)",
+      "note": "Monthly dosing approach in Phase 3"
+    }
+  ],
+  "advantage": "Four clinical/preclinical candidates spanning injectable, oral peptide and oral small-molecule formats, plus ~$1.2B in cash to fund them. Hengrui's China trials offer additional clinical data at no cost to Kailera.",
+  "catalysts": [
+    {
+      "title": "KAI-4729 Phase 1 Initiation",
+      "timing": "2026",
+      "description": "First-in-human start for the GLP-1/GIP/glucagon tri-agonist.",
+      "impact": "MILESTONE",
+      "color": "yellow"
+    },
+    {
+      "title": "Ribupatide Oral Phase 3 Start",
+      "timing": "1H 2027",
+      "description": "Global Phase 3 initiation for the oral formulation of KAI-9531.",
+      "impact": "MILESTONE",
+      "color": "yellow"
+    },
+    {
+      "title": "Ribupatide Phase 2b High-Dose Data",
+      "timing": "Mid-2027",
+      "description": "Tests whether higher doses push weight loss toward tirzepatide-level efficacy.",
+      "impact": "HIGH IMPACT",
+      "color": "green"
+    },
+    {
+      "title": "KAI-7535 Phase 2 Data",
+      "timing": "2027",
+      "description": "Oral small-molecule GLP-1 readout — a key comparison against Lilly's orforglipron.",
+      "impact": "KEY EVENT",
+      "color": "green"
+    },
+    {
+      "title": "KaiNETIC Phase 3 Data",
+      "timing": "2028",
+      "description": "Pivotal ribupatide injection results that underpin any regulatory filing.",
+      "impact": "HIGH IMPACT",
+      "color": "green"
+    }
+  ],
+  "risks": [
+    {
+      "title": "Tolerability",
+      "description": "Reported GI side effects already weighed on the stock; the class is crowded and tolerability is a key differentiator.",
+      "level": "HIGH"
+    },
+    {
+      "title": "Competition",
+      "description": "Lilly and Novo dominate the market with approved drugs, supply scale and payer relationships.",
+      "level": "HIGH"
+    },
+    {
+      "title": "Long Timeline",
+      "description": "Pivotal Phase 3 data not expected until 2028, leaving a long gap for sentiment to drift.",
+      "level": "MEDIUM"
+    },
+    {
+      "title": "Licensing Dependency",
+      "description": "All four assets are in-licensed from Hengrui; rights exclude Greater China and carry milestone/royalty obligations.",
+      "level": "MEDIUM"
+    },
+    {
+      "title": "Rising Burn",
+      "description": "Q2 2026 net loss of $111.3M vs. $28.9M a year earlier as Phase 3 spending ramps.",
+      "level": "MEDIUM"
+    }
+  ],
+  "partners": [
+    {
+      "name": "Jiangsu Hengrui Pharmaceuticals",
+      "role": "Licensor & China Development Partner",
+      "description": "Source of all four pipeline assets; runs Phase 2/3 trials in T2D, obesity and other indications in China."
+    },
+    {
+      "name": "Bain Capital Life Sciences",
+      "role": "Major Shareholder",
+      "description": "Founding investor and >10% owner that bought additional shares at the IPO."
+    },
+    {
+      "name": "RTW Investments",
+      "role": "Major Shareholder",
+      "description": "Specialist healthcare investor and >10% owner."
+    }
+  ],
+  "interpretation": "~$1.2B in cash and management guidance of runway into mid-2028 cover the Phase 3 KaiNETIC readout. Spending is rising quickly as Phase 3 enrolls, so the runway shown here (based on the latest quarter's cash burn) may overstate how long cash lasts."
+}

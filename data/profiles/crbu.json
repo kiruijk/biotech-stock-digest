@@ -1,0 +1,78 @@
+{
+  "symbol": "CRBU",
+  "reviewed": "2026-09-23",
+  "overview": [
+    "<strong>Caribou Biosciences (CRBU)</strong> is a Berkeley, California-based company co-founded by CEO Rachel Haurwitz and Nobel laureate Jennifer Doudna. It uses its chRDNA gene editing technology to build allogeneic (off-the-shelf) CAR-T cell therapies.",
+    "Lead program <strong>vispa-cel (CB-010)</strong> is an anti-CD19 allogeneic CAR-T with a PD-1 knockout. Long-term ANTLER data in second-line large B cell lymphoma showed responses on par with autologous CAR-T. A pivotal Phase 3 (<strong>ANTLER-3</strong>) is planned for the ~75% of second-line patients who don't receive autologous CAR-T, but Caribou is still seeking funding for it. <strong>CB-011</strong> (anti-BCMA) is in dose expansion for multiple myeloma.",
+    "<strong>Investor thesis:</strong> CRBU trades near its cash value. A partnership to fund ANTLER-3 would be the key catalyst; without one, the pivotal program may stall."
+  ],
+  "competitors": [
+    {
+      "name": "Allogene Therapeutics (ALLO)",
+      "product": "Cema-cel (allogeneic CD19 CAR-T)",
+      "note": "Closest allogeneic peer, already in pivotal trial"
+    },
+    {
+      "name": "Gilead / Kite (GILD)",
+      "product": "Yescarta",
+      "note": "Autologous CAR-T standard in 2L LBCL"
+    },
+    {
+      "name": "Roche / AbbVie",
+      "product": "Bispecific antibodies",
+      "note": "Off-the-shelf alternatives"
+    }
+  ],
+  "advantage": "Single-dose, off-the-shelf CAR-T with durability data comparable to autologous products.",
+  "catalysts": [
+    {
+      "title": "ANTLER-3 Funding Solution",
+      "timing": "2026",
+      "description": "Partnership or financing to launch the pivotal trial.",
+      "impact": "HIGH IMPACT",
+      "color": "green"
+    },
+    {
+      "title": "CB-011 Dose Expansion Data",
+      "timing": "2026–2027",
+      "description": "Multiple myeloma update.",
+      "impact": "MILESTONE",
+      "color": "yellow"
+    }
+  ],
+  "risks": [
+    {
+      "title": "Funding",
+      "description": "Pivotal trial is not yet fully funded; runway to end of 2027.",
+      "level": "HIGH"
+    },
+    {
+      "title": "Competition",
+      "description": "Allogene is further ahead; bispecifics are widely used.",
+      "level": "HIGH"
+    },
+    {
+      "title": "Low Share Price",
+      "description": "Sub-$2 stock limits financing options.",
+      "level": "MEDIUM"
+    },
+    {
+      "title": "Durability Scrutiny",
+      "description": "Allogeneic persistence remains a key question.",
+      "level": "MEDIUM"
+    }
+  ],
+  "partners": [
+    {
+      "name": "chRDNA Platform",
+      "role": "In-House Technology",
+      "description": "Hybrid RNA-DNA guides designed for higher editing specificity."
+    },
+    {
+      "name": "Strategic Options",
+      "role": "Under Evaluation",
+      "description": "Exploring multiple options to fund ANTLER-3."
+    }
+  ],
+  "interpretation": "$113.8M in cash funds the current plan to the end of 2027, but not the full ANTLER-3 pivotal trial."
+}

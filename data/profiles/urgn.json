@@ -1,0 +1,85 @@
+{
+  "symbol": "URGN",
+  "reviewed": "2026-09-23",
+  "overview": [
+    "<strong>UroGen Pharma (URGN)</strong> is a Princeton, New Jersey-based commercial-stage company in uro-oncology. Its RTGel hydrogel technology keeps chemotherapy in contact with urinary tract tissue for longer, allowing non-surgical treatment of tumors.",
+    "UroGen markets <strong>Jelmyto</strong> for upper tract urothelial cancer and <strong>ZUSDURI</strong> (mitomycin intravesical solution) for recurrent low-grade intermediate-risk NMIBC. ZUSDURI sales reached $50.4M in Q2 2026 (+73% vs. Q1), lifting total revenue to $72.5M, and the company is roughly at operating break-even. <strong>UGN-103</strong>, a next-generation formulation, is on track for an NDA in Q3 2026.",
+    "<strong>Investor thesis:</strong> URGN is a commercial growth story: ZUSDURI offers a non-surgical option for patients who otherwise face repeated surgeries (TURBT). Execution on the launch and UGN-103 lifecycle management are key."
+  ],
+  "competitors": [
+    {
+      "name": "Surgery (TURBT)",
+      "product": "Standard of care",
+      "note": "Repeat surgical resection is the main alternative"
+    },
+    {
+      "name": "Johnson & Johnson (JNJ)",
+      "product": "TAR-210 (erdafitinib system)",
+      "note": "Late-stage intravesical competitor in IR-NMIBC"
+    },
+    {
+      "name": "CG Oncology (CGON)",
+      "product": "Cretostimogene (PIVOT-006)",
+      "note": "Testing adjuvant use in intermediate-risk NMIBC"
+    }
+  ],
+  "advantage": "First approved non-surgical treatment for recurrent LG-IR-NMIBC, with a follow-on formulation (UGN-103) to extend the franchise.",
+  "catalysts": [
+    {
+      "title": "UGN-103 NDA Submission",
+      "timing": "Q3 2026",
+      "description": "Next-generation ZUSDURI formulation.",
+      "impact": "KEY EVENT",
+      "color": "green"
+    },
+    {
+      "title": "Quarterly ZUSDURI Sales",
+      "timing": "Each quarter",
+      "description": "Launch trajectory is the main stock driver.",
+      "impact": "HIGH IMPACT",
+      "color": "green"
+    },
+    {
+      "title": "UGN-501 Phase 1 Start",
+      "timing": "Q4 2026",
+      "description": "New pipeline program entering the clinic.",
+      "impact": "MILESTONE",
+      "color": "yellow"
+    }
+  ],
+  "risks": [
+    {
+      "title": "Balance Sheet",
+      "description": "Only $108M in cash; UroGen also carries debt financing.",
+      "level": "MEDIUM"
+    },
+    {
+      "title": "Launch Execution",
+      "description": "Urologist adoption and reimbursement drive the valuation.",
+      "level": "MEDIUM"
+    },
+    {
+      "title": "Competition",
+      "description": "J&amp;J and CG Oncology are pursuing the intermediate-risk setting.",
+      "level": "MEDIUM"
+    },
+    {
+      "title": "Insider Selling",
+      "description": "Consistent selling by senior management.",
+      "level": "MEDIUM"
+    }
+  ],
+  "partners": [
+    {
+      "name": "RTGel Platform",
+      "role": "In-House Technology",
+      "description": "Sustained-release hydrogel for urinary tract delivery."
+    },
+    {
+      "name": "Commercial Organization",
+      "role": "Urology Sales Force",
+      "description": "Supports both Jelmyto and ZUSDURI."
+    }
+  ],
+  "interpretation": "$108.0M in cash with the business near operating break-even (Q2 operating income of $0.1M). Operating cash outflow was still about $33M in Q2, so watch whether burn falls as ZUSDURI revenue grows."
+}

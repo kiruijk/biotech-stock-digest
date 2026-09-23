@@ -1,0 +1,90 @@
+{
+  "symbol": "CMPX",
+  "reviewed": "2026-09-23",
+  "overview": [
+    "<strong>Compass Therapeutics (CMPX)</strong> is a Boston-based oncology company developing bispecific antibodies.",
+    "Lead program <strong>tovecimig (CTX-009)</strong> is a DLL4 x VEGF-A bispecific. In the Phase 2/3 <strong>COMPANION-002</strong> trial in previously treated biliary tract cancer (BTC), tovecimig plus paclitaxel achieved an 18.0% response rate versus 5.3% for paclitaxel alone and improved median progression-free survival (4.7 vs. 2.6 months), but overall survival did not reach statistical significance, which Compass attributes to study design and patient crossover. On September 22, 2026, the FDA recommended an additional trial showing a survival benefit before a BLA submission. Compass disagrees and says it will keep preparing a BLA based on COMPANION-002. Earlier programs include <strong>CTX-8371</strong> (PD-1 x PD-L1) and <strong>CTX-10726</strong> (PD-1 x VEGF-A).",
+    "<strong>Investor thesis:</strong> CMPX is now a high-risk regulatory standoff. Shares fell nearly 40% on the FDA news. Filing without FDA support risks a refusal or rejection, while a new survival trial would take years and likely require significant new capital. The ESMO data and any follow-up FDA meetings are the near-term swing factors."
+  ],
+  "competitors": [
+    {
+      "name": "AstraZeneca (AZN)",
+      "product": "Imfinzi + chemo",
+      "note": "First-line BTC standard of care"
+    },
+    {
+      "name": "Jazz Pharmaceuticals (JAZZ)",
+      "product": "Ziihera (zanidatamab)",
+      "note": "Approved for HER2+ BTC"
+    },
+    {
+      "name": "Incyte / Servier",
+      "product": "Pemazyre (FGFR2), Tibsovo (IDH1)",
+      "note": "Biomarker-targeted BTC therapies"
+    },
+    {
+      "name": "Summit Therapeutics (SMMT)",
+      "product": "Ivonescimab (PD-1 x VEGF)",
+      "note": "Competitor to CTX-10726"
+    }
+  ],
+  "advantage": "Randomized data in biliary tract cancer, a disease with few second-line options, plus two immuno-oncology bispecifics.",
+  "catalysts": [
+    {
+      "title": "ESMO Oral Presentation",
+      "timing": "October 2026",
+      "description": "Full COMPANION-002 dataset.",
+      "impact": "KEY EVENT",
+      "color": "green"
+    },
+    {
+      "title": "Further FDA Engagement / BLA Decision",
+      "timing": "2H 2026 – 2027",
+      "description": "Whether Compass files over the FDA's recommendation for a survival trial, or agrees on a new study.",
+      "impact": "HIGH IMPACT",
+      "color": "green"
+    },
+    {
+      "title": "CTX-8371 & CTX-10726 Data",
+      "timing": "Q4 2026",
+      "description": "Early bispecific clinical data.",
+      "impact": "MILESTONE",
+      "color": "yellow"
+    }
+  ],
+  "risks": [
+    {
+      "title": "Regulatory",
+      "description": "The FDA has recommended a new trial demonstrating survival benefit before a BLA; filing anyway risks refusal or rejection.",
+      "level": "HIGH"
+    },
+    {
+      "title": "Small Market",
+      "description": "Second-line BTC is a modest commercial opportunity.",
+      "level": "MEDIUM"
+    },
+    {
+      "title": "Low Share Price",
+      "description": "Sub-$2 stock risks listing issues and dilutive financing.",
+      "level": "MEDIUM"
+    },
+    {
+      "title": "Competition",
+      "description": "PD-1 x VEGF bispecific space is crowded.",
+      "level": "MEDIUM"
+    }
+  ],
+  "partners": [
+    {
+      "name": "ESMO 2026",
+      "role": "Scientific Presentation",
+      "description": "Oral presentation of the full tovecimig dataset."
+    },
+    {
+      "name": "Bispecific Platform",
+      "role": "In-House",
+      "description": "Discovery engine behind CTX-8371 and CTX-10726."
+    }
+  ],
+  "interpretation": "$180M in cash funds operations into 2028 on the current plan, but that plan did not include a new survival trial. If the FDA's recommendation stands, Compass will likely need significant new capital."
+}

@@ -1,0 +1,216 @@
+{
+  "_comment": "Every tracked stock. A stock with data/profiles/<ticker>.json is \"covered\" (editorial analysis); without one it is \"tracked\" (data-only page). Adding a stock: add an entry here.",
+  "themes": [
+    "Obesity & Metabolic",
+    "Gene Editing & RNA",
+    "Cell Therapy",
+    "Melanoma",
+    "Oncolytic Viruses",
+    "Bladder & Prostate Cancer",
+    "Targeted Oncology",
+    "Infectious Disease"
+  ],
+  "stocks": [
+    {
+      "symbol": "VKTX",
+      "name": "Viking Therapeutics",
+      "themes": [
+        "Obesity & Metabolic"
+      ]
+    },
+    {
+      "symbol": "IOVA",
+      "name": "Iovance Biotherapeutics",
+      "themes": [
+        "Cell Therapy",
+        "Melanoma"
+      ]
+    },
+    {
+      "symbol": "REPL",
+      "name": "Replimune Group",
+      "themes": [
+        "Oncolytic Viruses",
+        "Melanoma"
+      ]
+    },
+    {
+      "symbol": "KLRA",
+      "name": "Kailera Therapeutics",
+      "themes": [
+        "Obesity & Metabolic"
+      ]
+    },
+    {
+      "symbol": "NTLA",
+      "name": "Intellia Therapeutics",
+      "themes": [
+        "Gene Editing & RNA"
+      ]
+    },
+    {
+      "symbol": "CGON",
+      "name": "CG Oncology",
+      "themes": [
+        "Oncolytic Viruses",
+        "Bladder & Prostate Cancer"
+      ]
+    },
+    {
+      "symbol": "IMCR",
+      "name": "Immunocore",
+      "themes": [
+        "Melanoma",
+        "Targeted Oncology"
+      ]
+    },
+    {
+      "symbol": "GPCR",
+      "name": "Structure Therapeutics",
+      "themes": [
+        "Obesity & Metabolic"
+      ]
+    },
+    {
+      "symbol": "ALT",
+      "name": "Altimmune",
+      "themes": [
+        "Obesity & Metabolic"
+      ]
+    },
+    {
+      "symbol": "WVE",
+      "name": "Wave Life Sciences",
+      "themes": [
+        "Gene Editing & RNA",
+        "Obesity & Metabolic"
+      ]
+    },
+    {
+      "symbol": "SEPN",
+      "name": "Septerna",
+      "themes": [
+        "Obesity & Metabolic"
+      ]
+    },
+    {
+      "symbol": "AUTL",
+      "name": "Autolus Therapeutics",
+      "themes": [
+        "Cell Therapy"
+      ]
+    },
+    {
+      "symbol": "ALLO",
+      "name": "Allogene Therapeutics",
+      "themes": [
+        "Cell Therapy"
+      ]
+    },
+    {
+      "symbol": "IMTX",
+      "name": "Immatics",
+      "themes": [
+        "Cell Therapy",
+        "Melanoma"
+      ]
+    },
+    {
+      "symbol": "JANX",
+      "name": "Janux Therapeutics",
+      "themes": [
+        "Targeted Oncology",
+        "Bladder & Prostate Cancer"
+      ]
+    },
+    {
+      "symbol": "CADL",
+      "name": "Candel Therapeutics",
+      "themes": [
+        "Oncolytic Viruses",
+        "Bladder & Prostate Cancer"
+      ]
+    },
+    {
+      "symbol": "ENGN",
+      "name": "enGene Therapeutics",
+      "themes": [
+        "Bladder & Prostate Cancer"
+      ]
+    },
+    {
+      "symbol": "URGN",
+      "name": "UroGen Pharma",
+      "themes": [
+        "Bladder & Prostate Cancer"
+      ]
+    },
+    {
+      "symbol": "ONCY",
+      "name": "Oncolytics Biotech",
+      "themes": [
+        "Oncolytic Viruses"
+      ]
+    },
+    {
+      "symbol": "CRSP",
+      "name": "CRISPR Therapeutics",
+      "themes": [
+        "Gene Editing & RNA",
+        "Cell Therapy"
+      ]
+    },
+    {
+      "symbol": "BEAM",
+      "name": "Beam Therapeutics",
+      "themes": [
+        "Gene Editing & RNA"
+      ]
+    },
+    {
+      "symbol": "PRME",
+      "name": "Prime Medicine",
+      "themes": [
+        "Gene Editing & RNA"
+      ]
+    },
+    {
+      "symbol": "CRBU",
+      "name": "Caribou Biosciences",
+      "themes": [
+        "Gene Editing & RNA",
+        "Cell Therapy"
+      ]
+    },
+    {
+      "symbol": "IDYA",
+      "name": "IDEAYA Biosciences",
+      "themes": [
+        "Targeted Oncology",
+        "Melanoma"
+      ]
+    },
+    {
+      "symbol": "VIR",
+      "name": "Vir Biotechnology",
+      "themes": [
+        "Infectious Disease",
+        "Targeted Oncology"
+      ]
+    },
+    {
+      "symbol": "CTMX",
+      "name": "CytomX Therapeutics",
+      "themes": [
+        "Targeted Oncology"
+      ]
+    },
+    {
+      "symbol": "CMPX",
+      "name": "Compass Therapeutics",
+      "themes": [
+        "Targeted Oncology"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "symbol": "WVE",
+  "reviewed": "2026-09-23",
+  "overview": [
+    "<strong>Wave Life Sciences (WVE)</strong> is a Cambridge, Massachusetts-based RNA medicines company. Its PRISM platform designs stereopure oligonucleotides for RNA editing, RNA interference (siRNA) and exon skipping.",
+    "<strong>WVE-007</strong> is a GalNAc-siRNA silencing INHBE, a gene linked to healthier fat distribution; the goal is fat loss while preserving muscle. The Phase 2a multidose portion of the INLIGHT obesity trial is dosing, with combination and post-incretin maintenance trials planned for 2H 2026. <strong>WVE-006</strong>, an RNA editing candidate for alpha-1 antitrypsin deficiency (AATD) partnered with GSK, has an FDA meeting on a potential accelerated approval pathway.",
+    "<strong>Investor thesis:</strong> The stock fell ~57% in a day in March 2026 when single-dose Phase 1 INLIGHT data showed a 14% reduction in visceral fat but less than 1% placebo-adjusted weight loss at six months. The bull case now rests on multidose data showing meaningful weight loss or a clear role alongside GLP-1s, plus first-in-class RNA editing in AATD. Cash of $490.6M funds operations into 3Q 2028."
+  ],
+  "competitors": [
+    {
+      "name": "Arrowhead Pharmaceuticals (ARWR)",
+      "product": "ARO-INHBE (siRNA)",
+      "note": "Same INHBE target for obesity"
+    },
+    {
+      "name": "Beam Therapeutics (BEAM)",
+      "product": "BEAM-302 (base editing, AATD)",
+      "note": "Pivotal-stage AATD gene editing"
+    },
+    {
+      "name": "Korro Bio (KRRO)",
+      "product": "RNA editing for AATD",
+      "note": "Direct RNA editing competitor"
+    },
+    {
+      "name": "Eli Lilly / Novo Nordisk",
+      "product": "Incretin therapies",
+      "note": "WVE-007 may be positioned as add-on or maintenance"
+    }
+  ],
+  "advantage": "Chemistry platform spanning three modalities, a GSK partnership in AATD, and a muscle-sparing obesity approach aimed at the maintenance market.",
+  "catalysts": [
+    {
+      "title": "WVE-006 FDA Feedback",
+      "timing": "Late 2026",
+      "description": "Clarity on an accelerated approval path in AATD.",
+      "impact": "KEY EVENT",
+      "color": "green"
+    },
+    {
+      "title": "WVE-007 Combination & Maintenance Trials",
+      "timing": "2H 2026",
+      "description": "Initiation of Phase 2 trials with incretins.",
+      "impact": "MILESTONE",
+      "color": "yellow"
+    },
+    {
+      "title": "INLIGHT Phase 2a Multidose Data",
+      "timing": "2027 (est.)",
+      "description": "Fat loss, lean-mass preservation and durability.",
+      "impact": "HIGH IMPACT",
+      "color": "green"
+    }
+  ],
+  "risks": [
+    {
+      "title": "Novel Mechanism",
+      "description": "Single-dose data showed &lt;1% placebo-adjusted weight loss; multidose results must show a much larger effect.",
+      "level": "HIGH"
+    },
+    {
+      "title": "Rising Burn",
+      "description": "Q2 2026 net loss of $69.4M vs. $15.5M a year earlier.",
+      "level": "MEDIUM"
+    },
+    {
+      "title": "Falling Collaboration Revenue",
+      "description": "Revenue fell to $2.3M in Q2 2026 from $8.7M.",
+      "level": "MEDIUM"
+    },
+    {
+      "title": "Competition",
+      "description": "Arrowhead is pursuing the same target; AATD has multiple editing approaches.",
+      "level": "MEDIUM"
+    }
+  ],
+  "partners": [
+    {
+      "name": "GSK",
+      "role": "WVE-006 Collaboration",
+      "description": "Global development and commercialization partner for the AATD RNA editing program."
+    },
+    {
+      "name": "PRISM Platform",
+      "role": "In-House Technology",
+      "description": "Stereopure oligonucleotide chemistry underpinning all programs."
+    }
+  ],
+  "interpretation": "$490.6M in cash funds operations into 3Q 2028, though burn has risen sharply as obesity trials expand."
+}

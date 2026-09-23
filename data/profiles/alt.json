@@ -1,0 +1,90 @@
+{
+  "symbol": "ALT",
+  "reviewed": "2026-09-23",
+  "overview": [
+    "<strong>Altimmune (ALT)</strong> is a Gaithersburg, Maryland-based clinical-stage biotech focused on liver and addiction-related diseases with a single core asset.",
+    "<strong>Pemvidutide</strong> is a GLP-1/glucagon dual receptor agonist. The glucagon component acts directly on the liver to reduce fat, which is why Altimmune is developing it for <strong>MASH</strong> (metabolic dysfunction-associated steatohepatitis). Pemvidutide received FDA Breakthrough Therapy Designation based on 24-week IMPACT Phase 2b data, and the global Phase 3 <strong>PERFORMA</strong> MASH trial started in August 2026. The drug also posted positive topline data in the RECLAIM Phase 2 alcohol use disorder (AUD) trial, and the RESTORE Phase 2 alcohol-associated liver disease (ALD) trial is fully enrolled.",
+    "<strong>Investor thesis:</strong> ALT is a MASH pure play with a differentiated liver-directed mechanism and optionality in alcohol-related diseases. A $225M April 2026 raise leaves $519M in cash. The catch is time: 52-week Phase 3 MASH data is not expected until 2029."
+  ],
+  "competitors": [
+    {
+      "name": "Madrigal Pharmaceuticals (MDGL)",
+      "product": "Rezdiffra (THR-β agonist)",
+      "note": "First approved MASH drug"
+    },
+    {
+      "name": "Novo Nordisk (NVO)",
+      "product": "Wegovy (semaglutide) for MASH",
+      "note": "Approved GLP-1 with MASH label"
+    },
+    {
+      "name": "Novo Nordisk / Akero",
+      "product": "Efruxifermin (FGF21)",
+      "note": "Late-stage FGF21 analog acquired by Novo"
+    },
+    {
+      "name": "Roche / 89bio",
+      "product": "Pegozafermin (FGF21)",
+      "note": "Late-stage FGF21 analog acquired by Roche"
+    }
+  ],
+  "advantage": "The glucagon component drives direct liver fat reduction, and Breakthrough Therapy Designation may speed regulatory review. AUD and ALD provide upside in areas with few treatment options.",
+  "catalysts": [
+    {
+      "title": "RESTORE Phase 2 ALD Data",
+      "timing": "2027 (est.)",
+      "description": "Readout from the fully enrolled alcohol-associated liver disease trial.",
+      "impact": "KEY EVENT",
+      "color": "green"
+    },
+    {
+      "title": "AUD Development Path",
+      "timing": "2026–2027",
+      "description": "Next steps following positive RECLAIM Phase 2 data.",
+      "impact": "MILESTONE",
+      "color": "yellow"
+    },
+    {
+      "title": "PERFORMA Phase 3 MASH Data",
+      "timing": "2029",
+      "description": "52-week pivotal readout — the key value driver.",
+      "impact": "HIGH IMPACT",
+      "color": "green"
+    }
+  ],
+  "risks": [
+    {
+      "title": "Crowded MASH Market",
+      "description": "Approved drugs (Rezdiffra, Wegovy) plus big pharma FGF21 programs set a high bar.",
+      "level": "HIGH"
+    },
+    {
+      "title": "Long Timeline",
+      "description": "Pivotal MASH data not until 2029.",
+      "level": "MEDIUM"
+    },
+    {
+      "title": "Single Asset",
+      "description": "Nearly all value rests on pemvidutide.",
+      "level": "HIGH"
+    },
+    {
+      "title": "Dilution",
+      "description": "History of equity raises; Phase 3 costs may require more capital before 2029.",
+      "level": "MEDIUM"
+    }
+  ],
+  "partners": [
+    {
+      "name": "PERFORMA Phase 3",
+      "role": "Global MASH Trial",
+      "description": "Registrational trial initiated August 2026."
+    },
+    {
+      "name": "FDA Breakthrough Therapy",
+      "role": "Regulatory Designation",
+      "description": "Enables more intensive FDA guidance and potential expedited review."
+    }
+  ],
+  "interpretation": "$519M in cash (after a $225M April 2026 offering) against a ~$23M quarterly loss gives a long runway, though Phase 3 spending will increase burn."
+}

@@ -1,0 +1,92 @@
+{
+  "symbol": "IMTX",
+  "reviewed": "2026-09-23",
+  "overview": [
+    "<strong>Immatics (IMTX)</strong> is a Tübingen, Germany-based company developing T cell receptor (TCR)-based therapies that target cancer antigens presented inside cells, especially <strong>PRAME</strong>, which is highly expressed in melanoma and many other solid tumors.",
+    "Lead program <strong>anzu-cel (IMA203)</strong>, a PRAME TCR-T cell therapy, is in the Phase 3 <strong>SUPRAME</strong> trial in melanoma. Phase 1b data showed a 56% confirmed response rate, 14.6-month median duration of response and 46% two-year survival. Topline data is expected in 1H 2027 and a BLA in 2027. Immatics also develops <strong>IMA402</strong>, an off-the-shelf PRAME bispecific, and <strong>IMA203CD8</strong>.",
+    "<strong>Investor thesis:</strong> IMTX is the leading PRAME-targeting cell therapy company, with the chance to join the small group of approved cell therapies in solid tumors. Cash of $448.2M funds operations into 2028."
+  ],
+  "competitors": [
+    {
+      "name": "Iovance Biotherapeutics (IOVA)",
+      "product": "Amtagvi (TIL therapy)",
+      "note": "First approved cell therapy in solid tumors (melanoma)"
+    },
+    {
+      "name": "Immunocore (IMCR)",
+      "product": "Brenetafusp (PRAME ImmTAC)",
+      "note": "Off-the-shelf PRAME competitor in Phase 3"
+    },
+    {
+      "name": "Bristol Myers Squibb (BMY)",
+      "product": "Opdualag",
+      "note": "First-line melanoma standard"
+    }
+  ],
+  "advantage": "High response rates and durability in heavily pretreated melanoma, and two modalities (cell therapy and bispecific) against the same validated target.",
+  "catalysts": [
+    {
+      "title": "ESMO 2026 Presentations",
+      "timing": "October 2026",
+      "description": "IMA402 dose data and IMA203CD8 in gynecologic cancers.",
+      "impact": "MILESTONE",
+      "color": "yellow"
+    },
+    {
+      "title": "SUPRAME Randomization Complete",
+      "timing": "End of 2026",
+      "description": "Enables the final PFS analysis.",
+      "impact": "MILESTONE",
+      "color": "yellow"
+    },
+    {
+      "title": "SUPRAME Phase 3 Topline",
+      "timing": "1H 2027",
+      "description": "Primary PFS endpoint — the key binary event.",
+      "impact": "HIGH IMPACT",
+      "color": "green"
+    },
+    {
+      "title": "Anzu-cel BLA",
+      "timing": "2027",
+      "description": "Regulatory filing if SUPRAME succeeds.",
+      "impact": "KEY EVENT",
+      "color": "green"
+    }
+  ],
+  "risks": [
+    {
+      "title": "Phase 3 Timing",
+      "description": "PFS events are accruing more slowly than modeled.",
+      "level": "MEDIUM"
+    },
+    {
+      "title": "Cell Therapy Commercialization",
+      "description": "Autologous logistics and pricing are challenging, as Iovance's launch has shown.",
+      "level": "HIGH"
+    },
+    {
+      "title": "HLA Restriction",
+      "description": "TCR therapies require HLA-A*02:01-positive patients.",
+      "level": "MEDIUM"
+    },
+    {
+      "title": "Burn",
+      "description": "Q2 2026 net loss of $71.2M; cash declining ahead of a potential launch.",
+      "level": "MEDIUM"
+    }
+  ],
+  "partners": [
+    {
+      "name": "Moderna",
+      "role": "mRNA-4200 Collaboration",
+      "description": "First patient dosed July 2026, triggering a milestone payment."
+    },
+    {
+      "name": "Perceptive Advisors",
+      "role": "Investor & Board Member",
+      "description": "Recent $7.5M open-market purchase."
+    }
+  ],
+  "interpretation": "$448.2M in cash with runway into 2028 funds the SUPRAME readout and BLA preparation."
+}

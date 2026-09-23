@@ -1,0 +1,108 @@
+{
+  "symbol": "IOVA",
+  "reviewed": "2026-09-23",
+  "overview": [
+    "<strong>Iovance Biotherapeutics (IOVA)</strong> is a San Carlos, California-based commercial-stage company that makes tumor-infiltrating lymphocyte (TIL) therapies. Each dose is manufactured from immune cells taken from the patient's own tumor.",
+    "<strong>Amtagvi (lifileucel)</strong> received FDA accelerated approval in February 2024 as the first T cell therapy for a solid tumor, for advanced melanoma after anti-PD-1 treatment. Iovance also sells <strong>Proleukin</strong> (IL-2), which is given with Amtagvi. Q2 2026 revenue hit a record $99.3M (+66% year over year; ~$91M from Amtagvi) with a 56% gross margin, and the company is reviewing its $350–370M full-year guidance. More than 95 U.S. treatment centers are active, with ~110 expected by year-end. Amtagvi is approved in Australia, and UK and Swiss decisions are expected in 2026–2027.",
+    "The pipeline extends TIL beyond melanoma: <strong>IOV-LUN-202</strong> in non-small cell lung cancer (sBLA planned for 2027), the Phase 3 <strong>TILVANCE-301</strong> in first-line melanoma, the registrational <strong>SARATOGA</strong> trial in soft tissue sarcomas (FDA Fast Track) and next-generation <strong>IOV-4001</strong> and <strong>IOV-5001</strong>.",
+    "<strong>Investor thesis:</strong> IOVA has turned from a turnaround story into a commercial growth story; shares are up several-fold in 2026 as Amtagvi demand accelerated. Upside comes from lung cancer and international expansion. The main risks are execution under an interim CEO and competition from newer off-the-shelf melanoma therapies."
+  ],
+  "competitors": [
+    {
+      "name": "Replimune (REPL)",
+      "product": "Tudriqev + nivolumab",
+      "note": "Off-the-shelf therapy approved August 2026 for the same post-PD-1 melanoma setting"
+    },
+    {
+      "name": "Bristol Myers Squibb (BMY)",
+      "product": "Opdualag, Opdivo + Yervoy",
+      "note": "Checkpoint standard of care in melanoma"
+    },
+    {
+      "name": "Immatics (IMTX)",
+      "product": "Anzu-cel (PRAME TCR-T)",
+      "note": "Cell therapy competitor in Phase 3 melanoma"
+    },
+    {
+      "name": "Immunocore (IMCR)",
+      "product": "Brenetafusp (PRAME ImmTAC)",
+      "note": "Off-the-shelf melanoma candidate in Phase 3"
+    }
+  ],
+  "advantage": "First-mover in solid-tumor cell therapy with a growing network of treatment centers, improving manufacturing margins and more than two years of commercial experience.",
+  "catalysts": [
+    {
+      "title": "Updated 2026 Revenue Guidance",
+      "timing": "Q3 2026",
+      "description": "Company is reviewing its $350–370M guidance after a record Q2.",
+      "impact": "KEY EVENT",
+      "color": "green"
+    },
+    {
+      "title": "UK Approval Decision",
+      "timing": "2026",
+      "description": "Expedited review of the resubmitted application.",
+      "impact": "MILESTONE",
+      "color": "yellow"
+    },
+    {
+      "title": "IOV-LUN-202 NSCLC sBLA",
+      "timing": "2027",
+      "description": "Would extend Amtagvi into lung cancer, a much larger market.",
+      "impact": "HIGH IMPACT",
+      "color": "green"
+    },
+    {
+      "title": "Switzerland Decision / EU Resubmission",
+      "timing": "1H 2027 / 2027",
+      "description": "International expansion milestones.",
+      "impact": "MILESTONE",
+      "color": "yellow"
+    }
+  ],
+  "risks": [
+    {
+      "title": "Leadership",
+      "description": "Company is run by an interim CEO; a permanent appointment is pending.",
+      "level": "MEDIUM"
+    },
+    {
+      "title": "Competition",
+      "description": "Off-the-shelf options like Tudriqev avoid Amtagvi's tumor harvest and ~1-month manufacturing wait.",
+      "level": "HIGH"
+    },
+    {
+      "title": "Treatment Burden",
+      "description": "Amtagvi requires surgery, chemotherapy conditioning and high-dose IL-2, which limits eligible patients.",
+      "level": "MEDIUM"
+    },
+    {
+      "title": "Confirmatory Trial",
+      "description": "Accelerated approval depends on TILVANCE-301 confirming benefit.",
+      "level": "MEDIUM"
+    },
+    {
+      "title": "Still Loss-Making",
+      "description": "Q2 2026 net loss of $47.3M despite rising revenue.",
+      "level": "MEDIUM"
+    }
+  ],
+  "partners": [
+    {
+      "name": "National Cancer Institute",
+      "role": "Research Origin",
+      "description": "TIL technology originated at the NCI, with which Iovance has collaboration and license agreements."
+    },
+    {
+      "name": "Cellectis",
+      "role": "Gene-Editing License",
+      "description": "TALEN technology used in the genetically modified TIL program IOV-4001."
+    },
+    {
+      "name": "Proleukin",
+      "role": "Owned Product",
+      "description": "Iovance owns worldwide rights to Proleukin (IL-2), which is given with Amtagvi."
+    }
+  ],
+  "interpretation": "~$304M in cash at June 30, 2026, which management expects to fund operations into 2H 2028. Revenue growth is steadily narrowing losses."
+}

@@ -1,0 +1,90 @@
+{
+  "symbol": "CRSP",
+  "reviewed": "2026-09-23",
+  "overview": [
+    "<strong>CRISPR Therapeutics (CRSP)</strong> is a Zug, Switzerland-based gene editing company that, with partner Vertex, developed <strong>CASGEVY</strong>, the first approved CRISPR-based medicine, for sickle cell disease and beta thalassemia.",
+    "CASGEVY revenue reached $76M in Q2 2026 (+151% year over year). The FDA recently approved it for children as young as 2, adding ~5,500 eligible U.S. patients. Beyond CASGEVY, CRISPR is advancing in vivo programs such as <strong>CTX310</strong> (ANGPTL3) for severe hypertriglyceridemia and refractory hypercholesterolemia, plus allogeneic CAR-T programs in oncology and autoimmune disease.",
+    "<strong>Investor thesis:</strong> CRSP pairs a growing commercial product with a large, well-funded pipeline. With $2.36B in cash and a $600M convertible notes deal, it has one of the strongest balance sheets in gene editing."
+  ],
+  "competitors": [
+    {
+      "name": "Beam Therapeutics (BEAM)",
+      "product": "Risto-cel (base-edited SCD therapy)",
+      "note": "Next-generation SCD competitor"
+    },
+    {
+      "name": "bluebird bio",
+      "product": "Lyfgenia (gene therapy)",
+      "note": "Approved SCD gene therapy"
+    },
+    {
+      "name": "Intellia Therapeutics (NTLA)",
+      "product": "In vivo CRISPR",
+      "note": "Leading in vivo editing peer"
+    },
+    {
+      "name": "Eli Lilly / Verve",
+      "product": "In vivo lipid editing",
+      "note": "Big pharma competitor in cardiovascular editing"
+    }
+  ],
+  "advantage": "First-mover commercial CRISPR franchise with Vertex handling launch logistics, plus a multi-billion-dollar balance sheet.",
+  "catalysts": [
+    {
+      "title": "CTX310 Data Updates",
+      "timing": "2H 2026",
+      "description": "Phase 1b lipid-lowering data.",
+      "impact": "HIGH IMPACT",
+      "color": "green"
+    },
+    {
+      "title": "CASGEVY Pediatric Uptake",
+      "timing": "2026–2027",
+      "description": "New eligible population following approval for ages 2+.",
+      "impact": "KEY EVENT",
+      "color": "green"
+    },
+    {
+      "title": "Quarterly CASGEVY Revenue",
+      "timing": "Each quarter",
+      "description": "Launch trajectory via Vertex.",
+      "impact": "MILESTONE",
+      "color": "yellow"
+    }
+  ],
+  "risks": [
+    {
+      "title": "Slow Launch Dynamics",
+      "description": "Complex treatment (cell collection, conditioning) limits patient throughput.",
+      "level": "MEDIUM"
+    },
+    {
+      "title": "Competition",
+      "description": "Base editing and in vivo approaches could leapfrog ex vivo therapy.",
+      "level": "MEDIUM"
+    },
+    {
+      "title": "Pipeline Execution",
+      "description": "In vivo and allogeneic programs are early-stage.",
+      "level": "MEDIUM"
+    },
+    {
+      "title": "Convertible Dilution",
+      "description": "$600M convertible notes add potential dilution.",
+      "level": "MEDIUM"
+    }
+  ],
+  "partners": [
+    {
+      "name": "Vertex Pharmaceuticals",
+      "role": "CASGEVY Partner",
+      "description": "Leads global development and commercialization; shares economics."
+    },
+    {
+      "name": "Sirius Therapeutics",
+      "role": "siRNA Collaboration",
+      "description": "Cardiovascular RNAi collaboration."
+    }
+  ],
+  "interpretation": "$2.36B in cash plus a $600M ATM facility gives at least 24 months of runway by company guidance, and CASGEVY revenue is growing."
+}
