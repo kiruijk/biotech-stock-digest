@@ -229,34 +229,49 @@
     }
 
     .stock-card {
+      display: block;
       background: white;
       border-radius: 10px;
-      padding: 1.25rem;
+      padding: 0.9rem 1.25rem;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
       border-left: 4px solid #0052cc;
+      color: inherit;
+      text-decoration: none;
+      transition: box-shadow 0.2s;
+    }
+
+    .stock-card:hover,
+    .stock-card:focus-visible {
+      box-shadow: 0 4px 14px rgba(0, 82, 204, 0.18);
+      outline: none;
     }
 
     .stock-header {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      margin-bottom: 1rem;
+      margin-bottom: 0.6rem;
     }
 
     .stock-symbol {
-      font-size: 1.4rem;
+      font-size: 1.25rem;
       font-weight: 700;
       color: #0052cc;
     }
 
+    .stock-name {
+      font-size: 0.88rem;
+      color: #6b7280;
+    }
+
     .stock-price {
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       font-weight: 600;
     }
 
     .stock-change {
-      font-size: 0.82rem;
-      padding: 0.2rem 0.45rem;
+      font-size: 0.8rem;
+      padding: 0.15rem 0.45rem;
       border-radius: 4px;
       font-weight: 600;
     }
@@ -276,72 +291,183 @@
       background: #f3f4f6;
     }
 
+    /* Slim single-row strip of all periods; the selected one is highlighted */
     .metrics {
       display: grid;
       grid-template-columns: repeat(9, 1fr);
-      gap: 0.3rem;
+      gap: 0.15rem;
+      border-top: 1px solid #f3f4f6;
+      padding-top: 0.45rem;
     }
 
     .metric {
       text-align: center;
-      padding: 0.45rem 0.1rem;
-      background: #f9fafb;
-      border-radius: 6px;
+      padding: 0.15rem 0;
+      border-radius: 4px;
     }
 
     .metric-label {
-      color: #6b7280;
-      margin-bottom: 0.2rem;
-      font-size: 0.68rem;
+      color: #9ca3af;
+      font-size: 0.62rem;
       text-transform: uppercase;
       letter-spacing: 0.02em;
     }
 
     .metric-value {
-      font-weight: 700;
-      font-size: 0.78rem;
+      font-weight: 600;
+      font-size: 0.74rem;
       white-space: nowrap;
     }
 
+    /* Half-width column is too narrow for nine cells on smaller desktops */
     @media (max-width: 1200px) {
       .metrics {
         grid-template-columns: repeat(5, 1fr);
+        row-gap: 0.3rem;
       }
     }
 
-    /* News Section */
-    .news-section {
-      margin-bottom: 2rem;
-    }
-
-    .section-title {
-      font-size: 1rem;
-      font-weight: 700;
+    /* Toolbar: search + Cards/Table toggle */
+    .toolbar {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
       margin-bottom: 0.75rem;
-      color: #1a1a1a;
     }
 
+    .search-input {
+      flex: 1;
+      min-width: 0;
+      padding: 0.4rem 0.7rem;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      font-size: 0.85rem;
+    }
+
+    .search-input:focus {
+      outline: 2px solid #0052cc33;
+      border-color: #0052cc;
+    }
+
+    .mode-toggle {
+      display: flex;
+      background: #e5e7eb;
+      border-radius: 6px;
+      padding: 0.15rem;
+    }
+
+    .mode-btn {
+      border: 0;
+      background: transparent;
+      padding: 0.3rem 0.7rem;
+      border-radius: 5px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #374151;
+      cursor: pointer;
+    }
+
+    .mode-btn.active {
+      background: white;
+      color: #0052cc;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Table (screener) view spans the full width; news moves below it */
+    .layout[data-mode="table"] {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .layout[data-mode="table"] .news-column {
+      position: static;
+      max-height: none;
+      overflow-y: visible;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    .screener {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+    }
+
+    .screener th,
+    .screener td {
+      padding: 0.55rem 0.6rem;
+      border-bottom: 1px solid #f3f4f6;
+      white-space: nowrap;
+    }
+
+    .screener th {
+      background: #f9fafb;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      color: #6b7280;
+      text-align: right;
+      position: sticky;
+      top: 0;
+    }
+
+    .screener th.sortable {
+      cursor: pointer;
+    }
+
+    .screener th.sortable:hover,
+    .screener th.sorted {
+      color: #0052cc;
+    }
+
+    .screener td {
+      text-align: right;
+    }
+
+    .screener th.left,
+    .screener td.left {
+      text-align: left;
+    }
+
+    .screener td.active {
+      background: #f0f5ff;
+    }
+
+    .screener tbody tr:hover {
+      background: #f9fafb;
+    }
+
+    .screener a {
+      color: #0052cc;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .runway-short {
+      color: #dc2626;
+      font-weight: 600;
+    }
+
+    .runway-medium {
+      color: #d97706;
+      font-weight: 600;
+    }
+
+    /* News */
     .news-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 0.75rem;
+      gap: 0.6rem;
     }
 
-    .news-card {
+    .news-item {
       background: white;
       border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-      transition: box-shadow 0.2s;
-    }
-
-    .news-card:hover {
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
-    }
-
-    .news-header {
-      padding: 1rem 1.2rem 0.5rem;
-      border-bottom: 1px solid #e5e7eb;
+      padding: 0.75rem 1rem;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.07);
     }
 
     .news-meta {
@@ -349,6 +475,8 @@
       flex-wrap: wrap;
       align-items: center;
       gap: 0.35rem;
+      font-size: 0.75rem;
+      color: #6b7280;
     }
 
     .ticker-tag {
@@ -366,49 +494,22 @@
     }
 
     .news-source {
-      font-size: 0.75rem;
-      color: #6b7280;
-      text-transform: uppercase;
       font-weight: 600;
     }
 
     .news-title {
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: #1a1a1a;
-      margin-top: 0.4rem;
-      line-height: 1.4;
-    }
-
-    .news-date {
-      font-size: 0.75rem;
-      color: #9ca3af;
-      margin-top: 0.3rem;
-    }
-
-    .news-summary {
-      padding: 1rem 1.2rem;
-      font-size: 0.9rem;
-      color: #374151;
-      line-height: 1.5;
-      background: #fafbfc;
-    }
-
-    .news-link {
       display: block;
-      padding: 0.8rem 1.2rem;
-      background: #f3f4f6;
-      text-decoration: none;
-      color: #0052cc;
-      font-size: 0.85rem;
+      margin-top: 0.3rem;
+      font-size: 0.93rem;
       font-weight: 600;
-      border-top: 1px solid #e5e7eb;
-      text-align: center;
-      transition: background 0.2s;
+      line-height: 1.4;
+      color: #1a1a1a;
+      text-decoration: none;
     }
 
-    .news-link:hover {
-      background: #e5e7eb;
+    .news-title:hover {
+      color: #0052cc;
+      text-decoration: underline;
     }
 
     /* Loading & Empty States */
@@ -648,6 +749,13 @@
       <!-- Stock Prices, ranked by today's performance -->
       <section class="stocks-column">
         <div class="column-title">Top Movers <span class="column-subtitle" id="rank-subtitle">ranked by 1-day change</span></div>
+        <div class="toolbar">
+          <input type="search" class="search-input" id="search" placeholder="Search ticker or company…" aria-label="Search stocks">
+          <div class="mode-toggle" role="group" aria-label="View as">
+            <button type="button" class="mode-btn" data-mode="cards">Cards</button>
+            <button type="button" class="mode-btn" data-mode="table">Table</button>
+          </div>
+        </div>
         <div class="period-picker" id="period-picker" role="group" aria-label="Rank stocks by period"></div>
         <div id="stocks-container"></div>
       </section>
@@ -712,21 +820,21 @@
           "covered": true,
           "news": [
             {
-              "title": "Viking Therapeutics stock falls on proposed equity offering By Investing.com - Investing.com UK",
+              "title": "Viking Therapeutics stock falls on proposed equity offering By Investing.com",
               "source": "Investing.com UK",
               "date": "2026-09-23T20:38:00.000Z",
               "summary": "Latest news about Viking Therapeutics.",
               "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxNaDg1NXFWdFlMb3VfTGJpTFo1YW1acW1heWRfZXdCeVRwbHZncjRDM2k5NjIyQXdhU0s0ZTNuNkhWTEpOeWpIQ3BBd2Zyc2lVNUREZzZsTVVNZFVoampmWkwwQzlobXBPOF91ZDFfOV9pQUQ4SGdldnRmY2RNRHFsNG1iRHNBMUtJMW5pRmFILXZjM0ZFSVlVY1QxYXNLeVd4UW9vYkMzWnA2UFRCbHRjT1FGRzkyZ3drbUFUSg?oc=5"
             },
             {
-              "title": "Viking Therapeutics Announces Proposed Offerings of Common Stock and Convertible Senior Notes - PR Newswire",
+              "title": "Viking Therapeutics Announces Proposed Offerings of Common Stock and Convertible Senior Notes",
               "source": "PR Newswire",
               "date": "2026-09-23T20:32:00.000Z",
               "summary": "Latest news about Viking Therapeutics.",
               "url": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxQLXI5QnJOQWJfbGJuMEM0OEhsZVc5VlJiaUhheDdIZjZPb3pzVlQwNUlfdWdPQ2FpRjRaelFGM2V1RDRHaEYwRnRlRU9UblJoNDlYaUtHdS04SkttOV9IWlRLZ1lSMUROV0ZmWDJ5RTJSdUtzUXZwTHNLU0loNGpqM2t5d2dJMlB1aU1rb1VDcVliVlhUYzBacHhkOEdyZ2ZmNHVueG5XX3dET09HaURWNXlkSWZ5a3UwcURIWkt2NmJfck9XRzhCSTlvaGhNOW9TckxxVExtMWw3dzRsbHJwZHBsTQ?oc=5"
             },
             {
-              "title": "Two Biotechs Get Beaten Down: Jaguar Health Collapses 59%, Viking Therapeutics Sinks 4% - 247wallst.com",
+              "title": "Two Biotechs Get Beaten Down: Jaguar Health Collapses 59%, Viking Therapeutics Sinks 4%",
               "source": "247wallst.com",
               "date": "2026-09-23T15:02:00.000Z",
               "summary": "Latest news about Viking Therapeutics.",
@@ -766,21 +874,21 @@
           "covered": true,
           "news": [
             {
-              "title": "IOVA Stock Slump Takes Wall Street, Retail By Surprise — Here’s Why - Stocktwits",
+              "title": "IOVA Stock Slump Takes Wall Street, Retail By Surprise — Here’s Why",
               "source": "Stocktwits",
               "date": "2026-09-22T08:16:27.000Z",
               "summary": "Latest news about Iovance Biotherapeutics.",
               "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxQWWw1ampPTzk1VlpUYnh2NjJtcnRxcmZiVEl2b19mWUhyWjJMa1JTWmYtUGtsZlRGLVZNaWw3OWtzRndXVWg0cUVmY09QbUhXUTFyaC1rNFJ3UWdMTUJ2Yzkxc1hoblRhUzRnTEpxcnp2dEtOczFCTUtKYTloSTBEcEdITjkyZ0tWODY5VXZKQ3dld2hORFdVb3V6emduTWVyTWd4cC1sOUFWTGRsLUhXR1Z6N0Q0VWlVMGNpY2N2U3dPWjBxV1E?oc=5"
             },
             {
-              "title": "Is Record Quarter Altering The Investment Case For Iovance Stock (IOVA)? - simplywall.st",
+              "title": "Is Record Quarter Altering The Investment Case For Iovance Stock (IOVA)?",
               "source": "simplywall.st",
               "date": "2026-09-22T00:06:32.000Z",
               "summary": "Latest news about Iovance Biotherapeutics.",
               "url": "https://news.google.com/rss/articles/CBMi7gFBVV95cUxNWW9SUVJtRV9wWHc1S3N5THN3akVIbERKb1dReklUd0NpQV9KOWdFbExiUUM3bE9XSDNfQ3ZEaVFoTFF1OExXZnM1dDF0U3VJSUZQdTRvRzM5S1AtaFI2RkpwOFV3bzk2SE4tejZTTmdIa2p2VHBNR3J2b3JFQzJzTl9TNmNsSDlDOTE5ZFByd1ZZdUxIQjFNQ044NTNHa3J4emxoR2VzUGN4Uml2ejBzMFBkQ3R3V19oeDk0ZmJkMWFYdmx1eERZb0ZsS2ZWZW1HMlFlR19kdC1Td04xVnpIWXhpM0E3dlJYdktUN3N30gHzAUFVX3lxTE4wOTFfUnhPM01UM05KYl8weVdBRHdSdWhFWEFoaGVxMkV2RFZ0bzlZOHhMbHNNMWFXQTczVUFXUkpBdWxxU1hnQWVSWnRaUXlOYWpKNGdsbWVxdVRSOGxkSU4yLTVHMTljWlBhM09nRXlISDhnQ0hsTE15ZnA1ZVFPd1NYMldicTNJMjFwNk9pSklzYnA2Nm1VXzlPVmdMOVJTUE1qZTlaQVgyR0VqT2pEc0xHVkV4T1ZoeTBGQThBM3FQaXBqalQtaVEwd2huOElyOEVHcnRiLVVCZVV3dmVCSHZqSGRxcWhaZTJTUFFXYUd4dw?oc=5"
             },
             {
-              "title": "IOVA Stock Hits Fresh 52-Week Peak On UBS Target Hike, Melanoma Sector Optimism - Stocktwits",
+              "title": "IOVA Stock Hits Fresh 52-Week Peak On UBS Target Hike, Melanoma Sector Optimism",
               "source": "Stocktwits",
               "date": "2026-09-21T19:47:23.000Z",
               "summary": "Latest news about Iovance Biotherapeutics.",
@@ -820,21 +928,21 @@
           "covered": true,
           "news": [
             {
-              "title": "Replimune stock gains as share authorization doubles - AD HOC NEWS",
+              "title": "Replimune stock gains as share authorization doubles",
               "source": "AD HOC NEWS",
               "date": "2026-09-23T06:09:15.000Z",
               "summary": "Latest news about Replimune Group.",
               "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxQTHgzVUZLM3RXdVZaSG1IdWlZUGM1Rzg2LVViYlQxQzBHZ2g2Zm5TTko3aFlNRTdxSHB0RHdEMEd3TVZuUUJmQ01JcjYzZnI2dTNMSElIbXJVU0Vxb0ZMeUs1MUU2STNvNTdfT0VHSmxHcWhEOWNCT0ZPdjVkU0pGTjZIbmIwUktlVUVmZl9JZFpXdEdyaUhhRTlaNHdQUk8tdmlqN1lDRGlQVEtLOEVUcQ?oc=5"
             },
             {
-              "title": "How More Authorized Shares Will Impact Replimune Group (REPL) Stock Investors - simplywall.st",
+              "title": "How More Authorized Shares Will Impact Replimune Group (REPL) Stock Investors",
               "source": "simplywall.st",
               "date": "2026-09-22T12:52:40.000Z",
               "summary": "Latest news about Replimune Group.",
               "url": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxQeDQ2d1FGZGgxcEQ1UHhqbWFfc1pSUlg1YWNOeGxhSEpqSVBESlFteVgzREM3ZFlHZUo4bFl2TVR3c21JMzY3M2g2VWpzM2RSdzEtRkw0VUlCak9iZWFTX25EMFVlclRkamxLMG4yVW9lWlFJVGdEX2hFclJXVm9pUTVlZWZsV295YktYYWxDeGpHQ2M2Ym9rWUhwX2lHc2Y1MFdobHRvYW9DX205NzFTOXFobnByek9oSVBLS2s0MFFveVhpblRUazhycDYwLUU0Z2ktRlFzODhrNXVMZmRhYVF30gHnAUFVX3lxTE13QlBBMWxPLXV3U19Fb1dKY2stcVN4b3g2Y2NOTmZHRTFkWVI4WHhrQ1V0eXBjTlhMUXJKRGY3QnpZWVZZajNqR3ZUZU1RRTM4Z0F3ZHBMdjgtYjBOUXdZLUdMUGNXelFzTjZYY29xODNjck1LTndtbVJLZnVjNTZrMzRQTXhscDRSUHVnUy0zX25tdnE5OTZ1SDRCTHAwOHFEb2liRmxBMXpURWhaczVzRWEydXdYbS1YWDZPVU8zU0NBdkdDR0lJVFVvdldXOHR5dDd0UmM4QS1rVndsZkVBX2NEQk92Yw?oc=5"
             },
             {
-              "title": "REPL Stock Clocks Worst Day In Over 3 Months — New FDA Documents Leave Wall Street Awaiting Another Rejection For Cancer Drug - Stocktwits",
+              "title": "REPL Stock Clocks Worst Day In Over 3 Months — New FDA Documents Leave Wall Street Awaiting Another Rejection For Cancer Drug",
               "source": "Stocktwits",
               "date": "2026-09-22T08:11:10.000Z",
               "summary": "Latest news about Replimune Group.",
@@ -873,21 +981,21 @@
           "covered": true,
           "news": [
             {
-              "title": "Kailera at bernstein healthcare forum: betting on obesity differentiation By Investing.com - Investing.com Nigeria",
+              "title": "Kailera at bernstein healthcare forum: betting on obesity differentiation By Investing.com",
               "source": "Investing.com Nigeria",
               "date": "2026-09-23T14:56:15.000Z",
               "summary": "Latest news about Kailera Therapeutics.",
               "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxQQnRaSndCbXotWnhmMHBuNW9ydDdUQkxfVU5hZ3hrSGMxaFVSMVNJVlJ2ZVcyZ2h3Q19CcGpqOUJqX3k0X0Y5cTRESFg2WVljcjhxaXhkX0plb2hFbDRxM19jeXNBS1ctd1JmQ2NwUkhCakR2RXkwVjNIRmRvbkxNYzV6UV96V3JHcTYzRHRRdGVEV0hXOVd5YnRmSXd2d19MWnBhS3pGTFFidW5rcmprMnVPWFFZOGlrRGotb2RoTk4tRV8xcFhZOWV1ckdtUQ?oc=5"
             },
             {
-              "title": "Top Kailera Therapeutics (KLRA) Competitors 2026 - MarketBeat",
+              "title": "Top Kailera Therapeutics (KLRA) Competitors 2026",
               "source": "MarketBeat",
               "date": "2026-09-22T17:11:06.000Z",
               "summary": "Latest news about Kailera Therapeutics.",
               "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQaGFVU2FGcG0wTDhueG5uZUMwZjl5ZFJBSlp6UlRNS2JYSzlsblRqQW1rR2J0b2dkWTlVTWdlNDNRWUMzb003Ml92dFZ3NFI1R1dyN2RXRnF1TlNSV1lfTEFTLTcybTYteFhBanRIcm5iaF9qSGJSWDFuOTJBYzk4NA?oc=5"
             },
             {
-              "title": "Kailera Therapeutics (NASDAQ:KLRA) Reaches New 12-Month Low - What's Next? - MarketBeat",
+              "title": "Kailera Therapeutics (NASDAQ:KLRA) Reaches New 12-Month Low - What's Next?",
               "source": "MarketBeat",
               "date": "2026-09-22T08:46:25.000Z",
               "summary": "Latest news about Kailera Therapeutics.",
@@ -926,21 +1034,21 @@
           "covered": true,
           "news": [
             {
-              "title": "Why Is NTLA Stock Jumping 5% Premarket Today? - Stocktwits",
+              "title": "Why Is NTLA Stock Jumping 5% Premarket Today?",
               "source": "Stocktwits",
               "date": "2026-09-23T08:00:33.000Z",
               "summary": "Latest news about Intellia Therapeutics.",
               "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQSTVhQmlQRWl3MU5TSkZuWnhzQWtEUXVvVXVJTWlaRWtSMm5TRFByam04QXREOVRkSmhnNUpfUlRpTDN5b0Rkd1Z2Q2ZaVkVxX3AyQndreWpnRnJicXlVMjNxY0pPWXB3UXJGZWtyZmYyOGdVaklMQkI2elc1bDU1c3B6akNhdmZDTlo4eERJY0J0VlNiVE1EMTJLLUdVdnRMSVRURmJVWkg?oc=5"
             },
             {
-              "title": "Intellia Therapeutics (NTLA) Stock Gets FDA Priority Review For Lonvo Z Gene Editing Therapy - Yahoo Finance",
+              "title": "Intellia Therapeutics (NTLA) Stock Gets FDA Priority Review For Lonvo Z Gene Editing Therapy",
               "source": "Yahoo Finance",
               "date": "2026-09-22T13:20:07.000Z",
               "summary": "Latest news about Intellia Therapeutics.",
               "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNZ3V2My1feF9qMlJJTGVJRWFleEYyQXB2UTk5Q3pVSHZseXV0OUVvRmxIcTBtN2tkVlY3X0hWcjNuclZ4ZFB5SE5tRVRrZEtzRlQ1UVlBcXFIdm0wNTBuRmtUMWFUODB5eDEtdEVUaGhaT3hQS0NTdjRXa3Jlckhqei16T1JiVldpdXRER2k4Nzh4VVVQRkFhNzB3eVVWSkk?oc=5"
             },
             {
-              "title": "Intellia Therapeutics (NTLA) Stock Jumped, What Is Behind The Latest Attention? - simplywall.st",
+              "title": "Intellia Therapeutics (NTLA) Stock Jumped, What Is Behind The Latest Attention?",
               "source": "simplywall.st",
               "date": "2026-09-18T19:34:23.000Z",
               "summary": "Latest news about Intellia Therapeutics.",
@@ -980,21 +1088,21 @@
           "covered": true,
           "news": [
             {
-              "title": "After $7.9M sale, CG Oncology (NASDAQ: CGON) officer plans more stock trades - Stock Titan",
+              "title": "After $7.9M sale, CG Oncology (NASDAQ: CGON) officer plans more stock trades",
               "source": "Stock Titan",
               "date": "2026-09-21T20:05:02.000Z",
               "summary": "Latest news about CG Oncology.",
               "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNWmE5dEg5VXdVV05hWXFZSlRVck9zQjd1T2pnY1IzX3R2ZXVKNmg1ZW1KZFBDMHN4LTlqbzlubFkwSmFRSVIzU00tSmI0Z0tUMEh4dFhtM28xVFRuQVdvckVNTjlWQnFqc2tKZWJPVFUxcFEwX3drb2hjMVBCczhXakszWGgyOUhZeGhSOUlmWlptaUMxN0xV?oc=5"
             },
             {
-              "title": "CG Oncology (NASDAQ: CGON) officer sold 100,000 shares and now plans more - Stock Titan",
+              "title": "CG Oncology (NASDAQ: CGON) officer sold 100,000 shares and now plans more",
               "source": "Stock Titan",
               "date": "2026-09-17T20:34:26.000Z",
               "summary": "Latest news about CG Oncology.",
               "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPVzJ4N0NESFhWVXhlMGgzNFM2NTYzUHB0RVEwN3NtaWtQZFJhcmNvd3YyOUNENGpXWkJVS3BpbnhVVVdya1lGYWhTWEtoczN6R1VSVXlCR0tOYzcxX0JPcGlLVGVLOFhpUXRKWldKa3ZraGR5cEJZZkNJTGlleFpBM0llWXVKNk5zay11ckpEU1p1TE5aRS1F?oc=5"
             },
             {
-              "title": "CG Oncology (NASDAQ: CGON) director sells shares under preset trading plan - Stock Titan",
+              "title": "CG Oncology (NASDAQ: CGON) director sells shares under preset trading plan",
               "source": "Stock Titan",
               "date": "2026-09-17T20:30:59.000Z",
               "summary": "Latest news about CG Oncology.",
@@ -1034,21 +1142,21 @@
           "covered": true,
           "news": [
             {
-              "title": "Immunocore stock holds at USD 32.18 as earnings remain mixed - AD HOC NEWS",
+              "title": "Immunocore stock holds at USD 32.18 as earnings remain mixed",
               "source": "AD HOC NEWS",
               "date": "2026-09-23T02:34:06.000Z",
               "summary": "Latest news about Immunocore.",
               "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxNcm1vUW9Ub1NQTHpoRkNtWGJCWVRQdTJ0bUpoYWhtbEM3SHVGVEEzb1k2cWNPdDBDbTFGZThFOGJaQ2d1bjh5T2p5VktSUTBwRnZMZE9Jd0tJQ1p1NGszSURUTGx6bkVKcHMxd2c4c3g1OWNJaC1HVm9zUTQ4Z1c0eW5WNXMtcmdqVFdvd1pqQ0VYeWhOODB4THlKNGl6c3k3d21RTXlyYVYzbHdfRGh0OXZEbjJyZ2laV1Vr?oc=5"
             },
             {
-              "title": "Is Full Trial Enrollment Altering The Investment Case For Immunocore Stock (IMCR)? - simplywall.st",
+              "title": "Is Full Trial Enrollment Altering The Investment Case For Immunocore Stock (IMCR)?",
               "source": "simplywall.st",
               "date": "2026-09-21T20:42:04.000Z",
               "summary": "Latest news about Immunocore.",
               "url": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxORERtVUVYWDRMTjM3OXZONlJFZVdOYjNhb3M1eTM4dm5WVUFhQmhTOGZfc0xiMTZEaFlTWTBWM2VxTFRFVy00UkY3ZDYwVHMyZ2k5SjlaX0d1cVJrTS1CWFBGU1labGJqT0JuVXozb0psWS1NbkxyS2sxYjBScWdzUUp6NTBqS1JTeTV6R2c1T0RkZWNoeUVpSXRQdnFOTmtqT3VJd3NWUV8ycjJYLU5LZlNuQk5jNEJ0dkZjZnRydnpSZmFXNDA2a1AzaHotSy1mOXVEcU50bWEzZHpRaWQ0TmRRTkJweWd30gHuAUFVX3lxTE1nclF2bmg4YXBObjdlcjBnWnRqZHhoajNZUzBYSDN1cDdidHVjNlltNUE5TVYxTk81TENJZlVQeGVSN05jMzVyaVhkaWxqTGhJM2ZHNmFrWFVNUG5sV3pDX0hDUW9teENGb2JWV0lrR1IwUVBnbFZOcG84WkpuZVBab1BWY1ZmeUJQbGo0MWMxTDBMcTEwSkpxTVcxdG9scXlsa1lKWWJMTEZQUm9FOWc0dEdjOVl0em9fdFZGU0JpeTZwcEdPaEUxTGlQZFV6dGNjRURNdjZDSnRVejBSSTZndDlra19Rb3NrTzZxcVE?oc=5"
             },
             {
-              "title": "Immunovant Stock Gains 12.4% in a Month: What's Driving It? - easternprogress.com",
+              "title": "Immunovant Stock Gains 12.4% in a Month: What's Driving It?",
               "source": "easternprogress.com",
               "date": "2026-09-21T08:15:48.000Z",
               "summary": "Latest news about Immunocore.",
@@ -1087,21 +1195,21 @@
           "covered": true,
           "news": [
             {
-              "title": "Form 4 Structure Therapeutics Inc ADR For: 22 September By Investing.com - Investing.com Nigeria",
+              "title": "Form 4 Structure Therapeutics Inc ADR For: 22 September By Investing.com",
               "source": "Investing.com Nigeria",
               "date": "2026-09-22T22:45:38.000Z",
               "summary": "Latest news about Structure Therapeutics.",
               "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxOZnVpeHBBY2N1Z1VIZzN4YnlvWjJwbWs2b2owM1Y2RnpCQ214dGZkWmJKeEFJM21YSGFueTVJdS03X21naE8tX1k0dFI4NjJuN1BsQUNwbzN3OTRDcG1QU05aUlNDZmo0MnhOMHhzZ3JuWnBaY2FMeV9zQWpyNEloWlFBWnVpcWE3Q29JQjZzVUgxcDRxZURkRlFYVmNFRzlDMkR5ckgwcWRRNlN0aVBBMmN2VlFLdw?oc=5"
             },
             {
-              "title": "Structure Therapeutics (GPCR) CMO sells shares under preset plan - Stock Titan",
+              "title": "Structure Therapeutics (GPCR) CMO sells shares under preset plan",
               "source": "Stock Titan",
               "date": "2026-09-22T22:00:26.000Z",
               "summary": "Latest news about Structure Therapeutics.",
               "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQeThJdHo0OHR5NzJZVk9hbW1tUms4aC1KRHV0S3QzSm91cHJRWWZmUkFYUm5GUlpNdGlpc3p2WVdXcXNEc25tVTVmOTBnN3N2N0VMc0hCaXBEMERUMWE3Ulk0SHg1ZWRpOEhFWlZaalJabzVETWh3ZG83cGNsMjhzeHl2ZEJjdUtpeXduYmVTWldfbjJpX0pSNFRPRzljR0tvdG5DeHVmRWo4dG9XUlBNV2t2dUVoNnl2UElTbg?oc=5"
             },
             {
-              "title": "Structure Therapeutics (GPCR) Gains Fresh Obesity Trial Backing Following Data That Keeps Valuation In Focus - Yahoo Finance",
+              "title": "Structure Therapeutics (GPCR) Gains Fresh Obesity Trial Backing Following Data That Keeps Valuation In Focus",
               "source": "Yahoo Finance",
               "date": "2026-09-22T11:13:17.000Z",
               "summary": "Latest news about Structure Therapeutics.",
@@ -1140,21 +1248,21 @@
           "covered": true,
           "news": [
             {
-              "title": "Altimmune Inc. (ALT) Edges Higher to $3.27 as Shares Hold Mid-Range - ETF Outflow Streak - siam.in",
+              "title": "Altimmune Inc. (ALT) Edges Higher to $3.27 as Shares Hold Mid-Range - ETF Outflow Streak",
               "source": "siam.in",
               "date": "2026-09-22T12:44:18.000Z",
               "summary": "Latest news about Altimmune.",
               "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxQUVR0N0hNNjd3cGpnaUFzOGZfUHFrLWN0NTFWUW9tZ3RSWTZjY29WdEQyeVZFUlYzdmgzamR2VW1wMlEwSWtSZmV1X3FjUlVrRnhZVFJMNHlIUWwySnJQVjZTV1QzMnZYLUJYS0pqbDh6T3FEZTJLb1hfNzFPQjU4akJ6OWp3Zm5kdGpNcndBczVFMUJFel9Eblh4NE5mNFg1TklZcHNZYw?oc=5"
             },
             {
-              "title": "ALT Stock Reverses Early Gains On Positive Alcohol Use Trial — But Wall Street, Retail Investors Dismiss Selloff - Stocktwits",
+              "title": "ALT Stock Reverses Early Gains On Positive Alcohol Use Trial — But Wall Street, Retail Investors Dismiss Selloff",
               "source": "Stocktwits",
               "date": "2026-09-22T03:16:25.000Z",
               "summary": "Latest news about Altimmune.",
               "url": "https://news.google.com/rss/articles/CBMigwJBVV95cUxPaVNzQndzYkV2YXhtTUVhN0pIQUFwVTV5ZVZnY1BEUWZIU0o1VC1FOEpQTHZQSzNhNGR2MzAtSm5jd2VtNVI4bDU4eVlhdzE1QkpGWGFpN2t6R25WMkFSUnRUNEQtTF9ldHRmb25ZYXVhanR0ZzlTQXlISlV2MHJzcmpadXVhTG9kcTVTZ3MwT0lDYmVKXzFXMHh4VTdXWkxFdFFrSk1seVBjV21kbDQwWF9ROUhQMW9YdllYekNCd3M5emJSb25LSmpGc09OT2xDUGdocHFQRExONGkxUEZkUFYyeE9hYXM3OXZhZ0VnYW85bTc2emxwVWFnd1d4NjB3dXdj?oc=5"
             },
             {
-              "title": "Why Is Altimmune (ALT) Up 14.2% Since Last Earnings Report? - Yahoo Finance",
+              "title": "Why Is Altimmune (ALT) Up 14.2% Since Last Earnings Report?",
               "source": "Yahoo Finance",
               "date": "2026-09-11T07:00:00.000Z",
               "summary": "Latest news about Altimmune.",
@@ -1194,21 +1302,21 @@
           "covered": true,
           "news": [
             {
-              "title": "This Autoliv Analyst Is No Longer Bullish; Here Are Top 5 Downgrades For Wednesday - Benzinga",
+              "title": "This Autoliv Analyst Is No Longer Bullish; Here Are Top 5 Downgrades For Wednesday",
               "source": "Benzinga",
               "date": "2026-09-23T13:09:41.000Z",
               "summary": "Latest news about Wave Life Sciences.",
               "url": "https://news.google.com/rss/articles/CBMi6gFBVV95cUxNNFNDYkwtWl96N3VNZV9xaVhVY0xfUmh1NWgzakRpR3BzZE5XU2lIcGdIVTc3OEF0S0RlY2RnaU5udVE0YUtBUTZGLUI5Wnk0eTJJMGQ1VFNXZWR4WVhKZnFuRGc3U2J1bTA0aFZnMnYyM0FwMWhKVzJGSWRrd3NYVnRha2xZWXRHZVlVTWd3WG5XaVBUazJtRXRYMEZKeFRRUlNiM1A2R01xM0ljMHMxVHY3NlE2bDFpM1N3LVRIdlkycGw3RmlyY1lFMllIM1R3YUpobXdVakVXeWVVclFocllMWU0yekpkckE?oc=5"
             },
             {
-              "title": "JPMorgan resumes Wave Life Sciences stock rating at Neutral - Investing.com",
+              "title": "JPMorgan resumes Wave Life Sciences stock rating at Neutral",
               "source": "Investing.com",
               "date": "2026-09-23T07:48:09.000Z",
               "summary": "Latest news about Wave Life Sciences.",
               "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQTFJOVmFISGQ3cTdoWUFYMm42d0VaWTRsQ1hSVnFIRFU2OWM4Ry1aZFRXN1ZlZWlUY0x0aVJIU0lNRXB0TkpRdVk4VzNxcG4tbUpZaFA1THd6cTA4NURjV2VEdFFCVU13V3FVQ05MY1VHMlJXOWJtcXNJdWExUVo3cWdCQVgtSXdsWW9iTmJNcXRlYmYyVzVOMnNuTHF4ZVNDTjU5TnhaNmtXTXBqTGpvNm1RZE4xQUhxWlBz?oc=5"
             },
             {
-              "title": "Wave Life Sciences stock hits a 52-week low at USD 4.20 - AD HOC NEWS",
+              "title": "Wave Life Sciences stock hits a 52-week low at USD 4.20",
               "source": "AD HOC NEWS",
               "date": "2026-09-22T17:36:46.000Z",
               "summary": "Latest news about Wave Life Sciences.",
@@ -1247,21 +1355,21 @@
           "covered": true,
           "news": [
             {
-              "title": "Septerna, Inc. (SEPN) Investor Outlook: Strong Buy Ratings Signal 37% Potential Upside - DirectorsTalk Interviews",
+              "title": "Septerna, Inc. (SEPN) Investor Outlook: Strong Buy Ratings Signal 37% Potential Upside",
               "source": "DirectorsTalk Interviews",
               "date": "2026-09-18T09:17:18.000Z",
               "summary": "Latest news about Septerna.",
               "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxQbEpodTc2WEJFcVJsbXp0Z0RMZ1VuNmhMTXczamRZbDNyMDcxM0d6dGN3Y1pXZ1A4RU9oY3hUOTFLR3padldkTXR5akh0VTlDWFBXc3hiTHgwTm1ZcFlVQjJKd2JpT3d3Y1dvMWdLSUVXdHhoRmVLcTNZU2ZxSkhYbnBvU29NSDV1bE84bnlpSlA4eVdHendETGZFQTYwaUFOTERZcG1vQXEyVmV4VlU2ZE9fNGJYQlhKQVhrVmNoNDdsOFNnSktSdi11dw?oc=5"
             },
             {
-              "title": "Septerna, Inc. - Common Stock (NQ: SEPN - The Chronicle-Journal",
+              "title": "Septerna, Inc. - Common Stock (NQ: SEPN",
               "source": "The Chronicle-Journal",
               "date": "2026-09-17T11:01:24.000Z",
               "summary": "Latest news about Septerna.",
               "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOUkp5OEZ5TXZ2RUV0dTBPclhpVXM4WWI3OWxfODZOekU5NTFZcWhMRGZoWGJQcllZV3RrUUdBMWNkZ3RuMjhwTGYzWF9OSTk1SkNiZXAtUTFmbXVxVjVOcXpFdWR2bDJvVXNLeDQxZzY1dThrYWw3ZURKWGhiNms3bFp1cE9YejRUQnNPSV9Fa2tKWUNmcVpTS1c4eHZrelZXQVdVY2VKSFR6TkpTbk5mZ0hR?oc=5"
             },
             {
-              "title": "Septerna (SEPN) Heads To Healthcare Conferences, Is The Valuation Already Too Rich? - Yahoo Finance",
+              "title": "Septerna (SEPN) Heads To Healthcare Conferences, Is The Valuation Already Too Rich?",
               "source": "Yahoo Finance",
               "date": "2026-09-14T07:00:00.000Z",
               "summary": "Latest news about Septerna.",
@@ -1300,21 +1408,21 @@
           "covered": true,
           "news": [
             {
-              "title": "Autolus Therapeutics plc SEC Filing (Sep 23, 2026) - Stock Titan",
+              "title": "Autolus Therapeutics plc SEC Filing (Sep 23, 2026)",
               "source": "Stock Titan",
               "date": "2026-09-23T10:19:38.000Z",
               "summary": "Latest news about Autolus Therapeutics.",
               "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxQWW9iZk52Y3d2dlpkb0c5aTdJd25jemxmb0pmT1lYdTN1VGdvM0dKbGloX2w1ck9DRl9xN2hGVDJnWWZDaFRNMTI1bTZBRzZxLU1Kd2NUOURmdTFweF9PRVFYWmlLQUMybFp2SXBPaEtaSkRfWDB0UjloOW1jS2R0X083VjBHcTlmeHpGVVhKb0psaE51WThMa1J5ZHFRT0VxZ1FXUFNpWQ?oc=5"
             },
             {
-              "title": "Autolus Therapeutics plc (AUTL) Stock Analysis: A Biotech Pioneer with a Staggering 354% Potential Upside - DirectorsTalk Interviews",
+              "title": "Autolus Therapeutics plc (AUTL) Stock Analysis: A Biotech Pioneer with a Staggering 354% Potential Upside",
               "source": "DirectorsTalk Interviews",
               "date": "2026-09-18T09:17:17.000Z",
               "summary": "Latest news about Autolus Therapeutics.",
               "url": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxNVXoxZWNNMkFRRkZkN1pfTkQ2dDkyb2Q5b3BqU2dVMlFWSDY3S05DTTZSeGF3NVlIRmx1WUh0Z0RMQ3VGQjV6Q2x0enRwQlpMUkczNS1GU0pCaE5OS3Zoc1l4bWpqcEZOTkhaWG03V082NXhRX2VtYm5jeHM1MHV1Sm95YWpTSlhWU001cmpPbE1SaVFpZUR1SFlzeXBsMDRUbVc0YnZheDg0Q0JwX3ZhVzQ4Z1hwcV9tYmlBRXdOT1J4QzdlODduSWREdFM1U19OYV9KLW51R0xubWFlY1BkXzJXejhiaGs?oc=5"
             },
             {
-              "title": "CNH Industrial Posts Upbeat Q2 Earnings, Joins Autolus Therapeutics, Bowhead Specialty Holdings And Othe - Benzinga",
+              "title": "CNH Industrial Posts Upbeat Q2 Earnings, Joins Autolus Therapeutics, Bowhead Specialty Holdings And Othe",
               "source": "Benzinga",
               "date": "2026-08-03T07:00:00.000Z",
               "summary": "Latest news about Autolus Therapeutics.",
@@ -1353,21 +1461,21 @@
           "covered": true,
           "news": [
             {
-              "title": "ALLO News | ALLOGENE THERAPEUTICS INC (NASDAQ:ALLO) - ChartMill",
+              "title": "ALLO News | ALLOGENE THERAPEUTICS INC (NASDAQ:ALLO)",
               "source": "ChartMill",
               "date": "2026-09-16T13:58:03.000Z",
               "summary": "Latest news about Allogene Therapeutics.",
               "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE5KbTBkX01HTnZ6aER3X2tuU01GNjZHOEkzZHRFdmNtYWVSWmRXSHBrcVRqbnlfQ1hDQnJoYmszYWZycHc3S1ZiUVc1eEZFVllMckdkMVVmSXZfZTQ?oc=5"
             },
             {
-              "title": "Allogene Therapeutics (ALLO) Down 11.1% Since Last Earnings Report: Can It Rebound? - Yahoo Finance",
+              "title": "Allogene Therapeutics (ALLO) Down 11.1% Since Last Earnings Report: Can It Rebound?",
               "source": "Yahoo Finance",
               "date": "2026-09-11T07:00:00.000Z",
               "summary": "Latest news about Allogene Therapeutics.",
               "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxQYmlVZ0NQak5md0p6MGtaN0Y2LVlobkduUUxnT3BDMHUyS2dlb1JsUDRWTkhQd1VBb1FJT01LREMxVy1YTWpQdWRTY2pPNDAtTzlTd2pzSkNtaGJZcjJfU3JwMVBMY0stNmxlNUZEUkowanNUWHZac2hlVlZxejJyRHN2eElWN1A1YmFkYXJTbEsxVmN6RmkySkhNRk4yV2Nx?oc=5"
             },
             {
-              "title": "Is Allogene Therapeutics (ALLO) Stock Outpacing Its Medical Peers This Year? - Yahoo Finance",
+              "title": "Is Allogene Therapeutics (ALLO) Stock Outpacing Its Medical Peers This Year?",
               "source": "Yahoo Finance",
               "date": "2026-08-17T07:00:00.000Z",
               "summary": "Latest news about Allogene Therapeutics.",
@@ -1407,21 +1515,21 @@
           "covered": true,
           "news": [
             {
-              "title": "Immatics stock holds at USD 8.77 as analysts see upside - AD HOC NEWS",
+              "title": "Immatics stock holds at USD 8.77 as analysts see upside",
               "source": "AD HOC NEWS",
               "date": "2026-09-23T07:02:59.000Z",
               "summary": "Latest news about Immatics.",
               "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOcmFOVVZvMHNqRU5Cd19jbG1yM2E1WGZoN3Q1Q1JzZm1jLV8yS2pZbkRUYnRnSHNpNmxscEJuRTFTYmxiUzB0SUVIZDhObGF0MFRnR3YxZW9PY2J4WlozS2ZmbG1xMXJfeHREQm93azhPdzZvYnhZa0JXYVhnd1NzVnBTSWd3SzNOWGR0a1hkUDVSNnJ2VHF6OXQyZ0trb2RCNWJTbm04MjhkbUdjbWNSejFDd24?oc=5"
             },
             {
-              "title": "Immatics (NASDAQ: IMTX) gets 863K-share buy at $8.69 from Perceptive - Stock Titan",
+              "title": "Immatics (NASDAQ: IMTX) gets 863K-share buy at $8.69 from Perceptive",
               "source": "Stock Titan",
               "date": "2026-08-27T07:00:00.000Z",
               "summary": "Latest news about Immatics.",
               "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxNRk01bTUtaTkyREgyU1FOa0F6dzZiZENpLTRaT293eFNuVTdGc0RTMzlidG94S0Q5di1YdTVfN1NtRE51Sl9GbXk4WkV5YVo2RDR5WWdFVnJmb2dFSTh0d1pHWW9CY2lueXlwN1ktekI0RDJmQnJ5ZEI1WlkwVUIzVTZ0VHFka2VnMWxIdzAyMVpFMm1IMlVWNm93dmloZFlsZzlSZHNXZUxKX29hVTZaYktxLXVUcGk5LUFBNWdNQQ?oc=5"
             },
             {
-              "title": "Immatics raises $150M in stock offering to fund PRAME cancer pipeline - Dealroom",
+              "title": "Immatics raises $150M in stock offering to fund PRAME cancer pipeline",
               "source": "Dealroom",
               "date": "2026-08-25T12:48:01.000Z",
               "summary": "Latest news about Immatics.",
@@ -1461,21 +1569,21 @@
           "covered": true,
           "news": [
             {
-              "title": "What Janux Therapeutics Stock First Patient Dosed Means For Shareholders - simplywall.st",
+              "title": "What Janux Therapeutics Stock First Patient Dosed Means For Shareholders",
               "source": "simplywall.st",
               "date": "2026-09-23T19:35:57.000Z",
               "summary": "Latest news about Janux Therapeutics.",
               "url": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxOd1lRSVRNcW0wS1ZzZWJJRHJSNnZmM0hSM1J6Q3p0X1JGUmJ4UGFQLVMyNER5NE0xd01lXy04M0UwdHJFaXg4N0lEUHlCeWlZTkhndmh1OEE0RWhManV6eF9XZFhWY29GN084dmFmS25BLTNQdlJPVVVFUlc2eTJaaGxWRWVnLVJ6TTcwTjg3V25uNXUxOVhseFlZRjlJWXNnNmtTR2xYQjVDRS12d18zdzJVS194Y0xLUnEwZUh0UFNBenBueElqTU5GUkdfOW84Qk1JRVNnc0w3MnY1ajZ6cXRkN25ZZ9IB6wFBVV95cUxQRnNnZEhDd1kxMzZDOUZFVDY2ZlRPaVlfZGZUM093WGQwa0FsWjY2U3htaFdnNjduTHZOazMyTXJDdTQ4M2hBSUhoQlJGOENDeW03ekVVbTY1OHpBTHVPQWpFYmZwekVmdE1VdHpOM3JMMUozWERNdzVMZTNtMVJOSDhSS3ZXU2c4ZUU5OHFuNGhOLWtVTjg4V2RqS2l3eTNLZzNjaGZLc014MWlzSmVmTHdnV1RMTFFHZWlMVXFpU2pJR0ozMkxzVVVGempVOHptVHJZSWZFUW9wM3BrN1E3R21IaTJIZWxwOEN3?oc=5"
             },
             {
-              "title": "Janux Therapeutics: It's Too Early To Tell If Prostate Cancer Program Can Succeed (JANX) - Seeking Alpha",
+              "title": "Janux Therapeutics: It's Too Early To Tell If Prostate Cancer Program Can Succeed (JANX)",
               "source": "Seeking Alpha",
               "date": "2026-09-18T16:46:52.000Z",
               "summary": "Latest news about Janux Therapeutics.",
               "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxNaVBnckpEdUE1WWxCS1E3SkJ3bG5faDJOcVBGdnBiYXNDRkZjekVtNWNEeE1URHZnbVI4YTlFUmprNG5DYldPR0lycV9BT0UxWGFVdnRHU1l0c0pldW1XRDZEa0I0VVF0SVp5ZUotZVFZSkwyMXZTY0M5TlNqZ2RESzBlOUNOYTIzUEtzYlRORkRKMFVON2dpZUVRTUl2eXJFSlNNdHV1SGJ3WFNWa3NadVA4N0xxTHBsVzRqdw?oc=5"
             },
             {
-              "title": "The first patient gets Janux's new immune treatment in a prostate cancer trial. - Stock Titan",
+              "title": "The first patient gets Janux's new immune treatment in a prostate cancer trial.",
               "source": "Stock Titan",
               "date": "2026-09-14T12:00:00.000Z",
               "summary": "Latest news about Janux Therapeutics.",
@@ -1515,21 +1623,21 @@
           "covered": true,
           "news": [
             {
-              "title": "Candel Therapeutics: Strong Buy On Aglatimagene Prostate Cancer BLA Filing In Q4 (CADL) - Seeking Alpha",
+              "title": "Candel Therapeutics: Strong Buy On Aglatimagene Prostate Cancer BLA Filing In Q4 (CADL)",
               "source": "Seeking Alpha",
               "date": "2026-09-22T18:50:47.000Z",
               "summary": "Latest news about Candel Therapeutics.",
               "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxNQm9VNjZEUURFVE13bU1tSVJTVkV6NllBamhQODVzOEk5TE9ZTmtjOXMwRHhBRER4UnVsOGhCb0xsdkJoU0hRaHk1ZGdKeTk5T3ItM1VJZ2Q1cU1hLVlwUjNzdlpYMXlGOE5zUExQYVk1XzQtaVZyYWh0T1BJRkh3R1JKWXdCa1Z2RklycTJoSHJtUTkxUzY5UUdPWm5KVFlUT2pHbnJQem9fWEZaVFlTcXVScnhzdEw1N20zQQ?oc=5"
             },
             {
-              "title": "Why is Candel Therapeutics stock surging today? - Investing.com",
+              "title": "Why is Candel Therapeutics stock surging today?",
               "source": "Investing.com",
               "date": "2026-09-21T21:58:57.000Z",
               "summary": "Latest news about Candel Therapeutics.",
               "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxQcUdZbDhCelJHT3dwVXpwU3NvcjROQ090YTgtVjYtOVBjVWw3dmZiLVJqNm1WQjZiM1B3UkowX0dKTHhWNTdZX0NYTW51dDR2SWNWaVFaMnZMYk5yNVU2TmJzOVJVOU1oX2tVR2o4QTJHMm5aX1VBZWsxZmRlTzY3dWtwVnplU3hid05NSm03V1RXSkRwMzNUWmg2VzIzZzhqbGJfblk1OVZiMmoy?oc=5"
             },
             {
-              "title": "Candel Therapeutics stock jumps on BofA upgrade to buy By Investing.com - Investing.com South Africa",
+              "title": "Candel Therapeutics stock jumps on BofA upgrade to buy By Investing.com",
               "source": "Investing.com South Africa",
               "date": "2026-09-21T15:32:02.000Z",
               "summary": "Latest news about Candel Therapeutics.",
@@ -1565,21 +1673,21 @@
           "covered": true,
           "news": [
             {
-              "title": "EnGene Therapeutics Inc.(NasdaqCM: ENGN) dropped from S&amp;P Global BMI Index - marketscreener.com",
+              "title": "EnGene Therapeutics Inc.(NasdaqCM: ENGN) dropped from S&amp;P Global BMI Index",
               "source": "marketscreener.com",
               "date": "2026-09-21T02:53:07.000Z",
               "summary": "Latest news about enGene Therapeutics.",
               "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxPSWN3di1nODB3Y3JrUlpXQXlOZ0xfTnQ5UTZzQmlScXFidEN3Z3ZHNmctWTB2MmxJTzN5a180SW56ZVRybGpHTXJDXzZGX0xXSGltQV9waUttLTEwV2dPdVdsRE9XNXhNUUJnLWViV0hiejRyUFA3cmoyQmJPMzN1Z2t2QUtNV2VtX0xnSUlhQU1uNENjU0ZGNmd1WVUyZDFDU21BTGNhTVpkZFpuWVNZSzFQYWNVdURrQTJ3TjJtWDRoQQ?oc=5"
             },
             {
-              "title": "A bladder cancer treatment study reported complete responses in 54% of patients - Stock Titan",
+              "title": "A bladder cancer treatment study reported complete responses in 54% of patients",
               "source": "Stock Titan",
               "date": "2026-09-08T11:30:00.000Z",
               "summary": "Latest news about enGene Therapeutics.",
               "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQcVl5N0diX0tDUHAzVWV2WEVSN0xGUUVpVHlFRHpXRUg4MVFQTTQwYWlGU3lCVGpEWUtpUUxKWXEyejlpd0Exbk5pSXUwQmRnbE12b1lpdVE4ckU4N1YwVWM5bDNQQ2pQS0NPM3ZiM0tobzNKSmdadkctOWFCT1pvZXUyaHVoaF9vREhkTXJvM19mZlFYSjBYMnNoQnZodnJZWmhZZTYxZGZzMTVnUU9tZVBFNTRHZ2dpdmxxag?oc=5"
             },
             {
-              "title": "ENGN Forecast — Price Target — Prediction for 2027 - TradingView",
+              "title": "ENGN Forecast — Price Target — Prediction for 2027",
               "source": "TradingView",
               "date": "2026-06-25T19:03:55.000Z",
               "summary": "Latest news about enGene Therapeutics.",
@@ -1618,21 +1726,21 @@
           "covered": true,
           "news": [
             {
-              "title": "UroGen Pharma (URGN) Stock May Still Trade At A Discount To Sales - simplywall.st",
+              "title": "UroGen Pharma (URGN) Stock May Still Trade At A Discount To Sales",
               "source": "simplywall.st",
               "date": "2026-09-13T02:33:33.000Z",
               "summary": "Latest news about UroGen Pharma.",
               "url": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxPR1RrN3lORFZRMmNhT0lBS1lNQk54bEdhN05ybDI4VVFVUlRnQ016YWd6dXdJRmRtcTN0S05yZmJfbFgwVVMwMzNNNi03alV5Tm1xcHhhaWZUbjdBXzNsa1pFb0ljZG0yamFwR2tRd28xUFp3VkNWaHF5TVJoNHc1c21KR0lFY09RWjYyYy1qTHg4SFJTMGtxYjRJdU9QZ0Fnam9ENFUzSlRJMjg0dThhVkpJaHR2WENhdkhqSHh0Um5CTlhXM2FjTGVVQlFXRkdIMDVHR0VteWZhSDN0WEVrWtIB5gFBVV95cUxPdzMtUWo0N2F6UWlPdEJhaGU3bUtfVGlvM0U2N0dQaEFfalp0NUcteFBMbHJwa1h4eVZZWkhvaE8zcWFYdXA0cUxJMktaSkJ4YnlMRS1QdXo4TXpQb2lvUHI0dE53a1lUdEJKVjhhdTFGdU1mV3EtMFQ5OXJvYllFWU1hei1zSmlHVWYySjVWWEdCdWNfYkJlUkJpVlE0azVsZ19hSTdKRjgwdzFOM19xcUJnZ1dMdmZLWWVuSVRsSDdpcVI2X1llOU5mYnZSeXpJYVRkSVlMSlNQSkJhWTJETldHUlMyQQ?oc=5"
             },
             {
-              "title": "Jefferies reiterates UroGen Pharma stock rating on rival drug data - Investing.com",
+              "title": "Jefferies reiterates UroGen Pharma stock rating on rival drug data",
               "source": "Investing.com",
               "date": "2026-09-10T07:00:00.000Z",
               "summary": "Latest news about UroGen Pharma.",
               "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxPZU4yeTlSbUlkQWJBdFZTeENIOUdzQ0hvREx1Z2JCbXVRbHA2N1lsRXJ4bHRIeEtzUjRlc1lDdUR5dUtEM2hqTW1aQVVVbTRfc1dyMllFc01qVXVGMEV1bUN6WTdFSXY5b292eHktSHBTMlFLdEd4YW1aTkN1SDgtLVJaQ1BhUjRLa1Vld2hJbDNEY09vbW43MXdJUXREaDNCUXdCZFNQZjgzVWhjYV90MG90YmFmM1hBa3pvRlY2WklBOWlF?oc=5"
             },
             {
-              "title": "UroGen Pharma (NASDAQ: URGN) officer plans 10,000-share sale after RSUs vest - Stock Titan",
+              "title": "UroGen Pharma (NASDAQ: URGN) officer plans 10,000-share sale after RSUs vest",
               "source": "Stock Titan",
               "date": "2026-09-09T11:35:12.000Z",
               "summary": "Latest news about UroGen Pharma.",
@@ -1671,21 +1779,21 @@
           "covered": true,
           "news": [
             {
-              "title": "Oncolytics Biotech stock lacks a fresh catalyst and stays near $0.77 - AD HOC NEWS",
+              "title": "Oncolytics Biotech stock lacks a fresh catalyst and stays near $0.77",
               "source": "AD HOC NEWS",
               "date": "2026-09-19T14:17:54.000Z",
               "summary": "Latest news about Oncolytics Biotech.",
               "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxQRUZab19oUVk5VWxrNWVJUTgtQW9PMU4tcmpzTHJXQlNBQ1JUdm43NzVGQ19XMk9PNEtpcGtoa2xrUEpFbzdiUjA2dU9zX3F4a0MxNWttbGQ4cmdTaGgxMGFvdWJHX0VBcjVvRkFEOHVWSXdlZVN2V29rY0kxZEtnRE0tYjIybU9qYXllX2xzSWVRMTUxbHc5Vjl1UGJId2dlTXp1bVUtTTUzTnhJNzUyb0RDdHF1VFozUWdad0Q3d3Z5SGlL?oc=5"
             },
             {
-              "title": "An experimental cancer treatment combination reduced tumor growth in early tests - Stock Titan",
+              "title": "An experimental cancer treatment combination reduced tumor growth in early tests",
               "source": "Stock Titan",
               "date": "2026-09-10T07:00:00.000Z",
               "summary": "Latest news about Oncolytics Biotech.",
               "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxObEs0UkR3ZVVCd2J1czRud1N3Y3FnQWE3MHdqTEhkNjZQNzRUdDB1YmFGd2xoVlZBSW5nNmFRWGhtNEFvR3hXeVFsZXdQNjRBekFJQ29RMWtfQVpYdDlZOU55c2pING0yblVlRW0tVWpUUWdmWG50cGpjdFNkYXE4ak9TTHp5OWFlb3RGR0N3cERwT1hobTdwQWZ6YzZENUh3UGdIdmhpT1JYWThBQ2lnVWtNZ1BQcllHNXFxUVRROA?oc=5"
             },
             {
-              "title": "Oncolytics Biotech (ONCY) Climbs 4.25% to $0.83 as Small-Cap Biotech Finds Buyers - Fundamentals - careplusvn.com",
+              "title": "Oncolytics Biotech (ONCY) Climbs 4.25% to $0.83 as Small-Cap Biotech Finds Buyers - Fundamentals",
               "source": "careplusvn.com",
               "date": "2026-08-16T07:00:00.000Z",
               "summary": "Latest news about Oncolytics Biotech.",
@@ -1725,21 +1833,21 @@
           "covered": true,
           "news": [
             {
-              "title": "Gene editing stocks fall after Anthropic’s CRISPR-like discovery - Seeking Alpha",
+              "title": "Gene editing stocks fall after Anthropic’s CRISPR-like discovery",
               "source": "Seeking Alpha",
               "date": "2026-09-23T18:33:59.000Z",
               "summary": "Latest news about CRISPR Therapeutics.",
               "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxOY1lTUGRabXF1anFYVnFxUXpGOHdlNUlGNHltSEtBWVRqa2dTMW85Z05FZ0xhdzJ3bXdQQV9FRERZYnJFX0VtYVFBTnhQemtLYklYQk1GTG9PcHpBMExuYmkySlhMNmFhNzVzZXBWbWFweDlqN2JFamVzTjVuemR2U1RpNGN1RHJXaVZDNHl4RVFocklaR0ZuN1N3?oc=5"
             },
             {
-              "title": "CRISPR Therapeutics stock trades below targets despite approved gene therapy; analyst sees 85% upside potential. - Pluang",
+              "title": "CRISPR Therapeutics stock trades below targets despite approved gene therapy; analyst sees 85% upside potential.",
               "source": "Pluang",
               "date": "2026-09-23T12:34:24.000Z",
               "summary": "Latest news about CRISPR Therapeutics.",
               "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxPOHFINU9EdDNaWnZDXzhWZkFHdllsM2dlZXNGek8xWUNJVnJLSjJjOWQwZ09qdXlZVVhLT2hzRmIwcmUxRVgySFVTVTVOdGRUVC1oUWtOakUyQk56eW1iX1JybnpxSFpteVRsWU54SGh6NDFDczNtbThJQnlwcnZMaHpOaWZjOWZRdTlEa1R5NXRKU0tPTU80VEtSQXNXTnJkaGlR?oc=5"
             },
             {
-              "title": "CRISPR Therapeutics Traded Sideways and Down for 12 Months: One Wall Street Pro Expects 85% Gains Soon - Yahoo Finance",
+              "title": "CRISPR Therapeutics Traded Sideways and Down for 12 Months: One Wall Street Pro Expects 85% Gains Soon",
               "source": "Yahoo Finance",
               "date": "2026-09-23T12:22:45.000Z",
               "summary": "Latest news about CRISPR Therapeutics.",
@@ -1778,21 +1886,21 @@
           "covered": true,
           "news": [
             {
-              "title": "Beam Therapeutics Inc. (BEAM) Stock Price | Live Quotes &amp; Charts | NASDAQ - timothysykes.com",
+              "title": "Beam Therapeutics Inc. (BEAM) Stock Price | Live Quotes &amp; Charts | NASDAQ",
               "source": "timothysykes.com",
               "date": "2026-09-18T18:38:00.000Z",
               "summary": "Latest news about Beam Therapeutics.",
               "url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE5tMHBCdHNDM1k4YWtHQTNNdGJfLUdEQmhwS3JWRVFDS3dIcFBTSlhaMXU4amptT2dqNDlMaE1idDJMbFgtWFRFSXdzYjE?oc=5"
             },
             {
-              "title": "Is Beam Therapeutics (BEAM) Undervalued Following Its BEAM 302 Clinical Update? - simplywall.st",
+              "title": "Is Beam Therapeutics (BEAM) Undervalued Following Its BEAM 302 Clinical Update?",
               "source": "simplywall.st",
               "date": "2026-09-17T15:56:12.000Z",
               "summary": "Latest news about Beam Therapeutics.",
               "url": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxOOXZvY3dFdkZpZ3dfQlhXNUktXzFhWXJ5ZUhBaWJpREdrYzNWbEVRT1R4eU43QzE5ay1aTndWM3hJcFpyLW5za3dvOU1NZjNJTmhYajlDQS1ROW11ZG45QzlJVzYxX3otUk1haFJXUlBVdXJ2bHlNZ0FLNlZOcGFmMUM4R21YVG1tdm1NUVZhZnVKVEdVSWw5OWNCYjRkMlJDSkkzX0d6dEM3cEVXWlRLMGF3LTJKTlZpUGpuTFdXcHlTWnpVTHpTNlZ6eHBQZ1R5N0l0REdvV2xfTHN3LXF2a3M2VmVMd9IB6wFBVV95cUxPYnZ2WGJjaVhfdm1pU25vZld6UjFxaDl6clBmN1AxSzVaZk82UUJFeUxIM0RRVFo3MHJMbkdiTzdnekZmb1o5akJva3ZkMmYxYlhiUV9fOUsybUdhVU5OVUNGV3IwbVNQUFIxWTdnWG5RZzRlS0FqYUowRW1FVUVXNl94a1UzOG9GdDNUQlR2RThPNWFPaTZkSy1XMXpHT2s4TGJCbEtIem0zRWYxUXV2dUl6U1BlMzh5NTc4Nl9nRlhyaDVHNjMxSnczZjR6Z0dMSkR3aTg2bzlkSHQ2Nmt1TWFIZjZnYVp1SG80?oc=5"
             },
             {
-              "title": "Clinical Trial Progress Might Change The Case For Investing In Beam Therapeutics Stock (BEAM) - simplywall.st",
+              "title": "Clinical Trial Progress Might Change The Case For Investing In Beam Therapeutics Stock (BEAM)",
               "source": "simplywall.st",
               "date": "2026-09-10T16:27:17.000Z",
               "summary": "Latest news about Beam Therapeutics.",
@@ -1831,21 +1939,21 @@
           "covered": true,
           "news": [
             {
-              "title": "Prime Medicine, Inc. (NASDAQ:PRME) Receives Average Recommendation of \"Moderate Buy\" from Analysts - MarketBeat",
+              "title": "Prime Medicine, Inc. (NASDAQ:PRME) Receives Average Recommendation of \"Moderate Buy\" from Analysts",
               "source": "MarketBeat",
               "date": "2026-09-22T06:49:35.000Z",
               "summary": "Latest news about Prime Medicine.",
               "url": "https://news.google.com/rss/articles/CBMi7AFBVV95cUxNODJaeUM0M0pCR3VOTmNOWlM4U1ljQ2QzQy0xSlpPaHZiUXFudzUwVWJyUXZzT1ZySmRlbGFZdjhUUVlQQ3JFd0hYc3Vabm9NNllLVGt1ZTczUk1TWGNxWmI0NmhwNGtiLTIwa08ydHF3UDN0UVIwS1FzMEJjRVdDYWhtYUcxVWRWWFh5ZXNTYnJHa2Vid05lNlF1ckUyYjJTTVNMVVhQQm4xZWR0OHJLOXhMSlhCUkdMYWYxZmlfVmtBZEx0Z2EzSWZYSUE0NzdwbXl2Q1IzczZqMjM5b01XLU9rWEtLZ09fUlU0cA?oc=5"
             },
             {
-              "title": "Prime Medicine (NASDAQ:PRME): What's Behind Its Sudden Share Price Jump? - kalkinemedia.com",
+              "title": "Prime Medicine (NASDAQ:PRME): What's Behind Its Sudden Share Price Jump?",
               "source": "kalkinemedia.com",
               "date": "2026-09-17T20:45:00.000Z",
               "summary": "Latest news about Prime Medicine.",
               "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOSzYyd2tSQk9BbDBiRFhWSWVlRm5HNkZQeU5WWXNBeXJIX2hoLXhFdDdPVGtYMXFFZllQMDcwdWtrSDA2VWJZdGk2U2pwZDhVdTBhSGJ4MEY0REJKTXpzWVgzTHFQcmpFN1FTbFV2QkNpRXNhWko0VDctWVBVUGJoN19UWVJfUHNjcmhiNWZjZWxDUnQ0VlBWRC0wNGoydmFaRFIyYzZaYktZNnNnUmtpSEZ3?oc=5"
             },
             {
-              "title": "Prime Medicine: Soon In The Clinic (NASDAQ:PRME) - Seeking Alpha",
+              "title": "Prime Medicine: Soon In The Clinic (NASDAQ:PRME)",
               "source": "Seeking Alpha",
               "date": "2026-08-15T07:00:00.000Z",
               "summary": "Latest news about Prime Medicine.",
@@ -1885,21 +1993,21 @@
           "covered": true,
           "news": [
             {
-              "title": "Caribou Biosciences, Inc. (CRBU) Reports Q2 Loss, Lags Revenue Estimates - Yahoo Finance",
+              "title": "Caribou Biosciences, Inc. (CRBU) Reports Q2 Loss, Lags Revenue Estimates",
               "source": "Yahoo Finance",
               "date": "2026-08-13T07:00:00.000Z",
               "summary": "Latest news about Caribou Biosciences.",
               "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxNc2dEZ1dsbUhwVGh2LS1VdmNscUphODVsRmtHM0JRTzM0MmdVSlIxODdHbEhzZXp5R3ZrYjg2SFdfRDRwRl9iWl90dHNpSkNneGM3Y2xMaEc3OGFsMzMxZTNJM1AzQTc4VjhRamI1c1Q4eVE5R3RLOEpZalpBU2MxaWlFajJXcUotVG1fdlFGYVdwV1N0bF9iMUZkUUwwQQ?oc=5"
             },
             {
-              "title": "BlackRock (NYSE: BLK) reports 7.2% beneficial stake in Caribou Biosciences (CRBU) - Stock Titan",
+              "title": "BlackRock (NYSE: BLK) reports 7.2% beneficial stake in Caribou Biosciences (CRBU)",
               "source": "Stock Titan",
               "date": "2026-07-27T07:00:00.000Z",
               "summary": "Latest news about Caribou Biosciences.",
               "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxNRS1ZRUU4enpxOHBMM3BoSEV5ZHBqRVdiR3lWcV9TdTJqVUtLdDctdUZZQld0SVZTaWppbVFYLUIwb0V3dWlCMHpiZXYzWlNxbkxjQlliWTFDbm1YSVl2QmRYay1EMkY5dXFrc1lkMVFZVWFQSG1YbEdfejRCOXFrallXcC1FSFo5QVJNZWFUbHVsVkdZMW5XXzFnVnNPeWhGY0tiNVBXaUVRV2dIcXZXRXphNG5DVG5mTWtoWi1VM3V3bmYxYjQwN2VR?oc=5"
             },
             {
-              "title": "Are Medical Stocks Lagging Caribou Biosciences (CRBU) This Year? - Yahoo Finance",
+              "title": "Are Medical Stocks Lagging Caribou Biosciences (CRBU) This Year?",
               "source": "Yahoo Finance",
               "date": "2026-07-09T07:00:00.000Z",
               "summary": "Latest news about Caribou Biosciences.",
@@ -1939,21 +2047,21 @@
           "covered": true,
           "news": [
             {
-              "title": "Cantor Fitzgerald reiterates Ideaya Biosciences stock rating - Investing.com",
+              "title": "Cantor Fitzgerald reiterates Ideaya Biosciences stock rating",
               "source": "Investing.com",
               "date": "2026-09-22T13:04:16.000Z",
               "summary": "Latest news about IDEAYA Biosciences.",
               "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxORHpmMFdqNWtSN0tlcFhPbXJ3M0E1dWRMa3hXZ1dOOWh4QzZmN3hsVlNTbi0wWUtYLTROZ2c4cWZOVWlMaWJQeXZoZ3pGZ1A4QlByZW0tYlhmWXJoM1ZkaDZIcGFEY1c5a1BGSzBVLUtsMFJISGlaU3JaM0o5bDBfWlF1SkZrTl9RaHR2ZnVlZFRxODllaFlfN1ctVFZPZXZGVEViLURiVk5rZ05OczVpT0ZfeXlqczNFMmJaYQ?oc=5"
             },
             {
-              "title": "Does First Phase 3 Dosing Change The Bull Case For IDEAYA Biosciences Stock (IDYA)? - simplywall.st",
+              "title": "Does First Phase 3 Dosing Change The Bull Case For IDEAYA Biosciences Stock (IDYA)?",
               "source": "simplywall.st",
               "date": "2026-09-19T05:23:34.000Z",
               "summary": "Latest news about IDEAYA Biosciences.",
               "url": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxNTm1aUWlPWFBraUVYNWxfX3dCeU5hZHJCZ2xCanNDUWFqMWpVOUVHUC1aT2RoVW9pZXNubWJlekNOS0VCSk9FaDEtbkotc2lweC1SeTZuZjFGTWlzN1BEUkJYU2ctRDREbVREaEhjUWtPaXdDa2d1M3ljMU5rWXdRUXU2ZU9lamNzT3h2cGk3c1M3LW91MGd4dWx3Vi1LSnRqT3AzRFFwNjZ0MHQ0YmJfOWltbllMOVFpMVFNY1FLUXczX19uZzBrNlVrVTBaM2dYS0FVRERfZDBKX1ByRXBjSWhaTlNoVEXSAewBQVVfeXFMUDhnaDQwVnBXSGVRRklEcC1IbDdQNnhMcVRqSHhMVHEwTXlCdUV1eDBUR2xid2p6SldicldSUFVpV0hudDBKNFlKSkhYeWtXdlRoWF9YSVFoOThvSnNMdGI4Q25wWno2a1BKTUhGc1lnc3lLLWhCNEFudFZZRWp4WEJrdm9QMWR6MHFBbEdNdVUwVS1KbzZBZkhMU3habGllUlRsazI5STk0bGF4SWVNMDZmUy1WVFMwaTJXd1RBMEFYTGJXbU5lMVJOcG1mTy15QkZORk9YekRtQU9nTnQ1eU1RdmszT0oyVHViNmc?oc=5"
             },
             {
-              "title": "Is IDEAYA Biosciences (IDYA) Fully Valued As Its Phase 3 Trial Begins? - simplywall.st",
+              "title": "Is IDEAYA Biosciences (IDYA) Fully Valued As Its Phase 3 Trial Begins?",
               "source": "simplywall.st",
               "date": "2026-09-17T14:36:18.000Z",
               "summary": "Latest news about IDEAYA Biosciences.",
@@ -1993,21 +2101,21 @@
           "covered": true,
           "news": [
             {
-              "title": "Vir Biotechnology, Inc. (VIR) Stock Analysis: Exploring The 90.27% Potential Upside - DirectorsTalk Interviews",
+              "title": "Vir Biotechnology, Inc. (VIR) Stock Analysis: Exploring The 90.27% Potential Upside",
               "source": "DirectorsTalk Interviews",
               "date": "2026-09-18T09:13:41.000Z",
               "summary": "Latest news about Vir Biotechnology.",
               "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxOX21LQXJxQXNZX1NzNTlJaUhDLU9Pb3NJOTFXcTJxeVczUEJra3NTSENSSmloeFhUS2l4b1dkV2NOM2dIOWxkZnlqNFlaX0JIQnVFaHRWWHVsZnAwb3RIdGVqMlQ0Q0tNNUFqRDhiRGpsSGt1SmZVRWRNaHNoNlp2S0dXSEpyeHZWQy1kY3lPelV3UjdmQnZoQmdqZl9tQVduNUoxamN6dkpleGUyM3ZIaUJTUzczY3dzVGFnVE10SlY2UGxhSDJz?oc=5"
             },
             {
-              "title": "Engineers Gate Manager LP Sells 121,964 Shares of Vir Biotechnology, Inc. $VIR - MarketBeat",
+              "title": "Engineers Gate Manager LP Sells 121,964 Shares of Vir Biotechnology, Inc. $VIR",
               "source": "MarketBeat",
               "date": "2026-09-18T07:39:49.000Z",
               "summary": "Latest news about Vir Biotechnology.",
               "url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxQWkxhYzN1ZkVFQTJKejFpNmZwVmRJcnplVFAzNGkwNmxYYkhCNV9aRURBWTZwdmgwMll4dkhzczZzNkFaMDBWdHFhaGhwU0hPcHBvQ3hzTDlTVWF5UVZFNFdRUEViSDRad2duVGRIRDVhSGxOZWdYN1p4bWl1M0taZnd4T0RzRHhoWUhJa0hNM25CWnQ2UXNRZ2hIVEJETTNuYUNTaXRScWdWU1RhamphcTJNaXduX0VvZi0wTjR1Z3laR09tUnlhRWR4M0doT3dG?oc=5"
             },
             {
-              "title": "Former Vir (NASDAQ: VIR) officer sold $315K in stock, with more share sales planned - Stock Titan",
+              "title": "Former Vir (NASDAQ: VIR) officer sold $315K in stock, with more share sales planned",
               "source": "Stock Titan",
               "date": "2026-09-17T14:15:56.000Z",
               "summary": "Latest news about Vir Biotechnology.",
@@ -2046,21 +2154,21 @@
           "covered": true,
           "news": [
             {
-              "title": "CytomX Therapeutics stock gains 6.52 percent on September 23 - AD HOC NEWS",
+              "title": "CytomX Therapeutics stock gains 6.52 percent on September 23",
               "source": "AD HOC NEWS",
               "date": "2026-09-23T12:05:48.000Z",
               "summary": "Latest news about CytomX Therapeutics.",
               "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxPQWc5TDVzUmE4VlVWdkY1Z0E3bE1lQXJPaW14S2pCZWtBdWhkT0tGRHc1ZVY5bHBUVGtDc3YzOHFsdVRha3dLR0hEb2NiaUhDb1FZVHlGRHNqbnY2VW1nVDNzMXBwQndFZ2pVRXgxUFpNeXhGM1FkeHdTVUlSYWR1eEVJdkU4N1ItWDNrRmkzSUpPeUQxU0ZLa1NBVUlTZEh4emNLamI0T01GRHFKaXptWWd6QWJySk8xR1lr?oc=5"
             },
             {
-              "title": "CytomX Therapeutics, Inc. (CTMX) Presents at Wells Fargo 21st Annual Healthcare Conference - Slideshow (NASDAQ:CTMX) 2026-09-10 - Seeking Alpha",
+              "title": "CytomX Therapeutics, Inc. (CTMX) Presents at Wells Fargo 21st Annual Healthcare Conference - Slideshow (NASDAQ:CTMX) 2026-09-10",
               "source": "Seeking Alpha",
               "date": "2026-09-10T07:00:00.000Z",
               "summary": "Latest news about CytomX Therapeutics.",
               "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxQVDA2cWJ4NkZ2VE5pUDlpakJoRjRHMDFnUEprNU9NejJ6Z1JCbXN5U1RKU2RvakhJRFFrQkQ1dEZJYWdmU3ZuSGU4V3kzNjZpdTBqMmZZaWwzYjJKX2U2UmxLVjFyUWhMZkVhLUdUejBUdE44U29DT0RvaE1vdHJkNUxQX042Mzg4eFQ2NURyc0JBekVwY0xEM2NyM2VINE5FUWJaT3hzdTA0OXd4Z1dqbFB4SmxBanprdE5PcUlhbTQ1RFZFNGc?oc=5"
             },
             {
-              "title": "CytomX Therapeutics to Present at Upcoming September Investor Conferences - Stock Titan",
+              "title": "CytomX Therapeutics to Present at Upcoming September Investor Conferences",
               "source": "Stock Titan",
               "date": "2026-09-01T07:00:00.000Z",
               "summary": "Latest news about CytomX Therapeutics.",
@@ -2099,21 +2207,21 @@
           "covered": true,
           "news": [
             {
-              "title": "Compass Therapeutics Shares Drop After Downgrade From Wedbush - marketscreener.com",
+              "title": "Compass Therapeutics Shares Drop After Downgrade From Wedbush",
               "source": "marketscreener.com",
               "date": "2026-09-23T18:19:47.000Z",
               "summary": "Latest news about Compass Therapeutics.",
               "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxNVHhkN1V1SE10cDVoaGFuc1lkNG9qWXN1WE9jbzUwb0dwYkVJdUhqclVZb0czV0w0T0tCVGlFaFo1TFk5TjZJUTB2UzVjSWJfV19oeVZkWG5MMkhJcDZ5b0xIZGl2ZFc1NFM0M1AyNHdSNTI2aS1kN2cteWwxNW9pR3JKVUw4V3BJZTdsX2FqZzNsVjJRVFdGZzRBMVNHaXZ1YUVGTVprcWpDTmRKRmpxNi12aWE?oc=5"
             },
             {
-              "title": "Compass Therapeutics stock downgraded at Wedbush (CMPX:NASDAQ) - Seeking Alpha",
+              "title": "Compass Therapeutics stock downgraded at Wedbush (CMPX:NASDAQ)",
               "source": "Seeking Alpha",
               "date": "2026-09-23T15:03:13.000Z",
               "summary": "Latest news about Compass Therapeutics.",
               "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxOMURleTh5MlhQUDBjeUk0UUhXQ1pzZFdLMGJ1aEVzeXJoZC12SUE5aVFuaFJxbVQ1a2lFVDhYbVNqZWtHd05GeFpkTzY3WWwySGk4dGt6R0d1dXlZelN0T3Bjc25aUjFxZmszd3ZvR0F2Y0k0RnVYYUhlSUdvYlVCQ0d0MC1PUW9ZX0pj?oc=5"
             },
             {
-              "title": "Compass Therapeutics: A Promising, But Shrinking, Window Of Opportunity (NASDAQ:CMPX) - Seeking Alpha",
+              "title": "Compass Therapeutics: A Promising, But Shrinking, Window Of Opportunity (NASDAQ:CMPX)",
               "source": "Seeking Alpha",
               "date": "2026-09-23T14:20:19.000Z",
               "summary": "Latest news about Compass Therapeutics.",
@@ -2179,10 +2287,140 @@
 
     let theme = loadTheme();
 
+    let searchQuery = '';
+
     // Stocks in the selected theme, keyed by symbol like demoData
     function visibleStocks() {
       if (theme === 'All') return demoData;
       return Object.fromEntries(Object.entries(demoData).filter(([, s]) => (s.themes || []).includes(theme)));
+    }
+
+    // Theme filter plus the search box (ticker or company name)
+    function listedStocks() {
+      const q = searchQuery.trim().toLowerCase();
+      const stocks = visibleStocks();
+      if (!q) return stocks;
+      return Object.fromEntries(Object.entries(stocks).filter(([sym, s]) =>
+        sym.toLowerCase().includes(q) || (s.name || '').toLowerCase().includes(q)));
+    }
+
+    function loadMode() {
+      try {
+        return localStorage.getItem('viewMode') === 'table' ? 'table' : 'cards';
+      } catch (err) {
+        return 'cards';
+      }
+    }
+
+    let viewMode = loadMode();
+    // Table-only sort on a non-return column; null = rank by the selected period
+    let tableSort = null;
+
+    // Months of cash at the latest burn; Infinity when the company isn't burning cash
+    function runwayMonths(s) {
+      if (s.cashFlowPositive && !s.monthlyBurn) return Infinity;
+      if (!s.cashPosition || !s.monthlyBurn) return null;
+      return s.cashPosition / s.monthlyBurn;
+    }
+
+    function formatRunway(s) {
+      const m = runwayMonths(s);
+      if (m == null) return '<span style="color: #9ca3af;">—</span>';
+      if (m === Infinity) return 'No burn';
+      const text = m > 120 ? '10+ yrs' : m < 1 ? '<1 mo' : `${Math.round(m)} mo`;
+      const cls = m < 12 ? 'runway-short' : m < 24 ? 'runway-medium' : '';
+      return cls ? `<span class="${cls}">${text}</span>` : text;
+    }
+
+    function formatCap(v) {
+      if (v == null) return '—';
+      return v >= 1e9 ? `$${(v / 1e9).toFixed(1)}B` : `$${Math.round(v / 1e6)}M`;
+    }
+
+    const TABLE_SORTS = {
+      price: s => s.price,
+      marketCap: s => s.marketCap,
+      runway: s => runwayMonths(s)
+    };
+
+    function sortForTable(stocks) {
+      if (!tableSort) return rankBy(stocks, period.field);
+      const key = TABLE_SORTS[tableSort.key];
+      const dir = tableSort.dir;
+      return Object.values(stocks).sort((a, b) => {
+        const av = key(a), bv = key(b);
+        if (av == null) return 1;
+        if (bv == null) return -1;
+        return dir === 'asc' ? av - bv : bv - av;
+      });
+    }
+
+    function renderTable(sorted) {
+      const container = document.getElementById('stocks-container');
+      const th = (label, attrs, sorted) => `<th class="sortable${sorted ? ' sorted' : ''}" ${attrs}>${label}${sorted ? (sorted === 'asc' ? ' ▲' : ' ▼') : ''}</th>`;
+      const sortState = (key) => (tableSort && tableSort.key === key ? tableSort.dir : null);
+      const head = `
+        <tr>
+          <th class="left">#</th>
+          <th class="left">Ticker</th>
+          <th class="left">Company</th>
+          ${th('Price', 'data-sort="price"', sortState('price'))}
+          ${PERIODS.map(p => th(p.label, `data-period="${p.label}"`, !tableSort && p === period ? 'desc' : null)).join('')}
+          ${th('Mkt Cap', 'data-sort="marketCap"', sortState('marketCap'))}
+          ${th('Runway', 'data-sort="runway"', sortState('runway'))}
+        </tr>`;
+      const rows = sorted.map((s, i) => `
+        <tr>
+          <td class="left" style="color: #9ca3af;">${i + 1}</td>
+          <td class="left"><a href="stocks/${s.symbol.toLowerCase()}.html">${s.symbol}</a>${s.stale ? ' <span class="stale-badge">STALE</span>' : ''}</td>
+          <td class="left">${s.name}${s.covered === false ? ' <span class="data-only-tag">Data only</span>' : ''}</td>
+          <td>${s.price == null ? '—' : `$${s.price.toFixed(2)}`}</td>
+          ${PERIODS.map(p => `<td class="${p === period ? 'active' : ''}" style="color: ${pctColor(s[p.field])};">${formatPct(s[p.field])}</td>`).join('')}
+          <td>${formatCap(s.marketCap)}</td>
+          <td>${formatRunway(s)}</td>
+        </tr>`).join('');
+      container.innerHTML = `<div class="table-wrap"><table class="screener"><thead>${head}</thead><tbody>${rows}</tbody></table></div>
+        <p style="margin-top: 0.5rem; font-size: 0.75rem; color: #9ca3af;">Click a column to sort. Runway: red &lt; 12 months, amber &lt; 24 months.</p>`;
+
+      container.querySelector('thead').onclick = (e) => {
+        const cell = e.target.closest('th.sortable');
+        if (!cell) return;
+        if (cell.dataset.period) {
+          period = PERIODS.find(p => p.label === cell.dataset.period);
+          savePeriod(period);
+          tableSort = null;
+        } else {
+          const key = cell.dataset.sort;
+          tableSort = tableSort && tableSort.key === key
+            ? { key, dir: tableSort.dir === 'desc' ? 'asc' : 'desc' }
+            : { key, dir: 'desc' };
+        }
+        renderRanking();
+      };
+    }
+
+    function setupToolbar() {
+      const search = document.getElementById('search');
+      search.oninput = () => {
+        searchQuery = search.value;
+        previousRanks = null;
+        renderRanking();
+      };
+      const layout = document.getElementById('layout');
+      const applyMode = () => {
+        layout.dataset.mode = viewMode;
+        document.querySelectorAll('.mode-btn').forEach(b => b.classList.toggle('active', b.dataset.mode === viewMode));
+      };
+      document.querySelector('.mode-toggle').onclick = (e) => {
+        const btn = e.target.closest('.mode-btn');
+        if (!btn) return;
+        viewMode = btn.dataset.mode;
+        try { localStorage.setItem('viewMode', viewMode); } catch (err) { /* ignore */ }
+        previousRanks = null;
+        applyMode();
+        renderRanking();
+      };
+      applyMode();
     }
 
     // Short science explainer for the selected theme, linking to its full page
@@ -2274,7 +2512,14 @@
     function renderRanking() {
       document.getElementById('rank-subtitle').textContent = `ranked by ${period.name} return`;
       renderPeriodPicker();
-      const ranked = rankBy(visibleStocks(), period.field);
+      if (viewMode === 'table') {
+        document.getElementById('rank-subtitle').textContent = tableSort
+          ? `sorted by ${{ price: 'price', marketCap: 'market cap', runway: 'cash runway' }[tableSort.key]}`
+          : `ranked by ${period.name} return`;
+        renderTable(sortForTable(listedStocks()));
+        return;
+      }
+      const ranked = rankBy(listedStocks(), period.field);
       const before = cardPositions();
       renderStocks(ranked, previousRanks);
       animateReorder(before);
@@ -2309,6 +2554,11 @@
       const container = document.getElementById('stocks-container');
       let html = '<div class="stock-grid">';
 
+      if (!ranked.length) {
+        container.innerHTML = '<div class="empty-state">No stocks match your search.</div>';
+        return;
+      }
+
       ranked.forEach((stock, i) => {
         const symbol = stock.symbol;
         // Badge under the price follows the selected period. 1D uses the quote's exact
@@ -2335,11 +2585,11 @@
             : '';
 
         html += `
-      <div class="stock-card" data-symbol="${symbol}" style="cursor: pointer; transition: transform 0.2s;" onclick="window.location.href='${profileUrl}'">
+      <a class="stock-card" data-symbol="${symbol}" href="${profileUrl}">
           <div class="stock-header">
           <div>
             <div class="stock-symbol"><span class="stock-rank">#${i + 1}</span>${stock.symbol}${staleBadge}${rankMove}</div>
-            <div style="font-size: 0.9rem; color: #6b7280;">${stock.name}${stock.covered === false ? ' <span class="data-only-tag" title="Prices, financials and news only; no editorial analysis yet">Data only</span>' : ''}</div>
+            <div class="stock-name">${stock.name}${stock.covered === false ? ' <span class="data-only-tag" title="Prices, financials and news only; no editorial analysis yet">Data only</span>' : ''}</div>
           </div>
           <div style="text-align: right;">
             <div class="stock-price">${stock.price == null ? '—' : `$${stock.price.toFixed(2)}`}</div>
@@ -2353,8 +2603,7 @@
             <div class="metric-value" style="color: ${pctColor(value)};">${formatPct(value)}</div>
           </div>`).join('')}
         </div>
-        <div class="view-profile">View Profile →</div>
-      </div>
+      </a>
           `;
   });
 
@@ -2388,17 +2637,10 @@ function renderNews(stocks) {
     const tags = article.tickers
       .map(t => `<a class="ticker-tag" href="stocks/${t.toLowerCase()}.html">${t}</a>`)
       .join('');
-    // Generic "Latest news about X." summaries add nothing next to the ticker tag
-    const summary = /^Latest news about /.test(article.summary || '') ? '' : `<div class="news-summary">${article.summary}</div>`;
     html += `
-      <div class="news-card">
-        <div class="news-header">
-          <div class="news-meta">${tags}<span class="news-source">${article.source}</span></div>
-          <div class="news-title">${article.title}</div>
-          <div class="news-date">${formatDate(article.date)}</div>
-        </div>
-        ${summary}
-        <a href="${article.url}" class="news-link" target="_blank" rel="noopener">Read Full Article →</a>
+      <div class="news-item">
+        <div class="news-meta">${tags}<span class="news-source">${article.source}</span><span>· ${formatDate(article.date)}</span></div>
+        <a class="news-title" href="${article.url}" target="_blank" rel="noopener">${article.title}</a>
       </div>
     `;
   }
@@ -2429,6 +2671,7 @@ function setupViewSwitch() {
 
 function main() {
   setupViewSwitch();
+  setupToolbar();
   // Hide loading
   document.getElementById('loading').style.display = 'none';
 

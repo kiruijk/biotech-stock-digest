@@ -150,6 +150,13 @@ const LOW_VALUE_NEWS = [
 
 const isLowValueNews = (item) => LOW_VALUE_NEWS.some(re => re.test(item.title));
 
+// Google News titles end with " - <source>", which the pages already show separately
+function cleanNewsTitle(item) {
+  const suffix = ` - ${item.source}`;
+  const title = item.title || '';
+  return title.toLowerCase().endsWith(suffix.toLowerCase()) ? title.slice(0, -suffix.length).trim() : title;
+}
+
 // Combine news from multiple sources
 async function getNews(symbol, company) {
   try {
@@ -504,7 +511,11 @@ async function updateAll() {
 
   if (renderOnly) {
     Object.assign(stockData, previousData);
-  } else {
+  }
+  for (const d of Object.values(stockData)) {
+    d.news = (d.news || []).map(n => ({ ...n, title: cleanNewsTitle(n) }));
+  }
+  if (!renderOnly) {
     // Full data (company info, insiders, all news) for the next run and for profile pages
     fs.writeFileSync(MARKET_FILE, JSON.stringify(stockData, null, 2) + '\n');
     console.log(`\nWrote ${MARKET_FILE}`);
