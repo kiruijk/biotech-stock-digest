@@ -3,9 +3,9 @@
   "reviewed": "2026-09-23",
   "overview": [
     "<strong>Viking Therapeutics (VKTX)</strong> is a San Diego-based clinical-stage company focused on metabolic and endocrine diseases, led by co-founder and CEO Brian Lian.",
-    "Its lead program, <strong>VK2735</strong>, is a dual GLP-1/GIP receptor agonist, the same mechanism as Eli Lilly's Mounjaro/Zepbound, developed in both injectable and oral forms. The subcutaneous Phase 3 <strong>VANQUISH</strong> program is fully enrolled: VANQUISH-1 (~4,500 adults with obesity) and VANQUISH-2 (~1,000 adults with obesity and type 2 diabetes), each dosing weekly for 78 weeks. The <strong>oral</strong> tablet produced up to 12.2% weight loss after 13 weeks in the Phase 2 VENTURE-Oral study, and Viking expects to start oral Phase 3 in Q4 2026. Data from a maintenance-dosing study (weekly, every-other-week and monthly regimens) is expected in Q3 2026.",
+    "Its lead program, <strong>VK2735</strong>, is a dual GLP-1/GIP receptor agonist, the same mechanism as Eli Lilly's Mounjaro/Zepbound, developed in both injectable and oral forms. The subcutaneous Phase 3 <strong>VANQUISH</strong> program is fully enrolled: VANQUISH-1 (~4,500 adults with obesity) and VANQUISH-2 (~1,000 adults with obesity and type 2 diabetes), each dosing weekly for 78 weeks. The <strong>oral</strong> tablet produced up to 12.2% weight loss after 13 weeks in the Phase 2 VENTURE-Oral study, and Viking expects to start oral Phase 3 in Q4 2026. On September 22, 2026, Viking reported <strong>maintenance-dosing</strong> results: after 21 weeks of weekly dosing (16–19% weight loss), patients switched to every-other-week dosing kept up to 97% of their weight loss, and those switched to monthly dosing up to 90%, versus 61% for patients switched to placebo. An exploratory cohort that stayed on weekly dosing for 33 weeks reached 22% placebo-adjusted weight loss with no plateau.",
     "Earlier programs include <strong>VK3019</strong>, an amylin agonist that entered Phase 1 in Q2 2026, and <strong>VK2809</strong>, a thyroid hormone receptor-beta agonist studied in MASH.",
-    "<strong>Investor thesis:</strong> VKTX is one of the few independent companies with both an injectable and an oral GLP-1/GIP program in late-stage development, which keeps it at the center of obesity M&amp;A speculation — shares jumped in September 2026 after CNBC flagged Viking as a likely buyout target. The risks are spending and scale: Phase 3 costs pushed the first-half 2026 net loss to $286M, and competing with Lilly and Novo alone would require major manufacturing and commercial investment."
+    "<strong>Investor thesis:</strong> VKTX is one of the few independent companies with both an injectable and an oral GLP-1/GIP program in late-stage development, which keeps it at the center of obesity M&amp;A speculation. Shares rose more than 27% on the maintenance data, and the next day Viking announced a $200M stock offering and $200M of convertible notes due 2032 to fund VK2735 and VK3019. The risks are spending, dilution and scale: Phase 3 costs pushed the first-half 2026 net loss to $286M, and competing with Lilly and Novo alone would require major manufacturing and commercial investment."
   ],
   "competitors": [
     {
@@ -34,15 +34,8 @@
       "note": "Less-frequent dosing approach"
     }
   ],
-  "advantage": "Late-stage injectable and oral versions of the same molecule, plus a maintenance-dosing strategy that could let patients step down to less frequent doses.",
+  "advantage": "Late-stage injectable and oral versions of the same molecule, plus maintenance data showing that every-other-week or monthly dosing can hold most of the weight loss.",
   "catalysts": [
-    {
-      "title": "Maintenance Dosing Data",
-      "timing": "Q3 2026",
-      "description": "Weekly vs. every-other-week vs. monthly regimens of VK2735.",
-      "impact": "KEY EVENT",
-      "color": "green"
-    },
     {
       "title": "Oral VK2735 Phase 3 Start",
       "timing": "Q4 2026",
@@ -72,8 +65,8 @@
       "level": "HIGH"
     },
     {
-      "title": "Cash Burn",
-      "description": "Q2 2026 net loss of $128M; cash fell from $706M to $502M in six months.",
+      "title": "Cash Burn &amp; Dilution",
+      "description": "Q2 2026 net loss of $128M; cash fell from $706M to $502M in six months. The ~$400M stock and convertible note offering announced September 23, 2026 extends runway but dilutes shareholders and adds debt.",
       "level": "HIGH"
     },
     {
@@ -104,5 +97,5 @@
       "description": "Viking relies on third-party manufacturers for drug substance and fill-finish."
     }
   ],
-  "interpretation": "$502M in cash at June 30, 2026, against rapidly rising Phase 3 spending. Viking will likely need new capital or a partner before VANQUISH data and any launch."
+  "interpretation": "$502M in cash at June 30, 2026. On September 23, 2026, Viking announced ~$400M of new financing ($200M common stock plus $200M convertible notes due 2032, before underwriter options) for VK2735 and VK3019. The cash figure above updates automatically once a quarterly report includes the proceeds."
 }
