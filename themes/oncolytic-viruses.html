@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oncolytic Viruses Stocks — Science, Catalysts &amp; News | Life Science Investor</title>
+  <meta name="description" content="Oncolytic and viral immunotherapies use engineered viruses to infect and destroy tumor cells while alerting the immune system to the cancer. After years of mixed results, the field now has approvals in melanoma and late-stage programs in bladder, prostate and pancreatic cancers.">
+  <meta property="og:title" content="Oncolytic Viruses Stocks — Life Science Investor">
+  <meta property="og:description" content="Oncolytic and viral immunotherapies use engineered viruses to infect and destroy tumor cells while alerting the immune system to the cancer. After years of mixed results, the field now has approvals in melanoma and late-stage programs in bladder, prostate and pancreatic cancers.">
+  <meta property="og:type" content="article">
+  <style>
+    :root {
+      color-scheme: light;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f5f7fa;
+      color: #1a1a1a;
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(135deg, #0052cc 0%, #0066ff 100%);
+      color: white;
+      padding: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      font-size: 1.6rem;
+    }
+
+    .back-btn {
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      border: 1px solid white;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .back-btn:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1rem 3rem;
+    }
+
+    /* Section Styling */
+    .section {
+      background: white;
+      border-radius: 10px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    .section h2 {
+      font-size: 1.3rem;
+      margin-bottom: 1.5rem;
+      color: #1a1a1a;
+      border-bottom: 2px solid #0052cc;
+      padding-bottom: 0.5rem;
+    }
+
+    /* Grid layouts */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    /* Card styling */
+    .card {
+      padding: 1rem;
+      background: #f9fafb;
+      border-radius: 6px;
+      border-left: 3px solid #0052cc;
+    }
+
+    .card-title {
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 0.3rem;
+    }
+
+    .card-subtitle {
+      font-size: 0.85rem;
+      color: #6b7280;
+    }
+
+    .card-value {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #0052cc;
+      margin-top: 0.3rem;
+    }
+
+    /* Badge styling */
+    .badge {
+      display: inline-block;
+      padding: 0.25rem 0.65rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .badge-green {
+      background: #d1fae5;
+      color: #059669;
+    }
+
+    .badge-red {
+      background: #fee2e2;
+      color: #dc2626;
+    }
+
+    .badge-yellow {
+      background: #fef3c7;
+      color: #d97706;
+    }
+
+    /* Table styling */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+
+    th,
+    td {
+      padding: 0.8rem;
+      text-align: left;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    th {
+      background: #f9fafb;
+      font-weight: 700;
+    }
+
+    /* Insider Trading */
+    .insider-buy {
+      color: #059669;
+      font-weight: 600;
+    }
+
+    .insider-sell {
+      color: #dc2626;
+      font-weight: 600;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .grid-2,
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Text */
+    .para {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: #374151;
+      margin-bottom: 1.2rem;
+    }
+
+    .note {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: #6b7280;
+    }
+
+    /* Returns row */
+    .returns {
+      display: grid;
+      grid-template-columns: repeat(9, 1fr);
+      gap: 0.3rem;
+      margin-top: 1rem;
+    }
+
+    .return {
+      text-align: center;
+      padding: 0.45rem 0.1rem;
+      background: #f9fafb;
+      border-radius: 6px;
+    }
+
+    .return-label {
+      color: #6b7280;
+      font-size: 0.68rem;
+      text-transform: uppercase;
+    }
+
+    .return-value {
+      font-weight: 700;
+      font-size: 0.8rem;
+      white-space: nowrap;
+    }
+
+    /* Notices */
+    .notice {
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+    }
+
+    .notice-stale {
+      background: #fef3c7;
+      color: #92400e;
+    }
+
+    .notice-tracked {
+      background: #e0ebff;
+      color: #1e3a8a;
+    }
+
+    .meta-line {
+      font-size: 0.85rem;
+      color: #6b7280;
+      margin-top: 0.75rem;
+    }
+
+    .theme-tag {
+      color: white;
+      text-decoration: none;
+      display: inline-block;
+      padding: 0.1rem 0.5rem;
+      margin-right: 0.3rem;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.2);
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    /* Insider labels */
+    .insider-other {
+      color: #6b7280;
+      font-weight: 600;
+    }
+
+    /* News & leadership lists */
+    .item-list {
+      list-style: none;
+    }
+
+    .item-list li {
+      padding: 0.75rem 0;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .item-list li:last-child {
+      border-bottom: none;
+    }
+
+    .item-list a {
+      color: #0052cc;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .item-list a:hover {
+      text-decoration: underline;
+    }
+
+    .item-meta {
+      font-size: 0.8rem;
+      color: #6b7280;
+    }
+
+    .disclaimer {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem 2rem;
+      font-size: 0.75rem;
+      color: #9ca3af;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 900px) {
+      .returns {
+        grid-template-columns: repeat(5, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .returns {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .theme-tag:hover {
+      background: rgba(255, 255, 255, 0.35);
+    }
+
+    /* Theme pages */
+    .science h3 {
+      font-size: 1.05rem;
+      margin: 1.25rem 0 0.5rem;
+      color: #1a1a1a;
+    }
+
+    .science h3:first-child {
+      margin-top: 0;
+    }
+
+    .science p,
+    .science li {
+      color: #374151;
+      line-height: 1.75;
+    }
+
+    .science ul {
+      padding-left: 1.25rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .num {
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    td a {
+      color: #0052cc;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+  </style>
+</head>
+
+<body>
+  <!-- Generated by update-stocks.js from data/themes/oncolytic-viruses.json and live market data. Do not edit by hand. -->
+
+  <header>
+    <div>
+      <h1>Oncolytic Viruses</h1>
+      <div>4 companies tracked</div>
+    </div>
+    <a href="../index.html" class="back-btn">← Back to Dashboard</a>
+  </header>
+
+  <div class="container">
+
+    <div class="section">
+      <p class="para" style="margin-bottom: 0;">Oncolytic and viral immunotherapies use engineered viruses to infect and destroy tumor cells while alerting the immune system to the cancer. After years of mixed results, the field now has approvals in melanoma and late-stage programs in bladder, prostate and pancreatic cancers.</p>
+    </div>
+
+    <div class="section science">
+      <h2>The Science</h2>
+      <h3>How they work</h3>
+      <p>An <strong>oncolytic virus</strong> is engineered to replicate mainly in cancer cells. As infected cells burst, they release tumor proteins and danger signals that act like an <em>in situ vaccine</em>, priming T cells against the cancer, including tumors elsewhere in the body. Many viruses are armed with extra genes, such as immune-stimulating cytokines (GM-CSF, IL-12) or antibody-like proteins, to strengthen that response. A related approach, <strong>gene-mediated cytotoxic immunotherapy</strong>, uses a virus to deliver a gene that makes tumor cells sensitive to an oral drug, then relies on the resulting immune response.</p>
+      <h3>Viruses and delivery</h3>
+      <ul><li><strong>Herpes simplex virus (HSV-1)</strong> is the basis of the first approved oncolytic, T-VEC (Imlygic, 2015), and of newer products for melanoma.</li><li><strong>Adenovirus</strong>-based therapies are used in bladder and prostate cancer.</li><li><strong>Reovirus</strong> can be given intravenously, which allows treatment of widespread metastatic disease.</li><li>Most products are <strong>injected directly into tumors</strong> or, for bladder cancer, <strong>instilled into the bladder</strong>. This keeps side effects mostly local, but limits use to reachable tumors.</li></ul>
+      <h3>What investors watch</h3>
+      <ul><li><strong>Combination benefit</strong>: many are tested alongside checkpoint inhibitors, so the trial has to show the virus's added contribution.</li><li><strong>Trial design</strong>: regulators have pushed back on single-arm data in some settings. Replimune's RP1 was rejected twice before its 2026 approval.</li><li><strong>Durability</strong>, particularly in bladder cancer, where regulators look for complete responses lasting 12 months or more.</li><li><strong>Manufacturing</strong>: producing viral products consistently at commercial scale.</li></ul>
+      <div class="meta-line">Background last reviewed Sep 23, 2026. General educational content, not a recommendation.</div>
+    </div>
+
+    <div class="section">
+      <h2>Companies</h2>
+      <div style="overflow-x: auto;">
+      <table>
+        <thead>
+          <tr>
+            <th>Ticker</th>
+            <th>Company</th>
+            <th class="num">Price</th>
+            <th class="num">1D</th>
+            <th class="num">YTD</th>
+            <th class="num">1Y</th>
+            <th class="num">Mkt Cap</th>
+            <th class="num">Runway</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><a href="../stocks/cadl.html">CADL</a></td>
+            <td>Candel Therapeutics</td>
+            <td class="num">$11.29</td>
+            <td class="num" style="color: #dc2626">-4.73%</td>
+            <td class="num" style="color: #059669">+97.72%</td>
+            <td class="num" style="color: #059669">+113.42%</td>
+            <td class="num">$864M</td>
+            <td class="num">35 months</td>
+          </tr>
+          <tr>
+            <td><a href="../stocks/cgon.html">CGON</a></td>
+            <td>CG Oncology</td>
+            <td class="num">$73.36</td>
+            <td class="num" style="color: #dc2626">-5.63%</td>
+            <td class="num" style="color: #059669">+82.62%</td>
+            <td class="num" style="color: #059669">+99.89%</td>
+            <td class="num">$6.5B</td>
+            <td class="num">66 months</td>
+          </tr>
+          <tr>
+            <td><a href="../stocks/repl.html">REPL</a></td>
+            <td>Replimune Group</td>
+            <td class="num">$12.96</td>
+            <td class="num" style="color: #dc2626">-3.79%</td>
+            <td class="num" style="color: #059669">+31.98%</td>
+            <td class="num" style="color: #059669">+199.31%</td>
+            <td class="num">$1.2B</td>
+            <td class="num">8 months</td>
+          </tr>
+          <tr>
+            <td><a href="../stocks/oncy.html">ONCY</a></td>
+            <td>Oncolytics Biotech</td>
+            <td class="num">$0.68</td>
+            <td class="num" style="color: #dc2626">-5.16%</td>
+            <td class="num" style="color: #dc2626">-23.99%</td>
+            <td class="num" style="color: #dc2626">-46.73%</td>
+            <td class="num">$86M</td>
+            <td class="num">2 months</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+      <p class="note">Sorted by year-to-date return. Runway = cash ÷ latest quarter's operating cash burn.</p>
+    </div>
+
+    <div class="section">
+      <h2>Upcoming Catalysts</h2>
+      <ul class="item-list">
+        <li><strong>ASTRO Biomarker Data</strong> <span class="badge badge-yellow">PR EVENT</span>
+          <div class="item-meta"><a href="../stocks/cadl.html">CADL</a> · Q3 2026</div></li>
+        <li><strong>Tudriqev U.S. Launch</strong> <span class="badge badge-green">KEY EVENT</span>
+          <div class="item-meta"><a href="../stocks/repl.html">REPL</a> · Q4 2026</div></li>
+        <li><strong>PIVOT-006 Phase 3 Topline Data</strong> <span class="badge badge-green">HIGH IMPACT</span>
+          <div class="item-meta"><a href="../stocks/cgon.html">CGON</a> · Near-term (2H 2026)</div></li>
+        <li><strong>BLA Completion</strong> <span class="badge badge-green">KEY EVENT</span>
+          <div class="item-meta"><a href="../stocks/cgon.html">CGON</a> · Q4 2026</div></li>
+        <li><strong>CORE-008 Durability Data</strong> <span class="badge badge-yellow">MILESTONE</span>
+          <div class="item-meta"><a href="../stocks/cgon.html">CGON</a> · 2026</div></li>
+        <li><strong>Prostate Cancer BLA Submission</strong> <span class="badge badge-green">HIGH IMPACT</span>
+          <div class="item-meta"><a href="../stocks/cadl.html">CADL</a> · Q4 2026</div></li>
+        <li><strong>Glioblastoma Long-Term Survival Data</strong> <span class="badge badge-yellow">MILESTONE</span>
+          <div class="item-meta"><a href="../stocks/cadl.html">CADL</a> · Q4 2026</div></li>
+        <li><strong>Pivotal Pancreatic Study Launch</strong> <span class="badge badge-green">HIGH IMPACT</span>
+          <div class="item-meta"><a href="../stocks/oncy.html">ONCY</a> · 2026</div></li>
+        <li><strong>First Quarterly Sales</strong> <span class="badge badge-green">HIGH IMPACT</span>
+          <div class="item-meta"><a href="../stocks/repl.html">REPL</a> · Early 2027</div></li>
+        <li><strong>FDA Approval Decision</strong> <span class="badge badge-green">HIGH IMPACT</span>
+          <div class="item-meta"><a href="../stocks/cgon.html">CGON</a> · 2027 (est.)</div></li>
+        <li><strong>Potential Launch</strong> <span class="badge badge-green">KEY EVENT</span>
+          <div class="item-meta"><a href="../stocks/cadl.html">CADL</a> · 2027</div></li>
+        <li><strong>IGNYTE-3 Confirmatory Trial</strong> <span class="badge badge-yellow">MILESTONE</span>
+          <div class="item-meta"><a href="../stocks/repl.html">REPL</a> · Ongoing</div></li>
+        <li><strong>REVEAL (RP2, Uveal Melanoma)</strong> <span class="badge badge-yellow">MILESTONE</span>
+          <div class="item-meta"><a href="../stocks/repl.html">REPL</a> · Ongoing</div></li>
+        <li><strong>Financing / Partnership</strong> <span class="badge badge-red">CRITICAL</span>
+          <div class="item-meta"><a href="../stocks/oncy.html">ONCY</a> · Near-term</div></li>
+        <li><strong>GI Cancer Data</strong> <span class="badge badge-yellow">MILESTONE</span>
+          <div class="item-meta"><a href="../stocks/oncy.html">ONCY</a> · Ongoing</div></li>
+      </ul>
+      <p class="note">From each company's profile; timing reflects company guidance as of the profile's review date.</p>
+    </div>
+
+    <div class="section">
+      <h2>Upcoming Earnings</h2>
+      <ul class="item-list">
+        <li><a href="../stocks/repl.html">REPL</a> Replimune Group
+          <div class="item-meta">Nov 5, 2026 (estimated)</div></li>
+        <li><a href="../stocks/cgon.html">CGON</a> CG Oncology
+          <div class="item-meta">Nov 9, 2026 (estimated)</div></li>
+        <li><a href="../stocks/cadl.html">CADL</a> Candel Therapeutics
+          <div class="item-meta">Nov 12, 2026 (estimated)</div></li>
+        <li><a href="../stocks/oncy.html">ONCY</a> Oncolytics Biotech
+          <div class="item-meta">Nov 16, 2026 (estimated)</div></li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Latest News</h2>
+      <ul class="item-list">
+        <li><a href="https://news.google.com/rss/articles/CBMisAFBVV95cUxQTHgzVUZLM3RXdVZaSG1IdWlZUGM1Rzg2LVViYlQxQzBHZ2g2Zm5TTko3aFlNRTdxSHB0RHdEMEd3TVZuUUJmQ01JcjYzZnI2dTNMSElIbXJVU0Vxb0ZMeUs1MUU2STNvNTdfT0VHSmxHcWhEOWNCT0ZPdjVkU0pGTjZIbmIwUktlVUVmZl9JZFpXdEdyaUhhRTlaNHdQUk8tdmlqN1lDRGlQVEtLOEVUcQ?oc=5" target="_blank" rel="noopener">Replimune stock gains as share authorization doubles - AD HOC NEWS</a>
+          <div class="item-meta">REPL · AD HOC NEWS · Sep 23, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMivAFBVV95cUxNQm9VNjZEUURFVE13bU1tSVJTVkV6NllBamhQODVzOEk5TE9ZTmtjOXMwRHhBRER4UnVsOGhCb0xsdkJoU0hRaHk1ZGdKeTk5T3ItM1VJZ2Q1cU1hLVlwUjNzdlpYMXlGOE5zUExQYVk1XzQtaVZyYWh0T1BJRkh3R1JKWXdCa1Z2RklycTJoSHJtUTkxUzY5UUdPWm5KVFlUT2pHbnJQem9fWEZaVFlTcXVScnhzdEw1N20zQQ?oc=5" target="_blank" rel="noopener">Candel Therapeutics: Strong Buy On Aglatimagene Prostate Cancer BLA Filing In Q4 (CADL) - Seeking Alpha</a>
+          <div class="item-meta">CADL · Seeking Alpha · Sep 22, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMi4gFBVV95cUxQeDQ2d1FGZGgxcEQ1UHhqbWFfc1pSUlg1YWNOeGxhSEpqSVBESlFteVgzREM3ZFlHZUo4bFl2TVR3c21JMzY3M2g2VWpzM2RSdzEtRkw0VUlCak9iZWFTX25EMFVlclRkamxLMG4yVW9lWlFJVGdEX2hFclJXVm9pUTVlZWZsV295YktYYWxDeGpHQ2M2Ym9rWUhwX2lHc2Y1MFdobHRvYW9DX205NzFTOXFobnByek9oSVBLS2s0MFFveVhpblRUazhycDYwLUU0Z2ktRlFzODhrNXVMZmRhYVF30gHnAUFVX3lxTE13QlBBMWxPLXV3U19Fb1dKY2stcVN4b3g2Y2NOTmZHRTFkWVI4WHhrQ1V0eXBjTlhMUXJKRGY3QnpZWVZZajNqR3ZUZU1RRTM4Z0F3ZHBMdjgtYjBOUXdZLUdMUGNXelFzTjZYY29xODNjck1LTndtbVJLZnVjNTZrMzRQTXhscDRSUHVnUy0zX25tdnE5OTZ1SDRCTHAwOHFEb2liRmxBMXpURWhaczVzRWEydXdYbS1YWDZPVU8zU0NBdkdDR0lJVFVvdldXOHR5dDd0UmM4QS1rVndsZkVBX2NEQk92Yw?oc=5" target="_blank" rel="noopener">How More Authorized Shares Will Impact Replimune Group (REPL) Stock Investors - simplywall.st</a>
+          <div class="item-meta">REPL · simplywall.st · Sep 22, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMilgJBVV95cUxQbWRRSklOakx4YU1yMGJmbXJxS200QnpUaXZtZXl1aGlVY2ZtOTlMTGw3N2F5cFNTWE5RMk83NUZsR1RTckVGUTZMc3JxSWJwRGs2YTRtcHl5cG9IQUtaZHBPLVVRb2tRTHlLSFE1SENkVS03YnBESFNJaG0xMFFsaU9RdU1ia1FuemgwQmlFNEU4NFV3LWRsOS0xYlkzRGVIWkxQMjVBLUZJaWtCSTE0aTdMZC1WN2I3Q3ZZdFNoQlY2V0lrRnU2WUVQcm1LTGJEZWJLYnNOQWk4UlQ3MW5qVjFlS2tlVkVxU2R5UGljcHZMQktDMDZZVkw5VkxJU0RaQUNRN3Z6RHdTVzlVclg2QWFEdXdJUQ?oc=5" target="_blank" rel="noopener">REPL Stock Clocks Worst Day In Over 3 Months — New FDA Documents Leave Wall Street Awaiting Another Rejection For Cancer Drug - Stocktwits</a>
+          <div class="item-meta">REPL · Stocktwits · Sep 22, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMirAFBVV95cUxQcUdZbDhCelJHT3dwVXpwU3NvcjROQ090YTgtVjYtOVBjVWw3dmZiLVJqNm1WQjZiM1B3UkowX0dKTHhWNTdZX0NYTW51dDR2SWNWaVFaMnZMYk5yNVU2TmJzOVJVOU1oX2tVR2o4QTJHMm5aX1VBZWsxZmRlTzY3dWtwVnplU3hid05NSm03V1RXSkRwMzNUWmg2VzIzZzhqbGJfblk1OVZiMmoy?oc=5" target="_blank" rel="noopener">Why is Candel Therapeutics stock surging today? - Investing.com</a>
+          <div class="item-meta">CADL · Investing.com · Sep 21, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMilwFBVV95cUxNWmE5dEg5VXdVV05hWXFZSlRVck9zQjd1T2pnY1IzX3R2ZXVKNmg1ZW1KZFBDMHN4LTlqbzlubFkwSmFRSVIzU00tSmI0Z0tUMEh4dFhtM28xVFRuQVdvckVNTjlWQnFqc2tKZWJPVFUxcFEwX3drb2hjMVBCczhXakszWGgyOUhZeGhSOUlmWlptaUMxN0xV?oc=5" target="_blank" rel="noopener">After $7.9M sale, CG Oncology (NASDAQ: CGON) officer plans more stock trades - Stock Titan</a>
+          <div class="item-meta">CGON · Stock Titan · Sep 21, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMitgFBVV95cUxQV3JYNzFjNmVRZENYQ3pVSFA3QmRiMjVTaUpqUnpGNlJobVFfaU94TlB3TkZQajB2TERINHVISHo5YW1MUzJLaThKWG1URVpObm9qanNVdVpnam9rTGp5UlBMN2xjWVdEcXgxRGJDRlh4ZDRKUjVUTDBSM1N3M19qVENidTFnaDk3QmJvQ0lwQ2FxN2stZjFLTmpJQWhUMXhyVkpNVDk3V0ZjWF9OWFFaeTlCSmlvUQ?oc=5" target="_blank" rel="noopener">Candel Therapeutics stock jumps on BofA upgrade to buy By Investing.com - Investing.com South Africa</a>
+          <div class="item-meta">CADL · Investing.com South Africa · Sep 21, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMizwFBVV95cUxPN2xoV3FaaW4ycTZkOVhlU2FfT1l2Q29GZlF4Q3lRR2tkU09RWHQ5T1V0c1ZZaUlTNVZQU2NsbkNqdVY1dGF0Z3VTbnRkYjJHckpGbXFRS3dlV0FQYkdHRGZHcEoybHBIa1c1THlRbVpfNGNyNFlOaXNsTDRSX0ZJSkhIQXd5M25HZjNELWdVVXh6S09WWDZNR0FlaXY4Q05udzM4SnRVSU1qTDdoODgySUk1RXZiVDBucVp2M3ltTEZBZ1FwZlpYODNqT2lWT1E?oc=5" target="_blank" rel="noopener">BofA upgrades Candel Therapeutics stock rating on prostate cancer progress - Investing.com</a>
+          <div class="item-meta">CADL · Investing.com · Sep 21, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMitgFBVV95cUxQNzI5SmtnWTJRcmxkX1k3eWk0d2toeHZaSWQ0ZVN3LThMM0tVNW9MalpjRU4zYWNPMTdIUFFudEdtUDU5ZFM1TUIxOW00SE5jX1dGSUVJaVB6WXZKWEpySVAtc1ZNMHhpNnlJYUZ2QlJkLVU0QUZHZEdSWkRUaHBGNmt1czFSckJDaWwxd0R0M3hFUXRzWG9zY0J4VXk5UUZIRmREaUFUN1ZwWmFLUVJOS0dobk9Kdw?oc=5" target="_blank" rel="noopener">Candel Therapeutics stock jumps on BofA upgrade to buy By Investing.com - Investing.com Nigeria</a>
+          <div class="item-meta">CADL · Investing.com Nigeria · Sep 21, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMiqwFBVV95cUxPZ29WZWM4N01zbF9YZjdycUpfSHlEMFBvTFE1ei1mcDZmcmFTZU1WMXJRNWwzS2s5b3VDd1Zza3hKNlpOd2ZLaFhUOTlIUmstWU5zMHJBRkVIS3dIUklBaVkxM3MtYUphX3YwU210MndobVgxTWhjVFRhLXlQbVp4S21objhocDdsWVFud08yUXlFMFhPTWlMWTMwZFpFaVduMmpNdHdreXRmRE0?oc=5" target="_blank" rel="noopener">Why is Candel Therapeutics stock surging today? By Investing.com - Investing.com South Africa</a>
+          <div class="item-meta">CADL · Investing.com South Africa · Sep 21, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMixAFBVV95cUxQRUZab19oUVk5VWxrNWVJUTgtQW9PMU4tcmpzTHJXQlNBQ1JUdm43NzVGQ19XMk9PNEtpcGtoa2xrUEpFbzdiUjA2dU9zX3F4a0MxNWttbGQ4cmdTaGgxMGFvdWJHX0VBcjVvRkFEOHVWSXdlZVN2V29rY0kxZEtnRE0tYjIybU9qYXllX2xzSWVRMTUxbHc5Vjl1UGJId2dlTXp1bVUtTTUzTnhJNzUyb0RDdHF1VFozUWdad0Q3d3Z5SGlL?oc=5" target="_blank" rel="noopener">Oncolytics Biotech stock lacks a fresh catalyst and stays near $0.77 - AD HOC NEWS</a>
+          <div class="item-meta">ONCY · AD HOC NEWS · Sep 19, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMi1AFBVV95cUxPaWwzSHlBT0I5bU96NER4azlxbHo1b3dlUGc2NjVSS1pYeHhkeGtyRl9oNEdfQ0ZnamJrODFubnE4dEpXSFY0WXJMYU8tZ1d4QmVEcVdhMEN3blA4UzFhVGdtSFhXWElnb1RNM0p3dHp4Z0VYSi1ZYzNzcUlPRE4yQXVaNHdQeldLYllGVFBEZ1JuTHJ3LVZwLWM2OE9JZzVDRi02dXF0bnZ5c0F4RHc2bGYxbXdtbWFCUHZJRnF1WGcyOElXOF9VcHRzN1F4NzRvZ0RRVQ?oc=5" target="_blank" rel="noopener">Replimune Group, Inc. (REPL) Stock Analysis: A Potential 51.52% Upside In Biotech Innovations - DirectorsTalk Interviews</a>
+          <div class="item-meta">REPL · DirectorsTalk Interviews · Sep 18, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMilwFBVV95cUxPVzJ4N0NESFhWVXhlMGgzNFM2NTYzUHB0RVEwN3NtaWtQZFJhcmNvd3YyOUNENGpXWkJVS3BpbnhVVVdya1lGYWhTWEtoczN6R1VSVXlCR0tOYzcxX0JPcGlLVGVLOFhpUXRKWldKa3ZraGR5cEJZZkNJTGlleFpBM0llWXVKNk5zay11ckpEU1p1TE5aRS1F?oc=5" target="_blank" rel="noopener">CG Oncology (NASDAQ: CGON) officer sold 100,000 shares and now plans more - Stock Titan</a>
+          <div class="item-meta">CGON · Stock Titan · Sep 17, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMirgFBVV95cUxQaURZMjViSXdMTTI3eTFrUExac0lkMHAyRE4tWDhac3ZZdmVXS3o1bW1MVkhyV3AxdURrZTkxcldOZU9zUTVFRk5PbXNEVVJQWXV5VFdDUnZhaG5YakRaWHp2S1A1UGVxQWNiWWw3d3JzZXIwS3pzUUZzZ0JGNGJTX1lQaWlkTDJ0YVBZN05nOFNKdnRmUzZjS25INnoxZE9NVWNsQlFBUkM0dGFoMHc?oc=5" target="_blank" rel="noopener">CG Oncology (NASDAQ: CGON) director sells shares under preset trading plan - Stock Titan</a>
+          <div class="item-meta">CGON · Stock Titan · Sep 17, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMimgFBVV95cUxQakQzRlB4ZW80dkY0R0NRMnhaMjJWNTFucVBtbXhXVzNha2NQbGVmSmZ1a1dNSlp3eFNYd1k1Z0NKdFBoWFc3eTRkQVl6WDhPckx4aWJfZkVrTkVLQmdvUnNnWmVHYWpnbzkwTzhTZGRvRVpzMUpaaGFkeXFHVGhhNXlRdmVIdnd1MEpqSWlkbEI0TmZSUlRydUF3?oc=5" target="_blank" rel="noopener">Replimune shares plunge 84% after FDA rejects R... - Pluang</a>
+          <div class="item-meta">REPL · Pluang · Sep 17, 2026</div></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <footer class="disclaimer">
+    For informational purposes only — not investment advice. Prices, returns and financials come from Yahoo Finance and company filings and may be delayed, incomplete or inaccurate. Company profiles are editorial summaries and may not reflect the latest developments. Do your own research and consult a licensed financial advisor before making investment decisions.
+  </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,19 @@
+{
+  "theme": "Targeted Oncology",
+  "reviewed": "2026-09-23",
+  "summary": "Next-generation cancer drugs aim to hit tumors harder while sparing healthy tissue. Examples include antibodies that carry chemotherapy, bispecifics that redirect T cells, masked drugs that switch on only inside tumors, and small molecules that exploit a tumor's specific genetic weaknesses.",
+  "sections": [
+    {
+      "heading": "Main drug types",
+      "body": "<ul><li><strong>Antibody-drug conjugates (ADCs)</strong> attach a potent cytotoxic payload to an antibody through a chemical linker, delivering chemotherapy mainly to cells that carry the target protein.</li><li><strong>Bispecific antibodies</strong> bind two targets at once. <em>T cell engagers</em> link CD3 on T cells to a tumor protein, pulling T cells onto cancer cells. Others block two growth or immune pathways together, such as PD-1 and VEGF.</li><li><strong>Masked or conditionally active drugs</strong> carry a blocking cap that tumor-specific enzymes remove, so the drug is mostly active inside tumors.</li><li><strong>Precision small molecules</strong> target mutations or pathways a tumor depends on. <em>Synthetic lethality</em> exploits the fact that losing two genes together kills a cell even though losing either alone doesn't; PARP inhibitors in BRCA-mutant cancers are the classic example.</li></ul>"
+    },
+    {
+      "heading": "The therapeutic window",
+      "body": "<p>Many strong cancer targets are also present in healthy tissue at lower levels, so the drug's effect on normal cells limits the dose. Much of this field is about widening the <strong>therapeutic window</strong>, the gap between an effective dose and a toxic one, through better targeting, masking, linker chemistry or patient selection.</p>"
+    },
+    {
+      "heading": "What investors watch",
+      "body": "<ul><li><strong>Response rates in heavily pretreated patients</strong> during Phase 1 dose expansion, and whether responses hold at tolerable doses.</li><li><strong>Dose optimization</strong>: regulators now expect trials to compare doses, not just use the maximum tolerated dose.</li><li><strong>Biomarkers</strong>: whether patients can be selected by target level or mutation.</li><li><strong>Partnerships</strong>: large pharma deals often validate the platform and fund late-stage trials.</li></ul>"
+    }
+  ]
+}

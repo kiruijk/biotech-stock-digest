@@ -38,13 +38,18 @@ jobs:
         run: |
           git config --local user.name "Stock Bot"
           git config --local user.email "bot@github.com"
-          git add index.html stocks/ data/market.json
+          git add index.html stocks/ themes/ data/market.json
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else
             git commit -m "🤖 Update stock prices and news - $(date +'%Y-%m-%d %H:%M:%S')"
             git push https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git main
           fi
+
+      # Posts the editorial to-do list (past catalysts, overdue reviews, big moves) to the
+      # run's summary page; never fails the run
+      - name: Editorial review queue
+        run: node review-queue.js
 
       # Runs after the commit so good data is still saved; a failure here turns the run
       # red and triggers GitHub's failed-workflow email

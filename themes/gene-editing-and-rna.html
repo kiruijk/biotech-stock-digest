@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gene Editing &amp; RNA Stocks — Science, Catalysts &amp; News | Life Science Investor</title>
+  <meta name="description" content="Genetic medicines fix or silence disease-causing genes at the source, often with a single treatment. CRISPR editing reached patients with the approval of Casgevy in late 2023. Newer tools such as base editing, prime editing and RNA editing aim for more precise changes, and delivery beyond the liver ">
+  <meta property="og:title" content="Gene Editing &amp; RNA Stocks — Life Science Investor">
+  <meta property="og:description" content="Genetic medicines fix or silence disease-causing genes at the source, often with a single treatment. CRISPR editing reached patients with the approval of Casgevy in late 2023. Newer tools such as base editing, prime editing and RNA editing aim for more precise changes, and delivery beyond the liver ">
+  <meta property="og:type" content="article">
+  <style>
+    :root {
+      color-scheme: light;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f5f7fa;
+      color: #1a1a1a;
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(135deg, #0052cc 0%, #0066ff 100%);
+      color: white;
+      padding: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      font-size: 1.6rem;
+    }
+
+    .back-btn {
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      border: 1px solid white;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .back-btn:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1rem 3rem;
+    }
+
+    /* Section Styling */
+    .section {
+      background: white;
+      border-radius: 10px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    .section h2 {
+      font-size: 1.3rem;
+      margin-bottom: 1.5rem;
+      color: #1a1a1a;
+      border-bottom: 2px solid #0052cc;
+      padding-bottom: 0.5rem;
+    }
+
+    /* Grid layouts */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    /* Card styling */
+    .card {
+      padding: 1rem;
+      background: #f9fafb;
+      border-radius: 6px;
+      border-left: 3px solid #0052cc;
+    }
+
+    .card-title {
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 0.3rem;
+    }
+
+    .card-subtitle {
+      font-size: 0.85rem;
+      color: #6b7280;
+    }
+
+    .card-value {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #0052cc;
+      margin-top: 0.3rem;
+    }
+
+    /* Badge styling */
+    .badge {
+      display: inline-block;
+      padding: 0.25rem 0.65rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .badge-green {
+      background: #d1fae5;
+      color: #059669;
+    }
+
+    .badge-red {
+      background: #fee2e2;
+      color: #dc2626;
+    }
+
+    .badge-yellow {
+      background: #fef3c7;
+      color: #d97706;
+    }
+
+    /* Table styling */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+
+    th,
+    td {
+      padding: 0.8rem;
+      text-align: left;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    th {
+      background: #f9fafb;
+      font-weight: 700;
+    }
+
+    /* Insider Trading */
+    .insider-buy {
+      color: #059669;
+      font-weight: 600;
+    }
+
+    .insider-sell {
+      color: #dc2626;
+      font-weight: 600;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .grid-2,
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Text */
+    .para {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: #374151;
+      margin-bottom: 1.2rem;
+    }
+
+    .note {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: #6b7280;
+    }
+
+    /* Returns row */
+    .returns {
+      display: grid;
+      grid-template-columns: repeat(9, 1fr);
+      gap: 0.3rem;
+      margin-top: 1rem;
+    }
+
+    .return {
+      text-align: center;
+      padding: 0.45rem 0.1rem;
+      background: #f9fafb;
+      border-radius: 6px;
+    }
+
+    .return-label {
+      color: #6b7280;
+      font-size: 0.68rem;
+      text-transform: uppercase;
+    }
+
+    .return-value {
+      font-weight: 700;
+      font-size: 0.8rem;
+      white-space: nowrap;
+    }
+
+    /* Notices */
+    .notice {
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+    }
+
+    .notice-stale {
+      background: #fef3c7;
+      color: #92400e;
+    }
+
+    .notice-tracked {
+      background: #e0ebff;
+      color: #1e3a8a;
+    }
+
+    .meta-line {
+      font-size: 0.85rem;
+      color: #6b7280;
+      margin-top: 0.75rem;
+    }
+
+    .theme-tag {
+      color: white;
+      text-decoration: none;
+      display: inline-block;
+      padding: 0.1rem 0.5rem;
+      margin-right: 0.3rem;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.2);
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    /* Insider labels */
+    .insider-other {
+      color: #6b7280;
+      font-weight: 600;
+    }
+
+    /* News & leadership lists */
+    .item-list {
+      list-style: none;
+    }
+
+    .item-list li {
+      padding: 0.75rem 0;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .item-list li:last-child {
+      border-bottom: none;
+    }
+
+    .item-list a {
+      color: #0052cc;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .item-list a:hover {
+      text-decoration: underline;
+    }
+
+    .item-meta {
+      font-size: 0.8rem;
+      color: #6b7280;
+    }
+
+    .disclaimer {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem 2rem;
+      font-size: 0.75rem;
+      color: #9ca3af;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 900px) {
+      .returns {
+        grid-template-columns: repeat(5, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .returns {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .theme-tag:hover {
+      background: rgba(255, 255, 255, 0.35);
+    }
+
+    /* Theme pages */
+    .science h3 {
+      font-size: 1.05rem;
+      margin: 1.25rem 0 0.5rem;
+      color: #1a1a1a;
+    }
+
+    .science h3:first-child {
+      margin-top: 0;
+    }
+
+    .science p,
+    .science li {
+      color: #374151;
+      line-height: 1.75;
+    }
+
+    .science ul {
+      padding-left: 1.25rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .num {
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    td a {
+      color: #0052cc;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+  </style>
+</head>
+
+<body>
+  <!-- Generated by update-stocks.js from data/themes/gene-editing-and-rna.json and live market data. Do not edit by hand. -->
+
+  <header>
+    <div>
+      <h1>Gene Editing &amp; RNA</h1>
+      <div>6 companies tracked</div>
+    </div>
+    <a href="../index.html" class="back-btn">← Back to Dashboard</a>
+  </header>
+
+  <div class="container">
+
+    <div class="section">
+      <p class="para" style="margin-bottom: 0;">Genetic medicines fix or silence disease-causing genes at the source, often with a single treatment. CRISPR editing reached patients with the approval of Casgevy in late 2023. Newer tools such as base editing, prime editing and RNA editing aim for more precise changes, and delivery beyond the liver is the key frontier.</p>
+    </div>
+
+    <div class="section science">
+      <h2>The Science</h2>
+      <h3>The toolkit</h3>
+      <ul><li><strong>CRISPR-Cas9</strong> works like molecular scissors: a guide RNA leads the Cas9 enzyme to a DNA sequence, where it cuts both strands. The cell's repair process usually disables the gene, which is useful when switching off a harmful protein.</li><li><strong>Base editing</strong> chemically changes a single DNA letter (for example A to G) without cutting both strands, so it can correct point mutations more cleanly.</li><li><strong>Prime editing</strong> works like search-and-replace. It can write short new sequences, which in principle covers most known disease-causing mutations.</li><li><strong>RNA editing</strong> corrects the message (mRNA) instead of the gene. Using the body's own ADAR enzymes, the change is temporary and needs repeat dosing, but it avoids permanent DNA changes.</li><li><strong>RNA silencing</strong> (siRNA and antisense) reduces production of a target protein for months per dose.</li></ul>
+      <h3>Delivery: in the body vs. outside it</h3>
+      <p><strong>Ex vivo</strong> therapies edit a patient's cells outside the body, then infuse them back. Casgevy, for sickle cell disease and beta thalassemia, edits blood stem cells, but patients first need chemotherapy to clear space in the bone marrow. <strong>In vivo</strong> therapies deliver the editor directly, most often to the liver using lipid nanoparticles (LNPs) or, for siRNA, GalNAc sugar tags. Reaching other organs such as muscle, lung and brain efficiently is the main technical challenge.</p>
+      <h3>What investors watch</h3>
+      <ul><li><strong>Size and durability of the effect</strong>: how much the disease protein falls, and whether a single dose lasts.</li><li><strong>Safety</strong>: off-target edits, liver enzyme elevations and immune reactions to the delivery vehicle. Regulators expect long-term follow-up for permanent edits.</li><li><strong>Commercial model</strong>: one-time therapies carry multi-million-dollar prices, and uptake depends on treatment-center capacity and payment arrangements.</li><li><strong>Competition across approaches</strong>: the same disease, such as alpha-1 antitrypsin deficiency or sickle cell, is often targeted by several technologies at once.</li></ul>
+      <div class="meta-line">Background last reviewed Sep 23, 2026. General educational content, not a recommendation.</div>
+    </div>
+
+    <div class="section">
+      <h2>Companies</h2>
+      <div style="overflow-x: auto;">
+      <table>
+        <thead>
+          <tr>
+            <th>Ticker</th>
+            <th>Company</th>
+            <th class="num">Price</th>
+            <th class="num">1D</th>
+            <th class="num">YTD</th>
+            <th class="num">1Y</th>
+            <th class="num">Mkt Cap</th>
+            <th class="num">Runway</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><a href="../stocks/ntla.html">NTLA</a></td>
+            <td>Intellia Therapeutics</td>
+            <td class="num">$12.33</td>
+            <td class="num" style="color: #dc2626">-2.84%</td>
+            <td class="num" style="color: #059669">+36.09%</td>
+            <td class="num" style="color: #dc2626">-27.81%</td>
+            <td class="num">$1.7B</td>
+            <td class="num">23 months</td>
+          </tr>
+          <tr>
+            <td><a href="../stocks/crsp.html">CRSP</a></td>
+            <td>CRISPR Therapeutics</td>
+            <td class="num">$55.76</td>
+            <td class="num" style="color: #dc2626">-5.54%</td>
+            <td class="num" style="color: #059669">+4.83%</td>
+            <td class="num" style="color: #dc2626">-8.23%</td>
+            <td class="num">$5.4B</td>
+            <td class="num">85 months</td>
+          </tr>
+          <tr>
+            <td><a href="../stocks/prme.html">PRME</a></td>
+            <td>Prime Medicine</td>
+            <td class="num">$3.13</td>
+            <td class="num" style="color: #dc2626">-11.58%</td>
+            <td class="num" style="color: #dc2626">-9.01%</td>
+            <td class="num" style="color: #dc2626">-41.93%</td>
+            <td class="num">$568M</td>
+            <td class="num">8 months</td>
+          </tr>
+          <tr>
+            <td><a href="../stocks/beam.html">BEAM</a></td>
+            <td>Beam Therapeutics</td>
+            <td class="num">$24.37</td>
+            <td class="num" style="color: #dc2626">-6.02%</td>
+            <td class="num" style="color: #dc2626">-12.40%</td>
+            <td class="num" style="color: #059669">+2.70%</td>
+            <td class="num">$2.5B</td>
+            <td class="num">52 months</td>
+          </tr>
+          <tr>
+            <td><a href="../stocks/crbu.html">CRBU</a></td>
+            <td>Caribou Biosciences</td>
+            <td class="num">$1.29</td>
+            <td class="num" style="color: #dc2626">-3.73%</td>
+            <td class="num" style="color: #dc2626">-18.87%</td>
+            <td class="num" style="color: #dc2626">-30.65%</td>
+            <td class="num">$138M</td>
+            <td class="num">15 months</td>
+          </tr>
+          <tr>
+            <td><a href="../stocks/wve.html">WVE</a></td>
+            <td>Wave Life Sciences</td>
+            <td class="num">$3.95</td>
+            <td class="num" style="color: #dc2626">-9.20%</td>
+            <td class="num" style="color: #dc2626">-76.97%</td>
+            <td class="num" style="color: #dc2626">-42.17%</td>
+            <td class="num">$778M</td>
+            <td class="num">27 months</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+      <p class="note">Sorted by year-to-date return. Runway = cash ÷ latest quarter's operating cash burn.</p>
+    </div>
+
+    <div class="section">
+      <h2>Upcoming Catalysts</h2>
+      <ul class="item-list">
+        <li><strong>BEAM-302 ERS Presentation</strong> <span class="badge badge-green">KEY EVENT</span>
+          <div class="item-meta"><a href="../stocks/beam.html">BEAM</a> · September 2026</div></li>
+        <li><strong>PM647 IND/CTA Filing</strong> <span class="badge badge-yellow">MILESTONE</span>
+          <div class="item-meta"><a href="../stocks/prme.html">PRME</a> · Q3 2026</div></li>
+        <li><strong>Lonvo-z BLA Acceptance</strong> <span class="badge badge-green">KEY EVENT</span>
+          <div class="item-meta"><a href="../stocks/ntla.html">NTLA</a> · 2H 2026</div></li>
+        <li><strong>MAGNITUDE-2 Enrollment Complete</strong> <span class="badge badge-yellow">MILESTONE</span>
+          <div class="item-meta"><a href="../stocks/ntla.html">NTLA</a> · 2H 2026</div></li>
+        <li><strong>WVE-006 FDA Feedback</strong> <span class="badge badge-green">KEY EVENT</span>
+          <div class="item-meta"><a href="../stocks/wve.html">WVE</a> · Late 2026</div></li>
+        <li><strong>WVE-007 Combination & Maintenance Trials</strong> <span class="badge badge-yellow">MILESTONE</span>
+          <div class="item-meta"><a href="../stocks/wve.html">WVE</a> · 2H 2026</div></li>
+        <li><strong>CTX310 Data Updates</strong> <span class="badge badge-green">HIGH IMPACT</span>
+          <div class="item-meta"><a href="../stocks/crsp.html">CRSP</a> · 2H 2026</div></li>
+        <li><strong>Risto-cel BLA Submission</strong> <span class="badge badge-green">HIGH IMPACT</span>
+          <div class="item-meta"><a href="../stocks/beam.html">BEAM</a> · As early as YE2026</div></li>
+        <li><strong>PM577a Phase 1/2 Start</strong> <span class="badge badge-yellow">MILESTONE</span>
+          <div class="item-meta"><a href="../stocks/prme.html">PRME</a> · 2H 2026</div></li>
+        <li><strong>ANTLER-3 Funding Solution</strong> <span class="badge badge-green">HIGH IMPACT</span>
+          <div class="item-meta"><a href="../stocks/crbu.html">CRBU</a> · 2026</div></li>
+        <li><strong>Lonvo-z U.S. Launch</strong> <span class="badge badge-green">HIGH IMPACT</span>
+          <div class="item-meta"><a href="../stocks/ntla.html">NTLA</a> · 1H 2027</div></li>
+        <li><strong>INLIGHT Phase 2a Multidose Data</strong> <span class="badge badge-green">HIGH IMPACT</span>
+          <div class="item-meta"><a href="../stocks/wve.html">WVE</a> · 2027 (est.)</div></li>
+        <li><strong>CASGEVY Pediatric Uptake</strong> <span class="badge badge-green">KEY EVENT</span>
+          <div class="item-meta"><a href="../stocks/crsp.html">CRSP</a> · 2026–2027</div></li>
+        <li><strong>BEAM-302 Pivotal Enrollment</strong> <span class="badge badge-yellow">MILESTONE</span>
+          <div class="item-meta"><a href="../stocks/beam.html">BEAM</a> · 2026–2027</div></li>
+        <li><strong>PM577a Initial Data</strong> <span class="badge badge-green">HIGH IMPACT</span>
+          <div class="item-meta"><a href="../stocks/prme.html">PRME</a> · 2027</div></li>
+        <li><strong>CB-011 Dose Expansion Data</strong> <span class="badge badge-yellow">MILESTONE</span>
+          <div class="item-meta"><a href="../stocks/crbu.html">CRBU</a> · 2026–2027</div></li>
+        <li><strong>Nex-z Safety Updates</strong> <span class="badge badge-red">RISK EVENT</span>
+          <div class="item-meta"><a href="../stocks/ntla.html">NTLA</a> · Ongoing</div></li>
+        <li><strong>Quarterly CASGEVY Revenue</strong> <span class="badge badge-yellow">MILESTONE</span>
+          <div class="item-meta"><a href="../stocks/crsp.html">CRSP</a> · Each quarter</div></li>
+      </ul>
+      <p class="note">From each company's profile; timing reflects company guidance as of the profile's review date.</p>
+    </div>
+
+    <div class="section">
+      <h2>Upcoming Earnings</h2>
+      <ul class="item-list">
+        <li><a href="../stocks/beam.html">BEAM</a> Beam Therapeutics
+          <div class="item-meta">Nov 3, 2026 (estimated)</div></li>
+        <li><a href="../stocks/ntla.html">NTLA</a> Intellia Therapeutics
+          <div class="item-meta">Nov 5, 2026 (estimated)</div></li>
+        <li><a href="../stocks/prme.html">PRME</a> Prime Medicine
+          <div class="item-meta">Nov 6, 2026 (estimated)</div></li>
+        <li><a href="../stocks/wve.html">WVE</a> Wave Life Sciences
+          <div class="item-meta">Nov 9, 2026 (confirmed)</div></li>
+        <li><a href="../stocks/crsp.html">CRSP</a> CRISPR Therapeutics
+          <div class="item-meta">Nov 9, 2026 (estimated)</div></li>
+        <li><a href="../stocks/crbu.html">CRBU</a> Caribou Biosciences
+          <div class="item-meta">Nov 11, 2026 (estimated)</div></li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Latest News</h2>
+      <ul class="item-list">
+        <li><a href="https://news.google.com/rss/articles/CBMimgFBVV95cUxOY1lTUGRabXF1anFYVnFxUXpGOHdlNUlGNHltSEtBWVRqa2dTMW85Z05FZ0xhdzJ3bXdQQV9FRERZYnJFX0VtYVFBTnhQemtLYklYQk1GTG9PcHpBMExuYmkySlhMNmFhNzVzZXBWbWFweDlqN2JFamVzTjVuemR2U1RpNGN1RHJXaVZDNHl4RVFocklaR0ZuN1N3?oc=5" target="_blank" rel="noopener">Gene editing stocks fall after Anthropic’s CRISPR-like discovery - Seeking Alpha</a>
+          <div class="item-meta">CRSP · Seeking Alpha · Sep 23, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMi6gFBVV95cUxNNFNDYkwtWl96N3VNZV9xaVhVY0xfUmh1NWgzakRpR3BzZE5XU2lIcGdIVTc3OEF0S0RlY2RnaU5udVE0YUtBUTZGLUI5Wnk0eTJJMGQ1VFNXZWR4WVhKZnFuRGc3U2J1bTA0aFZnMnYyM0FwMWhKVzJGSWRrd3NYVnRha2xZWXRHZVlVTWd3WG5XaVBUazJtRXRYMEZKeFRRUlNiM1A2R01xM0ljMHMxVHY3NlE2bDFpM1N3LVRIdlkycGw3RmlyY1lFMllIM1R3YUpobXdVakVXeWVVclFocllMWU0yekpkckE?oc=5" target="_blank" rel="noopener">This Autoliv Analyst Is No Longer Bullish; Here Are Top 5 Downgrades For Wednesday - Benzinga</a>
+          <div class="item-meta">WVE · Benzinga · Sep 23, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMiowFBVV95cUxPOHFINU9EdDNaWnZDXzhWZkFHdllsM2dlZXNGek8xWUNJVnJLSjJjOWQwZ09qdXlZVVhLT2hzRmIwcmUxRVgySFVTVTVOdGRUVC1oUWtOakUyQk56eW1iX1JybnpxSFpteVRsWU54SGh6NDFDczNtbThJQnlwcnZMaHpOaWZjOWZRdTlEa1R5NXRKU0tPTU80VEtSQXNXTnJkaGlR?oc=5" target="_blank" rel="noopener">CRISPR Therapeutics stock trades below targets despite approved gene therapy; analyst sees 85% upside potential. - Pluang</a>
+          <div class="item-meta">CRSP · Pluang · Sep 23, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMi3AFBVV95cUxQWk1nY01FMHZGVWV2SUhISHJmNDdNd0o2R2FPUFFCcWdBY2VTMXUwcEFnRWFjQnk4Y0EydVJjZm9yN2NnbmVaNnNXVjFiMVRzV1RtVFNwaFpmTFJBODU3cXpqc3pzWVFsZDl3MmFmaDd0VUZmQ21BeUhjZkptaG1IYTZVOHMwMWU1RDV1blJLT2FRMUQzZ2tISWVpcEhiQVZtT3hVSVlDN29LRzI4SVNXeThZUno1VVIwQ0xqSVpoc0lzcmZFc05GR2dBYmw0bHJzQThNV1liZk9FQVdj?oc=5" target="_blank" rel="noopener">CRISPR Therapeutics Traded Sideways and Down for 12 Months: One Wall Street Pro Expects 85% Gains Soon - 24/7 Wall St.</a>
+          <div class="item-meta">CRSP · 24/7 Wall St. · Sep 23, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMivAFBVV95cUxNTWtybl81clFJTXB0WTFoMEQ3M1FGRHVfODRfclVmVldwd3hnQU9kUjI2RFRrU0NzTFhXTS1fdVNJajg4UmgxUTBtM0d3MjlfRF9FUWdxdVAxMjh2VmFwQ3FPTkdZbHEwcGlQVjV4RWJjSFVJcnQ4Wjc0YkFnUHg3bEd2aHBHcG5WY2I4NGJENG5YR3FYLWs4cERrRWU1czlqN0xWREJzWGNhSDZpb1hhaTlTdEZmQzRXQ0FRTw?oc=5" target="_blank" rel="noopener">Wave Life Sciences starts Phase 2a obesity trial for WVE-007 By Investing.com - Investing.com South Africa</a>
+          <div class="item-meta">WVE · Investing.com South Africa · Sep 23, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMiqAFBVV95cUxQSTVhQmlQRWl3MU5TSkZuWnhzQWtEUXVvVXVJTWlaRWtSMm5TRFByam04QXREOVRkSmhnNUpfUlRpTDN5b0Rkd1Z2Q2ZaVkVxX3AyQndreWpnRnJicXlVMjNxY0pPWXB3UXJGZWtyZmYyOGdVaklMQkI2elc1bDU1c3B6akNhdmZDTlo4eERJY0J0VlNiVE1EMTJLLUdVdnRMSVRURmJVWkg?oc=5" target="_blank" rel="noopener">Why Is NTLA Stock Jumping 5% Premarket Today? - Stocktwits</a>
+          <div class="item-meta">NTLA · Stocktwits · Sep 23, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMiuwFBVV95cUxQTFJOVmFISGQ3cTdoWUFYMm42d0VaWTRsQ1hSVnFIRFU2OWM4Ry1aZFRXN1ZlZWlUY0x0aVJIU0lNRXB0TkpRdVk4VzNxcG4tbUpZaFA1THd6cTA4NURjV2VEdFFCVU13V3FVQ05MY1VHMlJXOWJtcXNJdWExUVo3cWdCQVgtSXdsWW9iTmJNcXRlYmYyVzVOMnNuTHF4ZVNDTjU5TnhaNmtXTXBqTGpvNm1RZE4xQUhxWlBz?oc=5" target="_blank" rel="noopener">JPMorgan resumes Wave Life Sciences stock rating at Neutral - Investing.com</a>
+          <div class="item-meta">WVE · Investing.com · Sep 23, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMinwFBVV95cUxPdXpockVFX0U2Y0ZvNjhrLW1nRkVYTEtzRENiWTlxTEF1MnNzQWZaRFRlRkQ2OFhJcEZYQXVqSkVTN01mUmt1dEh0Q1Fza1R1bXR0X2d1MjduYU11bnNPSVl5dGR5TXAwQjZoN0FqMlAtRmtieHNkYUg5QU9sdmZoeU1QaHVUV2RJNFVtSjljVUZtbkQ1TkplSXljakZjeWc?oc=5" target="_blank" rel="noopener">CRISPR Therapeutics AG (CRSP) Stock Moves 1.20%: What You Should Know - Yahoo Finance</a>
+          <div class="item-meta">CRSP · Yahoo Finance · Sep 22, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMitAFBVV95cUxOakN4NjE1Mkxac1Z3NGdLWjVLWGZQVF96QWNFOG5oWThyLTZqbllnWW9ZU2FqWHZPN0NSQThvZlpocnpVUlZsUE16ajB5Mm9ZSnpld2t2b2JCUmNlY0pOdmZ6aGJZanVmUFNfbzlDendOQ1lHbW1xMGtYMEdUUjVINktDRVVIRjJLMHlrYl9iYW9rT1JHUkRoeEpVY3VENW1UaDR2elByVHBlcHN5b3BIWVlQWkc?oc=5" target="_blank" rel="noopener">Wave Life Sciences stock hits a 52-week low at USD 4.20 - AD HOC NEWS</a>
+          <div class="item-meta">WVE · AD HOC NEWS · Sep 22, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMinwFBVV95cUxNZ3V2My1feF9qMlJJTGVJRWFleEYyQXB2UTk5Q3pVSHZseXV0OUVvRmxIcTBtN2tkVlY3X0hWcjNuclZ4ZFB5SE5tRVRrZEtzRlQ1UVlBcXFIdm0wNTBuRmtUMWFUODB5eDEtdEVUaGhaT3hQS0NTdjRXa3Jlckhqei16T1JiVldpdXRER2k4Nzh4VVVQRkFhNzB3eVVWSkk?oc=5" target="_blank" rel="noopener">Intellia Therapeutics (NTLA) Stock Gets FDA Priority Review For Lonvo Z Gene Editing Therapy - Yahoo Finance</a>
+          <div class="item-meta">NTLA · Yahoo Finance · Sep 22, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMinwFBVV95cUxNSVFyMTV2LWxYem1aVFhnaDI0MjVpb2d2TkNmdlpkM1Zld0E5TERkSV81Q2R2QzZ0Qm81SjF4aE8zZGgzaU5BdjRpeDFqa2Mwb3k1Z2FEd1dzZmZ5WnBKZ2lldGllNGF6UzZMamwwcmc5WVFDS2hGZmN2S3MyRFJ5VkZGdldwblVxbGJuanpCV1g3Yk01N3lpa00ya1JPU2c?oc=5" target="_blank" rel="noopener">Wave Life Sciences Appoints Monika Vnuk as Chief Business Officer - Quiver Quantitative</a>
+          <div class="item-meta">WVE · Quiver Quantitative · Sep 22, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMi7AFBVV95cUxNODJaeUM0M0pCR3VOTmNOWlM4U1ljQ2QzQy0xSlpPaHZiUXFudzUwVWJyUXZzT1ZySmRlbGFZdjhUUVlQQ3JFd0hYc3Vabm9NNllLVGt1ZTczUk1TWGNxWmI0NmhwNGtiLTIwa08ydHF3UDN0UVIwS1FzMEJjRVdDYWhtYUcxVWRWWFh5ZXNTYnJHa2Vid05lNlF1ckUyYjJTTVNMVVhQQm4xZWR0OHJLOXhMSlhCUkdMYWYxZmlfVmtBZEx0Z2EzSWZYSUE0NzdwbXl2Q1IzczZqMjM5b01XLU9rWEtLZ09fUlU0cA?oc=5" target="_blank" rel="noopener">Prime Medicine, Inc. (NASDAQ:PRME) Receives Average Recommendation of &quot;Moderate Buy&quot; from Analysts - MarketBeat</a>
+          <div class="item-meta">PRME · MarketBeat · Sep 22, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMi3wFBVV95cUxONm1adkY0R2ZZUXpWTVc3ckFDeTVaTGxONTVsTDNNZDNjZF8xdk9nT2d2RUtnOXpyTDhoT3g5akk2RktVSWNwY2VWcU1fa2pnTmJySTJnWXozN1I5QjBycEtnZ0gxLXktbThSZDFKR0ZTOGxPd3V2TmZYYlZVU3JZNHRPUzVvMVUxWDlxd0ZYU0xGbnNLS29GNm02YTQ2N2pWaDJSeWhoWWVETHk2ckJiYk15ZXpmV29uRkhXSU9KZjZIc0RvRVkxYW9DY04zMlNWXzdWb0ZQMXQ4bzhtNEdv0gHkAUFVX3lxTFBwOEc2VU8tT0VfZWkyUjBYU0NhcVE4YWFWeEtXSnk4OWlJZ1B1RUFDWURoSjlWcFZIdW9WMFM5cEljaWVLSzNWTkhiYUdta1pKR3pWeUVFbnpXMndENVh1Ym8wRHlldVFlWENxS3BKdUpWUWh3MjRmXzBSeGZSMGJvNk9tMlZmUXRlWlFYWFU0eV9PbTVCY2gwd040OVgzZElQRHNnaGVFTGNQYWsxNUVfOS14SDg0VkRzb0lLQUtJZmdnQUtQSzJpV2dRbHpJcU12STRBR1JtdWJpekEzbEJPOWRXbA?oc=5" target="_blank" rel="noopener">Why CRISPR Therapeutics (CRSP) Is Back In The Spotlight - simplywall.st</a>
+          <div class="item-meta">CRSP · simplywall.st · Sep 21, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMimAFBVV95cUxPeDhsV0lwSGxTMFdheTNOLW5ocUR5TzlmNi1sM3d3c3pNOFNPT0U0WExLVm1PbFYxN2NuNlZMYTlKcC1uSmQ5bHAySTRxcjhLLWdPbkFEbmpuWlo0Z0dGUjJwZHljak5SQmg5WDYyRDlGQVFjOXBmelNrVmxBMFc3amVsQmhxR0szSzE0cERvTG4zemZNbkhSNg?oc=5" target="_blank" rel="noopener">3 Reasons CRISPR Therapeutics Stock Is Still a Buy After a Rocky 2026 - The Motley Fool</a>
+          <div class="item-meta">CRSP · The Motley Fool · Sep 20, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMi6wFBVV95cUxNVVdaYjBOcmtXc010ZnNzeFNQRkxYeUhQaXJtcnB1b3FGdXhReTJYSkl6Qi1nYklzNkNZNnVHcmZQdnRtZGQ3aW5VT0ZvbDZyeWZlMzI4RjBqQkR0REg1dDQ0UFl2LWd6cGlvR2kzclhGNlVOVTkzSjBmMGJTTGtrWmJrRnMwSGtSaHMyM3JKc0tTMTFuT1laS2ExaHUtUlU4X3JwVUtQamdWNkk4N0J1SmYxQzZrT1RqWTdSTVpBUjRLMWswaGNkYks4NXJqYWMyOEVNVk53akVWYUFMdGV1WDFDdHJfMnZoeTY40gHwAUFVX3lxTE5BTl9mdVJ3Ry1yLWttR25UNkl3ZVVoWWd3bG1MajgyS1hTQ0hqdG9wSnpucTZlRFRjM1hiX1o2UDBsSDVDLTJJNjhCZThrRzY5Q0tQVVMyblc2OGp5X0wyU2wtbEFHZGpranYzWUlsUmVkdFpETEE1MF9WR05XUTRyMFhnQzlqSk5JbGcteGZVbGNMZFBDdUNuRXFsemNSOU8wQTZiMG1leFU4QjMxaWVMalhCZlBIM2hhUzd0ZDVDZjVXYlpWbzExSzEyWmRubUMtYmZKeUROOFVPdHJ4Z1dJODI1TTVwSDVUT0JPQ0loYw?oc=5" target="_blank" rel="noopener">Intellia Therapeutics (NTLA) Stock Jumped, What Is Behind The Latest Attention? - simplywall.st</a>
+          <div class="item-meta">NTLA · simplywall.st · Sep 18, 2026</div></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <footer class="disclaimer">
+    For informational purposes only — not investment advice. Prices, returns and financials come from Yahoo Finance and company filings and may be delayed, incomplete or inaccurate. Company profiles are editorial summaries and may not reflect the latest developments. Do your own research and consult a licensed financial advisor before making investment decisions.
+  </footer>
+
+</body>
+
+</html>

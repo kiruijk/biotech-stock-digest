@@ -237,6 +237,8 @@ th {
 }
 
 .theme-tag {
+  color: white;
+  text-decoration: none;
   display: inline-block;
   padding: 0.1rem 0.5rem;
   margin-right: 0.3rem;
@@ -300,4 +302,41 @@ th {
   .returns {
     grid-template-columns: repeat(3, 1fr);
   }
+}
+
+.theme-tag:hover {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+/* Theme pages */
+.science h3 {
+  font-size: 1.05rem;
+  margin: 1.25rem 0 0.5rem;
+  color: #1a1a1a;
+}
+
+.science h3:first-child {
+  margin-top: 0;
+}
+
+.science p,
+.science li {
+  color: #374151;
+  line-height: 1.75;
+}
+
+.science ul {
+  padding-left: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.num {
+  text-align: right;
+  white-space: nowrap;
+}
+
+td a {
+  color: #0052cc;
+  font-weight: 700;
+  text-decoration: none;
 }

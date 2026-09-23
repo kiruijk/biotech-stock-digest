@@ -1,0 +1,19 @@
+{
+  "theme": "Infectious Disease",
+  "reviewed": "2026-09-23",
+  "summary": "Chronic viral infections such as hepatitis delta, hepatitis B and HIV remain large unmet needs. New antibodies and RNA-silencing drugs aim for deeper viral suppression or even functional cures, often using combinations that attack the virus from more than one angle.",
+  "sections": [
+    {
+      "heading": "Hepatitis delta",
+      "body": "<p>Hepatitis delta virus (HDV) is an incomplete virus that can only infect people who already have <strong>hepatitis B</strong>, because it borrows hepatitis B's surface protein (HBsAg) to build its outer coat. WHO estimates it affects about 5% of people with chronic hepatitis B, and it is the most severe form of viral hepatitis, often progressing to cirrhosis within years. Treatment options are limited: the entry inhibitor bulevirtide is approved in Europe.</p>"
+    },
+    {
+      "heading": "How new therapies work",
+      "body": "<ul><li><strong>Neutralizing antibodies</strong> bind the viral surface protein, blocking infection of new liver cells and helping the immune system clear infected ones.</li><li><strong>siRNA drugs</strong> silence viral RNA inside liver cells, reducing production of the surface protein that both hepatitis B and delta depend on.</li><li><strong>Combinations</strong> of the two aim to suppress the virus more deeply than either alone.</li></ul>"
+    },
+    {
+      "heading": "What investors watch",
+      "body": "<ul><li><strong>Undetectable virus levels</strong> (HDV RNA) and <strong>normalized liver enzymes</strong> (ALT), often combined into a single response endpoint.</li><li><strong>Durability after stopping treatment</strong>: whether patients can reach a functional cure rather than lifelong therapy.</li><li><strong>Diagnosis rates</strong>: many infected people are never tested for hepatitis delta, which affects the real size of the market.</li><li><strong>Platform spillover</strong>: antibody and T cell-engager platforms built for infectious disease are increasingly being applied to cancer.</li></ul>"
+    }
+  ]
+}

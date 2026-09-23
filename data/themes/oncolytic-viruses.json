@@ -1,0 +1,19 @@
+{
+  "theme": "Oncolytic Viruses",
+  "reviewed": "2026-09-23",
+  "summary": "Oncolytic and viral immunotherapies use engineered viruses to infect and destroy tumor cells while alerting the immune system to the cancer. After years of mixed results, the field now has approvals in melanoma and late-stage programs in bladder, prostate and pancreatic cancers.",
+  "sections": [
+    {
+      "heading": "How they work",
+      "body": "<p>An <strong>oncolytic virus</strong> is engineered to replicate mainly in cancer cells. As infected cells burst, they release tumor proteins and danger signals that act like an <em>in situ vaccine</em>, priming T cells against the cancer, including tumors elsewhere in the body. Many viruses are armed with extra genes, such as immune-stimulating cytokines (GM-CSF, IL-12) or antibody-like proteins, to strengthen that response. A related approach, <strong>gene-mediated cytotoxic immunotherapy</strong>, uses a virus to deliver a gene that makes tumor cells sensitive to an oral drug, then relies on the resulting immune response.</p>"
+    },
+    {
+      "heading": "Viruses and delivery",
+      "body": "<ul><li><strong>Herpes simplex virus (HSV-1)</strong> is the basis of the first approved oncolytic, T-VEC (Imlygic, 2015), and of newer products for melanoma.</li><li><strong>Adenovirus</strong>-based therapies are used in bladder and prostate cancer.</li><li><strong>Reovirus</strong> can be given intravenously, which allows treatment of widespread metastatic disease.</li><li>Most products are <strong>injected directly into tumors</strong> or, for bladder cancer, <strong>instilled into the bladder</strong>. This keeps side effects mostly local, but limits use to reachable tumors.</li></ul>"
+    },
+    {
+      "heading": "What investors watch",
+      "body": "<ul><li><strong>Combination benefit</strong>: many are tested alongside checkpoint inhibitors, so the trial has to show the virus's added contribution.</li><li><strong>Trial design</strong>: regulators have pushed back on single-arm data in some settings. Replimune's RP1 was rejected twice before its 2026 approval.</li><li><strong>Durability</strong>, particularly in bladder cancer, where regulators look for complete responses lasting 12 months or more.</li><li><strong>Manufacturing</strong>: producing viral products consistently at commercial scale.</li></ul>"
+    }
+  ]
+}

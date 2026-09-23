@@ -92,6 +92,68 @@
       margin-bottom: 1.5rem;
     }
 
+    .theme-panel {
+      background: white;
+      border-left: 4px solid #0052cc;
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      margin: -0.5rem 0 1.5rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    }
+
+    .theme-panel-title {
+      font-weight: 700;
+      margin-bottom: 0.35rem;
+    }
+
+    .theme-panel p {
+      color: #374151;
+      font-size: 0.92rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .theme-panel a {
+      color: #0052cc;
+      font-weight: 600;
+      font-size: 0.88rem;
+      text-decoration: none;
+    }
+
+    .earnings-box {
+      background: white;
+      border-radius: 8px;
+      padding: 0.9rem 1rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+    }
+
+    .earnings-title {
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .earnings-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.3rem 0;
+      border-top: 1px solid #f3f4f6;
+      text-decoration: none;
+      color: #1a1a1a;
+      font-size: 0.85rem;
+    }
+
+    .earnings-more {
+      padding-top: 0.35rem;
+      font-size: 0.78rem;
+      color: #6b7280;
+    }
+
+    .earnings-est {
+      color: #9ca3af;
+      font-size: 0.75rem;
+    }
+
     .theme-count {
       opacity: 0.6;
       font-weight: 500;
@@ -456,6 +518,7 @@
   <div class="container">
 
     <div class="theme-filter" id="theme-filter" role="group" aria-label="Filter by theme"></div>
+    <div class="theme-panel" id="theme-panel" hidden></div>
 
     <div class="layout">
       <!-- Stock Prices, ranked by today's performance -->
@@ -467,6 +530,7 @@
 
       <!-- News Sections -->
       <aside class="news-column">
+        <div class="earnings-box" id="earnings-box" hidden></div>
         <div class="column-title">Latest News <span class="column-subtitle">newest first</span></div>
         <div id="news-container"></div>
       </aside>
@@ -489,6 +553,7 @@
   <script>
     // Filled in by update-stocks.js from data/universe.json
     const THEMES = ["Obesity & Metabolic","Gene Editing & RNA","Cell Therapy","Melanoma","Oncolytic Viruses","Bladder & Prostate Cancer","Targeted Oncology","Infectious Disease"];
+    const THEME_INFO = {"Obesity & Metabolic":{"summary":"Drugs that mimic gut and pancreatic hormones, led by GLP-1, have made 15–20% weight loss achievable with a weekly injection. The race now is for pills, less frequent dosing, better tolerability and muscle preservation, plus spin-off uses in liver disease (MASH) and other metabolic conditions.","url":"themes/obesity-and-metabolic.html"},"Gene Editing & RNA":{"summary":"Genetic medicines fix or silence disease-causing genes at the source, often with a single treatment. CRISPR editing reached patients with the approval of Casgevy in late 2023. Newer tools such as base editing, prime editing and RNA editing aim for more precise changes, and delivery beyond the liver is the key frontier.","url":"themes/gene-editing-and-rna.html"},"Cell Therapy":{"summary":"Cell therapies turn immune cells into living drugs that find and kill cancer, and increasingly reset the immune system in autoimmune disease. CAR-T transformed blood cancers after the first approval in 2017. Current efforts target solid tumors, off-the-shelf donor cells and simpler, safer treatment.","url":"themes/cell-therapy.html"},"Melanoma":{"summary":"Checkpoint inhibitors turned advanced melanoma into a disease that many patients survive long-term. The biggest opportunity now is the roughly half of patients whose disease doesn't respond or relapses. Cell therapies, oncolytic viruses and T cell-redirecting drugs all target that group, and uveal (eye) melanoma is a separate, harder-to-treat disease.","url":"themes/melanoma.html"},"Oncolytic Viruses":{"summary":"Oncolytic and viral immunotherapies use engineered viruses to infect and destroy tumor cells while alerting the immune system to the cancer. After years of mixed results, the field now has approvals in melanoma and late-stage programs in bladder, prostate and pancreatic cancers.","url":"themes/oncolytic-viruses.html"},"Bladder & Prostate Cancer":{"summary":"Genitourinary cancers are large markets that are changing fast. In early bladder cancer, a wave of therapies delivered directly into the bladder aims to spare patients bladder removal and repeat surgeries. In prostate cancer, PSMA-targeted drugs and T cell engagers are moving from late-stage disease toward earlier treatment.","url":"themes/bladder-and-prostate-cancer.html"},"Targeted Oncology":{"summary":"Next-generation cancer drugs aim to hit tumors harder while sparing healthy tissue. Examples include antibodies that carry chemotherapy, bispecifics that redirect T cells, masked drugs that switch on only inside tumors, and small molecules that exploit a tumor's specific genetic weaknesses.","url":"themes/targeted-oncology.html"},"Infectious Disease":{"summary":"Chronic viral infections such as hepatitis delta, hepatitis B and HIV remain large unmet needs. New antibodies and RNA-silencing drugs aim for deeper viral suppression or even functional cures, often using combinations that attack the virus from more than one angle.","url":"themes/infectious-disease.html"}}; // end THEME_INFO
 
     // Demo data with realistic biotech company info
     const demoData = {
@@ -502,7 +567,7 @@
           "change": 0.8,
           "changePercent": 1.96,
           "marketCap": 4858594816,
-          "updatedAt": "2026-09-23T20:00:26.446Z",
+          "updatedAt": "2026-09-23T20:08:25.026Z",
           "cashPosition": 501663000,
           "cashAsOf": "2026-06-30",
           "monthlyBurn": 41724000,
@@ -516,6 +581,10 @@
           "threeYear": 223.37,
           "fiveYear": 536.85,
           "tenYear": 3128.68,
+          "nextEarnings": {
+            "date": "2026-10-28",
+            "estimated": true
+          },
           "covered": true,
           "news": [
             {
@@ -526,18 +595,18 @@
               "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxPOXBEQk5yd3ZkWWhjbnF3QzBCdW90R1doTlU3RVF3bGhmMnQ3ZS1PalhqNm1FZm5HV3dtZmpHTVZpOV80bEdOQnhjakJrM1F2Y1hJVklzNlB0VXdFRXprT0dRYlVCa09ucWZydGg5cmJGMEF3Z29JYnNhaklIYVd5aHJQbU5zMnF2ZDZfVlRzeXhDWE54aVlQbWhB?oc=5"
             },
             {
+              "title": "Viking Therapeutics: 'Strong Buy' On Injectable VK2735 Maintenance Data And Treatment Optionality - Seeking Alpha",
+              "source": "Seeking Alpha",
+              "date": "2026-09-23T17:09:54.000Z",
+              "summary": "Latest news about Viking Therapeutics.",
+              "url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxON2xOeDdEYmpVd19zNGc5TkZIMGd5RDhVZ1hJOFlJRnpjOC03ZzV4YVBnTXotd3hQWHFWUl85aWJWX0Z6RmRmVVNtOEhQd3E1Mzg0ZHZYVVRia1R2SHRhdFQ2WnNFNWhhUVlTN0t6aUdVRW1wV3kxMlk4cUZHTHdrNnMxd2ZweUpsamlXLXZMeEx5dXh4WEhCLWxYQjc0cWFqT1RPMXZpWExKNWJfWWwtRDQ5N3N3d0xvRXJRdXZkdHRHX2tRSnBGNVQwUm96QWRi?oc=5"
+            },
+            {
               "title": "Two Biotechs Get Beaten Down: Jaguar Health Collapses 59%, Viking Therapeutics Sinks 4% - 24/7 Wall St.",
               "source": "24/7 Wall St.",
               "date": "2026-09-23T15:02:00.000Z",
               "summary": "Latest news about Viking Therapeutics.",
               "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxQamQ2Qi0tQVB0enp5dUhYcnRkd2NqSmZoVmZfMHZ6SmJJQVBkSDA0U0pDWjBtUlByNzZrMHZoY1pUQWJpOXNOTUxSc2l1QkVXUUQtTlJXZEF5NzIzOHBkNVAzalRTOWhzejBfdk1hbDVUMjdMNVRVcFVoSzJhOExNTTQ3dEJ1REhiTi1VTzFIVnk4ZndaUWg5aU5LR0hiNFFhaW9qT1pTUzMxaGFMRi1ZbzdQT1VjSmkySzFpcWVuNmt1aE0yM3c?oc=5"
-            },
-            {
-              "title": "Viking Therapeutics (VKTX) Reports VK2735 Trial Data, Is The Stock Fully Priced? - Yahoo Finance",
-              "source": "Yahoo Finance",
-              "date": "2026-09-23T09:14:27.000Z",
-              "summary": "Latest news about Viking Therapeutics.",
-              "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxOVkxhSk5QN0MtUmVaVFViWlpNRW01MGJMcmdqdTFkYUxaVHNnVmNoemFkc3ZoZ0dpSzZTTWRsMWwxbDNZcER6RlNQREJuc1l2ME1wc3BwVnRjWGdjUDlHU3JjRUgzZ3BSaURqMkFWdERYdXhwcW14ZUtqQzZBcjJTWVkyeFRIdVFrcWJHbnhfdDhsdndfMTNKNktDa0RwUzQyTWc?oc=5"
             }
           ]
         },
@@ -552,7 +621,7 @@
           "change": -0.45,
           "changePercent": -4.23,
           "marketCap": 4615778816,
-          "updatedAt": "2026-09-23T20:00:27.655Z",
+          "updatedAt": "2026-09-23T20:08:26.206Z",
           "cashPosition": 304000000,
           "cashAsOf": "2026-06-30",
           "monthlyBurn": 20280333.333333332,
@@ -566,6 +635,10 @@
           "threeYear": 109.24,
           "fiveYear": -60.2,
           "tenYear": 27.53,
+          "nextEarnings": {
+            "date": "2026-11-05",
+            "estimated": false
+          },
           "covered": true,
           "news": [
             {
@@ -602,7 +675,7 @@
           "change": -0.51,
           "changePercent": -3.79,
           "marketCap": 1221086464,
-          "updatedAt": "2026-09-23T20:00:28.670Z",
+          "updatedAt": "2026-09-23T20:08:27.625Z",
           "cashPosition": 195328000,
           "cashAsOf": "2026-06-30",
           "monthlyBurn": 25242666.666666668,
@@ -616,6 +689,10 @@
           "threeYear": -22.77,
           "fiveYear": -61.51,
           "tenYear": null,
+          "nextEarnings": {
+            "date": "2026-11-05",
+            "estimated": true
+          },
           "covered": true,
           "news": [
             {
@@ -651,7 +728,7 @@
           "change": 0.34,
           "changePercent": 2.66,
           "marketCap": 1702221568,
-          "updatedAt": "2026-09-23T20:00:29.631Z",
+          "updatedAt": "2026-09-23T20:08:28.761Z",
           "cashPosition": 1171817000,
           "cashAsOf": "2026-06-30",
           "monthlyBurn": 25842333.333333332,
@@ -665,6 +742,10 @@
           "threeYear": null,
           "fiveYear": null,
           "tenYear": null,
+          "nextEarnings": {
+            "date": "2026-10-29",
+            "estimated": true
+          },
           "covered": true,
           "news": [
             {
@@ -700,7 +781,7 @@
           "change": -0.36,
           "changePercent": -2.84,
           "marketCap": 1727762048,
-          "updatedAt": "2026-09-23T20:00:30.737Z",
+          "updatedAt": "2026-09-23T20:08:31.430Z",
           "cashPosition": 628354000,
           "cashAsOf": "2026-06-30",
           "monthlyBurn": 27704333.333333332,
@@ -714,6 +795,10 @@
           "threeYear": -61.93,
           "fiveYear": -92.06,
           "tenYear": -28.73,
+          "nextEarnings": {
+            "date": "2026-11-05",
+            "estimated": true
+          },
           "covered": true,
           "news": [
             {
@@ -750,7 +835,7 @@
           "change": -4.38,
           "changePercent": -5.63,
           "marketCap": 6502658048,
-          "updatedAt": "2026-09-23T20:00:31.838Z",
+          "updatedAt": "2026-09-23T20:08:32.676Z",
           "cashPosition": 1028278000,
           "cashAsOf": "2026-06-30",
           "monthlyBurn": 15471333.333333334,
@@ -764,6 +849,10 @@
           "threeYear": null,
           "fiveYear": null,
           "tenYear": null,
+          "nextEarnings": {
+            "date": "2026-11-09",
+            "estimated": true
+          },
           "covered": true,
           "news": [
             {
@@ -800,7 +889,7 @@
           "change": -0.88,
           "changePercent": -2.71,
           "marketCap": 1624266368,
-          "updatedAt": "2026-09-23T20:00:32.913Z",
+          "updatedAt": "2026-09-23T20:08:34.021Z",
           "cashPosition": 880211000,
           "cashAsOf": "2026-06-30",
           "monthlyBurn": null,
@@ -814,6 +903,10 @@
           "threeYear": -39.39,
           "fiveYear": -11.92,
           "tenYear": null,
+          "nextEarnings": {
+            "date": "2026-11-05",
+            "estimated": true
+          },
           "covered": true,
           "news": [
             {
@@ -849,7 +942,7 @@
           "change": -0.96,
           "changePercent": -2.6,
           "marketCap": 2563589376,
-          "updatedAt": "2026-09-23T20:00:34.026Z",
+          "updatedAt": "2026-09-23T20:08:35.166Z",
           "cashPosition": 1342658000,
           "cashAsOf": "2026-06-30",
           "monthlyBurn": 40038333.333333336,
@@ -863,6 +956,10 @@
           "threeYear": 5.74,
           "fiveYear": null,
           "tenYear": null,
+          "nextEarnings": {
+            "date": "2026-11-05",
+            "estimated": true
+          },
           "covered": true,
           "news": [
             {
@@ -898,7 +995,7 @@
           "change": -0.22,
           "changePercent": -6.45,
           "marketCap": 620511488,
-          "updatedAt": "2026-09-23T20:00:35.427Z",
+          "updatedAt": "2026-09-23T20:08:36.490Z",
           "cashPosition": 518528000,
           "cashAsOf": "2026-06-30",
           "monthlyBurn": 8073666.666666667,
@@ -912,6 +1009,10 @@
           "threeYear": 22.22,
           "fiveYear": -79.34,
           "tenYear": null,
+          "nextEarnings": {
+            "date": "2026-11-05",
+            "estimated": true
+          },
           "covered": true,
           "news": [
             {
@@ -948,7 +1049,7 @@
           "change": -0.4,
           "changePercent": -9.2,
           "marketCap": 778340288,
-          "updatedAt": "2026-09-23T20:00:36.477Z",
+          "updatedAt": "2026-09-23T20:08:37.895Z",
           "cashPosition": 490602000,
           "cashAsOf": "2026-06-30",
           "monthlyBurn": 17860666.666666668,
@@ -962,6 +1063,10 @@
           "threeYear": -27.39,
           "fiveYear": -35.03,
           "tenYear": -88.49,
+          "nextEarnings": {
+            "date": "2026-11-09",
+            "estimated": false
+          },
           "covered": true,
           "news": [
             {
@@ -972,18 +1077,18 @@
               "url": "https://news.google.com/rss/articles/CBMi6gFBVV95cUxNNFNDYkwtWl96N3VNZV9xaVhVY0xfUmh1NWgzakRpR3BzZE5XU2lIcGdIVTc3OEF0S0RlY2RnaU5udVE0YUtBUTZGLUI5Wnk0eTJJMGQ1VFNXZWR4WVhKZnFuRGc3U2J1bTA0aFZnMnYyM0FwMWhKVzJGSWRrd3NYVnRha2xZWXRHZVlVTWd3WG5XaVBUazJtRXRYMEZKeFRRUlNiM1A2R01xM0ljMHMxVHY3NlE2bDFpM1N3LVRIdlkycGw3RmlyY1lFMllIM1R3YUpobXdVakVXeWVVclFocllMWU0yekpkckE?oc=5"
             },
             {
+              "title": "Wave Life Sciences starts Phase 2a obesity trial for WVE-007 By Investing.com - Investing.com South Africa",
+              "source": "Investing.com South Africa",
+              "date": "2026-09-23T11:48:20.000Z",
+              "summary": "Latest news about Wave Life Sciences.",
+              "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxNTWtybl81clFJTXB0WTFoMEQ3M1FGRHVfODRfclVmVldwd3hnQU9kUjI2RFRrU0NzTFhXTS1fdVNJajg4UmgxUTBtM0d3MjlfRF9FUWdxdVAxMjh2VmFwQ3FPTkdZbHEwcGlQVjV4RWJjSFVJcnQ4Wjc0YkFnUHg3bEd2aHBHcG5WY2I4NGJENG5YR3FYLWs4cERrRWU1czlqN0xWREJzWGNhSDZpb1hhaTlTdEZmQzRXQ0FRTw?oc=5"
+            },
+            {
               "title": "JPMorgan resumes Wave Life Sciences stock rating at Neutral - Investing.com",
               "source": "Investing.com",
               "date": "2026-09-23T07:48:09.000Z",
               "summary": "Latest news about Wave Life Sciences.",
               "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQTFJOVmFISGQ3cTdoWUFYMm42d0VaWTRsQ1hSVnFIRFU2OWM4Ry1aZFRXN1ZlZWlUY0x0aVJIU0lNRXB0TkpRdVk4VzNxcG4tbUpZaFA1THd6cTA4NURjV2VEdFFCVU13V3FVQ05MY1VHMlJXOWJtcXNJdWExUVo3cWdCQVgtSXdsWW9iTmJNcXRlYmYyVzVOMnNuTHF4ZVNDTjU5TnhaNmtXTXBqTGpvNm1RZE4xQUhxWlBz?oc=5"
-            },
-            {
-              "title": "Wave Life Sciences stock hits a 52-week low at USD 4.20 - AD HOC NEWS",
-              "source": "AD HOC NEWS",
-              "date": "2026-09-22T17:36:46.000Z",
-              "summary": "Latest news about Wave Life Sciences.",
-              "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOakN4NjE1Mkxac1Z3NGdLWjVLWGZQVF96QWNFOG5oWThyLTZqbllnWW9ZU2FqWHZPN0NSQThvZlpocnpVUlZsUE16ajB5Mm9ZSnpld2t2b2JCUmNlY0pOdmZ6aGJZanVmUFNfbzlDendOQ1lHbW1xMGtYMEdUUjVINktDRVVIRjJLMHlrYl9iYW9rT1JHUkRoeEpVY3VENW1UaDR2elByVHBlcHN5b3BIWVlQWkc?oc=5"
             }
           ]
         },
@@ -997,7 +1102,7 @@
           "change": -1.93,
           "changePercent": -4.78,
           "marketCap": 1794728704,
-          "updatedAt": "2026-09-23T20:00:37.507Z",
+          "updatedAt": "2026-09-23T20:08:39.214Z",
           "cashPosition": 516513000,
           "cashAsOf": "2026-06-30",
           "monthlyBurn": 7393000,
@@ -1011,6 +1116,10 @@
           "threeYear": null,
           "fiveYear": null,
           "tenYear": null,
+          "nextEarnings": {
+            "date": "2026-11-09",
+            "estimated": true
+          },
           "covered": true,
           "news": [
             {
@@ -1046,7 +1155,7 @@
           "change": -0.08,
           "changePercent": -3.94,
           "marketCap": 519016960,
-          "updatedAt": "2026-09-23T20:00:38.349Z",
+          "updatedAt": "2026-09-23T20:08:40.787Z",
           "cashPosition": 201630000,
           "cashAsOf": "2026-06-30",
           "monthlyBurn": 8356333.333333333,
@@ -1060,6 +1169,10 @@
           "threeYear": -16.67,
           "fiveYear": -70.9,
           "tenYear": null,
+          "nextEarnings": {
+            "date": "2026-11-16",
+            "estimated": false
+          },
           "covered": true,
           "news": [
             {
@@ -1095,7 +1208,7 @@
           "change": -0.04,
           "changePercent": -2.34,
           "marketCap": 576969728,
-          "updatedAt": "2026-09-23T20:00:39.656Z",
+          "updatedAt": "2026-09-23T20:08:41.920Z",
           "cashPosition": 423590000,
           "cashAsOf": "2026-06-30",
           "monthlyBurn": 10665333.333333334,
@@ -1109,6 +1222,10 @@
           "threeYear": -54.25,
           "fiveYear": -93.96,
           "tenYear": null,
+          "nextEarnings": {
+            "date": "2026-11-05",
+            "estimated": false
+          },
           "covered": true,
           "news": [
             {
@@ -1145,10 +1262,10 @@
           "change": -0.27,
           "changePercent": -3.04,
           "marketCap": 1309135616,
-          "updatedAt": "2026-09-23T20:00:40.804Z",
-          "cashPosition": 447955791.04,
+          "updatedAt": "2026-09-23T20:08:43.288Z",
+          "cashPosition": 448006808.535,
           "cashAsOf": "2026-06-30",
-          "monthlyBurn": 22951447.04213333,
+          "monthlyBurn": 22954060.9727,
           "cashFlowPositive": false,
           "oneDay": -3.04,
           "fiveDay": -0.46,
@@ -1159,6 +1276,10 @@
           "threeYear": -26.56,
           "fiveYear": -37.04,
           "tenYear": null,
+          "nextEarnings": {
+            "date": "2026-11-17",
+            "estimated": true
+          },
           "covered": true,
           "news": [
             {
@@ -1195,7 +1316,7 @@
           "change": -0.95,
           "changePercent": -5.44,
           "marketCap": 1009979520,
-          "updatedAt": "2026-09-23T20:00:41.776Z",
+          "updatedAt": "2026-09-23T20:08:44.354Z",
           "cashPosition": 970913000,
           "cashAsOf": "2026-06-30",
           "monthlyBurn": null,
@@ -1209,6 +1330,10 @@
           "threeYear": 72.08,
           "fiveYear": -27.77,
           "tenYear": null,
+          "nextEarnings": {
+            "date": "2026-11-05",
+            "estimated": true
+          },
           "covered": true,
           "news": [
             {
@@ -1245,7 +1370,7 @@
           "change": -0.56,
           "changePercent": -4.73,
           "marketCap": 863894656,
-          "updatedAt": "2026-09-23T20:00:43.252Z",
+          "updatedAt": "2026-09-23T20:08:45.424Z",
           "cashPosition": 201565000,
           "cashAsOf": "2026-06-30",
           "monthlyBurn": 5727333.333333333,
@@ -1259,6 +1384,10 @@
           "threeYear": 890.35,
           "fiveYear": 12.9,
           "tenYear": null,
+          "nextEarnings": {
+            "date": "2026-11-12",
+            "estimated": true
+          },
           "covered": true,
           "news": [
             {
@@ -1294,7 +1423,7 @@
           "change": -0.05,
           "changePercent": -2.44,
           "marketCap": 134032632,
-          "updatedAt": "2026-09-23T20:00:44.203Z",
+          "updatedAt": "2026-09-23T20:08:46.347Z",
           "cashPosition": 266320000,
           "cashAsOf": "2026-07-31",
           "monthlyBurn": 6315333.333333333,
@@ -1308,6 +1437,7 @@
           "threeYear": -81.72,
           "fiveYear": null,
           "tenYear": null,
+          "nextEarnings": null,
           "covered": true,
           "news": [
             {
@@ -1343,7 +1473,7 @@
           "change": -1.13,
           "changePercent": -2.64,
           "marketCap": 2034897920,
-          "updatedAt": "2026-09-23T20:00:45.412Z",
+          "updatedAt": "2026-09-23T20:08:47.290Z",
           "cashPosition": 107975000,
           "cashAsOf": "2026-06-30",
           "monthlyBurn": 11002000,
@@ -1357,6 +1487,10 @@
           "threeYear": 165.33,
           "fiveYear": 142.88,
           "tenYear": null,
+          "nextEarnings": {
+            "date": "2026-11-05",
+            "estimated": true
+          },
           "covered": true,
           "news": [
             {
@@ -1392,7 +1526,7 @@
           "change": -0.04,
           "changePercent": -5.16,
           "marketCap": 86260856,
-          "updatedAt": "2026-09-23T20:00:46.267Z",
+          "updatedAt": "2026-09-23T20:08:48.415Z",
           "cashPosition": 4115000,
           "cashAsOf": "2026-06-30",
           "monthlyBurn": 2712666.6666666665,
@@ -1406,6 +1540,10 @@
           "threeYear": -68.68,
           "fiveYear": -68.97,
           "tenYear": -74.57,
+          "nextEarnings": {
+            "date": "2026-11-16",
+            "estimated": true
+          },
           "covered": true,
           "news": [
             {
@@ -1442,7 +1580,7 @@
           "change": -3.27,
           "changePercent": -5.54,
           "marketCap": 5391582208,
-          "updatedAt": "2026-09-23T20:00:47.578Z",
+          "updatedAt": "2026-09-23T20:08:49.714Z",
           "cashPosition": 2364352000,
           "cashAsOf": "2026-06-30",
           "monthlyBurn": 27832666.666666668,
@@ -1456,6 +1594,10 @@
           "threeYear": 22.58,
           "fiveYear": -54.01,
           "tenYear": null,
+          "nextEarnings": {
+            "date": "2026-11-09",
+            "estimated": true
+          },
           "covered": true,
           "news": [
             {
@@ -1491,7 +1633,7 @@
           "change": -1.56,
           "changePercent": -6.02,
           "marketCap": 2517120512,
-          "updatedAt": "2026-09-23T20:00:48.746Z",
+          "updatedAt": "2026-09-23T20:08:51.161Z",
           "cashPosition": 1152927000,
           "cashAsOf": "2026-06-30",
           "monthlyBurn": 22032000,
@@ -1505,6 +1647,10 @@
           "threeYear": 2.57,
           "fiveYear": -75.17,
           "tenYear": null,
+          "nextEarnings": {
+            "date": "2026-11-03",
+            "estimated": true
+          },
           "covered": true,
           "news": [
             {
@@ -1540,7 +1686,7 @@
           "change": -0.41,
           "changePercent": -11.58,
           "marketCap": 567709632,
-          "updatedAt": "2026-09-23T20:00:49.758Z",
+          "updatedAt": "2026-09-23T20:08:52.305Z",
           "cashPosition": 108800000,
           "cashAsOf": "2026-06-30",
           "monthlyBurn": 13682000,
@@ -1554,6 +1700,10 @@
           "threeYear": -71.75,
           "fiveYear": null,
           "tenYear": null,
+          "nextEarnings": {
+            "date": "2026-11-06",
+            "estimated": true
+          },
           "covered": true,
           "news": [
             {
@@ -1590,7 +1740,7 @@
           "change": -0.05,
           "changePercent": -3.73,
           "marketCap": 138297680,
-          "updatedAt": "2026-09-23T20:00:50.945Z",
+          "updatedAt": "2026-09-23T20:08:53.336Z",
           "cashPosition": 113818000,
           "cashAsOf": "2026-06-30",
           "monthlyBurn": 7595666.666666667,
@@ -1604,6 +1754,10 @@
           "threeYear": -74.66,
           "fiveYear": -95.13,
           "tenYear": null,
+          "nextEarnings": {
+            "date": "2026-11-11",
+            "estimated": true
+          },
           "covered": true,
           "news": [
             {
@@ -1640,7 +1794,7 @@
           "change": -2.25,
           "changePercent": -5.67,
           "marketCap": 3614496256,
-          "updatedAt": "2026-09-23T20:00:51.821Z",
+          "updatedAt": "2026-09-23T20:08:54.635Z",
           "cashPosition": 1242889000,
           "cashAsOf": "2026-06-30",
           "monthlyBurn": 29403666.666666668,
@@ -1654,6 +1808,10 @@
           "threeYear": 35.58,
           "fiveYear": 51.29,
           "tenYear": null,
+          "nextEarnings": {
+            "date": "2026-11-09",
+            "estimated": true
+          },
           "covered": true,
           "news": [
             {
@@ -1690,7 +1848,7 @@
           "change": -0.41,
           "changePercent": -3.57,
           "marketCap": 1876604928,
-          "updatedAt": "2026-09-23T20:00:53.083Z",
+          "updatedAt": "2026-09-23T20:08:55.744Z",
           "cashPosition": 1007742000,
           "cashAsOf": "2026-06-30",
           "monthlyBurn": null,
@@ -1704,6 +1862,10 @@
           "threeYear": 18.61,
           "fiveYear": -75.18,
           "tenYear": null,
+          "nextEarnings": {
+            "date": "2026-11-04",
+            "estimated": true
+          },
           "covered": true,
           "news": [
             {
@@ -1739,7 +1901,7 @@
           "change": -0.16,
           "changePercent": -5.44,
           "marketCap": 605760000,
-          "updatedAt": "2026-09-23T20:00:54.068Z",
+          "updatedAt": "2026-09-23T20:08:57.200Z",
           "cashPosition": 330280000,
           "cashAsOf": "2026-06-30",
           "monthlyBurn": 6022666.666666667,
@@ -1753,6 +1915,10 @@
           "threeYear": 117.19,
           "fiveYear": -48.9,
           "tenYear": -82.23,
+          "nextEarnings": {
+            "date": "2026-11-05",
+            "estimated": true
+          },
           "covered": true,
           "news": [
             {
@@ -1788,7 +1954,7 @@
           "change": -0.07,
           "changePercent": -5.65,
           "marketCap": 210702864,
-          "updatedAt": "2026-09-23T20:00:55.490Z",
+          "updatedAt": "2026-09-23T20:08:58.611Z",
           "cashPosition": 179879000,
           "cashAsOf": "2026-06-30",
           "monthlyBurn": 4912666.666666667,
@@ -1802,6 +1968,10 @@
           "threeYear": -40.31,
           "fiveYear": -66.57,
           "tenYear": null,
+          "nextEarnings": {
+            "date": "2026-11-05",
+            "estimated": true
+          },
           "covered": true,
           "news": [
             {
@@ -1891,6 +2061,46 @@
       return Object.fromEntries(Object.entries(demoData).filter(([, s]) => (s.themes || []).includes(theme)));
     }
 
+    // Short science explainer for the selected theme, linking to its full page
+    function renderThemePanel() {
+      const panel = document.getElementById('theme-panel');
+      const info = THEME_INFO[theme];
+      if (theme === 'All' || !info) {
+        panel.hidden = true;
+        return;
+      }
+      panel.hidden = false;
+      panel.innerHTML = `
+        <div class="theme-panel-title">${theme}</div>
+        ${info.summary ? `<p>${info.summary}</p>` : ''}
+        <a href="${info.url}">The science, catalysts &amp; company comparison →</a>`;
+    }
+
+    const MAX_EARNINGS_ROWS = 6;
+
+    // Earnings in the next 45 days for the visible stocks
+    function renderEarnings(stocks) {
+      const box = document.getElementById('earnings-box');
+      const today = new Date().toISOString().slice(0, 10);
+      const horizon = new Date(Date.now() + 45 * 864e5).toISOString().slice(0, 10);
+      const upcoming = Object.values(stocks)
+        .filter(s => s.nextEarnings && s.nextEarnings.date >= today && s.nextEarnings.date <= horizon)
+        .sort((a, b) => a.nextEarnings.date.localeCompare(b.nextEarnings.date));
+      if (!upcoming.length) {
+        box.hidden = true;
+        return;
+      }
+      box.hidden = false;
+      box.innerHTML = `
+        <div class="earnings-title">Upcoming Earnings <span class="column-subtitle">next 45 days</span></div>
+        ${upcoming.slice(0, MAX_EARNINGS_ROWS).map(s => `
+          <a class="earnings-row" href="stocks/${s.symbol.toLowerCase()}.html">
+            <span class="ticker-tag">${s.symbol}</span>
+            <span class="earnings-date">${formatDate(s.nextEarnings.date + 'T12:00:00Z')}${s.nextEarnings.estimated ? ' <span class="earnings-est">est.</span>' : ''}</span>
+          </a>`).join('')}
+        ${upcoming.length > MAX_EARNINGS_ROWS ? `<div class="earnings-more">+${upcoming.length - MAX_EARNINGS_ROWS} more — pick a theme to see its full list</div>` : ''}`;
+    }
+
     function renderThemeFilter() {
       const filter = document.getElementById('theme-filter');
       const count = (t) => Object.values(demoData).filter(s => (s.themes || []).includes(t)).length;
@@ -1904,7 +2114,9 @@
         try { localStorage.setItem('theme', theme); } catch (err) { /* ignore */ }
         previousRanks = null;  // rank arrows only make sense within the same set of stocks
         renderThemeFilter();
+        renderThemePanel();
         renderRanking();
+        renderEarnings(visibleStocks());
         renderNews(visibleStocks());
       };
     }
@@ -2083,7 +2295,9 @@ function main() {
   document.getElementById('loading').style.display = 'none';
 
   renderThemeFilter();
+  renderThemePanel();
   renderRanking();
+  renderEarnings(visibleStocks());
   renderNews(visibleStocks());
 
   // Update time

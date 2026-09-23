@@ -1,0 +1,23 @@
+{
+  "theme": "Melanoma",
+  "reviewed": "2026-09-23",
+  "summary": "Checkpoint inhibitors turned advanced melanoma into a disease that many patients survive long-term. The biggest opportunity now is the roughly half of patients whose disease doesn't respond or relapses. Cell therapies, oncolytic viruses and T cell-redirecting drugs all target that group, and uveal (eye) melanoma is a separate, harder-to-treat disease.",
+  "sections": [
+    {
+      "heading": "Two different diseases",
+      "body": "<p><strong>Cutaneous melanoma</strong> starts in pigment cells of the skin. Around half of cases carry a <strong>BRAF</strong> mutation, which can be treated with targeted BRAF/MEK inhibitor pills. <strong>Uveal melanoma</strong> starts in the eye, is driven by different mutations (GNAQ/GNA11), often spreads to the liver, and responds poorly to standard immunotherapy.</p>"
+    },
+    {
+      "heading": "Standard treatment",
+      "body": "<p>Immune checkpoint inhibitors release the brakes on T cells. They include anti-PD-1 drugs (nivolumab, pembrolizumab), anti-CTLA-4 (ipilimumab) and anti-LAG-3 (relatlimab, in Opdualag). Combinations produce durable responses in many patients, but a large share either don't respond or relapse. That <strong>\"post-PD-1\"</strong> setting is where most new drugs are tested first.</p>"
+    },
+    {
+      "heading": "New approaches",
+      "body": "<ul><li><strong>TIL cell therapy</strong> (Amtagvi) expands the patient's own tumor-fighting T cells.</li><li><strong>Oncolytic viruses</strong> (such as Tudriqev with nivolumab) are injected into tumors to kill cancer cells and stimulate an immune response.</li><li><strong>T cell-redirecting drugs</strong> use targets inside cancer cells. KIMMTRAK (tebentafusp) became the first approved uveal melanoma drug in 2022, for patients with the HLA-A*02:01 tissue type. <strong>PRAME</strong>, a protein made by most melanomas, is targeted by both TCR cell therapies and ImmTAC drugs.</li><li><strong>Targeted drugs</strong> for uveal melanoma, such as PKC inhibitors, act on the pathway that GNAQ/GNA11 mutations switch on.</li></ul>"
+    },
+    {
+      "heading": "What investors watch",
+      "body": "<ul><li><strong>Response rate and duration</strong> in single-arm trials, then confirmation in randomized trials measuring progression-free and overall survival.</li><li><strong>HLA restriction</strong>: some therapies only work for patients with a specific tissue type, often about half of patients.</li><li><strong>Ease of use</strong>: off-the-shelf drugs vs. therapies that need surgery, cell manufacturing or hospital stays.</li><li><strong>Line of therapy</strong>: moving from later-line settings into first-line or post-surgery settings greatly expands the market.</li></ul>"
+    }
+  ]
+}

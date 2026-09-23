@@ -1,0 +1,19 @@
+{
+  "theme": "Gene Editing & RNA",
+  "reviewed": "2026-09-23",
+  "summary": "Genetic medicines fix or silence disease-causing genes at the source, often with a single treatment. CRISPR editing reached patients with the approval of Casgevy in late 2023. Newer tools such as base editing, prime editing and RNA editing aim for more precise changes, and delivery beyond the liver is the key frontier.",
+  "sections": [
+    {
+      "heading": "The toolkit",
+      "body": "<ul><li><strong>CRISPR-Cas9</strong> works like molecular scissors: a guide RNA leads the Cas9 enzyme to a DNA sequence, where it cuts both strands. The cell's repair process usually disables the gene, which is useful when switching off a harmful protein.</li><li><strong>Base editing</strong> chemically changes a single DNA letter (for example A to G) without cutting both strands, so it can correct point mutations more cleanly.</li><li><strong>Prime editing</strong> works like search-and-replace. It can write short new sequences, which in principle covers most known disease-causing mutations.</li><li><strong>RNA editing</strong> corrects the message (mRNA) instead of the gene. Using the body's own ADAR enzymes, the change is temporary and needs repeat dosing, but it avoids permanent DNA changes.</li><li><strong>RNA silencing</strong> (siRNA and antisense) reduces production of a target protein for months per dose.</li></ul>"
+    },
+    {
+      "heading": "Delivery: in the body vs. outside it",
+      "body": "<p><strong>Ex vivo</strong> therapies edit a patient's cells outside the body, then infuse them back. Casgevy, for sickle cell disease and beta thalassemia, edits blood stem cells, but patients first need chemotherapy to clear space in the bone marrow. <strong>In vivo</strong> therapies deliver the editor directly, most often to the liver using lipid nanoparticles (LNPs) or, for siRNA, GalNAc sugar tags. Reaching other organs such as muscle, lung and brain efficiently is the main technical challenge.</p>"
+    },
+    {
+      "heading": "What investors watch",
+      "body": "<ul><li><strong>Size and durability of the effect</strong>: how much the disease protein falls, and whether a single dose lasts.</li><li><strong>Safety</strong>: off-target edits, liver enzyme elevations and immune reactions to the delivery vehicle. Regulators expect long-term follow-up for permanent edits.</li><li><strong>Commercial model</strong>: one-time therapies carry multi-million-dollar prices, and uptake depends on treatment-center capacity and payment arrangements.</li><li><strong>Competition across approaches</strong>: the same disease, such as alpha-1 antitrypsin deficiency or sickle cell, is often targeted by several technologies at once.</li></ul>"
+    }
+  ]
+}

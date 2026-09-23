@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Targeted Oncology Stocks — Science, Catalysts &amp; News | Life Science Investor</title>
+  <meta name="description" content="Next-generation cancer drugs aim to hit tumors harder while sparing healthy tissue. Examples include antibodies that carry chemotherapy, bispecifics that redirect T cells, masked drugs that switch on only inside tumors, and small molecules that exploit a tumor's specific genetic weaknesses.">
+  <meta property="og:title" content="Targeted Oncology Stocks — Life Science Investor">
+  <meta property="og:description" content="Next-generation cancer drugs aim to hit tumors harder while sparing healthy tissue. Examples include antibodies that carry chemotherapy, bispecifics that redirect T cells, masked drugs that switch on only inside tumors, and small molecules that exploit a tumor's specific genetic weaknesses.">
+  <meta property="og:type" content="article">
+  <style>
+    :root {
+      color-scheme: light;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f5f7fa;
+      color: #1a1a1a;
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(135deg, #0052cc 0%, #0066ff 100%);
+      color: white;
+      padding: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      font-size: 1.6rem;
+    }
+
+    .back-btn {
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      border: 1px solid white;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .back-btn:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1rem 3rem;
+    }
+
+    /* Section Styling */
+    .section {
+      background: white;
+      border-radius: 10px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    .section h2 {
+      font-size: 1.3rem;
+      margin-bottom: 1.5rem;
+      color: #1a1a1a;
+      border-bottom: 2px solid #0052cc;
+      padding-bottom: 0.5rem;
+    }
+
+    /* Grid layouts */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    /* Card styling */
+    .card {
+      padding: 1rem;
+      background: #f9fafb;
+      border-radius: 6px;
+      border-left: 3px solid #0052cc;
+    }
+
+    .card-title {
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 0.3rem;
+    }
+
+    .card-subtitle {
+      font-size: 0.85rem;
+      color: #6b7280;
+    }
+
+    .card-value {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #0052cc;
+      margin-top: 0.3rem;
+    }
+
+    /* Badge styling */
+    .badge {
+      display: inline-block;
+      padding: 0.25rem 0.65rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .badge-green {
+      background: #d1fae5;
+      color: #059669;
+    }
+
+    .badge-red {
+      background: #fee2e2;
+      color: #dc2626;
+    }
+
+    .badge-yellow {
+      background: #fef3c7;
+      color: #d97706;
+    }
+
+    /* Table styling */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+
+    th,
+    td {
+      padding: 0.8rem;
+      text-align: left;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    th {
+      background: #f9fafb;
+      font-weight: 700;
+    }
+
+    /* Insider Trading */
+    .insider-buy {
+      color: #059669;
+      font-weight: 600;
+    }
+
+    .insider-sell {
+      color: #dc2626;
+      font-weight: 600;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .grid-2,
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Text */
+    .para {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: #374151;
+      margin-bottom: 1.2rem;
+    }
+
+    .note {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: #6b7280;
+    }
+
+    /* Returns row */
+    .returns {
+      display: grid;
+      grid-template-columns: repeat(9, 1fr);
+      gap: 0.3rem;
+      margin-top: 1rem;
+    }
+
+    .return {
+      text-align: center;
+      padding: 0.45rem 0.1rem;
+      background: #f9fafb;
+      border-radius: 6px;
+    }
+
+    .return-label {
+      color: #6b7280;
+      font-size: 0.68rem;
+      text-transform: uppercase;
+    }
+
+    .return-value {
+      font-weight: 700;
+      font-size: 0.8rem;
+      white-space: nowrap;
+    }
+
+    /* Notices */
+    .notice {
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+    }
+
+    .notice-stale {
+      background: #fef3c7;
+      color: #92400e;
+    }
+
+    .notice-tracked {
+      background: #e0ebff;
+      color: #1e3a8a;
+    }
+
+    .meta-line {
+      font-size: 0.85rem;
+      color: #6b7280;
+      margin-top: 0.75rem;
+    }
+
+    .theme-tag {
+      color: white;
+      text-decoration: none;
+      display: inline-block;
+      padding: 0.1rem 0.5rem;
+      margin-right: 0.3rem;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.2);
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    /* Insider labels */
+    .insider-other {
+      color: #6b7280;
+      font-weight: 600;
+    }
+
+    /* News & leadership lists */
+    .item-list {
+      list-style: none;
+    }
+
+    .item-list li {
+      padding: 0.75rem 0;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .item-list li:last-child {
+      border-bottom: none;
+    }
+
+    .item-list a {
+      color: #0052cc;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .item-list a:hover {
+      text-decoration: underline;
+    }
+
+    .item-meta {
+      font-size: 0.8rem;
+      color: #6b7280;
+    }
+
+    .disclaimer {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem 2rem;
+      font-size: 0.75rem;
+      color: #9ca3af;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 900px) {
+      .returns {
+        grid-template-columns: repeat(5, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .returns {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .theme-tag:hover {
+      background: rgba(255, 255, 255, 0.35);
+    }
+
+    /* Theme pages */
+    .science h3 {
+      font-size: 1.05rem;
+      margin: 1.25rem 0 0.5rem;
+      color: #1a1a1a;
+    }
+
+    .science h3:first-child {
+      margin-top: 0;
+    }
+
+    .science p,
+    .science li {
+      color: #374151;
+      line-height: 1.75;
+    }
+
+    .science ul {
+      padding-left: 1.25rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .num {
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    td a {
+      color: #0052cc;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+  </style>
+</head>
+
+<body>
+  <!-- Generated by update-stocks.js from data/themes/targeted-oncology.json and live market data. Do not edit by hand. -->
+
+  <header>
+    <div>
+      <h1>Targeted Oncology</h1>
+      <div>6 companies tracked</div>
+    </div>
+    <a href="../index.html" class="back-btn">← Back to Dashboard</a>
+  </header>
+
+  <div class="container">
+
+    <div class="section">
+      <p class="para" style="margin-bottom: 0;">Next-generation cancer drugs aim to hit tumors harder while sparing healthy tissue. Examples include antibodies that carry chemotherapy, bispecifics that redirect T cells, masked drugs that switch on only inside tumors, and small molecules that exploit a tumor's specific genetic weaknesses.</p>
+    </div>
+
+    <div class="section science">
+      <h2>The Science</h2>
+      <h3>Main drug types</h3>
+      <ul><li><strong>Antibody-drug conjugates (ADCs)</strong> attach a potent cytotoxic payload to an antibody through a chemical linker, delivering chemotherapy mainly to cells that carry the target protein.</li><li><strong>Bispecific antibodies</strong> bind two targets at once. <em>T cell engagers</em> link CD3 on T cells to a tumor protein, pulling T cells onto cancer cells. Others block two growth or immune pathways together, such as PD-1 and VEGF.</li><li><strong>Masked or conditionally active drugs</strong> carry a blocking cap that tumor-specific enzymes remove, so the drug is mostly active inside tumors.</li><li><strong>Precision small molecules</strong> target mutations or pathways a tumor depends on. <em>Synthetic lethality</em> exploits the fact that losing two genes together kills a cell even though losing either alone doesn't; PARP inhibitors in BRCA-mutant cancers are the classic example.</li></ul>
+      <h3>The therapeutic window</h3>
+      <p>Many strong cancer targets are also present in healthy tissue at lower levels, so the drug's effect on normal cells limits the dose. Much of this field is about widening the <strong>therapeutic window</strong>, the gap between an effective dose and a toxic one, through better targeting, masking, linker chemistry or patient selection.</p>
+      <h3>What investors watch</h3>
+      <ul><li><strong>Response rates in heavily pretreated patients</strong> during Phase 1 dose expansion, and whether responses hold at tolerable doses.</li><li><strong>Dose optimization</strong>: regulators now expect trials to compare doses, not just use the maximum tolerated dose.</li><li><strong>Biomarkers</strong>: whether patients can be selected by target level or mutation.</li><li><strong>Partnerships</strong>: large pharma deals often validate the platform and fund late-stage trials.</li></ul>
+      <div class="meta-line">Background last reviewed Sep 23, 2026. General educational content, not a recommendation.</div>
+    </div>
+
+    <div class="section">
+      <h2>Companies</h2>
+      <div style="overflow-x: auto;">
+      <table>
+        <thead>
+          <tr>
+            <th>Ticker</th>
+            <th>Company</th>
+            <th class="num">Price</th>
+            <th class="num">1D</th>
+            <th class="num">YTD</th>
+            <th class="num">1Y</th>
+            <th class="num">Mkt Cap</th>
+            <th class="num">Runway</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><a href="../stocks/vir.html">VIR</a></td>
+            <td>Vir Biotechnology</td>
+            <td class="num">$11.09</td>
+            <td class="num" style="color: #dc2626">-3.57%</td>
+            <td class="num" style="color: #059669">+89.90%</td>
+            <td class="num" style="color: #059669">+114.51%</td>
+            <td class="num">$1.9B</td>
+            <td class="num">No cash burn last qtr</td>
+          </tr>
+          <tr>
+            <td><a href="../stocks/janx.html">JANX</a></td>
+            <td>Janux Therapeutics</td>
+            <td class="num">$16.52</td>
+            <td class="num" style="color: #dc2626">-5.44%</td>
+            <td class="num" style="color: #059669">+19.45%</td>
+            <td class="num" style="color: #dc2626">-28.11%</td>
+            <td class="num">$1.0B</td>
+            <td class="num">No cash burn last qtr</td>
+          </tr>
+          <tr>
+            <td><a href="../stocks/idya.html">IDYA</a></td>
+            <td>IDEAYA Biosciences</td>
+            <td class="num">$37.46</td>
+            <td class="num" style="color: #dc2626">-5.67%</td>
+            <td class="num" style="color: #059669">+8.55%</td>
+            <td class="num" style="color: #059669">+44.47%</td>
+            <td class="num">$3.6B</td>
+            <td class="num">42 months</td>
+          </tr>
+          <tr>
+            <td><a href="../stocks/imcr.html">IMCR</a></td>
+            <td>Immunocore</td>
+            <td class="num">$31.54</td>
+            <td class="num" style="color: #dc2626">-2.71%</td>
+            <td class="num" style="color: #dc2626">-7.51%</td>
+            <td class="num" style="color: #dc2626">-8.37%</td>
+            <td class="num">$1.6B</td>
+            <td class="num">No cash burn last qtr</td>
+          </tr>
+          <tr>
+            <td><a href="../stocks/ctmx.html">CTMX</a></td>
+            <td>CytomX Therapeutics</td>
+            <td class="num">$2.78</td>
+            <td class="num" style="color: #dc2626">-5.44%</td>
+            <td class="num" style="color: #dc2626">-33.17%</td>
+            <td class="num" style="color: #059669">+31.75%</td>
+            <td class="num">$606M</td>
+            <td class="num">55 months</td>
+          </tr>
+          <tr>
+            <td><a href="../stocks/cmpx.html">CMPX</a></td>
+            <td>Compass Therapeutics</td>
+            <td class="num">$1.17</td>
+            <td class="num" style="color: #dc2626">-5.65%</td>
+            <td class="num" style="color: #dc2626">-78.25%</td>
+            <td class="num" style="color: #dc2626">-65.33%</td>
+            <td class="num">$211M</td>
+            <td class="num">37 months</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+      <p class="note">Sorted by year-to-date return. Runway = cash ÷ latest quarter's operating cash burn.</p>
+    </div>
+
+    <div class="section">
+      <h2>Upcoming Catalysts</h2>
+      <ul class="item-list">
+        <li><strong>ESMO Oral Presentation</strong> <span class="badge badge-green">KEY EVENT</span>
+          <div class="item-meta"><a href="../stocks/cmpx.html">CMPX</a> · October 2026</div></li>
+        <li><strong>TEBE-AM Phase 3 Topline Data</strong> <span class="badge badge-green">HIGH IMPACT</span>
+          <div class="item-meta"><a href="../stocks/imcr.html">IMCR</a> · End of 2026</div></li>
+        <li><strong>Phase 1/2 Data Presentations</strong> <span class="badge badge-yellow">MILESTONE</span>
+          <div class="item-meta"><a href="../stocks/imcr.html">IMCR</a> · 2H 2026</div></li>
+        <li><strong>IMC-U120AI CTA/IND Filing</strong> <span class="badge badge-yellow">MILESTONE</span>
+          <div class="item-meta"><a href="../stocks/imcr.html">IMCR</a> · 2H 2026</div></li>
+        <li><strong>Darovasertib NDA Completion</strong> <span class="badge badge-green">HIGH IMPACT</span>
+          <div class="item-meta"><a href="../stocks/idya.html">IDYA</a> · 2H 2026</div></li>
+        <li><strong>ECLIPSE 1 Topline</strong> <span class="badge badge-green">HIGH IMPACT</span>
+          <div class="item-meta"><a href="../stocks/vir.html">VIR</a> · Q4 2026</div></li>
+        <li><strong>Varseta-M Phase 1 CRC Update</strong> <span class="badge badge-green">HIGH IMPACT</span>
+          <div class="item-meta"><a href="../stocks/ctmx.html">CTMX</a> · By end of 2026</div></li>
+        <li><strong>Chemo Combination Study Start</strong> <span class="badge badge-yellow">MILESTONE</span>
+          <div class="item-meta"><a href="../stocks/ctmx.html">CTMX</a> · Q4 2026</div></li>
+        <li><strong>CTX-8371 & CTX-10726 Data</strong> <span class="badge badge-yellow">MILESTONE</span>
+          <div class="item-meta"><a href="../stocks/cmpx.html">CMPX</a> · Q4 2026</div></li>
+        <li><strong>ECLIPSE 2 & 3 Topline</strong> <span class="badge badge-green">HIGH IMPACT</span>
+          <div class="item-meta"><a href="../stocks/vir.html">VIR</a> · Q1 2027</div></li>
+        <li><strong>Registrational Study Start</strong> <span class="badge badge-green">KEY EVENT</span>
+          <div class="item-meta"><a href="../stocks/ctmx.html">CTMX</a> · 1H 2027</div></li>
+        <li><strong>CX-801 Combination Data</strong> <span class="badge badge-yellow">MILESTONE</span>
+          <div class="item-meta"><a href="../stocks/ctmx.html">CTMX</a> · 1H 2027</div></li>
+        <li><strong>JANX007 Phase 1b Updates</strong> <span class="badge badge-green">HIGH IMPACT</span>
+          <div class="item-meta"><a href="../stocks/janx.html">JANX</a> · 2026–2027</div></li>
+        <li><strong>JANX014 Phase 1 Progress</strong> <span class="badge badge-yellow">MILESTONE</span>
+          <div class="item-meta"><a href="../stocks/janx.html">JANX</a> · 2026–2027</div></li>
+        <li><strong>JANX011 Healthy Volunteer Data</strong> <span class="badge badge-yellow">MILESTONE</span>
+          <div class="item-meta"><a href="../stocks/janx.html">JANX</a> · 2026–2027</div></li>
+        <li><strong>FDA Approval Decision</strong> <span class="badge badge-green">KEY EVENT</span>
+          <div class="item-meta"><a href="../stocks/idya.html">IDYA</a> · 2027 (est.)</div></li>
+        <li><strong>Further FDA Engagement / BLA Decision</strong> <span class="badge badge-green">HIGH IMPACT</span>
+          <div class="item-meta"><a href="../stocks/cmpx.html">CMPX</a> · 2H 2026 – 2027</div></li>
+        <li><strong>Quarterly KIMMTRAK Sales</strong> <span class="badge badge-green">KEY EVENT</span>
+          <div class="item-meta"><a href="../stocks/imcr.html">IMCR</a> · Each quarter</div></li>
+        <li><strong>DLL3 ADC Registrational Trial</strong> <span class="badge badge-yellow">MILESTONE</span>
+          <div class="item-meta"><a href="../stocks/idya.html">IDYA</a> · Ongoing</div></li>
+        <li><strong>VIR-5500 Dose Expansion</strong> <span class="badge badge-yellow">MILESTONE</span>
+          <div class="item-meta"><a href="../stocks/vir.html">VIR</a> · Ongoing</div></li>
+      </ul>
+      <p class="note">From each company's profile; timing reflects company guidance as of the profile's review date.</p>
+    </div>
+
+    <div class="section">
+      <h2>Upcoming Earnings</h2>
+      <ul class="item-list">
+        <li><a href="../stocks/vir.html">VIR</a> Vir Biotechnology
+          <div class="item-meta">Nov 4, 2026 (estimated)</div></li>
+        <li><a href="../stocks/imcr.html">IMCR</a> Immunocore
+          <div class="item-meta">Nov 5, 2026 (estimated)</div></li>
+        <li><a href="../stocks/janx.html">JANX</a> Janux Therapeutics
+          <div class="item-meta">Nov 5, 2026 (estimated)</div></li>
+        <li><a href="../stocks/ctmx.html">CTMX</a> CytomX Therapeutics
+          <div class="item-meta">Nov 5, 2026 (estimated)</div></li>
+        <li><a href="../stocks/cmpx.html">CMPX</a> Compass Therapeutics
+          <div class="item-meta">Nov 5, 2026 (estimated)</div></li>
+        <li><a href="../stocks/idya.html">IDYA</a> IDEAYA Biosciences
+          <div class="item-meta">Nov 9, 2026 (estimated)</div></li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Latest News</h2>
+      <ul class="item-list">
+        <li><a href="https://news.google.com/rss/articles/CBMi5gFBVV95cUxOd1lRSVRNcW0wS1ZzZWJJRHJSNnZmM0hSM1J6Q3p0X1JGUmJ4UGFQLVMyNER5NE0xd01lXy04M0UwdHJFaXg4N0lEUHlCeWlZTkhndmh1OEE0RWhManV6eF9XZFhWY29GN084dmFmS25BLTNQdlJPVVVFUlc2eTJaaGxWRWVnLVJ6TTcwTjg3V25uNXUxOVhseFlZRjlJWXNnNmtTR2xYQjVDRS12d18zdzJVS194Y0xLUnEwZUh0UFNBenBueElqTU5GUkdfOW84Qk1JRVNnc0w3MnY1ajZ6cXRkN25ZZ9IB6wFBVV95cUxQRnNnZEhDd1kxMzZDOUZFVDY2ZlRPaVlfZGZUM093WGQwa0FsWjY2U3htaFdnNjduTHZOazMyTXJDdTQ4M2hBSUhoQlJGOENDeW03ekVVbTY1OHpBTHVPQWpFYmZwekVmdE1VdHpOM3JMMUozWERNdzVMZTNtMVJOSDhSS3ZXU2c4ZUU5OHFuNGhOLWtVTjg4V2RqS2l3eTNLZzNjaGZLc014MWlzSmVmTHdnV1RMTFFHZWlMVXFpU2pJR0ozMkxzVVVGempVOHptVHJZSWZFUW9wM3BrN1E3R21IaTJIZWxwOEN3?oc=5" target="_blank" rel="noopener">What Janux Therapeutics Stock First Patient Dosed Means For Shareholders - simplywall.st</a>
+          <div class="item-meta">JANX · simplywall.st · Sep 23, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMitAFBVV95cUxNVHhkN1V1SE10cDVoaGFuc1lkNG9qWXN1WE9jbzUwb0dwYkVJdUhqclVZb0czV0w0T0tCVGlFaFo1TFk5TjZJUTB2UzVjSWJfV19oeVZkWG5MMkhJcDZ5b0xIZGl2ZFc1NFM0M1AyNHdSNTI2aS1kN2cteWwxNW9pR3JKVUw4V3BJZTdsX2FqZzNsVjJRVFdGZzRBMVNHaXZ1YUVGTVprcWpDTmRKRmpxNi12aWE?oc=5" target="_blank" rel="noopener">Compass Therapeutics Shares Drop After Downgrade From Wedbush - marketscreener.com</a>
+          <div class="item-meta">CMPX · marketscreener.com · Sep 23, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMiiwFBVV95cUxOMURleTh5MlhQUDBjeUk0UUhXQ1pzZFdLMGJ1aEVzeXJoZC12SUE5aVFuaFJxbVQ1a2lFVDhYbVNqZWtHd05GeFpkTzY3WWwySGk4dGt6R0d1dXlZelN0T3Bjc25aUjFxZmszd3ZvR0F2Y0k0RnVYYUhlSUdvYlVCQ0d0MC1PUW9ZX0pj?oc=5" target="_blank" rel="noopener">Compass Therapeutics stock downgraded at Wedbush (CMPX:NASDAQ) - Seeking Alpha</a>
+          <div class="item-meta">CMPX · Seeking Alpha · Sep 23, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMirgFBVV95cUxQMG1yay1uMmk3bkg4TkRhcHUzSTF0dk92bzg2LTRnWExNR1FrTVVDdTdlZTUwVGM2ZlVEa2dxanBiUnAxV3VNMkJmWl81elJ0ZUNsMktNZ1VBN0FWTTdzeTdXNjd5SFQydUN6WWxTR2tHMmZ2VDhiZ1pncE1yT1h4MzVXT1A5THhHWEJLZUluRzNnSXF3SXl4UDFmcTlJbjJCN3lVR2w1SWlYY2x0T1E?oc=5" target="_blank" rel="noopener">Compass Therapeutics: A Promising, But Shrinking, Window Of Opportunity (NASDAQ:CMPX) - Seeking Alpha</a>
+          <div class="item-meta">CMPX · Seeking Alpha · Sep 23, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMijAJBVV95cUxNbXZ3S3N2dkJxZVlDT3Q1V1hacjcwQmFOc3pONHNrUWJQSUs2ZjhJU3g3SUVlU2t0NUozN0NldGFadGRuVW9lTVBWUktKeHhxZUV6SFhOSjRNOGNURVVWaFBURHdQQ2MyNTNHRXg2bW9samh1UzBwOTVxcE9SWTZIYVhFV2RCNERTT3BaNGt6NkdOWTVqa3NHRVhvXzZzQ0lpSzFMRlZTUDU4WV9nVFFjbEJxdTlMQTJLSWdaQWgwUF96YU5XRGJSMWJ5TnZrbF9BbGMyRFEybWduSlVSbkpEbUgxMHFsNEJGd2dKR2NOQi1XYnFUaVVLanhHVUZYVTlocHJkTTQzRWJmRkI2?oc=5" target="_blank" rel="noopener">Compass Therapeutics’ FDA Setback Raises Concerns On Wall Street — H.C. Wainwright Calls Tovecimig Filing Strategy ‘Risky’ - Stocktwits</a>
+          <div class="item-meta">CMPX · Stocktwits · Sep 23, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMiiAJBVV95cUxPQlR0aDEyb012UUw4aW55c0xWVlU3T05VQXVkcWxGMklEalloRE55TFVfakZla2tacTlPMjhEX0NEZUpPbklTUHU3SEdCLWZyTWxHY1dDYXFSMEJNTE8zWXdsaVB2MXlkM2h1ZmhGVFA4b1ByNGRTYUt1NUh1SlZ5S2N3VkdOQjZteXM3TF95Wml2aThxNDZiYWd6eDFIblg2R3JXV3AxNkhvbHBENThjc0owaVByZjlDSmNkakthVFhiX0ZndFBHdE1WOHk3WVllU0x0LUJPOGlHdzFsSVE3dnpWeS1ZN2NKVFdEMW1tTVZNM2s5M05Mcl9lRFMybHdPSG10ZDBmdWE?oc=5" target="_blank" rel="noopener">Compass Therapeutics’ FDA Setback Raises Concerns On Wall Street — H.C. Wainwright Calls Tovecimig Filing Strategy ‘Risky’ - tradingview.com</a>
+          <div class="item-meta">CMPX · tradingview.com · Sep 23, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMizAFBVV95cUxOdk52eXIxcUdLRVd2TTFmeWFFZWFURGtKTGUwQmpOUFE2OS1EdG43UHhldjNtbEFYQ3BabERmNUU3aDY1ZVpLWHVEdHh3VjhaanZMdmRQX1dpaTIzMUVZR2FlMENfV3RsSTR5emNXYjNjek5NLW5QQ2JDelBFU202M1pTMzY4R0h0YzBtVzl6NVZFQ28waE1fOVZ3NWNCeEY1RmRydW8xSGJSOXZKV29KUXF1TWFsZjFxMko3eTF0dlpvcHlIR01LVWNFRl8?oc=5" target="_blank" rel="noopener">Guggenheim maintains Buy rating on Compass Therapeutics, $4 price target - tradingview.com</a>
+          <div class="item-meta">CMPX · tradingview.com · Sep 23, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMiuwFBVV95cUxPQWc5TDVzUmE4VlVWdkY1Z0E3bE1lQXJPaW14S2pCZWtBdWhkT0tGRHc1ZVY5bHBUVGtDc3YzOHFsdVRha3dLR0hEb2NiaUhDb1FZVHlGRHNqbnY2VW1nVDNzMXBwQndFZ2pVRXgxUFpNeXhGM1FkeHdTVUlSYWR1eEVJdkU4N1ItWDNrRmkzSUpPeUQxU0ZLa1NBVUlTZEh4emNLamI0T01GRHFKaXptWWd6QWJySk8xR1lr?oc=5" target="_blank" rel="noopener">CytomX Therapeutics stock gains 6.52 percent on September 23 - AD HOC NEWS</a>
+          <div class="item-meta">CTMX · AD HOC NEWS · Sep 23, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMiuwFBVV95cUxNcm1vUW9Ub1NQTHpoRkNtWGJCWVRQdTJ0bUpoYWhtbEM3SHVGVEEzb1k2cWNPdDBDbTFGZThFOGJaQ2d1bjh5T2p5VktSUTBwRnZMZE9Jd0tJQ1p1NGszSURUTGx6bkVKcHMxd2c4c3g1OWNJaC1HVm9zUTQ4Z1c0eW5WNXMtcmdqVFdvd1pqQ0VYeWhOODB4THlKNGl6c3k3d21RTXlyYVYzbHdfRGh0OXZEbjJyZ2laV1Vr?oc=5" target="_blank" rel="noopener">Immunocore stock holds at USD 32.18 as earnings remain mixed - AD HOC NEWS</a>
+          <div class="item-meta">IMCR · AD HOC NEWS · Sep 23, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMivAFBVV95cUxORHpmMFdqNWtSN0tlcFhPbXJ3M0E1dWRMa3hXZ1dOOWh4QzZmN3hsVlNTbi0wWUtYLTROZ2c4cWZOVWlMaWJQeXZoZ3pGZ1A4QlByZW0tYlhmWXJoM1ZkaDZIcGFEY1c5a1BGSzBVLUtsMFJISGlaU3JaM0o5bDBfWlF1SkZrTl9RaHR2ZnVlZFRxODllaFlfN1ctVFZPZXZGVEViLURiVk5rZ05OczVpT0ZfeXlqczNFMmJaYQ?oc=5" target="_blank" rel="noopener">Cantor Fitzgerald reiterates Ideaya Biosciences stock rating - Investing.com</a>
+          <div class="item-meta">IDYA · Investing.com · Sep 22, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMi6AFBVV95cUxORERtVUVYWDRMTjM3OXZONlJFZVdOYjNhb3M1eTM4dm5WVUFhQmhTOGZfc0xiMTZEaFlTWTBWM2VxTFRFVy00UkY3ZDYwVHMyZ2k5SjlaX0d1cVJrTS1CWFBGU1labGJqT0JuVXozb0psWS1NbkxyS2sxYjBScWdzUUp6NTBqS1JTeTV6R2c1T0RkZWNoeUVpSXRQdnFOTmtqT3VJd3NWUV8ycjJYLU5LZlNuQk5jNEJ0dkZjZnRydnpSZmFXNDA2a1AzaHotSy1mOXVEcU50bWEzZHpRaWQ0TmRRTkJweWd30gHuAUFVX3lxTE1nclF2bmg4YXBObjdlcjBnWnRqZHhoajNZUzBYSDN1cDdidHVjNlltNUE5TVYxTk81TENJZlVQeGVSN05jMzVyaVhkaWxqTGhJM2ZHNmFrWFVNUG5sV3pDX0hDUW9teENGb2JWV0lrR1IwUVBnbFZOcG84WkpuZVBab1BWY1ZmeUJQbGo0MWMxTDBMcTEwSkpxTVcxdG9scXlsa1lKWWJMTEZQUm9FOWc0dEdjOVl0em9fdFZGU0JpeTZwcEdPaEUxTGlQZFV6dGNjRURNdjZDSnRVejBSSTZndDlra19Rb3NrTzZxcVE?oc=5" target="_blank" rel="noopener">Is Full Trial Enrollment Altering The Investment Case For Immunocore Stock (IMCR)? - simplywall.st</a>
+          <div class="item-meta">IMCR · simplywall.st · Sep 21, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMi0wFBVV95cUxNaHRxYnl2cHl2VDU2SS0wVHVybWZYcVBtQlR0VklYUGdnZ283RXF2YmQ4dlJFbzlBM0lxenFUYnJPeGJGc2pMdzBIeEhlZHVWbnRyQVdlMXdCVlcwX250LUhiWEhJWmJsclJGTjhmZkl4OW9vNFJyRy12OVZrZFEtemQ4aUNvLTBtUjY2S1lMSlpMeGFoTVY2XzVTZFQxbWcwN2h4RzFNUXRJcnAwd0laeENSbThLbFdlSWZpUENyQWtxRkktUFJoREg4am1JLXBXbVZv?oc=5" target="_blank" rel="noopener">Immunovant Stock Gains 12.4% in a Month: What's Driving It? - easternprogress.com</a>
+          <div class="item-meta">IMCR · easternprogress.com · Sep 21, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMixgFBVV95cUxNMFFWdG9LamdUbXNvZlZxd3pnMTdrM1VNeUVoV1FFazRfaVJYLXRNcUt3M1NvbFVhSi1YeHFtTTBmSTR4UXNoMDhvZm5YWUQ0bjY0bGU4bFdJYzdrM3c3SkRMVXdVd3Jqa3BLMkZpXzhVVUNRem5pb2l2UEplRGQtRUJSbUpzVkF2TG51d05yVm0zTG1IQzVNbS12Z3JpRzBZdnhjalp5c2NuRGlWNDFfdWxuQlFoZEFjZFFiZ29GNndJU1VRcXc?oc=5" target="_blank" rel="noopener">Immunocore stock holds steady as investors eye recent revenue growth - AD HOC NEWS</a>
+          <div class="item-meta">IMCR · AD HOC NEWS · Sep 20, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMi5wFBVV95cUxNTm1aUWlPWFBraUVYNWxfX3dCeU5hZHJCZ2xCanNDUWFqMWpVOUVHUC1aT2RoVW9pZXNubWJlekNOS0VCSk9FaDEtbkotc2lweC1SeTZuZjFGTWlzN1BEUkJYU2ctRDREbVREaEhjUWtPaXdDa2d1M3ljMU5rWXdRUXU2ZU9lamNzT3h2cGk3c1M3LW91MGd4dWx3Vi1LSnRqT3AzRFFwNjZ0MHQ0YmJfOWltbllMOVFpMVFNY1FLUXczX19uZzBrNlVrVTBaM2dYS0FVRERfZDBKX1ByRXBjSWhaTlNoVEXSAewBQVVfeXFMUDhnaDQwVnBXSGVRRklEcC1IbDdQNnhMcVRqSHhMVHEwTXlCdUV1eDBUR2xid2p6SldicldSUFVpV0hudDBKNFlKSkhYeWtXdlRoWF9YSVFoOThvSnNMdGI4Q25wWno2a1BKTUhGc1lnc3lLLWhCNEFudFZZRWp4WEJrdm9QMWR6MHFBbEdNdVUwVS1KbzZBZkhMU3habGllUlRsazI5STk0bGF4SWVNMDZmUy1WVFMwaTJXd1RBMEFYTGJXbU5lMVJOcG1mTy15QkZORk9YekRtQU9nTnQ1eU1RdmszT0oyVHViNmc?oc=5" target="_blank" rel="noopener">Does First Phase 3 Dosing Change The Bull Case For IDEAYA Biosciences Stock (IDYA)? - simplywall.st</a>
+          <div class="item-meta">IDYA · simplywall.st · Sep 19, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMivAFBVV95cUxNaVBnckpEdUE1WWxCS1E3SkJ3bG5faDJOcVBGdnBiYXNDRkZjekVtNWNEeE1URHZnbVI4YTlFUmprNG5DYldPR0lycV9BT0UxWGFVdnRHU1l0c0pldW1XRDZEa0I0VVF0SVp5ZUotZVFZSkwyMXZTY0M5TlNqZ2RESzBlOUNOYTIzUEtzYlRORkRKMFVON2dpZUVRTUl2eXJFSlNNdHV1SGJ3WFNWa3NadVA4N0xxTHBsVzRqdw?oc=5" target="_blank" rel="noopener">Janux Therapeutics: It's Too Early To Tell If Prostate Cancer Program Can Succeed (JANX) - Seeking Alpha</a>
+          <div class="item-meta">JANX · Seeking Alpha · Sep 18, 2026</div></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <footer class="disclaimer">
+    For informational purposes only — not investment advice. Prices, returns and financials come from Yahoo Finance and company filings and may be delayed, incomplete or inaccurate. Company profiles are editorial summaries and may not reflect the latest developments. Do your own research and consult a licensed financial advisor before making investment decisions.
+  </footer>
+
+</body>
+
+</html>

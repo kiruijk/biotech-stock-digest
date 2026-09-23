@@ -4,9 +4,15 @@
   "description": "Daily biotech stock price and news updates",
   "main": "update-stocks.js",
   "scripts": {
-    "update": "node update-stocks.js"
+    "update": "node update-stocks.js",
+    "review": "node review-queue.js"
   },
-  "keywords": ["biotech", "stocks", "vktx", "iova"],
+  "keywords": [
+    "biotech",
+    "stocks",
+    "vktx",
+    "iova"
+  ],
   "author": "James",
   "license": "MIT",
   "dependencies": {

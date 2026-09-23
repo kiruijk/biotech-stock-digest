@@ -9,7 +9,7 @@
     "change": 0.8,
     "changePercent": 1.96,
     "marketCap": 4858594816,
-    "updatedAt": "2026-09-23T20:00:26.446Z",
+    "updatedAt": "2026-09-23T20:08:25.026Z",
     "cashPosition": 501663000,
     "cashAsOf": "2026-06-30",
     "monthlyBurn": 41724000,
@@ -23,6 +23,7 @@
     "threeYear": 223.37,
     "fiveYear": 536.85,
     "tenYear": 3128.68,
+    "sinceReviewed": 0,
     "company": {
       "summary": "Viking Therapeutics, Inc., a clinical-stage biopharmaceutical company, focuses on the development of novel therapies for metabolic and endocrine disorders. Its lead drug candidate is VK2809, an orally available tissue and receptor-subtype selective agonist of the thyroid hormone receptor beta (TRß), which is in Phase IIb clinical trials to treat patients with biopsy-confirmed non-alcoholic steatohepatitis, as well as NAFLD. The company develops VK5211, an orally available non-steroidal selective androgen receptor modulator that is in Phase II clinical trials for the treatment of patients recovering from non-elective hip fracture surgery; VK0612, which is in Phase II clinical trials for metabolic disorders and anemia; VK2735, a novel dual agonist of the glucagon-like peptide 1, which is in Phase 1 SAD/MAD clinical trial, and VK0214, an orally available tissue and receptor-subtype selective agonist of the TRß for X-linked adrenoleukodystrophy. The company was incorporated in 2012 and is headquartered in San Diego, California.",
       "city": "San Diego",
@@ -215,6 +216,10 @@
         "value": 561694
       }
     ],
+    "nextEarnings": {
+      "date": "2026-10-28",
+      "estimated": true
+    },
     "news": [
       {
         "title": "Viking's Obesity Edge May Be Staying Power, Not Weight Loss - MarketBeat",
@@ -224,11 +229,25 @@
         "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxPOXBEQk5yd3ZkWWhjbnF3QzBCdW90R1doTlU3RVF3bGhmMnQ3ZS1PalhqNm1FZm5HV3dtZmpHTVZpOV80bEdOQnhjakJrM1F2Y1hJVklzNlB0VXdFRXprT0dRYlVCa09ucWZydGg5cmJGMEF3Z29JYnNhaklIYVd5aHJQbU5zMnF2ZDZfVlRzeXhDWE54aVlQbWhB?oc=5"
       },
       {
+        "title": "Viking Therapeutics: 'Strong Buy' On Injectable VK2735 Maintenance Data And Treatment Optionality - Seeking Alpha",
+        "source": "Seeking Alpha",
+        "date": "2026-09-23T17:09:54.000Z",
+        "summary": "Latest news about Viking Therapeutics.",
+        "url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxON2xOeDdEYmpVd19zNGc5TkZIMGd5RDhVZ1hJOFlJRnpjOC03ZzV4YVBnTXotd3hQWHFWUl85aWJWX0Z6RmRmVVNtOEhQd3E1Mzg0ZHZYVVRia1R2SHRhdFQ2WnNFNWhhUVlTN0t6aUdVRW1wV3kxMlk4cUZHTHdrNnMxd2ZweUpsamlXLXZMeEx5dXh4WEhCLWxYQjc0cWFqT1RPMXZpWExKNWJfWWwtRDQ5N3N3d0xvRXJRdXZkdHRHX2tRSnBGNVQwUm96QWRi?oc=5"
+      },
+      {
         "title": "Two Biotechs Get Beaten Down: Jaguar Health Collapses 59%, Viking Therapeutics Sinks 4% - 24/7 Wall St.",
         "source": "24/7 Wall St.",
         "date": "2026-09-23T15:02:00.000Z",
         "summary": "Latest news about Viking Therapeutics.",
         "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxQamQ2Qi0tQVB0enp5dUhYcnRkd2NqSmZoVmZfMHZ6SmJJQVBkSDA0U0pDWjBtUlByNzZrMHZoY1pUQWJpOXNOTUxSc2l1QkVXUUQtTlJXZEF5NzIzOHBkNVAzalRTOWhzejBfdk1hbDVUMjdMNVRVcFVoSzJhOExNTTQ3dEJ1REhiTi1VTzFIVnk4ZndaUWg5aU5LR0hiNFFhaW9qT1pTUzMxaGFMRi1ZbzdQT1VjSmkySzFpcWVuNmt1aE0yM3c?oc=5"
+      },
+      {
+        "title": "Viking Therapeutics Stock Surges 36% Following Weight Loss Drug Study Results - Yahoo Finance",
+        "source": "Yahoo Finance",
+        "date": "2026-09-23T12:38:19.000Z",
+        "summary": "Latest news about Viking Therapeutics.",
+        "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPaGY4MmZObXVsaHZMNGIta3ZwemVPUkVMcHpCRVl4SlpVeWdkcTRGMjNvczlUazJTMHh3aDNQTm9fTVdLeGsxX19WcTVJUG9QdXM3ZUFDeE1hNkpHSEstaVhsTldNRkxKangxaUdCaWQ5SjhsVFFuU3RVLS0xY2JOcnBWbFNsS0pac2tNR2lhN3VLbEMtcUpPN1hvZGM?oc=5"
       },
       {
         "title": "Viking Therapeutics (VKTX) Reports VK2735 Trial Data, Is The Stock Fully Priced? - Yahoo Finance",
@@ -238,25 +257,11 @@
         "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxOVkxhSk5QN0MtUmVaVFViWlpNRW01MGJMcmdqdTFkYUxaVHNnVmNoemFkc3ZoZ0dpSzZTTWRsMWwxbDNZcER6RlNQREJuc1l2ME1wc3BwVnRjWGdjUDlHU3JjRUgzZ3BSaURqMkFWdERYdXhwcW14ZUtqQzZBcjJTWVkyeFRIdVFrcWJHbnhfdDhsdndfMTNKNktDa0RwUzQyTWc?oc=5"
       },
       {
-        "title": "Why Viking Therapeutics Stock Skyrocketed on Tuesday - The Motley Fool",
-        "source": "The Motley Fool",
-        "date": "2026-09-23T05:04:00.000Z",
-        "summary": "Latest news about Viking Therapeutics.",
-        "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPdkRQc0N0YnYtNGFyWDVrdmxpN2NPdWFDblUxMjNCcnl1THhrTkFqbXVBTHFhZzYxWnp0UjV6TWwzZEViMFJRY3JSU1AxYl83SDBUdzRibDBpOGw0VW5EeF9LVGFmS1YybkZDT09maVhUZTRvQ0w5dDV3YnhnWnlLMUJ3X3pPZjlzby1xbFVhY3phdDk3OGZR?oc=5"
-      },
-      {
         "title": "Jaguar Health, IONQ, Viking Therapeutics, Xanadu Quantum and Grab Holdings: Why These 5 Stocks Are on Inv - Benzinga",
         "source": "Benzinga",
         "date": "2026-09-23T01:18:05.000Z",
         "summary": "Latest news about Viking Therapeutics.",
         "url": "https://news.google.com/rss/articles/CBMiiAJBVV95cUxOZWw4N0R1X1ZkTFNKXzNOSFdEd3I4NFl2MzBIT1NOZ2daanJWdk14NndOSHRocHo4VEhDdGtncHRzR0xaX3dCS3NIbDkyYkdVU2ItRExSUXlVakZTZjlCTjduV1pzOW1rU3ZBV3ZDNVAtY0hqbmY5N2pESWtPRUxaeENvRTdvOG5XMlFBYl9pVGFMbnYzZmwxYnBCS3FCZ0ZnQ1RhVGdSZHI0bTQ3R0trLV90ZzNHelhTMWxFMHYyOHdhc2tCRjdMUV95MVB1X3ZCWURhVUZTSmtIQVRpb1NBanB0V29FS3lKUC1rTUhKWUpIZkU4SFZfT0VXMG5yZG5IMUlXRG5lck0?oc=5"
-      },
-      {
-        "title": "Sandisk, Lennar, Viking Therapeutics, Shopify, GameStop, and More Stocks That Explain Today’s Market - Barron's",
-        "source": "Barron's",
-        "date": "2026-09-22T20:34:00.000Z",
-        "summary": "Latest news about Viking Therapeutics.",
-        "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9Cblh5VTY3T1cxMkFueE1LU3RZNHQyOWVyd0dNdW5mSW5UaVprVFM4ZVNBSVpJclRSTWY1cDRvLVB3aVdzRWJRNDltX3MzZER3a0lqc09EX19fSDBmX1p0RnhHTDQ?oc=5"
       }
     ]
   },
@@ -271,7 +276,7 @@
     "change": -0.45,
     "changePercent": -4.23,
     "marketCap": 4615778816,
-    "updatedAt": "2026-09-23T20:00:27.655Z",
+    "updatedAt": "2026-09-23T20:08:26.206Z",
     "cashPosition": 304000000,
     "cashAsOf": "2026-06-30",
     "monthlyBurn": 20280333.333333332,
@@ -285,6 +290,7 @@
     "threeYear": 109.24,
     "fiveYear": -60.2,
     "tenYear": 27.53,
+    "sinceReviewed": 0,
     "company": {
       "summary": "Iovance Biotherapeutics, Inc., a commercial-stage biopharmaceutical company, develops and commercializes cell therapies using autologous tumor infiltrating lymphocyte for the treatment of metastatic melanoma and other solid tumor cancers in the United States and internationally. The company offers Amtagvi, an individualized T cell therapy for solid tumor cancer and for the treatment of adult patients with previously treated advanced, or unresectable or metastatic melanomal; and Proleukin, an interleukin-2 product for the treatment of patients with metastatic melanoma and metastatic renal cell carcinoma. It also develops lifileucel for the treatment of melanoma, cervical cancer, non-small cell lung cancer (NSCLC), endometrial cancer, and head and neck squamous cell carcinoma (HNSCC); LN-145-S1 to treat melanoma and HNSCC; LN-145 Gen 3 and core biopsy for the treatment of NSCLC; LN-145 Gen 3 to treat melanoma and HNSCC; IOV-2001 to treat chronic lymphocytic leukemia and small lymphocytic lymphoma; IOV-4001 for the treatment of melanoma and NSCLC; and IOV-3001 for use in the TIL therapy treatment regimen. The company has collaborations and licensing agreements with National Institutes of Health; the National Cancer Institute; Cellectis S.A.; Novartis Pharma AG; and Boehringer Ingelheim Biopharmaceuticals GmbH. The company was formerly known as Lion Biotechnologies, Inc. and changed its name to Iovance Biotherapeutics, Inc. in June 2017. Iovance Biotherapeutics, Inc. was incorporated in 2007 and is headquartered in San Carlos, California.",
       "city": "San Carlos",
@@ -357,6 +363,10 @@
         "value": 372500
       }
     ],
+    "nextEarnings": {
+      "date": "2026-11-05",
+      "estimated": false
+    },
     "news": [
       {
         "title": "Iovance Biotherapeutics, Inc. (IOVA) Options Chain - Yahoo Finance - Yahoo! Finance Canada",
@@ -413,7 +423,7 @@
     "change": -0.51,
     "changePercent": -3.79,
     "marketCap": 1221086464,
-    "updatedAt": "2026-09-23T20:00:28.670Z",
+    "updatedAt": "2026-09-23T20:08:27.625Z",
     "cashPosition": 195328000,
     "cashAsOf": "2026-06-30",
     "monthlyBurn": 25242666.666666668,
@@ -427,6 +437,7 @@
     "threeYear": -22.77,
     "fiveYear": -61.51,
     "tenYear": null,
+    "sinceReviewed": 0,
     "company": {
       "summary": "Replimune Group, Inc., a clinical-stage biotechnology company, focuses on the development and commercialization of oncolytic immunotherapies to treat cancer in the United States and the United Kingdom. The company's proprietary oncolytic immunotherapy product candidates are designed and intended to activate the immune system against cancer. Its lead product candidate is RP1, a selectively replicating version of HSV-1 that expresses GALV-GP R(-) and human GM-CSF for a range of solid tumors. The company is also developing RP2 that expresses an anti-CTLA-4 antibody-like protein to block the inhibition of the immune response otherwise caused by CTLA-4. The company was founded in 2015 and is headquartered in Woburn, Massachusetts.",
       "city": "Woburn",
@@ -619,6 +630,10 @@
         "value": null
       }
     ],
+    "nextEarnings": {
+      "date": "2026-11-05",
+      "estimated": true
+    },
     "news": [
       {
         "title": "Replimune stock gains as share authorization doubles - AD HOC NEWS",
@@ -674,7 +689,7 @@
     "change": 0.34,
     "changePercent": 2.66,
     "marketCap": 1702221568,
-    "updatedAt": "2026-09-23T20:00:29.631Z",
+    "updatedAt": "2026-09-23T20:08:28.761Z",
     "cashPosition": 1171817000,
     "cashAsOf": "2026-06-30",
     "monthlyBurn": 25842333.333333332,
@@ -688,6 +703,7 @@
     "threeYear": null,
     "fiveYear": null,
     "tenYear": null,
+    "sinceReviewed": 0,
     "company": {
       "summary": "Kailera Therapeutics, Inc. operates as a clinical-stage biopharmaceutical company developing therapies for obesity and related conditions. The company develops clinical- and preclinical-stage therapies, with a product pipeline that includes injectable peptides, oral peptides, and oral small molecules. Key programs include KAI-9531, an injectable GLP-1/GIP receptor dual agonist; KAI-7535, an oral small molecule GLP-1 receptor agonist; and KAI-4729, an injectable GLP-1/GIP/glucagon receptor tri-agonist. Kailera Therapeutics holds exclusive rights for global development and commercialization of four metabolic disease assets outside of Greater China, with therapies delivered through oral and injectable formulations. The company was founded in 2024 and is based in Waltham, Massachusetts.",
       "city": "Waltham",
@@ -768,6 +784,10 @@
         "value": 218359388
       }
     ],
+    "nextEarnings": {
+      "date": "2026-10-29",
+      "estimated": true
+    },
     "news": [
       {
         "title": "Kailera at bernstein healthcare forum: betting on obesity differentiation By Investing.com - Investing.com Nigeria",
@@ -823,7 +843,7 @@
     "change": -0.36,
     "changePercent": -2.84,
     "marketCap": 1727762048,
-    "updatedAt": "2026-09-23T20:00:30.737Z",
+    "updatedAt": "2026-09-23T20:08:31.430Z",
     "cashPosition": 628354000,
     "cashAsOf": "2026-06-30",
     "monthlyBurn": 27704333.333333332,
@@ -837,6 +857,7 @@
     "threeYear": -61.93,
     "fiveYear": -92.06,
     "tenYear": -28.73,
+    "sinceReviewed": 0,
     "company": {
       "summary": "Intellia Therapeutics, Inc. operates as a clinical-stage genome editing company focused on developing potentially curative therapeutics using CRISPR/Cas9-based technologies. The company offers clustered, regularly interspaced short palindromic repeats (CRISPR)/CRISPR associated 9 (Cas9) technology for genome editing. The company provides a modular platform, to advance in vivo and ex vivo therapies for diseases. The company's in vivo product candidates include nexiguran ziclumeran, or NTLA-2001 for the treatment of transthyretin amyloidosis; and NTLA-2002 for the treatment of hereditary angioedema. Additionally, it offers product candidates for the treatment of immuno-oncology and autoimmune diseases, and multiple in vivo programs to address diseases with significant unmet medical need by delivering gene editing therapeutics to organs outside the liver. The company has license and collaboration agreement with AvenCell Therapeutics, Inc. to develop allogeneic universal CAR-T cell therapies; Kyverna Therapeutics, Inc. for the development of an allogeneic CD19 CAR-T cell therapy for the treatment of various of B cell-mediated autoimmune diseases; ONK Therapeutics, Ltd. for the development of engineered NK cell therapies to cure patients with cancer; and ReCode Therapeutics, Inc. to develop novel genomic medicines for the treatment of cystic fibrosis. It also has collaboration agreements with Regeneron Pharmaceuticals, Inc., SparingVision SAS, and Rewrite Therapeutics Inc. The company was formerly known as AZRN, Inc. and changed its name to Intellia Therapeutics, Inc. in July 2014. Intellia Therapeutics, Inc. was incorporated in 2014 and is headquartered in Cambridge, Massachusetts.",
       "city": "Cambridge",
@@ -1029,6 +1050,10 @@
         "value": null
       }
     ],
+    "nextEarnings": {
+      "date": "2026-11-05",
+      "estimated": true
+    },
     "news": [
       {
         "title": "Why Is NTLA Stock Jumping 5% Premarket Today? - Stocktwits",
@@ -1085,7 +1110,7 @@
     "change": -4.38,
     "changePercent": -5.63,
     "marketCap": 6502658048,
-    "updatedAt": "2026-09-23T20:00:31.838Z",
+    "updatedAt": "2026-09-23T20:08:32.676Z",
     "cashPosition": 1028278000,
     "cashAsOf": "2026-06-30",
     "monthlyBurn": 15471333.333333334,
@@ -1099,6 +1124,7 @@
     "threeYear": null,
     "fiveYear": null,
     "tenYear": null,
+    "sinceReviewed": 0,
     "company": {
       "summary": "CG Oncology, Inc., a late-stage clinical biopharmaceutical company, develops and commercializes cretostimogene grenadenorepvec for patients with bladder cancer in the United States. The company's product candidate is cretostimogene, an investigational oncolytic immunotherapy, which is in phase 2 clinical trials of cretostimogene in patients with high-risk NMIBC after BCG failure; a phase 3 clinical trials to evaluate the safety and efficacy of cretostimogene as monotherapy in the treatment of patients who have received adequate BCG therapy with high-risk BCG-unresponsive, CIS-containing NMIBC and BCG-unresponsive Ta, or T1 papillary tumors; phase 3 BOND-003 Cohort C trials as a single agent; phase 3 BOND-003 Cohort P as a single agent in patients with BCG-UR papillary-only NMIBC. It also develops cretostimogene monotherapy for intermediate-risk NMIBC following TURBT, which is in phase 3 PIVOT-006 clinical trials to assess the safety and efficacy of adjuvant cretostimogene; and cretostimogene monotherapy for high-risk NMIBC in phase 2 CORE-008 clinical trials to assess the safety and clinical outcomes of cretostimogene in treating patients with high-risk NMIBC, including BCG-exposed and BCG-naïve NMIBC. The company was formerly known as Cold Genesys, Inc. and changed its name to CG Oncology, Inc. in June 2020. CG Oncology, Inc. was founded in 2010 and is headquartered in Dallas, Texas.",
       "city": "Dallas",
@@ -1291,6 +1317,10 @@
         "value": 18926
       }
     ],
+    "nextEarnings": {
+      "date": "2026-11-09",
+      "estimated": true
+    },
     "news": [
       {
         "title": "After $7.9M sale, CG Oncology (NASDAQ: CGON) officer plans more stock trades - Stock Titan",
@@ -1347,7 +1377,7 @@
     "change": -0.88,
     "changePercent": -2.71,
     "marketCap": 1624266368,
-    "updatedAt": "2026-09-23T20:00:32.913Z",
+    "updatedAt": "2026-09-23T20:08:34.021Z",
     "cashPosition": 880211000,
     "cashAsOf": "2026-06-30",
     "monthlyBurn": null,
@@ -1361,6 +1391,7 @@
     "threeYear": -39.39,
     "fiveYear": -11.92,
     "tenYear": null,
+    "sinceReviewed": 0,
     "company": {
       "summary": "Immunocore Holdings plc, together with its subsidiaries, engages in the development and commercialization of immunomodulating medicines for patients with cancer, infectious diseases, and autoimmune disease in the United States, Europe, and internationally. The company offers KIMMTRAK for the treatment of unresectable or metastatic uveal melanoma. It also develops oncology programs, including tebentafusp which is in Phase 3 clinical trial for the treatment of advanced cutaneous melanoma and adjuvant uveal melanoma; brenetafusp which is in Phase 3 clinical trial for the treatment of first-line advanced cutaneous melanoma and in Phase 1/2 clinical trial for the treatment of various tumor types; IMC-R117C which is in Phase 1/2 clinical trial for the treatment of advanced solid tumors, such as colorectal cancer; and IMC-P115C which is in Phase 1 clinical trial for patients with tumors that express PRAME. In addition, the company is involved in the development of IMC-M113V which is in Phase 1 clinical trial for a potential functional cure of human immunodeficiency virus; and IMC-I109V which is in Phase 1 clinical trial for a potential functional cure of hepatitis B virus. Further, it develops IMC-S118AI which is in pre-investigation stage for the treatment of type 1 diabetes; and IMC-U120AI which is in pre-investigation stage for the treatment of atopic dermatitis. The company was founded in 1999 and is headquartered in Abingdon, the United Kingdom.",
       "city": "Abingdon",
@@ -1497,6 +1528,10 @@
         "value": 23993224
       }
     ],
+    "nextEarnings": {
+      "date": "2026-11-05",
+      "estimated": true
+    },
     "news": [
       {
         "title": "Immunocore stock holds at USD 32.18 as earnings remain mixed - AD HOC NEWS",
@@ -1552,7 +1587,7 @@
     "change": -0.96,
     "changePercent": -2.6,
     "marketCap": 2563589376,
-    "updatedAt": "2026-09-23T20:00:34.026Z",
+    "updatedAt": "2026-09-23T20:08:35.166Z",
     "cashPosition": 1342658000,
     "cashAsOf": "2026-06-30",
     "monthlyBurn": 40038333.333333336,
@@ -1566,6 +1601,7 @@
     "threeYear": 5.74,
     "fiveYear": null,
     "tenYear": null,
+    "sinceReviewed": 0,
     "company": {
       "summary": "Structure Therapeutics Inc., a clinical stage global biopharmaceutical company, develops and delivers novel oral small molecule therapeutics to treat various chronic diseases with unmet medical needs in the United States. Its lead product candidate is GSBR-1290, an oral and biased small molecule agonist of glucagon-like-peptide-1 receptor, which is in two phase 2 clinical trials for the treatment of obesity, overweight, and related conditions. The company also develops ACCG-2671 and ACCG-3535, an oral small molecule amylin receptor agonist that is in phase1 clinical trial for the treatment of obesity; ANPA-0073, an oral small molecule APJ receptor agonist; and LTSE-2578, an antagonist that targets lysophosphatidic acid 1 receptor, a G-protein coupled receptors implicated in responses to tissue injury and pro-fibrotic processes, for the treatment of idiopathic pulmonary fibrosis. In addition, it develops programs, including glucose-dependent insulinotropic polypeptide receptor (GIPR) program, which identified multiple GIPR agonist, dual GLP-1R/GIPR agonist, and GIPR antagonist hits for small molecule GIPR modulation that has the potential to provide a treatment in obesity; and GCG program, which identified multiple GCG receptor (GCGR) agonist and dual GLP-1R/GCGR agonist hits for small molecule GCGR modulation. The company was formerly known as ShouTi Inc. Structure Therapeutics Inc. was incorporated in 2016 and is headquartered in South San Francisco, California.",
       "city": "South San Francisco",
@@ -1758,6 +1794,10 @@
         "value": null
       }
     ],
+    "nextEarnings": {
+      "date": "2026-11-05",
+      "estimated": true
+    },
     "news": [
       {
         "title": "Form 4 Structure Therapeutics Inc ADR For: 22 September By Investing.com - Investing.com Canada",
@@ -1813,7 +1853,7 @@
     "change": -0.22,
     "changePercent": -6.45,
     "marketCap": 620511488,
-    "updatedAt": "2026-09-23T20:00:35.427Z",
+    "updatedAt": "2026-09-23T20:08:36.490Z",
     "cashPosition": 518528000,
     "cashAsOf": "2026-06-30",
     "monthlyBurn": 8073666.666666667,
@@ -1827,6 +1867,7 @@
     "threeYear": 22.22,
     "fiveYear": -79.34,
     "tenYear": null,
+    "sinceReviewed": 0,
     "company": {
       "summary": "Altimmune, Inc., a late clinical stage biopharmaceutical company, focuses on developing novel therapies for serious liver diseases. Its lead product candidate is pemvidutide, a GLP-1/glucagon dual receptor agonist, which is in Phase 3 clinical trial for the treatment of metabolic dysfunction-associated steatohepatitis, alcohol use disorder, and alcohol-associated liver disease. The company was founded in 1997 and is headquartered in Gaithersburg, Maryland.",
       "city": "Gaithersburg",
@@ -2019,6 +2060,10 @@
         "value": 5784
       }
     ],
+    "nextEarnings": {
+      "date": "2026-11-05",
+      "estimated": true
+    },
     "news": [
       {
         "title": "Altimmune Inc. (ALT) Edges Higher to $3.27 as Shares Hold Mid-Range - ETF Outflow Streak - siam.in",
@@ -2075,7 +2120,7 @@
     "change": -0.4,
     "changePercent": -9.2,
     "marketCap": 778340288,
-    "updatedAt": "2026-09-23T20:00:36.477Z",
+    "updatedAt": "2026-09-23T20:08:37.895Z",
     "cashPosition": 490602000,
     "cashAsOf": "2026-06-30",
     "monthlyBurn": 17860666.666666668,
@@ -2089,6 +2134,7 @@
     "threeYear": -27.39,
     "fiveYear": -35.03,
     "tenYear": -88.49,
+    "sinceReviewed": 0,
     "company": {
       "summary": "Wave Life Sciences, Inc., a clinical-stage biotechnology company, focuses on unlocking the potential of ribonucleic acid (RNA) medicines to transform human health. Its RNA medicines platform, PRISM, combines RNA medicine modalities, chemistry innovation, and deep insights in human genetics to deliver scientific breakthroughs that treat rare and common disorders. Its pipeline focuses on obesity (WVE-007), alpha-1 antitrypsin deficiency (AATD) (WVE-006), and PNPLA3 I148M liver disease (WVE-008) programs; and clinical programs for Duchenne muscular dystrophy and Huntington's disease, as well as various preclinical programs utilizing its RNA medicines platform. Wave Life Sciences, Inc. was founded in 2012 and is headquartered in Cambridge, Massachusetts.",
       "city": "Cambridge",
@@ -2281,6 +2327,10 @@
         "value": 83580
       }
     ],
+    "nextEarnings": {
+      "date": "2026-11-09",
+      "estimated": false
+    },
     "news": [
       {
         "title": "This Autoliv Analyst Is No Longer Bullish; Here Are Top 5 Downgrades For Wednesday - Benzinga",
@@ -2288,6 +2338,13 @@
         "date": "2026-09-23T13:09:41.000Z",
         "summary": "Latest news about Wave Life Sciences.",
         "url": "https://news.google.com/rss/articles/CBMi6gFBVV95cUxNNFNDYkwtWl96N3VNZV9xaVhVY0xfUmh1NWgzakRpR3BzZE5XU2lIcGdIVTc3OEF0S0RlY2RnaU5udVE0YUtBUTZGLUI5Wnk0eTJJMGQ1VFNXZWR4WVhKZnFuRGc3U2J1bTA0aFZnMnYyM0FwMWhKVzJGSWRrd3NYVnRha2xZWXRHZVlVTWd3WG5XaVBUazJtRXRYMEZKeFRRUlNiM1A2R01xM0ljMHMxVHY3NlE2bDFpM1N3LVRIdlkycGw3RmlyY1lFMllIM1R3YUpobXdVakVXeWVVclFocllMWU0yekpkckE?oc=5"
+      },
+      {
+        "title": "Wave Life Sciences starts Phase 2a obesity trial for WVE-007 By Investing.com - Investing.com South Africa",
+        "source": "Investing.com South Africa",
+        "date": "2026-09-23T11:48:20.000Z",
+        "summary": "Latest news about Wave Life Sciences.",
+        "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxNTWtybl81clFJTXB0WTFoMEQ3M1FGRHVfODRfclVmVldwd3hnQU9kUjI2RFRrU0NzTFhXTS1fdVNJajg4UmgxUTBtM0d3MjlfRF9FUWdxdVAxMjh2VmFwQ3FPTkdZbHEwcGlQVjV4RWJjSFVJcnQ4Wjc0YkFnUHg3bEd2aHBHcG5WY2I4NGJENG5YR3FYLWs4cERrRWU1czlqN0xWREJzWGNhSDZpb1hhaTlTdEZmQzRXQ0FRTw?oc=5"
       },
       {
         "title": "JPMorgan resumes Wave Life Sciences stock rating at Neutral - Investing.com",
@@ -2316,13 +2373,6 @@
         "date": "2026-08-15T03:29:23.000Z",
         "summary": "Latest news about Wave Life Sciences.",
         "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQVDNVQlpQRFU1UklMeTRsM3pielp3OEU2dnBQUW1DcnptemFVbV9wbnF2QW9PT2NiTzZzb1hlMFh6X3RENkpzYTJjRnU5MUk0THlpeG05YlNZcHpKNXZwWlNKZGdrTDJBWjdVdHdFLWFzTzJUNzVLaUVpOVh4d0Q5ZA?oc=5"
-      },
-      {
-        "title": "Wave Life Sciences: A $1 Billion RNA-Medicine Bargain Ripe for Pharma Takeover - 24/7 Wall St.",
-        "source": "24/7 Wall St.",
-        "date": "2026-08-13T07:00:00.000Z",
-        "summary": "Latest news about Wave Life Sciences.",
-        "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxObkZCVmRERHRiYTJXU3JZaUtHVTR0Z1N1LUNkTlNCZTl5TmZUWE4taldKWWZpeVRCdDAxUkFaTE5COHpJNkV5SmVncTFLUzhZcWpid1hJRGE5UUdONlpwVDJSWnpRVktBU1c4Nmx1QVFteHFIcXA3MjJneDM3bE9zRC1DT3VDSEhjUGFZT3BUSGpQMlZreG5HY2tmUlZTcFYzWlRTUldoN1EwOXZXWHYtLVNteThZdjZjWEdVOQ?oc=5"
       }
     ]
   },
@@ -2336,7 +2386,7 @@
     "change": -1.93,
     "changePercent": -4.78,
     "marketCap": 1794728704,
-    "updatedAt": "2026-09-23T20:00:37.507Z",
+    "updatedAt": "2026-09-23T20:08:39.214Z",
     "cashPosition": 516513000,
     "cashAsOf": "2026-06-30",
     "monthlyBurn": 7393000,
@@ -2350,6 +2400,7 @@
     "threeYear": null,
     "fiveYear": null,
     "tenYear": null,
+    "sinceReviewed": 0,
     "company": {
       "summary": "Septerna, Inc., a clinical-stage biotechnology company, discovers and develops G protein-coupled receptor (GPCR) oral small molecule products for the treatment of endocrinology, immunology and inflammation, and metabolic diseases. It develops PTH1R Program, oral small molecule Parathyroid Hormone 1 Receptor agonists for the treatment of hypoparathyroidism; SEP-631, an oral small molecule MRGPRX2 negative allosteric modulator (NAM) for chronic spontaneous urticaria and other mast cell diseases; and TSHR Program, an oral small molecule TSHR NAM for graves' disease and thyroid eye disease. In addition, it focuses on other therapeutic areas, including neurology, women's health, cardiovascular disease, and respiratory disease. It has global collaboration and license agreement with Novo Nordisk to discover, develop and commercialize multiple potential oral small molecule therapies for metabolic-related diseases based on certain specified molecular targets. The company was formerly known as GPCR NewCo, Inc. and changed its name to Septerna Inc. in June 2021. Septerna, Inc. was incorporated in 2019 and is headquartered in South San Francisco, California.",
       "city": "South San Francisco",
@@ -2542,6 +2593,10 @@
         "value": 171682
       }
     ],
+    "nextEarnings": {
+      "date": "2026-11-09",
+      "estimated": true
+    },
     "news": [
       {
         "title": "Septerna, Inc. (SEPN) Investor Outlook: Strong Buy Ratings Signal 37% Potential Upside - DirectorsTalk Interviews",
@@ -2597,7 +2652,7 @@
     "change": -0.08,
     "changePercent": -3.94,
     "marketCap": 519016960,
-    "updatedAt": "2026-09-23T20:00:38.349Z",
+    "updatedAt": "2026-09-23T20:08:40.787Z",
     "cashPosition": 201630000,
     "cashAsOf": "2026-06-30",
     "monthlyBurn": 8356333.333333333,
@@ -2611,6 +2666,7 @@
     "threeYear": -16.67,
     "fiveYear": -70.9,
     "tenYear": null,
+    "sinceReviewed": 0,
     "company": {
       "summary": "Autolus Therapeutics plc, a clinical-stage biopharmaceutical company, develops T cell therapies for the treatment of cancer and autoimmune diseases in the United Kingdom and internationally. The company offers AUCATZYL, a gene therapy product consisting of autologous T cells that are transduced with a lentiviral vector to express a novel anti-CD19 chimeric antigen receptor. It also develops obe-cel, which is in phase 1 to treat systemic lupus erythematosus, progressive multiple sclerosis, B-NHL and CLL, and CNS lymphoma; obe-cel, which is in phase 2 to treat pediatric B-ALL and lupus nephritis; AUTO1/22 to treat pediatric B-ALL, which is phase 1; AUTO8, which is in phase 1 to treat multiple myeloma and light chain amyloidosis; AUTO4/5, which is in preclinical stage to treat peripheral TCL; AUTO6NG, which is in phase 1 to treat neuroblastoma; and AUTO9, which is in preclinical stage to treat acute myeloid leukemia. The company was incorporated in 2014 and is headquartered in London, the United Kingdom.",
       "city": "London",
@@ -2642,6 +2698,10 @@
       ]
     },
     "insiders": [],
+    "nextEarnings": {
+      "date": "2026-11-16",
+      "estimated": false
+    },
     "news": [
       {
         "title": "Autolus Therapeutics plc SEC Filing (Sep 23, 2026) - Stock Titan",
@@ -2697,7 +2757,7 @@
     "change": -0.04,
     "changePercent": -2.34,
     "marketCap": 576969728,
-    "updatedAt": "2026-09-23T20:00:39.656Z",
+    "updatedAt": "2026-09-23T20:08:41.920Z",
     "cashPosition": 423590000,
     "cashAsOf": "2026-06-30",
     "monthlyBurn": 10665333.333333334,
@@ -2711,6 +2771,7 @@
     "threeYear": -54.25,
     "fiveYear": -93.96,
     "tenYear": null,
+    "sinceReviewed": 0,
     "company": {
       "summary": "Allogene Therapeutics, Inc. a clinical stage immuno-oncology company, develops and commercializes genetically engineered allogeneic T cell therapies for the treatment of cancer and autoimmune diseases. It develops a pipeline of multiple allogeneic CAR T cell product candidates utilizing protein engineering, gene editing, gene insertion, and advanced proprietary T cell manufacturing technologies. The company is also developing cemacabtagene ansegedleucel (cema-cel), an engineered allogeneic CAR T cell product candidate that targets CD19 for the treatment of large B-cell lymphoma (LBCL). In addition, it develops ALLO-316, an engineered allogeneic CAR T cell product candidate that targets CD70 to treat renal cell carcinoma (RCC); and ALLO-329, an engineered allogeneic CAR T cell product candidate that targets both CD19 and CD70 for the treatment of autoimmune diseases (AID), such as systemic lupus erythematosus (SLE), idiopathic inflammatory myopathies (IIM), and systemic sclerosis (SSc). The company was incorporated in 2017 and is headquartered in South San Francisco, California.",
       "city": "South San Francisco",
@@ -2903,6 +2964,10 @@
         "value": null
       }
     ],
+    "nextEarnings": {
+      "date": "2026-11-05",
+      "estimated": false
+    },
     "news": [
       {
         "title": "ALLO News | ALLOGENE THERAPEUTICS INC (NASDAQ:ALLO) - ChartMill",
@@ -2959,10 +3024,10 @@
     "change": -0.27,
     "changePercent": -3.04,
     "marketCap": 1309135616,
-    "updatedAt": "2026-09-23T20:00:40.804Z",
-    "cashPosition": 447955791.04,
+    "updatedAt": "2026-09-23T20:08:43.288Z",
+    "cashPosition": 448006808.535,
     "cashAsOf": "2026-06-30",
-    "monthlyBurn": 22951447.04213333,
+    "monthlyBurn": 22954060.9727,
     "cashFlowPositive": false,
     "oneDay": -3.04,
     "fiveDay": -0.46,
@@ -2973,6 +3038,7 @@
     "threeYear": -26.56,
     "fiveYear": -37.04,
     "tenYear": null,
+    "sinceReviewed": 0,
     "company": {
       "summary": "Immatics N.V., a clinical-stage biopharmaceutical company, focuses on the research and development of potential T cell redirecting immunotherapies for the treatment of cancer in the United States. The company is developing targeted immunotherapies with a focus on treating solid tumors through two distinct treatment modalities, such as adoptive cell therapies (ACT) and antibody-like TCR Bispecifics. Its products pipeline includes Anzu-cel (IMA203), a one-time infusion PRAME cell therapy, which is in Phase 2 trial; IMA203CD8, a cell therapy product that is in Phase 1 clinical trial; IMA204 that targets tumor stroma, which is in Phase 1 clinical trial; and Anzu-cel in combination with Moderna's PRAME cell therapy enhancer (mRNA-4203), which is in Phase 1 clinical trial. The company also develops TCR Bispecifics products, including IMA401 and IMA402, which is in Phase 1a clinical trial. The company has a strategic collaboration agreement with MD Anderson Cancer Center to develop multiple T cell and TCR-based adoptive cellular therapies; Celgene Corporation to develop novel adoptive cell therapies targeting multiple cancers; and Genmab A/S to develop T cell engaging bispecific immunotherapies targeting multiple cancer indications. Immatics N.V. is headquartered in Tübingen, Germany.",
       "city": "Tübingen",
@@ -3013,6 +3079,10 @@
         "value": 7499991
       }
     ],
+    "nextEarnings": {
+      "date": "2026-11-17",
+      "estimated": true
+    },
     "news": [
       {
         "title": "Immatics stock holds at USD 8.77 as analysts see upside - AD HOC NEWS",
@@ -3069,7 +3139,7 @@
     "change": -0.95,
     "changePercent": -5.44,
     "marketCap": 1009979520,
-    "updatedAt": "2026-09-23T20:00:41.776Z",
+    "updatedAt": "2026-09-23T20:08:44.354Z",
     "cashPosition": 970913000,
     "cashAsOf": "2026-06-30",
     "monthlyBurn": null,
@@ -3083,6 +3153,7 @@
     "threeYear": 72.08,
     "fiveYear": -27.77,
     "tenYear": null,
+    "sinceReviewed": 0,
     "company": {
       "summary": "Janux Therapeutics, Inc., a clinical stage biopharmaceutical company, develops immunotherapies based on Tumor Activated T Cell Engager (TRACTr), Tumor Activated Immunomodulator (TRACIr), and Adaptive Immune Response Modulator (ARM) platforms technology to treat patients with cancer. The company's clinical candidates include JANX007, a prostate-specific membrane antigen or PSMA-TRACTr, which is in Phase 1 clinical trial in adults for the treatment of metastatic castration-resistant prostate cancer and the vasculature of other tumors; and JANX008, an epidermal growth factor receptor that is in Phase 1 clinical trial for the treatment of various solid cancers, including colorectal cancer, squamous cell carcinoma of the head and neck, non-small cell lung cancer, renal cell carcinoma, small cell lung cancer, pancreatic ductal adenocarcinoma, and triple-negative breast cancer. It also develops JANX011, a CD19-targeted adaptive immune response modulator that is in phase 1 clinical study developed for autoimmune diseases. The company has strategic research collaboration agreement with Merck Sharp & Dohme Corp. to develop TRACTr product candidates; and Bristol Myers Squibb to develop and commercialize an undisclosed, novel tumor-activated therapeutic targeting a validated solid tumor antigen expressed across several human cancer types. Janux Therapeutics, Inc. was incorporated in 2017 and is headquartered in San Diego, California.",
       "city": "San Diego",
@@ -3275,6 +3346,10 @@
         "value": 110829
       }
     ],
+    "nextEarnings": {
+      "date": "2026-11-05",
+      "estimated": true
+    },
     "news": [
       {
         "title": "What Janux Therapeutics Stock First Patient Dosed Means For Shareholders - simplywall.st",
@@ -3331,7 +3406,7 @@
     "change": -0.56,
     "changePercent": -4.73,
     "marketCap": 863894656,
-    "updatedAt": "2026-09-23T20:00:43.252Z",
+    "updatedAt": "2026-09-23T20:08:45.424Z",
     "cashPosition": 201565000,
     "cashAsOf": "2026-06-30",
     "monthlyBurn": 5727333.333333333,
@@ -3345,6 +3420,7 @@
     "threeYear": 890.35,
     "fiveYear": 12.9,
     "tenYear": null,
+    "sinceReviewed": 0,
     "company": {
       "summary": "Candel Therapeutics, Inc., a clinical stage biopharmaceutical company, develops immunotherapies for cancer patients. It develops CAN-2409, which is in Phase 2a clinical trials for the treatment of prostate cancer; and Phase 2a clinical trials for the treatment of non-small cell lung cancer (NSCLC). The company is also developing CAN-3110, which is in Phase Ib clinical trials for the treatment of recurrent high-grade glioma. In addition, it develops the enLIGHTEN Discovery Platform, a systematic, iterative herpes simplex virus based discovery platform leveraging human biology and advanced analytics to create new viral immunotherapy candidates for solid tumors. The company was formerly known as Advantagene, Inc. and changed its name to Candel Therapeutics, Inc. in November 2020. Candel Therapeutics, Inc. was incorporated in 2003 and is headquartered in Needham, Massachusetts.",
       "city": "Needham",
@@ -3537,6 +3613,10 @@
         "value": 229624
       }
     ],
+    "nextEarnings": {
+      "date": "2026-11-12",
+      "estimated": true
+    },
     "news": [
       {
         "title": "Candel Therapeutics: Strong Buy On Aglatimagene Prostate Cancer BLA Filing In Q4 (CADL) - Seeking Alpha",
@@ -3592,7 +3672,7 @@
     "change": -0.05,
     "changePercent": -2.44,
     "marketCap": 134032632,
-    "updatedAt": "2026-09-23T20:00:44.203Z",
+    "updatedAt": "2026-09-23T20:08:46.347Z",
     "cashPosition": 266320000,
     "cashAsOf": "2026-07-31",
     "monthlyBurn": 6315333.333333333,
@@ -3606,6 +3686,7 @@
     "threeYear": -81.72,
     "fiveYear": null,
     "tenYear": null,
+    "sinceReviewed": 0,
     "company": {
       "summary": "enGene Therapeutics Inc., through its subsidiary enGene, Inc., operates as a clinical-stage biotechnology company in Canada. The company develops genetic medicines to help patients suffering from bladder cancer. Its lead product candidate is detalimogene voraplasmid, a monotherapy for the treatment of non-muscle invasive bladder cancer (NMIBC). Its pipeline includes LEGEND, which is in Phase 2. The company was formerly known as enGene Holdings Inc. and changed its name to enGene Therapeutics Inc. in April 2026. enGene Therapeutics Inc. is based in Montreal, Canada.",
       "city": "Montreal",
@@ -3662,6 +3743,7 @@
         "value": 57000
       }
     ],
+    "nextEarnings": null,
     "news": [
       {
         "title": "EnGene Therapeutics Inc.(NasdaqCM: ENGN) dropped from S&amp;P Global BMI Index - marketscreener.com",
@@ -3717,7 +3799,7 @@
     "change": -1.13,
     "changePercent": -2.64,
     "marketCap": 2034897920,
-    "updatedAt": "2026-09-23T20:00:45.412Z",
+    "updatedAt": "2026-09-23T20:08:47.290Z",
     "cashPosition": 107975000,
     "cashAsOf": "2026-06-30",
     "monthlyBurn": 11002000,
@@ -3731,6 +3813,7 @@
     "threeYear": 165.33,
     "fiveYear": 142.88,
     "tenYear": null,
+    "sinceReviewed": 0,
     "company": {
       "summary": "UroGen Pharma Ltd., a biotechnology company, engages in the development and commercialization of solutions for urothelial and specialty cancers. It offers RTGel, a novel proprietary polymeric biocompatible, reverse thermal gelation hydrogel technology; Mitomycin a generic drug used off-label as an adjuvant chemotherapy for the treatment of low-grade NMIBC after trans-urethral resection of bladder tumor; Zusduri, a sustained-release formulation of mitomycin for the treatment of non-muscle invasive bladder cancer (NMIBC); and Jelmyto for pyelocalyceal solutions. The company's lead product candidates are UGN-103, which is in phase 3 of clinical trial for intravesical solution; and UGN-104 that is in phase 3 of clinical trial for pyelocalyceal solution designed for the treatment of several forms of non-muscle invasive urothelial cancer that include low-grade upper tract urothelial cancer and low-grade intermediate risk NMIBC. It is also developing UGN-301, UGN-301+UGN 201, and UGN-301+gemcitabine that are in phase 1 of clinical trial for the treatment of high-grade NMIBC. The company has license agreement with Agenus Inc. to develop, make, use, sell, import, and commercialize products of Agenus for the treatment of cancers of the urinary tract via intravesical delivery; and licensing and supply agreement with medac Gesellschaft für klinische Spezialpräparate m.b.H. to develop UGN-103 and UGN-104. UroGen Pharma Ltd. was incorporated in 2004 and is headquartered in Princeton, New Jersey.",
       "city": "Princeton",
@@ -3915,6 +3998,10 @@
         "value": 82202
       }
     ],
+    "nextEarnings": {
+      "date": "2026-11-05",
+      "estimated": true
+    },
     "news": [
       {
         "title": "UroGen Pharma (URGN) Stock May Still Trade At A Discount To Sales - simplywall.st",
@@ -3970,7 +4057,7 @@
     "change": -0.04,
     "changePercent": -5.16,
     "marketCap": 86260856,
-    "updatedAt": "2026-09-23T20:00:46.267Z",
+    "updatedAt": "2026-09-23T20:08:48.415Z",
     "cashPosition": 4115000,
     "cashAsOf": "2026-06-30",
     "monthlyBurn": 2712666.6666666665,
@@ -3984,6 +4071,7 @@
     "threeYear": -68.68,
     "fiveYear": -68.97,
     "tenYear": -74.57,
+    "sinceReviewed": 0,
     "company": {
       "summary": "Oncolytics Biotech Inc., a clinical-stage biopharmaceutical company, engages in the research, development, and commercialization of oncology treatments. The company develops pelareorep, an intravenously delivered immunotherapeutic agent for the treatment of gastrointestinal (GI) tumors, metastatic colorectal cancer, anal cancer, and metastatic pancreatic cancer. It has an agreement with Roche Holding AG to supply its immune checkpoint inhibitors, atezolizumab, for use in its ongoing sponsored studies. Oncolytics Biotech Inc. was incorporated in 1998 and is headquartered in San Diego, California.",
       "city": "San Diego",
@@ -4112,6 +4200,10 @@
         "value": 103800
       }
     ],
+    "nextEarnings": {
+      "date": "2026-11-16",
+      "estimated": true
+    },
     "news": [
       {
         "title": "Oncolytics Biotech stock lacks a fresh catalyst and stays near $0.77 - AD HOC NEWS",
@@ -4168,7 +4260,7 @@
     "change": -3.27,
     "changePercent": -5.54,
     "marketCap": 5391582208,
-    "updatedAt": "2026-09-23T20:00:47.578Z",
+    "updatedAt": "2026-09-23T20:08:49.714Z",
     "cashPosition": 2364352000,
     "cashAsOf": "2026-06-30",
     "monthlyBurn": 27832666.666666668,
@@ -4182,6 +4274,7 @@
     "threeYear": 22.58,
     "fiveYear": -54.01,
     "tenYear": null,
+    "sinceReviewed": 0,
     "company": {
       "summary": "CRISPR Therapeutics AG, a gene editing company, focuses on developing gene-based medicines for serious human diseases using its Clustered Regularly Interspaced Short Palindromic Repeats (CRISPR)/CRISPR-associated protein 9 (Cas9) platform. The company's CRISPR/Cas9 is a technology for gene editing which is the process of precisely altering specific sequences of genomic DNA. It has a portfolio of therapeutic programs across a range of disease areas, including hemoglobinopathies, CAR T cell therapies, in vivo, and type 1 diabetes, as well as develops investigational CAR T programs, including an autologous, gene-edited CAR T program targeting allogeneic chimeric antigen receptor T cell for autoimmune indications and oncology. The company's lead product candidate is CASGEVY, an ex vivo CRISPR/Cas9 gene-edited cell therapy for treating patients suffering from transfusion-dependent beta-thalassemia, severe sickle cell disease (SCD), and hemoglobinopathies in which a patient's hematopoietic stem and progenitor cells are edited to produce high levels of fetal hemoglobin in red blood cells. It also develops CAR T cell therapies, including CTX112 targeting cluster of differentiation 19 (CD19) and CTX131 targeting CD70 for oncology and autoimmune indications; CTX310 and CTX320, in vivo gene editing to address the cardiovascular disease by disrupting the validated targets angiopoietin-like protein 3 and lipoprotein; and CTX211, an allogeneic, gene-edited, hypoimmune stem cell-derived product candidate for the treatment of T1D. It has strategic partnerships with Vertex Pharmaceuticals Incorporated. CRISPR Therapeutics AG was incorporated in 2013 and is headquartered in Zug, Switzerland.",
       "city": "Zug",
@@ -4374,6 +4467,10 @@
         "value": 1786636
       }
     ],
+    "nextEarnings": {
+      "date": "2026-11-09",
+      "estimated": true
+    },
     "news": [
       {
         "title": "Gene editing stocks fall after Anthropic’s CRISPR-like discovery - Seeking Alpha",
@@ -4429,7 +4526,7 @@
     "change": -1.56,
     "changePercent": -6.02,
     "marketCap": 2517120512,
-    "updatedAt": "2026-09-23T20:00:48.746Z",
+    "updatedAt": "2026-09-23T20:08:51.161Z",
     "cashPosition": 1152927000,
     "cashAsOf": "2026-06-30",
     "monthlyBurn": 22032000,
@@ -4443,6 +4540,7 @@
     "threeYear": 2.57,
     "fiveYear": -75.17,
     "tenYear": null,
+    "sinceReviewed": 0,
     "company": {
       "summary": "Beam Therapeutics Inc., a biotechnology company, engages in the development of precision genetic medicines for patients suffering from serious diseases in the United States. Its programs in hematology and genetic disease portfolio include Ristoglogene autogetemcel, a patient-specific, autologous hematopoietic stem cell (HSC) therapy for the treatment of sickle cell disease; BEAM-302, a liver-targeting lipid nanoparticle (LNP) for the treatment of severe alpha-1 antitrypsin deficiency; BEAM-304, a liver-targeting LNP for the treatment of phenylketonuria; and BEAM-301, a liver-targeting LNP formulation for the treatment of glycogen storage disease type 1a. The company also develops the ESCAPE platform, which combines antibody-based conditioning with multiplex gene edited HSCs. In addition, it develops BEAM-103, an anti-CD117 monoclonal antibody that enables ESCAPE. The company has research collaboration agreement with Pfizer Inc., focusing on in vivo base editing programs for targets rare genetic diseases of the liver, muscle, and central nervous system; Verve Therapeutics, Inc., for cardiovascular disease treatments; and Orbital Therapeutics to design RNA for the prevention, treatment, or diagnosis of human disease. Beam Therapeutics Inc. was incorporated in 2017 and is based in Cambridge, Massachusetts.",
       "city": "Cambridge",
@@ -4635,6 +4733,10 @@
         "value": 1120042
       }
     ],
+    "nextEarnings": {
+      "date": "2026-11-03",
+      "estimated": true
+    },
     "news": [
       {
         "title": "Beam Therapeutics Inc. (BEAM) Stock Price | Live Quotes &amp; Charts | NASDAQ - timothysykes.com",
@@ -4658,13 +4760,6 @@
         "url": "https://news.google.com/rss/articles/CBMi5AFBVV95cUxOTENsam0xV0ZnTGFTc3c1aEJkVDZBR2xHa1pHcjdTTkU3ZS1EeFRGdHdocUkwVkRBa0M3bS1yM2ZhQnJpVG5PV01YN1M2cy1tLXJVRm0wUXpOWlU5dGV1QjUzRFFlSFhVQ1IwS245Mm1jel9Sa0NBVE9GNTZqTmxLZGRGWk9YOHoyRnF4MTYwV1dHaW1oMWJmejNpUDFBRjNTYVZ0ZnpseHg5M1pYN0hNNjI1Y3RzT2FnRkFKZFdkVlBzWXotd200SlZMZU54a0FqYkNLZ1ZEVTVaMGJUSWpuTGhGTTTSAeoBQVVfeXFMT0hLWU1RQng0RzlJbXJ5UVY1MHpESlNQYW5BWVVRLW8zNGc0NkRUbWxLR01QWkEzZzZWM0ZHRmRuUm5SLXlZY1VMdHNRZVhocHBLdzlnQkxmVjlDV2FFMDdOUDhpREhnMHVZT3BtS01VdHc3T3NPSlVTM002d01uWGRhOUhNemZRNkw5QVlmQnh4S3ZTWmxXS1ZlZERxRUxmOGlYUTRGVE12djFCU2N0dGVtZVZtLWR2RmtOVk5MTnFLR1F6MUtvUkRmU18tODdicTBfSXhQSVh3cERjWFNDMkllOEQxSjdEcDhn?oc=5"
       },
       {
-        "title": "Cathie Wood’s ARK sells Alphabet stock, buys Meta and Beam Therapeutics - Investing.com",
-        "source": "Investing.com",
-        "date": "2026-09-09T07:00:00.000Z",
-        "summary": "Latest news about Beam Therapeutics.",
-        "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxNcEV6ZmxDWXVoTkJnUkJtZkNYZ0JkdkI3TmVMZVJWWXVhdVgzX3pCY1g4Nk5QemVhX01oZWJCYlNWaFkxNnNrMjVjRVhEdkxJSjczWm9rQnY1VzFvekJuMnBVNFZHVGFJdXFndmZldUZjdDBBd08wNk85d2otZlNPdWt0cld0ZXgtR2ViajBSYndlY3FqY1BsbTJFNzctX29NdzRwS0xCakFZeGhBcVB3cnplOUZ6YWtDbVM2RFJwRjBjSFV3?oc=5"
-      },
-      {
         "title": "BEAM Stock Price, Quote &amp; Chart - ChartMill",
         "source": "ChartMill",
         "date": "2026-09-08T22:35:29.000Z",
@@ -4677,6 +4772,13 @@
         "date": "2026-08-26T07:00:00.000Z",
         "summary": "Latest news about Beam Therapeutics.",
         "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxOWVplLVdEdFhZM2IwV1R5UzRUek1BU1FIZzVTRWpWbzJZcHZDa3JocU5OX0hpaGNORDdobTI2OWl6Z1UwcmZ6U1pPdVdPcWVLdDlQbVJGMnMzemo1MUJKOUQ3NEdhcG5hN3NGX3VpRmtFUUJjbmVTSHEyTmFic09RbDU5bWN2SmYwRDFzak1LcUljcEhOR1VLc3YtREdDUQ?oc=5"
+      },
+      {
+        "title": "Beam Therapeutics: A Valuation With Upside Left (NASDAQ:BEAM) - Seeking Alpha",
+        "source": "Seeking Alpha",
+        "date": "2026-08-03T07:00:00.000Z",
+        "summary": "Latest news about Beam Therapeutics.",
+        "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxPNmhyY1hIQy1GMnEzRHVRRUg1ZzZiSGc3Z1JsaW91aDJNb3pLR0EzZEZsWGtOck9sYkluTlpzUlE0U2dnRG1pUks2N1o0cENERFVvN0pTT044NnhxREs1QW9SMVVhR0JwSUpKZ2t0cjBybHRMcjRFYk9nTmNCUVNNcmtfN0x6ekFvQnR5SDlWMm9PZDRqbkE?oc=5"
       }
     ]
   },
@@ -4690,7 +4792,7 @@
     "change": -0.41,
     "changePercent": -11.58,
     "marketCap": 567709632,
-    "updatedAt": "2026-09-23T20:00:49.758Z",
+    "updatedAt": "2026-09-23T20:08:52.305Z",
     "cashPosition": 108800000,
     "cashAsOf": "2026-06-30",
     "monthlyBurn": 13682000,
@@ -4704,6 +4806,7 @@
     "threeYear": -71.75,
     "fiveYear": null,
     "tenYear": null,
+    "sinceReviewed": 0,
     "company": {
       "summary": "Prime Medicine, Inc., a biotechnology company, engages in delivering genetic medicines to address the spectrum of diseases by deploying gene editing technology in the United States. Its lead therapeutic product candidate is PM359 for Chronic Granulomatous Disease, which is in Phase 1/2 clinical trial; PM577 for Wilson Disease, that is in preclinical studies; and PM647 to treat genetic disorder caused by mutations in the SERPINA1 gene, resulting in production of misfolded Z-AAT protein that accumulates in the liver and leads to hepatocellular injury, cirrhosis, and increased risk of hepatocellular carcinoma. The company also provides vivo programs targeting diseases of the liver, and Cystic Fibrosis programs. In addition, it offers Prime Editing technology comprising a programmable DNA binding domains, such as Cas domains, are typically modified such that they do not cause a double-stranded break in the DNA, as well as a RT domain that copies the edited DNA sequence directly into the target genomic site where the edit is made; and pegRNA which contains a search sequence, also known as a spacer, which provides a target genomic address for the Prime Editor. The company has a research collaboration and license agreement with BMS; Cystic Fibrosis Foundation; Broad Institute; and Beam. Prime Medicine, Inc. was incorporated in 2019 and is headquartered in Cambridge, Massachusetts.",
       "city": "Cambridge",
@@ -4824,6 +4927,10 @@
         "value": null
       }
     ],
+    "nextEarnings": {
+      "date": "2026-11-06",
+      "estimated": true
+    },
     "news": [
       {
         "title": "Prime Medicine, Inc. (NASDAQ:PRME) Receives Average Recommendation of \"Moderate Buy\" from Analysts - MarketBeat",
@@ -4880,7 +4987,7 @@
     "change": -0.05,
     "changePercent": -3.73,
     "marketCap": 138297680,
-    "updatedAt": "2026-09-23T20:00:50.945Z",
+    "updatedAt": "2026-09-23T20:08:53.336Z",
     "cashPosition": 113818000,
     "cashAsOf": "2026-06-30",
     "monthlyBurn": 7595666.666666667,
@@ -4894,6 +5001,7 @@
     "threeYear": -74.66,
     "fiveYear": -95.13,
     "tenYear": null,
+    "sinceReviewed": 0,
     "company": {
       "summary": "Caribou Biosciences, Inc. operates as a clinical-stage clustered regularly interspaced short palindromic repeats (CRISPR) genome-editing biopharmaceutical company. It offers a genome-editing platform based on novel CRISPR hybrid RNA-DNA genome-editing technology that enables precise genome editing of allogeneic cell therapies. The company develops Vispacabtagene Regedleucel, an allogeneic anti-CD19 CAR-T cell therapy that is in phase 1 clinical trial to treat relapsed or refractory B cell non-Hodgkin lymphoma; and CB-011, an allogeneic anti-BCMA CAR-T cell therapy that is in phase 1 clinical trial for the treatment of relapsed or refractory multiple myeloma. Caribou Biosciences, Inc. was incorporated in 2011 and is headquartered in Berkeley, California.",
       "city": "Berkeley",
@@ -5086,6 +5194,10 @@
         "value": null
       }
     ],
+    "nextEarnings": {
+      "date": "2026-11-11",
+      "estimated": true
+    },
     "news": [
       {
         "title": "Caribou Biosciences, Inc. (CRBU) Reports Q2 Loss, Lags Revenue Estimates - Yahoo Finance",
@@ -5142,7 +5254,7 @@
     "change": -2.25,
     "changePercent": -5.67,
     "marketCap": 3614496256,
-    "updatedAt": "2026-09-23T20:00:51.821Z",
+    "updatedAt": "2026-09-23T20:08:54.635Z",
     "cashPosition": 1242889000,
     "cashAsOf": "2026-06-30",
     "monthlyBurn": 29403666.666666668,
@@ -5156,6 +5268,7 @@
     "threeYear": 35.58,
     "fiveYear": 51.29,
     "tenYear": null,
+    "sinceReviewed": 0,
     "company": {
       "summary": "IDEAYA Biosciences, Inc., a precision medicine oncology company, develops targeted therapeutics for patient populations selected using molecular diagnostics in the United States. The company offers Darovasertib, an oral, potent, and selective protein kinase, C (PKC) inhibitor for the treatment of uveal melanoma, ocular cancer, and is being evaluated in multiple clinical trials as monotherapy and in combination with crizotinib for metastatic, neoadjuvant, and adjuvant settings. The company also offers IDE849, a DLL3 antibody drug conjugate inhibitor for the treatment of SCLC and neuroendocrine carcinomas; IDE034, a B7H3/PTK7 topo-I-payload bispecific BsADC; IDE161, a poly ADP-ribose glycohydrolase inhibitor; IDE705 (GSK101), a Poly Theta Helicase inhibitor that is in Phase 1 clinical trial for the treatment of tumors with BRCA or other mutations associated with HRD; IDE397, a MAT2A inhibitor for MTAP-deleted tumors; IDE892, a PRMT5 inhibitor; IDE574 selectively inhibits KAT6/7 and is in Phase 1 dose escalation trial for patients with breast, lung, prostate, and colorectal cancers; IDE275 oral small molecule inhibitor of the helicase domain of the Werner protein (WRN) and is in a Phase 1 clinical trial. In addition, the company offers preclinical research programs focused on pharmacological inhibition; DECIPHER dual CRISPR library for synthetic lethality target and biomarker discovery; and INQUIRE chemical library and HARMONY machine-learning engines to enhance its drug discovery platform. The company has strategic alliances with GlaxoSmithKline, Pfizer Inc., Gilead Sciences, Inc., Novartis, Biocytogen, Cancer Research UK, the University of Manchester, Jiangsu Hengrui Pharmaceuticals Co., Ltd., and Les Laboratoires Servie. It also has a clinical collaboration agreement with AstraZeneca plc to evaluate IDE849, an antibody-drug conjugate; and clinical collaboration with Roche to evaluate IDE892, IDEAYA's potential best-in-class Phase 1 MTA-cooperative PRMT5 inhibitor, in combination with RG6505, Roche's Phase 1 pan-RAS inhibitor, in MTAP-deleted, RAS-mutant pancreatic ductal adenocarcinoma. IDEAYA Biosciences, Inc. was incorporated in 2015 and is headquartered in South San Francisco, California.",
       "city": "South San Francisco",
@@ -5236,6 +5349,10 @@
         "value": 250012
       }
     ],
+    "nextEarnings": {
+      "date": "2026-11-09",
+      "estimated": true
+    },
     "news": [
       {
         "title": "Cantor Fitzgerald reiterates Ideaya Biosciences stock rating - Investing.com",
@@ -5292,7 +5409,7 @@
     "change": -0.41,
     "changePercent": -3.57,
     "marketCap": 1876604928,
-    "updatedAt": "2026-09-23T20:00:53.083Z",
+    "updatedAt": "2026-09-23T20:08:55.744Z",
     "cashPosition": 1007742000,
     "cashAsOf": "2026-06-30",
     "monthlyBurn": null,
@@ -5306,6 +5423,7 @@
     "threeYear": 18.61,
     "fiveYear": -75.18,
     "tenYear": null,
+    "sinceReviewed": 0,
     "company": {
       "summary": "Vir Biotechnology, Inc., a clinical-stage biopharmaceutical company, discovers and develops therapeutic products to treat and prevent serious infectious diseases in the United States and internationally. Its clinical development pipeline consists of product investigational therapies targeting hepatitis delta virus (HDV) and other solid tumors. The company's preclinical candidates include those targeting influenza A and B antibodies and antibody drug conjugates, and coronavirus monoclonal antibodies; and PRO-XTEN, a dual-masked TCEs targeting variety of solid tumors. It has grant collaboration and license agreement with Astellas; license agreement with Norgine for the treatment of CHD; amended and restated letter agreement with the Gates Foundation; an option and license agreement with Brii Biosciences Limited; a collaboration and license agreement with Alnylam Pharmaceuticals, Inc.; license agreement with the Institute for Research in Biomedicine; a license agreement with The Rockefeller University; license agreements with Xencor; and a collaborative research agreement with GlaxoSmithKline Biologicals S.A. Vir Biotechnology, Inc. was incorporated in 2016 and is headquartered in San Francisco, California.",
       "city": "San Francisco",
@@ -5498,6 +5616,10 @@
         "value": 15576
       }
     ],
+    "nextEarnings": {
+      "date": "2026-11-04",
+      "estimated": true
+    },
     "news": [
       {
         "title": "Vir Biotechnology, Inc. (VIR) Stock Analysis: Exploring The 90.27% Potential Upside - DirectorsTalk Interviews",
@@ -5553,7 +5675,7 @@
     "change": -0.16,
     "changePercent": -5.44,
     "marketCap": 605760000,
-    "updatedAt": "2026-09-23T20:00:54.068Z",
+    "updatedAt": "2026-09-23T20:08:57.200Z",
     "cashPosition": 330280000,
     "cashAsOf": "2026-06-30",
     "monthlyBurn": 6022666.666666667,
@@ -5567,6 +5689,7 @@
     "threeYear": 117.19,
     "fiveYear": -48.9,
     "tenYear": -82.23,
+    "sinceReviewed": 0,
     "company": {
       "summary": "CytomX Therapeutics, Inc. operates as an oncology-focused biopharmaceutical company that focuses on developing potent biologics designed to treat tumor microenvironment. The company utilizes conditional activation platform technology for oncology biologics research and development comprising the validation of targets for antibody-drug conjugates (ADCs), opening therapeutic window for novel T-cell engagers (TCEs) targeting solid tumors, and increasing the therapeutic index for immune modulators, such as cytokines; and PROBODY platform in preclinical research in areas outside of oncology. It also develops CX-904, a T-cell engaging bispecific antibody targeting the epidermal growth factor receptor (EGFR) on tumor cells and the CD3 receptor on T cells; CX-2051, a conditionally activated ADC for optimizing the therapeutic index for EpCAM-expressing epithelial cancers, including colorectal cancer; and CX-801, an interferon alpha-2b PROBODY cytokine. In addition, the company's development pipeline comprises CX-2029, a conditional activated ADC targeting CD71; and BMS-986288, a PROBODY version of non-fucosylated ipilimumab. It has strategic collaborations with Amgen, Astellas, Bristol Myers Squibb, Regeneron, and Moderna; and clinical trial collaboration and supply agreement with Merck for the evaluation of CX-801 in combination with anti-PD-1 therapy, KEYTRUDA (pembrolizumab). The company was founded in 2008 and is based in South San Francisco, California.",
       "city": "South San Francisco",
@@ -5759,6 +5882,10 @@
         "value": 11688
       }
     ],
+    "nextEarnings": {
+      "date": "2026-11-05",
+      "estimated": true
+    },
     "news": [
       {
         "title": "CytomX Therapeutics stock gains 6.52 percent on September 23 - AD HOC NEWS",
@@ -5814,7 +5941,7 @@
     "change": -0.07,
     "changePercent": -5.65,
     "marketCap": 210702864,
-    "updatedAt": "2026-09-23T20:00:55.490Z",
+    "updatedAt": "2026-09-23T20:08:58.611Z",
     "cashPosition": 179879000,
     "cashAsOf": "2026-06-30",
     "monthlyBurn": 4912666.666666667,
@@ -5828,6 +5955,7 @@
     "threeYear": -40.31,
     "fiveYear": -66.57,
     "tenYear": null,
+    "sinceReviewed": 0,
     "company": {
       "summary": "Compass Therapeutics, Inc., a clinical-stage oncology-focused biopharmaceutical company, develops antibody-based therapeutics for the treatment of various human diseases in the United States. The company's lead product candidate, tovecimig, is a bispecific antibody that targets delta-like ligand 4 (DLL4) and vascular endothelial growth factor A (VEGF-A), which are critical to angiogenesis and tumor vascularization. It also develops CTX-471, an IgG4 monoclonal antibody that is an agonist of CD137, a key co-stimulatory receptor on immune cells; CTX-8371, a bispecific inhibitor that targets programmed cell death protein-1 (PD-1) and ligand PD-L1 checkpoint inhibitor antibodies; and CTX-10726, a bispecific antibody that targets PD-1 and VEFG-A. The company was founded in 2014 and is headquartered in Boston, Massachusetts.",
       "city": "Boston",
@@ -5956,6 +6084,10 @@
         "value": 660000
       }
     ],
+    "nextEarnings": {
+      "date": "2026-11-05",
+      "estimated": true
+    },
     "news": [
       {
         "title": "Compass Therapeutics Shares Drop After Downgrade From Wedbush - marketscreener.com",
@@ -5993,11 +6125,11 @@
         "url": "https://news.google.com/rss/articles/CBMiiAJBVV95cUxPQlR0aDEyb012UUw4aW55c0xWVlU3T05VQXVkcWxGMklEalloRE55TFVfakZla2tacTlPMjhEX0NEZUpPbklTUHU3SEdCLWZyTWxHY1dDYXFSMEJNTE8zWXdsaVB2MXlkM2h1ZmhGVFA4b1ByNGRTYUt1NUh1SlZ5S2N3VkdOQjZteXM3TF95Wml2aThxNDZiYWd6eDFIblg2R3JXV3AxNkhvbHBENThjc0owaVByZjlDSmNkakthVFhiX0ZndFBHdE1WOHk3WVllU0x0LUJPOGlHdzFsSVE3dnpWeS1ZN2NKVFdEMW1tTVZNM2s5M05Mcl9lRFMybHdPSG10ZDBmdWE?oc=5"
       },
       {
-        "title": "H.C. Wainwright cuts Compass Therapeutics stock price target on FDA trial recommendation - Investing.com",
-        "source": "Investing.com",
-        "date": "2026-09-23T12:18:21.000Z",
+        "title": "Guggenheim maintains Buy rating on Compass Therapeutics, $4 price target - tradingview.com",
+        "source": "tradingview.com",
+        "date": "2026-09-23T12:37:47.000Z",
         "summary": "Latest news about Compass Therapeutics.",
-        "url": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxQaU95WE9xWGdNNjlhNEtoaFNQT0F1LWFmaEdyTnhHTFdKTnFVSkZpZ1hIdDE4amQ3UlRROXlHdGhSUTNvZ0FfSGMyVUYyTkZmb1dEWWZVZWZfcXZJc1F6ODB5SDJldUdaN0FSUWVzYURkYmxtRmdaTjJfdVFIUGN4LV9od1IwYXJNc0pxaDlwNnU1ZjVVTTNzMEVUVmN2dVhrMXZJQUNLWHVzME5xOXYtZUh2WXV6NWI3TV9WTjEzalpKS1RXaUFveWpSUzJlZHY1MllYYlVRUE15U0tJb1Bn?oc=5"
+        "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxOdk52eXIxcUdLRVd2TTFmeWFFZWFURGtKTGUwQmpOUFE2OS1EdG43UHhldjNtbEFYQ3BabERmNUU3aDY1ZVpLWHVEdHh3VjhaanZMdmRQX1dpaTIzMUVZR2FlMENfV3RsSTR5emNXYjNjek5NLW5QQ2JDelBFU202M1pTMzY4R0h0YzBtVzl6NVZFQ28waE1fOVZ3NWNCeEY1RmRydW8xSGJSOXZKV29KUXF1TWFsZjFxMko3eTF0dlpvcHlIR01LVWNFRl8?oc=5"
       }
     ]
   }

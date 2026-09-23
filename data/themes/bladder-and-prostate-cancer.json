@@ -1,0 +1,23 @@
+{
+  "theme": "Bladder & Prostate Cancer",
+  "reviewed": "2026-09-23",
+  "summary": "Genitourinary cancers are large markets that are changing fast. In early bladder cancer, a wave of therapies delivered directly into the bladder aims to spare patients bladder removal and repeat surgeries. In prostate cancer, PSMA-targeted drugs and T cell engagers are moving from late-stage disease toward earlier treatment.",
+  "sections": [
+    {
+      "heading": "Bladder cancer basics",
+      "body": "<p>About three-quarters of new bladder cancers are <strong>non-muscle-invasive (NMIBC)</strong>: confined to the bladder lining. Standard care is surgical removal through the urethra (<strong>TURBT</strong>), followed for higher-risk disease by <strong>BCG</strong>, a weakened bacterium instilled into the bladder to provoke an immune response. When BCG stops working (<strong>BCG-unresponsive</strong>), the traditional option is removing the bladder (<strong>cystectomy</strong>), a major operation that many patients want to avoid. Lower-risk tumors often come back again and again, meaning repeated surgeries.</p>"
+    },
+    {
+      "heading": "New bladder therapies",
+      "body": "<p>Most new treatments are <strong>intravesical</strong>, placed directly into the bladder through a catheter. They include gene therapies, oncolytic viruses, an IL-15 immune stimulant and slow-release drug devices and gels. In BCG-unresponsive disease, regulators accept single-arm trials measuring the <strong>complete response rate</strong>, so <strong>how long responses last</strong> (for example at 12 months) is the key way to compare products.</p>"
+    },
+    {
+      "heading": "Prostate cancer",
+      "body": "<p><strong>Localized</strong> prostate cancer is treated with surgery or radiation, often combined with hormone therapy, and new drugs aim to lower the chance of recurrence. <strong>Metastatic castration-resistant prostate cancer (mCRPC)</strong> keeps growing despite hormone therapy. Many tumors display <strong>PSMA</strong>, the target of radioligand therapy (Pluvicto) and of experimental <strong>T cell engagers</strong> that link T cells to cancer cells. Masked engagers switch on only inside tumors, to reduce side effects.</p>"
+    },
+    {
+      "heading": "What investors watch",
+      "body": "<ul><li><strong>Complete response rate and 12-month durability</strong> in bladder cancer.</li><li><strong>Ease of use</strong> in urology clinics: storage, handling and treatment schedule.</li><li><strong>Disease-free survival</strong> in localized prostate cancer, and PSA and imaging responses in mCRPC.</li><li><strong>Crowding</strong>: several approved and late-stage options now compete for the same patients.</li></ul>"
+    }
+  ]
+}

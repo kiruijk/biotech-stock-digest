@@ -7,6 +7,8 @@
 const fs = require('fs');
 const path = require('path');
 
+const { themeSlug } = require('../lib/themes');
+
 const CSS = fs.readFileSync(path.join(__dirname, 'profile.css'), 'utf8');
 
 const DISCLAIMER = 'For informational purposes only — not investment advice. Prices, returns and financials come from ' +
@@ -134,6 +136,7 @@ ${statCard('Cash Runway', runwayText(stock), 'runway')}
       <div class="returns">
 ${RETURN_LABELS.map(([label, field]) => `        <div class="return"><div class="return-label">${label}</div><div class="return-value" style="color: ${pctColor(stock[field])}">${formatPct(stock[field])}</div></div>`).join('\n')}
       </div>
+      <div class="meta-line">Next earnings: ${stock.nextEarnings ? `<strong>${formatDate(stock.nextEarnings.date)}</strong>${stock.nextEarnings.estimated ? ' (estimated)' : ' (confirmed)'}` : 'not yet scheduled'}</div>
     </div>`);
 
   // Insider trading (automatic)
@@ -292,7 +295,7 @@ ${CSS.replace(/^/gm, '    ').replace(/^\s+$/gm, '')}
   <header>
     <div>
       <h1>${escapeHtml(title)}</h1>
-      <div>${(stock.themes || []).map(t => `<span class="theme-tag">${escapeHtml(t)}</span>`).join('')}</div>
+      <div>${(stock.themes || []).map(t => `<a class="theme-tag" href="../themes/${themeSlug(t)}.html">${escapeHtml(t)}</a>`).join('')}</div>
     </div>
     <a href="../index.html" class="back-btn">← Back to Dashboard</a>
   </header>
@@ -313,4 +316,4 @@ ${notices.join('\n')}${notices.length ? '\n\n' : ''}${sections.join('\n\n')}
 `;
 }
 
-module.exports = { renderProfile, formatMoney };
+module.exports = { renderProfile, formatMoney, formatPct, pctColor, formatDate, runwayText, escapeHtml, stripTags, CSS, DISCLAIMER };

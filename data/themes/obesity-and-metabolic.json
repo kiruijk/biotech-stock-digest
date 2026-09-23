@@ -1,0 +1,23 @@
+{
+  "theme": "Obesity & Metabolic",
+  "reviewed": "2026-09-23",
+  "summary": "Drugs that mimic gut and pancreatic hormones, led by GLP-1, have made 15–20% weight loss achievable with a weekly injection. The race now is for pills, less frequent dosing, better tolerability and muscle preservation, plus spin-off uses in liver disease (MASH) and other metabolic conditions.",
+  "sections": [
+    {
+      "heading": "The biology",
+      "body": "<p>After a meal, the gut releases <strong>incretin hormones</strong>. <strong>GLP-1</strong> (glucagon-like peptide-1) tells the pancreas to release insulin, slows stomach emptying and acts on the brain to reduce appetite. <strong>GIP</strong> (glucose-dependent insulinotropic polypeptide) also boosts insulin and appears to improve how the body handles fat. Two other hormones are drug targets too: <strong>glucagon</strong>, which raises energy use and helps clear fat from the liver, and <strong>amylin</strong>, which is released with insulin and adds to the feeling of fullness.</p>"
+    },
+    {
+      "heading": "How the drugs work",
+      "body": "<ul><li><strong>Single agonists</strong> activate the GLP-1 receptor. Semaglutide (Wegovy) produced about 15% average weight loss over 68 weeks in its pivotal trial.</li><li><strong>Dual agonists</strong> activate both GLP-1 and GIP receptors. Tirzepatide (Zepbound) reached about 21% at its highest dose over 72 weeks.</li><li><strong>Triple agonists and amylin combinations</strong> add glucagon or amylin activity to push weight loss further or improve liver effects.</li><li><strong>Oral options</strong> come in two kinds: <em>peptide pills</em>, which are harder to absorb and have dosing rules, and <em>small molecules</em>, which are cheaper to make at scale.</li><li><strong>Other mechanisms</strong> include silencing fat-storage genes such as INHBE with RNA drugs, and drugs acting on other hormone receptors (GPCRs).</li></ul>"
+    },
+    {
+      "heading": "Liver disease (MASH)",
+      "body": "<p><strong>MASH</strong> (metabolic dysfunction-associated steatohepatitis) is fatty liver disease with inflammation that can progress to scarring (fibrosis) and cirrhosis. Approval is based on liver biopsies showing either the inflammation resolving or fibrosis improving by at least one stage. Resmetirom (Rezdiffra), a thyroid hormone receptor-beta agonist, became the first approved MASH drug in 2024. Weight-loss drugs and FGF21 analogs are also being developed for MASH.</p>"
+    },
+    {
+      "heading": "What investors watch",
+      "body": "<ul><li><strong>Placebo-adjusted weight loss</strong>, and the trial length it's measured over. A 13-week result isn't comparable with a 72-week one.</li><li><strong>Tolerability</strong>: nausea and vomiting, and how many patients stop treatment.</li><li><strong>Quality of weight loss</strong>: how much lean muscle is preserved.</li><li><strong>Convenience</strong>: pill vs. injection, and weekly vs. monthly dosing or maintenance.</li><li><strong>Scale</strong>: manufacturing capacity, pricing and insurance coverage. Much of the obesity market is paid for out of pocket or by employers.</li></ul>"
+    }
+  ]
+}

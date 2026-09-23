@@ -1,0 +1,23 @@
+{
+  "theme": "Cell Therapy",
+  "reviewed": "2026-09-23",
+  "summary": "Cell therapies turn immune cells into living drugs that find and kill cancer, and increasingly reset the immune system in autoimmune disease. CAR-T transformed blood cancers after the first approval in 2017. Current efforts target solid tumors, off-the-shelf donor cells and simpler, safer treatment.",
+  "sections": [
+    {
+      "heading": "Types of cell therapy",
+      "body": "<ul><li><strong>CAR-T</strong>: T cells engineered with a chimeric antigen receptor that recognizes a protein on the cell surface, such as CD19 on B cells or BCMA on myeloma cells.</li><li><strong>TCR-T</strong>: T cells given a T cell receptor that recognizes fragments of <em>internal</em> proteins displayed on the cell surface by HLA molecules. This opens up targets like PRAME, but each therapy only works for patients with a matching HLA type.</li><li><strong>TIL</strong> (tumor-infiltrating lymphocytes): immune cells taken from the patient's own tumor, multiplied in the lab and infused back. Amtagvi, approved in 2024, was the first T cell therapy for a solid tumor.</li></ul>"
+    },
+    {
+      "heading": "Autologous vs. allogeneic",
+      "body": "<p><strong>Autologous</strong> products are made from each patient's own cells. They work well, but manufacturing takes weeks and costs a lot. <strong>Allogeneic</strong> (off-the-shelf) products are made in advance from healthy donors. They need gene edits to stop donor cells attacking the patient and to slow rejection, and the main question is whether they persist long enough to give durable responses.</p>"
+    },
+    {
+      "heading": "Safety and logistics",
+      "body": "<p>Most cell therapies require <strong>lymphodepleting chemotherapy</strong> beforehand. The main side effects are <strong>cytokine release syndrome (CRS)</strong> and neurological toxicity (<strong>ICANS</strong>), so treatment is concentrated at specialized centers. Designs with a lower risk of these toxicities make outpatient use, and use in autoimmune diseases such as lupus, more realistic.</p>"
+    },
+    {
+      "heading": "What investors watch",
+      "body": "<ul><li><strong>Depth and durability</strong>: complete response rates and how long responses last.</li><li><strong>Manufacturing</strong>: success rate, turnaround time and cost of goods.</li><li><strong>Launch metrics</strong>: number of treatment centers, patients treated per quarter, and gross margin.</li><li><strong>Competition from off-the-shelf drugs</strong> such as bispecific antibodies, which can be given without cell manufacturing.</li></ul>"
+    }
+  ]
+}
