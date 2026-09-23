@@ -16,13 +16,27 @@ try {
   process.exit(1);
 }
 
-const STOCKS = ['VKTX', 'IOVA', 'REPL'];
+const STOCKS = ['VKTX', 'IOVA', 'REPL', 'KLRA', 'NTLA', 'CGON', 'IMCR'];
+
+const COMPANY_NAMES = {
+  VKTX: 'Vikings Therapeutics',
+  IOVA: 'Iovance Biotherapeutics',
+  REPL: 'Replimune Group',
+  KLRA: 'Kailera Therapeutics',
+  NTLA: 'Intellia Therapeutics',
+  CGON: 'CG Oncology',
+  IMCR: 'Immunocore'
+};
 
 // Fallback demo prices
 const demoPrices = {
   VKTX: { price: 38.04, change: 1.25, changePercent: 3.39, high52: 45.20, low52: 12.50 },
   IOVA: { price: 4.25, change: -0.18, changePercent: -4.06, high52: 11.50, low52: 3.80 },
-  REPL: { price: 24.00, change: 0.50, changePercent: 2.13, high52: 35.00, low52: 14.00 }
+  REPL: { price: 24.00, change: 0.50, changePercent: 2.13, high52: 35.00, low52: 14.00 },
+  KLRA: { price: 12.73, change: -0.06, changePercent: -0.47, high52: 28.23, low52: 11.84 },
+  NTLA: { price: 12.13, change: -0.56, changePercent: -4.45, high52: 28.25, low52: 7.95 },
+  CGON: { price: 72.30, change: -5.44, changePercent: -7.00, high52: 80.97, low52: 35.64 },
+  IMCR: { price: 31.40, change: -1.02, changePercent: -3.15, high52: 40.72, low52: 27.55 }
 };
 
 // Fetch stock price from Yahoo Finance using yahoo-finance2
@@ -93,6 +107,42 @@ const demoNews = {
       source: 'Fierce Biotech',
       date: new Date().toISOString().split('T')[0],
       summary: 'Iovance Biotherapeutics shared updated data from its tumor infiltrating lymphocyte (TIL) therapy program showing durable responses.',
+      url: '#'
+    }
+  ],
+  KLRA: [
+    {
+      title: 'Kailera Reports Second Quarter 2026 Financial Results',
+      source: 'GlobeNewswire',
+      date: new Date().toISOString().split('T')[0],
+      summary: 'Kailera advanced its global Phase 3 KaiNETIC program for ribupatide injection (KAI-9531), a GLP-1/GIP dual agonist for obesity.',
+      url: '#'
+    }
+  ],
+  NTLA: [
+    {
+      title: 'Intellia Presents Phase 3 HAELO Data for Lonvo-z in Hereditary Angioedema',
+      source: 'GlobeNewswire',
+      date: new Date().toISOString().split('T')[0],
+      summary: 'A one-time infusion of the CRISPR-based therapy lonvo-z reduced HAE attacks by 87% versus placebo; Intellia expects FDA BLA acceptance in 2H 2026.',
+      url: '#'
+    }
+  ],
+  CGON: [
+    {
+      title: 'CG Oncology Nears BLA Completion for Cretostimogene in NMIBC',
+      source: 'GlobeNewswire',
+      date: new Date().toISOString().split('T')[0],
+      summary: 'CG Oncology expects to complete its BLA for cretostimogene in high-risk BCG-unresponsive NMIBC in Q4 2026, with PIVOT-006 Phase 3 data near term.',
+      url: '#'
+    }
+  ],
+  IMCR: [
+    {
+      title: 'Immunocore Reports KIMMTRAK Revenue Growth in Q2 2026',
+      source: 'GlobeNewswire',
+      date: new Date().toISOString().split('T')[0],
+      summary: 'KIMMTRAK net sales reached $115.9M, up 18% year over year, with Phase 3 TEBE-AM topline data expected by the end of 2026.',
       url: '#'
     }
   ]
@@ -220,7 +270,9 @@ async function getReturns(symbol, quote, currentPrice) {
       ytd: 0
     };
 
-    const historicalData = await getHistoricalData(symbol, sixMonthsAgo);
+    // Fetch back to whichever is earlier (Jan 1 or 6 months ago) so both 6M and YTD are covered
+    const historyStart = yearStart < sixMonthsAgo ? yearStart : sixMonthsAgo;
+    const historicalData = await getHistoricalData(symbol, historyStart);
 
     if (historicalData && historicalData.length > 0) {
       // Sort oldest → newest
@@ -230,12 +282,13 @@ async function getReturns(symbol, quote, currentPrice) {
       const calcReturn = (pastClose) =>
         parseFloat((((currentPrice - pastClose) / pastClose) * 100).toFixed(2));
 
-      // 6M: oldest data point
-      if (sorted[0]?.close) returns.sixMonth = calcReturn(sorted[0].close);
-
-      // 1M, 5D, YTD: most recent quote on or before the target date
+      // 6M, 1M, 5D: most recent quote on or before the target date
+      // (falls back to the oldest quote for recent IPOs with shorter history)
       const findClosest = (targetDate) =>
-        [...sorted].reverse().find(q => new Date(q.date) <= targetDate);
+        [...sorted].reverse().find(q => new Date(q.date) <= targetDate) || sorted[0];
+
+      const sixMonthQuote = findClosest(sixMonthsAgo);
+      if (sixMonthQuote?.close) returns.sixMonth = calcReturn(sixMonthQuote.close);
 
       const oneMonthQuote = findClosest(oneMonthAgo);
       if (oneMonthQuote?.close) returns.oneMonth = calcReturn(oneMonthQuote.close);
@@ -260,7 +313,11 @@ async function getReturns(symbol, quote, currentPrice) {
 const cashPositions = {
   VKTX: 185e6,  // Q1 2026: $185M
   IOVA: 75e6,   // Q1 2026: $75M
-  REPL: 350e6   // Q1 2026: $350M
+  REPL: 350e6,  // Q1 2026: $350M
+  KLRA: 1171.8e6, // Q2 2026: $1,171.8M (cash, equivalents & marketable securities)
+  NTLA: 628.4e6,  // Q2 2026: $628.4M (cash, equivalents & marketable securities)
+  CGON: 1028e6,   // Q2 2026: $1,028M (cash, equivalents & marketable securities)
+  IMCR: 880.2e6   // Q2 2026: $880.2M (cash, equivalents & marketable securities)
 };
 
 async function getCashPosition(symbol) {
@@ -307,7 +364,7 @@ async function updateHTML() {
       marketCap: quote.marketCap || null
     };
 
-    const company = symbol === 'VKTX' ? 'Vikings Therapeutics' : symbol === 'IOVA' ? 'Iovance Biotherapeutics' : 'Replimune Group';
+    const company = COMPANY_NAMES[symbol] || symbol;
     const news = await getNews(symbol, company);
     const returns = await getReturns(symbol, quote, price.price);
     const monthlyBurn = await getMonthlyBurn(symbol);
@@ -354,8 +411,8 @@ async function updateHTML() {
   fs.writeFileSync('index.html', indexHTML);
 
   // Update profile pages
-  const profilePages = { VKTX: 'vktx.html', IOVA: 'iova.html', REPL: 'repl.html' };
-  for (const [symbol, filename] of Object.entries(profilePages)) {
+  for (const symbol of STOCKS) {
+    const filename = `${symbol.toLowerCase()}.html`;
     if (stockData[symbol] && fs.existsSync(filename)) {
       console.log(`  Updating ${filename}...`);
       updateProfilePage(filename, stockData[symbol]);
@@ -363,9 +420,10 @@ async function updateHTML() {
   }
 
   console.log('\n✅ Stock data updated!');
-  if (stockData.VKTX) console.log(`VKTX: $${stockData.VKTX.price} ${stockData.VKTX.changePercent >= 0 ? '+' : ''}${stockData.VKTX.changePercent}% | YTD: ${stockData.VKTX.ytd}%`);
-  if (stockData.IOVA) console.log(`IOVA: $${stockData.IOVA.price} ${stockData.IOVA.changePercent >= 0 ? '+' : ''}${stockData.IOVA.changePercent}% | YTD: ${stockData.IOVA.ytd}%`);
-  if (stockData.REPL) console.log(`REPL: $${stockData.REPL.price} ${stockData.REPL.changePercent >= 0 ? '+' : ''}${stockData.REPL.changePercent}% | YTD: ${stockData.REPL.ytd}%`);
+  for (const symbol of STOCKS) {
+    const d = stockData[symbol];
+    if (d) console.log(`${symbol}: $${d.price} ${d.changePercent >= 0 ? '+' : ''}${d.changePercent}% | YTD: ${d.ytd}%`);
+  }
 }
 
 // Update individual profile page
@@ -398,7 +456,7 @@ function updateProfilePage(filename, data) {
   if (data.monthlyBurn) {
     const burnStr = `$${(data.monthlyBurn / 1e6).toFixed(1)}M/mo`;
     html = html.replace(
-      /(<div class="card-value"[^>]*data-field="monthlyBurn"[^>]*>)[^<]*/,
+      /(<div class="card-value"[^>]*data-field="monthlyBurn"[^>]*>)[^<]*/g,
       (_, tag) => `${tag}${burnStr}`
     );
   }
@@ -406,7 +464,7 @@ function updateProfilePage(filename, data) {
   // Update Financial Health section
   if (data.cashPosition) {
     html = html.replace(
-      /(<div class="card-value"[^>]*data-field="cashPosition"[^>]*>)[^<]*/,
+      /(<div class="card-value"[^>]*data-field="cashPosition"[^>]*>)[^<]*/g,
       (_, tag) => `${tag}${formatMarketCap(data.cashPosition)}`
     );
   }
@@ -418,16 +476,16 @@ function updateProfilePage(filename, data) {
   }
   if (data.cashPosition && data.monthlyBurn) {
     const runwayMonths = data.cashPosition / data.monthlyBurn;
-    const runwayStr = `${runwayMonths.toFixed(0)} months`;
+    const runwayStr = runwayMonths > 120 ? '10+ years' : `${runwayMonths.toFixed(0)} months`;
     html = html.replace(
-      /(<div class="card-value"[^>]*data-field="runway"[^>]*>)[^<]*/,
+      /(<div class="card-value"[^>]*data-field="runway"[^>]*>)[^<]*/g,
       (_, tag) => `${tag}${runwayStr}`
     );
   }
 
   // Update YTD: value and color
   html = html.replace(
-    /(<div class="card-value"[^>]*data-field="ytd"[^>]*style="color: )#[0-9a-f]+(">)[^<]*/,
+    /(<div class="card-value"[^>]*data-field="ytd"[^>]*style="color: )#[0-9a-f]+(;?">)[^<]*/,
     (_, pre, close) => `${pre}${color(data.ytd)}${close}${sign(data.ytd)}${data.ytd}%`
   );
 
