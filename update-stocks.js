@@ -330,6 +330,7 @@ async function getReturns(symbol, quote, currentPrice) {
 // is incomplete. Used only while at least as recent as Yahoo's latest quarter —
 // update the amount and asOf date each quarter.
 const cashOverrides = {
+  IOVA: { amount: 304e6, asOf: '2026-06-30' },   // company-reported ~$304M; Yahoo has only $110.8M cash & equivalents
   PRME: { amount: 108.8e6, asOf: '2026-06-30' }  // Yahoo omits Prime's marketable securities
 };
 
