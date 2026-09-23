@@ -439,4 +439,4 @@ ${renderFooterLinks('../', themes)}
 `;
 }
 
-module.exports = { renderProfile, formatMoney, formatPct, pctColor, formatDate, runwayText, escapeHtml, stripTags, CSS, DISCLAIMER };
+module.exports = { renderProfile, formatMoney, formatPct, pctColor, formatDate, runwayText, insiderSummary, escapeHtml, stripTags, CSS, DISCLAIMER };

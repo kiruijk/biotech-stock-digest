@@ -258,6 +258,22 @@ function monthsAgo(now, n) {
   return d;
 }
 
+// % return for each target date, measured from the most recent close on or before it.
+// A target before the stock's first close gives null (e.g. a recent IPO) rather than
+// silently measuring from the first trading day. `sorted` is oldest → newest.
+function returnsFromHistory(sorted, currentPrice, targets) {
+  const out = {};
+  const closeAt = (target) => {
+    const q = [...sorted].reverse().find(q => new Date(q.date) <= target);
+    return q ? q.close : null;
+  };
+  for (const [field, target] of Object.entries(targets)) {
+    const pastClose = closeAt(target);
+    out[field] = pastClose ? round2(((currentPrice - pastClose) / pastClose) * 100) : null;
+  }
+  return out;
+}
+
 // Fetch returns from Yahoo Finance for 1D plus every period in RETURN_PERIODS.
 // Also returns the daily close history (oldest → newest) used for charts.
 async function getReturns(symbol, quote, currentPrice, extraTargets = {}) {
@@ -282,18 +298,7 @@ async function getReturns(symbol, quote, currentPrice, extraTargets = {}) {
         .filter(q => q.close != null)
         .sort((a, b) => new Date(a.date) - new Date(b.date));
 
-      // Most recent close on or before the target date. Returns null when the stock's
-      // history doesn't reach back that far (e.g. a recent IPO), rather than silently
-      // measuring from the first trading day.
-      const closeAt = (target) => {
-        const q = [...sorted].reverse().find(q => new Date(q.date) <= target);
-        return q ? q.close : null;
-      };
-
-      for (const [field, target] of Object.entries(targets)) {
-        const pastClose = closeAt(target);
-        if (pastClose) returns[field] = round2(((currentPrice - pastClose) / pastClose) * 100);
-      }
+      Object.assign(returns, returnsFromHistory(sorted, currentPrice, targets));
       history = sorted.map(q => [new Date(q.date).toISOString().slice(0, 10), round4(q.close)]);
     }
 
@@ -335,6 +340,39 @@ async function getUsdRate(currency) {
 //   (excludes strategic equity stakes), matching what companies report in earnings releases
 // - burn = latest quarter's operating cash outflow ÷ 3 (actual cash spent, unlike net loss
 //   which includes non-cash items like stock comp and warrant revaluations)
+// Cash and burn from Yahoo's quarterly rows (see getFinancials). `fx` = USD per unit of
+// the company's reporting currency; null fx means the figures can't be converted.
+function financialsFromRows(rows, fx) {
+  const result = {};
+  const latest = (field) => [...rows].reverse().find(r => r[field] != null);
+
+  const bs = latest('cashCashEquivalentsAndShortTermInvestments');
+  if (bs && fx) {
+    const longTerm = bs.investmentinFinancialAssets ?? bs.investmentsAndAdvances ?? 0;
+    result.cashPosition = (bs.cashCashEquivalentsAndShortTermInvestments + longTerm) * fx;
+    result.cashAsOf = new Date(bs.date).toISOString().slice(0, 10);
+  }
+
+  const cf = latest('operatingCashFlow');
+  if (cf && fx) {
+    if (cf.operatingCashFlow < 0) result.monthlyBurn = (-cf.operatingCashFlow * fx) / 3;
+    else result.cashFlowPositive = true;
+  }
+  return result;
+}
+
+// Use a hand-entered cash figure while it's at least as recent as Yahoo's quarter. Once
+// Yahoo has a newer quarter, keep Yahoo's number but flag the override as superseded
+// (it was incomplete for this company last time, so the override needs refreshing —
+// check-freshness.js fails the run on this).
+function applyCashOverride(result, override) {
+  if (!override) return {};
+  if (!result.cashAsOf || override.asOf >= result.cashAsOf) {
+    return { cashPosition: override.amount, cashAsOf: override.asOf };
+  }
+  return { cashOverrideSuperseded: { overrideAsOf: override.asOf, yahooAsOf: result.cashAsOf } };
+}
+
 async function getFinancials(symbol, currency) {
   const result = { cashPosition: null, cashAsOf: null, monthlyBurn: null, cashFlowPositive: false };
 
@@ -344,35 +382,15 @@ async function getFinancials(symbol, currency) {
       type: 'quarterly',
       module: 'all'
     }));
-    const latest = (field) => [...rows].reverse().find(r => r[field] != null);
     const fx = await getUsdRate(currency || 'USD');
-
-    const bs = latest('cashCashEquivalentsAndShortTermInvestments');
-    if (bs && fx) {
-      const longTerm = bs.investmentinFinancialAssets ?? bs.investmentsAndAdvances ?? 0;
-      result.cashPosition = (bs.cashCashEquivalentsAndShortTermInvestments + longTerm) * fx;
-      result.cashAsOf = new Date(bs.date).toISOString().slice(0, 10);
-    }
-
-    const cf = latest('operatingCashFlow');
-    if (cf && fx) {
-      if (cf.operatingCashFlow < 0) result.monthlyBurn = (-cf.operatingCashFlow * fx) / 3;
-      else result.cashFlowPositive = true;
-    }
+    Object.assign(result, financialsFromRows(rows, fx));
   } catch (err) {
     console.warn(`    ⚠️  Could not fetch financials for ${symbol}: ${err.message}`);
   }
 
-  const override = cashOverrides[symbol];
-  if (override && (!result.cashAsOf || override.asOf >= result.cashAsOf)) {
-    result.cashPosition = override.amount;
-    result.cashAsOf = override.asOf;
-  } else if (override) {
-    // Yahoo now has a newer quarter than the hand-entered figure. Yahoo's number is used,
-    // but it was incomplete for this company last time — flag it so the override gets
-    // refreshed from the new 10-Q (check-freshness.js fails the run on this).
-    result.cashOverrideSuperseded = { overrideAsOf: override.asOf, yahooAsOf: result.cashAsOf };
-    console.warn(`    ⚠️  cashOverrides.${symbol} (as of ${override.asOf}) is older than Yahoo's ${result.cashAsOf} — update it from the latest 10-Q`);
+  Object.assign(result, applyCashOverride(result, cashOverrides[symbol]));
+  if (result.cashOverrideSuperseded) {
+    console.warn(`    ⚠️  cashOverrides.${symbol} (as of ${result.cashOverrideSuperseded.overrideAsOf}) is older than Yahoo's ${result.cashAsOf} — update it from the latest 10-Q`);
   }
 
   const m = (v) => (v == null ? '—' : `$${(v / 1e6).toFixed(1)}M`);
@@ -702,8 +720,17 @@ ${pages.map(p => `  <url><loc>${SITE.url}${p}</loc><lastmod>${today}</lastmod><c
   }
 }
 
-// Run
-updateAll().catch(err => {
-  console.error('Fatal error:', err);
-  process.exit(1);
-});
+if (require.main === module) {
+  updateAll().catch(err => {
+    console.error('Fatal error:', err);
+    process.exit(1);
+  });
+}
+
+// Exported for tests (tests/*.test.js)
+module.exports = {
+  financialsFromRows, applyCashOverride, returnsFromHistory, parseInsiders, formatInsiderName,
+  formatRelation, classifyTransaction, parseNextEarnings, isMaterialNews, isLowValueNews,
+  cleanNewsTitle, updateMaterialNews, sparklines, chartSeries, downsample, compactNumberArrays,
+  dataTimeLabel
+};

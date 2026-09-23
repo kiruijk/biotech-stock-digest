@@ -6,7 +6,8 @@
   "scripts": {
     "update": "node update-stocks.js",
     "review": "node review-queue.js",
-    "render": "node update-stocks.js --render-only"
+    "render": "node update-stocks.js --render-only",
+    "test": "node --test 'tests/*.test.js'"
   },
   "keywords": [
     "biotech",
