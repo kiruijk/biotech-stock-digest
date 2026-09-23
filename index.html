@@ -469,9 +469,56 @@
       color: #1a1a1a;
     }
 
+    .view-profile {
+      text-align: center;
+      margin-top: 1rem;
+      font-size: 0.85rem;
+      color: #0052cc;
+      font-weight: 600;
+    }
+
+    .view-switch {
+      display: none;
+    }
+
     @media (max-width: 900px) {
+      /* minmax(0, 1fr), not 1fr: the swipeable button bars would otherwise force the
+         column to their full unwrapped width */
       .layout {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      /* One column at a time on narrow screens, chosen with the Stocks | News switch */
+      .view-switch {
+        display: flex;
+        gap: 0.25rem;
+        padding: 0.25rem;
+        margin-bottom: 1.25rem;
+        background: #e5e7eb;
+        border-radius: 8px;
+      }
+
+      .view-btn {
+        flex: 1;
+        padding: 0.5rem;
+        border: 0;
+        border-radius: 6px;
+        background: transparent;
+        color: #374151;
+        font-size: 0.9rem;
+        font-weight: 600;
+        cursor: pointer;
+      }
+
+      .view-btn.active {
+        background: white;
+        color: #0052cc;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      }
+
+      .layout[data-view="stocks"] .news-column,
+      .layout[data-view="news"] .stocks-column {
+        display: none;
       }
 
       .news-column {
@@ -493,6 +540,78 @@
 
       header h1 {
         font-size: 1.4rem;
+      }
+    }
+
+    /* Phones: compact cards and single-row, swipeable button bars */
+    @media (max-width: 600px) {
+      header {
+        padding: 1.1rem 1rem;
+      }
+
+      header h1 {
+        font-size: 1.25rem;
+        margin-bottom: 0.1rem;
+      }
+
+      .container {
+        padding: 1rem 0.75rem 2rem;
+      }
+
+      .theme-filter,
+      .period-picker {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        margin-left: -0.75rem;
+        margin-right: -0.75rem;
+        padding: 0 0.75rem 0.25rem;
+        scrollbar-width: none;
+      }
+
+      .theme-filter::-webkit-scrollbar,
+      .period-picker::-webkit-scrollbar {
+        display: none;
+      }
+
+      .theme-filter .period-btn,
+      .period-picker .period-btn {
+        flex: 0 0 auto;
+        white-space: nowrap;
+      }
+
+      .theme-filter {
+        margin-bottom: 1rem;
+      }
+
+      .theme-panel {
+        margin-top: 0;
+        padding: 0.85rem 1rem;
+      }
+
+      .stock-grid {
+        gap: 0.6rem;
+      }
+
+      .stock-card {
+        padding: 0.85rem 1rem;
+      }
+
+      .stock-header {
+        margin-bottom: 0;
+      }
+
+      .stock-symbol {
+        font-size: 1.15rem;
+      }
+
+      .stock-price {
+        font-size: 1.05rem;
+      }
+
+      /* Full return grid lives on the profile page; the badge shows the selected period */
+      .stock-card .metrics,
+      .stock-card .view-profile {
+        display: none;
       }
     }
     .stale-badge {
@@ -520,7 +639,12 @@
     <div class="theme-filter" id="theme-filter" role="group" aria-label="Filter by theme"></div>
     <div class="theme-panel" id="theme-panel" hidden></div>
 
-    <div class="layout">
+    <div class="view-switch" id="view-switch" role="tablist" aria-label="Show stocks or news">
+      <button type="button" class="view-btn active" data-view="stocks" role="tab" aria-selected="true">Stocks</button>
+      <button type="button" class="view-btn" data-view="news" role="tab" aria-selected="false">News &amp; Earnings</button>
+    </div>
+
+    <div class="layout" id="layout" data-view="stocks">
       <!-- Stock Prices, ranked by today's performance -->
       <section class="stocks-column">
         <div class="column-title">Top Movers <span class="column-subtitle" id="rank-subtitle">ranked by 1-day change</span></div>
@@ -2229,9 +2353,7 @@
             <div class="metric-value" style="color: ${pctColor(value)};">${formatPct(value)}</div>
           </div>`).join('')}
         </div>
-        <div style="text-align: center; margin-top: 1rem; font-size: 0.85rem; color: #0052cc; font-weight: 600;">
-          View Profile →
-        </div>
+        <div class="view-profile">View Profile →</div>
       </div>
           `;
   });
@@ -2290,7 +2412,23 @@ function updateTime() {
   if (el) el.textContent = formatTime(new Date());
 }
 
+// Stocks | News switch on narrow screens
+function setupViewSwitch() {
+  const layout = document.getElementById('layout');
+  document.getElementById('view-switch').onclick = (e) => {
+    const btn = e.target.closest('.view-btn');
+    if (!btn) return;
+    layout.dataset.view = btn.dataset.view;
+    document.querySelectorAll('.view-btn').forEach(b => {
+      b.classList.toggle('active', b === btn);
+      b.setAttribute('aria-selected', String(b === btn));
+    });
+    window.scrollTo({ top: document.getElementById('view-switch').offsetTop - 8 });
+  };
+}
+
 function main() {
+  setupViewSwitch();
   // Hide loading
   document.getElementById('loading').style.display = 'none';
 

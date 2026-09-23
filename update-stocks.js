@@ -477,8 +477,12 @@ async function updateAll() {
   const stockData = {};
   const previousData = readPreviousData();
 
-  console.log('Fetching stock data...');
-  for (const symbol of STOCKS) {
+  // --render-only rebuilds the HTML from the last run's data without fetching anything,
+  // for iterating on templates: `node update-stocks.js --render-only`
+  const renderOnly = process.argv.includes('--render-only');
+  if (renderOnly) console.log('Render-only: using data/market.json, no fetching');
+  else console.log('Fetching stock data...');
+  for (const symbol of renderOnly ? [] : STOCKS) {
     console.log(`  ${symbol}...`);
     try {
       stockData[symbol] = await buildStockData(symbol, previousData[symbol]);
@@ -498,9 +502,13 @@ async function updateAll() {
     }
   }
 
-  // Full data (company info, insiders, all news) for the next run and for profile pages
-  fs.writeFileSync(MARKET_FILE, JSON.stringify(stockData, null, 2) + '\n');
-  console.log(`\nWrote ${MARKET_FILE}`);
+  if (renderOnly) {
+    Object.assign(stockData, previousData);
+  } else {
+    // Full data (company info, insiders, all news) for the next run and for profile pages
+    fs.writeFileSync(MARKET_FILE, JSON.stringify(stockData, null, 2) + '\n');
+    console.log(`\nWrote ${MARKET_FILE}`);
+  }
 
   // Homepage gets a lighter copy: no company details or insider tables, 3 news items
   const coveredSymbols = new Set(STOCKS.filter(s => readProfile(s)));
