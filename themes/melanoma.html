@@ -90,7 +90,7 @@
 
     .grid-3 {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 1rem;
     }
 
@@ -184,6 +184,81 @@
       .grid-3 {
         grid-template-columns: 1fr;
       }
+    }
+
+    /* Price chart */
+    .chart {
+      position: relative;
+      margin-bottom: 1.25rem;
+    }
+
+    .chart-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .chart-change {
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .chart-periods {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25rem;
+    }
+
+    .chart-periods button {
+      border: 1px solid #d1d5db;
+      background: white;
+      border-radius: 5px;
+      padding: 0.2rem 0.55rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #374151;
+      cursor: pointer;
+    }
+
+    .chart-periods button:disabled {
+      color: #d1d5db;
+      border-color: #eef0f3;
+      cursor: default;
+    }
+
+    .chart-periods button.active {
+      background: #0052cc;
+      border-color: #0052cc;
+      color: white;
+    }
+
+    #chart-svg {
+      width: 100%;
+      height: 200px;
+      display: block;
+      cursor: crosshair;
+    }
+
+    .chart-tip {
+      position: absolute;
+      top: 2.4rem;
+      width: 130px;
+      text-align: center;
+      background: #1a1a1a;
+      color: white;
+      font-size: 0.72rem;
+      padding: 0.2rem 0.4rem;
+      border-radius: 4px;
+      pointer-events: none;
+    }
+
+    .chart-range {
+      font-size: 0.75rem;
+      color: #9ca3af;
+      margin-top: 0.3rem;
     }
 
     /* Text */
@@ -732,6 +807,8 @@
     <div class="section">
       <h2>Latest News</h2>
       <ul class="item-list">
+        <li><a href="https://news.google.com/rss/articles/CBMikgFBVV95cUxNNDltODBZZmFDUFgwdGhVX0NYT3Vmc0VqQldEU2FfcXVtWHgzLWZfTHRMSUR1Ul9IWHVaVXB0SGNnLWxKQ3dxclFLeS1EdWQzd0VGZGNFYW9lcXROQXZWd3VmMkFtMnhfY1RsR1Jib2hxLXhUd3libWZ0V19vOUFmcktwNzlSa0VQdzlpTHhCU0kxUQ?oc=5" target="_blank" rel="noopener">Iovance Biotherapeutics, Inc. (IOVA) Options Chain - Yahoo Finance</a>
+          <div class="item-meta">IOVA · Yahoo! Finance Canada · Sep 23, 2026</div></li>
         <li><a href="https://news.google.com/rss/articles/CBMitAFBVV95cUxOcmFOVVZvMHNqRU5Cd19jbG1yM2E1WGZoN3Q1Q1JzZm1jLV8yS2pZbkRUYnRnSHNpNmxscEJuRTFTYmxiUzB0SUVIZDhObGF0MFRnR3YxZW9PY2J4WlozS2ZmbG1xMXJfeHREQm93azhPdzZvYnhZa0JXYVhnd1NzVnBTSWd3SzNOWGR0a1hkUDVSNnJ2VHF6OXQyZ0trb2RCNWJTbm04MjhkbUdjbWNSejFDd24?oc=5" target="_blank" rel="noopener">Immatics stock holds at USD 8.77 as analysts see upside</a>
           <div class="item-meta">IMTX · AD HOC NEWS · Sep 23, 2026</div></li>
         <li><a href="https://news.google.com/rss/articles/CBMisAFBVV95cUxQTHgzVUZLM3RXdVZaSG1IdWlZUGM1Rzg2LVViYlQxQzBHZ2g2Zm5TTko3aFlNRTdxSHB0RHdEMEd3TVZuUUJmQ01JcjYzZnI2dTNMSElIbXJVU0Vxb0ZMeUs1MUU2STNvNTdfT0VHSmxHcWhEOWNCT0ZPdjVkU0pGTjZIbmIwUktlVUVmZl9JZFpXdEdyaUhhRTlaNHdQUk8tdmlqN1lDRGlQVEtLOEVUcQ?oc=5" target="_blank" rel="noopener">Replimune stock gains as share authorization doubles</a>
@@ -760,8 +837,6 @@
           <div class="item-meta">IMCR · AD HOC NEWS · Sep 20, 2026</div></li>
         <li><a href="https://news.google.com/rss/articles/CBMi7gFBVV95cUxQYXRkNmJCd0psYmZtbDl4NTl4RktmY0J3WXJrMlFHTlpaUUQwVk9rNVlwVEZIQXY0cXBNQTk5QWRNMkQyMVQ3TzJXcnY4NG1XSUQtYVA0enFqOUpiOEhadVd2UXFDN1ZHZGViWHRKZVZaV2s5ejRJU0dOaEFUQllqTHdXeGthOEY3NllIS1Y3VXlsbzdTZnNrczNHU2ZrQVZwM0hETTBSY1ZLcTJPQ1V4cl9JNlNfdVBNMlZ1MGlWXy1RZ21FRVlFSXpTS05oSGdvc3FKWURBU0pjbWZxQW0xRGlVc05pXzVqcDl5UWRB0gHzAUFVX3lxTE96WHpjVFZnbjdEZVgzc185WlNBN0I5bEFQb3pqQ2xjS2Y3QVJUa2lLX1hHRHVTbkU2SXRGZlE2NzY0bVAtc1JTQy1hR3RCV21LWkg1VWhwVUpVaEoyMmtmZ0M2d1UtLWgyNXVzUVkwdllNQXphZFFIQzMxcDE2bzlsOTZoTm9GdmJCWWx2VVkzeVdzUXNGQk9vT3VKYUV6RDFNMzRTYk41VENZb0FrQmtYazNxclhrMnJrVnBvR3B2RW9hRTkxOFI4NGtBdEt1dVJGaFFsR09kY0pLZ3pxWm1qVWNxTENycjkzbWV4OG5fNmpZOA?oc=5" target="_blank" rel="noopener">Iovance Biotherapeutics (IOVA) Could Be 43% Undervalued After Record Q2 Results</a>
           <div class="item-meta">IOVA · simplywall.st · Sep 19, 2026</div></li>
-        <li><a href="https://news.google.com/rss/articles/CBMiogFBVV95cUxNRy1nekU5SjY4THJhRUlTTjJnWlFlekZkU01wVUh6QXppUVBRR2o5bWY4OEZEcEt6NEd4M2hZVzQ4ZW5OejQ0aDhrYXNYRHN6czB2R0tLUUVUbHJGcWwxeWNES2lRSDVROTJyZlRHVERZeXlzeFBwZFhuSnNaNkpwaHExWEEySFNXeWdpZ3dyRTZENC1lN25sWlFVRkU1ekdtSmc?oc=5" target="_blank" rel="noopener">Iovance Biotherapeutics (IOVA) Stock Fair Value Edges Higher On Amtagvi Margin Progress</a>
-          <div class="item-meta">IOVA · Yahoo Finance · Sep 19, 2026</div></li>
       </ul>
     </div>
 

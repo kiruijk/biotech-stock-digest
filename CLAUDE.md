@@ -27,6 +27,8 @@ node update-stocks.js # same thing, direct
 - `data/universe.json` — the stock list: symbol, company name, themes, plus the list of themes shown as homepage filters.
 - `data/profiles/<ticker>.json` — hand-written editorial content (overview, competitors, catalysts, risks, partners, interpretation) with a `reviewed` date. A stock **with** a profile file is "covered" and its page includes these sections; a stock **without** one is "tracked" and gets a data-only page (Yahoo business description, stats, insiders, leadership, news). Profile fields are trusted HTML.
 - `data/themes/<slug>.json` — science background per theme (summary + sections of trusted HTML, with a `reviewed` date). Slugs come from `themeSlug()` in `lib/themes.js` ("Obesity & Metabolic" → `obesity-and-metabolic`).
+- `data/history/<ticker>.json` — ~10 years of daily closes, one `[date, close]` row per line (so daily commits are small diffs). Written on each fetch; used for homepage sparklines (`sparklines()`, per return period, ≤40 points) and profile price charts (`chartSeries()`: daily for the last year, weekly before that). Chart headers show the official return figures so they always match the returns row.
+- `data/site.json` — public site URL/name/description, used for canonical/OG tags, `sitemap.xml` and `robots.txt` (all generated each run). Update `url` when moving to a custom domain.
 - `data/market.json` — everything fetched on the last run (prices, returns, cash/burn, company info, insider trades, news). Written by the bot; also the fallback when a ticker's fetch fails.
 
 **Data flow, driven entirely by `update-stocks.js`:**

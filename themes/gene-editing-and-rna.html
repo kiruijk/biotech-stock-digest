@@ -90,7 +90,7 @@
 
     .grid-3 {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 1rem;
     }
 
@@ -184,6 +184,81 @@
       .grid-3 {
         grid-template-columns: 1fr;
       }
+    }
+
+    /* Price chart */
+    .chart {
+      position: relative;
+      margin-bottom: 1.25rem;
+    }
+
+    .chart-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .chart-change {
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .chart-periods {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25rem;
+    }
+
+    .chart-periods button {
+      border: 1px solid #d1d5db;
+      background: white;
+      border-radius: 5px;
+      padding: 0.2rem 0.55rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #374151;
+      cursor: pointer;
+    }
+
+    .chart-periods button:disabled {
+      color: #d1d5db;
+      border-color: #eef0f3;
+      cursor: default;
+    }
+
+    .chart-periods button.active {
+      background: #0052cc;
+      border-color: #0052cc;
+      color: white;
+    }
+
+    #chart-svg {
+      width: 100%;
+      height: 200px;
+      display: block;
+      cursor: crosshair;
+    }
+
+    .chart-tip {
+      position: absolute;
+      top: 2.4rem;
+      width: 130px;
+      text-align: center;
+      background: #1a1a1a;
+      color: white;
+      font-size: 0.72rem;
+      padding: 0.2rem 0.4rem;
+      border-radius: 4px;
+      pointer-events: none;
+    }
+
+    .chart-range {
+      font-size: 0.75rem;
+      color: #9ca3af;
+      margin-top: 0.3rem;
     }
 
     /* Text */
@@ -748,10 +823,8 @@
           <div class="item-meta">CRSP · Pluang · Sep 23, 2026</div></li>
         <li><a href="https://news.google.com/rss/articles/CBMiowFBVV95cUxNSktabHNLZ0NLQmVIM3RhS09HczNKRldDZVFyZ3hxUk1OcUhDb0ZuMDJWajFNMGNNZ2Z4TDR4SWVmSnB2MlJIWmpSeGY0cG5ocGUzYlJQdnh2QmFjeENsWkVIdzY5Q0VFSTNDRHJjbnVFZWVFeHViRmVVV1d0d2FveTRJZzJHcktVMDF6WmtmTG9RLXBMUDlydzltYzdwUFZSakY4?oc=5" target="_blank" rel="noopener">CRISPR Therapeutics Traded Sideways and Down for 12 Months: One Wall Street Pro Expects 85% Gains Soon</a>
           <div class="item-meta">CRSP · Yahoo Finance · Sep 23, 2026</div></li>
-        <li><a href="https://news.google.com/rss/articles/CBMivAFBVV95cUxNTWtybl81clFJTXB0WTFoMEQ3M1FGRHVfODRfclVmVldwd3hnQU9kUjI2RFRrU0NzTFhXTS1fdVNJajg4UmgxUTBtM0d3MjlfRF9FUWdxdVAxMjh2VmFwQ3FPTkdZbHEwcGlQVjV4RWJjSFVJcnQ4Wjc0YkFnUHg3bEd2aHBHcG5WY2I4NGJENG5YR3FYLWs4cERrRWU1czlqN0xWREJzWGNhSDZpb1hhaTlTdEZmQzRXQ0FRTw?oc=5" target="_blank" rel="noopener">Wave Life Sciences starts Phase 2a obesity trial for WVE-007 By Investing.com</a>
-          <div class="item-meta">WVE · Investing.com South Africa · Sep 23, 2026</div></li>
-        <li><a href="https://news.google.com/rss/articles/CBMikgFBVV95cUxOMDZQS0ViWUE3NzBEOHBQeC1waTkzWlpnVnNRWUtKSW9VVXRHZkNjZFlzUS1GM2NuODJacG8tVUN3OWRtRGZ5M2gzR2ExUzhlcXdXdnlPa1JRX01yR0ZRbkk3djg5QXBwYlQxQzhCcHBITWdCVE1wNmhMM3FxMEthaWw3MVR3ZzlHWEJGaWU1MUVndw?oc=5" target="_blank" rel="noopener">CRISPR Therapeutics AG (CRSP) Options Chain - Yahoo Finance</a>
-          <div class="item-meta">CRSP · Yahoo! Finance Canada · Sep 23, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMivAFBVV95cUxOYXpqQXF0UDZNZFVpMTduX1dwenhqTlQ0VjVwdkJQbE92dHBZdGQ2WGpmZXYwOGNkVE5EZU5pYkd6enhhdUZZOU40UU9PODd4S0RDLVIxVk9CYzM4SGpQazFLZFFVcVd4ZjdlWko4OXl5SDhRY2huVGRzUzVNLUtSR1pSVlRwQm0zMWVPUlpwMy1zaU1Nc2dHdEpmbjVTUGVabTJua3RISlA2dTVndkl4OXNOZ2wwdHZxbjRCbw?oc=5" target="_blank" rel="noopener">Wave Life Sciences Initiates Phase 2a Combination Trial of WVE-007 (GalNAc-siRNA) with Tirzepatide for Obesity</a>
+          <div class="item-meta">WVE · Stock Titan · Sep 23, 2026</div></li>
         <li><a href="https://news.google.com/rss/articles/CBMiqAFBVV95cUxQSTVhQmlQRWl3MU5TSkZuWnhzQWtEUXVvVXVJTWlaRWtSMm5TRFByam04QXREOVRkSmhnNUpfUlRpTDN5b0Rkd1Z2Q2ZaVkVxX3AyQndreWpnRnJicXlVMjNxY0pPWXB3UXJGZWtyZmYyOGdVaklMQkI2elc1bDU1c3B6akNhdmZDTlo4eERJY0J0VlNiVE1EMTJLLUdVdnRMSVRURmJVWkg?oc=5" target="_blank" rel="noopener">Why Is NTLA Stock Jumping 5% Premarket Today?</a>
           <div class="item-meta">NTLA · Stocktwits · Sep 23, 2026</div></li>
         <li><a href="https://news.google.com/rss/articles/CBMiuwFBVV95cUxQTFJOVmFISGQ3cTdoWUFYMm42d0VaWTRsQ1hSVnFIRFU2OWM4Ry1aZFRXN1ZlZWlUY0x0aVJIU0lNRXB0TkpRdVk4VzNxcG4tbUpZaFA1THd6cTA4NURjV2VEdFFCVU13V3FVQ05MY1VHMlJXOWJtcXNJdWExUVo3cWdCQVgtSXdsWW9iTmJNcXRlYmYyVzVOMnNuTHF4ZVNDTjU5TnhaNmtXTXBqTGpvNm1RZE4xQUhxWlBz?oc=5" target="_blank" rel="noopener">JPMorgan resumes Wave Life Sciences stock rating at Neutral</a>
@@ -768,6 +841,8 @@
           <div class="item-meta">PRME · MarketBeat · Sep 22, 2026</div></li>
         <li><a href="https://news.google.com/rss/articles/CBMi3wFBVV95cUxONm1adkY0R2ZZUXpWTVc3ckFDeTVaTGxONTVsTDNNZDNjZF8xdk9nT2d2RUtnOXpyTDhoT3g5akk2RktVSWNwY2VWcU1fa2pnTmJySTJnWXozN1I5QjBycEtnZ0gxLXktbThSZDFKR0ZTOGxPd3V2TmZYYlZVU3JZNHRPUzVvMVUxWDlxd0ZYU0xGbnNLS29GNm02YTQ2N2pWaDJSeWhoWWVETHk2ckJiYk15ZXpmV29uRkhXSU9KZjZIc0RvRVkxYW9DY04zMlNWXzdWb0ZQMXQ4bzhtNEdv0gHkAUFVX3lxTFBwOEc2VU8tT0VfZWkyUjBYU0NhcVE4YWFWeEtXSnk4OWlJZ1B1RUFDWURoSjlWcFZIdW9WMFM5cEljaWVLSzNWTkhiYUdta1pKR3pWeUVFbnpXMndENVh1Ym8wRHlldVFlWENxS3BKdUpWUWh3MjRmXzBSeGZSMGJvNk9tMlZmUXRlWlFYWFU0eV9PbTVCY2gwd040OVgzZElQRHNnaGVFTGNQYWsxNUVfOS14SDg0VkRzb0lLQUtJZmdnQUtQSzJpV2dRbHpJcU12STRBR1JtdWJpekEzbEJPOWRXbA?oc=5" target="_blank" rel="noopener">Why CRISPR Therapeutics (CRSP) Is Back In The Spotlight</a>
           <div class="item-meta">CRSP · simplywall.st · Sep 21, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMimAFBVV95cUxPeDhsV0lwSGxTMFdheTNOLW5ocUR5TzlmNi1sM3d3c3pNOFNPT0U0WExLVm1PbFYxN2NuNlZMYTlKcC1uSmQ5bHAySTRxcjhLLWdPbkFEbmpuWlo0Z0dGUjJwZHljak5SQmg5WDYyRDlGQVFjOXBmelNrVmxBMFc3amVsQmhxR0szSzE0cERvTG4zemZNbkhSNg?oc=5" target="_blank" rel="noopener">3 Reasons CRISPR Therapeutics Stock Is Still a Buy After a Rocky 2026</a>
+          <div class="item-meta">CRSP · The Motley Fool · Sep 20, 2026</div></li>
         <li><a href="https://news.google.com/rss/articles/CBMi6wFBVV95cUxNVVdaYjBOcmtXc010ZnNzeFNQRkxYeUhQaXJtcnB1b3FGdXhReTJYSkl6Qi1nYklzNkNZNnVHcmZQdnRtZGQ3aW5VT0ZvbDZyeWZlMzI4RjBqQkR0REg1dDQ0UFl2LWd6cGlvR2kzclhGNlVOVTkzSjBmMGJTTGtrWmJrRnMwSGtSaHMyM3JKc0tTMTFuT1laS2ExaHUtUlU4X3JwVUtQamdWNkk4N0J1SmYxQzZrT1RqWTdSTVpBUjRLMWswaGNkYks4NXJqYWMyOEVNVk53akVWYUFMdGV1WDFDdHJfMnZoeTY40gHwAUFVX3lxTE5BTl9mdVJ3Ry1yLWttR25UNkl3ZVVoWWd3bG1MajgyS1hTQ0hqdG9wSnpucTZlRFRjM1hiX1o2UDBsSDVDLTJJNjhCZThrRzY5Q0tQVVMyblc2OGp5X0wyU2wtbEFHZGpranYzWUlsUmVkdFpETEE1MF9WR05XUTRyMFhnQzlqSk5JbGcteGZVbGNMZFBDdUNuRXFsemNSOU8wQTZiMG1leFU4QjMxaWVMalhCZlBIM2hhUzd0ZDVDZjVXYlpWbzExSzEyWmRubUMtYmZKeUROOFVPdHJ4Z1dJODI1TTVwSDVUT0JPQ0loYw?oc=5" target="_blank" rel="noopener">Intellia Therapeutics (NTLA) Stock Jumped, What Is Behind The Latest Attention?</a>
           <div class="item-meta">NTLA · simplywall.st · Sep 18, 2026</div></li>
       </ul>

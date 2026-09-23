@@ -230,6 +230,8 @@ async function getNews(symbol, company) {
 
 // Round to 2 decimals, passing null/undefined through as null
 const round2 = (n) => (n == null ? null : parseFloat(n.toFixed(2)));
+// 4 significant digits is plenty for chart points and keeps the files small
+const round4 = (n) => (n == null ? null : parseFloat(n.toPrecision(4)));
 
 // Return periods shown on the dashboard. Each maps a field name to the date the
 // return is measured from; 1D comes straight from the quote.
@@ -256,11 +258,13 @@ function monthsAgo(now, n) {
   return d;
 }
 
-// Fetch returns from Yahoo Finance for 1D plus every period in RETURN_PERIODS
+// Fetch returns from Yahoo Finance for 1D plus every period in RETURN_PERIODS.
+// Also returns the daily close history (oldest → newest) used for charts.
 async function getReturns(symbol, quote, currentPrice, extraTargets = {}) {
   // null means "unavailable" (rendered as —), distinct from a real 0% return
   const returns = { oneDay: round2(quote.regularMarketChangePercent) };
   for (const field of Object.keys(RETURN_PERIODS)) returns[field] = null;
+  let history = null;
 
   try {
     const now = new Date();
@@ -290,6 +294,7 @@ async function getReturns(symbol, quote, currentPrice, extraTargets = {}) {
         const pastClose = closeAt(target);
         if (pastClose) returns[field] = round2(((currentPrice - pastClose) / pastClose) * 100);
       }
+      history = sorted.map(q => [new Date(q.date).toISOString().slice(0, 10), round4(q.close)]);
     }
 
     const fmt = (v) => (v == null ? '—' : `${v}%`);
@@ -297,7 +302,7 @@ async function getReturns(symbol, quote, currentPrice, extraTargets = {}) {
   } catch (err) {
     console.warn(`⚠️  Error fetching returns for ${symbol}: ${err.message}`);
   }
-  return returns;
+  return { returns, history };
 }
 
 // Hand-entered cash figures (from the 10-Q) for companies where Yahoo's balance sheet
@@ -459,6 +464,9 @@ const formatRelation = (rel) => String(rel || '')
   .replace(/Beneficial Owner of more than 10% of a Class of Security/i, '10% Owner')
   .replace(/ and /g, ', ');
 
+// Put arrays of plain numbers (sparkline points) on one line instead of one number per line
+const compactNumberArrays = (json) => json.replace(/\[\s*(-?[\d.e+-]+(?:,\s*-?[\d.e+-]+)*)\s*\]/g, (m, nums) => `[${nums.replace(/\s+/g, '')}]`);
+
 // Summary + page link per theme, for the homepage's theme panel
 function themeInfo() {
   return Object.fromEntries(UNIVERSE.themes.map(theme => {
@@ -479,6 +487,50 @@ function readPreviousData() {
   }
 }
 
+const HISTORY_DIR = 'data/history';
+
+// One [date, close] row per line, so each day's commit only adds/removes a couple of lines
+function writeHistory(symbol, rows) {
+  fs.mkdirSync(HISTORY_DIR, { recursive: true });
+  fs.writeFileSync(`${HISTORY_DIR}/${symbol.toLowerCase()}.json`, `[\n${rows.map(r => JSON.stringify(r)).join(',\n')}\n]\n`);
+}
+
+function readHistory(symbol) {
+  const file = `${HISTORY_DIR}/${symbol.toLowerCase()}.json`;
+  return fs.existsSync(file) ? JSON.parse(fs.readFileSync(file, 'utf8')) : [];
+}
+
+// Evenly spaced subset of `rows` (always keeping the last row), at most `max` points
+function downsample(rows, max) {
+  if (rows.length <= max) return rows;
+  const step = (rows.length - 1) / (max - 1);
+  return Array.from({ length: max }, (_, i) => rows[Math.round(i * step)]);
+}
+
+// Homepage sparklines: closes since each period's start date, ending at the current price.
+// 1D has no intraday data, so the homepage uses the 5D line for it.
+function sparklines(history, price) {
+  if (!history.length) return null;
+  const now = new Date();
+  const out = {};
+  for (const [field, getStart] of Object.entries(RETURN_PERIODS)) {
+    const start = getStart(now).toISOString().slice(0, 10);
+    if (history[0][0] > start) continue;  // history doesn't reach back that far
+    const rows = history.filter(r => r[0] >= start);
+    out[field] = [...downsample(rows, 40).map(r => r[1]), price].filter(v => v != null);
+  }
+  return out;
+}
+
+// Profile chart: daily closes for the last year, weekly beyond that
+function chartSeries(history) {
+  const yearAgo = monthsAgo(new Date(), 12).toISOString().slice(0, 10);
+  return {
+    daily: history.filter(r => r[0] >= yearAgo),
+    weekly: history.filter((r, i) => r[0] < yearAgo && i % 5 === 0)
+  };
+}
+
 function readProfile(symbol) {
   const file = `${PROFILE_DIR}/${symbol.toLowerCase()}.json`;
   return fs.existsSync(file) ? JSON.parse(fs.readFileSync(file, 'utf8')) : null;
@@ -493,7 +545,8 @@ async function buildStockData(symbol, previous) {
   // Price move since the editorial profile was last reviewed (for review-queue.js)
   const reviewed = readProfile(symbol)?.reviewed;
   const extraTargets = reviewed ? { sinceReviewed: new Date(`${reviewed}T23:59:59Z`) } : {};
-  const returns = await getReturns(symbol, quote, quote.regularMarketPrice, extraTargets);
+  const { returns, history } = await getReturns(symbol, quote, quote.regularMarketPrice, extraTargets);
+  if (history && history.length) writeHistory(symbol, history);
   const financials = await getFinancials(symbol, quote.financialCurrency);
 
   // Company info changes rarely; reuse the previous copy if this fetch fails
@@ -567,13 +620,13 @@ async function updateAll() {
   const coveredSymbols = new Set(STOCKS.filter(s => readProfile(s)));
   const homepageData = Object.fromEntries(Object.entries(stockData).map(([symbol, d]) => {
     const { company, insiders, news, sinceReviewed, cashOverrideSuperseded, materialNews, ...rest } = d;
-    return [symbol, { ...rest, covered: coveredSymbols.has(symbol), news: (news || []).slice(0, 3) }];
+    return [symbol, { ...rest, covered: coveredSymbols.has(symbol), news: (news || []).slice(0, 3), spark: sparklines(readHistory(symbol), d.price) }];
   }));
   console.log('Updating index.html...');
   let indexHTML = fs.readFileSync('index.html', 'utf8');
   const indent = (json) => json.replace(/^/gm, '      ').trim();
   indexHTML = indexHTML
-    .replace(/const demoData = \{[\s\S]*?^\s*\};/m, `const demoData = ${indent(JSON.stringify(homepageData, null, 2))};`)
+    .replace(/const demoData = \{[\s\S]*?^\s*\};/m, () => `const demoData = ${indent(compactNumberArrays(JSON.stringify(homepageData, null, 2)))};`)
     .replace(/const THEMES = \[[^\]]*\];/, `const THEMES = ${JSON.stringify(UNIVERSE.themes)};`)
     .replace(/const THEME_INFO = [\s\S]*?; \/\/ end THEME_INFO/, `const THEME_INFO = ${JSON.stringify(themeInfo())}; // end THEME_INFO`)
     // Shared site navigation, footer links and their CSS (from templates/site.js)
@@ -590,7 +643,7 @@ async function updateAll() {
   fs.mkdirSync(PAGES_DIR, { recursive: true });
   for (const symbol of STOCKS) {
     if (!stockData[symbol]) continue;
-    fs.writeFileSync(`${PAGES_DIR}/${symbol.toLowerCase()}.html`, renderProfile(stockData[symbol], readProfile(symbol), UNIVERSE.themes, SITE.url));
+    fs.writeFileSync(`${PAGES_DIR}/${symbol.toLowerCase()}.html`, renderProfile(stockData[symbol], readProfile(symbol), UNIVERSE.themes, SITE.url, chartSeries(readHistory(symbol))));
   }
   console.log(`Rendered ${Object.keys(stockData).length} profile pages (${coveredSymbols.size} covered, ${Object.keys(stockData).length - coveredSymbols.size} tracked)`);
 

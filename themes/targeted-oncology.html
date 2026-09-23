@@ -90,7 +90,7 @@
 
     .grid-3 {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 1rem;
     }
 
@@ -184,6 +184,81 @@
       .grid-3 {
         grid-template-columns: 1fr;
       }
+    }
+
+    /* Price chart */
+    .chart {
+      position: relative;
+      margin-bottom: 1.25rem;
+    }
+
+    .chart-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .chart-change {
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .chart-periods {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25rem;
+    }
+
+    .chart-periods button {
+      border: 1px solid #d1d5db;
+      background: white;
+      border-radius: 5px;
+      padding: 0.2rem 0.55rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #374151;
+      cursor: pointer;
+    }
+
+    .chart-periods button:disabled {
+      color: #d1d5db;
+      border-color: #eef0f3;
+      cursor: default;
+    }
+
+    .chart-periods button.active {
+      background: #0052cc;
+      border-color: #0052cc;
+      color: white;
+    }
+
+    #chart-svg {
+      width: 100%;
+      height: 200px;
+      display: block;
+      cursor: crosshair;
+    }
+
+    .chart-tip {
+      position: absolute;
+      top: 2.4rem;
+      width: 130px;
+      text-align: center;
+      background: #1a1a1a;
+      color: white;
+      font-size: 0.72rem;
+      padding: 0.2rem 0.4rem;
+      border-radius: 4px;
+      pointer-events: none;
+    }
+
+    .chart-range {
+      font-size: 0.75rem;
+      color: #9ca3af;
+      margin-top: 0.3rem;
     }
 
     /* Text */
@@ -754,12 +829,12 @@
           <div class="item-meta">CMPX · Seeking Alpha · Sep 23, 2026</div></li>
         <li><a href="https://news.google.com/rss/articles/CBMijAJBVV95cUxNbXZ3S3N2dkJxZVlDT3Q1V1hacjcwQmFOc3pONHNrUWJQSUs2ZjhJU3g3SUVlU2t0NUozN0NldGFadGRuVW9lTVBWUktKeHhxZUV6SFhOSjRNOGNURVVWaFBURHdQQ2MyNTNHRXg2bW9samh1UzBwOTVxcE9SWTZIYVhFV2RCNERTT3BaNGt6NkdOWTVqa3NHRVhvXzZzQ0lpSzFMRlZTUDU4WV9nVFFjbEJxdTlMQTJLSWdaQWgwUF96YU5XRGJSMWJ5TnZrbF9BbGMyRFEybWduSlVSbkpEbUgxMHFsNEJGd2dKR2NOQi1XYnFUaVVLanhHVUZYVTlocHJkTTQzRWJmRkI2?oc=5" target="_blank" rel="noopener">Compass Therapeutics’ FDA Setback Raises Concerns On Wall Street — H.C. Wainwright Calls Tovecimig Filing Strategy ‘Risky’</a>
           <div class="item-meta">CMPX · Stocktwits · Sep 23, 2026</div></li>
-        <li><a href="https://news.google.com/rss/articles/CBMiiAJBVV95cUxPQlR0aDEyb012UUw4aW55c0xWVlU3T05VQXVkcWxGMklEalloRE55TFVfakZla2tacTlPMjhEX0NEZUpPbklTUHU3SEdCLWZyTWxHY1dDYXFSMEJNTE8zWXdsaVB2MXlkM2h1ZmhGVFA4b1ByNGRTYUt1NUh1SlZ5S2N3VkdOQjZteXM3TF95Wml2aThxNDZiYWd6eDFIblg2R3JXV3AxNkhvbHBENThjc0owaVByZjlDSmNkakthVFhiX0ZndFBHdE1WOHk3WVllU0x0LUJPOGlHdzFsSVE3dnpWeS1ZN2NKVFdEMW1tTVZNM2s5M05Mcl9lRFMybHdPSG10ZDBmdWE?oc=5" target="_blank" rel="noopener">Compass Therapeutics’ FDA Setback Raises Concerns On Wall Street — H.C. Wainwright Calls Tovecimig Filing Strategy ‘Risky’</a>
-          <div class="item-meta">CMPX · TradingView · Sep 23, 2026</div></li>
         <li><a href="https://news.google.com/rss/articles/CBMi3wFBVV95cUxQaU95WE9xWGdNNjlhNEtoaFNQT0F1LWFmaEdyTnhHTFdKTnFVSkZpZ1hIdDE4amQ3UlRROXlHdGhSUTNvZ0FfSGMyVUYyTkZmb1dEWWZVZWZfcXZJc1F6ODB5SDJldUdaN0FSUWVzYURkYmxtRmdaTjJfdVFIUGN4LV9od1IwYXJNc0pxaDlwNnU1ZjVVTTNzMEVUVmN2dVhrMXZJQUNLWHVzME5xOXYtZUh2WXV6NWI3TV9WTjEzalpKS1RXaUFveWpSUzJlZHY1MllYYlVRUE15U0tJb1Bn?oc=5" target="_blank" rel="noopener">H.C. Wainwright cuts Compass Therapeutics stock price target on FDA trial recommendation</a>
           <div class="item-meta">CMPX · Investing.com · Sep 23, 2026</div></li>
         <li><a href="https://news.google.com/rss/articles/CBMiuwFBVV95cUxPQWc5TDVzUmE4VlVWdkY1Z0E3bE1lQXJPaW14S2pCZWtBdWhkT0tGRHc1ZVY5bHBUVGtDc3YzOHFsdVRha3dLR0hEb2NiaUhDb1FZVHlGRHNqbnY2VW1nVDNzMXBwQndFZ2pVRXgxUFpNeXhGM1FkeHdTVUlSYWR1eEVJdkU4N1ItWDNrRmkzSUpPeUQxU0ZLa1NBVUlTZEh4emNLamI0T01GRHFKaXptWWd6QWJySk8xR1lr?oc=5" target="_blank" rel="noopener">CytomX Therapeutics stock gains 6.52 percent on September 23</a>
           <div class="item-meta">CTMX · AD HOC NEWS · Sep 23, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMi1gFBVV95cUxPc2ZwMTZLalJ6eFhRVU5KWmNZeVlGOWNsNllrZWtxZHhTZEZoelYtRTBVMUI2bzdoQjlMVF9pem5SeVBUcFRQbndGNlBZVkU1VjBVZHpkWndYMVdvRFBHbmFvc1NOWlNWSVd3SzNVaUM4U1h6Y09sWnMxa0VqTUZuRTR2N1lvQlNWa3VzUTctNkU5bldLWHBLLVVJYTE2Y250MFZkT0hhTlM0dXZURjNIY2xwdUxudGhYRUFVRlpKOE9SeE9nVVZkRnBUSW9MVGR4QzdPTnpn?oc=5" target="_blank" rel="noopener">HC Wainwright &amp; Co. maintains Buy rating on Compass Therapeutics, $12 price target</a>
+          <div class="item-meta">CMPX · TradingView · Sep 23, 2026</div></li>
         <li><a href="https://news.google.com/rss/articles/CBMiuwFBVV95cUxNcm1vUW9Ub1NQTHpoRkNtWGJCWVRQdTJ0bUpoYWhtbEM3SHVGVEEzb1k2cWNPdDBDbTFGZThFOGJaQ2d1bjh5T2p5VktSUTBwRnZMZE9Jd0tJQ1p1NGszSURUTGx6bkVKcHMxd2c4c3g1OWNJaC1HVm9zUTQ4Z1c0eW5WNXMtcmdqVFdvd1pqQ0VYeWhOODB4THlKNGl6c3k3d21RTXlyYVYzbHdfRGh0OXZEbjJyZ2laV1Vr?oc=5" target="_blank" rel="noopener">Immunocore stock holds at USD 32.18 as earnings remain mixed</a>
           <div class="item-meta">IMCR · AD HOC NEWS · Sep 23, 2026</div></li>
         <li><a href="https://news.google.com/rss/articles/CBMivAFBVV95cUxORHpmMFdqNWtSN0tlcFhPbXJ3M0E1dWRMa3hXZ1dOOWh4QzZmN3hsVlNTbi0wWUtYLTROZ2c4cWZOVWlMaWJQeXZoZ3pGZ1A4QlByZW0tYlhmWXJoM1ZkaDZIcGFEY1c5a1BGSzBVLUtsMFJISGlaU3JaM0o5bDBfWlF1SkZrTl9RaHR2ZnVlZFRxODllaFlfN1ctVFZPZXZGVEViLURiVk5rZ05OczVpT0ZfeXlqczNFMmJaYQ?oc=5" target="_blank" rel="noopener">Cantor Fitzgerald reiterates Ideaya Biosciences stock rating</a>
