@@ -18,6 +18,8 @@ try {
 
 const { renderProfile } = require('./templates/profile');
 const { renderTheme, themeSlug } = require('./templates/theme');
+const { renderCalendar } = require('./templates/calendar');
+const { NAV_CSS, renderNav, renderFooterLinks } = require('./templates/site');
 
 // Stock list, names and themes. A stock with data/profiles/<ticker>.json gets editorial
 // sections on its page ("covered"); without one it gets a data-only page ("tracked").
@@ -149,6 +151,42 @@ const LOW_VALUE_NEWS = [
 ];
 
 const isLowValueNews = (item) => LOW_VALUE_NEWS.some(re => re.test(item.title));
+
+// Headlines that usually mean a profile's analysis needs updating: trial readouts,
+// regulatory decisions, financings, deals and leadership changes
+const MATERIAL_NEWS = [
+  // Trial readouts
+  /\b(topline|top-line|pivotal)\b/i,
+  /\bphase (1|2|3|i{1,3})\b.{0,50}\b(results|data|met|meets|missed|misses|fails?|succeeds?)\b/i,
+  /\b(primary endpoint|interim analysis|maintenance data)\b/i,
+  // Regulatory decisions
+  /\bFDA\b.{0,40}\b(approv\w*|accepts?|grants?|rejects?|clears?|requests?|feedback)\b/i,
+  /\b(complete response letter|CRL|clinical hold|advisory committee|regulatory update|accelerated approval)\b/i,
+  // Financings
+  /\b(offering|convertible (senior )?notes|private placement|registered direct|at-the-market)\b/i,
+  // Deals
+  /\b(acquires?|acquisition|merger|to be acquired|takeover|licens(e|ing) (deal|agreement)|collaboration (agreement|deal))\b/i,
+  // Leadership and restructuring
+  /\b(appoints?|names?|hires?)\b.{0,40}\b(CEO|chief executive)\b/i,
+  /\b(CEO|chief executive)\b.{0,30}\b(resigns?|steps down|departs?|to retire|transition)\b/i,
+  /\b(layoffs?|restructuring|workforce reduction|delist\w*|reverse (stock )?split|bankruptcy|discontinu\w*)\b/i,
+  // Big moves usually follow one of the above
+  /\b(surges?|soars?|plunges?|tumbles?|craters?|skyrockets?|rockets?|collapses?)\b/i
+];
+
+const isMaterialNews = (title) => MATERIAL_NEWS.some(re => re.test(title || ''));
+
+// Material headlines published after the profile's review date. Carried forward between
+// runs (news lists only keep the latest few items) until the profile's `reviewed` date moves
+// past them, so review-queue.js can list them.
+function updateMaterialNews(stock, previous, reviewed) {
+  if (!reviewed) return [];
+  const isNew = (n) => (n.date || '').slice(0, 10) > reviewed;
+  const found = [...(previous?.materialNews || []), ...(stock.news || []).filter(n => isMaterialNews(n.title))]
+    .filter(isNew);
+  const byUrl = new Map(found.map(n => [n.url, { title: n.title, source: n.source, date: n.date, url: n.url }]));
+  return [...byUrl.values()].sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 10);
+}
 
 // Google News titles end with " - <source>", which the pages already show separately
 function cleanNewsTitle(item) {
@@ -514,6 +552,7 @@ async function updateAll() {
   }
   for (const d of Object.values(stockData)) {
     d.news = (d.news || []).map(n => ({ ...n, title: cleanNewsTitle(n) }));
+    d.materialNews = updateMaterialNews(d, previousData[d.symbol], readProfile(d.symbol)?.reviewed);
   }
   if (!renderOnly) {
     // Full data (company info, insiders, all news) for the next run and for profile pages
@@ -524,7 +563,7 @@ async function updateAll() {
   // Homepage gets a lighter copy: no company details or insider tables, 3 news items
   const coveredSymbols = new Set(STOCKS.filter(s => readProfile(s)));
   const homepageData = Object.fromEntries(Object.entries(stockData).map(([symbol, d]) => {
-    const { company, insiders, news, sinceReviewed, cashOverrideSuperseded, ...rest } = d;
+    const { company, insiders, news, sinceReviewed, cashOverrideSuperseded, materialNews, ...rest } = d;
     return [symbol, { ...rest, covered: coveredSymbols.has(symbol), news: (news || []).slice(0, 3) }];
   }));
   console.log('Updating index.html...');
@@ -533,14 +572,18 @@ async function updateAll() {
   indexHTML = indexHTML
     .replace(/const demoData = \{[\s\S]*?^\s*\};/m, `const demoData = ${indent(JSON.stringify(homepageData, null, 2))};`)
     .replace(/const THEMES = \[[^\]]*\];/, `const THEMES = ${JSON.stringify(UNIVERSE.themes)};`)
-    .replace(/const THEME_INFO = [\s\S]*?; \/\/ end THEME_INFO/, `const THEME_INFO = ${JSON.stringify(themeInfo())}; // end THEME_INFO`);
+    .replace(/const THEME_INFO = [\s\S]*?; \/\/ end THEME_INFO/, `const THEME_INFO = ${JSON.stringify(themeInfo())}; // end THEME_INFO`)
+    // Shared site navigation, footer links and their CSS (from templates/site.js)
+    .replace(/<!-- SITE_NAV -->[\s\S]*?<!-- \/SITE_NAV -->/, () => `<!-- SITE_NAV -->\n${renderNav('', UNIVERSE.themes, 'dashboard')}\n  <!-- /SITE_NAV -->`)
+    .replace(/<!-- SITE_FOOTER -->[\s\S]*?<!-- \/SITE_FOOTER -->/, () => `<!-- SITE_FOOTER -->\n${renderFooterLinks('', UNIVERSE.themes)}\n    <!-- /SITE_FOOTER -->`)
+    .replace(/\/\* SITE_NAV_CSS \*\/[\s\S]*?\/\* \/SITE_NAV_CSS \*\//, () => `/* SITE_NAV_CSS */${NAV_CSS.replace(/^/gm, '    ')}    /* /SITE_NAV_CSS */`);
   fs.writeFileSync('index.html', indexHTML);
 
   // Profile pages are regenerated in full from the template
   fs.mkdirSync(PAGES_DIR, { recursive: true });
   for (const symbol of STOCKS) {
     if (!stockData[symbol]) continue;
-    fs.writeFileSync(`${PAGES_DIR}/${symbol.toLowerCase()}.html`, renderProfile(stockData[symbol], readProfile(symbol)));
+    fs.writeFileSync(`${PAGES_DIR}/${symbol.toLowerCase()}.html`, renderProfile(stockData[symbol], readProfile(symbol), UNIVERSE.themes));
   }
   console.log(`Rendered ${Object.keys(stockData).length} profile pages (${coveredSymbols.size} covered, ${Object.keys(stockData).length - coveredSymbols.size} tracked)`);
 
@@ -551,9 +594,12 @@ async function updateAll() {
     const file = `${THEME_DIR}/${themeSlug(theme)}.json`;
     const content = fs.existsSync(file) ? JSON.parse(fs.readFileSync(file, 'utf8')) : null;
     const members = STOCKS.filter(s => stockData[s] && STOCK_INFO[s].themes.includes(theme)).map(s => stockData[s]);
-    fs.writeFileSync(`${THEME_PAGES_DIR}/${themeSlug(theme)}.html`, renderTheme(theme, content, members, profiles));
+    fs.writeFileSync(`${THEME_PAGES_DIR}/${themeSlug(theme)}.html`, renderTheme(theme, content, members, profiles, UNIVERSE.themes));
   }
   console.log(`Rendered ${UNIVERSE.themes.length} theme pages`);
+
+  fs.writeFileSync('calendar.html', renderCalendar(STOCKS.filter(s => stockData[s]).map(s => stockData[s]), profiles, UNIVERSE.themes));
+  console.log('Rendered calendar.html');
 
   // Remove generated pages for stocks no longer in the universe
   const current = new Set(STOCKS.map(s => `${s.toLowerCase()}.html`));

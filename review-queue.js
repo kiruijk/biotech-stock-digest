@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 // Lists editorial content that probably needs a human look:
+//   - material headlines (readouts, FDA decisions, financings, deals) since the last review
 //   - catalysts whose timing has passed
 //   - profiles or theme explainers not reviewed in REVIEW_AFTER_DAYS
 //   - stocks that moved more than BIG_MOVE_PCT since their profile was reviewed
@@ -20,7 +21,7 @@ const market = fs.existsSync('data/market.json') ? JSON.parse(fs.readFileSync('d
 const readJson = (file) => (fs.existsSync(file) ? JSON.parse(fs.readFileSync(file, 'utf8')) : null);
 const daysSince = (date) => Math.floor((Date.now() - new Date(`${date}T00:00:00Z`)) / 864e5);
 
-const items = { pastCatalysts: [], staleReviews: [], bigMoves: [], overrides: [] };
+const items = { materialNews: [], pastCatalysts: [], staleReviews: [], bigMoves: [], overrides: [] };
 
 for (const { symbol } of universe.stocks) {
   const profile = readJson(`data/profiles/${symbol.toLowerCase()}.json`);
@@ -32,6 +33,9 @@ for (const { symbol } of universe.stocks) {
   }
   if (!profile) continue;
 
+  for (const n of stock.materialNews || []) {
+    items.materialNews.push(`${symbol}: "${n.title}" (${n.source}, ${n.date.slice(0, 10)})`);
+  }
   for (const c of profile.catalysts) {
     if (isPast(c.timing)) items.pastCatalysts.push(`${symbol}: "${c.title}" (${c.timing})`);
   }
@@ -49,6 +53,7 @@ for (const theme of universe.themes) {
 }
 
 const sections = [
+  ['Material news since the profile was reviewed', items.materialNews],
   ['Cash overrides to update', items.overrides],
   ['Catalysts whose timing has passed', items.pastCatalysts],
   [`Stocks that moved ${BIG_MOVE_PCT}%+ since their profile review`, items.bigMoves],

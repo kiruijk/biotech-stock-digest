@@ -13,12 +13,13 @@ npm run update        # node update-stocks.js — fetch live data and rewrite th
 node update-stocks.js # same thing, direct
 ```
 
-There is no lint, test, or build command in this repo (`package.json` only defines `update`). To preview a page, just open the HTML file directly in a browser (`open index.html`) — no dev server needed.
+`npm run render` rebuilds every generated page from `data/market.json` without fetching (use it when changing templates). There is no lint, test, or build command in this repo (`package.json` only defines `update`). To preview a page, just open the HTML file directly in a browser (`open index.html`) — no dev server needed.
 
 ## Architecture
 
 **Pages** (each is a standalone HTML file, not templated from a shared layout):
 - `index.html` — dashboard: theme filter, stocks ranked by a selectable return period, and a combined news feed
+- `calendar.html` — **generated** catalyst & earnings calendar (`templates/calendar.js`): catalysts from profiles plus Yahoo earnings dates, grouped into "next 30 days" and half-years, with a client-side theme filter.
 - `themes/<slug>.html` — **generated** theme pages (science background, company table, upcoming catalysts/earnings, news) from `templates/theme.js`.
 - `stocks/<ticker>.html` — **generated** profile pages (one per stock in `data/universe.json`), fully rewritten on every run from `templates/profile.js` + `templates/profile.css`. Never edit these by hand; edit the data files or template instead.
 
@@ -38,13 +39,15 @@ There is no lint, test, or build command in this repo (`package.json` only defin
    - `index.html` — the `const demoData = {...}` literal and `const THEMES = [...]` are regex-replaced with a lighter copy of the data (no company/insider details, 3 news items per stock, plus a `covered` flag).
    - `stocks/<ticker>.html` — every page re-rendered via `renderProfile(stock, profile)`. Generated pages for tickers removed from the universe are deleted.
 
+**Site navigation/footer** live in `templates/site.js` and are shared by all generated pages; `update-stocks.js` also injects them into `index.html` between `<!-- SITE_NAV -->`, `<!-- SITE_FOOTER -->` and `/* SITE_NAV_CSS */` markers — edit the template, not the injected copy.
+
 **When changing profile page layout**, edit `templates/profile.js` / `templates/profile.css` and run `npm run update`; all pages regenerate.
 
 **When adding a new stock**, add an entry (symbol, name, themes) to `data/universe.json` and run `npm run update` — that's enough for a data-only page. To make it "covered", add `data/profiles/<ticker>.json` (copy an existing one). Add a `cashOverrides` entry in `update-stocks.js` only if Yahoo's cash figure doesn't match the 10-Q.
 
 ## Editorial upkeep
 
-`npm run review` (`review-queue.js`) lists content needing a human look: catalysts whose timing has passed (parsed by `lib/catalyst-timing.js`), profiles/theme explainers not reviewed in 90 days, stocks that moved 30%+ since their profile's `reviewed` date (`sinceReviewed` in market.json), and superseded `cashOverrides`. After editing a profile or theme file, bump its `reviewed` date.
+`npm run review` (`review-queue.js`) lists content needing a human look: material headlines published after a profile's `reviewed` date (matched by `MATERIAL_NEWS` in update-stocks.js and carried forward in `materialNews` until the review date passes them), catalysts whose timing has passed (parsed by `lib/catalyst-timing.js`), profiles/theme explainers not reviewed in 90 days, stocks that moved 30%+ since their profile's `reviewed` date (`sinceReviewed` in market.json), and superseded `cashOverrides`. After editing a profile or theme file, bump its `reviewed` date.
 
 ## Automation
 
