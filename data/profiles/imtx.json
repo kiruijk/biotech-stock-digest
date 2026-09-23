@@ -4,7 +4,7 @@
   "overview": [
     "<strong>Immatics (IMTX)</strong> is a Tübingen, Germany-based company developing T cell receptor (TCR)-based therapies that target cancer antigens presented inside cells, especially <strong>PRAME</strong>, which is highly expressed in melanoma and many other solid tumors.",
     "Lead program <strong>anzu-cel (IMA203)</strong>, a PRAME TCR-T cell therapy, is in the Phase 3 <strong>SUPRAME</strong> trial in melanoma. Phase 1b data showed a 56% confirmed response rate, 14.6-month median duration of response and 46% two-year survival. Topline data is expected in 1H 2027 and a BLA in 2027. Immatics also develops <strong>IMA402</strong>, an off-the-shelf PRAME bispecific, and <strong>IMA203CD8</strong>.",
-    "<strong>Investor thesis:</strong> IMTX is the leading PRAME-targeting cell therapy company, with the chance to join the small group of approved cell therapies in solid tumors. Cash of $448.2M funds operations into 2028."
+    "<strong>Investor thesis:</strong> IMTX is the leading PRAME-targeting cell therapy company, with the chance to join the small group of approved cell therapies in solid tumors. Cash of $448.2M at June 30 was topped up by a ~$150M offering in August 2026 at $8.69 per share, in which board-affiliated Perceptive Advisors bought about $7.5M."
   ],
   "competitors": [
     {
@@ -71,8 +71,8 @@
       "level": "MEDIUM"
     },
     {
-      "title": "Burn",
-      "description": "Q2 2026 net loss of $71.2M; cash declining ahead of a potential launch.",
+      "title": "Burn &amp; Dilution",
+      "description": "Q2 2026 net loss of $71.2M; the August 2026 offering added ~17M shares and pre-funded warrants ahead of the Phase 3 readout.",
       "level": "MEDIUM"
     }
   ],
@@ -85,8 +85,8 @@
     {
       "name": "Perceptive Advisors",
       "role": "Investor & Board Member",
-      "description": "Recent $7.5M open-market purchase."
+      "description": "Bought about $7.5M of shares in the August 2026 offering."
     }
   ],
-  "interpretation": "$448.2M in cash with runway into 2028 funds the SUPRAME readout and BLA preparation."
+  "interpretation": "$448.2M in cash at June 30, 2026, guided to last into 2028, plus ~$150M gross from the August 2026 offering. The cash figure above updates automatically once a quarterly report includes the proceeds."
 }

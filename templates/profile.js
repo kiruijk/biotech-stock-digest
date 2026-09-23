@@ -34,7 +34,8 @@ const stripTags = (s) => String(s ?? '').replace(/<[^>]+>/g, '').replace(/\s+/g,
 function formatMoney(value) {
   if (value == null) return 'N/A';
   if (Math.abs(value) >= 1e9) return `$${(value / 1e9).toFixed(1)}B`;
-  if (Math.abs(value) >= 1e6) return `$${(value / 1e6).toFixed(0)}M`;
+  // One decimal under $10M so small amounts ($7.5M, $4.1M) aren't rounded away
+  if (Math.abs(value) >= 1e6) return `$${(value / 1e6).toFixed(Math.abs(value) < 1e7 ? 1 : 0)}M`;
   return `$${Math.round(value).toLocaleString('en-US')}`;
 }
 
@@ -65,7 +66,8 @@ function runwayText(stock) {
   return 'N/A';
 }
 
-// Summarize the last 6 months of open-market insider activity
+// Summarize the last 6 months of insider buying and selling (Form 4 purchases include
+// open-market buys and participation in offerings)
 function insiderSummary(insiders) {
   const cutoff = new Date();
   cutoff.setMonth(cutoff.getMonth() - 6);
@@ -79,8 +81,8 @@ function insiderSummary(insiders) {
   }
   const parts = [];
   parts.push(buys.length
-    ? `${buys.length} open-market purchase${buys.length === 1 ? '' : 's'} (${formatMoney(total(buys))})`
-    : 'no open-market purchases');
+    ? `${buys.length} purchase${buys.length === 1 ? '' : 's'} (${formatMoney(total(buys))})`
+    : 'no purchases');
   parts.push(sells.length
     ? `${sells.length} sale${sells.length === 1 ? '' : 's'} (${formatMoney(total(sells))})`
     : 'no sales');
