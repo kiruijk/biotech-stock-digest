@@ -154,4 +154,13 @@ function renderFooterLinks(base, themes) {
     </nav>`;
 }
 
-module.exports = { NAV_CSS, renderNav, renderFooterLinks };
+// Canonical URL and Open Graph URL/site name for a page at `path` (relative to the site root)
+function seoTags(siteUrl, path) {
+  if (!siteUrl) return '';
+  const url = siteUrl + path;
+  return `  <link rel="canonical" href="${url}">
+  <meta property="og:url" content="${url}">
+  <meta property="og:site_name" content="Life Science Investor">`;
+}
+
+module.exports = { NAV_CSS, renderNav, renderFooterLinks, seoTags };

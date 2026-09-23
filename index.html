@@ -4,6 +4,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- SEO_HEAD -->
+  <meta name="description" content="Daily tracker for clinical-stage biotech stocks: prices and returns, cash runway, insider trades, catalysts, earnings dates and news, organized by therapeutic theme.">
+  <meta property="og:title" content="Life Science Investor — Clinical-Stage Biotech Tracker">
+  <meta property="og:description" content="Daily tracker for clinical-stage biotech stocks: prices and returns, cash runway, insider trades, catalysts, earnings dates and news, organized by therapeutic theme.">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://kiruijk.github.io/biotech-stock-digest/">
+  <meta property="og:url" content="https://kiruijk.github.io/biotech-stock-digest/">
+  <meta property="og:site_name" content="Life Science Investor">
+  <!-- /SEO_HEAD -->
   <title>Life Science Investor</title>
   <style>
     :root {
@@ -325,6 +334,19 @@
         grid-template-columns: repeat(5, 1fr);
         row-gap: 0.3rem;
       }
+    }
+
+    /* Plain-HTML lists written by update-stocks.js for search engines; replaced on load */
+    .static-list {
+      padding-left: 1.25rem;
+      line-height: 1.9;
+      font-size: 0.9rem;
+    }
+
+    .static-list a {
+      color: #0052cc;
+      font-weight: 600;
+      text-decoration: none;
     }
 
     /* Toolbar: search + Cards/Table toggle */
@@ -904,14 +926,68 @@
           </div>
         </div>
         <div class="period-picker" id="period-picker" role="group" aria-label="Rank stocks by period"></div>
-        <div id="stocks-container"></div>
+        <div id="stocks-container"><!-- STATIC_STOCKS --><ol class="static-list">
+          <li><a href="stocks/klra.html">KLRA — Kailera Therapeutics</a> $13.13 (+2.66% today)</li>
+          <li><a href="stocks/vktx.html">VKTX — Viking Therapeutics</a> $41.65 (+1.96% today)</li>
+          <li><a href="stocks/allo.html">ALLO — Allogene Therapeutics</a> $1.67 (-2.34% today)</li>
+          <li><a href="stocks/engn.html">ENGN — enGene Therapeutics</a> $2.00 (-2.44% today)</li>
+          <li><a href="stocks/gpcr.html">GPCR — Structure Therapeutics</a> $35.95 (-2.60% today)</li>
+          <li><a href="stocks/urgn.html">URGN — UroGen Pharma</a> $41.63 (-2.64% today)</li>
+          <li><a href="stocks/imcr.html">IMCR — Immunocore</a> $31.54 (-2.71% today)</li>
+          <li><a href="stocks/ntla.html">NTLA — Intellia Therapeutics</a> $12.33 (-2.84% today)</li>
+          <li><a href="stocks/imtx.html">IMTX — Immatics</a> $8.60 (-3.04% today)</li>
+          <li><a href="stocks/vir.html">VIR — Vir Biotechnology</a> $11.09 (-3.57% today)</li>
+          <li><a href="stocks/crbu.html">CRBU — Caribou Biosciences</a> $1.29 (-3.73% today)</li>
+          <li><a href="stocks/repl.html">REPL — Replimune Group</a> $12.96 (-3.79% today)</li>
+          <li><a href="stocks/autl.html">AUTL — Autolus Therapeutics</a> $1.95 (-3.94% today)</li>
+          <li><a href="stocks/iova.html">IOVA — Iovance Biotherapeutics</a> $10.19 (-4.23% today)</li>
+          <li><a href="stocks/cadl.html">CADL — Candel Therapeutics</a> $11.29 (-4.73% today)</li>
+          <li><a href="stocks/sepn.html">SEPN — Septerna</a> $38.45 (-4.78% today)</li>
+          <li><a href="stocks/oncy.html">ONCY — Oncolytics Biotech</a> $0.68 (-5.16% today)</li>
+          <li><a href="stocks/janx.html">JANX — Janux Therapeutics</a> $16.52 (-5.44% today)</li>
+          <li><a href="stocks/ctmx.html">CTMX — CytomX Therapeutics</a> $2.78 (-5.44% today)</li>
+          <li><a href="stocks/crsp.html">CRSP — CRISPR Therapeutics</a> $55.76 (-5.54% today)</li>
+          <li><a href="stocks/cgon.html">CGON — CG Oncology</a> $73.36 (-5.63% today)</li>
+          <li><a href="stocks/cmpx.html">CMPX — Compass Therapeutics</a> $1.17 (-5.65% today)</li>
+          <li><a href="stocks/idya.html">IDYA — IDEAYA Biosciences</a> $37.46 (-5.67% today)</li>
+          <li><a href="stocks/beam.html">BEAM — Beam Therapeutics</a> $24.37 (-6.02% today)</li>
+          <li><a href="stocks/alt.html">ALT — Altimmune</a> $3.19 (-6.45% today)</li>
+          <li><a href="stocks/wve.html">WVE — Wave Life Sciences</a> $3.95 (-9.20% today)</li>
+          <li><a href="stocks/prme.html">PRME — Prime Medicine</a> $3.13 (-11.58% today)</li>
+        </ol><!-- /STATIC_STOCKS --></div>
       </section>
 
       <!-- News Sections -->
       <aside class="news-column">
         <div class="earnings-box" id="earnings-box" hidden></div>
         <div class="column-title">Latest News <span class="column-subtitle">newest first</span></div>
-        <div id="news-container"></div>
+        <div id="news-container"><!-- STATIC_NEWS --><ul class="static-list">
+          <li>VKTX: <a href="https://news.google.com/rss/articles/CBMilwFBVV95cUxQcUozdEFvY2x2UDh4UXh1MDg4NFlvbngxMHA1ajVrN0pLMkJweVBjRVNlWFc4VUJzY1ltYmRrdnNKXy1vOGwwLUJNdGJtMUI0SlhBMGxoWjd5VDlXbXdoZjRpb2xKQWVSUnpsbzBrcHloZC1OWFI1enA1OHVsRXRKSHV5R0dIMkJoZUhOdmJJa1hWQ0RVckpZ?oc=5" rel="noopener">QUICK SPARK: Viking Therapeutics Stock Gains 40% in 2 Days</a> (Benzinga)</li>
+          <li>VKTX: <a href="https://news.google.com/rss/articles/CBMivAFBVV95cUxNWjhGM2paN1N2RGJWT3dscFFDN1Zjc2d5MmdUZHVwblF5Z1Ntekp4WGt3OGVtNzhOM1FiZC1PZHNDdGdrR0QxSU4zUUhIMnNKanNvd1JFSTgxVzQwWHZubWZhM1NtZEpxZkVJRTFETkI3UC1TZmNiMXZxOWtXQW9qX2dKdGNtZFh5ek53STNZQU9ULUtnMjliUkRLcmFTV21laHl2ZmtqTWY3RS0xbk05MHdqUGZobllsWDRVTA?oc=5" rel="noopener">Viking Therapeutics stock falls on proposed equity offering By Investing.com</a> (Investing.com South Africa)</li>
+          <li>VKTX: <a href="https://news.google.com/rss/articles/CBMirgFBVV95cUxOMTFMV3JpNFRTbGlsUDlTVzM0TFZhMGhUWE5MTy1mUXpkdExOUTlXc1J2V0lCYzZ2WU13MUtVdl9mdVU3MzRYNDljR2l5MEZFbkowRWJyZFVTODlNRXdKQzliM056WjBCR1pjLXhNMVZwdEFRVERWcmpRZy1jMkVhQjBFRzlUTzJsY1VyMjhKQ3J0YjNYM0M2RVFseFNOR1V1WExjaDhJUU95ekZRdEE?oc=5" rel="noopener">Viking Therapeutics Announces Proposed Offerings of Common Stock and Convertible Senior Notes</a> (Yahoo Finance)</li>
+          <li>JANX: <a href="https://news.google.com/rss/articles/CBMi5gFBVV95cUxOd1lRSVRNcW0wS1ZzZWJJRHJSNnZmM0hSM1J6Q3p0X1JGUmJ4UGFQLVMyNER5NE0xd01lXy04M0UwdHJFaXg4N0lEUHlCeWlZTkhndmh1OEE0RWhManV6eF9XZFhWY29GN084dmFmS25BLTNQdlJPVVVFUlc2eTJaaGxWRWVnLVJ6TTcwTjg3V25uNXUxOVhseFlZRjlJWXNnNmtTR2xYQjVDRS12d18zdzJVS194Y0xLUnEwZUh0UFNBenBueElqTU5GUkdfOW84Qk1JRVNnc0w3MnY1ajZ6cXRkN25ZZ9IB6wFBVV95cUxQRnNnZEhDd1kxMzZDOUZFVDY2ZlRPaVlfZGZUM093WGQwa0FsWjY2U3htaFdnNjduTHZOazMyTXJDdTQ4M2hBSUhoQlJGOENDeW03ekVVbTY1OHpBTHVPQWpFYmZwekVmdE1VdHpOM3JMMUozWERNdzVMZTNtMVJOSDhSS3ZXU2c4ZUU5OHFuNGhOLWtVTjg4V2RqS2l3eTNLZzNjaGZLc014MWlzSmVmTHdnV1RMTFFHZWlMVXFpU2pJR0ozMkxzVVVGempVOHptVHJZSWZFUW9wM3BrN1E3R21IaTJIZWxwOEN3?oc=5" rel="noopener">What Janux Therapeutics Stock First Patient Dosed Means For Shareholders</a> (simplywall.st)</li>
+          <li>CRSP: <a href="https://news.google.com/rss/articles/CBMimgFBVV95cUxOY1lTUGRabXF1anFYVnFxUXpGOHdlNUlGNHltSEtBWVRqa2dTMW85Z05FZ0xhdzJ3bXdQQV9FRERZYnJFX0VtYVFBTnhQemtLYklYQk1GTG9PcHpBMExuYmkySlhMNmFhNzVzZXBWbWFweDlqN2JFamVzTjVuemR2U1RpNGN1RHJXaVZDNHl4RVFocklaR0ZuN1N3?oc=5" rel="noopener">Gene editing stocks fall after Anthropic’s CRISPR-like discovery</a> (Seeking Alpha)</li>
+          <li>CMPX: <a href="https://news.google.com/rss/articles/CBMitAFBVV95cUxNVHhkN1V1SE10cDVoaGFuc1lkNG9qWXN1WE9jbzUwb0dwYkVJdUhqclVZb0czV0w0T0tCVGlFaFo1TFk5TjZJUTB2UzVjSWJfV19oeVZkWG5MMkhJcDZ5b0xIZGl2ZFc1NFM0M1AyNHdSNTI2aS1kN2cteWwxNW9pR3JKVUw4V3BJZTdsX2FqZzNsVjJRVFdGZzRBMVNHaXZ1YUVGTVprcWpDTmRKRmpxNi12aWE?oc=5" rel="noopener">Compass Therapeutics Shares Drop After Downgrade From Wedbush</a> (marketscreener.com)</li>
+          <li>CMPX: <a href="https://news.google.com/rss/articles/CBMiiwFBVV95cUxOMURleTh5MlhQUDBjeUk0UUhXQ1pzZFdLMGJ1aEVzeXJoZC12SUE5aVFuaFJxbVQ1a2lFVDhYbVNqZWtHd05GeFpkTzY3WWwySGk4dGt6R0d1dXlZelN0T3Bjc25aUjFxZmszd3ZvR0F2Y0k0RnVYYUhlSUdvYlVCQ0d0MC1PUW9ZX0pj?oc=5" rel="noopener">Compass Therapeutics stock downgraded at Wedbush (CMPX:NASDAQ)</a> (Seeking Alpha)</li>
+          <li>KLRA: <a href="https://news.google.com/rss/articles/CBMizgFBVV95cUxQQnRaSndCbXotWnhmMHBuNW9ydDdUQkxfVU5hZ3hrSGMxaFVSMVNJVlJ2ZVcyZ2h3Q19CcGpqOUJqX3k0X0Y5cTRESFg2WVljcjhxaXhkX0plb2hFbDRxM19jeXNBS1ctd1JmQ2NwUkhCakR2RXkwVjNIRmRvbkxNYzV6UV96V3JHcTYzRHRRdGVEV0hXOVd5YnRmSXd2d19MWnBhS3pGTFFidW5rcmprMnVPWFFZOGlrRGotb2RoTk4tRV8xcFhZOWV1ckdtUQ?oc=5" rel="noopener">Kailera at bernstein healthcare forum: betting on obesity differentiation By Investing.com</a> (Investing.com Nigeria)</li>
+          <li>CMPX: <a href="https://news.google.com/rss/articles/CBMirgFBVV95cUxQMG1yay1uMmk3bkg4TkRhcHUzSTF0dk92bzg2LTRnWExNR1FrTVVDdTdlZTUwVGM2ZlVEa2dxanBiUnAxV3VNMkJmWl81elJ0ZUNsMktNZ1VBN0FWTTdzeTdXNjd5SFQydUN6WWxTR2tHMmZ2VDhiZ1pncE1yT1h4MzVXT1A5THhHWEJLZUluRzNnSXF3SXl4UDFmcTlJbjJCN3lVR2w1SWlYY2x0T1E?oc=5" rel="noopener">Compass Therapeutics: A Promising, But Shrinking, Window Of Opportunity (NASDAQ:CMPX)</a> (Seeking Alpha)</li>
+          <li>WVE: <a href="https://news.google.com/rss/articles/CBMi6gFBVV95cUxNNFNDYkwtWl96N3VNZV9xaVhVY0xfUmh1NWgzakRpR3BzZE5XU2lIcGdIVTc3OEF0S0RlY2RnaU5udVE0YUtBUTZGLUI5Wnk0eTJJMGQ1VFNXZWR4WVhKZnFuRGc3U2J1bTA0aFZnMnYyM0FwMWhKVzJGSWRrd3NYVnRha2xZWXRHZVlVTWd3WG5XaVBUazJtRXRYMEZKeFRRUlNiM1A2R01xM0ljMHMxVHY3NlE2bDFpM1N3LVRIdlkycGw3RmlyY1lFMllIM1R3YUpobXdVakVXeWVVclFocllMWU0yekpkckE?oc=5" rel="noopener">This Autoliv Analyst Is No Longer Bullish; Here Are Top 5 Downgrades For Wednesday</a> (Benzinga)</li>
+          <li>CRSP: <a href="https://news.google.com/rss/articles/CBMiowFBVV95cUxPOHFINU9EdDNaWnZDXzhWZkFHdllsM2dlZXNGek8xWUNJVnJLSjJjOWQwZ09qdXlZVVhLT2hzRmIwcmUxRVgySFVTVTVOdGRUVC1oUWtOakUyQk56eW1iX1JybnpxSFpteVRsWU54SGh6NDFDczNtbThJQnlwcnZMaHpOaWZjOWZRdTlEa1R5NXRKU0tPTU80VEtSQXNXTnJkaGlR?oc=5" rel="noopener">CRISPR Therapeutics stock trades below targets despite approved gene therapy; analyst sees 85% upside potential.</a> (Pluang)</li>
+          <li>CRSP: <a href="https://news.google.com/rss/articles/CBMiowFBVV95cUxNSktabHNLZ0NLQmVIM3RhS09HczNKRldDZVFyZ3hxUk1OcUhDb0ZuMDJWajFNMGNNZ2Z4TDR4SWVmSnB2MlJIWmpSeGY0cG5ocGUzYlJQdnh2QmFjeENsWkVIdzY5Q0VFSTNDRHJjbnVFZWVFeHViRmVVV1d0d2FveTRJZzJHcktVMDF6WmtmTG9RLXBMUDlydzltYzdwUFZSakY4?oc=5" rel="noopener">CRISPR Therapeutics Traded Sideways and Down for 12 Months: One Wall Street Pro Expects 85% Gains Soon</a> (Yahoo Finance)</li>
+          <li>CTMX: <a href="https://news.google.com/rss/articles/CBMiuwFBVV95cUxPQWc5TDVzUmE4VlVWdkY1Z0E3bE1lQXJPaW14S2pCZWtBdWhkT0tGRHc1ZVY5bHBUVGtDc3YzOHFsdVRha3dLR0hEb2NiaUhDb1FZVHlGRHNqbnY2VW1nVDNzMXBwQndFZ2pVRXgxUFpNeXhGM1FkeHdTVUlSYWR1eEVJdkU4N1ItWDNrRmkzSUpPeUQxU0ZLa1NBVUlTZEh4emNLamI0T01GRHFKaXptWWd6QWJySk8xR1lr?oc=5" rel="noopener">CytomX Therapeutics stock gains 6.52 percent on September 23</a> (AD HOC NEWS)</li>
+          <li>WVE: <a href="https://news.google.com/rss/articles/CBMivAFBVV95cUxNTWtybl81clFJTXB0WTFoMEQ3M1FGRHVfODRfclVmVldwd3hnQU9kUjI2RFRrU0NzTFhXTS1fdVNJajg4UmgxUTBtM0d3MjlfRF9FUWdxdVAxMjh2VmFwQ3FPTkdZbHEwcGlQVjV4RWJjSFVJcnQ4Wjc0YkFnUHg3bEd2aHBHcG5WY2I4NGJENG5YR3FYLWs4cERrRWU1czlqN0xWREJzWGNhSDZpb1hhaTlTdEZmQzRXQ0FRTw?oc=5" rel="noopener">Wave Life Sciences starts Phase 2a obesity trial for WVE-007 By Investing.com</a> (Investing.com South Africa)</li>
+          <li>AUTL: <a href="https://news.google.com/rss/articles/CBMipwFBVV95cUxQWW9iZk52Y3d2dlpkb0c5aTdJd25jemxmb0pmT1lYdTN1VGdvM0dKbGloX2w1ck9DRl9xN2hGVDJnWWZDaFRNMTI1bTZBRzZxLU1Kd2NUOURmdTFweF9PRVFYWmlLQUMybFp2SXBPaEtaSkRfWDB0UjloOW1jS2R0X083VjBHcTlmeHpGVVhKb0psaE51WThMa1J5ZHFRT0VxZ1FXUFNpWQ?oc=5" rel="noopener">Autolus Therapeutics plc SEC Filing (Sep 23, 2026)</a> (Stock Titan)</li>
+          <li>NTLA: <a href="https://news.google.com/rss/articles/CBMiqAFBVV95cUxQSTVhQmlQRWl3MU5TSkZuWnhzQWtEUXVvVXVJTWlaRWtSMm5TRFByam04QXREOVRkSmhnNUpfUlRpTDN5b0Rkd1Z2Q2ZaVkVxX3AyQndreWpnRnJicXlVMjNxY0pPWXB3UXJGZWtyZmYyOGdVaklMQkI2elc1bDU1c3B6akNhdmZDTlo4eERJY0J0VlNiVE1EMTJLLUdVdnRMSVRURmJVWkg?oc=5" rel="noopener">Why Is NTLA Stock Jumping 5% Premarket Today?</a> (Stocktwits)</li>
+          <li>WVE: <a href="https://news.google.com/rss/articles/CBMiuwFBVV95cUxQTFJOVmFISGQ3cTdoWUFYMm42d0VaWTRsQ1hSVnFIRFU2OWM4Ry1aZFRXN1ZlZWlUY0x0aVJIU0lNRXB0TkpRdVk4VzNxcG4tbUpZaFA1THd6cTA4NURjV2VEdFFCVU13V3FVQ05MY1VHMlJXOWJtcXNJdWExUVo3cWdCQVgtSXdsWW9iTmJNcXRlYmYyVzVOMnNuTHF4ZVNDTjU5TnhaNmtXTXBqTGpvNm1RZE4xQUhxWlBz?oc=5" rel="noopener">JPMorgan resumes Wave Life Sciences stock rating at Neutral</a> (Investing.com)</li>
+          <li>IMTX: <a href="https://news.google.com/rss/articles/CBMitAFBVV95cUxOcmFOVVZvMHNqRU5Cd19jbG1yM2E1WGZoN3Q1Q1JzZm1jLV8yS2pZbkRUYnRnSHNpNmxscEJuRTFTYmxiUzB0SUVIZDhObGF0MFRnR3YxZW9PY2J4WlozS2ZmbG1xMXJfeHREQm93azhPdzZvYnhZa0JXYVhnd1NzVnBTSWd3SzNOWGR0a1hkUDVSNnJ2VHF6OXQyZ0trb2RCNWJTbm04MjhkbUdjbWNSejFDd24?oc=5" rel="noopener">Immatics stock holds at USD 8.77 as analysts see upside</a> (AD HOC NEWS)</li>
+          <li>REPL: <a href="https://news.google.com/rss/articles/CBMisAFBVV95cUxQTHgzVUZLM3RXdVZaSG1IdWlZUGM1Rzg2LVViYlQxQzBHZ2g2Zm5TTko3aFlNRTdxSHB0RHdEMEd3TVZuUUJmQ01JcjYzZnI2dTNMSElIbXJVU0Vxb0ZMeUs1MUU2STNvNTdfT0VHSmxHcWhEOWNCT0ZPdjVkU0pGTjZIbmIwUktlVUVmZl9JZFpXdEdyaUhhRTlaNHdQUk8tdmlqN1lDRGlQVEtLOEVUcQ?oc=5" rel="noopener">Replimune stock gains as share authorization doubles</a> (AD HOC NEWS)</li>
+          <li>IMCR: <a href="https://news.google.com/rss/articles/CBMiuwFBVV95cUxNcm1vUW9Ub1NQTHpoRkNtWGJCWVRQdTJ0bUpoYWhtbEM3SHVGVEEzb1k2cWNPdDBDbTFGZThFOGJaQ2d1bjh5T2p5VktSUTBwRnZMZE9Jd0tJQ1p1NGszSURUTGx6bkVKcHMxd2c4c3g1OWNJaC1HVm9zUTQ4Z1c0eW5WNXMtcmdqVFdvd1pqQ0VYeWhOODB4THlKNGl6c3k3d21RTXlyYVYzbHdfRGh0OXZEbjJyZ2laV1Vr?oc=5" rel="noopener">Immunocore stock holds at USD 32.18 as earnings remain mixed</a> (AD HOC NEWS)</li>
+          <li>GPCR: <a href="https://news.google.com/rss/articles/CBMitgFBVV95cUxOZnVpeHBBY2N1Z1VIZzN4YnlvWjJwbWs2b2owM1Y2RnpCQ214dGZkWmJKeEFJM21YSGFueTVJdS03X21naE8tX1k0dFI4NjJuN1BsQUNwbzN3OTRDcG1QU05aUlNDZmo0MnhOMHhzZ3JuWnBaY2FMeV9zQWpyNEloWlFBWnVpcWE3Q29JQjZzVUgxcDRxZURkRlFYVmNFRzlDMkR5ckgwcWRRNlN0aVBBMmN2VlFLdw?oc=5" rel="noopener">Form 4 Structure Therapeutics Inc ADR For: 22 September By Investing.com</a> (Investing.com Nigeria)</li>
+          <li>GPCR: <a href="https://news.google.com/rss/articles/CBMivAFBVV95cUxQeThJdHo0OHR5NzJZVk9hbW1tUms4aC1KRHV0S3QzSm91cHJRWWZmUkFYUm5GUlpNdGlpc3p2WVdXcXNEc25tVTVmOTBnN3N2N0VMc0hCaXBEMERUMWE3Ulk0SHg1ZWRpOEhFWlZaalJabzVETWh3ZG83cGNsMjhzeHl2ZEJjdUtpeXduYmVTWldfbjJpX0pSNFRPRzljR0tvdG5DeHVmRWo4dG9XUlBNV2t2dUVoNnl2UElTbg?oc=5" rel="noopener">Structure Therapeutics (GPCR) CMO sells shares under preset plan</a> (Stock Titan)</li>
+          <li>CADL: <a href="https://news.google.com/rss/articles/CBMivAFBVV95cUxNQm9VNjZEUURFVE13bU1tSVJTVkV6NllBamhQODVzOEk5TE9ZTmtjOXMwRHhBRER4UnVsOGhCb0xsdkJoU0hRaHk1ZGdKeTk5T3ItM1VJZ2Q1cU1hLVlwUjNzdlpYMXlGOE5zUExQYVk1XzQtaVZyYWh0T1BJRkh3R1JKWXdCa1Z2RklycTJoSHJtUTkxUzY5UUdPWm5KVFlUT2pHbnJQem9fWEZaVFlTcXVScnhzdEw1N20zQQ?oc=5" rel="noopener">Candel Therapeutics: Strong Buy On Aglatimagene Prostate Cancer BLA Filing In Q4 (CADL)</a> (Seeking Alpha)</li>
+          <li>KLRA: <a href="https://news.google.com/rss/articles/CBMigAFBVV95cUxQaGFVU2FGcG0wTDhueG5uZUMwZjl5ZFJBSlp6UlRNS2JYSzlsblRqQW1rR2J0b2dkWTlVTWdlNDNRWUMzb003Ml92dFZ3NFI1R1dyN2RXRnF1TlNSV1lfTEFTLTcybTYteFhBanRIcm5iaF9qSGJSWDFuOTJBYzk4NA?oc=5" rel="noopener">Top Kailera Therapeutics (KLRA) Competitors 2026</a> (MarketBeat)</li>
+          <li>NTLA: <a href="https://news.google.com/rss/articles/CBMinwFBVV95cUxNZ3V2My1feF9qMlJJTGVJRWFleEYyQXB2UTk5Q3pVSHZseXV0OUVvRmxIcTBtN2tkVlY3X0hWcjNuclZ4ZFB5SE5tRVRrZEtzRlQ1UVlBcXFIdm0wNTBuRmtUMWFUODB5eDEtdEVUaGhaT3hQS0NTdjRXa3Jlckhqei16T1JiVldpdXRER2k4Nzh4VVVQRkFhNzB3eVVWSkk?oc=5" rel="noopener">Intellia Therapeutics (NTLA) Stock Gets FDA Priority Review For Lonvo Z Gene Editing Therapy</a> (Yahoo Finance)</li>
+        </ul><!-- /STATIC_NEWS --></div>
       </aside>
     </div>
 

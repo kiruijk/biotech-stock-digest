@@ -20,6 +20,9 @@ const { renderProfile } = require('./templates/profile');
 const { renderTheme, themeSlug } = require('./templates/theme');
 const { renderCalendar } = require('./templates/calendar');
 const { NAV_CSS, renderNav, renderFooterLinks } = require('./templates/site');
+const { renderHomeHead, renderStaticStocks, renderStaticNews } = require('./templates/home');
+
+const SITE = JSON.parse(fs.readFileSync('data/site.json', 'utf8'));
 
 // Stock list, names and themes. A stock with data/profiles/<ticker>.json gets editorial
 // sections on its page ("covered"); without one it gets a data-only page ("tracked").
@@ -576,14 +579,18 @@ async function updateAll() {
     // Shared site navigation, footer links and their CSS (from templates/site.js)
     .replace(/<!-- SITE_NAV -->[\s\S]*?<!-- \/SITE_NAV -->/, () => `<!-- SITE_NAV -->\n${renderNav('', UNIVERSE.themes, 'dashboard')}\n  <!-- /SITE_NAV -->`)
     .replace(/<!-- SITE_FOOTER -->[\s\S]*?<!-- \/SITE_FOOTER -->/, () => `<!-- SITE_FOOTER -->\n${renderFooterLinks('', UNIVERSE.themes)}\n    <!-- /SITE_FOOTER -->`)
-    .replace(/\/\* SITE_NAV_CSS \*\/[\s\S]*?\/\* \/SITE_NAV_CSS \*\//, () => `/* SITE_NAV_CSS */${NAV_CSS.replace(/^/gm, '    ')}    /* /SITE_NAV_CSS */`);
+    .replace(/\/\* SITE_NAV_CSS \*\/[\s\S]*?\/\* \/SITE_NAV_CSS \*\//, () => `/* SITE_NAV_CSS */${NAV_CSS.replace(/^/gm, '    ')}    /* /SITE_NAV_CSS */`)
+    // SEO head tags and crawlable static copies of the stock list and news feed
+    .replace(/<!-- SEO_HEAD -->[\s\S]*?<!-- \/SEO_HEAD -->/, () => `<!-- SEO_HEAD -->\n${renderHomeHead(SITE)}\n  <!-- /SEO_HEAD -->`)
+    .replace(/<!-- STATIC_STOCKS -->[\s\S]*?<!-- \/STATIC_STOCKS -->/, () => `<!-- STATIC_STOCKS -->${renderStaticStocks(Object.values(stockData))}<!-- /STATIC_STOCKS -->`)
+    .replace(/<!-- STATIC_NEWS -->[\s\S]*?<!-- \/STATIC_NEWS -->/, () => `<!-- STATIC_NEWS -->${renderStaticNews(Object.values(stockData))}<!-- /STATIC_NEWS -->`);
   fs.writeFileSync('index.html', indexHTML);
 
   // Profile pages are regenerated in full from the template
   fs.mkdirSync(PAGES_DIR, { recursive: true });
   for (const symbol of STOCKS) {
     if (!stockData[symbol]) continue;
-    fs.writeFileSync(`${PAGES_DIR}/${symbol.toLowerCase()}.html`, renderProfile(stockData[symbol], readProfile(symbol), UNIVERSE.themes));
+    fs.writeFileSync(`${PAGES_DIR}/${symbol.toLowerCase()}.html`, renderProfile(stockData[symbol], readProfile(symbol), UNIVERSE.themes, SITE.url));
   }
   console.log(`Rendered ${Object.keys(stockData).length} profile pages (${coveredSymbols.size} covered, ${Object.keys(stockData).length - coveredSymbols.size} tracked)`);
 
@@ -594,12 +601,25 @@ async function updateAll() {
     const file = `${THEME_DIR}/${themeSlug(theme)}.json`;
     const content = fs.existsSync(file) ? JSON.parse(fs.readFileSync(file, 'utf8')) : null;
     const members = STOCKS.filter(s => stockData[s] && STOCK_INFO[s].themes.includes(theme)).map(s => stockData[s]);
-    fs.writeFileSync(`${THEME_PAGES_DIR}/${themeSlug(theme)}.html`, renderTheme(theme, content, members, profiles, UNIVERSE.themes));
+    fs.writeFileSync(`${THEME_PAGES_DIR}/${themeSlug(theme)}.html`, renderTheme(theme, content, members, profiles, UNIVERSE.themes, SITE.url));
   }
   console.log(`Rendered ${UNIVERSE.themes.length} theme pages`);
 
-  fs.writeFileSync('calendar.html', renderCalendar(STOCKS.filter(s => stockData[s]).map(s => stockData[s]), profiles, UNIVERSE.themes));
+  fs.writeFileSync('calendar.html', renderCalendar(STOCKS.filter(s => stockData[s]).map(s => stockData[s]), profiles, UNIVERSE.themes, SITE.url));
   console.log('Rendered calendar.html');
+
+  // sitemap.xml + robots.txt so search engines can find every page
+  const today = new Date().toISOString().slice(0, 10);
+  const pages = ['', 'calendar.html',
+    ...UNIVERSE.themes.map(t => `${THEME_PAGES_DIR}/${themeSlug(t)}.html`),
+    ...STOCKS.filter(s => stockData[s]).map(s => `${PAGES_DIR}/${s.toLowerCase()}.html`)];
+  fs.writeFileSync('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${pages.map(p => `  <url><loc>${SITE.url}${p}</loc><lastmod>${today}</lastmod><changefreq>daily</changefreq></url>`).join('\n')}
+</urlset>
+`);
+  fs.writeFileSync('robots.txt', `User-agent: *\nAllow: /\n\nSitemap: ${SITE.url}sitemap.xml\n`);
+  console.log(`Wrote sitemap.xml (${pages.length} pages) and robots.txt`);
 
   // Remove generated pages for stocks no longer in the universe
   const current = new Set(STOCKS.map(s => `${s.toLowerCase()}.html`));

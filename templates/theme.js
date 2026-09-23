@@ -7,9 +7,9 @@ const { parseTimingEnd, isPast } = require('../lib/catalyst-timing');
 const {
   formatMoney, formatPct, pctColor, formatDate, runwayText, escapeHtml, stripTags, CSS, DISCLAIMER
 } = require('./profile');
-const { NAV_CSS, renderNav, renderFooterLinks } = require('./site');
+const { NAV_CSS, renderNav, renderFooterLinks, seoTags } = require('./site');
 
-function renderTheme(theme, content, stocks, profiles, themes = []) {
+function renderTheme(theme, content, stocks, profiles, themes = [], siteUrl = null) {
   const slug = themeSlug(theme);
   const description = stripTags(content?.summary || `${theme} stocks: science background, company comparison, catalysts and news.`).slice(0, 300);
   const byReturn = [...stocks].sort((a, b) => (b.ytd ?? -Infinity) - (a.ytd ?? -Infinity));
@@ -65,6 +65,7 @@ ${content.sections.map(sec => `      <h3>${sec.heading}</h3>\n      ${sec.body}`
   <meta property="og:title" content="${escapeHtml(theme)} Stocks — Life Science Investor">
   <meta property="og:description" content="${escapeHtml(description)}">
   <meta property="og:type" content="article">
+${seoTags(siteUrl, `themes/${slug}.html`)}
   <style>
 ${(CSS + NAV_CSS).replace(/^/gm, '    ').replace(/^\s+$/gm, '')}
   </style>

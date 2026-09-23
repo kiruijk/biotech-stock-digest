@@ -5,7 +5,7 @@
 
 const { parseTimingEnd, isPast } = require('../lib/catalyst-timing');
 const { formatDate, escapeHtml, CSS, DISCLAIMER } = require('./profile');
-const { NAV_CSS, renderNav, renderFooterLinks } = require('./site');
+const { NAV_CSS, renderNav, renderFooterLinks, seoTags } = require('./site');
 
 const EXTRA_CSS = `
 .cal-group h2 .count {
@@ -105,7 +105,7 @@ const EXACT_DAY = /\b(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\.?\
 
 const halfLabel = (d) => `${d.getUTCMonth() < 6 ? '1H' : '2H'} ${d.getUTCFullYear()}`;
 
-function renderCalendar(stocks, profiles, themes) {
+function renderCalendar(stocks, profiles, themes, siteUrl = null) {
   const today = new Date();
   const soonLimit = new Date(today.getTime() + 30 * 864e5);
   const items = [];
@@ -167,6 +167,7 @@ ${note ? `      <p class="note" style="margin: -0.5rem 0 0.75rem;">${note}</p>\n
   <meta name="description" content="${escapeHtml(description)}">
   <meta property="og:title" content="Biotech Catalyst &amp; Earnings Calendar — Life Science Investor">
   <meta property="og:description" content="${escapeHtml(description)}">
+${seoTags(siteUrl, 'calendar.html')}
   <style>
 ${(CSS + NAV_CSS + EXTRA_CSS).replace(/^/gm, '    ').replace(/^\s+$/gm, '')}
   </style>

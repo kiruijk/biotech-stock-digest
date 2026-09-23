@@ -8,7 +8,7 @@ const fs = require('fs');
 const path = require('path');
 
 const { themeSlug } = require('../lib/themes');
-const { NAV_CSS, renderNav, renderFooterLinks } = require('./site');
+const { NAV_CSS, renderNav, renderFooterLinks, seoTags } = require('./site');
 
 const CSS = fs.readFileSync(path.join(__dirname, 'profile.css'), 'utf8');
 
@@ -100,7 +100,8 @@ function statCard(label, value, field, extra = '') {
 }
 
 // themes: all theme names, for the site navigation
-function renderProfile(stock, profile, themes = []) {
+// siteUrl: public site root (data/site.json), for canonical/OG tags
+function renderProfile(stock, profile, themes = [], siteUrl = null) {
   const covered = Boolean(profile);
   const company = stock.company || {};
   const title = `${stock.name} (${stock.symbol})`;
@@ -287,6 +288,7 @@ ${news.map(n => `        <li><a href="${escapeHtml(n.url)}" target="_blank" rel=
   <meta property="og:title" content="${escapeHtml(title)} — Stock Profile">
   <meta property="og:description" content="${escapeHtml(description)}">
   <meta property="og:type" content="article">
+${seoTags(siteUrl, `stocks/${stock.symbol.toLowerCase()}.html`)}
   <style>
 ${(CSS + NAV_CSS).replace(/^/gm, '    ').replace(/^\s+$/gm, '')}
   </style>

@@ -1,0 +1,6 @@
+{
+  "_comment": "Public site settings. Change url when moving to a custom domain (keep the trailing slash); it's used for canonical links, Open Graph tags, sitemap.xml and robots.txt.",
+  "name": "Life Science Investor",
+  "url": "https://kiruijk.github.io/biotech-stock-digest/",
+  "description": "Daily tracker for clinical-stage biotech stocks: prices and returns, cash runway, insider trades, catalysts, earnings dates and news, organized by therapeutic theme."
+}
