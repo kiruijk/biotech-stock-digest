@@ -45,3 +45,8 @@ jobs:
             git commit -m "🤖 Update stock prices and news - $(date +'%Y-%m-%d %H:%M:%S')"
             git push https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git main
           fi
+
+      # Runs after the commit so good data is still saved; a failure here turns the run
+      # red and triggers GitHub's failed-workflow email
+      - name: Check data freshness
+        run: node check-freshness.js

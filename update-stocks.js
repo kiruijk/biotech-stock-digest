@@ -191,7 +191,8 @@ async function getGoogleNews(company) {
     const itemRegex = /<item>([\s\S]*?)<\/item>/g;
     let match;
 
-    while ((match = itemRegex.exec(xml)) !== null && items.length < 3) {
+    // Collect extra candidates so there are still enough after low-value items are filtered out
+    while ((match = itemRegex.exec(xml)) !== null && items.length < 12) {
       const item = match[1];
       const title = (item.match(/<title><!\[CDATA\[(.*?)\]\]><\/title>/) || item.match(/<title>(.*?)<\/title>/))?.[1] || '';
       const link = (item.match(/<link>(.*?)<\/link>/) || [])[1] || '#';
@@ -210,12 +211,26 @@ async function getGoogleNews(company) {
   }
 }
 
+// Headlines that aren't news: law-firm lawsuit solicitations, quote pages, and
+// auto-generated "should you sell?" filler
+const LOW_VALUE_NEWS = [
+  /stock price,? news,? quote/i,
+  /\b(Levi (&amp;|&) Korsinsky|Rosen Law|Pomerantz|Bragar Eagel|Faruqi|Bronstein, Gewirtz|Glancy Prongay|Kessler Topaz|Schall Law|Gross Law|Portnoy Law|Robbins Geller|Kirby McInerney|Johnson Fistel)\b/i,
+  /\b(class action|investor alert|shareholder alert|securities fraud|investigation on behalf)\b/i,
+  /\bDEADLINE\b/,
+  /\bShould You (Buy|Sell)\b/i,
+  /\b(Resistance|Support) Level\b/i,
+  /\bstock (forecast|prediction)\b/i
+];
+
+const isLowValueNews = (item) => LOW_VALUE_NEWS.some(re => re.test(item.title));
+
 // Combine news from multiple sources
 async function getNews(symbol, company) {
   try {
     const yahooNews = await getYahooNews(symbol);
     const googleNews = await getGoogleNews(company);
-    const allNews = [...yahooNews, ...googleNews];
+    const allNews = [...yahooNews, ...googleNews].filter(item => !isLowValueNews(item));
 
     if (allNews.length === 0) {
       console.warn(`⚠️  No news found for ${symbol}, using demo news`);
@@ -311,60 +326,72 @@ async function getReturns(symbol, quote, currentPrice) {
   return returns;
 }
 
-// Update HTML with new data
-// Cash positions from latest quarterly filings (Yahoo Finance balance sheet unavailable)
-const cashPositions = {
-  VKTX: 185e6,  // Q1 2026: $185M
-  IOVA: 75e6,   // Q1 2026: $75M
-  REPL: 350e6,  // Q1 2026: $350M
-  KLRA: 1171.8e6, // Q2 2026: $1,171.8M (cash, equivalents & marketable securities)
-  NTLA: 628.4e6,  // Q2 2026: $628.4M (cash, equivalents & marketable securities)
-  CGON: 1028e6,   // Q2 2026: $1,028M (cash, equivalents & marketable securities)
-  IMCR: 880.2e6,  // Q2 2026: $880.2M (cash, equivalents & marketable securities)
-  // All below: Q2 2026 (June 30) cash, equivalents & marketable securities unless noted
-  GPCR: 1.3e9,     // $1.3B
-  ALT: 519e6,      // $519M
-  WVE: 490.6e6,    // $490.6M
-  SEPN: 516.5e6,   // $516.5M
-  AUTL: 201.6e6,   // $201.6M
-  ALLO: 423.6e6,   // $423.6M
-  IMTX: 448.2e6,   // $448.2M (€393.4M)
-  JANX: 970.9e6,   // $970.9M
-  CADL: 201.6e6,   // $201.6M
-  ENGN: 266.3e6,   // $266.3M as of July 31, 2026 (fiscal Q3)
-  URGN: 108.0e6,   // $108.0M
-  ONCY: 4.1e6,     // $4.1M
-  CRSP: 2.36e9,    // $2.36B
-  BEAM: 1.2e9,     // $1.2B
-  PRME: 108.8e6,   // $108.8M (incl. restricted cash)
-  CRBU: 113.8e6,   // $113.8M
-  IDYA: 1.24e9,    // ~$1.24B
-  VIR: 1.01e9,     // ~$1.01B
-  CTMX: 330.3e6,   // $330.3M
-  CMPX: 180e6      // $180M
+// Hand-entered cash figures (from the 10-Q) for companies where Yahoo's balance sheet
+// is incomplete. Used only while at least as recent as Yahoo's latest quarter —
+// update the amount and asOf date each quarter.
+const cashOverrides = {
+  PRME: { amount: 108.8e6, asOf: '2026-06-30' }  // Yahoo omits Prime's marketable securities
 };
 
-async function getCashPosition(symbol) {
-  return cashPositions[symbol] || null;
+const fxRates = {};
+
+// USD per unit of `currency`, e.g. EUR → ~1.14. Null if the rate can't be fetched.
+async function getUsdRate(currency) {
+  if (currency === 'USD') return 1;
+  if (!(currency in fxRates)) {
+    try {
+      const fx = await yahooFinance.quote(`${currency}USD=X`);
+      fxRates[currency] = fx?.regularMarketPrice ?? null;
+    } catch (err) {
+      console.warn(`    ⚠️  Could not fetch ${currency}/USD rate: ${err.message}`);
+      fxRates[currency] = null;
+    }
+  }
+  return fxRates[currency];
 }
 
-// Fetch monthly burn rate from quarterly net income (Yahoo Finance)
-async function getMonthlyBurn(symbol) {
+// Cash and burn from Yahoo's quarterly statements:
+// - cash = cash, equivalents & short-term investments + long-term marketable securities
+//   (excludes strategic equity stakes), matching what companies report in earnings releases
+// - burn = latest quarter's operating cash outflow ÷ 3 (actual cash spent, unlike net loss
+//   which includes non-cash items like stock comp and warrant revaluations)
+async function getFinancials(symbol, currency) {
+  const result = { cashPosition: null, cashAsOf: null, monthlyBurn: null, cashFlowPositive: false };
+
   try {
-    const summary = await yahooFinance.quoteSummary(symbol, {
-      modules: ['cashflowStatementHistoryQuarterly']
+    const rows = await yahooFinance.fundamentalsTimeSeries(symbol, {
+      period1: daysAgo(new Date(), 400),
+      type: 'quarterly',
+      module: 'all'
     });
-    const stmt = summary.cashflowStatementHistoryQuarterly?.cashflowStatements?.[0];
-    if (stmt && stmt.netIncome && stmt.netIncome < 0) {
-      const monthly = Math.abs(stmt.netIncome) / 3;
-      console.log(`    Monthly burn (${symbol}): $${(monthly / 1e6).toFixed(1)}M/month`);
-      return monthly;
+    const latest = (field) => [...rows].reverse().find(r => r[field] != null);
+    const fx = await getUsdRate(currency || 'USD');
+
+    const bs = latest('cashCashEquivalentsAndShortTermInvestments');
+    if (bs && fx) {
+      const longTerm = bs.investmentinFinancialAssets ?? bs.investmentsAndAdvances ?? 0;
+      result.cashPosition = (bs.cashCashEquivalentsAndShortTermInvestments + longTerm) * fx;
+      result.cashAsOf = new Date(bs.date).toISOString().slice(0, 10);
     }
-    return null;
+
+    const cf = latest('operatingCashFlow');
+    if (cf && fx) {
+      if (cf.operatingCashFlow < 0) result.monthlyBurn = (-cf.operatingCashFlow * fx) / 3;
+      else result.cashFlowPositive = true;
+    }
   } catch (err) {
-    console.warn(`    ⚠️  Could not fetch burn rate for ${symbol}`);
-    return null;
+    console.warn(`    ⚠️  Could not fetch financials for ${symbol}: ${err.message}`);
   }
+
+  const override = cashOverrides[symbol];
+  if (override && (!result.cashAsOf || override.asOf >= result.cashAsOf)) {
+    result.cashPosition = override.amount;
+    result.cashAsOf = override.asOf;
+  }
+
+  const m = (v) => (v == null ? '—' : `$${(v / 1e6).toFixed(1)}M`);
+  console.log(`    Cash: ${m(result.cashPosition)} (as of ${result.cashAsOf ?? '—'}) | Burn: ${result.cashFlowPositive ? 'cash-flow positive' : `${m(result.monthlyBurn)}/mo`}`);
+  return result;
 }
 
 // Read the data embedded in index.html by the previous run, so a ticker whose
@@ -420,8 +447,7 @@ async function updateHTML() {
     const company = COMPANY_NAMES[symbol] || symbol;
     const news = await getNews(symbol, company);
     const returns = await getReturns(symbol, quote, price.price);
-    const monthlyBurn = await getMonthlyBurn(symbol);
-    const cashPosition = await getCashPosition(symbol);
+    const financials = await getFinancials(symbol, quote.financialCurrency);
 
     stockData[symbol] = {
       symbol,
@@ -431,8 +457,7 @@ async function updateHTML() {
       changePercent: round2(price.changePercent),
       updatedAt: new Date().toISOString(),
       marketCap: price.marketCap,
-      monthlyBurn: monthlyBurn,
-      cashPosition: cashPosition,
+      ...financials,
       ...returns,
       news: news.length > 0 ? news : [
         {
@@ -504,6 +529,15 @@ function updateProfilePage(filename, data) {
   );
 
   // Update monthly burn (Quick Stats card)
+  // Burn cards: dollar figure, or a note when the company generated cash last quarter
+  const burnText = data.monthlyBurn ? null : data.cashFlowPositive ? 'Cash-flow positive' : null;
+  if (burnText) {
+    html = html.replace(
+      /(<div class="card-value"[^>]*data-field="(?:monthlyBurn|burnRate)"[^>]*>)[^<]*/g,
+      (_, tag) => `${tag}${burnText}`
+    );
+  }
+
   if (data.monthlyBurn) {
     const burnStr = `$${(data.monthlyBurn / 1e6).toFixed(1)}M/mo`;
     html = html.replace(
@@ -517,6 +551,20 @@ function updateProfilePage(filename, data) {
     html = html.replace(
       /(<div class="card-value"[^>]*data-field="cashPosition"[^>]*>)[^<]*/g,
       (_, tag) => `${tag}${formatMarketCap(data.cashPosition)}`
+    );
+  }
+  if (data.cashAsOf) {
+    const asOf = new Date(`${data.cashAsOf}T00:00:00Z`)
+      .toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
+    html = html.replace(
+      /(<div class="card-subtitle"[^>]*data-field="cashAsOf"[^>]*>)[^<]*/g,
+      (_, tag) => `${tag}As of ${asOf} (cash + marketable securities)`
+    );
+  }
+  if (data.cashFlowPositive && !data.monthlyBurn) {
+    html = html.replace(
+      /(<div class="card-value"[^>]*data-field="runway"[^>]*>)[^<]*/g,
+      (_, tag) => `${tag}No cash burn last qtr`
     );
   }
   if (data.monthlyBurn) {
