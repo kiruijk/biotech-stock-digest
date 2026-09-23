@@ -19,7 +19,7 @@ There is no lint, test, or build command in this repo (`package.json` only defin
 
 **Pages** (each is a standalone HTML file, not templated from a shared layout):
 - `index.html` — dashboard listing all tracked stocks + combined news feed
-- `vktx.html`, `iova.html`, `repl.html` — per-stock profile pages with financial detail cards
+- `stocks/<ticker>.html` (e.g. `stocks/vktx.html`) — one per-stock profile page per ticker in `STOCKS`, with financial detail cards. Each links back to `../index.html`.
 
 **Data flow, driven entirely by `update-stocks.js`:**
 1. Reads `STOCKS` (currently `['VKTX', 'IOVA', 'REPL']`) and fetches quotes/history via `yahoo-finance2`.
@@ -27,14 +27,14 @@ There is no lint, test, or build command in this repo (`package.json` only defin
 3. Computes 1D/5D/1M/6M/YTD returns from historical closes (`getReturns`), plus market cap, monthly burn (from quarterly `netIncome` via `quoteSummary`), and cash position. **Cash positions are hardcoded** in the `cashPositions` object (sourced manually from quarterly filings) since Yahoo's balance sheet data isn't reliable for these tickers — update this object by hand when a new 10-Q comes out.
 4. Writes results back into the HTML files via two different mechanisms:
    - `index.html`: the entire `const demoData = {...}` JS object literal is regex-replaced wholesale with freshly serialized JSON (see `dataJSON` construction in `updateHTML()`).
-   - Profile pages (`vktx.html`, etc.): individual DOM value spans are targeted and replaced in place using `data-field="..."` attribute regexes (`price`, `marketCap`, `ytd`, `monthlyBurn`, `cashPosition`, `burnRate`, `runway`). See `updateProfilePage()`.
+   - Profile pages (`stocks/vktx.html`, etc.): individual DOM value spans are targeted and replaced in place using `data-field="..."` attribute regexes (`price`, `marketCap`, `ytd`, `monthlyBurn`, `cashPosition`, `burnRate`, `runway`). See `updateProfilePage()`.
 
 **When adding a new field to a profile page**, add a `data-field="yourField"` span in the HTML and a matching regex replacement in `updateProfilePage()` — the two must stay in sync since there's no shared templating.
 
-**When adding a new stock**, update in `update-stocks.js`: `STOCKS` array, `demoPrices`, `demoNews`, `cashPositions`, and the company-name ternary in `updateHTML()`; then create a new profile page (copy an existing one, e.g. `vktx.html`, and update the `data-field` values/company name) and add it to the `profilePages` map in `updateHTML()` and the `profileLinks` map in `index.html`'s `renderStocks()`.
+**When adding a new stock**, update in `update-stocks.js`: the `STOCKS` array, `COMPANY_NAMES`, and `cashPositions` (`demoNews` is optional); add the ticker to the `STOCKS` array in `index.html`; then create `stocks/<ticker>.html` (copy an existing one, e.g. `stocks/vktx.html`, and update the company content). Profile paths and dashboard links are derived from the lowercase ticker, so there are no link maps to update.
 
 ## Automation
 
-`.github/workflows/update-stocks.yml` runs `update-stocks.js` on push to `main` and on a weekday cron (4:15 PM ET / 20:15 UTC), then commits and pushes any changed HTML files directly (`git commit` + `git push` inside the Action, author "Stock Bot"). No API keys/secrets are currently required — `yahoo-finance2` and Google News RSS need no auth. See `AUTOMATION_SETUP.md` for the original (now partially outdated) Finnhub/NewsAPI setup notes — the script has since moved to Yahoo Finance + Google News RSS instead.
+`.github/workflows/update-stocks.yml` runs `update-stocks.js` on push to `main` and on a weekday cron (4:15 PM ET / 20:15 UTC), then commits and pushes `index.html` and `stocks/` directly (`git commit` + `git push` inside the Action, author "Stock Bot"). No API keys/secrets are currently required — `yahoo-finance2` and Google News RSS need no auth. See `AUTOMATION_SETUP.md` for the original (now partially outdated) Finnhub/NewsAPI setup notes — the script has since moved to Yahoo Finance + Google News RSS instead.
 
 Because the workflow commits back to `main` automatically, expect frequent bot commits (`🤖 Update stock prices and news - ...`) in git history unrelated to manual changes.

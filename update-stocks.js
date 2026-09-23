@@ -462,7 +462,7 @@ async function updateHTML() {
 
   // Update profile pages
   for (const symbol of STOCKS) {
-    const filename = `${symbol.toLowerCase()}.html`;
+    const filename = `stocks/${symbol.toLowerCase()}.html`;
     // Stale entries keep whatever the profile page already shows
     if (stockData[symbol] && !stockData[symbol].stale && fs.existsSync(filename)) {
       console.log(`  Updating ${filename}...`);
