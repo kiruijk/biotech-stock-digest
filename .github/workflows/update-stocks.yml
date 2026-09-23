@@ -1,10 +1,8 @@
 name: Update Stock Data Daily
 
+# No push trigger: code/content pushes already include locally rendered pages, and a
+# push-triggered run would race with them. Use "Run workflow" for an immediate refresh.
 on:
-  push:
-    branches:
-      - main
-
   schedule:
     # Run daily at 4:15 PM ET (8:15 PM UTC) on weekdays
     - cron: "15 20 * * MON-FRI"
