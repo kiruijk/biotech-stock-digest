@@ -1006,8 +1006,8 @@
   </div>
 
   <div class="refresh-bar">
-    <div class="last-updated">Last updated: <strong id="update-time">—</strong></div>
-    <small>Refreshes daily with the latest news. Data provided by financial APIs.</small>
+    <div class="last-updated">Prices as of <strong id="update-time"><!-- DATA_TIME -->Sep 23, 2026, 5:23 PM ET<!-- /DATA_TIME --></strong></div>
+    <small>Updated after the US market close each weekday. Prices, returns and financials come from Yahoo Finance and company filings and may be delayed.</small>
     <!-- SITE_FOOTER -->
     <nav class="site-footer" aria-label="Site links">
       <div><strong>Life Science Investor</strong><a href="index.html">Dashboard</a><a href="calendar.html">Catalyst &amp; Earnings Calendar</a></div>
@@ -3132,9 +3132,18 @@ function renderNews(stocks) {
   container.innerHTML = html;
 }
 
+// When the data was fetched (latest refresh across stocks), not the visitor's clock
 function updateTime() {
   const el = document.getElementById('update-time');
-  if (el) el.textContent = formatTime(new Date());
+  if (!el) return;
+  const stocks = Object.values(demoData);
+  const times = stocks.filter(s => !s.stale && s.updatedAt).map(s => s.updatedAt).sort();
+  if (!times.length) return;
+  const when = new Date(times[times.length - 1]).toLocaleString('en-US', {
+    month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: '2-digit', timeZone: 'America/New_York'
+  });
+  const stale = stocks.filter(s => s.stale).length;
+  el.textContent = `${when} ET${stale ? ` · ${stale} stock${stale === 1 ? '' : 's'} not refreshed` : ''}`;
 }
 
 // Stocks | News switch on narrow screens

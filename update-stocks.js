@@ -464,6 +464,15 @@ const formatRelation = (rel) => String(rel || '')
   .replace(/Beneficial Owner of more than 10% of a Class of Security/i, '10% Owner')
   .replace(/ and /g, ', ');
 
+// "Sep 23, 2026, 4:21 PM ET": when the data was fetched (latest non-stale refresh)
+function dataTimeLabel(stockData) {
+  const times = Object.values(stockData).filter(d => !d.stale && d.updatedAt).map(d => d.updatedAt).sort();
+  if (!times.length) return '—';
+  return new Date(times[times.length - 1]).toLocaleString('en-US', {
+    month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: '2-digit', timeZone: 'America/New_York'
+  }) + ' ET';
+}
+
 // Put arrays of plain numbers (sparkline points) on one line instead of one number per line
 const compactNumberArrays = (json) => json.replace(/\[\s*(-?[\d.e+-]+(?:,\s*-?[\d.e+-]+)*)\s*\]/g, (m, nums) => `[${nums.replace(/\s+/g, '')}]`);
 
@@ -636,7 +645,8 @@ async function updateAll() {
     // SEO head tags and crawlable static copies of the stock list and news feed
     .replace(/<!-- SEO_HEAD -->[\s\S]*?<!-- \/SEO_HEAD -->/, () => `<!-- SEO_HEAD -->\n${renderHomeHead(SITE)}\n  <!-- /SEO_HEAD -->`)
     .replace(/<!-- STATIC_STOCKS -->[\s\S]*?<!-- \/STATIC_STOCKS -->/, () => `<!-- STATIC_STOCKS -->${renderStaticStocks(Object.values(stockData))}<!-- /STATIC_STOCKS -->`)
-    .replace(/<!-- STATIC_NEWS -->[\s\S]*?<!-- \/STATIC_NEWS -->/, () => `<!-- STATIC_NEWS -->${renderStaticNews(Object.values(stockData))}<!-- /STATIC_NEWS -->`);
+    .replace(/<!-- STATIC_NEWS -->[\s\S]*?<!-- \/STATIC_NEWS -->/, () => `<!-- STATIC_NEWS -->${renderStaticNews(Object.values(stockData))}<!-- /STATIC_NEWS -->`)
+    .replace(/<!-- DATA_TIME -->[\s\S]*?<!-- \/DATA_TIME -->/, () => `<!-- DATA_TIME -->${dataTimeLabel(stockData)}<!-- /DATA_TIME -->`);
   fs.writeFileSync('index.html', indexHTML);
 
   // Profile pages are regenerated in full from the template
