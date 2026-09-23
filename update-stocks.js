@@ -16,7 +16,11 @@ try {
   process.exit(1);
 }
 
-const STOCKS = ['VKTX', 'IOVA', 'REPL', 'KLRA', 'NTLA', 'CGON', 'IMCR'];
+const STOCKS = [
+  'VKTX', 'IOVA', 'REPL', 'KLRA', 'NTLA', 'CGON', 'IMCR',
+  'GPCR', 'ALT', 'WVE', 'SEPN', 'AUTL', 'ALLO', 'IMTX', 'JANX', 'CADL', 'ENGN',
+  'URGN', 'ONCY', 'CRSP', 'BEAM', 'PRME', 'CRBU', 'IDYA', 'VIR', 'CTMX', 'CMPX'
+];
 
 const COMPANY_NAMES = {
   VKTX: 'Vikings Therapeutics',
@@ -25,7 +29,27 @@ const COMPANY_NAMES = {
   KLRA: 'Kailera Therapeutics',
   NTLA: 'Intellia Therapeutics',
   CGON: 'CG Oncology',
-  IMCR: 'Immunocore'
+  IMCR: 'Immunocore',
+  GPCR: 'Structure Therapeutics',
+  ALT: 'Altimmune',
+  WVE: 'Wave Life Sciences',
+  SEPN: 'Septerna',
+  AUTL: 'Autolus Therapeutics',
+  ALLO: 'Allogene Therapeutics',
+  IMTX: 'Immatics',
+  JANX: 'Janux Therapeutics',
+  CADL: 'Candel Therapeutics',
+  ENGN: 'enGene Therapeutics',
+  URGN: 'UroGen Pharma',
+  ONCY: 'Oncolytics Biotech',
+  CRSP: 'CRISPR Therapeutics',
+  BEAM: 'Beam Therapeutics',
+  PRME: 'Prime Medicine',
+  CRBU: 'Caribou Biosciences',
+  IDYA: 'IDEAYA Biosciences',
+  VIR: 'Vir Biotechnology',
+  CTMX: 'CytomX Therapeutics',
+  CMPX: 'Compass Therapeutics'
 };
 
 // Fallback demo prices
@@ -317,7 +341,28 @@ const cashPositions = {
   KLRA: 1171.8e6, // Q2 2026: $1,171.8M (cash, equivalents & marketable securities)
   NTLA: 628.4e6,  // Q2 2026: $628.4M (cash, equivalents & marketable securities)
   CGON: 1028e6,   // Q2 2026: $1,028M (cash, equivalents & marketable securities)
-  IMCR: 880.2e6   // Q2 2026: $880.2M (cash, equivalents & marketable securities)
+  IMCR: 880.2e6,  // Q2 2026: $880.2M (cash, equivalents & marketable securities)
+  // All below: Q2 2026 (June 30) cash, equivalents & marketable securities unless noted
+  GPCR: 1.3e9,     // $1.3B
+  ALT: 519e6,      // $519M
+  WVE: 490.6e6,    // $490.6M
+  SEPN: 516.5e6,   // $516.5M
+  AUTL: 201.6e6,   // $201.6M
+  ALLO: 423.6e6,   // $423.6M
+  IMTX: 448.2e6,   // $448.2M (€393.4M)
+  JANX: 970.9e6,   // $970.9M
+  CADL: 201.6e6,   // $201.6M
+  ENGN: 266.3e6,   // $266.3M as of July 31, 2026 (fiscal Q3)
+  URGN: 108.0e6,   // $108.0M
+  ONCY: 4.1e6,     // $4.1M
+  CRSP: 2.36e9,    // $2.36B
+  BEAM: 1.2e9,     // $1.2B
+  PRME: 108.8e6,   // $108.8M (incl. restricted cash)
+  CRBU: 113.8e6,   // $113.8M
+  IDYA: 1.24e9,    // ~$1.24B
+  VIR: 1.01e9,     // ~$1.01B
+  CTMX: 330.3e6,   // $330.3M
+  CMPX: 180e6      // $180M
 };
 
 async function getCashPosition(symbol) {
@@ -350,7 +395,13 @@ async function updateHTML() {
 
   for (const symbol of STOCKS) {
     console.log(`  ${symbol}...`);
-    const quote = await yahooFinance.quote(symbol);
+    let quote;
+    try {
+      quote = await yahooFinance.quote(symbol);
+    } catch (err) {
+      console.warn(`  Failed to fetch quote for ${symbol}: ${err.message}`);
+      continue;
+    }
 
     if (!quote) {
       console.warn(`  Failed to fetch quote for ${symbol}`);
@@ -476,7 +527,10 @@ function updateProfilePage(filename, data) {
   }
   if (data.cashPosition && data.monthlyBurn) {
     const runwayMonths = data.cashPosition / data.monthlyBurn;
-    const runwayStr = runwayMonths > 120 ? '10+ years' : `${runwayMonths.toFixed(0)} months`;
+    const months = Math.round(runwayMonths);
+    const runwayStr = runwayMonths > 120 ? '10+ years'
+      : months < 1 ? '<1 month'
+      : `${months} month${months === 1 ? '' : 's'}`;
     html = html.replace(
       /(<div class="card-value"[^>]*data-field="runway"[^>]*>)[^<]*/g,
       (_, tag) => `${tag}${runwayStr}`
