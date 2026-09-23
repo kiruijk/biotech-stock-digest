@@ -13,7 +13,7 @@ npm run update        # node update-stocks.js — fetch live data and rewrite th
 node update-stocks.js # same thing, direct
 ```
 
-`npm test` runs the unit tests (`tests/*.test.js`, Node's built-in test runner — no dependencies); the workflow runs them before every update. `update-stocks.js` only runs when executed directly and exports its pure helpers (`financialsFromRows`, `applyCashOverride`, `returnsFromHistory`, insider/news parsers, sparklines…) for tests — add tests alongside any change to that logic. `npm run render` rebuilds every generated page from `data/market.json` without fetching (use it when changing templates). There is no lint or build command in this repo (`package.json` only defines `update`). To preview a page, just open the HTML file directly in a browser (`open index.html`) — no dev server needed.
+`npm test` runs the unit tests (`tests/*.test.js`, Node's built-in test runner — no dependencies); the workflow runs them before every update. `update-stocks.js` only runs when executed directly and exports its pure helpers (`financialsFromRows`, `applyCashOverride`, `returnsFromHistory`, insider/news parsers, sparklines…) for tests — add tests alongside any change to that logic. `npm run render` rebuilds every generated page from `data/market.json` without fetching (use it when changing templates). There is no lint or build command in this repo (`package.json` scripts: `update`, `render`, `review`, `test`). To preview a page, just open the HTML file directly in a browser (`open index.html`) — no dev server needed.
 
 ## Architecture
 
