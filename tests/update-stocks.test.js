@@ -219,3 +219,18 @@ test('drawdownStats: distance from peak, bounce off 52-week low, return since ad
   assert.equal(u.drawdownStats(history, 150).peakDate, null);
   assert.equal(u.drawdownStats([], 10), null);
 });
+
+test('Beaten Down review flags: rebound, shallow drawdown, slump, candidates', () => {
+  const { listedFlag, isCandidate } = require('../lib/drawdown');
+  const base = { peak: 100, peakDate: '2021-01-01', fromPeak: -90, fromLow: 20, sinceAdded: 0 };
+  assert.equal(listedFlag(base), null);
+  assert.match(listedFlag({ ...base, sinceAdded: 60 }), /up 60% since added/);
+  assert.match(listedFlag({ ...base, fromPeak: -40 }), /only 40% below its high/);
+  assert.match(listedFlag({ ...base, sinceAdded: -35 }), /down 35% since added/);
+  assert.equal(listedFlag(null), null);
+
+  assert.equal(isCandidate({ cashPosition: 60, marketCap: 100 }, { ...base, fromPeak: -85 }), true);
+  assert.equal(isCandidate({ cashPosition: 40, marketCap: 100 }, { ...base, fromPeak: -85 }), false, 'not near cash');
+  assert.equal(isCandidate({ cashPosition: 60, marketCap: 100 }, { ...base, fromPeak: -60 }), false, 'drawdown too shallow');
+  assert.equal(isCandidate({ cashPosition: 60, marketCap: null }, base), false);
+});

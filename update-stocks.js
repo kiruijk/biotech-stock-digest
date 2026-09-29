@@ -21,6 +21,7 @@ const { renderTheme, themeSlug } = require('./templates/theme');
 const { renderCalendar } = require('./templates/calendar');
 const { NAV_CSS, renderNav, renderFooterLinks } = require('./templates/site');
 const { renderHomeHead, renderStaticStocks, renderStaticNews } = require('./templates/home');
+const { drawdownStats } = require('./lib/drawdown');
 const { renderBeatenDown, renderBeatenDownStrip, renderBeatenDownNotice, PAGE: BEATEN_PAGE } = require('./templates/beaten-down');
 
 const SITE = JSON.parse(fs.readFileSync('data/site.json', 'utf8'));
@@ -553,28 +554,6 @@ function sparklines(history, price) {
   return out;
 }
 
-// How far a stock sits below its highest close in the stored history (~10 years), how far
-// it has bounced off its 52-week low, and (given the date it was added to the "Beaten Down"
-// list) its return since then. Percentages are rounded to whole numbers; null when unknown.
-function drawdownStats(history, price, added = null) {
-  if (!history.length || price == null) return null;
-  let peak = history[0];
-  for (const r of history) if (r[1] > peak[1]) peak = r;
-  const yearAgo = monthsAgo(new Date(), 12).toISOString().slice(0, 10);
-  const lastYear = history.filter(r => r[0] >= yearAgo);
-  const low = lastYear.length ? Math.min(...lastYear.map(r => r[1]), price) : null;
-  const pct = (from) => (from ? Math.round((price / from - 1) * 100) : null);
-  // Close on the added date, or the last trading day before it
-  const base = added ? history.filter(r => r[0] <= added).pop() : null;
-  return {
-    peak: Math.max(peak[1], price),
-    peakDate: peak[1] >= price ? peak[0] : null,
-    fromPeak: peak[1] >= price ? pct(peak[1]) : 0,
-    fromLow: pct(low),
-    sinceAdded: base ? pct(base[1]) : null
-  };
-}
-
 // Profile chart: daily closes for the last year, weekly beyond that
 function chartSeries(history) {
   const yearAgo = monthsAgo(new Date(), 12).toISOString().slice(0, 10);
@@ -662,6 +641,9 @@ async function updateAll() {
   for (const d of Object.values(stockData)) {
     d.news = (d.news || []).map(n => ({ ...n, title: cleanNewsTitle(n) }));
     d.materialNews = updateMaterialNews(d, previousData[d.symbol], readProfile(d.symbol)?.reviewed);
+    // Same for Beaten Down stocks, measured from the thesis's review date
+    const listed = BEATEN_DOWN.stocks.find(e => e.symbol === d.symbol);
+    d.thesisNews = updateMaterialNews(d, { materialNews: previousData[d.symbol]?.thesisNews }, listed && (listed.reviewed || BEATEN_DOWN.reviewed));
   }
   if (!renderOnly) {
     // Full data (company info, insiders, all news) for the next run and for profile pages
@@ -681,7 +663,7 @@ async function updateAll() {
   // Homepage gets a lighter copy: no company details or insider tables, 3 news items
   const coveredSymbols = new Set(STOCKS.filter(s => readProfile(s)));
   const homepageData = Object.fromEntries(Object.entries(stockData).map(([symbol, d]) => {
-    const { company, insiders, news, sinceReviewed, cashOverrideSuperseded, materialNews, ...rest } = d;
+    const { company, insiders, news, sinceReviewed, cashOverrideSuperseded, materialNews, thesisNews, ...rest } = d;
     return [symbol, { ...rest, covered: coveredSymbols.has(symbol), news: (news || []).slice(0, 3), spark: sparklines(readHistory(symbol), d.price) }];
   }));
   console.log('Updating index.html...');

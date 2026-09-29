@@ -1,5 +1,5 @@
 {
-  "_comment": "Curated list for beaten-down.html: stocks far below their highs whose investment case still holds. Thesis fields are trusted HTML; leave a field empty to show a placeholder. Every symbol must be in data/universe.json. `added` is the date it joined the list (the page tracks performance since then). Bump `reviewed` after editing.",
+  "_comment": "Curated list for beaten-down.html: stocks far below their highs whose investment case still holds. Thesis fields are trusted HTML; leave a field empty to show a placeholder. Every symbol must be in data/universe.json. `added` is the date it joined the list (the page tracks performance since then). Bump a stock's `reviewed` after editing its thesis (npm run review lists material news since then), and the list-level `reviewed` after reviewing the whole list. `passed` records stocks deliberately left off; npm run review stops suggesting them as candidates for 90 days after `date`.",
   "title": "Beaten Down, Not Out",
   "intro": "Biotech stocks far below their highs whose investment case, in our view, still holds. Each has a written thesis: why the stock fell, why it could recover, and what would prove the thesis wrong.",
   "reviewed": "2026-09-29",
@@ -7,6 +7,7 @@
     {
       "symbol": "ZNTL",
       "added": "2026-09-29",
+      "reviewed": "2026-09-29",
       "thesis": {
         "whyItFell": "Zentalis peaked at about $85 in November 2021 with a broad oncology pipeline. In June 2024 the FDA placed partial clinical holds on three azenosertib trials after two patient deaths from presumed sepsis, and the stock fell more than 45% in a day. The hold was lifted later that year, but the company then narrowed to a single drug and a single indication.",
         "whyItCouldRecover": "Azenosertib, a WEE1 inhibitor, now targets Cyclin E1-positive platinum-resistant ovarian cancer, roughly half of a population with poor options. The drug posted a 31% response rate in that group. The FDA has aligned on the dose and patient population for a potential accelerated approval, and registration-intent topline data from DENALI Part 2 are due in the first half of 2027. With $175M of cash at June 30 plus a $92.6M raise in August 2026, the company is funded through the readout. Its ~$260M market cap is small for a drug with a near-term approval path.",
@@ -16,6 +17,7 @@
     {
       "symbol": "FATE",
       "added": "2026-09-29",
+      "reviewed": "2026-09-29",
       "thesis": {
         "whyItFell": "Fate was a 2021 cell-therapy darling at over $100 a share. In January 2023 Janssen ended their collaboration, and Fate cut more than half its workforce and dropped most of its cancer programs. Off-the-shelf NK-cell therapies struggled to show durable responses, and the stock lost about 98% from its peak.",
         "whyItCouldRecover": "Fate has moved into autoimmune disease with FT819, an off-the-shelf CAR T cell made from induced pluripotent stem cells. It needs no collection of the patient's own cells and is given as a single dose. Phase 1 data in 16 lupus patients showed no dose-limiting toxicities, no severe cytokine release and no neurotoxicity, plus improvements in disease activity and kidney protein levels. The first patient in RECLAIM-LN, a potentially registrational Phase 2 in lupus nephritis, has been dosed as an outpatient. Cash of $154M funds operations into 2028, over half the ~$280M market cap.",
@@ -25,6 +27,7 @@
     {
       "symbol": "ALT",
       "added": "2026-09-29",
+      "reviewed": "2026-09-29",
       "thesis": {
         "whyItFell": "Altimmune's share price has fallen for years through failed vaccine and hepatitis programs, dilution and a reverse split. More recently, the June 2025 IMPACT Phase 2b MASH readout of pemvidutide hit MASH resolution strongly (59% vs 19% on placebo). However, fibrosis improvement at 24 weeks was not statistically significant, and investors sold off hard. Fibrosis is the endpoint that matters most for approval.",
         "whyItCouldRecover": "The FDA later granted pemvidutide Breakthrough Therapy designation, and the Phase 3 PERFORMA MASH trial started in August 2026. Positive Phase 2 data in alcohol use disorder, plus a fully enrolled trial in alcohol-associated liver disease, add upside in markets with few drugs. The balance sheet is the key point: about $518M in cash against a ~$575M market cap, so investors pay under $60M for a Phase 3 asset with Breakthrough designation.",
@@ -34,6 +37,7 @@
     {
       "symbol": "ADMA",
       "added": "2026-09-29",
+      "reviewed": "2026-09-29",
       "thesis": {
         "whyItFell": "ADMA is not a clinical-stage story. It is a profitable maker of plasma-derived immunoglobulins that peaked in April 2025 at about $24. In March 2026 short seller Culper Research alleged channel stuffing through a related-party distributor. In May 2026 ADMA cut its 2026 revenue guidance from more than $635M to $530–560M and withdrew its long-term targets, citing immunoglobulin pricing pressure, competition and excess channel inventory. The stock fell over 24% after hours, and securities class actions followed.",
         "whyItCouldRecover": "The core business held up in Q2 2026. Revenue of its premium product ASCENIV grew 24%, gross margin rose to 69% (from 55%) on its yield-enhanced manufacturing process, and GAAP net income was $37.8M. The company reiterated guidance of $170–200M adjusted net income for 2026, which puts the ~$2.3B market cap at roughly 11–13x earnings, cheap for a growing, cash-generating biologics maker. A director bought shares in May 2026.",
@@ -43,11 +47,29 @@
     {
       "symbol": "RXRX",
       "added": "2026-09-29",
+      "reviewed": "2026-09-29",
       "thesis": {
         "whyItFell": "Recursion listed in 2021 as the flagship AI drug-discovery company and peaked above $40. Early clinical programs disappointed: in May 2025, after merging with Exscientia, it cut or paused several including REC-994 in cerebral cavernous malformation and REC-2282 in NF2 meningioma. It burns cash heavily (about $375M planned for 2026), and partnership revenue has fallen.",
         "whyItCouldRecover": "The pipeline is now narrower and mostly in cancer, with the first real tests coming. Phase 2 data for REC-4881 in familial adenomatous polyposis are due in November 2026, alongside an FDA update on a registrational path. Partnerships with Roche/Genentech, Sanofi and Bayer bring milestone payments. A restructured Tempus deal in September 2026 cut Recursion's data costs and added a $12M license for its RNA model. Cash of $557M lasts into early 2028. For ~$2.1B, investors get one of the largest biological datasets in the industry, and a single clinical win for an AI-designed drug would change how the market values it.",
         "whatBreaksIt": "Weak REC-4881 data or an unclear path to approval. Continued pipeline cuts would suggest the platform isn't producing better drugs. If burn stays above $30M a month without clinical wins, another dilutive raise before 2028 becomes likely."
       }
+    }
+  ],
+  "passed": [
+    {
+      "symbol": "CMPX",
+      "date": "2026-09-29",
+      "reason": "FDA asked for a survival trial on Sept 22, 2026; thesis in doubt until the ESMO data and further FDA meetings."
+    },
+    {
+      "symbol": "RLAY",
+      "date": "2026-09-29",
+      "reason": "Rerated 250% off its 52-week low; the thesis is playing out, no longer beaten down."
+    },
+    {
+      "symbol": "OVID",
+      "date": "2026-09-29",
+      "reason": "Only ~38% below its 5-year high and doubled off its low."
     }
   ]
 }
