@@ -1,0 +1,80 @@
+{
+  "_comment": "Curated list for beaten-down.html: stocks far below their highs whose investment case still holds. Thesis fields are trusted HTML; leave a field empty to show a placeholder. Every symbol must be in data/universe.json. `added` is the date it joined the list (the page tracks performance since then). Bump `reviewed` after editing.",
+  "title": "Beaten Down, Not Out",
+  "intro": "Biotech stocks far below their highs whose investment case, in our view, still holds. Each has a written thesis: why the stock fell, why it could recover, and what would prove the thesis wrong.",
+  "reviewed": "2026-09-29",
+  "stocks": [
+    {
+      "symbol": "CMPX",
+      "added": "2026-09-29",
+      "thesis": {
+        "whyItFell": "",
+        "whyItCouldRecover": "",
+        "whatBreaksIt": ""
+      }
+    },
+    {
+      "symbol": "ZNTL",
+      "added": "2026-09-29",
+      "thesis": {
+        "whyItFell": "",
+        "whyItCouldRecover": "",
+        "whatBreaksIt": ""
+      }
+    },
+    {
+      "symbol": "FATE",
+      "added": "2026-09-29",
+      "thesis": {
+        "whyItFell": "",
+        "whyItCouldRecover": "",
+        "whatBreaksIt": ""
+      }
+    },
+    {
+      "symbol": "RLAY",
+      "added": "2026-09-29",
+      "thesis": {
+        "whyItFell": "",
+        "whyItCouldRecover": "",
+        "whatBreaksIt": ""
+      }
+    },
+    {
+      "symbol": "ALT",
+      "added": "2026-09-29",
+      "thesis": {
+        "whyItFell": "",
+        "whyItCouldRecover": "",
+        "whatBreaksIt": ""
+      }
+    },
+    {
+      "symbol": "ADMA",
+      "added": "2026-09-29",
+      "thesis": {
+        "whyItFell": "",
+        "whyItCouldRecover": "",
+        "whatBreaksIt": ""
+      }
+    },
+    {
+      "symbol": "RXRX",
+      "added": "2026-09-29",
+      "thesis": {
+        "whyItFell": "",
+        "whyItCouldRecover": "",
+        "whatBreaksIt": ""
+      }
+    },
+    {
+      "symbol": "OVID",
+      "added": "2026-09-29",
+      "thesis": {
+        "whyItFell": "",
+        "whyItCouldRecover": "",
+        "whatBreaksIt": ""
+      }
+    }
+  ]
+}

@@ -6,6 +6,7 @@
 //   - profiles or theme explainers not reviewed in REVIEW_AFTER_DAYS
 //   - stocks that moved more than BIG_MOVE_PCT since their profile was reviewed
 //   - cash overrides that Yahoo has since superseded
+//   - "Beaten Down, Not Out" stocks missing a thesis, or a list not reviewed recently
 // Run with `npm run review`. In GitHub Actions the report is also written to the run's
 // summary page. Always exits 0 — this is a to-do list, not a failure.
 
@@ -21,7 +22,7 @@ const market = fs.existsSync('data/market.json') ? JSON.parse(fs.readFileSync('d
 const readJson = (file) => (fs.existsSync(file) ? JSON.parse(fs.readFileSync(file, 'utf8')) : null);
 const daysSince = (date) => Math.floor((Date.now() - new Date(`${date}T00:00:00Z`)) / 864e5);
 
-const items = { materialNews: [], pastCatalysts: [], staleReviews: [], bigMoves: [], overrides: [] };
+const items = { materialNews: [], pastCatalysts: [], staleReviews: [], bigMoves: [], overrides: [], theses: [] };
 
 for (const { symbol } of universe.stocks) {
   const profile = readJson(`data/profiles/${symbol.toLowerCase()}.json`);
@@ -52,10 +53,19 @@ for (const theme of universe.themes) {
   else if (daysSince(content.reviewed) > REVIEW_AFTER_DAYS) items.staleReviews.push(`Theme "${theme}": last reviewed ${content.reviewed}`);
 }
 
+const beatenDown = readJson('data/beaten-down.json');
+if (beatenDown) {
+  for (const { symbol, thesis } of beatenDown.stocks) {
+    if (!thesis || !Object.values(thesis).some(Boolean)) items.theses.push(`${symbol}: no thesis yet in data/beaten-down.json`);
+  }
+  if (daysSince(beatenDown.reviewed) > REVIEW_AFTER_DAYS) items.staleReviews.push(`Beaten Down list: last reviewed ${beatenDown.reviewed}`);
+}
+
 const sections = [
   ['Material news since the profile was reviewed', items.materialNews],
   ['Cash overrides to update', items.overrides],
   ['Catalysts whose timing has passed', items.pastCatalysts],
+  ['Beaten Down stocks without a thesis', items.theses],
   [`Stocks that moved ${BIG_MOVE_PCT}%+ since their profile review`, items.bigMoves],
   [`Not reviewed in ${REVIEW_AFTER_DAYS}+ days`, items.staleReviews]
 ];

@@ -21,6 +21,7 @@ const { renderTheme, themeSlug } = require('./templates/theme');
 const { renderCalendar } = require('./templates/calendar');
 const { NAV_CSS, renderNav, renderFooterLinks } = require('./templates/site');
 const { renderHomeHead, renderStaticStocks, renderStaticNews } = require('./templates/home');
+const { renderBeatenDown, renderBeatenDownStrip, renderBeatenDownNotice, PAGE: BEATEN_PAGE } = require('./templates/beaten-down');
 
 const SITE = JSON.parse(fs.readFileSync('data/site.json', 'utf8'));
 
@@ -29,6 +30,9 @@ const SITE = JSON.parse(fs.readFileSync('data/site.json', 'utf8'));
 const UNIVERSE = JSON.parse(fs.readFileSync('data/universe.json', 'utf8'));
 const STOCKS = UNIVERSE.stocks.map(s => s.symbol);
 const STOCK_INFO = Object.fromEntries(UNIVERSE.stocks.map(s => [s.symbol, s]));
+
+// Curated "Beaten Down, Not Out" list (beaten-down.html): symbols plus a hand-written thesis
+const BEATEN_DOWN = JSON.parse(fs.readFileSync('data/beaten-down.json', 'utf8'));
 
 // Retry transient Yahoo failures (rate limits, HTML error pages) with a short backoff
 async function withRetry(fn, attempts = 3, delayMs = 1500) {
@@ -549,6 +553,28 @@ function sparklines(history, price) {
   return out;
 }
 
+// How far a stock sits below its highest close in the stored history (~10 years), how far
+// it has bounced off its 52-week low, and (given the date it was added to the "Beaten Down"
+// list) its return since then. Percentages are rounded to whole numbers; null when unknown.
+function drawdownStats(history, price, added = null) {
+  if (!history.length || price == null) return null;
+  let peak = history[0];
+  for (const r of history) if (r[1] > peak[1]) peak = r;
+  const yearAgo = monthsAgo(new Date(), 12).toISOString().slice(0, 10);
+  const lastYear = history.filter(r => r[0] >= yearAgo);
+  const low = lastYear.length ? Math.min(...lastYear.map(r => r[1]), price) : null;
+  const pct = (from) => (from ? Math.round((price / from - 1) * 100) : null);
+  // Close on the added date, or the last trading day before it
+  const base = added ? history.filter(r => r[0] <= added).pop() : null;
+  return {
+    peak: Math.max(peak[1], price),
+    peakDate: peak[1] >= price ? peak[0] : null,
+    fromPeak: peak[1] >= price ? pct(peak[1]) : 0,
+    fromLow: pct(low),
+    sinceAdded: base ? pct(base[1]) : null
+  };
+}
+
 // Profile chart: daily closes for the last year, weekly beyond that
 function chartSeries(history) {
   const yearAgo = monthsAgo(new Date(), 12).toISOString().slice(0, 10);
@@ -643,6 +669,15 @@ async function updateAll() {
     console.log(`\nWrote ${MARKET_FILE}`);
   }
 
+  // Beaten Down list entries with live data and drawdown stats; skip symbols with no data
+  for (const e of BEATEN_DOWN.stocks) {
+    if (!STOCK_INFO[e.symbol]) console.warn(`  ⚠️  ${e.symbol} is in data/beaten-down.json but not in data/universe.json`);
+  }
+  const beatenDown = BEATEN_DOWN.stocks
+    .filter(e => stockData[e.symbol])
+    .map(e => ({ ...e, stock: stockData[e.symbol], stats: drawdownStats(readHistory(e.symbol), stockData[e.symbol].price, e.added) }));
+  const beatenBySymbol = Object.fromEntries(beatenDown.map(e => [e.symbol, e]));
+
   // Homepage gets a lighter copy: no company details or insider tables, 3 news items
   const coveredSymbols = new Set(STOCKS.filter(s => readProfile(s)));
   const homepageData = Object.fromEntries(Object.entries(stockData).map(([symbol, d]) => {
@@ -662,6 +697,7 @@ async function updateAll() {
     .replace(/\/\* SITE_NAV_CSS \*\/[\s\S]*?\/\* \/SITE_NAV_CSS \*\//, () => `/* SITE_NAV_CSS */${NAV_CSS.replace(/^/gm, '    ')}    /* /SITE_NAV_CSS */`)
     // SEO head tags and crawlable static copies of the stock list and news feed
     .replace(/<!-- SEO_HEAD -->[\s\S]*?<!-- \/SEO_HEAD -->/, () => `<!-- SEO_HEAD -->\n${renderHomeHead(SITE)}\n  <!-- /SEO_HEAD -->`)
+    .replace(/<!-- BEATEN_DOWN -->[\s\S]*?<!-- \/BEATEN_DOWN -->/, () => `<!-- BEATEN_DOWN -->\n    ${renderBeatenDownStrip(BEATEN_DOWN, beatenDown)}\n    <!-- /BEATEN_DOWN -->`)
     .replace(/<!-- STATIC_STOCKS -->[\s\S]*?<!-- \/STATIC_STOCKS -->/, () => `<!-- STATIC_STOCKS -->${renderStaticStocks(Object.values(stockData))}<!-- /STATIC_STOCKS -->`)
     .replace(/<!-- STATIC_NEWS -->[\s\S]*?<!-- \/STATIC_NEWS -->/, () => `<!-- STATIC_NEWS -->${renderStaticNews(Object.values(stockData))}<!-- /STATIC_NEWS -->`)
     .replace(/<!-- DATA_TIME -->[\s\S]*?<!-- \/DATA_TIME -->/, () => `<!-- DATA_TIME -->${dataTimeLabel(stockData)}<!-- /DATA_TIME -->`);
@@ -671,7 +707,8 @@ async function updateAll() {
   fs.mkdirSync(PAGES_DIR, { recursive: true });
   for (const symbol of STOCKS) {
     if (!stockData[symbol]) continue;
-    fs.writeFileSync(`${PAGES_DIR}/${symbol.toLowerCase()}.html`, renderProfile(stockData[symbol], readProfile(symbol), UNIVERSE.themes, SITE.url, chartSeries(readHistory(symbol))));
+    fs.writeFileSync(`${PAGES_DIR}/${symbol.toLowerCase()}.html`, renderProfile(stockData[symbol], readProfile(symbol), UNIVERSE.themes, SITE.url, chartSeries(readHistory(symbol)),
+      beatenBySymbol[symbol] ? [renderBeatenDownNotice(BEATEN_DOWN, beatenBySymbol[symbol].stats, symbol)] : []));
   }
   console.log(`Rendered ${Object.keys(stockData).length} profile pages (${coveredSymbols.size} covered, ${Object.keys(stockData).length - coveredSymbols.size} tracked)`);
 
@@ -686,12 +723,15 @@ async function updateAll() {
   }
   console.log(`Rendered ${UNIVERSE.themes.length} theme pages`);
 
+  fs.writeFileSync(BEATEN_PAGE, renderBeatenDown(BEATEN_DOWN, beatenDown, UNIVERSE.themes, SITE.url));
+  console.log(`Rendered ${BEATEN_PAGE} (${beatenDown.length} stocks)`);
+
   fs.writeFileSync('calendar.html', renderCalendar(STOCKS.filter(s => stockData[s]).map(s => stockData[s]), profiles, UNIVERSE.themes, SITE.url));
   console.log('Rendered calendar.html');
 
   // sitemap.xml + robots.txt so search engines can find every page
   const today = new Date().toISOString().slice(0, 10);
-  const pages = ['', 'calendar.html',
+  const pages = ['', BEATEN_PAGE, 'calendar.html',
     ...UNIVERSE.themes.map(t => `${THEME_PAGES_DIR}/${themeSlug(t)}.html`),
     ...STOCKS.filter(s => stockData[s]).map(s => `${PAGES_DIR}/${s.toLowerCase()}.html`)];
   fs.writeFileSync('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>
@@ -731,6 +771,6 @@ if (require.main === module) {
 module.exports = {
   financialsFromRows, applyCashOverride, returnsFromHistory, parseInsiders, formatInsiderName,
   formatRelation, classifyTransaction, parseNextEarnings, isMaterialNews, isLowValueNews,
-  cleanNewsTitle, updateMaterialNews, sparklines, chartSeries, downsample, compactNumberArrays,
-  dataTimeLabel
+  cleanNewsTitle, updateMaterialNews, sparklines, chartSeries, drawdownStats, downsample,
+  compactNumberArrays, dataTimeLabel
 };

@@ -9,6 +9,7 @@ A daily-updated tracker for clinical-stage biotech stocks: prices and returns, c
 - **Dashboard.** Stocks ranked by return over any period from 1D to 10Y, with a card view (sparklines) and a sortable screener view (market cap, cash runway), search, and theme filters. Also a combined news feed and upcoming earnings.
 - **Stock profiles** (`stocks/<ticker>.html`). An interactive price chart, returns, cash and monthly burn, runway, insider trades from SEC Form 4 filings, leadership and news. Covered stocks also get written analysis: overview, catalysts, risks, competitors and partnerships, each with a "last reviewed" date.
 - **Theme pages** (`themes/<theme>.html`). Science background for each theme (obesity & metabolic, gene editing, cell therapy, melanoma and more), plus a company comparison, upcoming catalysts and earnings, and news.
+- **Beaten Down, Not Out** (`beaten-down.html`). A curated list of stocks far below their highs whose investment case still holds, each with a written thesis next to automatic metrics: distance from high, bounce off the 52-week low, return since added, cash vs market cap and runway. Highlighted on the dashboard and on each listed stock's profile.
 - **Catalyst & earnings calendar** (`calendar.html`). Every upcoming event across all tracked stocks, grouped by date.
 
 ## How it works
@@ -20,7 +21,7 @@ A scheduled GitHub Action (`.github/workflows/update-stocks.yml`) runs `update-s
 1. Reads the stock list from `data/universe.json`.
 2. Fetches prices, price history, quarterly financials, company info, insider transactions and earnings dates from Yahoo Finance (via [`yahoo-finance2`](https://github.com/gadicc/node-yahoo-finance2)), and news from Yahoo and Google News.
 3. Writes the fetched data to `data/market.json` and `data/history/`.
-4. Regenerates every page from the templates in `templates/`, combining the fetched data with written content from `data/profiles/` and `data/themes/`.
+4. Regenerates every page from the templates in `templates/`, combining the fetched data with written content from `data/profiles/`, `data/themes/` and `data/beaten-down.json`.
 5. Commits the results. A freshness check then fails the run if data is missing or stale, and an editorial review queue is posted to the run summary.
 
 ## Project layout
@@ -28,13 +29,15 @@ A scheduled GitHub Action (`.github/workflows/update-stocks.yml`) runs `update-s
 ```
 index.html              Dashboard (script-rendered; data and some sections injected by update-stocks.js)
 stocks/, themes/,
+beaten-down.html,
 calendar.html           Generated pages — don't edit by hand
 update-stocks.js        Fetches data and renders everything
-templates/              Page templates (profile, theme, calendar, shared nav/footer)
+templates/              Page templates (profile, theme, calendar, beaten-down, shared nav/footer)
 lib/                    Shared helpers (catalyst date parsing, theme slugs)
 data/universe.json      Tracked stocks, names and themes
 data/profiles/          Written analysis per covered stock
 data/themes/            Science background per theme
+data/beaten-down.json   Beaten Down list: symbols, date added, written thesis
 data/market.json        Latest fetched data (written by the update)
 data/history/           Daily price history per stock (written by the update)
 data/site.json          Public URL, name and description

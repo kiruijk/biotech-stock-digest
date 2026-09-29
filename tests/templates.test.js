@@ -3,6 +3,7 @@ const assert = require('node:assert/strict');
 const { renderProfile, formatMoney, runwayText, insiderSummary } = require('../templates/profile');
 const { renderTheme } = require('../templates/theme');
 const { renderCalendar } = require('../templates/calendar');
+const { renderBeatenDown, renderBeatenDownStrip, renderBeatenDownNotice } = require('../templates/beaten-down');
 
 const THEMES = ['Obesity & Metabolic', 'Melanoma'];
 
@@ -83,4 +84,25 @@ test('theme and calendar pages render', () => {
   const cal = renderCalendar([stock], profiles, THEMES);
   assert.ok(cal.includes('Phase 3 data') && cal.includes('Quarterly earnings'));
   assert.ok(cal.includes('data-themes="Obesity &amp; Metabolic"'));
+});
+
+test('beaten-down page shows theses, placeholders, strip and profile notice', () => {
+  const list = { title: 'Beaten Down, Not Out', intro: 'Intro.', reviewed: '2026-09-29' };
+  const stats = { peak: 100, peakDate: '2021-01-15', fromPeak: -88, fromLow: 40, sinceAdded: 5 };
+  const entries = [
+    { symbol: 'TEST', added: '2026-09-29', stock, stats, thesis: { whyItFell: 'Trial <em>miss</em>.', whyItCouldRecover: '', whatBreaksIt: 'Cash runs out.' } },
+    { symbol: 'OTHR', added: '2026-09-29', stock: { ...stock, symbol: 'OTHR', name: 'Other Bio' }, stats: { ...stats, fromPeak: -95 }, thesis: { whyItFell: '', whyItCouldRecover: '', whatBreaksIt: '' } }
+  ];
+  const html = renderBeatenDown(list, entries, THEMES);
+  assert.ok(html.includes('Why it fell') && html.includes('Trial <em>miss</em>.'), 'thesis HTML is trusted');
+  assert.ok(!html.includes('Why it could recover'), 'empty parts are skipped');
+  assert.ok(html.includes('Thesis coming soon.'), 'empty thesis shows a placeholder');
+  assert.ok(html.indexOf('id="othr"') < html.indexOf('id="test"'), 'biggest drawdown first');
+  assert.ok(html.includes('-88%') && html.includes('high Jan 2021'));
+
+  const strip = renderBeatenDownStrip(list, entries);
+  assert.ok(strip.includes('href="beaten-down.html#othr"') && strip.includes('-95%'));
+
+  const withNotice = renderProfile(stock, profile, THEMES, null, null, [renderBeatenDownNotice(list, stats, 'TEST')]);
+  assert.match(withNotice, /notice-beaten.*beaten-down\.html#test.*88% below its Jan 2021 high/);
 });

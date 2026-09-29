@@ -305,6 +305,16 @@ th {
   color: #1e3a8a;
 }
 
+.notice-beaten {
+  background: #fff1e6;
+  color: #7c2d12;
+}
+
+.notice-beaten a {
+  color: inherit;
+  font-weight: 600;
+}
+
 .meta-line {
   font-size: 0.85rem;
   color: #6b7280;

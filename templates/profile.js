@@ -216,7 +216,8 @@ function renderChart(stock, chart) {
       </script>`;
 }
 
-function renderProfile(stock, profile, themes = [], siteUrl = null, chart = null) {
+// extraNotices: ready-made notice HTML from other templates (e.g. the Beaten Down list)
+function renderProfile(stock, profile, themes = [], siteUrl = null, chart = null, extraNotices = []) {
   const covered = Boolean(profile);
   const company = stock.company || {};
   const title = `${stock.name} (${stock.symbol})`;
@@ -385,7 +386,7 @@ ${news.map(n => `        <li><a href="${escapeHtml(n.url)}" target="_blank" rel=
       </ul>` : '      <p class="note">No recent news.</p>'}
     </div>`);
 
-  const notices = [];
+  const notices = [...extraNotices];
   if (stock.stale) {
     notices.push(`    <div class="notice notice-stale">Market data couldn't be refreshed on the latest update; figures below are from ${formatDate(stock.staleSince || stock.updatedAt)}.</div>`);
   }

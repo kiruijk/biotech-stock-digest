@@ -40,7 +40,7 @@ jobs:
         run: |
           git config --local user.name "Stock Bot"
           git config --local user.email "bot@github.com"
-          git add index.html calendar.html sitemap.xml robots.txt stocks/ themes/ data/market.json data/history/
+          git add index.html beaten-down.html calendar.html sitemap.xml robots.txt stocks/ themes/ data/market.json data/history/
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else

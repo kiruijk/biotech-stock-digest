@@ -115,7 +115,8 @@ const NAV_CSS = `
 
 @media (max-width: 600px) {
   .site-nav-inner {
-    gap: 0.9rem;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.9rem;
     padding: 0.5rem 0.75rem;
   }
 
@@ -130,7 +131,7 @@ const NAV_CSS = `
 }
 `;
 
-// current: 'dashboard' | 'calendar' | 'themes' | null
+// current: 'dashboard' | 'calendar' | 'themes' | 'beaten-down' | null
 function renderNav(base, themes, current = null) {
   return `  <nav class="site-nav" aria-label="Site">
     <div class="site-nav-inner">
@@ -142,6 +143,7 @@ function renderNav(base, themes, current = null) {
 ${themes.map(t => `          <a href="${base}themes/${themeSlug(t)}.html">${t}</a>`).join('\n')}
         </div>
       </details>
+      <a href="${base}beaten-down.html"${current === 'beaten-down' ? ' class="current"' : ''}>Beaten Down</a>
       <a href="${base}calendar.html"${current === 'calendar' ? ' class="current"' : ''}>Calendar</a>
     </div>
   </nav>`;
@@ -149,7 +151,7 @@ ${themes.map(t => `          <a href="${base}themes/${themeSlug(t)}.html">${t}</
 
 function renderFooterLinks(base, themes) {
   return `    <nav class="site-footer" aria-label="Site links">
-      <div><strong>Life Science Investor</strong><a href="${base}index.html">Dashboard</a><a href="${base}calendar.html">Catalyst &amp; Earnings Calendar</a></div>
+      <div><strong>Life Science Investor</strong><a href="${base}index.html">Dashboard</a><a href="${base}beaten-down.html">Beaten Down, Not Out</a><a href="${base}calendar.html">Catalyst &amp; Earnings Calendar</a></div>
       <div><strong>Themes</strong>${themes.map(t => `<a href="${base}themes/${themeSlug(t)}.html">${t}</a>`).join('')}</div>
     </nav>`;
 }

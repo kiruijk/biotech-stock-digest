@@ -205,3 +205,17 @@ test('data time label uses the latest non-stale refresh, in Eastern time', () =>
   assert.equal(label, 'Sep 23, 2026, 5:23 PM ET');
   assert.equal(u.dataTimeLabel({}), '—');
 });
+
+test('drawdownStats: distance from peak, bounce off 52-week low, return since added', () => {
+  const d = (monthsBack) => { const t = new Date(); t.setUTCMonth(t.getUTCMonth() - monthsBack); return t.toISOString().slice(0, 10); };
+  const history = [[d(60), 100], [d(24), 40], [d(6), 5], [d(3), 8]];
+  const s = u.drawdownStats(history, 10, d(4));
+  assert.deepEqual(s, { peak: 100, peakDate: history[0][0], fromPeak: -90, fromLow: 100, sinceAdded: 100 });
+  // Added before any history, or not given: no since-added figure
+  assert.equal(u.drawdownStats(history, 10, d(120)).sinceAdded, null);
+  assert.equal(u.drawdownStats(history, 10).sinceAdded, null);
+  // At a new high, the drawdown is zero and there is no past peak date
+  assert.equal(u.drawdownStats(history, 150).fromPeak, 0);
+  assert.equal(u.drawdownStats(history, 150).peakDate, null);
+  assert.equal(u.drawdownStats([], 10), null);
+});
