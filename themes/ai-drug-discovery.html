@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Drug Discovery Stocks — Science, Catalysts &amp; News | Life Science Investor</title>
+  <meta name="description" content="These companies use machine learning, large-scale automated experiments and physics-based simulation to choose targets and design molecules faster and more cheaply than traditional drug discovery. The promise is shorter timelines and higher success rates. The drugs that come out still have to pass t">
+  <meta property="og:title" content="AI Drug Discovery Stocks — Life Science Investor">
+  <meta property="og:description" content="These companies use machine learning, large-scale automated experiments and physics-based simulation to choose targets and design molecules faster and more cheaply than traditional drug discovery. The promise is shorter timelines and higher success rates. The drugs that come out still have to pass t">
+  <meta property="og:type" content="article">
+  <link rel="canonical" href="https://kiruijk.github.io/biotech-stock-digest/themes/ai-drug-discovery.html">
+  <meta property="og:url" content="https://kiruijk.github.io/biotech-stock-digest/themes/ai-drug-discovery.html">
+  <meta property="og:site_name" content="Life Science Investor">
+  <style>
+    :root {
+      color-scheme: light;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f5f7fa;
+      color: #1a1a1a;
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(135deg, #0052cc 0%, #0066ff 100%);
+      color: white;
+      padding: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      font-size: 1.6rem;
+    }
+
+    .back-btn {
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      border: 1px solid white;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .back-btn:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1rem 3rem;
+    }
+
+    /* Section Styling */
+    .section {
+      background: white;
+      border-radius: 10px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    .section h2 {
+      font-size: 1.3rem;
+      margin-bottom: 1.5rem;
+      color: #1a1a1a;
+      border-bottom: 2px solid #0052cc;
+      padding-bottom: 0.5rem;
+    }
+
+    /* Grid layouts */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    /* Card styling */
+    .card {
+      padding: 1rem;
+      background: #f9fafb;
+      border-radius: 6px;
+      border-left: 3px solid #0052cc;
+    }
+
+    .card-title {
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 0.3rem;
+    }
+
+    .card-subtitle {
+      font-size: 0.85rem;
+      color: #6b7280;
+    }
+
+    .card-value {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #0052cc;
+      margin-top: 0.3rem;
+    }
+
+    /* Badge styling */
+    .badge {
+      display: inline-block;
+      padding: 0.25rem 0.65rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .badge-green {
+      background: #d1fae5;
+      color: #059669;
+    }
+
+    .badge-red {
+      background: #fee2e2;
+      color: #dc2626;
+    }
+
+    .badge-yellow {
+      background: #fef3c7;
+      color: #d97706;
+    }
+
+    /* Table styling */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+
+    th,
+    td {
+      padding: 0.8rem;
+      text-align: left;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    th {
+      background: #f9fafb;
+      font-weight: 700;
+    }
+
+    /* Insider Trading */
+    .insider-buy {
+      color: #059669;
+      font-weight: 600;
+    }
+
+    .insider-sell {
+      color: #dc2626;
+      font-weight: 600;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .grid-2,
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Price chart */
+    .chart {
+      position: relative;
+      margin-bottom: 1.25rem;
+    }
+
+    .chart-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .chart-change {
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .chart-periods {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25rem;
+    }
+
+    .chart-periods button {
+      border: 1px solid #d1d5db;
+      background: white;
+      border-radius: 5px;
+      padding: 0.2rem 0.55rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #374151;
+      cursor: pointer;
+    }
+
+    .chart-periods button:disabled {
+      color: #d1d5db;
+      border-color: #eef0f3;
+      cursor: default;
+    }
+
+    .chart-periods button.active {
+      background: #0052cc;
+      border-color: #0052cc;
+      color: white;
+    }
+
+    #chart-svg {
+      width: 100%;
+      height: 200px;
+      display: block;
+      cursor: crosshair;
+    }
+
+    .chart-tip {
+      position: absolute;
+      top: 2.4rem;
+      width: 130px;
+      text-align: center;
+      background: #1a1a1a;
+      color: white;
+      font-size: 0.72rem;
+      padding: 0.2rem 0.4rem;
+      border-radius: 4px;
+      pointer-events: none;
+    }
+
+    .chart-range {
+      font-size: 0.75rem;
+      color: #9ca3af;
+      margin-top: 0.3rem;
+    }
+
+    /* Text */
+    .para {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: #374151;
+      margin-bottom: 1.2rem;
+    }
+
+    .note {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: #6b7280;
+    }
+
+    /* Returns row */
+    .returns {
+      display: grid;
+      grid-template-columns: repeat(9, 1fr);
+      gap: 0.3rem;
+      margin-top: 1rem;
+    }
+
+    .return {
+      text-align: center;
+      padding: 0.45rem 0.1rem;
+      background: #f9fafb;
+      border-radius: 6px;
+    }
+
+    .return-label {
+      color: #6b7280;
+      font-size: 0.68rem;
+      text-transform: uppercase;
+    }
+
+    .return-value {
+      font-weight: 700;
+      font-size: 0.8rem;
+      white-space: nowrap;
+    }
+
+    /* Notices */
+    .notice {
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+    }
+
+    .notice-stale {
+      background: #fef3c7;
+      color: #92400e;
+    }
+
+    .notice-tracked {
+      background: #e0ebff;
+      color: #1e3a8a;
+    }
+
+    .meta-line {
+      font-size: 0.85rem;
+      color: #6b7280;
+      margin-top: 0.75rem;
+    }
+
+    .theme-tag {
+      color: white;
+      text-decoration: none;
+      display: inline-block;
+      padding: 0.1rem 0.5rem;
+      margin-right: 0.3rem;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.2);
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    /* Insider labels */
+    .insider-other {
+      color: #6b7280;
+      font-weight: 600;
+    }
+
+    /* News & leadership lists */
+    .item-list {
+      list-style: none;
+    }
+
+    .item-list li {
+      padding: 0.75rem 0;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .item-list li:last-child {
+      border-bottom: none;
+    }
+
+    .item-list a {
+      color: #0052cc;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .item-list a:hover {
+      text-decoration: underline;
+    }
+
+    .item-meta {
+      font-size: 0.8rem;
+      color: #6b7280;
+    }
+
+    .disclaimer {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem 2rem;
+      font-size: 0.75rem;
+      color: #9ca3af;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 900px) {
+      .returns {
+        grid-template-columns: repeat(5, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .returns {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .theme-tag:hover {
+      background: rgba(255, 255, 255, 0.35);
+    }
+
+    /* Theme pages */
+    .science h3 {
+      font-size: 1.05rem;
+      margin: 1.25rem 0 0.5rem;
+      color: #1a1a1a;
+    }
+
+    .science h3:first-child {
+      margin-top: 0;
+    }
+
+    .science p,
+    .science li {
+      color: #374151;
+      line-height: 1.75;
+    }
+
+    .science ul {
+      padding-left: 1.25rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .num {
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    td a {
+      color: #0052cc;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    /* Phones: tighter spacing, two-column stats, compact header */
+    @media (max-width: 600px) {
+      header {
+        padding: 1rem;
+        align-items: flex-start;
+        gap: 0.6rem;
+      }
+
+      header h1 {
+        font-size: 1.25rem;
+        line-height: 1.3;
+      }
+
+      .back-btn {
+        padding: 0.3rem 0.7rem;
+        font-size: 0.8rem;
+      }
+
+      .container {
+        padding: 1rem 0.75rem 2rem;
+      }
+
+      .section {
+        padding: 1.1rem 1rem;
+        margin-bottom: 1rem;
+        border-radius: 8px;
+      }
+
+      .section h2 {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+      }
+
+      .grid-3 {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.6rem;
+      }
+
+      .grid-2 {
+        gap: 0.75rem;
+      }
+
+      .card {
+        padding: 0.75rem;
+      }
+
+      .card-value {
+        font-size: 1rem;
+      }
+
+      .para {
+        font-size: 0.95rem;
+        line-height: 1.65;
+        margin-bottom: 1rem;
+      }
+
+      th,
+      td {
+        padding: 0.55rem 0.5rem;
+        font-size: 0.85rem;
+      }
+    }
+
+    .site-nav {
+      background: #0b1f44;
+      color: white;
+      font-size: 0.88rem;
+    }
+
+    .site-nav-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0.55rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+    }
+
+    .site-nav a {
+      color: #c7d7fe;
+      text-decoration: none;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .site-nav a:hover,
+    .site-nav a.current {
+      color: white;
+    }
+
+    .site-nav .brand {
+      color: white;
+      font-weight: 800;
+      margin-right: auto;
+      letter-spacing: -0.01em;
+    }
+
+    .site-nav details {
+      position: relative;
+    }
+
+    .site-nav summary {
+      white-space: nowrap;
+      cursor: pointer;
+      color: #c7d7fe;
+      font-weight: 600;
+      list-style: none;
+    }
+
+    .site-nav summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .site-nav summary::after {
+      content: ' ▾';
+      font-size: 0.75rem;
+    }
+
+    .site-nav details[open] summary,
+    .site-nav summary:hover {
+      color: white;
+    }
+
+    .site-nav .menu {
+      position: absolute;
+      right: 0;
+      top: 1.9rem;
+      z-index: 20;
+      min-width: 230px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+      padding: 0.4rem 0;
+    }
+
+    .site-nav .menu a {
+      display: block;
+      padding: 0.45rem 1rem;
+      color: #1a1a1a;
+      font-weight: 500;
+    }
+
+    .site-nav .menu a:hover {
+      background: #f3f4f6;
+      color: #0052cc;
+    }
+
+    .site-footer {
+      border-top: 1px solid #e5e7eb;
+      margin-top: 1rem;
+      padding: 1.25rem 1rem 0.5rem;
+      font-size: 0.82rem;
+      line-height: 1.9;
+    }
+
+    .site-footer a {
+      color: #4b5563;
+      text-decoration: none;
+      margin-right: 1rem;
+      white-space: nowrap;
+    }
+
+    .site-footer a:hover {
+      color: #0052cc;
+    }
+
+    .site-footer strong {
+      color: #374151;
+      margin-right: 0.75rem;
+    }
+
+    @media (max-width: 600px) {
+      .site-nav-inner {
+        gap: 0.9rem;
+        padding: 0.5rem 0.75rem;
+      }
+
+      .site-nav .brand {
+        font-size: 0.85rem;
+      }
+
+      /* The brand already links home */
+      .site-nav .nav-home {
+        display: none;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+  <!-- Generated by update-stocks.js from data/themes/ai-drug-discovery.json and live market data. Do not edit by hand. -->
+  <nav class="site-nav" aria-label="Site">
+    <div class="site-nav-inner">
+      <a class="brand" href="../index.html">Life Science Investor</a>
+      <a class="nav-home" href="../index.html">Dashboard</a>
+      <details>
+        <summary class="current">Themes</summary>
+        <div class="menu">
+          <a href="../themes/obesity-and-metabolic.html">Obesity & Metabolic</a>
+          <a href="../themes/gene-editing-and-rna.html">Gene Editing & RNA</a>
+          <a href="../themes/cell-therapy.html">Cell Therapy</a>
+          <a href="../themes/melanoma.html">Melanoma</a>
+          <a href="../themes/oncolytic-viruses.html">Oncolytic Viruses</a>
+          <a href="../themes/bladder-and-prostate-cancer.html">Bladder & Prostate Cancer</a>
+          <a href="../themes/targeted-oncology.html">Targeted Oncology</a>
+          <a href="../themes/infectious-disease.html">Infectious Disease</a>
+          <a href="../themes/neurology.html">Neurology</a>
+          <a href="../themes/ai-drug-discovery.html">AI Drug Discovery</a>
+        </div>
+      </details>
+      <a href="../calendar.html">Calendar</a>
+    </div>
+  </nav>
+
+  <header>
+    <div>
+      <h1>AI Drug Discovery</h1>
+      <div>2 companies tracked</div>
+    </div>
+  </header>
+
+  <div class="container">
+
+    <div class="section">
+      <p class="para" style="margin-bottom: 0;">These companies use machine learning, large-scale automated experiments and physics-based simulation to choose targets and design molecules faster and more cheaply than traditional drug discovery. The promise is shorter timelines and higher success rates. The drugs that come out still have to pass the same clinical trials as any other medicine.</p>
+    </div>
+
+    <div class="section science">
+      <h2>The Science</h2>
+      <h3>How the platforms work</h3>
+      <ul><li><strong>Phenomics and biological maps</strong>: robots run millions of cell experiments (gene knockouts, compound treatments) and imaging models turn the results into maps of how genes and drugs relate. The aim is to find new targets and to reposition existing molecules.</li><li><strong>Structure- and motion-based design</strong>: computational models of how a protein moves, not just its static shape, help find pockets that only exist in the disease-causing form. This makes it possible to design drugs that hit a mutant protein while sparing the normal one.</li><li><strong>Generative chemistry</strong>: models propose new molecules and predict potency, selectivity and drug-like properties before anyone makes them in the lab, which cuts the number of design-make-test cycles.</li><li><strong>Clinical and patient data</strong>: models trained on real-world and genomic data help pick the patients most likely to respond and design trials.</li></ul>
+      <h3>Why it's hard to judge</h3>
+      <p>Most of the cost and failure in drug development comes later, in human trials, where AI has changed less so far. A platform can deliver candidates faster, but <strong>whether the drug works in patients</strong> is the real test. The field has already had high-profile clinical failures and pipeline cuts. Platform companies also tend to run many early-stage programs at once, so cash burn is high compared with how mature the pipeline is.</p>
+      <h3>What investors watch</h3>
+      <ul><li><strong>Clinical readouts</strong> from AI-derived molecules, especially randomized or proof-of-concept data, not just Phase 1 safety.</li><li><strong>Discovery speed and cost</strong>: time and number of compounds from program start to development candidate, compared with industry norms.</li><li><strong>Pharma partnerships</strong>: upfront payments and milestones show outside validation and fund the platform.</li><li><strong>Pipeline pruning and runway</strong>: whether the company focuses on its best programs and how long its cash lasts.</li></ul>
+      <div class="meta-line">Background last reviewed Sep 29, 2026. General educational content, not a recommendation.</div>
+    </div>
+
+    <div class="section">
+      <h2>Companies</h2>
+      <div style="overflow-x: auto;">
+      <table>
+        <thead>
+          <tr>
+            <th>Ticker</th>
+            <th>Company</th>
+            <th class="num">Price</th>
+            <th class="num">1D</th>
+            <th class="num">YTD</th>
+            <th class="num">1Y</th>
+            <th class="num">Mkt Cap</th>
+            <th class="num">Runway</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><a href="../stocks/rlay.html">RLAY</a></td>
+            <td>Relay Therapeutics <span class="item-meta">(data only)</span></td>
+            <td class="num">$18.19</td>
+            <td class="num" style="color: #059669">+2.83%</td>
+            <td class="num" style="color: #059669">+117.84%</td>
+            <td class="num" style="color: #059669">+250.48%</td>
+            <td class="num">$4.0B</td>
+            <td class="num">51 months</td>
+          </tr>
+          <tr>
+            <td><a href="../stocks/rxrx.html">RXRX</a></td>
+            <td>Recursion Pharmaceuticals <span class="item-meta">(data only)</span></td>
+            <td class="num">$3.94</td>
+            <td class="num" style="color: #059669">+6.41%</td>
+            <td class="num" style="color: #dc2626">-4.20%</td>
+            <td class="num" style="color: #dc2626">-19.81%</td>
+            <td class="num">$2.1B</td>
+            <td class="num">15 months</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+      <p class="note">Sorted by year-to-date return. Runway = cash ÷ latest quarter's operating cash burn.</p>
+    </div>
+
+    <div class="section">
+      <h2>Upcoming Catalysts</h2>
+      <p class="note">No upcoming catalysts listed.</p>
+    </div>
+
+    <div class="section">
+      <h2>Upcoming Earnings</h2>
+      <ul class="item-list">
+        <li><a href="../stocks/rxrx.html">RXRX</a> Recursion Pharmaceuticals
+          <div class="item-meta">Nov 4, 2026 (estimated)</div></li>
+        <li><a href="../stocks/rlay.html">RLAY</a> Relay Therapeutics
+          <div class="item-meta">Nov 5, 2026 (estimated)</div></li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Latest News</h2>
+      <ul class="item-list">
+        <li><a href="https://news.google.com/rss/articles/CBMisgFBVV95cUxQQUFJcF92OFRzVDlQN3p6bTZaMUt4clY0SkZiUW51VHNvV05fTlRaRHVLaExvWmFZcV93U2lxMTNTTmR6azVoMmo4Zi1JTkxVYllsYU01M1pMcXdSOVIwT1FWSUx3SnN4TzA2MndDbXJVeXJEb09hVTBJUGM4ZmFZcWlUUVBYbjhQd1dBZXRjRmNrOE9oVUhJbjBPSmFoTDFOajdsdmUtaGh0dGFSZm1wbnd3?oc=5" target="_blank" rel="noopener">Recursion Pharmaceuticals (RXRX) Registers a Bigger Fall Than the Market: Important Facts to Note</a>
+          <div class="item-meta">RXRX · Yahoo Finance · Sep 28, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMi8wFBVV95cUxNbHJQMTZYREVkVFpxakV2NWR1d1BhWEphbWZuc3FhSmFXZ2JGaXBuMTcxWmx6QmMzUWIxQ2xMcW45NG12dnpmbFA4cTBMZjE5aF9ndEVJbU1YaTVmNTQ3NVcyUmp0dU9GSWRYV01pMHRZMTNzekFaOWNFZjFvTWFtN1JtSWo1cWVQSVdHY3loQVZ0eUdsOURsVnBDQ2lEZGlWUUlZTVVsMEZyT1lYSGxCTDF3aDlTZC1RQjk2QjNMOWp2U1Y4a3VFTGFGWEY4SzkxQ29ucmhBZExIbkU5ZjNzakwzbnBkUTJwRHNfOGM1UzY0VzjSAfgBQVVfeXFMTzVMZVBzblVhWUhtYWtDZjM2aUV1a3lFWUhTLTFMN3lYWkZoOFY0UmpoT3hYY2l5Y2QwV1R5dExQbHIxdDdBbnFrakNHWVFUdVZCZWRDT1lmQ2l5cjNicjVWNUM0WXhLdVFfTE5zRXNNSm94RURlVGJJTmE1aDk3VkhIOFl6Qy1MYmdLVFNqdF9LUmt2bWpjMl9HLWhKMWxPREdzSmJIWlp6YzAwNmN2LW55TlY3UjJ6RmFQU3oxR25CMWdzQ1o1NjFyVllHSExES2MteDFRdExIX1lvSnh6ZXY0eFhhOGQ0dWlMcWx6dUhBN19EODA2bHM?oc=5" target="_blank" rel="noopener">How Investors Are Reacting To Recursion Pharmaceuticals (RXRX) RNA Model Licensing Deal</a>
+          <div class="item-meta">RXRX · simplywall.st · Sep 25, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMiigFBVV95cUxNdHJSQ1U4UlVhZ1hXcF8ySy12S3A4Y01HMnBqVnZJdjQ2eWNEYUw1Y1c4TnBubnhWcVlyaFlsV3hZNm9ZSS1McFZuaW1HWFdJY3MwM051cTh0LWJlWFRyT3AydG8tZ25fc3hTcWNSR3JGR0JFYkNNcnZxTWhmNXRIOXpWWTAyV25OYkE?oc=5" target="_blank" rel="noopener">RXRX Stock Rises As Tempus AI Deal Resets Growth Story</a>
+          <div class="item-meta">RXRX · StocksToTrade · Sep 24, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMivwFBVV95cUxNMjZtUGR0eGd6Um1TUnZKZURvRGdjd0hMcTcxWmE1bzc0R1Bram50SjdhMFhXbmJISVdNVm9JN1FMQ1JlSENpMzk1SVZVOWR6c0M3cnJDYlJCQXNhSVlLTGxmRWxnRFhmdVdxOC1zY1N2R2JUbXNFN2ZIZG9jTU5uT3FIYU0wWjNVcl9CbEZpWGtNcC12NmxJWUhQMHlzTG05YkVsTmNlLXJLSGdCVnYyNmxaSTlENWg0QUtKdG1fOA?oc=5" target="_blank" rel="noopener">Can Recursion Pharmaceuticals' Strategic Deals Fuel Long-Term Growth?</a>
+          <div class="item-meta">RXRX · TradingView · Sep 24, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMi4wFBVV95cUxNZkdvdGVZV2dBM0NhbmJERkxVMjczN0FQS3U3MVpVeHBwV21qZC1rZV9LWlhDZUJVRzhXdG0xTy1id181aUFXM25uZ0Yxbi1xYVgzRlFCRHM5UlJUelJ4STY1UkJ0cEJpZTlzY1R2Z01WVUZxTUYtcURHbGh0aXBEd1lzOE4zMWd6NDN2a0hFNXgwTU9GaTN4Yzd3U1lMMHRyMi05ejA4LVJxZGFBMlhlNXYtOUpRQ0ZMUEVNT2hVTkJmRlJkazNKOGJYaENiV2VrTHNWOWk1UllETjM0aWkwY1I4NNIB6AFBVV95cUxNTHB0b0taejlOU0ZFd01aLVFacl9fd1g0dk1RXzZlbEdTVWlqN2RZOWRGLUZPVEMzYzhFcE5JRkxITU1ZZG1oSGxyM1VMVjJUbkpCenViY2RGeGRHcm5KSUlMMmVQTXpsRU5PTE9Uc29xUHdiMXhUMjJVbWZvVjZ2bmNTU0tUNHpzSWVlWm5WcF8zODZIVVBuMVFuV09NYWxwTkpENHE1NTdhTWRaOURCeExTRUlmX1ZFWEYzeDBEQ3I0ZzZZS2JCUmV6bXNueEZSN1JrR0d4R0RoYUVWUkNpTC1VcEVMOUlC?oc=5" target="_blank" rel="noopener">Relay Therapeutics Stock In Focus As Phase 3 Trial Begins</a>
+          <div class="item-meta">RLAY · simplywall.st · Sep 24, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMi7wFBVV95cUxNQ2FZT1JCYy1JRTdfc2hLa0JjcTdVZl94LXpvX0NrTndaZzN3M2R1cDl2TTVmcWRWLXdYUHdhMEhLSTNaRjl0ZDF4VmRFMHdaY0JQT0VPVmlqeG95eUZVMWhVaDJIZFZNZ2JWSEFsRnpuVXpRNks4YmllVnRvN3Jya01QcUlQWmNRTHdmZGpJWjlzZ2FJNlJlZTJvMG43RzNBZTNZcGtIbU9Ub3c5WFpCR2sxcnRmR3I1MTNJZHVxa0kxQV9yQ3FwOVc3N3M1YklYQTVNRFhDMERPQnlmUGlnX2NjeDN0ekFtaGRyWjB1b9IB9AFBVV95cUxQeXlMMk0tUmlWcS1RZkhkYkxONUZVNjc2WFJaRHZ6em9FcFNheG43eVA4blNEMVllQ3ZQSEVzaDlKSkpjRkxnaFVab1A4YjFZM0hXdFNYN3E2MWhrQk12UFJRcWoyMmxYdFFCTmoteU85Z3RnNElhTThkWjhOS2FxRUltMnc0VUNOUmJYcWNCYnA1aHlscTJTSXIxWElDQVdycFZkT3dTQ1ZYOFdJd2lkc2l2WGpuZngxV1dTTkwyNHJQYW5tN0xCUFdvcWVlZ09MdFZNXzVrVThpZy1taXlxTGhlbkFXaWEwdF96Sk5TUkRFMTh0?oc=5" target="_blank" rel="noopener">Recursion Pharmaceuticals (RXRX) Shares Just Moved, So What Is Driving Attention Now?</a>
+          <div class="item-meta">RXRX · simplywall.st · Sep 23, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMiqwFBVV95cUxQZXM1RDVSeWc3dnhzb193bE9JVkt6ejF6N0VSQnRYTUJIYjBpY3lNbzdLbEFPZG5TY3UxR0hZOXZLS0VWNjhrS2g1Z1psNk5vOUhvd1pfT2hYN2xFTTROb1c4SkZ1YW5wR0pXcTFjaHZRc0ZMb044VjE3T2J4YzVCTVZiRWw4TWtMcnhjSzV1TmY1UDZGQlB5SUdacVJubmxrRUlSOHF0MTZraUk?oc=5" target="_blank" rel="noopener">Recursion Pharmaceuticals (RXRX) Stock Moves 2.02%: What You Should Know</a>
+          <div class="item-meta">RXRX · Yahoo Finance · Sep 22, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMitwFBVV95cUxNNTRsSjIyM05lOXVBZ3g3aUN2TW85NndMV2swTzJCeGZjTFRydW9ka081YlFIblk0TzJBa0I5LXJrRjdnV05zY0tqbTg2OG5CTTZPaEdobnRJV050NjJsZTBueXloZmtjMUxHUThKdzhPenF3Z3VDenc3cS1lb2ZmWGFod0ozeC1XQXVpamhXLVRPUk9Xakd1RmdQWngwSXJxR2t2RlhiNDF4c3B5MV9ZRHlaRmRGZWM?oc=5" target="_blank" rel="noopener">Relay Therapeutics (NASDAQ: RLAY) CEO sells shares under preset trading plan</a>
+          <div class="item-meta">RLAY · Stock Titan · Sep 9, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMiogFBVV95cUxQMWw1c08zeUtjeVVOc0V5NXNNMXdlS2F6a0x3YUtSX0lHWVVqaDcwSmtQTm1ubEFWclppRFFsOFFQZjk3U3VaeGx1TjdxSzJJN0ZTcmVpeEFzeDByanFpY0JmU3FybWxsX2FTanJXMWVVX191X2hlN1BaV25YdGZTTVQ2MEdpSS1EZm9FSjZzQWxRT2x1UnhRQy1Hc0RCQlBzdVE?oc=5" target="_blank" rel="noopener">Relay Therapeutics Stock Is Up Nearly 500% Over the Past Year</a>
+          <div class="item-meta">RLAY · Yahoo Finance · Aug 13, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMi0AFBVV95cUxNdWhKRWFGX291VWdqd2F5VkJrS21xa3lpYUVJc1k5NEY3aVoxOVhjNzFObncwYm5nVm94QzctSUk0aWVUUlNvXzhvNzU3UUxXS0RfS3p2dDJnZ2xweDhJRjkzYm9ZSmxTaWZZVFdraVlTc1dHZlloSGtiZlBpS0dEZXB5NXlVYUJ0MGRGb2xXeEN2ZjZSRjc1UmgtSU42QklXSVU2ckEwbE9iQzdhaXlBM1lQak5JYlZkSS1fazh0aWhadW5Sc0xvMGR1M0tNdUpk?oc=5" target="_blank" rel="noopener">JPMorgan initiates Relay Therapeutics stock coverage with overweight rating</a>
+          <div class="item-meta">RLAY · Investing.com · Jul 8, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMivwFBVV95cUxOSFRrYUlzeTNrYWgzMnBUaDlZeVFhT2tTZElaTXhVZ3hjamVqTzZOZEV5dk5KQWJ3YS03Yy1tZ0U0cVRrQThQbzRTV3A4eXZXRVEwSGp0TDVBLTFVSWtfdmUteldrZHNRU2pEUkh4WjJrc3Y3RW0tbGs4dGNjck00bFAxdW1TOWI1clhFZVI5QUZ3Z09jNlRHQkxZcndPM0Q1Ri0yblhRWkNJQzhKY1o5QXptMmRVeG1EMlU2WE4xSQ?oc=5" target="_blank" rel="noopener">Relay Therapeutics Stock Rockets 34% With 9-Day Winning Streak</a>
+          <div class="item-meta">RLAY · Trefis · Jun 25, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMiuwFBVV95cUxOS2hNbEZTTkhNeUh3Z0xpMzFsRWcwVHRUdDRJYWRIcHgxTkNNZmVrTmFuLUw0UlF3UFBZSU5lVWQydWpsZWhTNEZPdG1nZXUwTEdyei1XV0p6SzRRTktzMHZPSWRiejNaTWNrdE4tVFpfYXcxc042RmRqS0FzQTN3OTdTUkJ4VkYzRTBRc1hCaXZPNzZkc0JwQndJdzl6WlJVLTgwU3hLQjVWWTF6cFMwZ2t5LWZLdVJrMnVR?oc=5" target="_blank" rel="noopener">8-Day Rally Sends Relay Therapeutics Stock Up 29%</a>
+          <div class="item-meta">RLAY · Trefis · Jun 24, 2026</div></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <footer class="disclaimer">
+    <nav class="site-footer" aria-label="Site links">
+      <div><strong>Life Science Investor</strong><a href="../index.html">Dashboard</a><a href="../calendar.html">Catalyst &amp; Earnings Calendar</a></div>
+      <div><strong>Themes</strong><a href="../themes/obesity-and-metabolic.html">Obesity & Metabolic</a><a href="../themes/gene-editing-and-rna.html">Gene Editing & RNA</a><a href="../themes/cell-therapy.html">Cell Therapy</a><a href="../themes/melanoma.html">Melanoma</a><a href="../themes/oncolytic-viruses.html">Oncolytic Viruses</a><a href="../themes/bladder-and-prostate-cancer.html">Bladder & Prostate Cancer</a><a href="../themes/targeted-oncology.html">Targeted Oncology</a><a href="../themes/infectious-disease.html">Infectious Disease</a><a href="../themes/neurology.html">Neurology</a><a href="../themes/ai-drug-discovery.html">AI Drug Discovery</a></div>
+    </nav>
+    <p>For informational purposes only — not investment advice. Prices, returns and financials come from Yahoo Finance and company filings and may be delayed, incomplete or inaccurate. Company profiles are editorial summaries and may not reflect the latest developments. Do your own research and consult a licensed financial advisor before making investment decisions.</p>
+  </footer>
+
+</body>
+
+</html>

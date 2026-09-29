@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recursion Pharmaceuticals (RXRX) — Stock Profile | Life Science Investor</title>
+  <meta name="description" content="Recursion Pharmaceuticals, Inc., a clinical-stage biotechnology company, engages in the decoding biology and chemistry by integrating technological innovations across biology, chemistry, automation, data science, and engineering to industrialize drug discovery in the United States and the United Kin">
+  <meta property="og:title" content="Recursion Pharmaceuticals (RXRX) — Stock Profile">
+  <meta property="og:description" content="Recursion Pharmaceuticals, Inc., a clinical-stage biotechnology company, engages in the decoding biology and chemistry by integrating technological innovations across biology, chemistry, automation, data science, and engineering to industrialize drug discovery in the United States and the United Kin">
+  <meta property="og:type" content="article">
+  <link rel="canonical" href="https://kiruijk.github.io/biotech-stock-digest/stocks/rxrx.html">
+  <meta property="og:url" content="https://kiruijk.github.io/biotech-stock-digest/stocks/rxrx.html">
+  <meta property="og:site_name" content="Life Science Investor">
+  <style>
+    :root {
+      color-scheme: light;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f5f7fa;
+      color: #1a1a1a;
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(135deg, #0052cc 0%, #0066ff 100%);
+      color: white;
+      padding: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      font-size: 1.6rem;
+    }
+
+    .back-btn {
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      border: 1px solid white;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .back-btn:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1rem 3rem;
+    }
+
+    /* Section Styling */
+    .section {
+      background: white;
+      border-radius: 10px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    .section h2 {
+      font-size: 1.3rem;
+      margin-bottom: 1.5rem;
+      color: #1a1a1a;
+      border-bottom: 2px solid #0052cc;
+      padding-bottom: 0.5rem;
+    }
+
+    /* Grid layouts */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    /* Card styling */
+    .card {
+      padding: 1rem;
+      background: #f9fafb;
+      border-radius: 6px;
+      border-left: 3px solid #0052cc;
+    }
+
+    .card-title {
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 0.3rem;
+    }
+
+    .card-subtitle {
+      font-size: 0.85rem;
+      color: #6b7280;
+    }
+
+    .card-value {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #0052cc;
+      margin-top: 0.3rem;
+    }
+
+    /* Badge styling */
+    .badge {
+      display: inline-block;
+      padding: 0.25rem 0.65rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .badge-green {
+      background: #d1fae5;
+      color: #059669;
+    }
+
+    .badge-red {
+      background: #fee2e2;
+      color: #dc2626;
+    }
+
+    .badge-yellow {
+      background: #fef3c7;
+      color: #d97706;
+    }
+
+    /* Table styling */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+
+    th,
+    td {
+      padding: 0.8rem;
+      text-align: left;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    th {
+      background: #f9fafb;
+      font-weight: 700;
+    }
+
+    /* Insider Trading */
+    .insider-buy {
+      color: #059669;
+      font-weight: 600;
+    }
+
+    .insider-sell {
+      color: #dc2626;
+      font-weight: 600;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .grid-2,
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Price chart */
+    .chart {
+      position: relative;
+      margin-bottom: 1.25rem;
+    }
+
+    .chart-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .chart-change {
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .chart-periods {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25rem;
+    }
+
+    .chart-periods button {
+      border: 1px solid #d1d5db;
+      background: white;
+      border-radius: 5px;
+      padding: 0.2rem 0.55rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #374151;
+      cursor: pointer;
+    }
+
+    .chart-periods button:disabled {
+      color: #d1d5db;
+      border-color: #eef0f3;
+      cursor: default;
+    }
+
+    .chart-periods button.active {
+      background: #0052cc;
+      border-color: #0052cc;
+      color: white;
+    }
+
+    #chart-svg {
+      width: 100%;
+      height: 200px;
+      display: block;
+      cursor: crosshair;
+    }
+
+    .chart-tip {
+      position: absolute;
+      top: 2.4rem;
+      width: 130px;
+      text-align: center;
+      background: #1a1a1a;
+      color: white;
+      font-size: 0.72rem;
+      padding: 0.2rem 0.4rem;
+      border-radius: 4px;
+      pointer-events: none;
+    }
+
+    .chart-range {
+      font-size: 0.75rem;
+      color: #9ca3af;
+      margin-top: 0.3rem;
+    }
+
+    /* Text */
+    .para {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: #374151;
+      margin-bottom: 1.2rem;
+    }
+
+    .note {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: #6b7280;
+    }
+
+    /* Returns row */
+    .returns {
+      display: grid;
+      grid-template-columns: repeat(9, 1fr);
+      gap: 0.3rem;
+      margin-top: 1rem;
+    }
+
+    .return {
+      text-align: center;
+      padding: 0.45rem 0.1rem;
+      background: #f9fafb;
+      border-radius: 6px;
+    }
+
+    .return-label {
+      color: #6b7280;
+      font-size: 0.68rem;
+      text-transform: uppercase;
+    }
+
+    .return-value {
+      font-weight: 700;
+      font-size: 0.8rem;
+      white-space: nowrap;
+    }
+
+    /* Notices */
+    .notice {
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+    }
+
+    .notice-stale {
+      background: #fef3c7;
+      color: #92400e;
+    }
+
+    .notice-tracked {
+      background: #e0ebff;
+      color: #1e3a8a;
+    }
+
+    .meta-line {
+      font-size: 0.85rem;
+      color: #6b7280;
+      margin-top: 0.75rem;
+    }
+
+    .theme-tag {
+      color: white;
+      text-decoration: none;
+      display: inline-block;
+      padding: 0.1rem 0.5rem;
+      margin-right: 0.3rem;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.2);
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    /* Insider labels */
+    .insider-other {
+      color: #6b7280;
+      font-weight: 600;
+    }
+
+    /* News & leadership lists */
+    .item-list {
+      list-style: none;
+    }
+
+    .item-list li {
+      padding: 0.75rem 0;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .item-list li:last-child {
+      border-bottom: none;
+    }
+
+    .item-list a {
+      color: #0052cc;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .item-list a:hover {
+      text-decoration: underline;
+    }
+
+    .item-meta {
+      font-size: 0.8rem;
+      color: #6b7280;
+    }
+
+    .disclaimer {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem 2rem;
+      font-size: 0.75rem;
+      color: #9ca3af;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 900px) {
+      .returns {
+        grid-template-columns: repeat(5, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .returns {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .theme-tag:hover {
+      background: rgba(255, 255, 255, 0.35);
+    }
+
+    /* Theme pages */
+    .science h3 {
+      font-size: 1.05rem;
+      margin: 1.25rem 0 0.5rem;
+      color: #1a1a1a;
+    }
+
+    .science h3:first-child {
+      margin-top: 0;
+    }
+
+    .science p,
+    .science li {
+      color: #374151;
+      line-height: 1.75;
+    }
+
+    .science ul {
+      padding-left: 1.25rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .num {
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    td a {
+      color: #0052cc;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    /* Phones: tighter spacing, two-column stats, compact header */
+    @media (max-width: 600px) {
+      header {
+        padding: 1rem;
+        align-items: flex-start;
+        gap: 0.6rem;
+      }
+
+      header h1 {
+        font-size: 1.25rem;
+        line-height: 1.3;
+      }
+
+      .back-btn {
+        padding: 0.3rem 0.7rem;
+        font-size: 0.8rem;
+      }
+
+      .container {
+        padding: 1rem 0.75rem 2rem;
+      }
+
+      .section {
+        padding: 1.1rem 1rem;
+        margin-bottom: 1rem;
+        border-radius: 8px;
+      }
+
+      .section h2 {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+      }
+
+      .grid-3 {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.6rem;
+      }
+
+      .grid-2 {
+        gap: 0.75rem;
+      }
+
+      .card {
+        padding: 0.75rem;
+      }
+
+      .card-value {
+        font-size: 1rem;
+      }
+
+      .para {
+        font-size: 0.95rem;
+        line-height: 1.65;
+        margin-bottom: 1rem;
+      }
+
+      th,
+      td {
+        padding: 0.55rem 0.5rem;
+        font-size: 0.85rem;
+      }
+    }
+
+    .site-nav {
+      background: #0b1f44;
+      color: white;
+      font-size: 0.88rem;
+    }
+
+    .site-nav-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0.55rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+    }
+
+    .site-nav a {
+      color: #c7d7fe;
+      text-decoration: none;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .site-nav a:hover,
+    .site-nav a.current {
+      color: white;
+    }
+
+    .site-nav .brand {
+      color: white;
+      font-weight: 800;
+      margin-right: auto;
+      letter-spacing: -0.01em;
+    }
+
+    .site-nav details {
+      position: relative;
+    }
+
+    .site-nav summary {
+      white-space: nowrap;
+      cursor: pointer;
+      color: #c7d7fe;
+      font-weight: 600;
+      list-style: none;
+    }
+
+    .site-nav summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .site-nav summary::after {
+      content: ' ▾';
+      font-size: 0.75rem;
+    }
+
+    .site-nav details[open] summary,
+    .site-nav summary:hover {
+      color: white;
+    }
+
+    .site-nav .menu {
+      position: absolute;
+      right: 0;
+      top: 1.9rem;
+      z-index: 20;
+      min-width: 230px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+      padding: 0.4rem 0;
+    }
+
+    .site-nav .menu a {
+      display: block;
+      padding: 0.45rem 1rem;
+      color: #1a1a1a;
+      font-weight: 500;
+    }
+
+    .site-nav .menu a:hover {
+      background: #f3f4f6;
+      color: #0052cc;
+    }
+
+    .site-footer {
+      border-top: 1px solid #e5e7eb;
+      margin-top: 1rem;
+      padding: 1.25rem 1rem 0.5rem;
+      font-size: 0.82rem;
+      line-height: 1.9;
+    }
+
+    .site-footer a {
+      color: #4b5563;
+      text-decoration: none;
+      margin-right: 1rem;
+      white-space: nowrap;
+    }
+
+    .site-footer a:hover {
+      color: #0052cc;
+    }
+
+    .site-footer strong {
+      color: #374151;
+      margin-right: 0.75rem;
+    }
+
+    @media (max-width: 600px) {
+      .site-nav-inner {
+        gap: 0.9rem;
+        padding: 0.5rem 0.75rem;
+      }
+
+      .site-nav .brand {
+        font-size: 0.85rem;
+      }
+
+      /* The brand already links home */
+      .site-nav .nav-home {
+        display: none;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+  <!-- Generated by update-stocks.js from data/profiles and live market data. Do not edit by hand. -->
+  <!-- Last updated: 2026-09-29T19:08:35.137Z -->
+  <nav class="site-nav" aria-label="Site">
+    <div class="site-nav-inner">
+      <a class="brand" href="../index.html">Life Science Investor</a>
+      <a class="nav-home" href="../index.html">Dashboard</a>
+      <details>
+        <summary>Themes</summary>
+        <div class="menu">
+          <a href="../themes/obesity-and-metabolic.html">Obesity & Metabolic</a>
+          <a href="../themes/gene-editing-and-rna.html">Gene Editing & RNA</a>
+          <a href="../themes/cell-therapy.html">Cell Therapy</a>
+          <a href="../themes/melanoma.html">Melanoma</a>
+          <a href="../themes/oncolytic-viruses.html">Oncolytic Viruses</a>
+          <a href="../themes/bladder-and-prostate-cancer.html">Bladder & Prostate Cancer</a>
+          <a href="../themes/targeted-oncology.html">Targeted Oncology</a>
+          <a href="../themes/infectious-disease.html">Infectious Disease</a>
+          <a href="../themes/neurology.html">Neurology</a>
+          <a href="../themes/ai-drug-discovery.html">AI Drug Discovery</a>
+        </div>
+      </details>
+      <a href="../calendar.html">Calendar</a>
+    </div>
+  </nav>
+
+  <header>
+    <div>
+      <h1>Recursion Pharmaceuticals (RXRX)</h1>
+      <div><a class="theme-tag" href="../themes/targeted-oncology.html">Targeted Oncology</a><a class="theme-tag" href="../themes/ai-drug-discovery.html">AI Drug Discovery</a></div>
+    </div>
+  </header>
+
+  <div class="container">
+
+    <div class="notice notice-tracked">Data-only page: prices, financials, insider trades and news update automatically. Editorial analysis (catalysts, risks, competitors) is not yet available for this company.</div>
+
+    <!-- Company Overview -->
+    <div class="section">
+      <h2>Company Overview</h2>
+      <p class="para">Recursion Pharmaceuticals, Inc., a clinical-stage biotechnology company, engages in the decoding biology and chemistry by integrating technological innovations across biology, chemistry, automation, data science, and engineering to industrialize drug discovery in the United States and the United Kingdom. The company develops REC-4881, which is in Phase 1b/2 clinical trial to treat familial adenomatous polyposis; REC-617, which is in Phase 1/2 clinical trial to treat advanced solid tumors; REC-1245, which is in Phase 1/2 clinical trial to treat biomarker-enriched solid tumors and lymphoma; REC-3565 that is in Phase 1/2 for the treatment of relapsed or refractory B-cell malignancies; and REC-4539, a reversible, CNS penetrant, orally bioavailable, and potential best-in-class inhibitor of LSD1 for the treatment of solid tumors and hematology oncology. Its preclinical stage product includes REC-7735 for the treatment of HR+ breast cancer; and REC-102 for the treatment of hypophosphatasia. The company has collaboration and agreement with Roche &amp; Genentech; Sanofi; Bayer AG; Tempus; and Takeda Pharmaceutical Company Limited. Recursion Pharmaceuticals, Inc. was incorporated in 2013 and is headquartered in Salt Lake City, Utah.</p>
+      <div class="meta-line">Business description from Yahoo Finance.</div>
+      <div class="meta-line">Headquarters: Salt Lake City, UT · ~600 employees · <a href="https://www.recursion.com" target="_blank" rel="noopener">www.recursion.com</a></div>
+    </div>
+
+    <!-- Quick Stats -->
+    <div class="section">
+      <h2>Quick Stats</h2>
+      <div class="chart" id="price-chart">
+        <div class="chart-head">
+          <div class="chart-change" id="chart-change"></div>
+          <div class="chart-periods" role="group" aria-label="Chart period">
+            <button type="button" data-period="1M">1M</button><button type="button" data-period="6M">6M</button><button type="button" data-period="YTD">YTD</button><button type="button" data-period="1Y">1Y</button><button type="button" data-period="3Y">3Y</button><button type="button" data-period="5Y">5Y</button><button type="button" data-period="10Y">10Y</button><button type="button" data-period="Max">Max</button>
+          </div>
+        </div>
+        <svg id="chart-svg" viewBox="0 0 600 200" preserveAspectRatio="none" role="img" aria-label="RXRX price chart"></svg>
+        <div class="chart-tip" id="chart-tip" hidden></div>
+        <div class="chart-range" id="chart-range"></div>
+      </div>
+      <script>
+      (function () {
+        var DATA = {"daily":[["2025-09-29",4.91],["2025-09-30",4.88],["2025-10-01",5.1],["2025-10-02",5.52],["2025-10-03",5.49],["2025-10-06",5.53],["2025-10-07",5.23],["2025-10-08",6.09],["2025-10-09",5.91],["2025-10-10",5.32],["2025-10-13",5.53],["2025-10-14",5.89],["2025-10-15",6.79],["2025-10-16",6.36],["2025-10-17",5.86],["2025-10-20",6.68],["2025-10-21",6.11],["2025-10-22",5.75],["2025-10-23",5.73],["2025-10-24",6.04],["2025-10-27",6.3],["2025-10-28",5.91],["2025-10-29",5.87],["2025-10-30",5.65],["2025-10-31",5.52],["2025-11-03",5.44],["2025-11-04",5],["2025-11-05",4.96],["2025-11-06",4.62],["2025-11-07",4.62],["2025-11-10",4.51],["2025-11-11",4.71],["2025-11-12",4.65],["2025-11-13",4.33],["2025-11-14",4.14],["2025-11-17",4.12],["2025-11-18",4.16],["2025-11-19",4.03],["2025-11-20",3.85],["2025-11-21",4.17],["2025-11-24",4.33],["2025-11-25",4.37],["2025-11-26",4.41],["2025-11-28",4.63],["2025-12-01",4.36],["2025-12-02",4.32],["2025-12-03",4.66],["2025-12-04",4.92],["2025-12-05",4.71],["2025-12-08",4.82],["2025-12-09",4.77],["2025-12-10",4.77],["2025-12-11",4.58],["2025-12-12",4.33],["2025-12-15",4.2],["2025-12-16",4.2],["2025-12-17",4.68],["2025-12-18",4.44],["2025-12-19",4.26],["2025-12-22",4.4],["2025-12-23",4.36],["2025-12-24",4.4],["2025-12-26",4.25],["2025-12-29",4.13],["2025-12-30",4.11],["2025-12-31",4.09],["2026-01-02",4.2],["2026-01-05",4.37],["2026-01-06",4.55],["2026-01-07",4.86],["2026-01-08",4.7],["2026-01-09",4.66],["2026-01-12",4.81],["2026-01-13",4.69],["2026-01-14",4.85],["2026-01-15",4.64],["2026-01-16",4.67],["2026-01-20",4.4],["2026-01-21",4.61],["2026-01-22",4.96],["2026-01-23",4.73],["2026-01-26",4.59],["2026-01-27",4.6],["2026-01-28",4.47],["2026-01-29",4.32],["2026-01-30",4.19],["2026-02-02",4.18],["2026-02-03",4.1],["2026-02-04",3.9],["2026-02-05",3.56],["2026-02-06",3.98],["2026-02-09",3.98],["2026-02-10",3.85],["2026-02-11",3.71],["2026-02-12",3.58],["2026-02-13",3.49],["2026-02-17",3.46],["2026-02-18",3.53],["2026-02-19",3.72],["2026-02-20",3.42],["2026-02-23",3.41],["2026-02-24",3.53],["2026-02-25",3.77],["2026-02-26",3.77],["2026-02-27",3.67],["2026-03-02",3.63],["2026-03-03",3.54],["2026-03-04",3.64],["2026-03-05",3.54],["2026-03-06",3.46],["2026-03-09",3.51],["2026-03-10",3.44],["2026-03-11",3.45],["2026-03-12",3.29],["2026-03-13",3.42],["2026-03-16",3.39],["2026-03-17",3.42],["2026-03-18",3.32],["2026-03-19",3.37],["2026-03-20",3.25],["2026-03-23",3.23],["2026-03-24",3.17],["2026-03-25",3.17],["2026-03-26",3.15],["2026-03-27",2.94],["2026-03-30",2.84],["2026-03-31",3.07],["2026-04-01",3.06],["2026-04-02",3.11],["2026-04-06",3.15],["2026-04-07",3.19],["2026-04-08",3.39],["2026-04-09",3.31],["2026-04-10",3.28],["2026-04-13",3.42],["2026-04-14",3.54],["2026-04-15",3.75],["2026-04-16",3.6],["2026-04-17",3.78],["2026-04-20",3.69],["2026-04-21",3.56],["2026-04-22",3.73],["2026-04-23",3.5],["2026-04-24",3.51],["2026-04-27",3.48],["2026-04-28",3.41],["2026-04-29",3.3],["2026-04-30",3.46],["2026-05-01",3.39],["2026-05-04",3.52],["2026-05-05",3.37],["2026-05-06",3.43],["2026-05-07",3.27],["2026-05-08",3.32],["2026-05-11",3.26],["2026-05-12",3.15],["2026-05-13",3.05],["2026-05-14",3.04],["2026-05-15",2.93],["2026-05-18",2.89],["2026-05-19",2.85],["2026-05-20",2.96],["2026-05-21",3.11],["2026-05-22",3.01],["2026-05-26",2.97],["2026-05-27",3.17],["2026-05-28",3.44],["2026-05-29",3.59],["2026-06-01",3.79],["2026-06-02",3.61],["2026-06-03",3.47],["2026-06-04",3.8],["2026-06-05",3.315],["2026-06-08",3.32],["2026-06-09",3.22],["2026-06-10",3.04],["2026-06-11",3.15],["2026-06-12",3.15],["2026-06-15",3.29],["2026-06-16",3.18],["2026-06-17",3.11],["2026-06-18",3.23],["2026-06-22",3.18],["2026-06-23",3.16],["2026-06-24",3.23],["2026-06-25",3.34],["2026-06-26",3.52],["2026-06-29",3.69],["2026-06-30",3.67],["2026-07-01",3.67],["2026-07-02",3.8],["2026-07-06",3.96],["2026-07-07",3.84],["2026-07-08",3.72],["2026-07-09",3.76],["2026-07-10",3.56],["2026-07-13",3.3],["2026-07-14",3.34],["2026-07-15",3.31],["2026-07-16",3.02],["2026-07-17",2.945],["2026-07-20",2.89],["2026-07-21",3.08],["2026-07-22",2.98],["2026-07-23",3.01],["2026-07-24",2.96],["2026-07-27",3.01],["2026-07-28",3.05],["2026-07-29",2.97],["2026-07-30",3.04],["2026-07-31",3],["2026-08-03",3.18],["2026-08-04",3.31],["2026-08-05",3.17],["2026-08-06",3.18],["2026-08-07",3.22],["2026-08-10",3.29],["2026-08-11",3.35],["2026-08-12",3.29],["2026-08-13",3.31],["2026-08-14",3.16],["2026-08-17",3.11],["2026-08-18",3.09],["2026-08-19",3.5],["2026-08-20",3.34],["2026-08-21",3.5],["2026-08-24",3.25],["2026-08-25",3.56],["2026-08-26",3.49],["2026-08-27",3.44],["2026-08-28",3.34],["2026-08-31",3.4],["2026-09-01",3.33],["2026-09-02",3.38],["2026-09-03",3.44],["2026-09-04",3.63],["2026-09-08",3.44],["2026-09-09",3.215],["2026-09-10",3.16],["2026-09-11",3.2],["2026-09-14",3.41],["2026-09-15",3.24],["2026-09-16",3.19],["2026-09-17",3.54],["2026-09-18",3.83],["2026-09-21",3.97],["2026-09-22",4.05],["2026-09-23",3.7],["2026-09-24",3.89],["2026-09-25",3.74],["2026-09-28",3.7],["2026-09-29",3.937]],"weekly":[["2021-04-16",31.3],["2021-04-23",29.85],["2021-04-30",33.4],["2021-05-07",27.73],["2021-05-14",21.18],["2021-05-21",25.25],["2021-05-28",26.36],["2021-06-07",27.71],["2021-06-14",33.16],["2021-06-21",37.42],["2021-06-28",36.99],["2021-07-06",37.96],["2021-07-13",41.33],["2021-07-20",34.91],["2021-07-27",30.72],["2021-08-03",31.35],["2021-08-10",26.3],["2021-08-17",19.9],["2021-08-24",21.2],["2021-08-31",25.22],["2021-09-08",26.76],["2021-09-15",23.95],["2021-09-22",24.4],["2021-09-29",22.13],["2021-10-06",18.49],["2021-10-13",19.74],["2021-10-20",18.45],["2021-10-27",18.85],["2021-11-03",20.09],["2021-11-10",16.14],["2021-11-17",19.42],["2021-11-24",18.8],["2021-12-02",19.01],["2021-12-09",18.84],["2021-12-16",17.7],["2021-12-23",16.78],["2021-12-31",17.13],["2022-01-07",15.8],["2022-01-14",13.81],["2022-01-24",11.79],["2022-01-31",11.84],["2022-02-07",11.63],["2022-02-14",11.32],["2022-02-22",10.16],["2022-03-01",10.76],["2022-03-08",7.12],["2022-03-15",6.25],["2022-03-22",6.99],["2022-03-29",7.32],["2022-04-05",7.12],["2022-04-12",7.2],["2022-04-20",6.43],["2022-04-27",6.17],["2022-05-04",6.92],["2022-05-11",5.04],["2022-05-18",5.62],["2022-05-25",5.49],["2022-06-02",6.49],["2022-06-09",7.47],["2022-06-16",6.61],["2022-06-24",8.99],["2022-07-01",8.43],["2022-07-11",8.18],["2022-07-18",8.02],["2022-07-25",7.85],["2022-08-01",8.3],["2022-08-08",9.45],["2022-08-15",12.96],["2022-08-22",9.65],["2022-08-29",10.2],["2022-09-06",10.92],["2022-09-13",13.38],["2022-09-20",10.94],["2022-09-27",10.89],["2022-10-04",11.84],["2022-10-11",10.91],["2022-10-18",10.9],["2022-10-25",10.72],["2022-11-01",10.55],["2022-11-08",9.6],["2022-11-15",11.86],["2022-11-22",9.28],["2022-11-30",9.4],["2022-12-07",9.33],["2022-12-14",9.13],["2022-12-21",7.73],["2022-12-29",7.67],["2023-01-06",7.44],["2023-01-13",8.7],["2023-01-23",8.71],["2023-01-30",8.06],["2023-02-06",9.1],["2023-02-13",7.98],["2023-02-21",7.71],["2023-02-28",8.15],["2023-03-07",8.25],["2023-03-14",7.63],["2023-03-21",7.43],["2023-03-28",6.42],["2023-04-04",6.57],["2023-04-12",6.15],["2023-04-19",5.96],["2023-04-26",4.97],["2023-05-03",5.16],["2023-05-10",5.51],["2023-05-17",5.38],["2023-05-24",8.955],["2023-06-01",8.77],["2023-06-08",9.14],["2023-06-15",9.3],["2023-06-23",7.36],["2023-06-30",7.47],["2023-07-10",7.21],["2023-07-17",13.4],["2023-07-24",14.28],["2023-07-31",14.12],["2023-08-07",11.03],["2023-08-14",9.32],["2023-08-21",8.84],["2023-08-28",8.61],["2023-09-05",8.7],["2023-09-12",8.55],["2023-09-19",8.44],["2023-09-26",7.57],["2023-10-03",7.39],["2023-10-10",7.07],["2023-10-17",6.52],["2023-10-24",6.06],["2023-10-31",5.28],["2023-11-07",6.11],["2023-11-14",6.46],["2023-11-21",6.54],["2023-11-29",7.05],["2023-12-06",7.42],["2023-12-13",8.33],["2023-12-20",9.46],["2023-12-28",10.61],["2024-01-05",11.93],["2024-01-12",11.16],["2024-01-22",10.48],["2024-01-29",10.76],["2024-02-05",9.13],["2024-02-12",10.94],["2024-02-20",12.59],["2024-02-27",15.52],["2024-03-05",11.91],["2024-03-12",10.54],["2024-03-19",10.75],["2024-03-26",10.32],["2024-04-03",8.93],["2024-04-10",8.58],["2024-04-17",7.47],["2024-04-24",7.94],["2024-05-01",8.34],["2024-05-08",8.59],["2024-05-15",10.01],["2024-05-22",9.36],["2024-05-30",8.87],["2024-06-06",9.01],["2024-06-13",9.44],["2024-06-21",8.85],["2024-06-28",7.5],["2024-07-08",7.4],["2024-07-15",8.2],["2024-07-22",8.14],["2024-07-29",8.19],["2024-08-05",6.77],["2024-08-12",6.03],["2024-08-19",7.15],["2024-08-26",7.89],["2024-09-03",6.07],["2024-09-10",6.32],["2024-09-17",6.76],["2024-09-24",6.84],["2024-10-01",6.17],["2024-10-08",6.44],["2024-10-15",6.67],["2024-10-22",6.61],["2024-10-29",6.74],["2024-11-05",6.82],["2024-11-12",7.58],["2024-11-19",6.27],["2024-11-26",5.89],["2024-12-04",7.13],["2024-12-11",7.57],["2024-12-18",6.215],["2024-12-26",7.66],["2025-01-03",7.8],["2025-01-13",6.74],["2025-01-21",6.88],["2025-01-28",7.43],["2025-02-04",7.61],["2025-02-11",7.66],["2025-02-19",10.87],["2025-02-26",8.34],["2025-03-05",6.58],["2025-03-12",6.17],["2025-03-19",6.58],["2025-03-26",6.17],["2025-04-02",5.29],["2025-04-09",4.65],["2025-04-16",5.32],["2025-04-24",5.75],["2025-05-01",5.5],["2025-05-08",4.39],["2025-05-15",4.25],["2025-05-22",4.145],["2025-05-30",4.18],["2025-06-06",5.49],["2025-06-13",4.92],["2025-06-23",4.83],["2025-06-30",5.06],["2025-07-08",5.36],["2025-07-15",5.22],["2025-07-22",6.54],["2025-07-29",5.95],["2025-08-05",5.53],["2025-08-12",5.41],["2025-08-19",5.09],["2025-08-26",4.83],["2025-09-03",4.63],["2025-09-10",4.54],["2025-09-17",4.71],["2025-09-24",4.88]],"price":3.94,"returns":{"1M":17.88,"6M":33.92,"YTD":-4.2,"1Y":-19.81,"3Y":-48.53,"5Y":-82.21,"10Y":null}};
+        var all = DATA.weekly.concat(DATA.daily);
+        var svg = document.getElementById('chart-svg');
+        var tip = document.getElementById('chart-tip');
+        var W = 600, H = 200, PAD = 8;
+        var points = [];
+
+        function startDate(period) {
+          var d = new Date();
+          if (period === 'Max') return all[0][0];
+          if (period === 'YTD') return (d.getFullYear() - 1) + '-12-31';
+          var months = { '1M': 1, '6M': 6, '1Y': 12, '3Y': 36, '5Y': 60, '10Y': 120 }[period];
+          d.setMonth(d.getMonth() - months);
+          return d.toISOString().slice(0, 10);
+        }
+
+        function fmtDate(iso) {
+          return new Date(iso + 'T12:00:00Z').toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+        }
+
+        function draw(period) {
+          var start = startDate(period);
+          var src = ['1M', '6M', 'YTD', '1Y'].indexOf(period) >= 0 || (period === 'Max' && !DATA.weekly.length) ? DATA.daily : all;
+          // Start from the last close on or before the start date, like the returns calculation
+          var first = 0;
+          for (var i = 0; i < src.length; i++) { if (src[i][0] <= start) first = i; else break; }
+          var rows = src.slice(first);
+          if (DATA.price != null) rows = rows.concat([[new Date().toISOString().slice(0, 10), DATA.price]]);
+          var change = document.getElementById('chart-change');
+          if (rows.length < 2 || all[0][0] > start) {
+            svg.innerHTML = '';
+            change.textContent = 'Not enough price history for ' + period;
+            change.style.color = '#6b7280';
+            document.getElementById('chart-range').textContent = '';
+            points = [];
+            return;
+          }
+          var vals = rows.map(function (r) { return r[1]; });
+          var min = Math.min.apply(null, vals), max = Math.max.apply(null, vals);
+          var span = max - min || 1;
+          points = rows.map(function (r, i) {
+            return { x: PAD + (i / (rows.length - 1)) * (W - 2 * PAD), y: PAD + (1 - (r[1] - min) / span) * (H - 2 * PAD), d: r[0], v: r[1] };
+          });
+          var up = (DATA.returns[period] != null ? DATA.returns[period] : vals[vals.length - 1] - vals[0]) >= 0;
+          var color = up ? '#059669' : '#dc2626';
+          var line = points.map(function (p, i) { return (i ? 'L' : 'M') + p.x.toFixed(1) + ' ' + p.y.toFixed(1); }).join(' ');
+          var area = line + ' L' + points[points.length - 1].x.toFixed(1) + ' ' + H + ' L' + points[0].x.toFixed(1) + ' ' + H + ' Z';
+          svg.innerHTML =
+            '<defs><linearGradient id="fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="' + color + '" stop-opacity="0.18"/><stop offset="1" stop-color="' + color + '" stop-opacity="0"/></linearGradient></defs>' +
+            '<path d="' + area + '" fill="url(#fill)"/>' +
+            '<path d="' + line + '" fill="none" stroke="' + color + '" stroke-width="2" vector-effect="non-scaling-stroke"/>' +
+            '<line id="chart-cursor" y1="0" y2="' + H + '" stroke="#9ca3af" stroke-width="1" vector-effect="non-scaling-stroke" visibility="hidden"/>';
+          var official = DATA.returns[period];
+          var pct = official != null ? official : (vals[vals.length - 1] / vals[0] - 1) * 100;
+          change.textContent = (pct >= 0 ? '+' : '') + pct.toFixed(2) + '% ' + (period === 'Max' ? 'since ' + fmtDate(rows[0][0]) : 'over ' + period);
+          change.style.color = color;
+          document.getElementById('chart-range').textContent =
+            fmtDate(rows[0][0]) + ' – today · Low $' + min.toFixed(2) + ' · High $' + max.toFixed(2);
+        }
+
+        svg.addEventListener('mousemove', function (e) {
+          if (!points.length) return;
+          var box = svg.getBoundingClientRect();
+          var x = (e.clientX - box.left) / box.width * W;
+          var p = points.reduce(function (best, q) { return Math.abs(q.x - x) < Math.abs(best.x - x) ? q : best; });
+          var cursor = document.getElementById('chart-cursor');
+          cursor.setAttribute('x1', p.x); cursor.setAttribute('x2', p.x); cursor.setAttribute('visibility', 'visible');
+          tip.hidden = false;
+          tip.textContent = fmtDate(p.d) + ' · $' + p.v.toFixed(2);
+          tip.style.left = Math.min(Math.max(p.x / W * box.width - 60, 0), box.width - 130) + 'px';
+        });
+        svg.addEventListener('mouseleave', function () {
+          tip.hidden = true;
+          var cursor = document.getElementById('chart-cursor');
+          if (cursor) cursor.setAttribute('visibility', 'hidden');
+        });
+        var buttons = document.querySelectorAll('#price-chart .chart-periods button');
+        function select(period) {
+          buttons.forEach(function (b) { b.classList.toggle('active', b.dataset.period === period); });
+          draw(period);
+        }
+        // Grey out periods the stock's history doesn't cover (e.g. recent IPOs)
+        buttons.forEach(function (b) {
+          if (b.dataset.period !== 'Max' && all[0][0] > startDate(b.dataset.period)) b.disabled = true;
+        });
+        document.querySelector('#price-chart .chart-periods').addEventListener('click', function (e) {
+          var btn = e.target.closest('button');
+          if (btn && !btn.disabled) select(btn.dataset.period);
+        });
+        // Open on 1Y, or Max when the stock hasn't traded that long
+        select(document.querySelector('#price-chart button[data-period="1Y"]').disabled ? 'Max' : '1Y');
+      })();
+      </script>
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-subtitle">Stock Price</div>
+          <div class="card-value" data-field="price">$3.94</div>
+        </div>
+        <div class="card">
+          <div class="card-subtitle">Market Cap</div>
+          <div class="card-value" data-field="marketCap">$2.1B</div>
+        </div>
+        <div class="card">
+          <div class="card-subtitle">Cash Position</div>
+          <div class="card-value" data-field="cashPosition">$546M</div>
+        </div>
+        <div class="card">
+          <div class="card-subtitle">YTD Return</div>
+          <div class="card-value" data-field="ytd" style="color: #dc2626">-4.20%</div>
+        </div>
+        <div class="card">
+          <div class="card-subtitle">Monthly Burn</div>
+          <div class="card-subtitle">Operating cash outflow, latest qtr</div>
+          <div class="card-value" data-field="monthlyBurn">$35.3M/mo</div>
+        </div>
+        <div class="card">
+          <div class="card-subtitle">Cash Runway</div>
+          <div class="card-value" data-field="runway">15 months</div>
+        </div>
+      </div>
+      <div class="returns">
+        <div class="return"><div class="return-label">1D</div><div class="return-value" style="color: #059669">+6.41%</div></div>
+        <div class="return"><div class="return-label">5D</div><div class="return-value" style="color: #dc2626">-2.79%</div></div>
+        <div class="return"><div class="return-label">1M</div><div class="return-value" style="color: #059669">+17.88%</div></div>
+        <div class="return"><div class="return-label">6M</div><div class="return-value" style="color: #059669">+33.92%</div></div>
+        <div class="return"><div class="return-label">YTD</div><div class="return-value" style="color: #dc2626">-4.20%</div></div>
+        <div class="return"><div class="return-label">1Y</div><div class="return-value" style="color: #dc2626">-19.81%</div></div>
+        <div class="return"><div class="return-label">3Y</div><div class="return-value" style="color: #dc2626">-48.53%</div></div>
+        <div class="return"><div class="return-label">5Y</div><div class="return-value" style="color: #dc2626">-82.21%</div></div>
+        <div class="return"><div class="return-label">10Y</div><div class="return-value" style="color: #6b7280">—</div></div>
+      </div>
+      <div class="meta-line">Next earnings: <strong>Nov 4, 2026</strong> (estimated)</div>
+    </div>
+
+    <!-- Insider Trading -->
+    <div class="section">
+      <h2>Insider Trading Activity</h2>
+      <div style="overflow-x: auto;">
+      <table>
+        <thead>
+          <tr>
+            <th>Insider</th>
+            <th>Relationship</th>
+            <th>Date</th>
+            <th>Type</th>
+            <th>Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Najat Khan</td>
+            <td>Chief Executive Officer</td>
+            <td>Sep 8, 2026</td>
+            <td><span class="insider-sell">SELL</span></td>
+            <td>$78,822 · 22,408 shares</td>
+          </tr>
+          <tr>
+            <td>Blake Charles Borgeson</td>
+            <td>Director</td>
+            <td>Sep 1, 2026</td>
+            <td><span class="insider-sell">SELL</span></td>
+            <td>$100,200 · 30,000 shares</td>
+          </tr>
+          <tr>
+            <td>Blake Charles Borgeson</td>
+            <td>Director</td>
+            <td>Aug 4, 2026</td>
+            <td><span class="insider-sell">SELL</span></td>
+            <td>$97,500 · 30,000 shares</td>
+          </tr>
+          <tr>
+            <td>Blake Charles Borgeson</td>
+            <td>Director</td>
+            <td>Jul 7, 2026</td>
+            <td><span class="insider-sell">SELL</span></td>
+            <td>$158,500 · 40,000 shares</td>
+          </tr>
+          <tr>
+            <td>Dean Y Li</td>
+            <td>Director</td>
+            <td>Jul 1, 2026</td>
+            <td><span class="insider-other">AWARD</span></td>
+            <td>3,747 shares</td>
+          </tr>
+          <tr>
+            <td>Zavain Dar</td>
+            <td>Director</td>
+            <td>Jul 1, 2026</td>
+            <td><span class="insider-other">AWARD</span></td>
+            <td>5,109 shares</td>
+          </tr>
+          <tr>
+            <td>Namandje N. Bumpus</td>
+            <td>Director</td>
+            <td>Jun 18, 2026</td>
+            <td><span class="insider-sell">SELL</span></td>
+            <td>$12,602 · 3,963 shares</td>
+          </tr>
+          <tr>
+            <td>Robert M Hershberg</td>
+            <td>Director</td>
+            <td>Jun 17, 2026</td>
+            <td><span class="insider-other">AWARD</span></td>
+            <td>88,424 shares</td>
+          </tr>
+          <tr>
+            <td>Elaine D Sun</td>
+            <td>Director</td>
+            <td>Jun 17, 2026</td>
+            <td><span class="insider-other">AWARD</span></td>
+            <td>88,424 shares</td>
+          </tr>
+          <tr>
+            <td>Dean Y Li</td>
+            <td>Director</td>
+            <td>Jun 17, 2026</td>
+            <td><span class="insider-other">AWARD</span></td>
+            <td>88,424 shares</td>
+          </tr>
+          <tr>
+            <td>Blake Charles Borgeson</td>
+            <td>Director</td>
+            <td>Jun 17, 2026</td>
+            <td><span class="insider-other">AWARD</span></td>
+            <td>88,424 shares</td>
+          </tr>
+          <tr>
+            <td>Zavain Dar</td>
+            <td>Director</td>
+            <td>Jun 17, 2026</td>
+            <td><span class="insider-other">AWARD</span></td>
+            <td>88,424 shares</td>
+          </tr>
+          <tr>
+            <td>Franziska Ph.d. Michor</td>
+            <td>Director</td>
+            <td>Jun 17, 2026</td>
+            <td><span class="insider-other">AWARD</span></td>
+            <td>88,424 shares</td>
+          </tr>
+          <tr>
+            <td>Namandje N. Bumpus</td>
+            <td>Director</td>
+            <td>Jun 17, 2026</td>
+            <td><span class="insider-other">AWARD</span></td>
+            <td>88,424 shares</td>
+          </tr>
+          <tr>
+            <td>Christopher C. Gibson</td>
+            <td>Director</td>
+            <td>Jun 5, 2026</td>
+            <td><span class="insider-sell">SELL</span></td>
+            <td>$144,800 · 40,000 shares</td>
+          </tr>
+          <tr>
+            <td>Najat Khan</td>
+            <td>Chief Executive Officer</td>
+            <td>Jun 5, 2026</td>
+            <td><span class="insider-sell">SELL</span></td>
+            <td>$84,459 · 23,588 shares</td>
+          </tr>
+          <tr>
+            <td>Namandje N. Bumpus</td>
+            <td>Director</td>
+            <td>Jun 3, 2026</td>
+            <td><span class="insider-sell">SELL</span></td>
+            <td>$15,526 · 4,386 shares</td>
+          </tr>
+          <tr>
+            <td>Blake Charles Borgeson</td>
+            <td>Director</td>
+            <td>Jun 2, 2026</td>
+            <td><span class="insider-sell">SELL</span></td>
+            <td>$110,400 · 30,000 shares</td>
+          </tr>
+          <tr>
+            <td>Christopher C. Gibson</td>
+            <td>Director</td>
+            <td>May 22, 2026</td>
+            <td><span class="insider-sell">SELL</span></td>
+            <td>$123,200 · 40,000 shares</td>
+          </tr>
+          <tr>
+            <td>Christopher C. Gibson</td>
+            <td>Director</td>
+            <td>May 7, 2026</td>
+            <td><span class="insider-other">GIFT</span></td>
+            <td>20,000 shares</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+      <p class="note"><strong>Summary:</strong> Last 6 months: no purchases and 10 sales ($926,009). Sales are often routine (tax withholding on vested stock or pre-set trading plans). Source: SEC Form 4 filings via Yahoo Finance.</p>
+    </div>
+
+    <!-- Financial Health -->
+    <div class="section">
+      <h2>Financial Health & Runway</h2>
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-title">Cash & Equivalents</div>
+          <div class="card-value" data-field="cashPosition">$546M</div>
+          <div class="card-subtitle" data-field="cashAsOf">As of Jun 30, 2026 (cash + marketable securities)</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Monthly Burn Rate</div>
+          <div class="card-value" data-field="burnRate">$35.3M</div>
+          <div class="card-subtitle">Latest quarter's operating cash outflow ÷ 3</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Estimated Runway</div>
+          <div class="card-value" data-field="runway">15 months</div>
+          <div class="card-subtitle">At the latest quarter's burn rate</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Headcount</div>
+          <div class="card-value">~600 employees</div>
+          <div class="card-subtitle">Full-time</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Leadership -->
+    <div class="section">
+      <h2>Leadership</h2>
+      <ul class="item-list">
+        <li><strong>Dr. Najat Khan Ph.D.</strong> <span class="item-meta">— CEO, President &amp; Director</span></li>
+        <li><strong>Ben R. Taylor</strong> <span class="item-meta">— CFO &amp; President of Recursion UK</span></li>
+        <li><strong>Benjamin Mabey M.S.</strong> <span class="item-meta">— Chief Technology Officer</span></li>
+        <li><strong>Dr. David Hallett Ph.D.</strong> <span class="item-meta">— Chief Scientific Officer</span></li>
+        <li><strong>Nathan Hatfield J.D., M.B.A.</strong> <span class="item-meta">— Chief Legal Officer &amp; Corporate Secretary</span></li>
+      </ul>
+    </div>
+
+    <!-- Latest News -->
+    <div class="section">
+      <h2>Latest News</h2>
+      <ul class="item-list">
+        <li><a href="https://news.google.com/rss/articles/CBMisgFBVV95cUxQQUFJcF92OFRzVDlQN3p6bTZaMUt4clY0SkZiUW51VHNvV05fTlRaRHVLaExvWmFZcV93U2lxMTNTTmR6azVoMmo4Zi1JTkxVYllsYU01M1pMcXdSOVIwT1FWSUx3SnN4TzA2MndDbXJVeXJEb09hVTBJUGM4ZmFZcWlUUVBYbjhQd1dBZXRjRmNrOE9oVUhJbjBPSmFoTDFOajdsdmUtaGh0dGFSZm1wbnd3?oc=5" target="_blank" rel="noopener">Recursion Pharmaceuticals (RXRX) Registers a Bigger Fall Than the Market: Important Facts to Note</a><div class="item-meta">Yahoo Finance · Sep 28, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMi8wFBVV95cUxNbHJQMTZYREVkVFpxakV2NWR1d1BhWEphbWZuc3FhSmFXZ2JGaXBuMTcxWmx6QmMzUWIxQ2xMcW45NG12dnpmbFA4cTBMZjE5aF9ndEVJbU1YaTVmNTQ3NVcyUmp0dU9GSWRYV01pMHRZMTNzekFaOWNFZjFvTWFtN1JtSWo1cWVQSVdHY3loQVZ0eUdsOURsVnBDQ2lEZGlWUUlZTVVsMEZyT1lYSGxCTDF3aDlTZC1RQjk2QjNMOWp2U1Y4a3VFTGFGWEY4SzkxQ29ucmhBZExIbkU5ZjNzakwzbnBkUTJwRHNfOGM1UzY0VzjSAfgBQVVfeXFMTzVMZVBzblVhWUhtYWtDZjM2aUV1a3lFWUhTLTFMN3lYWkZoOFY0UmpoT3hYY2l5Y2QwV1R5dExQbHIxdDdBbnFrakNHWVFUdVZCZWRDT1lmQ2l5cjNicjVWNUM0WXhLdVFfTE5zRXNNSm94RURlVGJJTmE1aDk3VkhIOFl6Qy1MYmdLVFNqdF9LUmt2bWpjMl9HLWhKMWxPREdzSmJIWlp6YzAwNmN2LW55TlY3UjJ6RmFQU3oxR25CMWdzQ1o1NjFyVllHSExES2MteDFRdExIX1lvSnh6ZXY0eFhhOGQ0dWlMcWx6dUhBN19EODA2bHM?oc=5" target="_blank" rel="noopener">How Investors Are Reacting To Recursion Pharmaceuticals (RXRX) RNA Model Licensing Deal</a><div class="item-meta">simplywall.st · Sep 25, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMiigFBVV95cUxNdHJSQ1U4UlVhZ1hXcF8ySy12S3A4Y01HMnBqVnZJdjQ2eWNEYUw1Y1c4TnBubnhWcVlyaFlsV3hZNm9ZSS1McFZuaW1HWFdJY3MwM051cTh0LWJlWFRyT3AydG8tZ25fc3hTcWNSR3JGR0JFYkNNcnZxTWhmNXRIOXpWWTAyV25OYkE?oc=5" target="_blank" rel="noopener">RXRX Stock Rises As Tempus AI Deal Resets Growth Story</a><div class="item-meta">StocksToTrade · Sep 24, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMivwFBVV95cUxNMjZtUGR0eGd6Um1TUnZKZURvRGdjd0hMcTcxWmE1bzc0R1Bram50SjdhMFhXbmJISVdNVm9JN1FMQ1JlSENpMzk1SVZVOWR6c0M3cnJDYlJCQXNhSVlLTGxmRWxnRFhmdVdxOC1zY1N2R2JUbXNFN2ZIZG9jTU5uT3FIYU0wWjNVcl9CbEZpWGtNcC12NmxJWUhQMHlzTG05YkVsTmNlLXJLSGdCVnYyNmxaSTlENWg0QUtKdG1fOA?oc=5" target="_blank" rel="noopener">Can Recursion Pharmaceuticals' Strategic Deals Fuel Long-Term Growth?</a><div class="item-meta">TradingView · Sep 24, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMi7wFBVV95cUxNQ2FZT1JCYy1JRTdfc2hLa0JjcTdVZl94LXpvX0NrTndaZzN3M2R1cDl2TTVmcWRWLXdYUHdhMEhLSTNaRjl0ZDF4VmRFMHdaY0JQT0VPVmlqeG95eUZVMWhVaDJIZFZNZ2JWSEFsRnpuVXpRNks4YmllVnRvN3Jya01QcUlQWmNRTHdmZGpJWjlzZ2FJNlJlZTJvMG43RzNBZTNZcGtIbU9Ub3c5WFpCR2sxcnRmR3I1MTNJZHVxa0kxQV9yQ3FwOVc3N3M1YklYQTVNRFhDMERPQnlmUGlnX2NjeDN0ekFtaGRyWjB1b9IB9AFBVV95cUxQeXlMMk0tUmlWcS1RZkhkYkxONUZVNjc2WFJaRHZ6em9FcFNheG43eVA4blNEMVllQ3ZQSEVzaDlKSkpjRkxnaFVab1A4YjFZM0hXdFNYN3E2MWhrQk12UFJRcWoyMmxYdFFCTmoteU85Z3RnNElhTThkWjhOS2FxRUltMnc0VUNOUmJYcWNCYnA1aHlscTJTSXIxWElDQVdycFZkT3dTQ1ZYOFdJd2lkc2l2WGpuZngxV1dTTkwyNHJQYW5tN0xCUFdvcWVlZ09MdFZNXzVrVThpZy1taXlxTGhlbkFXaWEwdF96Sk5TUkRFMTh0?oc=5" target="_blank" rel="noopener">Recursion Pharmaceuticals (RXRX) Shares Just Moved, So What Is Driving Attention Now?</a><div class="item-meta">simplywall.st · Sep 23, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMiqwFBVV95cUxQZXM1RDVSeWc3dnhzb193bE9JVkt6ejF6N0VSQnRYTUJIYjBpY3lNbzdLbEFPZG5TY3UxR0hZOXZLS0VWNjhrS2g1Z1psNk5vOUhvd1pfT2hYN2xFTTROb1c4SkZ1YW5wR0pXcTFjaHZRc0ZMb044VjE3T2J4YzVCTVZiRWw4TWtMcnhjSzV1TmY1UDZGQlB5SUdacVJubmxrRUlSOHF0MTZraUk?oc=5" target="_blank" rel="noopener">Recursion Pharmaceuticals (RXRX) Stock Moves 2.02%: What You Should Know</a><div class="item-meta">Yahoo Finance · Sep 22, 2026</div></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <footer class="disclaimer">
+    <nav class="site-footer" aria-label="Site links">
+      <div><strong>Life Science Investor</strong><a href="../index.html">Dashboard</a><a href="../calendar.html">Catalyst &amp; Earnings Calendar</a></div>
+      <div><strong>Themes</strong><a href="../themes/obesity-and-metabolic.html">Obesity & Metabolic</a><a href="../themes/gene-editing-and-rna.html">Gene Editing & RNA</a><a href="../themes/cell-therapy.html">Cell Therapy</a><a href="../themes/melanoma.html">Melanoma</a><a href="../themes/oncolytic-viruses.html">Oncolytic Viruses</a><a href="../themes/bladder-and-prostate-cancer.html">Bladder & Prostate Cancer</a><a href="../themes/targeted-oncology.html">Targeted Oncology</a><a href="../themes/infectious-disease.html">Infectious Disease</a><a href="../themes/neurology.html">Neurology</a><a href="../themes/ai-drug-discovery.html">AI Drug Discovery</a></div>
+    </nav>
+    <p>For informational purposes only — not investment advice. Prices, returns and financials come from Yahoo Finance and company filings and may be delayed, incomplete or inaccurate. Company profiles are editorial summaries and may not reflect the latest developments. Do your own research and consult a licensed financial advisor before making investment decisions.</p>
+  </footer>
+
+</body>
+
+</html>

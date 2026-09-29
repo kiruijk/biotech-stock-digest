@@ -8,7 +8,9 @@
     "Oncolytic Viruses",
     "Bladder & Prostate Cancer",
     "Targeted Oncology",
-    "Infectious Disease"
+    "Infectious Disease",
+    "Neurology",
+    "AI Drug Discovery"
   ],
   "stocks": [
     {
@@ -210,6 +212,50 @@
       "name": "Compass Therapeutics",
       "themes": [
         "Targeted Oncology"
+      ]
+    },
+    {
+      "symbol": "ZNTL",
+      "name": "Zentalis Pharmaceuticals",
+      "themes": [
+        "Targeted Oncology"
+      ]
+    },
+    {
+      "symbol": "FATE",
+      "name": "Fate Therapeutics",
+      "themes": [
+        "Cell Therapy"
+      ]
+    },
+    {
+      "symbol": "RLAY",
+      "name": "Relay Therapeutics",
+      "themes": [
+        "Targeted Oncology",
+        "AI Drug Discovery"
+      ]
+    },
+    {
+      "symbol": "ADMA",
+      "name": "ADMA Biologics",
+      "themes": [
+        "Infectious Disease"
+      ]
+    },
+    {
+      "symbol": "RXRX",
+      "name": "Recursion Pharmaceuticals",
+      "themes": [
+        "Targeted Oncology",
+        "AI Drug Discovery"
+      ]
+    },
+    {
+      "symbol": "OVID",
+      "name": "Ovid Therapeutics",
+      "themes": [
+        "Neurology"
       ]
     }
   ]

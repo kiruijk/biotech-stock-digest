@@ -1,0 +1,19 @@
+{
+  "theme": "AI Drug Discovery",
+  "reviewed": "2026-09-29",
+  "summary": "These companies use machine learning, large-scale automated experiments and physics-based simulation to choose targets and design molecules faster and more cheaply than traditional drug discovery. The promise is shorter timelines and higher success rates. The drugs that come out still have to pass the same clinical trials as any other medicine.",
+  "sections": [
+    {
+      "heading": "How the platforms work",
+      "body": "<ul><li><strong>Phenomics and biological maps</strong>: robots run millions of cell experiments (gene knockouts, compound treatments) and imaging models turn the results into maps of how genes and drugs relate. The aim is to find new targets and to reposition existing molecules.</li><li><strong>Structure- and motion-based design</strong>: computational models of how a protein moves, not just its static shape, help find pockets that only exist in the disease-causing form. This makes it possible to design drugs that hit a mutant protein while sparing the normal one.</li><li><strong>Generative chemistry</strong>: models propose new molecules and predict potency, selectivity and drug-like properties before anyone makes them in the lab, which cuts the number of design-make-test cycles.</li><li><strong>Clinical and patient data</strong>: models trained on real-world and genomic data help pick the patients most likely to respond and design trials.</li></ul>"
+    },
+    {
+      "heading": "Why it's hard to judge",
+      "body": "<p>Most of the cost and failure in drug development comes later, in human trials, where AI has changed less so far. A platform can deliver candidates faster, but <strong>whether the drug works in patients</strong> is the real test. The field has already had high-profile clinical failures and pipeline cuts. Platform companies also tend to run many early-stage programs at once, so cash burn is high compared with how mature the pipeline is.</p>"
+    },
+    {
+      "heading": "What investors watch",
+      "body": "<ul><li><strong>Clinical readouts</strong> from AI-derived molecules, especially randomized or proof-of-concept data, not just Phase 1 safety.</li><li><strong>Discovery speed and cost</strong>: time and number of compounds from program start to development candidate, compared with industry norms.</li><li><strong>Pharma partnerships</strong>: upfront payments and milestones show outside validation and fund the platform.</li><li><strong>Pipeline pruning and runway</strong>: whether the company focuses on its best programs and how long its cash lasts.</li></ul>"
+    }
+  ]
+}

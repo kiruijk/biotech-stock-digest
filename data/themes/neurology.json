@@ -1,0 +1,19 @@
+{
+  "theme": "Neurology",
+  "reviewed": "2026-09-29",
+  "summary": "Neurology drugs target disorders of the brain and nervous system, including epilepsy, rare genetic seizure syndromes, neurodegeneration and psychiatric conditions. The science is hard because the brain is difficult to reach and to measure. The potential market is large: many patients have few good options, and existing drugs often stop working or cause burdensome side effects.",
+  "sections": [
+    {
+      "heading": "The biology",
+      "body": "<ul><li><strong>Neuronal excitability</strong>: seizures happen when networks of neurons fire too much and in sync. Most epilepsy drugs dampen this by acting on ion channels (sodium, potassium, calcium) or by boosting inhibitory GABA signaling.</li><li><strong>Drug-resistant epilepsy</strong>: about a third of people with epilepsy keep having seizures despite two or more appropriate drugs, and that group is the main target for new treatments.</li><li><strong>Rare developmental epilepsies</strong>, such as Dravet and Lennox-Gastaut syndromes, often have a known genetic cause and qualify for orphan-drug incentives. Some drugs developed for them have later expanded to broader use.</li><li><strong>The blood-brain barrier</strong> keeps most large molecules out of the brain. Drugs must be designed to cross it, or be delivered directly into the spinal fluid.</li></ul>"
+    },
+    {
+      "heading": "Why trials are hard",
+      "body": "<p>Many neurological outcomes are subjective or fluctuate, so trials often show a large <strong>placebo response</strong>. Epilepsy trials measure the change in how often seizures happen, using diaries kept by patients or caregivers. That data is noisy, and a drug has to beat placebo by a clear margin. Diseases that progress slowly need long, expensive trials, and early markers such as EEG changes or biomarker shifts don't always predict how patients will do.</p>"
+    },
+    {
+      "heading": "What investors watch",
+      "body": "<ul><li><strong>Median seizure reduction versus placebo</strong> and the share of patients whose seizures drop by half or more.</li><li><strong>Tolerability</strong>, especially sedation, cognitive effects and mood changes, which often limit use of current drugs.</li><li><strong>Target engagement</strong>: evidence in early trials, from imaging, EEG or biomarkers, that the drug reaches and acts on its target in the brain.</li><li><strong>Orphan versus broad indications</strong>: rare syndromes offer faster approval and pricing power, and broad epilepsy offers scale.</li></ul>"
+    }
+  ]
+}
