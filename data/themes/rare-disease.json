@@ -1,0 +1,19 @@
+{
+  "theme": "Rare Disease",
+  "reviewed": "2026-09-29",
+  "summary": "Rare diseases each affect fewer than 200,000 people in the U.S., but there are thousands of them, and most have no approved treatment. Many are caused by a single faulty gene, which makes them natural targets for gene therapy, RNA drugs and enzyme replacement. Small patient numbers are offset by orphan-drug incentives, faster regulatory paths and high prices.",
+  "sections": [
+    {
+      "heading": "Main approaches",
+      "body": "<ul><li><strong>Gene therapy</strong> uses a harmless virus (usually AAV) to deliver a working copy of a gene, often as a one-time treatment. Duchenne muscular dystrophy, hemophilia and Huntington's disease are active areas.</li><li><strong>RNA drugs</strong>, including antisense oligonucleotides and siRNA, raise or lower production of a specific protein. Newer versions are linked to antibodies to reach muscle or brain.</li><li><strong>Enzyme replacement and small molecules</strong> supply a missing enzyme, help a misfolded protein work, or block the harmful product of a disease pathway.</li></ul>"
+    },
+    {
+      "heading": "Why the economics differ",
+      "body": "<p>Orphan drug designation brings seven years of U.S. market exclusivity and tax credits. Priority review vouchers, which can be sold for around $100M or more, add to the incentives. Trials are small and often use accelerated approval based on a biomarker. That speeds approval, but <strong>confirmatory trials</strong> can fail and force a drug off the market. Gene therapies have also run into safety problems, including liver toxicity and deaths, which have led to label restrictions and clinical holds.</p>"
+    },
+    {
+      "heading": "What investors watch",
+      "body": "<ul><li><strong>Biomarker vs functional results</strong>: whether the protein increase or biomarker change translates into better strength, survival or quality of life.</li><li><strong>Launch metrics</strong>: patients identified, time to treatment and payer coverage. Rare-disease launches are slow and lumpy.</li><li><strong>Safety across larger groups</strong>, especially for gene therapies given to older or sicker patients.</li><li><strong>Manufacturing</strong>: viral vector supply and cost, which can cap the number of patients treated.</li></ul>"
+    }
+  ]
+}

@@ -7,6 +7,7 @@ const {
   formatMoney, pctColor, formatDate, runwayText, escapeHtml, stripTags, CSS, DISCLAIMER
 } = require('./profile');
 const { NAV_CSS, renderNav, renderFooterLinks, seoTags } = require('./site');
+const { isSectorSelloff } = require('../lib/drawdown');
 
 const PAGE = 'beaten-down.html';
 
@@ -58,8 +59,15 @@ const signed = (v) => (v == null ? '—' : `${v > 0 ? '+' : ''}${v}%`);
 const cashToCap = (s) => (s.cashPosition && s.marketCap ? `${Math.round((s.cashPosition / s.marketCap) * 100)}%` : '—');
 const hasThesis = (t) => THESIS_PARTS.some(([key]) => t?.[key]);
 
+// One-line biotech sector gauge (XBI vs its 18-month high), or '' without data
+function sectorLine(sector) {
+  if (!sector?.stats) return '';
+  const selloff = isSectorSelloff(sector.stats);
+  return `Biotech sector (${sector.symbol}): <strong style="color: ${pctColor(sector.stats.fromPeak)}">${signed(sector.stats.fromPeak)}</strong> from its 18-month high${selloff ? ' — a sector-wide sell-off, when past rebounds clustered' : ''}`;
+}
+
 // entries: [{ symbol, added, thesis, stock, stats }] with stock/stats already resolved
-function renderBeatenDown(list, entries, themes = [], siteUrl = null) {
+function renderBeatenDown(list, entries, themes = [], siteUrl = null, sector = null) {
   const description = stripTags(list.intro).slice(0, 300);
   const byDrawdown = [...entries].sort((a, b) => (a.stats?.fromPeak ?? 0) - (b.stats?.fromPeak ?? 0));
 
@@ -77,7 +85,7 @@ function renderBeatenDown(list, entries, themes = [], siteUrl = null) {
 
   const cards = byDrawdown.map(({ stock: s, stats, thesis }) => `      <div class="thesis-card" id="${s.symbol.toLowerCase()}">
         <h3><a href="stocks/${s.symbol.toLowerCase()}.html">${escapeHtml(s.name)} (${s.symbol})</a></h3>
-        <div class="item-meta">${signed(stats?.fromPeak)} from its high · ${signed(stats?.fromLow)} off its 52-week low · cash ${cashToCap(s)} of market cap</div>
+        <div class="item-meta">${signed(stats?.fromPeak)} from its 18-month high · ${signed(stats?.fromLow)} off its 52-week low · cash ${cashToCap(s)} of market cap</div>
 ${hasThesis(thesis)
     ? THESIS_PARTS.filter(([key]) => thesis[key]).map(([key, label]) => `        <h4>${label}</h4>\n        <p class="para">${thesis[key]}</p>`).join('\n')
     : '        <p class="para thesis-pending">Thesis coming soon.</p>'}
@@ -115,7 +123,8 @@ ${renderNav('', themes, 'beaten-down')}
 
     <div class="section">
       <p class="para" style="margin-bottom: 0;">${list.intro}</p>
-    </div>
+${sectorLine(sector) ? `      <div class="meta-line">${sectorLine(sector)}. The biggest rebounds among tracked stocks mostly started at sector-wide lows (Oct 2023, Apr 2025).</div>
+` : ''}    </div>
 
     <div class="section">
       <h2>The List</h2>
@@ -126,7 +135,7 @@ ${renderNav('', themes, 'beaten-down')}
             <th>Ticker</th>
             <th>Company</th>
             <th class="num">Price</th>
-            <th class="num">From high</th>
+            <th class="num">From 18M high</th>
             <th class="num">Off 52W low</th>
             <th class="num">Since added</th>
             <th class="num">Mkt Cap</th>
@@ -139,7 +148,7 @@ ${rows}
         </tbody>
       </table>
       </div>
-      <p class="note">Sorted by distance from high. "From high" compares today's price with the highest close in the last ~10 years. Cash ÷ Cap is cash and investments as a share of market value; a high figure means the market values the pipeline at little more than the cash. Runway = cash ÷ latest quarter's operating cash burn.</p>
+      <p class="note">Sorted by distance from high. "From 18M high" compares today's price with the highest close in the last 18 months. Cash ÷ Cap is cash and investments as a share of market value; a high figure means the market values the pipeline at little more than the cash. Runway = cash ÷ latest quarter's operating cash burn.</p>
     </div>
 
     <div class="section">
@@ -162,20 +171,21 @@ ${renderFooterLinks('', themes)}
 }
 
 // Homepage strip: one compact link per stock, biggest drawdown first
-function renderBeatenDownStrip(list, entries) {
+function renderBeatenDownStrip(list, entries, sector = null) {
   const sorted = [...entries].sort((a, b) => (a.stats?.fromPeak ?? 0) - (b.stats?.fromPeak ?? 0));
   return `<section class="beaten-strip" aria-label="${escapeHtml(list.title)}">
-      <div class="beaten-strip-head"><a href="${PAGE}">${escapeHtml(list.title)}</a> <span>Far below their highs, thesis intact →</span></div>
+      <div class="beaten-strip-head"><a href="${PAGE}">${escapeHtml(list.title)}</a> <span>Far below their 18-month highs, thesis intact →</span></div>
       <div class="beaten-strip-items">
 ${sorted.map(({ stock: s, stats }) => `        <a class="beaten-chip" href="${PAGE}#${s.symbol.toLowerCase()}"><strong>${s.symbol}</strong> <span>${signed(stats?.fromPeak)}</span></a>`).join('\n')}
       </div>
-    </section>`;
+${sectorLine(sector) ? `      <div class="beaten-strip-sector">${sectorLine(sector)}</div>
+` : ''}    </section>`;
 }
 
 // Notice at the top of a listed stock's profile page
 function renderBeatenDownNotice(list, stats, symbol) {
   const from = stats?.fromPeak != null && stats.fromPeak < 0
-    ? ` It trades ${Math.abs(stats.fromPeak)}% below its ${stats.peakDate ? formatDate(stats.peakDate, { month: 'short', year: 'numeric' }) + ' ' : ''}high.`
+    ? ` It trades ${Math.abs(stats.fromPeak)}% below its 18-month high${stats.peakDate ? ` (${formatDate(stats.peakDate, { month: 'short', year: 'numeric' })})` : ''}.`
     : '';
   return `    <div class="notice notice-beaten">On our <a href="../${PAGE}#${symbol.toLowerCase()}">${escapeHtml(list.title)}</a> list of beaten-down stocks with an intact thesis.${from}</div>`;
 }

@@ -1,0 +1,19 @@
+{
+  "theme": "Ophthalmology",
+  "reviewed": "2026-09-29",
+  "summary": "Eye diseases like wet age-related macular degeneration (AMD), diabetic eye disease, geographic atrophy and thyroid eye disease are large, growing markets as populations age. Current standard drugs for wet AMD work well but require frequent eye injections, so much of the field is racing to cut treatment burden with longer-lasting implants, gene therapy and new pathways.",
+  "sections": [
+    {
+      "heading": "Main approaches",
+      "body": "<ul><li><strong>Sustained-release implants</strong> release a proven drug, such as a VEGF or tyrosine kinase inhibitor, inside the eye for months, cutting injections from monthly to a few a year.</li><li><strong>Gene therapy</strong> turns the eye into its own drug factory with a one-time treatment. The eye is well suited to this because it is small, enclosed and shielded from the immune system.</li><li><strong>New pathways</strong>: complement inhibitors for geographic atrophy, and IGF-1R antibodies for thyroid eye disease.</li></ul>"
+    },
+    {
+      "heading": "Why trials are tricky",
+      "body": "<p>Wet AMD trials usually aim to show <strong>non-inferiority</strong> to existing drugs on vision while needing fewer injections, so trial design and the comparator arm matter a lot. Eye inflammation and other safety signals can be decisive even when vision results are good. Retina doctors are conservative adopters, so reimbursement and ease of use also shape launches.</p>"
+    },
+    {
+      "heading": "What investors watch",
+      "body": "<ul><li><strong>Vision outcomes versus standard of care</strong> in Phase 3, and how many patients go without extra rescue injections.</li><li><strong>Durability</strong>: months between treatments at the dose that will actually be sold.</li><li><strong>Safety</strong>, especially intraocular inflammation.</li><li><strong>Launch uptake</strong> among retina specialists for commercial products.</li></ul>"
+    }
+  ]
+}

@@ -102,7 +102,11 @@ test('beaten-down page shows theses, placeholders, strip and profile notice', ()
 
   const strip = renderBeatenDownStrip(list, entries);
   assert.ok(strip.includes('href="beaten-down.html#othr"') && strip.includes('-95%'));
+  assert.ok(!strip.includes('Biotech sector'), 'no sector line without data');
+  const sector = { symbol: 'XBI', stats: { fromPeak: -35 } };
+  assert.match(renderBeatenDownStrip(list, entries, sector), /Biotech sector \(XBI\).*-35%.*sector-wide sell-off/);
+  assert.match(renderBeatenDown(list, entries, THEMES, null, sector), /Biotech sector \(XBI\)/);
 
   const withNotice = renderProfile(stock, profile, THEMES, null, null, [renderBeatenDownNotice(list, stats, 'TEST')]);
-  assert.match(withNotice, /notice-beaten.*beaten-down\.html#test.*88% below its Jan 2021 high/);
+  assert.match(withNotice, /notice-beaten.*beaten-down\.html#test.*88% below its 18-month high \(Jan 2021\)/);
 });

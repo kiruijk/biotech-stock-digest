@@ -8,7 +8,8 @@
 //   - cash overrides that Yahoo has since superseded
 //   - "Beaten Down, Not Out" list: stocks missing a thesis, material news since a thesis was
 //     reviewed, listed stocks that rebounded or slumped since being added, and tracked stocks
-//     that look like new candidates (deep drawdown, trading near cash; stocks in `passed`
+//     that look like new candidates (75%+ below their 18-month high, and either trading near
+//     cash or a growing commercial product at a low sales multiple; stocks in `passed`
 //     are skipped for REVIEW_AFTER_DAYS)
 // Run with `npm run review`. In GitHub Actions the report is also written to the run's
 // summary page. Always exits 0 — this is a to-do list, not a failure.
@@ -16,7 +17,7 @@
 const fs = require('fs');
 const { isPast } = require('./lib/catalyst-timing');
 const { themeSlug } = require('./lib/themes');
-const { drawdownStats, listedFlag, isCandidate } = require('./lib/drawdown');
+const { drawdownStats, listedFlag, candidateSetup, isSectorSelloff } = require('./lib/drawdown');
 
 const REVIEW_AFTER_DAYS = 90;
 const BIG_MOVE_PCT = 30;
@@ -70,13 +71,21 @@ if (beatenDown) {
     const flag = listedFlag(drawdownStats(readHistory(symbol), stock.price, added));
     if (flag) items.listMoves.push(`${symbol}: ${flag}`);
   }
+  // Sector-wide sell-offs are when most of the biggest rebounds started
+  const sector = readJson('data/sector.json');
+  if (isSectorSelloff(sector?.stats)) {
+    items.candidates.unshift(`Sector: ${sector.symbol} is ${Math.abs(sector.stats.fromPeak)}% below its 18-month high — a sector-wide sell-off, when past rebounds clustered. Look hard at the candidates.`);
+  }
   for (const { symbol } of universe.stocks) {
     const stock = market[symbol];
     const pass = (beatenDown.passed || []).find(p => p.symbol === symbol);
     if (listed.has(symbol) || !stock || (pass && daysSince(pass.date) <= REVIEW_AFTER_DAYS)) continue;
     const stats = drawdownStats(readHistory(symbol), stock.price);
-    if (isCandidate(stock, stats)) {
-      items.candidates.push(`${symbol}: ${stats.fromPeak}% from its high, cash ${Math.round((stock.cashPosition / stock.marketCap) * 100)}% of market cap — worth a thesis?`);
+    const setup = candidateSetup(stock, stats);
+    if (setup === 'near-cash') {
+      items.candidates.push(`${symbol}: ${stats.fromPeak}% from its 18-month high, cash ${Math.round((stock.cashPosition / stock.marketCap) * 100)}% of market cap — worth a thesis?`);
+    } else if (setup === 'commercial') {
+      items.candidates.push(`${symbol}: ${stats.fromPeak}% from its 18-month high, revenue $${Math.round(stock.revenueTTM / 1e6)}M (+${stock.revenueGrowth}% y/y) at ${(stock.marketCap / stock.revenueTTM).toFixed(1)}x sales — commercial turnaround?`);
     }
   }
   if (daysSince(beatenDown.reviewed) > REVIEW_AFTER_DAYS) items.staleReviews.push(`Beaten Down list: last reviewed ${beatenDown.reviewed}`);

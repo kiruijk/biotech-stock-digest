@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alector (ALEC) — Stock Profile | Life Science Investor</title>
+  <meta name="description" content="Alector, Inc., a clinical stage biotechnology company, develops therapies to counteract the progression of neurodegeneration in the United States. Its pipeline includes Nivisnebart, an investigational human recombinant monoclonal antibody for treating prevalent neurodegenerative diseases; AL137, an ">
+  <meta property="og:title" content="Alector (ALEC) — Stock Profile">
+  <meta property="og:description" content="Alector, Inc., a clinical stage biotechnology company, develops therapies to counteract the progression of neurodegeneration in the United States. Its pipeline includes Nivisnebart, an investigational human recombinant monoclonal antibody for treating prevalent neurodegenerative diseases; AL137, an ">
+  <meta property="og:type" content="article">
+  <link rel="canonical" href="https://kiruijk.github.io/biotech-stock-digest/stocks/alec.html">
+  <meta property="og:url" content="https://kiruijk.github.io/biotech-stock-digest/stocks/alec.html">
+  <meta property="og:site_name" content="Life Science Investor">
+  <style>
+    :root {
+      color-scheme: light;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f5f7fa;
+      color: #1a1a1a;
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(135deg, #0052cc 0%, #0066ff 100%);
+      color: white;
+      padding: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      font-size: 1.6rem;
+    }
+
+    .back-btn {
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      border: 1px solid white;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .back-btn:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1rem 3rem;
+    }
+
+    /* Section Styling */
+    .section {
+      background: white;
+      border-radius: 10px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    .section h2 {
+      font-size: 1.3rem;
+      margin-bottom: 1.5rem;
+      color: #1a1a1a;
+      border-bottom: 2px solid #0052cc;
+      padding-bottom: 0.5rem;
+    }
+
+    /* Grid layouts */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    /* Card styling */
+    .card {
+      padding: 1rem;
+      background: #f9fafb;
+      border-radius: 6px;
+      border-left: 3px solid #0052cc;
+    }
+
+    .card-title {
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 0.3rem;
+    }
+
+    .card-subtitle {
+      font-size: 0.85rem;
+      color: #6b7280;
+    }
+
+    .card-value {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #0052cc;
+      margin-top: 0.3rem;
+    }
+
+    /* Badge styling */
+    .badge {
+      display: inline-block;
+      padding: 0.25rem 0.65rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .badge-green {
+      background: #d1fae5;
+      color: #059669;
+    }
+
+    .badge-red {
+      background: #fee2e2;
+      color: #dc2626;
+    }
+
+    .badge-yellow {
+      background: #fef3c7;
+      color: #d97706;
+    }
+
+    /* Table styling */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+
+    th,
+    td {
+      padding: 0.8rem;
+      text-align: left;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    th {
+      background: #f9fafb;
+      font-weight: 700;
+    }
+
+    /* Insider Trading */
+    .insider-buy {
+      color: #059669;
+      font-weight: 600;
+    }
+
+    .insider-sell {
+      color: #dc2626;
+      font-weight: 600;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .grid-2,
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Price chart */
+    .chart {
+      position: relative;
+      margin-bottom: 1.25rem;
+    }
+
+    .chart-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .chart-change {
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .chart-periods {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25rem;
+    }
+
+    .chart-periods button {
+      border: 1px solid #d1d5db;
+      background: white;
+      border-radius: 5px;
+      padding: 0.2rem 0.55rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #374151;
+      cursor: pointer;
+    }
+
+    .chart-periods button:disabled {
+      color: #d1d5db;
+      border-color: #eef0f3;
+      cursor: default;
+    }
+
+    .chart-periods button.active {
+      background: #0052cc;
+      border-color: #0052cc;
+      color: white;
+    }
+
+    #chart-svg {
+      width: 100%;
+      height: 200px;
+      display: block;
+      cursor: crosshair;
+    }
+
+    .chart-tip {
+      position: absolute;
+      top: 2.4rem;
+      width: 130px;
+      text-align: center;
+      background: #1a1a1a;
+      color: white;
+      font-size: 0.72rem;
+      padding: 0.2rem 0.4rem;
+      border-radius: 4px;
+      pointer-events: none;
+    }
+
+    .chart-range {
+      font-size: 0.75rem;
+      color: #9ca3af;
+      margin-top: 0.3rem;
+    }
+
+    /* Text */
+    .para {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: #374151;
+      margin-bottom: 1.2rem;
+    }
+
+    .note {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: #6b7280;
+    }
+
+    /* Returns row */
+    .returns {
+      display: grid;
+      grid-template-columns: repeat(9, 1fr);
+      gap: 0.3rem;
+      margin-top: 1rem;
+    }
+
+    .return {
+      text-align: center;
+      padding: 0.45rem 0.1rem;
+      background: #f9fafb;
+      border-radius: 6px;
+    }
+
+    .return-label {
+      color: #6b7280;
+      font-size: 0.68rem;
+      text-transform: uppercase;
+    }
+
+    .return-value {
+      font-weight: 700;
+      font-size: 0.8rem;
+      white-space: nowrap;
+    }
+
+    /* Notices */
+    .notice {
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+    }
+
+    .notice-stale {
+      background: #fef3c7;
+      color: #92400e;
+    }
+
+    .notice-tracked {
+      background: #e0ebff;
+      color: #1e3a8a;
+    }
+
+    .notice-beaten {
+      background: #fff1e6;
+      color: #7c2d12;
+    }
+
+    .notice-beaten a {
+      color: inherit;
+      font-weight: 600;
+    }
+
+    .meta-line {
+      font-size: 0.85rem;
+      color: #6b7280;
+      margin-top: 0.75rem;
+    }
+
+    .theme-tag {
+      color: white;
+      text-decoration: none;
+      display: inline-block;
+      padding: 0.1rem 0.5rem;
+      margin-right: 0.3rem;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.2);
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    /* Insider labels */
+    .insider-other {
+      color: #6b7280;
+      font-weight: 600;
+    }
+
+    /* News & leadership lists */
+    .item-list {
+      list-style: none;
+    }
+
+    .item-list li {
+      padding: 0.75rem 0;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .item-list li:last-child {
+      border-bottom: none;
+    }
+
+    .item-list a {
+      color: #0052cc;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .item-list a:hover {
+      text-decoration: underline;
+    }
+
+    .item-meta {
+      font-size: 0.8rem;
+      color: #6b7280;
+    }
+
+    .disclaimer {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem 2rem;
+      font-size: 0.75rem;
+      color: #9ca3af;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 900px) {
+      .returns {
+        grid-template-columns: repeat(5, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .returns {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .theme-tag:hover {
+      background: rgba(255, 255, 255, 0.35);
+    }
+
+    /* Theme pages */
+    .science h3 {
+      font-size: 1.05rem;
+      margin: 1.25rem 0 0.5rem;
+      color: #1a1a1a;
+    }
+
+    .science h3:first-child {
+      margin-top: 0;
+    }
+
+    .science p,
+    .science li {
+      color: #374151;
+      line-height: 1.75;
+    }
+
+    .science ul {
+      padding-left: 1.25rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .num {
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    td a {
+      color: #0052cc;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    /* Phones: tighter spacing, two-column stats, compact header */
+    @media (max-width: 600px) {
+      header {
+        padding: 1rem;
+        align-items: flex-start;
+        gap: 0.6rem;
+      }
+
+      header h1 {
+        font-size: 1.25rem;
+        line-height: 1.3;
+      }
+
+      .back-btn {
+        padding: 0.3rem 0.7rem;
+        font-size: 0.8rem;
+      }
+
+      .container {
+        padding: 1rem 0.75rem 2rem;
+      }
+
+      .section {
+        padding: 1.1rem 1rem;
+        margin-bottom: 1rem;
+        border-radius: 8px;
+      }
+
+      .section h2 {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+      }
+
+      .grid-3 {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.6rem;
+      }
+
+      .grid-2 {
+        gap: 0.75rem;
+      }
+
+      .card {
+        padding: 0.75rem;
+      }
+
+      .card-value {
+        font-size: 1rem;
+      }
+
+      .para {
+        font-size: 0.95rem;
+        line-height: 1.65;
+        margin-bottom: 1rem;
+      }
+
+      th,
+      td {
+        padding: 0.55rem 0.5rem;
+        font-size: 0.85rem;
+      }
+    }
+
+    .site-nav {
+      background: #0b1f44;
+      color: white;
+      font-size: 0.88rem;
+    }
+
+    .site-nav-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0.55rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+    }
+
+    .site-nav a {
+      color: #c7d7fe;
+      text-decoration: none;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .site-nav a:hover,
+    .site-nav a.current {
+      color: white;
+    }
+
+    .site-nav .brand {
+      color: white;
+      font-weight: 800;
+      margin-right: auto;
+      letter-spacing: -0.01em;
+    }
+
+    .site-nav details {
+      position: relative;
+    }
+
+    .site-nav summary {
+      white-space: nowrap;
+      cursor: pointer;
+      color: #c7d7fe;
+      font-weight: 600;
+      list-style: none;
+    }
+
+    .site-nav summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .site-nav summary::after {
+      content: ' ▾';
+      font-size: 0.75rem;
+    }
+
+    .site-nav details[open] summary,
+    .site-nav summary:hover {
+      color: white;
+    }
+
+    .site-nav .menu {
+      position: absolute;
+      right: 0;
+      top: 1.9rem;
+      z-index: 20;
+      min-width: 230px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+      padding: 0.4rem 0;
+    }
+
+    .site-nav .menu a {
+      display: block;
+      padding: 0.45rem 1rem;
+      color: #1a1a1a;
+      font-weight: 500;
+    }
+
+    .site-nav .menu a:hover {
+      background: #f3f4f6;
+      color: #0052cc;
+    }
+
+    .site-footer {
+      border-top: 1px solid #e5e7eb;
+      margin-top: 1rem;
+      padding: 1.25rem 1rem 0.5rem;
+      font-size: 0.82rem;
+      line-height: 1.9;
+    }
+
+    .site-footer a {
+      color: #4b5563;
+      text-decoration: none;
+      margin-right: 1rem;
+      white-space: nowrap;
+    }
+
+    .site-footer a:hover {
+      color: #0052cc;
+    }
+
+    .site-footer strong {
+      color: #374151;
+      margin-right: 0.75rem;
+    }
+
+    @media (max-width: 600px) {
+      .site-nav-inner {
+        flex-wrap: wrap;
+        gap: 0.35rem 0.9rem;
+        padding: 0.5rem 0.75rem;
+      }
+
+      .site-nav .brand {
+        font-size: 0.85rem;
+      }
+
+      /* The brand already links home */
+      .site-nav .nav-home {
+        display: none;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+  <!-- Generated by update-stocks.js from data/profiles and live market data. Do not edit by hand. -->
+  <!-- Last updated: 2026-09-30T01:24:37.644Z -->
+  <nav class="site-nav" aria-label="Site">
+    <div class="site-nav-inner">
+      <a class="brand" href="../index.html">Life Science Investor</a>
+      <a class="nav-home" href="../index.html">Dashboard</a>
+      <details>
+        <summary>Themes</summary>
+        <div class="menu">
+          <a href="../themes/obesity-and-metabolic.html">Obesity & Metabolic</a>
+          <a href="../themes/gene-editing-and-rna.html">Gene Editing & RNA</a>
+          <a href="../themes/cell-therapy.html">Cell Therapy</a>
+          <a href="../themes/melanoma.html">Melanoma</a>
+          <a href="../themes/oncolytic-viruses.html">Oncolytic Viruses</a>
+          <a href="../themes/bladder-and-prostate-cancer.html">Bladder & Prostate Cancer</a>
+          <a href="../themes/targeted-oncology.html">Targeted Oncology</a>
+          <a href="../themes/infectious-disease.html">Infectious Disease</a>
+          <a href="../themes/neurology.html">Neurology</a>
+          <a href="../themes/ai-drug-discovery.html">AI Drug Discovery</a>
+          <a href="../themes/rare-disease.html">Rare Disease</a>
+          <a href="../themes/immunology-and-inflammation.html">Immunology & Inflammation</a>
+          <a href="../themes/ophthalmology.html">Ophthalmology</a>
+        </div>
+      </details>
+      <a href="../beaten-down.html">Beaten Down</a>
+      <a href="../calendar.html">Calendar</a>
+    </div>
+  </nav>
+
+  <header>
+    <div>
+      <h1>Alector (ALEC)</h1>
+      <div><a class="theme-tag" href="../themes/neurology.html">Neurology</a></div>
+    </div>
+  </header>
+
+  <div class="container">
+
+    <div class="notice notice-tracked">Data-only page: prices, financials, insider trades and news update automatically. Editorial analysis (catalysts, risks, competitors) is not yet available for this company.</div>
+
+    <!-- Company Overview -->
+    <div class="section">
+      <h2>Company Overview</h2>
+      <p class="para">Alector, Inc., a clinical stage biotechnology company, develops therapies to counteract the progression of neurodegeneration in the United States. Its pipeline includes Nivisnebart, an investigational human recombinant monoclonal antibody for treating prevalent neurodegenerative diseases; AL137, an anti-amyloid beta antibody paired in preclinical development for the potential treatment of Alzheimer's disease; and AL050, a GCase enzyme replacement therapy in preclinical development for the potential treatment of Parkinson's disease and Lewy body dementia in patients having GBA1 gene mutations. The company also develops its preclinical and research pipeline comprising AL064, a tau siRNA for Alzheimer's disease and other tauopathies; ADP062-ABC, an alpha-synuclein siRNA for Parkinson's disease; and ADP065-ABC, an NLRP3 siRNA for neurodegenerative conditions. It has a strategic collaboration agreement with GlaxoSmithKline plc for the development and commercialization of progranulin-elevating monoclonal antibodies, including Latozinemab and Nivisnebart. The company was founded in 2013 and is headquartered in South San Francisco, California.</p>
+      <div class="meta-line">Business description from Yahoo Finance.</div>
+      <div class="meta-line">Headquarters: South San Francisco, CA · ~103 employees · <a href="https://www.alector.com" target="_blank" rel="noopener">www.alector.com</a></div>
+    </div>
+
+    <!-- Quick Stats -->
+    <div class="section">
+      <h2>Quick Stats</h2>
+      <div class="chart" id="price-chart">
+        <div class="chart-head">
+          <div class="chart-change" id="chart-change"></div>
+          <div class="chart-periods" role="group" aria-label="Chart period">
+            <button type="button" data-period="1M">1M</button><button type="button" data-period="6M">6M</button><button type="button" data-period="YTD">YTD</button><button type="button" data-period="1Y">1Y</button><button type="button" data-period="3Y">3Y</button><button type="button" data-period="5Y">5Y</button><button type="button" data-period="10Y">10Y</button><button type="button" data-period="Max">Max</button>
+          </div>
+        </div>
+        <svg id="chart-svg" viewBox="0 0 600 200" preserveAspectRatio="none" role="img" aria-label="ALEC price chart"></svg>
+        <div class="chart-tip" id="chart-tip" hidden></div>
+        <div class="chart-range" id="chart-range"></div>
+      </div>
+      <script>
+      (function () {
+        var DATA = {"daily":[["2025-09-30",2.96],["2025-10-01",3],["2025-10-02",3.16],["2025-10-03",3.32],["2025-10-06",3.18],["2025-10-07",3.07],["2025-10-08",3.08],["2025-10-09",3.14],["2025-10-10",3.02],["2025-10-13",3.04],["2025-10-14",2.99],["2025-10-15",3.19],["2025-10-16",3.22],["2025-10-17",3.04],["2025-10-20",3.31],["2025-10-21",3.21],["2025-10-22",1.61],["2025-10-23",1.47],["2025-10-24",1.5],["2025-10-27",1.5],["2025-10-28",1.5],["2025-10-29",1.55],["2025-10-30",1.52],["2025-10-31",1.47],["2025-11-03",1.44],["2025-11-04",1.32],["2025-11-05",1.255],["2025-11-06",1.3],["2025-11-07",1.28],["2025-11-10",1.31],["2025-11-11",1.36],["2025-11-12",1.34],["2025-11-13",1.2],["2025-11-14",1.24],["2025-11-17",1.24],["2025-11-18",1.27],["2025-11-19",1.22],["2025-11-20",1.2],["2025-11-21",1.24],["2025-11-24",1.28],["2025-11-25",1.28],["2025-11-26",1.35],["2025-11-28",1.33],["2025-12-01",1.23],["2025-12-02",1.14],["2025-12-03",1.14],["2025-12-04",1.21],["2025-12-05",1.22],["2025-12-08",1.22],["2025-12-09",1.28],["2025-12-10",1.3],["2025-12-11",1.46],["2025-12-12",1.49],["2025-12-15",1.42],["2025-12-16",1.39],["2025-12-17",1.35],["2025-12-18",1.39],["2025-12-19",1.4],["2025-12-22",1.45],["2025-12-23",1.41],["2025-12-24",1.45],["2025-12-26",1.45],["2025-12-29",1.52],["2025-12-30",1.52],["2025-12-31",1.56],["2026-01-02",1.53],["2026-01-05",1.6],["2026-01-06",1.69],["2026-01-07",1.76],["2026-01-08",1.77],["2026-01-09",1.86],["2026-01-12",1.84],["2026-01-13",1.92],["2026-01-14",1.85],["2026-01-15",1.82],["2026-01-16",1.84],["2026-01-20",1.83],["2026-01-21",1.92],["2026-01-22",1.92],["2026-01-23",1.94],["2026-01-26",1.93],["2026-01-27",1.95],["2026-01-28",1.91],["2026-01-29",1.91],["2026-01-30",1.89],["2026-02-02",1.99],["2026-02-03",1.93],["2026-02-04",1.93],["2026-02-05",1.82],["2026-02-06",1.96],["2026-02-09",1.96],["2026-02-10",1.95],["2026-02-11",1.92],["2026-02-12",1.9],["2026-02-13",1.87],["2026-02-17",1.97],["2026-02-18",1.98],["2026-02-19",2.01],["2026-02-20",1.99],["2026-02-23",2.1],["2026-02-24",2.19],["2026-02-25",2.39],["2026-02-26",2.56],["2026-02-27",2.43],["2026-03-02",2.21],["2026-03-03",2.11],["2026-03-04",2.15],["2026-03-05",1.98],["2026-03-06",2],["2026-03-09",2.19],["2026-03-10",2.38],["2026-03-11",2.32],["2026-03-12",2.23],["2026-03-13",2.2],["2026-03-16",2.21],["2026-03-17",2.23],["2026-03-18",2.05],["2026-03-19",2.06],["2026-03-20",2.05],["2026-03-23",2.06],["2026-03-24",2.08],["2026-03-25",2.17],["2026-03-26",2.12],["2026-03-27",2],["2026-03-30",2.02],["2026-03-31",2.15],["2026-04-01",2.53],["2026-04-02",2.41],["2026-04-06",2.345],["2026-04-07",2.47],["2026-04-08",2.42],["2026-04-09",2.4],["2026-04-10",2.45],["2026-04-13",2.33],["2026-04-14",2.41],["2026-04-15",2.58],["2026-04-16",2.55],["2026-04-17",2.57],["2026-04-20",2.705],["2026-04-21",2.46],["2026-04-22",2.45],["2026-04-23",2.43],["2026-04-24",2.41],["2026-04-27",2.35],["2026-04-28",2.39],["2026-04-29",2.3],["2026-04-30",2.37],["2026-05-01",2.36],["2026-05-04",2.51],["2026-05-05",2.57],["2026-05-06",2.57],["2026-05-07",2.44],["2026-05-08",2.1],["2026-05-11",2.05],["2026-05-12",2.16],["2026-05-13",2.15],["2026-05-14",2.3],["2026-05-15",2.16],["2026-05-18",2.12],["2026-05-19",2.11],["2026-05-20",2.12],["2026-05-21",2.21],["2026-05-22",2.21],["2026-05-26",2.19],["2026-05-27",2.21],["2026-05-28",2.15],["2026-05-29",2.16],["2026-06-01",2.07],["2026-06-02",1.95],["2026-06-03",1.775],["2026-06-04",1.81],["2026-06-05",1.635],["2026-06-08",1.64],["2026-06-09",1.63],["2026-06-10",1.52],["2026-06-11",1.57],["2026-06-12",1.53],["2026-06-15",1.48],["2026-06-16",1.54],["2026-06-17",1.56],["2026-06-18",1.75],["2026-06-22",1.78],["2026-06-23",1.83],["2026-06-24",1.79],["2026-06-25",1.85],["2026-06-26",1.86],["2026-06-29",2.08],["2026-06-30",2.01],["2026-07-01",2.01],["2026-07-02",2.06],["2026-07-06",1.94],["2026-07-07",1.93],["2026-07-08",1.83],["2026-07-09",1.635],["2026-07-10",1.61],["2026-07-13",1.51],["2026-07-14",1.39],["2026-07-15",1.5],["2026-07-16",1.47],["2026-07-17",1.5],["2026-07-20",1.43],["2026-07-21",1.54],["2026-07-22",1.53],["2026-07-23",1.49],["2026-07-24",1.48],["2026-07-27",1.51],["2026-07-28",1.52],["2026-07-29",1.52],["2026-07-30",1.62],["2026-07-31",1.51],["2026-08-03",1.51],["2026-08-04",1.54],["2026-08-05",1.49],["2026-08-06",1.83],["2026-08-07",1.78],["2026-08-10",1.69],["2026-08-11",2.09],["2026-08-12",2.15],["2026-08-13",2.04],["2026-08-14",1.96],["2026-08-17",2.05],["2026-08-18",2.21],["2026-08-19",2.43],["2026-08-20",2.26],["2026-08-21",2.36],["2026-08-24",2.3],["2026-08-25",2.36],["2026-08-26",2.46],["2026-08-27",2.39],["2026-08-28",2.34],["2026-08-31",2.26],["2026-09-01",2.4],["2026-09-02",2.72],["2026-09-03",2.51],["2026-09-04",2.46],["2026-09-08",2.47],["2026-09-09",2.27],["2026-09-10",2.14],["2026-09-11",2.14],["2026-09-14",2.21],["2026-09-15",2.035],["2026-09-16",1.925],["2026-09-17",1.85],["2026-09-18",1.91],["2026-09-21",1.93],["2026-09-22",2.01],["2026-09-23",2.02],["2026-09-24",1.92],["2026-09-25",1.95],["2026-09-28",1.92],["2026-09-29",1.87]],"weekly":[["2019-02-07",18.08],["2019-02-14",18.8],["2019-02-22",22.5],["2019-03-01",21],["2019-03-08",16.61],["2019-03-15",18.05],["2019-03-22",18.05],["2019-03-29",18.72],["2019-04-05",24.06],["2019-04-12",26.42],["2019-04-22",21.4],["2019-04-29",20.7],["2019-05-06",20.26],["2019-05-13",19.82],["2019-05-20",19.61],["2019-05-28",18.84],["2019-06-04",16.98],["2019-06-11",20.27],["2019-06-18",19.53],["2019-06-25",17.82],["2019-07-02",19.57],["2019-07-10",19],["2019-07-17",18.23],["2019-07-24",19.88],["2019-07-31",21.12],["2019-08-07",18.39],["2019-08-14",15.2],["2019-08-21",15.84],["2019-08-28",16.18],["2019-09-05",16.6],["2019-09-12",19.56],["2019-09-19",18.5],["2019-09-26",15.1],["2019-10-03",14.48],["2019-10-10",14.53],["2019-10-17",15.05],["2019-10-24",15.95],["2019-10-31",16.84],["2019-11-07",17.85],["2019-11-14",15.51],["2019-11-21",15.83],["2019-11-29",18.64],["2019-12-06",19.76],["2019-12-13",20.21],["2019-12-20",19.5],["2019-12-30",16.87],["2020-01-07",16.57],["2020-01-14",18.44],["2020-01-22",22.93],["2020-01-29",25.94],["2020-02-05",33.71],["2020-02-12",30.26],["2020-02-20",29.88],["2020-02-27",25.9],["2020-03-05",29.45],["2020-03-12",21.09],["2020-03-19",27.89],["2020-03-26",24.75],["2020-04-02",22.75],["2020-04-09",23.3],["2020-04-17",24.28],["2020-04-24",25.32],["2020-05-01",24.18],["2020-05-08",27.24],["2020-05-15",27.7],["2020-05-22",33.1],["2020-06-01",33.11],["2020-06-08",30.88],["2020-06-15",29.75],["2020-06-22",30.2],["2020-06-29",23.5],["2020-07-07",23.51],["2020-07-14",22.5],["2020-07-21",21.38],["2020-07-28",21.34],["2020-08-04",15.02],["2020-08-11",14.35],["2020-08-18",12.96],["2020-08-25",13.26],["2020-09-01",12.41],["2020-09-09",13],["2020-09-16",14.14],["2020-09-23",11.22],["2020-09-30",10.53],["2020-10-07",10.53],["2020-10-14",10.02],["2020-10-21",9.41],["2020-10-28",9.71],["2020-11-04",11.33],["2020-11-11",12.06],["2020-11-18",12.09],["2020-11-25",13.29],["2020-12-03",13.66],["2020-12-10",15.04],["2020-12-17",15.68],["2020-12-24",15.34],["2021-01-04",14.98],["2021-01-11",15.59],["2021-01-19",17.93],["2021-01-26",17.5],["2021-02-02",19.51],["2021-02-09",20.8],["2021-02-17",20.85],["2021-02-24",19.08],["2021-03-03",16.41],["2021-03-10",17.5],["2021-03-17",18.71],["2021-03-24",17.02],["2021-03-31",20.14],["2021-04-08",19.63],["2021-04-15",18.48],["2021-04-22",18.9],["2021-04-29",19.22],["2021-05-06",16.97],["2021-05-13",15.5],["2021-05-20",17.27],["2021-05-27",18.13],["2021-06-04",19.54],["2021-06-11",19.62],["2021-06-18",21.23],["2021-06-25",21.27],["2021-07-02",35.21],["2021-07-12",36.59],["2021-07-19",31.3],["2021-07-26",30.43],["2021-08-02",25.34],["2021-08-09",26.83],["2021-08-16",27.48],["2021-08-23",26.17],["2021-08-30",26.27],["2021-09-07",26.72],["2021-09-14",23.76],["2021-09-21",26.17],["2021-09-28",23.44],["2021-10-05",23.89],["2021-10-12",23.93],["2021-10-19",22.81],["2021-10-26",23.41],["2021-11-02",23.5],["2021-11-09",25.54],["2021-11-16",21.89],["2021-11-23",21.16],["2021-12-01",20.09],["2021-12-08",22.93],["2021-12-15",22.66],["2021-12-22",23.13],["2021-12-30",20.92],["2022-01-06",18.49],["2022-01-13",17.07],["2022-01-21",15.54],["2022-01-28",14.68],["2022-02-04",15.71],["2022-02-11",16.29],["2022-02-18",16.36],["2022-02-28",15.84],["2022-03-07",14.85],["2022-03-14",13.51],["2022-03-21",14.67],["2022-03-28",14.49],["2022-04-04",14.24],["2022-04-11",12.28],["2022-04-19",11.35],["2022-04-26",10],["2022-05-03",10.09],["2022-05-10",8.16],["2022-05-17",9.11],["2022-05-24",8.79],["2022-06-01",8.68],["2022-06-08",9.45],["2022-06-15",8.43],["2022-06-23",10.52],["2022-06-30",10.16],["2022-07-08",11.37],["2022-07-15",11.06],["2022-07-22",10.95],["2022-07-29",10.22],["2022-08-05",13.06],["2022-08-12",13.2],["2022-08-19",11.61],["2022-08-26",10.82],["2022-09-02",10.46],["2022-09-12",10.17],["2022-09-19",9.37],["2022-09-26",8.19],["2022-10-03",9.32],["2022-10-10",8.61],["2022-10-17",9.31],["2022-10-24",8.74],["2022-10-31",9.2],["2022-11-07",8.43],["2022-11-14",8.57],["2022-11-21",7.62],["2022-11-29",7.52],["2022-12-06",9.27],["2022-12-13",9.21],["2022-12-20",8.95],["2022-12-28",8.81],["2023-01-05",8.76],["2023-01-12",8.7],["2023-01-20",8.4],["2023-01-27",9.16],["2023-02-03",9.49],["2023-02-10",9.43],["2023-02-17",9.84],["2023-02-27",8.72],["2023-03-06",7.27],["2023-03-13",6.67],["2023-03-20",6.39],["2023-03-27",6.31],["2023-04-03",6.22],["2023-04-11",6.25],["2023-04-18",6.525],["2023-04-25",6.47],["2023-05-02",6.39],["2023-05-09",7.91],["2023-05-16",7.61],["2023-05-23",7.75],["2023-05-31",7.44],["2023-06-07",7.62],["2023-06-14",7.71],["2023-06-22",7.31],["2023-06-29",5.86],["2023-07-07",6.16],["2023-07-14",6.48],["2023-07-21",6.68],["2023-07-28",6.37],["2023-08-04",8.77],["2023-08-11",7.46],["2023-08-18",7.17],["2023-08-25",5.9],["2023-09-01",5.57],["2023-09-11",5.83],["2023-09-18",6.13],["2023-09-25",6.98],["2023-10-02",6.19],["2023-10-09",6.21],["2023-10-16",6.09],["2023-10-23",5.15],["2023-10-30",5.16],["2023-11-06",5.47],["2023-11-13",3.77],["2023-11-20",4.92],["2023-11-28",5.16],["2023-12-05",5.49],["2023-12-12",6.65],["2023-12-19",8.39],["2023-12-27",7.95],["2024-01-04",7.98],["2024-01-11",7.61],["2024-01-19",5.88],["2024-01-26",6.04],["2024-02-02",5.83],["2024-02-09",6.45],["2024-02-16",6.37],["2024-02-26",6.48],["2024-03-04",6.975],["2024-03-11",6.42],["2024-03-18",6],["2024-03-25",5.97],["2024-04-02",5.82],["2024-04-09",6.05],["2024-04-16",5.31],["2024-04-23",5.34],["2024-04-30",5.08],["2024-05-07",5.3],["2024-05-14",5.33],["2024-05-21",5.39],["2024-05-29",5],["2024-06-05",4.8],["2024-06-12",4.7],["2024-06-20",4.19],["2024-06-27",4.54],["2024-07-05",4.39],["2024-07-12",5.54],["2024-07-19",5.83],["2024-07-26",6.49],["2024-08-02",5.285],["2024-08-09",5.08],["2024-08-16",5.14],["2024-08-23",5.31],["2024-08-30",5.28],["2024-09-09",5.27],["2024-09-16",5.68],["2024-09-23",5.45],["2024-09-30",4.66],["2024-10-07",4.52],["2024-10-14",4.9],["2024-10-21",4.61],["2024-10-28",5.07],["2024-11-04",5.27],["2024-11-11",6.06],["2024-11-18",3.76],["2024-11-25",3.96],["2024-12-03",2.52],["2024-12-10",2.21],["2024-12-17",1.89],["2024-12-24",1.85],["2025-01-02",1.89],["2025-01-10",1.8],["2025-01-17",1.71],["2025-01-27",1.74],["2025-02-03",1.64],["2025-02-10",1.65],["2025-02-18",1.76],["2025-02-25",1.77],["2025-03-04",1.455],["2025-03-11",1.4],["2025-03-18",1.3],["2025-03-25",1.29],["2025-04-01",1.16],["2025-04-08",0.942],["2025-04-15",1.08],["2025-04-23",1.16],["2025-04-30",1.2],["2025-05-07",1.02],["2025-05-14",1.07],["2025-05-21",1.25],["2025-05-29",1.42],["2025-06-05",1.41],["2025-06-12",1.62],["2025-06-20",1.47],["2025-06-27",1.48],["2025-07-07",1.44],["2025-07-14",1.67],["2025-07-21",1.62],["2025-07-28",1.76],["2025-08-04",1.55],["2025-08-11",2.23],["2025-08-18",2.13],["2025-08-25",2.34],["2025-09-02",2.59],["2025-09-09",2.8],["2025-09-16",2.76],["2025-09-23",3.18]],"price":1.87,"returns":{"1M":-20.09,"6M":-6.5,"YTD":23.03,"1Y":-38.69,"3Y":-71.14,"5Y":-92.04,"10Y":null}};
+        var all = DATA.weekly.concat(DATA.daily);
+        var svg = document.getElementById('chart-svg');
+        var tip = document.getElementById('chart-tip');
+        var W = 600, H = 200, PAD = 8;
+        var points = [];
+
+        function startDate(period) {
+          var d = new Date();
+          if (period === 'Max') return all[0][0];
+          if (period === 'YTD') return (d.getFullYear() - 1) + '-12-31';
+          var months = { '1M': 1, '6M': 6, '1Y': 12, '3Y': 36, '5Y': 60, '10Y': 120 }[period];
+          d.setMonth(d.getMonth() - months);
+          return d.toISOString().slice(0, 10);
+        }
+
+        function fmtDate(iso) {
+          return new Date(iso + 'T12:00:00Z').toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+        }
+
+        function draw(period) {
+          var start = startDate(period);
+          var src = ['1M', '6M', 'YTD', '1Y'].indexOf(period) >= 0 || (period === 'Max' && !DATA.weekly.length) ? DATA.daily : all;
+          // Start from the last close on or before the start date, like the returns calculation
+          var first = 0;
+          for (var i = 0; i < src.length; i++) { if (src[i][0] <= start) first = i; else break; }
+          var rows = src.slice(first);
+          if (DATA.price != null) rows = rows.concat([[new Date().toISOString().slice(0, 10), DATA.price]]);
+          var change = document.getElementById('chart-change');
+          if (rows.length < 2 || all[0][0] > start) {
+            svg.innerHTML = '';
+            change.textContent = 'Not enough price history for ' + period;
+            change.style.color = '#6b7280';
+            document.getElementById('chart-range').textContent = '';
+            points = [];
+            return;
+          }
+          var vals = rows.map(function (r) { return r[1]; });
+          var min = Math.min.apply(null, vals), max = Math.max.apply(null, vals);
+          var span = max - min || 1;
+          points = rows.map(function (r, i) {
+            return { x: PAD + (i / (rows.length - 1)) * (W - 2 * PAD), y: PAD + (1 - (r[1] - min) / span) * (H - 2 * PAD), d: r[0], v: r[1] };
+          });
+          var up = (DATA.returns[period] != null ? DATA.returns[period] : vals[vals.length - 1] - vals[0]) >= 0;
+          var color = up ? '#059669' : '#dc2626';
+          var line = points.map(function (p, i) { return (i ? 'L' : 'M') + p.x.toFixed(1) + ' ' + p.y.toFixed(1); }).join(' ');
+          var area = line + ' L' + points[points.length - 1].x.toFixed(1) + ' ' + H + ' L' + points[0].x.toFixed(1) + ' ' + H + ' Z';
+          svg.innerHTML =
+            '<defs><linearGradient id="fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="' + color + '" stop-opacity="0.18"/><stop offset="1" stop-color="' + color + '" stop-opacity="0"/></linearGradient></defs>' +
+            '<path d="' + area + '" fill="url(#fill)"/>' +
+            '<path d="' + line + '" fill="none" stroke="' + color + '" stroke-width="2" vector-effect="non-scaling-stroke"/>' +
+            '<line id="chart-cursor" y1="0" y2="' + H + '" stroke="#9ca3af" stroke-width="1" vector-effect="non-scaling-stroke" visibility="hidden"/>';
+          var official = DATA.returns[period];
+          var pct = official != null ? official : (vals[vals.length - 1] / vals[0] - 1) * 100;
+          change.textContent = (pct >= 0 ? '+' : '') + pct.toFixed(2) + '% ' + (period === 'Max' ? 'since ' + fmtDate(rows[0][0]) : 'over ' + period);
+          change.style.color = color;
+          document.getElementById('chart-range').textContent =
+            fmtDate(rows[0][0]) + ' – today · Low $' + min.toFixed(2) + ' · High $' + max.toFixed(2);
+        }
+
+        svg.addEventListener('mousemove', function (e) {
+          if (!points.length) return;
+          var box = svg.getBoundingClientRect();
+          var x = (e.clientX - box.left) / box.width * W;
+          var p = points.reduce(function (best, q) { return Math.abs(q.x - x) < Math.abs(best.x - x) ? q : best; });
+          var cursor = document.getElementById('chart-cursor');
+          cursor.setAttribute('x1', p.x); cursor.setAttribute('x2', p.x); cursor.setAttribute('visibility', 'visible');
+          tip.hidden = false;
+          tip.textContent = fmtDate(p.d) + ' · $' + p.v.toFixed(2);
+          tip.style.left = Math.min(Math.max(p.x / W * box.width - 60, 0), box.width - 130) + 'px';
+        });
+        svg.addEventListener('mouseleave', function () {
+          tip.hidden = true;
+          var cursor = document.getElementById('chart-cursor');
+          if (cursor) cursor.setAttribute('visibility', 'hidden');
+        });
+        var buttons = document.querySelectorAll('#price-chart .chart-periods button');
+        function select(period) {
+          buttons.forEach(function (b) { b.classList.toggle('active', b.dataset.period === period); });
+          draw(period);
+        }
+        // Grey out periods the stock's history doesn't cover (e.g. recent IPOs)
+        buttons.forEach(function (b) {
+          if (b.dataset.period !== 'Max' && all[0][0] > startDate(b.dataset.period)) b.disabled = true;
+        });
+        document.querySelector('#price-chart .chart-periods').addEventListener('click', function (e) {
+          var btn = e.target.closest('button');
+          if (btn && !btn.disabled) select(btn.dataset.period);
+        });
+        // Open on 1Y, or Max when the stock hasn't traded that long
+        select(document.querySelector('#price-chart button[data-period="1Y"]').disabled ? 'Max' : '1Y');
+      })();
+      </script>
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-subtitle">Stock Price</div>
+          <div class="card-value" data-field="price">$1.87</div>
+        </div>
+        <div class="card">
+          <div class="card-subtitle">Market Cap</div>
+          <div class="card-value" data-field="marketCap">$209M</div>
+        </div>
+        <div class="card">
+          <div class="card-subtitle">Cash Position</div>
+          <div class="card-value" data-field="cashPosition">$173M</div>
+        </div>
+        <div class="card">
+          <div class="card-subtitle">YTD Return</div>
+          <div class="card-value" data-field="ytd" style="color: #059669">+23.03%</div>
+        </div>
+        <div class="card">
+          <div class="card-subtitle">Monthly Burn</div>
+          <div class="card-subtitle">Operating cash outflow, latest qtr</div>
+          <div class="card-value" data-field="monthlyBurn">$11.4M/mo</div>
+        </div>
+        <div class="card">
+          <div class="card-subtitle">Cash Runway</div>
+          <div class="card-value" data-field="runway">15 months</div>
+        </div>
+      </div>
+      <div class="returns">
+        <div class="return"><div class="return-label">1D</div><div class="return-value" style="color: #dc2626">-2.60%</div></div>
+        <div class="return"><div class="return-label">5D</div><div class="return-value" style="color: #dc2626">-6.97%</div></div>
+        <div class="return"><div class="return-label">1M</div><div class="return-value" style="color: #dc2626">-20.09%</div></div>
+        <div class="return"><div class="return-label">6M</div><div class="return-value" style="color: #dc2626">-6.50%</div></div>
+        <div class="return"><div class="return-label">YTD</div><div class="return-value" style="color: #059669">+23.03%</div></div>
+        <div class="return"><div class="return-label">1Y</div><div class="return-value" style="color: #dc2626">-38.69%</div></div>
+        <div class="return"><div class="return-label">3Y</div><div class="return-value" style="color: #dc2626">-71.14%</div></div>
+        <div class="return"><div class="return-label">5Y</div><div class="return-value" style="color: #dc2626">-92.04%</div></div>
+        <div class="return"><div class="return-label">10Y</div><div class="return-value" style="color: #6b7280">—</div></div>
+      </div>
+      <div class="meta-line">Next earnings: <strong>Nov 5, 2026</strong> (estimated)</div>
+    </div>
+
+    <!-- Insider Trading -->
+    <div class="section">
+      <h2>Insider Trading Activity</h2>
+      <div style="overflow-x: auto;">
+      <table>
+        <thead>
+          <tr>
+            <th>Insider</th>
+            <th>Relationship</th>
+            <th>Date</th>
+            <th>Type</th>
+            <th>Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Grace Wong-Sarad</td>
+            <td>Officer</td>
+            <td>Sep 4, 2026</td>
+            <td><span class="insider-sell">SELL</span></td>
+            <td>$24,666 · 9,446 shares</td>
+          </tr>
+          <tr>
+            <td>Arnon Rosenthal</td>
+            <td>Chief Executive Officer</td>
+            <td>Sep 3, 2026</td>
+            <td><span class="insider-sell">SELL</span></td>
+            <td>$193,473 · 72,606 shares</td>
+          </tr>
+          <tr>
+            <td>Neil Lindsay Berkley</td>
+            <td>Chief Financial Officer</td>
+            <td>Sep 3, 2026</td>
+            <td><span class="insider-sell">SELL</span></td>
+            <td>$77,948 · 29,251 shares</td>
+          </tr>
+          <tr>
+            <td>Arnon Rosenthal</td>
+            <td>Chief Executive Officer</td>
+            <td>Aug 19, 2026</td>
+            <td><span class="insider-other">GIFT</span></td>
+            <td>1,050,000 shares</td>
+          </tr>
+          <tr>
+            <td>Grace Wong-Sarad</td>
+            <td>Officer</td>
+            <td>Jul 9, 2026</td>
+            <td><span class="insider-other">AWARD</span></td>
+            <td>20,000 shares</td>
+          </tr>
+          <tr>
+            <td>Kristine Yaffe</td>
+            <td>Director</td>
+            <td>Jun 17, 2026</td>
+            <td><span class="insider-other">AWARD</span></td>
+            <td>28,700 shares</td>
+          </tr>
+          <tr>
+            <td>Paula Hammond</td>
+            <td>Director</td>
+            <td>Jun 17, 2026</td>
+            <td><span class="insider-other">AWARD</span></td>
+            <td>28,700 shares</td>
+          </tr>
+          <tr>
+            <td>Elizabeth Amy M.d. Garofalo</td>
+            <td>Director</td>
+            <td>Jun 17, 2026</td>
+            <td><span class="insider-other">AWARD</span></td>
+            <td>28,700 shares</td>
+          </tr>
+          <tr>
+            <td>Louis J Lavigne Jr.</td>
+            <td>Director</td>
+            <td>Jun 17, 2026</td>
+            <td><span class="insider-other">AWARD</span></td>
+            <td>28,700 shares</td>
+          </tr>
+          <tr>
+            <td>Errol B Desouza</td>
+            <td>Director</td>
+            <td>Jun 17, 2026</td>
+            <td><span class="insider-other">AWARD</span></td>
+            <td>28,700 shares</td>
+          </tr>
+          <tr>
+            <td>Richard H Scheller</td>
+            <td>Director</td>
+            <td>Jun 17, 2026</td>
+            <td><span class="insider-other">AWARD</span></td>
+            <td>28,700 shares</td>
+          </tr>
+          <tr>
+            <td>Mark Altmeyer</td>
+            <td>Director</td>
+            <td>Jun 17, 2026</td>
+            <td><span class="insider-other">AWARD</span></td>
+            <td>28,700 shares</td>
+          </tr>
+          <tr>
+            <td>Grace Wong-Sarad</td>
+            <td>Officer</td>
+            <td>Jun 3, 2026</td>
+            <td><span class="insider-sell">SELL</span></td>
+            <td>$17,813 · 9,184 shares</td>
+          </tr>
+          <tr>
+            <td>Arnon Rosenthal</td>
+            <td>Chief Executive Officer</td>
+            <td>Jun 2, 2026</td>
+            <td><span class="insider-sell">SELL</span></td>
+            <td>$172,191 · 87,216 shares</td>
+          </tr>
+          <tr>
+            <td>Neil Lindsay Berkley</td>
+            <td>Chief Financial Officer</td>
+            <td>Jun 2, 2026</td>
+            <td><span class="insider-sell">SELL</span></td>
+            <td>$38,221 · 19,360 shares</td>
+          </tr>
+          <tr>
+            <td>Richard H Scheller</td>
+            <td>Director</td>
+            <td>Jun 1, 2026</td>
+            <td><span class="insider-other">AWARD</span></td>
+            <td>10,833 shares</td>
+          </tr>
+          <tr>
+            <td>Grace Wong-Sarad</td>
+            <td>Officer</td>
+            <td>Apr 16, 2026</td>
+            <td><span class="insider-sell">SELL</span></td>
+            <td>$4,823 · 1,820 shares</td>
+          </tr>
+          <tr>
+            <td>Neil Lindsay Berkley</td>
+            <td>Chief Financial Officer</td>
+            <td>Mar 13, 2026</td>
+            <td><span class="insider-other">AWARD</span></td>
+            <td>54,600 shares</td>
+          </tr>
+          <tr>
+            <td>Arnon Rosenthal</td>
+            <td>Chief Executive Officer</td>
+            <td>Mar 13, 2026</td>
+            <td><span class="insider-other">AWARD</span></td>
+            <td>116,246 shares</td>
+          </tr>
+          <tr>
+            <td>Grace Wong-Sarad</td>
+            <td>Officer</td>
+            <td>Mar 10, 2026</td>
+            <td><span class="insider-sell">SELL</span></td>
+            <td>$2,650 · 1,000 shares</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+      <p class="note"><strong>Summary:</strong> Last 6 months: no purchases and 7 sales ($529,135). Sales are often routine (tax withholding on vested stock or pre-set trading plans). Source: SEC Form 4 filings via Yahoo Finance.</p>
+    </div>
+
+    <!-- Financial Health -->
+    <div class="section">
+      <h2>Financial Health & Runway</h2>
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-title">Cash & Equivalents</div>
+          <div class="card-value" data-field="cashPosition">$173M</div>
+          <div class="card-subtitle" data-field="cashAsOf">As of Jun 30, 2026 (cash + marketable securities)</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Monthly Burn Rate</div>
+          <div class="card-value" data-field="burnRate">$11.4M</div>
+          <div class="card-subtitle">Latest quarter's operating cash outflow ÷ 3</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Estimated Runway</div>
+          <div class="card-value" data-field="runway">15 months</div>
+          <div class="card-subtitle">At the latest quarter's burn rate</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Headcount</div>
+          <div class="card-value">~103 employees</div>
+          <div class="card-subtitle">Full-time</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Leadership -->
+    <div class="section">
+      <h2>Leadership</h2>
+      <ul class="item-list">
+        <li><strong>Dr. Arnon Rosenthal Ph.D.</strong> <span class="item-meta">— Co-Founder, CEO &amp; Director</span></li>
+        <li><strong>Neil Berkley M.B.A., M.S.</strong> <span class="item-meta">— CFO &amp; Chief Business Officer</span></li>
+        <li><strong>Katie Hogan</strong> <span class="item-meta">— Senior Director of Corporate Communication &amp; Investor Relations</span></li>
+        <li><strong>Danielle Pasqualone J.D., Ph.D.</strong> <span class="item-meta">— General Counsel</span></li>
+        <li><strong>Clare Hunt M.B.A.</strong> <span class="item-meta">— Chief People &amp; Places Officer</span></li>
+      </ul>
+    </div>
+
+    <!-- Latest News -->
+    <div class="section">
+      <h2>Latest News</h2>
+      <ul class="item-list">
+        <li><a href="https://news.google.com/rss/articles/CBMiiwFBVV95cUxQaHNyNldKMENwRmhhYVZ2OXlSdGtIUXlxYnBiVmdpT0Q0UnZ1OVczclFIN3BTS01KYWpNRnlSMnc0OGhFejJ6VDhZam9McEUwSnIwYXIxY05jdk1zQ21GNEMxY3VXazRaSlVVSFhSYldwelQxWFIxT1k0WGFBQ2JCQXRCVUI3RjQ0ejVF?oc=5" target="_blank" rel="noopener">Net income of Alector, Inc. – HAN:0Z2</a><div class="item-meta">TradingView · Sep 29, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMiugFBVV95cUxNVVRyYk5UcGJTU3hKSVhvYXc4VktWeEtVUEtCNTFITVRSVWNWWlpQY0wtNUxKNmRVZS12TUVoenkwZDNUYXZsaFFRcEZidGxIUXdDZ1Qxb3hhZ2NrUGR0VEZZdDJhbVlFWm5ydkI0V3YzV2FaUXdTeHRFenB6bXJRUVZMLTc4ZnFlVXQ5NWJZN0M5cTBaWC1vRjZDc2U4bmE0V1F6S2RQb2RTNFNJMVBoMlJUV3NqTExCZXc?oc=5" target="_blank" rel="noopener">Biotechnology Value Fund group discloses 8.4% stake in Alector (ALEC)</a><div class="item-meta">Stock Titan · Sep 18, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMitAFBVV95cUxOUW91REZ4RGtOZE50Qlp1eVk2RmFMNXVUTjFia2hPd1JtNTF0YmoyZC00Vmp6ZkhYbzZSUFAwZlppMzhZLWVHbWdVSk5rV0RUbkR4TEwwWFlhMlIzbzdxWC13QU0wUVVnbVJQLVpfV21iQjRHRzNsRWV2SFJjR19Jb1k3WENOZ3IxM1VqekJVVlZtR0xqeGxGajNyZVpEU0RyOTZKMVpVb0JwR0o2R2stSnhYbVE?oc=5" target="_blank" rel="noopener">Alector CEO Arnon Rosenthal sells $193,473 in stock</a><div class="item-meta">Investing.com · Sep 4, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMikgFBVV95cUxNbGFyVFVvaTRUbFRPb2NUZUYzLVVHWmlBa3JpM0l6aTdwaGZpXzVuQU1fb2xZYjZNXzFVeXR2b212cUlOdDJOQzJoVGtic0ZWbjBfcklWdTUtX3pIZkZrVXk5VUpvNFJCNVdoSWlPVlZmeldXQW0tcGpBWGhkVGh6N19TS1pMMks5T1pVLXMtVnRJZw?oc=5" target="_blank" rel="noopener">Alector (NASDAQ: ALEC) officer lines up another stock sale</a><div class="item-meta">Stock Titan · Sep 4, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMitwFBVV95cUxQRHVFWDQycHJ6VTlSU0R6T2FKWTBpQzhEUUY4eEFQQTVMbE9qYUFwWFhjVkc1S0NxV0RGSnpaWGN5cjJNb2ZUMGFucUFTZTZHZG5wZHAwbUVZMnAwd0xNejlyeVJnbFVrQkgxTzB3UloxMnNUYzF4WWY5NnZCT2UyblVNSXV2YUQ5bnZ6amRPc1dNa04wc1JCZENXNlZjd2JiYTBjVHJfaG0zTS0yRU5CdlVwNE12dlE?oc=5" target="_blank" rel="noopener">Alector CFO Neil Berkley sells $77,948 of ALEC shares</a><div class="item-meta">Investing.com · Sep 4, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMiqAFBVV95cUxPbUpBUFA5cnZDZEJRMDBiUUdVSHN1aFdqSVE2S0dDdUNQRWQxTlk1NF9GZE8zb2RGbWZaVUp2VVRTcDNBS255UlBJYU9vYzc1aTdyNDVXZ3dMbXF3cy1NckNhZlpGZVIybmJ2aWc3M19SaUZ2WFNHUnhITjV4MDdSWU5QeDBSNW5xM1h4NmY4eEE2WUNWTWd4ZWlncWRjVllmTmFGZFloc0I?oc=5" target="_blank" rel="noopener">Alector (ALEC) CEO sells 72,606 shares to cover RSU taxes</a><div class="item-meta">Stock Titan · Sep 4, 2026</div></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <footer class="disclaimer">
+    <nav class="site-footer" aria-label="Site links">
+      <div><strong>Life Science Investor</strong><a href="../index.html">Dashboard</a><a href="../beaten-down.html">Beaten Down, Not Out</a><a href="../calendar.html">Catalyst &amp; Earnings Calendar</a></div>
+      <div><strong>Themes</strong><a href="../themes/obesity-and-metabolic.html">Obesity & Metabolic</a><a href="../themes/gene-editing-and-rna.html">Gene Editing & RNA</a><a href="../themes/cell-therapy.html">Cell Therapy</a><a href="../themes/melanoma.html">Melanoma</a><a href="../themes/oncolytic-viruses.html">Oncolytic Viruses</a><a href="../themes/bladder-and-prostate-cancer.html">Bladder & Prostate Cancer</a><a href="../themes/targeted-oncology.html">Targeted Oncology</a><a href="../themes/infectious-disease.html">Infectious Disease</a><a href="../themes/neurology.html">Neurology</a><a href="../themes/ai-drug-discovery.html">AI Drug Discovery</a><a href="../themes/rare-disease.html">Rare Disease</a><a href="../themes/immunology-and-inflammation.html">Immunology & Inflammation</a><a href="../themes/ophthalmology.html">Ophthalmology</a></div>
+    </nav>
+    <p>For informational purposes only — not investment advice. Prices, returns and financials come from Yahoo Finance and company filings and may be delayed, incomplete or inaccurate. Company profiles are editorial summaries and may not reflect the latest developments. Do your own research and consult a licensed financial advisor before making investment decisions.</p>
+  </footer>
+
+</body>
+
+</html>

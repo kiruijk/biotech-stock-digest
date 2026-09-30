@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rare Disease Stocks — Science, Catalysts &amp; News | Life Science Investor</title>
+  <meta name="description" content="Rare diseases each affect fewer than 200,000 people in the U.S., but there are thousands of them, and most have no approved treatment. Many are caused by a single faulty gene, which makes them natural targets for gene therapy, RNA drugs and enzyme replacement. Small patient numbers are offset by orp">
+  <meta property="og:title" content="Rare Disease Stocks — Life Science Investor">
+  <meta property="og:description" content="Rare diseases each affect fewer than 200,000 people in the U.S., but there are thousands of them, and most have no approved treatment. Many are caused by a single faulty gene, which makes them natural targets for gene therapy, RNA drugs and enzyme replacement. Small patient numbers are offset by orp">
+  <meta property="og:type" content="article">
+  <link rel="canonical" href="https://kiruijk.github.io/biotech-stock-digest/themes/rare-disease.html">
+  <meta property="og:url" content="https://kiruijk.github.io/biotech-stock-digest/themes/rare-disease.html">
+  <meta property="og:site_name" content="Life Science Investor">
+  <style>
+    :root {
+      color-scheme: light;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f5f7fa;
+      color: #1a1a1a;
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(135deg, #0052cc 0%, #0066ff 100%);
+      color: white;
+      padding: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      font-size: 1.6rem;
+    }
+
+    .back-btn {
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      border: 1px solid white;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .back-btn:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1rem 3rem;
+    }
+
+    /* Section Styling */
+    .section {
+      background: white;
+      border-radius: 10px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    .section h2 {
+      font-size: 1.3rem;
+      margin-bottom: 1.5rem;
+      color: #1a1a1a;
+      border-bottom: 2px solid #0052cc;
+      padding-bottom: 0.5rem;
+    }
+
+    /* Grid layouts */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    /* Card styling */
+    .card {
+      padding: 1rem;
+      background: #f9fafb;
+      border-radius: 6px;
+      border-left: 3px solid #0052cc;
+    }
+
+    .card-title {
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 0.3rem;
+    }
+
+    .card-subtitle {
+      font-size: 0.85rem;
+      color: #6b7280;
+    }
+
+    .card-value {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #0052cc;
+      margin-top: 0.3rem;
+    }
+
+    /* Badge styling */
+    .badge {
+      display: inline-block;
+      padding: 0.25rem 0.65rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .badge-green {
+      background: #d1fae5;
+      color: #059669;
+    }
+
+    .badge-red {
+      background: #fee2e2;
+      color: #dc2626;
+    }
+
+    .badge-yellow {
+      background: #fef3c7;
+      color: #d97706;
+    }
+
+    /* Table styling */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+
+    th,
+    td {
+      padding: 0.8rem;
+      text-align: left;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    th {
+      background: #f9fafb;
+      font-weight: 700;
+    }
+
+    /* Insider Trading */
+    .insider-buy {
+      color: #059669;
+      font-weight: 600;
+    }
+
+    .insider-sell {
+      color: #dc2626;
+      font-weight: 600;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .grid-2,
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Price chart */
+    .chart {
+      position: relative;
+      margin-bottom: 1.25rem;
+    }
+
+    .chart-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .chart-change {
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .chart-periods {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25rem;
+    }
+
+    .chart-periods button {
+      border: 1px solid #d1d5db;
+      background: white;
+      border-radius: 5px;
+      padding: 0.2rem 0.55rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #374151;
+      cursor: pointer;
+    }
+
+    .chart-periods button:disabled {
+      color: #d1d5db;
+      border-color: #eef0f3;
+      cursor: default;
+    }
+
+    .chart-periods button.active {
+      background: #0052cc;
+      border-color: #0052cc;
+      color: white;
+    }
+
+    #chart-svg {
+      width: 100%;
+      height: 200px;
+      display: block;
+      cursor: crosshair;
+    }
+
+    .chart-tip {
+      position: absolute;
+      top: 2.4rem;
+      width: 130px;
+      text-align: center;
+      background: #1a1a1a;
+      color: white;
+      font-size: 0.72rem;
+      padding: 0.2rem 0.4rem;
+      border-radius: 4px;
+      pointer-events: none;
+    }
+
+    .chart-range {
+      font-size: 0.75rem;
+      color: #9ca3af;
+      margin-top: 0.3rem;
+    }
+
+    /* Text */
+    .para {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: #374151;
+      margin-bottom: 1.2rem;
+    }
+
+    .note {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: #6b7280;
+    }
+
+    /* Returns row */
+    .returns {
+      display: grid;
+      grid-template-columns: repeat(9, 1fr);
+      gap: 0.3rem;
+      margin-top: 1rem;
+    }
+
+    .return {
+      text-align: center;
+      padding: 0.45rem 0.1rem;
+      background: #f9fafb;
+      border-radius: 6px;
+    }
+
+    .return-label {
+      color: #6b7280;
+      font-size: 0.68rem;
+      text-transform: uppercase;
+    }
+
+    .return-value {
+      font-weight: 700;
+      font-size: 0.8rem;
+      white-space: nowrap;
+    }
+
+    /* Notices */
+    .notice {
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+    }
+
+    .notice-stale {
+      background: #fef3c7;
+      color: #92400e;
+    }
+
+    .notice-tracked {
+      background: #e0ebff;
+      color: #1e3a8a;
+    }
+
+    .notice-beaten {
+      background: #fff1e6;
+      color: #7c2d12;
+    }
+
+    .notice-beaten a {
+      color: inherit;
+      font-weight: 600;
+    }
+
+    .meta-line {
+      font-size: 0.85rem;
+      color: #6b7280;
+      margin-top: 0.75rem;
+    }
+
+    .theme-tag {
+      color: white;
+      text-decoration: none;
+      display: inline-block;
+      padding: 0.1rem 0.5rem;
+      margin-right: 0.3rem;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.2);
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    /* Insider labels */
+    .insider-other {
+      color: #6b7280;
+      font-weight: 600;
+    }
+
+    /* News & leadership lists */
+    .item-list {
+      list-style: none;
+    }
+
+    .item-list li {
+      padding: 0.75rem 0;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .item-list li:last-child {
+      border-bottom: none;
+    }
+
+    .item-list a {
+      color: #0052cc;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .item-list a:hover {
+      text-decoration: underline;
+    }
+
+    .item-meta {
+      font-size: 0.8rem;
+      color: #6b7280;
+    }
+
+    .disclaimer {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem 2rem;
+      font-size: 0.75rem;
+      color: #9ca3af;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 900px) {
+      .returns {
+        grid-template-columns: repeat(5, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .returns {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .theme-tag:hover {
+      background: rgba(255, 255, 255, 0.35);
+    }
+
+    /* Theme pages */
+    .science h3 {
+      font-size: 1.05rem;
+      margin: 1.25rem 0 0.5rem;
+      color: #1a1a1a;
+    }
+
+    .science h3:first-child {
+      margin-top: 0;
+    }
+
+    .science p,
+    .science li {
+      color: #374151;
+      line-height: 1.75;
+    }
+
+    .science ul {
+      padding-left: 1.25rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .num {
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    td a {
+      color: #0052cc;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    /* Phones: tighter spacing, two-column stats, compact header */
+    @media (max-width: 600px) {
+      header {
+        padding: 1rem;
+        align-items: flex-start;
+        gap: 0.6rem;
+      }
+
+      header h1 {
+        font-size: 1.25rem;
+        line-height: 1.3;
+      }
+
+      .back-btn {
+        padding: 0.3rem 0.7rem;
+        font-size: 0.8rem;
+      }
+
+      .container {
+        padding: 1rem 0.75rem 2rem;
+      }
+
+      .section {
+        padding: 1.1rem 1rem;
+        margin-bottom: 1rem;
+        border-radius: 8px;
+      }
+
+      .section h2 {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+      }
+
+      .grid-3 {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.6rem;
+      }
+
+      .grid-2 {
+        gap: 0.75rem;
+      }
+
+      .card {
+        padding: 0.75rem;
+      }
+
+      .card-value {
+        font-size: 1rem;
+      }
+
+      .para {
+        font-size: 0.95rem;
+        line-height: 1.65;
+        margin-bottom: 1rem;
+      }
+
+      th,
+      td {
+        padding: 0.55rem 0.5rem;
+        font-size: 0.85rem;
+      }
+    }
+
+    .site-nav {
+      background: #0b1f44;
+      color: white;
+      font-size: 0.88rem;
+    }
+
+    .site-nav-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0.55rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+    }
+
+    .site-nav a {
+      color: #c7d7fe;
+      text-decoration: none;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .site-nav a:hover,
+    .site-nav a.current {
+      color: white;
+    }
+
+    .site-nav .brand {
+      color: white;
+      font-weight: 800;
+      margin-right: auto;
+      letter-spacing: -0.01em;
+    }
+
+    .site-nav details {
+      position: relative;
+    }
+
+    .site-nav summary {
+      white-space: nowrap;
+      cursor: pointer;
+      color: #c7d7fe;
+      font-weight: 600;
+      list-style: none;
+    }
+
+    .site-nav summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .site-nav summary::after {
+      content: ' ▾';
+      font-size: 0.75rem;
+    }
+
+    .site-nav details[open] summary,
+    .site-nav summary:hover {
+      color: white;
+    }
+
+    .site-nav .menu {
+      position: absolute;
+      right: 0;
+      top: 1.9rem;
+      z-index: 20;
+      min-width: 230px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+      padding: 0.4rem 0;
+    }
+
+    .site-nav .menu a {
+      display: block;
+      padding: 0.45rem 1rem;
+      color: #1a1a1a;
+      font-weight: 500;
+    }
+
+    .site-nav .menu a:hover {
+      background: #f3f4f6;
+      color: #0052cc;
+    }
+
+    .site-footer {
+      border-top: 1px solid #e5e7eb;
+      margin-top: 1rem;
+      padding: 1.25rem 1rem 0.5rem;
+      font-size: 0.82rem;
+      line-height: 1.9;
+    }
+
+    .site-footer a {
+      color: #4b5563;
+      text-decoration: none;
+      margin-right: 1rem;
+      white-space: nowrap;
+    }
+
+    .site-footer a:hover {
+      color: #0052cc;
+    }
+
+    .site-footer strong {
+      color: #374151;
+      margin-right: 0.75rem;
+    }
+
+    @media (max-width: 600px) {
+      .site-nav-inner {
+        flex-wrap: wrap;
+        gap: 0.35rem 0.9rem;
+        padding: 0.5rem 0.75rem;
+      }
+
+      .site-nav .brand {
+        font-size: 0.85rem;
+      }
+
+      /* The brand already links home */
+      .site-nav .nav-home {
+        display: none;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+  <!-- Generated by update-stocks.js from data/themes/rare-disease.json and live market data. Do not edit by hand. -->
+  <nav class="site-nav" aria-label="Site">
+    <div class="site-nav-inner">
+      <a class="brand" href="../index.html">Life Science Investor</a>
+      <a class="nav-home" href="../index.html">Dashboard</a>
+      <details>
+        <summary class="current">Themes</summary>
+        <div class="menu">
+          <a href="../themes/obesity-and-metabolic.html">Obesity & Metabolic</a>
+          <a href="../themes/gene-editing-and-rna.html">Gene Editing & RNA</a>
+          <a href="../themes/cell-therapy.html">Cell Therapy</a>
+          <a href="../themes/melanoma.html">Melanoma</a>
+          <a href="../themes/oncolytic-viruses.html">Oncolytic Viruses</a>
+          <a href="../themes/bladder-and-prostate-cancer.html">Bladder & Prostate Cancer</a>
+          <a href="../themes/targeted-oncology.html">Targeted Oncology</a>
+          <a href="../themes/infectious-disease.html">Infectious Disease</a>
+          <a href="../themes/neurology.html">Neurology</a>
+          <a href="../themes/ai-drug-discovery.html">AI Drug Discovery</a>
+          <a href="../themes/rare-disease.html">Rare Disease</a>
+          <a href="../themes/immunology-and-inflammation.html">Immunology & Inflammation</a>
+          <a href="../themes/ophthalmology.html">Ophthalmology</a>
+        </div>
+      </details>
+      <a href="../beaten-down.html">Beaten Down</a>
+      <a href="../calendar.html">Calendar</a>
+    </div>
+  </nav>
+
+  <header>
+    <div>
+      <h1>Rare Disease</h1>
+      <div>19 companies tracked</div>
+    </div>
+  </header>
+
+  <div class="container">
+
+    <div class="section">
+      <p class="para" style="margin-bottom: 0;">Rare diseases each affect fewer than 200,000 people in the U.S., but there are thousands of them, and most have no approved treatment. Many are caused by a single faulty gene, which makes them natural targets for gene therapy, RNA drugs and enzyme replacement. Small patient numbers are offset by orphan-drug incentives, faster regulatory paths and high prices.</p>
+    </div>
+
+    <div class="section science">
+      <h2>The Science</h2>
+      <h3>Main approaches</h3>
+      <ul><li><strong>Gene therapy</strong> uses a harmless virus (usually AAV) to deliver a working copy of a gene, often as a one-time treatment. Duchenne muscular dystrophy, hemophilia and Huntington's disease are active areas.</li><li><strong>RNA drugs</strong>, including antisense oligonucleotides and siRNA, raise or lower production of a specific protein. Newer versions are linked to antibodies to reach muscle or brain.</li><li><strong>Enzyme replacement and small molecules</strong> supply a missing enzyme, help a misfolded protein work, or block the harmful product of a disease pathway.</li></ul>
+      <h3>Why the economics differ</h3>
+      <p>Orphan drug designation brings seven years of U.S. market exclusivity and tax credits. Priority review vouchers, which can be sold for around $100M or more, add to the incentives. Trials are small and often use accelerated approval based on a biomarker. That speeds approval, but <strong>confirmatory trials</strong> can fail and force a drug off the market. Gene therapies have also run into safety problems, including liver toxicity and deaths, which have led to label restrictions and clinical holds.</p>
+      <h3>What investors watch</h3>
+      <ul><li><strong>Biomarker vs functional results</strong>: whether the protein increase or biomarker change translates into better strength, survival or quality of life.</li><li><strong>Launch metrics</strong>: patients identified, time to treatment and payer coverage. Rare-disease launches are slow and lumpy.</li><li><strong>Safety across larger groups</strong>, especially for gene therapies given to older or sicker patients.</li><li><strong>Manufacturing</strong>: viral vector supply and cost, which can cap the number of patients treated.</li></ul>
+      <div class="meta-line">Background last reviewed Sep 29, 2026. General educational content, not a recommendation.</div>
+    </div>
+
+    <div class="section">
+      <h2>Companies</h2>
+      <div style="overflow-x: auto;">
+      <table>
+        <thead>
+          <tr>
+            <th>Ticker</th>
+            <th>Company</th>
+            <th class="num">Price</th>
+            <th class="num">1D</th>
+            <th class="num">YTD</th>
+            <th class="num">1Y</th>
+            <th class="num">Mkt Cap</th>
+            <th class="num">Runway</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><a href="../stocks/amlx.html">AMLX</a></td>
+            <td>Amylyx Pharmaceuticals <span class="item-meta">(data only)</span></td>
+            <td class="num">$29.28</td>
+            <td class="num" style="color: #dc2626">-1.91%</td>
+            <td class="num" style="color: #059669">+144.00%</td>
+            <td class="num" style="color: #059669">+96.51%</td>
+            <td class="num">$3.7B</td>
+            <td class="num">24 months</td>
+          </tr>
+          <tr>
+            <td><a href="../stocks/arct.html">ARCT</a></td>
+            <td>Arcturus Therapeutics <span class="item-meta">(data only)</span></td>
+            <td class="num">$13.70</td>
+            <td class="num" style="color: #dc2626">-5.26%</td>
+            <td class="num" style="color: #059669">+121.32%</td>
+            <td class="num" style="color: #dc2626">-27.05%</td>
+            <td class="num">$389M</td>
+            <td class="num">29 months</td>
+          </tr>
+          <tr>
+            <td><a href="../stocks/dnli.html">DNLI</a></td>
+            <td>Denali Therapeutics <span class="item-meta">(data only)</span></td>
+            <td class="num">$20.81</td>
+            <td class="num" style="color: #dc2626">-0.81%</td>
+            <td class="num" style="color: #059669">+26.81%</td>
+            <td class="num" style="color: #059669">+43.32%</td>
+            <td class="num">$3.3B</td>
+            <td class="num">29 months</td>
+          </tr>
+          <tr>
+            <td><a href="../stocks/sldb.html">SLDB</a></td>
+            <td>Solid Biosciences <span class="item-meta">(data only)</span></td>
+            <td class="num">$7.16</td>
+            <td class="num" style="color: #dc2626">-1.65%</td>
+            <td class="num" style="color: #059669">+25.61%</td>
+            <td class="num" style="color: #059669">+19.93%</td>
+            <td class="num">$768M</td>
+            <td class="num">22 months</td>
+          </tr>
+          <tr>
+            <td><a href="../stocks/irwd.html">IRWD</a></td>
+            <td>Ironwood Pharmaceuticals <span class="item-meta">(data only)</span></td>
+            <td class="num">$4.16</td>
+            <td class="num" style="color: #059669">+0.97%</td>
+            <td class="num" style="color: #059669">+24.92%</td>
+            <td class="num" style="color: #059669">+192.96%</td>
+            <td class="num">$687M</td>
+            <td class="num">No cash burn last qtr</td>
+          </tr>
+          <tr>
+            <td><a href="../stocks/agio.html">AGIO</a></td>
+            <td>Agios Pharmaceuticals <span class="item-meta">(data only)</span></td>
+            <td class="num">$33.30</td>
+            <td class="num" style="color: #dc2626">-0.36%</td>
+            <td class="num" style="color: #059669">+21.84%</td>
+            <td class="num" style="color: #dc2626">-15.20%</td>
+            <td class="num">$2.0B</td>
+            <td class="num">51 months</td>
+          </tr>
+          <tr>
+            <td><a href="../stocks/omer.html">OMER</a></td>
+            <td>Omeros <span class="item-meta">(data only)</span></td>
+            <td class="num">$19.25</td>
+            <td class="num" style="color: #dc2626">-0.93%</td>
+            <td class="num" style="color: #059669">+13.50%</td>
+            <td class="num" style="color: #059669">+360.53%</td>
+            <td class="num">$1.4B</td>
+            <td class="num">No cash burn last qtr</td>
+          </tr>
+          <tr>
+            <td><a href="../stocks/bcrx.html">BCRX</a></td>
+            <td>BioCryst Pharmaceuticals <span class="item-meta">(data only)</span></td>
+            <td class="num">$8.27</td>
+            <td class="num" style="color: #dc2626">-2.36%</td>
+            <td class="num" style="color: #059669">+7.96%</td>
+            <td class="num" style="color: #059669">+9.54%</td>
+            <td class="num">$2.1B</td>
+            <td class="num">No cash burn last qtr</td>
+          </tr>
+          <tr>
+            <td><a href="../stocks/hrmy.html">HRMY</a></td>
+            <td>Harmony Biosciences <span class="item-meta">(data only)</span></td>
+            <td class="num">$39.29</td>
+            <td class="num" style="color: #dc2626">-1.80%</td>
+            <td class="num" style="color: #059669">+4.38%</td>
+            <td class="num" style="color: #059669">+42.15%</td>
+            <td class="num">$2.3B</td>
+            <td class="num">No cash burn last qtr</td>
+          </tr>
+          <tr>
+            <td><a href="../stocks/qure.html">QURE</a></td>
+            <td>uniQure <span class="item-meta">(data only)</span></td>
+            <td class="num">$24.51</td>
+            <td class="num" style="color: #dc2626">-37.33%</td>
+            <td class="num" style="color: #059669">+3.07%</td>
+            <td class="num" style="color: #dc2626">-58.74%</td>
+            <td class="num">$1.7B</td>
+            <td class="num">87 months</td>
+          </tr>
+          <tr>
+            <td><a href="../stocks/abeo.html">ABEO</a></td>
+            <td>Abeona Therapeutics <span class="item-meta">(data only)</span></td>
+            <td class="num">$5.16</td>
+            <td class="num" style="color: #dc2626">-2.46%</td>
+            <td class="num" style="color: #dc2626">-0.39%</td>
+            <td class="num" style="color: #dc2626">-3.19%</td>
+            <td class="num">$295M</td>
+            <td class="num">25 months</td>
+          </tr>
+          <tr>
+            <td><a href="../stocks/tsha.html">TSHA</a></td>
+            <td>Taysha Gene Therapies <span class="item-meta">(data only)</span></td>
+            <td class="num">$4.99</td>
+            <td class="num" style="color: #059669">+0.00%</td>
+            <td class="num" style="color: #dc2626">-11.84%</td>
+            <td class="num" style="color: #059669">+57.91%</td>
+            <td class="num">$1.6B</td>
+            <td class="num">34 months</td>
+          </tr>
+          <tr>
+            <td><a href="../stocks/srpt.html">SRPT</a></td>
+            <td>Sarepta Therapeutics <span class="item-meta">(data only)</span></td>
+            <td class="num">$18.64</td>
+            <td class="num" style="color: #dc2626">-0.85%</td>
+            <td class="num" style="color: #dc2626">-13.26%</td>
+            <td class="num" style="color: #dc2626">-0.96%</td>
+            <td class="num">$2.0B</td>
+            <td class="num">No cash burn last qtr</td>
+          </tr>
+          <tr>
+            <td><a href="../stocks/tyra.html">TYRA</a></td>
+            <td>Tyra Biosciences <span class="item-meta">(data only)</span></td>
+            <td class="num">$21.98</td>
+            <td class="num" style="color: #059669">+2.47%</td>
+            <td class="num" style="color: #dc2626">-13.60%</td>
+            <td class="num" style="color: #059669">+65.26%</td>
+            <td class="num">$1.5B</td>
+            <td class="num">34 months</td>
+          </tr>
+          <tr>
+            <td><a href="../stocks/dyn.html">DYN</a></td>
+            <td>Dyne Therapeutics <span class="item-meta">(data only)</span></td>
+            <td class="num">$16.21</td>
+            <td class="num" style="color: #dc2626">-0.80%</td>
+            <td class="num" style="color: #dc2626">-15.57%</td>
+            <td class="num" style="color: #059669">+31.04%</td>
+            <td class="num">$3.0B</td>
+            <td class="num">21 months</td>
+          </tr>
+          <tr>
+            <td><a href="../stocks/stok.html">STOK</a></td>
+            <td>Stoke Therapeutics <span class="item-meta">(data only)</span></td>
+            <td class="num">$25.88</td>
+            <td class="num" style="color: #059669">+1.49%</td>
+            <td class="num" style="color: #dc2626">-18.67%</td>
+            <td class="num" style="color: #059669">+4.65%</td>
+            <td class="num">$1.7B</td>
+            <td class="num">19 months</td>
+          </tr>
+          <tr>
+            <td><a href="../stocks/rare.html">RARE</a></td>
+            <td>Ultragenyx Pharmaceutical <span class="item-meta">(data only)</span></td>
+            <td class="num">$15.32</td>
+            <td class="num" style="color: #059669">+6.32%</td>
+            <td class="num" style="color: #dc2626">-32.75%</td>
+            <td class="num" style="color: #dc2626">-49.54%</td>
+            <td class="num">$1.5B</td>
+            <td class="num">13 months</td>
+          </tr>
+          <tr>
+            <td><a href="../stocks/rgnx.html">RGNX</a></td>
+            <td>REGENXBIO <span class="item-meta">(data only)</span></td>
+            <td class="num">$7.45</td>
+            <td class="num" style="color: #dc2626">-0.27%</td>
+            <td class="num" style="color: #dc2626">-47.13%</td>
+            <td class="num" style="color: #dc2626">-24.37%</td>
+            <td class="num">$492M</td>
+            <td class="num">5 months</td>
+          </tr>
+          <tr>
+            <td><a href="../stocks/aard.html">AARD</a></td>
+            <td>Aardvark Therapeutics <span class="item-meta">(data only)</span></td>
+            <td class="num">$5.35</td>
+            <td class="num" style="color: #059669">+1.52%</td>
+            <td class="num" style="color: #dc2626">-59.55%</td>
+            <td class="num" style="color: #dc2626">-60.89%</td>
+            <td class="num">$117M</td>
+            <td class="num">13 months</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+      <p class="note">Sorted by year-to-date return. Runway = cash ÷ latest quarter's operating cash burn.</p>
+    </div>
+
+    <div class="section">
+      <h2>Upcoming Catalysts</h2>
+      <p class="note">No upcoming catalysts listed.</p>
+    </div>
+
+    <div class="section">
+      <h2>Upcoming Earnings</h2>
+      <ul class="item-list">
+        <li><a href="../stocks/agio.html">AGIO</a> Agios Pharmaceuticals
+          <div class="item-meta">Oct 29, 2026 (estimated)</div></li>
+        <li><a href="../stocks/sldb.html">SLDB</a> Solid Biosciences
+          <div class="item-meta">Nov 2, 2026 (estimated)</div></li>
+        <li><a href="../stocks/bcrx.html">BCRX</a> BioCryst Pharmaceuticals
+          <div class="item-meta">Nov 2, 2026 (confirmed)</div></li>
+        <li><a href="../stocks/stok.html">STOK</a> Stoke Therapeutics
+          <div class="item-meta">Nov 3, 2026 (estimated)</div></li>
+        <li><a href="../stocks/hrmy.html">HRMY</a> Harmony Biosciences
+          <div class="item-meta">Nov 3, 2026 (confirmed)</div></li>
+        <li><a href="../stocks/rare.html">RARE</a> Ultragenyx Pharmaceutical
+          <div class="item-meta">Nov 3, 2026 (estimated)</div></li>
+        <li><a href="../stocks/tyra.html">TYRA</a> Tyra Biosciences
+          <div class="item-meta">Nov 4, 2026 (estimated)</div></li>
+        <li><a href="../stocks/srpt.html">SRPT</a> Sarepta Therapeutics
+          <div class="item-meta">Nov 4, 2026 (confirmed)</div></li>
+        <li><a href="../stocks/tsha.html">TSHA</a> Taysha Gene Therapies
+          <div class="item-meta">Nov 4, 2026 (confirmed)</div></li>
+        <li><a href="../stocks/dyn.html">DYN</a> Dyne Therapeutics
+          <div class="item-meta">Nov 5, 2026 (estimated)</div></li>
+        <li><a href="../stocks/dnli.html">DNLI</a> Denali Therapeutics
+          <div class="item-meta">Nov 5, 2026 (confirmed)</div></li>
+        <li><a href="../stocks/rgnx.html">RGNX</a> REGENXBIO
+          <div class="item-meta">Nov 5, 2026 (estimated)</div></li>
+        <li><a href="../stocks/amlx.html">AMLX</a> Amylyx Pharmaceuticals
+          <div class="item-meta">Nov 5, 2026 (confirmed)</div></li>
+        <li><a href="../stocks/arct.html">ARCT</a> Arcturus Therapeutics
+          <div class="item-meta">Nov 9, 2026 (confirmed)</div></li>
+        <li><a href="../stocks/qure.html">QURE</a> uniQure
+          <div class="item-meta">Nov 9, 2026 (confirmed)</div></li>
+        <li><a href="../stocks/irwd.html">IRWD</a> Ironwood Pharmaceuticals
+          <div class="item-meta">Nov 9, 2026 (confirmed)</div></li>
+        <li><a href="../stocks/abeo.html">ABEO</a> Abeona Therapeutics
+          <div class="item-meta">Nov 11, 2026 (confirmed)</div></li>
+        <li><a href="../stocks/aard.html">AARD</a> Aardvark Therapeutics
+          <div class="item-meta">Nov 12, 2026 (estimated)</div></li>
+        <li><a href="../stocks/omer.html">OMER</a> Omeros
+          <div class="item-meta">Nov 12, 2026 (estimated)</div></li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Latest News</h2>
+      <ul class="item-list">
+        <li><a href="https://news.google.com/rss/articles/CBMi8wFBVV95cUxNSkZsUFI3RjdlNVU4MU5QemlxT3FBaGFCX0RSWnluOE1xU3ZpM1QxZG40VG9xNDhDa3hWbjhaYUFVS1JXSktLb1BrUHVIU3owWXZOUjZickZ0ckdBQ1ZqQXZDTEFLRl9kQVJjRUREdTgzOTZnT3czT1EzZjgyRkRfb0ZMTzdCb0FoZmZWTEpkdmo1LXZOYnBfOVlJeTUtek1XS2RieENUYW52Z0xVYl9EczZYM0M5d0lFVmhZUUtMM3RaeFJVNGdCQWdPRHhqbEpQc1VCVC1iU1ctTERfQU90YjRISVcyTmN5U2pkTF9WenZ3WkE?oc=5" target="_blank" rel="noopener">uniQure Investigation Notice: SueWallSt Notifies Investors of Pending Investigation Into uniQure (QURE)</a>
+          <div class="item-meta">QURE · Morningstar · Sep 30, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMiyAFBVV95cUxNZnNDWTlZaXdHb1RVU0ExTDZlTW9qTW8tR0U2U1VRQWFxNzRmNjItLUlmdlRtamtSMERQWlNRVmZySW9kY2diTURVOGdhS3pNQVM5dVBHZmlkVG1DdGtEdmgwMjdyQmEtd3dKY2xDT3l0ZDZTX25yYzh3ZVpDeXZON1RwNVJ2NUV1SEx1cHJLUS1mTEdVdVJCQmVqal9VLWN5aEIwSjUyOUZsbHF4WThaaXRLMXMtUU9MTnY5Y1YzbTJNU2RTLWRpUg?oc=5" target="_blank" rel="noopener">Abeona Therapeutics Officer Madhav Vasanthavada Files Form 144 to Sell 4,902 Shares</a>
+          <div class="item-meta">ABEO · Kalkine Media · Sep 29, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMi9gFBVV95cUxNLWRaNFhKWXhuSVNkV3hFUFVvZmtBZU1nRHZETEVNUlgxV29JYlY0cmN1ekJOOWEwUWgwWmlKcnNBUjJOYjlzMDJaRWlTTnlLV0luaVBfbjc0UG5uTl9ZSnNTMThLaWdIZzRxZ0dNRTNyNDZMT2ZtS1dIVGY5eU16U1V0WlpqQUlNS0xZRDhSczZzcmV0R1hFU04tc0hXTFBDWFVPY1ZpNGZXbjVMRnJ4Y1hwY3c4alEtSk44NmpramdLZE9GSkx5T0NwLWdWV0pfUHJiaHg1Q1hOam15Z1RnaWtmai1fM3h4TmY2T2dUamgxbkZsUGc?oc=5" target="_blank" rel="noopener">Dyne Therapeutics Announces Additional One-Year Clinical Data from Phase 1/2 ACHIEVE Trial of Z-Basivarsen for Myotonic Dystrophy Type 1</a>
+          <div class="item-meta">DYN · Investing News Network · Sep 29, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMikAFBVV95cUxNamNHUzN2NlR0R2VwRzNOak9CUFpPZmhDLUxIYjhZUXh1QkhJTDdGQnRacVJTUzF4dDNKMkx2ZUNCMEJBWGdTZllmTVEwUkhvR3lPb0QwV3JVZ1hYU2VYdnRPVnlsbW1KV0JISGNFeDhFQmh3aW55ZlRRb1BRX1B1YU1COTZuOGJURHlnZTZ2Sl8?oc=5" target="_blank" rel="noopener">Dyne Therapeutics stock rises on positive DM1 trial results</a>
+          <div class="item-meta">DYN · Yahoo Finance Australia · Sep 29, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMirwFBVV95cUxNS05nTk5sWU1pWDFRT2xaTzI2S2VkWHR1Vk1YckIxaDRsUmZfNkNZSHR0elJxZmNqTjhuN1Bob3FwSEtrclNraUpuOTJ3eU9PNUxsWVRaY1V2ZmpIUlJrNUlqUl94bDM1MHYtTDg3NnFXSXlSWi1yVlpNS2Z2OHlLSFYxQ3RrOGh3cjZxWGZ4TzdYcklseGcxaDlnaURpLS1BVUgxZXZ4QW0tUEdjbk1J?oc=5" target="_blank" rel="noopener">Form 144 ABEONA THERAPEUTICS INC. For: 29 September By Investing.com</a>
+          <div class="item-meta">ABEO · Investing.com UK · Sep 29, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMinAFBVV95cUxPVG5CQUg5RjFDS0xXdVlZMGRyYnpadlBIRFV3aURWTDZNQUdQMWlsa1F4dHRhTTNDWldSVHFNSDYycEZ0LXZaa2xoVEhRS3hFdlpXaFFrbzRSY1lxclhDSGl1SGVhMFpfeFd1enZRMDYxSGpEdEVBYW1yQ2xJR3dxelhmeFk2X1BVSTlIcWVjMUU4YURiT3JxLTV0QkQ?oc=5" target="_blank" rel="noopener">Uniqure Plummets 37% On Another Shocking Twist For Its Huntington's Drug</a>
+          <div class="item-meta">QURE · Investor's Business Daily · Sep 29, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMiogFBVV95cUxPMGNYM05VS0dNbF8tU05mN0hpUUhqU3RrVngyV1NwMEhjMkV3bXNWa3A2b2RvZE1VZGd6TWx6YnVtZmlVY05YbzBwUkVVNVVNV2lNR1dzVTVITEtBTk9hUWdVMXFSQkxiMVlCM0VGOEo3MUhQWU1rUTVJSUVIUDJDLWlmREFFUzFld0VBMjhlNUlOdnRmdlBHSkxEUjg1Q0VRZlE?oc=5" target="_blank" rel="noopener">To cover taxes on vested stock, an Abeona Therapeutics (ABEO) officer lists shares valued at $47,385 for sale.</a>
+          <div class="item-meta">ABEO · Stock Titan · Sep 29, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMiogFBVV95cUxNQlR4WXdZakkzZDBzbUk5MTlKWTEzZGU3WENybGxaQzRSVUtEMkxDb3VzMGJ5d0FvZGtRa1laWGNnTDRhc3ZGUDM2ZHJ4a1ZQN1FZUUdsdXdsSzNRdFpiYmc2UVd1U3lJbUd2bkQzNGJ4cmJFeUR2cnljdzlnd2hjNVBORlc5NHBkbE9PcVJMeFZzamxzNHBuSTgzXzFGWVhsenc?oc=5" target="_blank" rel="noopener">A tax-related share sale is proposed by an Abeona Therapeutics (NASDAQ: ABEO) officer</a>
+          <div class="item-meta">ABEO · Stock Titan · Sep 29, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMiogFBVV95cUxNdmpGdlZFal9RZXpfTkNuejBTY0lNZnVUczdGakM1Skc4WFk4S1FoRUtqQzNwVWxBX3VaU2hLeDRMVWFyUjFGY3RkTUc3Ry12b1pNeEVLRGpXSGhTWEx3UDB2czNLeDNjOG1fRTNqLWFwY3hOanN3U0p4UXVNWGE2T3lBajlVYXV3elRGRENsQWMtWERjLTRvMzdjS3NWSm9fckE?oc=5" target="_blank" rel="noopener">Tax-related share sale: Abeona Therapeutics (ABEO) lists an officer’s shares for sale at a $34,682 value</a>
+          <div class="item-meta">ABEO · Stock Titan · Sep 29, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMivwFBVV95cUxQYk4wdnpPNWlUeGR4cGVBZjktOHRxSG5PYnVRMTdJeHQ2OTlRZjBPX1FMT1o0WDBSaV9rNEppNFFORG0zMGZNQnR4clVPdXBxbnJYX2JJd0xlSHN5dndRY0ZsWDFlTjdzTVg5a09sQ0ZtblBXbGlFeWl1UVNuS3g2RmhPVUhCakw5ZjdVVFVPSWljNlVlMThNMng0NDNMaV8tS1hWRkdkU05BbDdZMFpnUWhlb01hdTRXblczTWYxYw?oc=5" target="_blank" rel="noopener">Ultragenyx Pharmaceutical (NASDAQ:RARE) Shares Up 5.8% - Time to Buy?</a>
+          <div class="item-meta">RARE · MarketBeat · Sep 29, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMivAFBVV95cUxOSTgzc3Y0WHZodWRVMXJLSXhZM1pLNEV0UkVJOHd0VzJrakpfVWFnR3NWRmFfaWpOZzJBTXdPNGZXYlNjM0NxNGZWY2ptVlNESFRzb1hrNTFrbVdEdzhRbnhnd0dmczdHMXhOYzVSVWlhU0poelpnX1lZekZCbFpHUVJZbF9YRFNjQzBQOGRVb0s1QTl2YW5jZHltbTczY1BzN01HU29yTC1LUHdEaHJ3NzF3eU9HNWI4LU5TMA?oc=5" target="_blank" rel="noopener">After a year, Dyne trial participants showed better walking-test times and muscle strength</a>
+          <div class="item-meta">DYN · Stock Titan · Sep 29, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMipwFBVV95cUxPSlAtYmV0RG03d0NtN1p0TFVmYlhKekRsc291cS14VU94Vjc2SVBYb1dPVmFOemdLSFZ3ZTliTFJKTEwyS1BmVE1SYklZTndpMzJRS01adDBEWWVxTXBOVGlwVjdjX2hqNU9BZE53eUgyejZhaU9tVWIwS21qcGNWQ1llcTJibkdSVUxUSzRHZDhhRDBvR1E2V29pQjJNUlhycHJKT3ZTYw?oc=5" target="_blank" rel="noopener">Return on invested capital % of Ultragenyx Pharmaceutical, Inc. – HAN:UP0</a>
+          <div class="item-meta">RARE · TradingView · Sep 29, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMitwFBVV95cUxONnA5ZXk4ZXZOSGNhYTRHQjVVYVdNcjQ0ZUlWZVBXejgtNzdTbHBLOEk3cU1maTJIbmFza1BsdkNoVUphZGVIWXRWOWwxdGNRQmhQNjU3c3psN002am9mbHpWblgzbVdneHJTY3FVT0xDMUI5V0tZWEY3TnlHVjJrRTY3VXZKVC1SMy1qN1NLWnhGZVRYRWN5d25UeDFwUTBuX0FJY29vV09DZEdoemw5T1JpUnAwa1E?oc=5" target="_blank" rel="noopener">uniQure: Another Selloff On 48-Month Huntington Data; I Am (Marginally) Bullish (QURE)</a>
+          <div class="item-meta">QURE · Seeking Alpha · Sep 29, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMinwFBVV95cUxNVEtLeFZzUzhoWkh4YXYyQWVRR1JJMzlxMjVZQUR1dHVMajJablVsN3MwNkdRdkExRXktUzBoVEQyVnJKSTJLN2J6cmx3azJ6bXFqMHRXQjhtR05EYUZPLW95MzhYYkRNY3IxdXFCZjZyWnQ3aEZoOWozTXBEdFJZRWR1Q09HVUthbUFpTW1ka2pfTmdPZVU2V2tYdlo3cDA?oc=5" target="_blank" rel="noopener">UniQure tumbles with latest data for Huntington’s gene therapy</a>
+          <div class="item-meta">QURE · BioPharma Dive · Sep 29, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMixAFBVV95cUxNRFdUVzB5Uk9CeVc0cU42YnltRjVDdlF5N08yR0xpRVZNYjFKNU9VUkdlQU5OUUZzRnJDWmJsYW5vaTlZaVRZNHhWX3FFUFozM0lGYzZLd082NEduZWFsdktfdFZKSHlIcjhQVHFuWHlDRFk4ZnFaWG0xNkRMa1FtQWNFVnI4WTFtSHFzRHBsOGVrVmVNMlRPSzlfM3NiN1JvNkNRb2x6RWlRTy1zYUVvRlJtY281YlZqemVGVGVWaE5Ua0pX?oc=5" target="_blank" rel="noopener">UniQure crashes as Huntington’s gene therapy shows less slowing of disease at 4 years</a>
+          <div class="item-meta">QURE · BioSpace · Sep 29, 2026</div></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <footer class="disclaimer">
+    <nav class="site-footer" aria-label="Site links">
+      <div><strong>Life Science Investor</strong><a href="../index.html">Dashboard</a><a href="../beaten-down.html">Beaten Down, Not Out</a><a href="../calendar.html">Catalyst &amp; Earnings Calendar</a></div>
+      <div><strong>Themes</strong><a href="../themes/obesity-and-metabolic.html">Obesity & Metabolic</a><a href="../themes/gene-editing-and-rna.html">Gene Editing & RNA</a><a href="../themes/cell-therapy.html">Cell Therapy</a><a href="../themes/melanoma.html">Melanoma</a><a href="../themes/oncolytic-viruses.html">Oncolytic Viruses</a><a href="../themes/bladder-and-prostate-cancer.html">Bladder & Prostate Cancer</a><a href="../themes/targeted-oncology.html">Targeted Oncology</a><a href="../themes/infectious-disease.html">Infectious Disease</a><a href="../themes/neurology.html">Neurology</a><a href="../themes/ai-drug-discovery.html">AI Drug Discovery</a><a href="../themes/rare-disease.html">Rare Disease</a><a href="../themes/immunology-and-inflammation.html">Immunology & Inflammation</a><a href="../themes/ophthalmology.html">Ophthalmology</a></div>
+    </nav>
+    <p>For informational purposes only — not investment advice. Prices, returns and financials come from Yahoo Finance and company filings and may be delayed, incomplete or inaccurate. Company profiles are editorial summaries and may not reflect the latest developments. Do your own research and consult a licensed financial advisor before making investment decisions.</p>
+  </footer>
+
+</body>
+
+</html>

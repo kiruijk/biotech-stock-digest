@@ -9,7 +9,7 @@ A daily-updated tracker for clinical-stage biotech stocks: prices and returns, c
 - **Dashboard.** Stocks ranked by return over any period from 1D to 10Y, with a card view (sparklines) and a sortable screener view (market cap, cash runway), search, and theme filters. Also a combined news feed and upcoming earnings.
 - **Stock profiles** (`stocks/<ticker>.html`). An interactive price chart, returns, cash and monthly burn, runway, insider trades from SEC Form 4 filings, leadership and news. Covered stocks also get written analysis: overview, catalysts, risks, competitors and partnerships, each with a "last reviewed" date.
 - **Theme pages** (`themes/<theme>.html`). Science background for each theme (obesity & metabolic, gene editing, cell therapy, melanoma and more), plus a company comparison, upcoming catalysts and earnings, and news.
-- **Beaten Down, Not Out** (`beaten-down.html`). A curated list of stocks far below their highs whose investment case still holds, each with a written thesis next to automatic metrics: distance from high, bounce off the 52-week low, return since added, cash vs market cap and runway. Highlighted on the dashboard and on each listed stock's profile.
+- **Beaten Down, Not Out** (`beaten-down.html`). A curated list of stocks far below their highs whose investment case still holds, each with a written thesis next to automatic metrics: distance from the 18-month high, bounce off the 52-week low, return since added, cash vs market cap and runway. Highlighted on the dashboard and on each listed stock's profile.
 - **Catalyst & earnings calendar** (`calendar.html`). Every upcoming event across all tracked stocks, grouped by date.
 
 ## How it works

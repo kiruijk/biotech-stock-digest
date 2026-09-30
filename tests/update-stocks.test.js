@@ -206,11 +206,13 @@ test('data time label uses the latest non-stale refresh, in Eastern time', () =>
   assert.equal(u.dataTimeLabel({}), '—');
 });
 
-test('drawdownStats: distance from peak, bounce off 52-week low, return since added', () => {
+test('drawdownStats: distance from 18-month peak, bounce off 52-week low, return since added', () => {
   const d = (monthsBack) => { const t = new Date(); t.setUTCMonth(t.getUTCMonth() - monthsBack); return t.toISOString().slice(0, 10); };
-  const history = [[d(60), 100], [d(24), 40], [d(6), 5], [d(3), 8]];
+  // The 500 close is older than 18 months, so the peak is the 100 close
+  const history = [[d(60), 500], [d(15), 100], [d(6), 5], [d(3), 8]];
   const s = u.drawdownStats(history, 10, d(4));
-  assert.deepEqual(s, { peak: 100, peakDate: history[0][0], fromPeak: -90, fromLow: 100, sinceAdded: 100 });
+  assert.deepEqual(s, { peak: 100, peakDate: history[1][0], fromPeak: -90, fromLow: 100, sinceAdded: 100 });
+  assert.equal(u.drawdownStats([[d(24), 50]], 10), null, 'no closes in the window');
   // Added before any history, or not given: no since-added figure
   assert.equal(u.drawdownStats(history, 10, d(120)).sinceAdded, null);
   assert.equal(u.drawdownStats(history, 10).sinceAdded, null);
@@ -221,16 +223,38 @@ test('drawdownStats: distance from peak, bounce off 52-week low, return since ad
 });
 
 test('Beaten Down review flags: rebound, shallow drawdown, slump, candidates', () => {
-  const { listedFlag, isCandidate } = require('../lib/drawdown');
+  const { listedFlag, candidateSetup, isSectorSelloff } = require('../lib/drawdown');
   const base = { peak: 100, peakDate: '2021-01-01', fromPeak: -90, fromLow: 20, sinceAdded: 0 };
   assert.equal(listedFlag(base), null);
   assert.match(listedFlag({ ...base, sinceAdded: 60 }), /up 60% since added/);
-  assert.match(listedFlag({ ...base, fromPeak: -40 }), /only 40% below its high/);
+  assert.match(listedFlag({ ...base, fromPeak: -30 }), /only 30% below its 18-month high/);
+  assert.equal(listedFlag({ ...base, fromPeak: -45 }), null, 'between the add and remove thresholds');
   assert.match(listedFlag({ ...base, sinceAdded: -35 }), /down 35% since added/);
   assert.equal(listedFlag(null), null);
 
-  assert.equal(isCandidate({ cashPosition: 60, marketCap: 100 }, { ...base, fromPeak: -85 }), true);
-  assert.equal(isCandidate({ cashPosition: 40, marketCap: 100 }, { ...base, fromPeak: -85 }), false, 'not near cash');
-  assert.equal(isCandidate({ cashPosition: 60, marketCap: 100 }, { ...base, fromPeak: -60 }), false, 'drawdown too shallow');
-  assert.equal(isCandidate({ cashPosition: 60, marketCap: null }, base), false);
+  const deep = { ...base, fromPeak: -80 };
+  assert.equal(candidateSetup({ cashPosition: 60, marketCap: 100 }, deep), 'near-cash');
+  assert.equal(candidateSetup({ cashPosition: 40, marketCap: 100 }, deep), null, 'not near cash, no revenue');
+  assert.equal(candidateSetup({ cashPosition: 60, marketCap: 100 }, { ...base, fromPeak: -60 }), null, 'drawdown too shallow');
+  assert.equal(candidateSetup({ cashPosition: 60, marketCap: null }, deep), null);
+  // Commercial turnaround: growing revenue at a low sales multiple (IOVA at its 2025 low)
+  const iova = { cashPosition: 300e6, marketCap: 700e6, revenueTTM: 200e6, revenueGrowth: 60 };
+  assert.equal(candidateSetup(iova, deep), 'commercial');
+  assert.equal(candidateSetup({ ...iova, revenueGrowth: -10 }, deep), null, 'shrinking revenue');
+  assert.equal(candidateSetup({ ...iova, marketCap: 1.5e9 }, deep), null, 'too expensive vs sales');
+  assert.equal(candidateSetup({ ...iova, revenueTTM: 10e6, marketCap: 40e6, cashPosition: 5e6 }, deep), null, 'revenue too small');
+
+  assert.equal(isSectorSelloff({ fromPeak: -35 }), true);
+  assert.equal(isSectorSelloff({ fromPeak: -10 }), false);
+  assert.equal(isSectorSelloff(null), false);
+});
+
+test('revenue: trailing four quarters and year-over-year growth of the latest quarter', () => {
+  const q = (date, totalRevenue) => ({ date: new Date(date), totalRevenue });
+  const rows = [q('2025-06-30', 60e6), q('2025-09-30', 67e6), q('2025-12-31', 87e6), q('2026-03-31', 71e6), q('2026-06-30', 99e6)];
+  const r = u.financialsFromRows(rows, 1);
+  assert.equal(r.revenueTTM, 324e6);
+  assert.equal(r.revenueGrowth, 65);
+  assert.equal(u.financialsFromRows(rows.slice(0, 3), 1).revenueTTM, undefined, 'fewer than four quarters');
+  assert.equal(u.financialsFromRows(rows.slice(1), 1).revenueGrowth, undefined, 'no year-ago quarter');
 });

@@ -1,0 +1,19 @@
+{
+  "theme": "Immunology & Inflammation",
+  "reviewed": "2026-09-29",
+  "summary": "Autoimmune and inflammatory diseases, such as lupus, IgA nephropathy, atopic dermatitis and myasthenia gravis, affect tens of millions of people. Most treatments only suppress symptoms. New drugs aim to hit the specific immune pathway behind each disease, and cell therapies and T cell engagers are testing whether the immune system can be reset for good.",
+  "sections": [
+    {
+      "heading": "Main approaches",
+      "body": "<ul><li><strong>Targeted biologics</strong> block one signal, such as APRIL/BAFF in IgA nephropathy, FcRn to clear harmful antibodies, or cytokines like IL-13 in skin disease.</li><li><strong>Immune reset</strong>: CD19 CAR T cells and T cell engagers, first used in blood cancers, can deplete B cells deeply. Early lupus and myositis patients have stayed in drug-free remission.</li><li><strong>Topicals and oral small molecules</strong> for skin and gut disease compete on convenience and safety rather than new biology.</li></ul>"
+    },
+    {
+      "heading": "The competitive landscape",
+      "body": "<p>Big pharma dominates many of these markets with blockbuster antibodies, so newer drugs need to be clearly better on effectiveness, dosing frequency or safety. Many biotechs run the same mechanism across several diseases at once. One success can open several markets, but the same safety problem can also sink all of them.</p>"
+    },
+    {
+      "heading": "What investors watch",
+      "body": "<ul><li><strong>Remission rates and durability</strong>, especially whether patients stay well off all other immune drugs.</li><li><strong>Safety of deep immune suppression</strong>: infections and, for cell therapies, the conditioning chemotherapy patients receive first.</li><li><strong>Head-to-head positioning</strong> against established biologics, and pricing for chronic use.</li></ul>"
+    }
+  ]
+}

@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prothena (PRTA) — Stock Profile | Life Science Investor</title>
+  <meta name="description" content="Prothena Corporation plc, a late-stage clinical biotechnology company, focuses on discovery and development of novel therapies to treat diseases caused by protein dysregulation. Its product pipeline includes Prasinezumab, an investigational humanized monoclonal antibody which is in Phase 3 clinical ">
+  <meta property="og:title" content="Prothena (PRTA) — Stock Profile">
+  <meta property="og:description" content="Prothena Corporation plc, a late-stage clinical biotechnology company, focuses on discovery and development of novel therapies to treat diseases caused by protein dysregulation. Its product pipeline includes Prasinezumab, an investigational humanized monoclonal antibody which is in Phase 3 clinical ">
+  <meta property="og:type" content="article">
+  <link rel="canonical" href="https://kiruijk.github.io/biotech-stock-digest/stocks/prta.html">
+  <meta property="og:url" content="https://kiruijk.github.io/biotech-stock-digest/stocks/prta.html">
+  <meta property="og:site_name" content="Life Science Investor">
+  <style>
+    :root {
+      color-scheme: light;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f5f7fa;
+      color: #1a1a1a;
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(135deg, #0052cc 0%, #0066ff 100%);
+      color: white;
+      padding: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      font-size: 1.6rem;
+    }
+
+    .back-btn {
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      border: 1px solid white;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .back-btn:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1rem 3rem;
+    }
+
+    /* Section Styling */
+    .section {
+      background: white;
+      border-radius: 10px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    .section h2 {
+      font-size: 1.3rem;
+      margin-bottom: 1.5rem;
+      color: #1a1a1a;
+      border-bottom: 2px solid #0052cc;
+      padding-bottom: 0.5rem;
+    }
+
+    /* Grid layouts */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    /* Card styling */
+    .card {
+      padding: 1rem;
+      background: #f9fafb;
+      border-radius: 6px;
+      border-left: 3px solid #0052cc;
+    }
+
+    .card-title {
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 0.3rem;
+    }
+
+    .card-subtitle {
+      font-size: 0.85rem;
+      color: #6b7280;
+    }
+
+    .card-value {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #0052cc;
+      margin-top: 0.3rem;
+    }
+
+    /* Badge styling */
+    .badge {
+      display: inline-block;
+      padding: 0.25rem 0.65rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .badge-green {
+      background: #d1fae5;
+      color: #059669;
+    }
+
+    .badge-red {
+      background: #fee2e2;
+      color: #dc2626;
+    }
+
+    .badge-yellow {
+      background: #fef3c7;
+      color: #d97706;
+    }
+
+    /* Table styling */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+
+    th,
+    td {
+      padding: 0.8rem;
+      text-align: left;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    th {
+      background: #f9fafb;
+      font-weight: 700;
+    }
+
+    /* Insider Trading */
+    .insider-buy {
+      color: #059669;
+      font-weight: 600;
+    }
+
+    .insider-sell {
+      color: #dc2626;
+      font-weight: 600;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .grid-2,
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Price chart */
+    .chart {
+      position: relative;
+      margin-bottom: 1.25rem;
+    }
+
+    .chart-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .chart-change {
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .chart-periods {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25rem;
+    }
+
+    .chart-periods button {
+      border: 1px solid #d1d5db;
+      background: white;
+      border-radius: 5px;
+      padding: 0.2rem 0.55rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #374151;
+      cursor: pointer;
+    }
+
+    .chart-periods button:disabled {
+      color: #d1d5db;
+      border-color: #eef0f3;
+      cursor: default;
+    }
+
+    .chart-periods button.active {
+      background: #0052cc;
+      border-color: #0052cc;
+      color: white;
+    }
+
+    #chart-svg {
+      width: 100%;
+      height: 200px;
+      display: block;
+      cursor: crosshair;
+    }
+
+    .chart-tip {
+      position: absolute;
+      top: 2.4rem;
+      width: 130px;
+      text-align: center;
+      background: #1a1a1a;
+      color: white;
+      font-size: 0.72rem;
+      padding: 0.2rem 0.4rem;
+      border-radius: 4px;
+      pointer-events: none;
+    }
+
+    .chart-range {
+      font-size: 0.75rem;
+      color: #9ca3af;
+      margin-top: 0.3rem;
+    }
+
+    /* Text */
+    .para {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: #374151;
+      margin-bottom: 1.2rem;
+    }
+
+    .note {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: #6b7280;
+    }
+
+    /* Returns row */
+    .returns {
+      display: grid;
+      grid-template-columns: repeat(9, 1fr);
+      gap: 0.3rem;
+      margin-top: 1rem;
+    }
+
+    .return {
+      text-align: center;
+      padding: 0.45rem 0.1rem;
+      background: #f9fafb;
+      border-radius: 6px;
+    }
+
+    .return-label {
+      color: #6b7280;
+      font-size: 0.68rem;
+      text-transform: uppercase;
+    }
+
+    .return-value {
+      font-weight: 700;
+      font-size: 0.8rem;
+      white-space: nowrap;
+    }
+
+    /* Notices */
+    .notice {
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+    }
+
+    .notice-stale {
+      background: #fef3c7;
+      color: #92400e;
+    }
+
+    .notice-tracked {
+      background: #e0ebff;
+      color: #1e3a8a;
+    }
+
+    .notice-beaten {
+      background: #fff1e6;
+      color: #7c2d12;
+    }
+
+    .notice-beaten a {
+      color: inherit;
+      font-weight: 600;
+    }
+
+    .meta-line {
+      font-size: 0.85rem;
+      color: #6b7280;
+      margin-top: 0.75rem;
+    }
+
+    .theme-tag {
+      color: white;
+      text-decoration: none;
+      display: inline-block;
+      padding: 0.1rem 0.5rem;
+      margin-right: 0.3rem;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.2);
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    /* Insider labels */
+    .insider-other {
+      color: #6b7280;
+      font-weight: 600;
+    }
+
+    /* News & leadership lists */
+    .item-list {
+      list-style: none;
+    }
+
+    .item-list li {
+      padding: 0.75rem 0;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .item-list li:last-child {
+      border-bottom: none;
+    }
+
+    .item-list a {
+      color: #0052cc;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .item-list a:hover {
+      text-decoration: underline;
+    }
+
+    .item-meta {
+      font-size: 0.8rem;
+      color: #6b7280;
+    }
+
+    .disclaimer {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem 2rem;
+      font-size: 0.75rem;
+      color: #9ca3af;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 900px) {
+      .returns {
+        grid-template-columns: repeat(5, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .returns {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .theme-tag:hover {
+      background: rgba(255, 255, 255, 0.35);
+    }
+
+    /* Theme pages */
+    .science h3 {
+      font-size: 1.05rem;
+      margin: 1.25rem 0 0.5rem;
+      color: #1a1a1a;
+    }
+
+    .science h3:first-child {
+      margin-top: 0;
+    }
+
+    .science p,
+    .science li {
+      color: #374151;
+      line-height: 1.75;
+    }
+
+    .science ul {
+      padding-left: 1.25rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .num {
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    td a {
+      color: #0052cc;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    /* Phones: tighter spacing, two-column stats, compact header */
+    @media (max-width: 600px) {
+      header {
+        padding: 1rem;
+        align-items: flex-start;
+        gap: 0.6rem;
+      }
+
+      header h1 {
+        font-size: 1.25rem;
+        line-height: 1.3;
+      }
+
+      .back-btn {
+        padding: 0.3rem 0.7rem;
+        font-size: 0.8rem;
+      }
+
+      .container {
+        padding: 1rem 0.75rem 2rem;
+      }
+
+      .section {
+        padding: 1.1rem 1rem;
+        margin-bottom: 1rem;
+        border-radius: 8px;
+      }
+
+      .section h2 {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+      }
+
+      .grid-3 {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.6rem;
+      }
+
+      .grid-2 {
+        gap: 0.75rem;
+      }
+
+      .card {
+        padding: 0.75rem;
+      }
+
+      .card-value {
+        font-size: 1rem;
+      }
+
+      .para {
+        font-size: 0.95rem;
+        line-height: 1.65;
+        margin-bottom: 1rem;
+      }
+
+      th,
+      td {
+        padding: 0.55rem 0.5rem;
+        font-size: 0.85rem;
+      }
+    }
+
+    .site-nav {
+      background: #0b1f44;
+      color: white;
+      font-size: 0.88rem;
+    }
+
+    .site-nav-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0.55rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+    }
+
+    .site-nav a {
+      color: #c7d7fe;
+      text-decoration: none;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .site-nav a:hover,
+    .site-nav a.current {
+      color: white;
+    }
+
+    .site-nav .brand {
+      color: white;
+      font-weight: 800;
+      margin-right: auto;
+      letter-spacing: -0.01em;
+    }
+
+    .site-nav details {
+      position: relative;
+    }
+
+    .site-nav summary {
+      white-space: nowrap;
+      cursor: pointer;
+      color: #c7d7fe;
+      font-weight: 600;
+      list-style: none;
+    }
+
+    .site-nav summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .site-nav summary::after {
+      content: ' ▾';
+      font-size: 0.75rem;
+    }
+
+    .site-nav details[open] summary,
+    .site-nav summary:hover {
+      color: white;
+    }
+
+    .site-nav .menu {
+      position: absolute;
+      right: 0;
+      top: 1.9rem;
+      z-index: 20;
+      min-width: 230px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+      padding: 0.4rem 0;
+    }
+
+    .site-nav .menu a {
+      display: block;
+      padding: 0.45rem 1rem;
+      color: #1a1a1a;
+      font-weight: 500;
+    }
+
+    .site-nav .menu a:hover {
+      background: #f3f4f6;
+      color: #0052cc;
+    }
+
+    .site-footer {
+      border-top: 1px solid #e5e7eb;
+      margin-top: 1rem;
+      padding: 1.25rem 1rem 0.5rem;
+      font-size: 0.82rem;
+      line-height: 1.9;
+    }
+
+    .site-footer a {
+      color: #4b5563;
+      text-decoration: none;
+      margin-right: 1rem;
+      white-space: nowrap;
+    }
+
+    .site-footer a:hover {
+      color: #0052cc;
+    }
+
+    .site-footer strong {
+      color: #374151;
+      margin-right: 0.75rem;
+    }
+
+    @media (max-width: 600px) {
+      .site-nav-inner {
+        flex-wrap: wrap;
+        gap: 0.35rem 0.9rem;
+        padding: 0.5rem 0.75rem;
+      }
+
+      .site-nav .brand {
+        font-size: 0.85rem;
+      }
+
+      /* The brand already links home */
+      .site-nav .nav-home {
+        display: none;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+  <!-- Generated by update-stocks.js from data/profiles and live market data. Do not edit by hand. -->
+  <!-- Last updated: 2026-09-30T01:24:36.419Z -->
+  <nav class="site-nav" aria-label="Site">
+    <div class="site-nav-inner">
+      <a class="brand" href="../index.html">Life Science Investor</a>
+      <a class="nav-home" href="../index.html">Dashboard</a>
+      <details>
+        <summary>Themes</summary>
+        <div class="menu">
+          <a href="../themes/obesity-and-metabolic.html">Obesity & Metabolic</a>
+          <a href="../themes/gene-editing-and-rna.html">Gene Editing & RNA</a>
+          <a href="../themes/cell-therapy.html">Cell Therapy</a>
+          <a href="../themes/melanoma.html">Melanoma</a>
+          <a href="../themes/oncolytic-viruses.html">Oncolytic Viruses</a>
+          <a href="../themes/bladder-and-prostate-cancer.html">Bladder & Prostate Cancer</a>
+          <a href="../themes/targeted-oncology.html">Targeted Oncology</a>
+          <a href="../themes/infectious-disease.html">Infectious Disease</a>
+          <a href="../themes/neurology.html">Neurology</a>
+          <a href="../themes/ai-drug-discovery.html">AI Drug Discovery</a>
+          <a href="../themes/rare-disease.html">Rare Disease</a>
+          <a href="../themes/immunology-and-inflammation.html">Immunology & Inflammation</a>
+          <a href="../themes/ophthalmology.html">Ophthalmology</a>
+        </div>
+      </details>
+      <a href="../beaten-down.html">Beaten Down</a>
+      <a href="../calendar.html">Calendar</a>
+    </div>
+  </nav>
+
+  <header>
+    <div>
+      <h1>Prothena (PRTA)</h1>
+      <div><a class="theme-tag" href="../themes/neurology.html">Neurology</a></div>
+    </div>
+  </header>
+
+  <div class="container">
+
+    <div class="notice notice-tracked">Data-only page: prices, financials, insider trades and news update automatically. Editorial analysis (catalysts, risks, competitors) is not yet available for this company.</div>
+
+    <!-- Company Overview -->
+    <div class="section">
+      <h2>Company Overview</h2>
+      <p class="para">Prothena Corporation plc, a late-stage clinical biotechnology company, focuses on discovery and development of novel therapies to treat diseases caused by protein dysregulation. Its product pipeline includes Prasinezumab, an investigational humanized monoclonal antibody which is in Phase 3 clinical trial for the treatment of parkinson's disease and other synucleinopathies. The company also develops Coramitug, an investigational antibody, which is in Phase 3 clinical trial for the treatment of transthyretin amyloidosis; BMS-986446, an anti-tau antibody which is in Phase 2 clinical trial to treat Alzheimer's disease; PRX019, an investigational antibody which is in Phase 1 clinical trial for the treatment of neurodegenerative diseases; and PRX123, a Dual Aß-Tau Vaccine, which is in preclinical trial for treating Alzheimer's disease. In addition, it develops discovery- and late-preclinical-stage programs include TDP-43 CYTOPE for the treatment of amyotrophic lateral sclerosis; PRX012, a next-generation anti-Aß antibody which is in phase 1 clinical trial to treat Alzheimer's disease; and PRX012-TfR, a preclinical program for the treatment of Alzheimer's disease. It has a license, development, and commercialization agreement with F. Hoffmann-La Roche Ltd. and Hoffmann-La Roche Inc. to develop and commercialize antibodies that target a-synuclein, including prasinezumab; and master collaboration agreement with Bristol Myers Squibb to develop and commercialize antibodies targeting tau, TDP-43. Prothena Corporation plc was incorporated in 2012 and is based in Dublin, Ireland.</p>
+      <div class="meta-line">Business description from Yahoo Finance.</div>
+      <div class="meta-line">Headquarters: Dublin, Ireland · ~67 employees · <a href="https://www.prothena.com" target="_blank" rel="noopener">www.prothena.com</a></div>
+    </div>
+
+    <!-- Quick Stats -->
+    <div class="section">
+      <h2>Quick Stats</h2>
+      <div class="chart" id="price-chart">
+        <div class="chart-head">
+          <div class="chart-change" id="chart-change"></div>
+          <div class="chart-periods" role="group" aria-label="Chart period">
+            <button type="button" data-period="1M">1M</button><button type="button" data-period="6M">6M</button><button type="button" data-period="YTD">YTD</button><button type="button" data-period="1Y">1Y</button><button type="button" data-period="3Y">3Y</button><button type="button" data-period="5Y">5Y</button><button type="button" data-period="10Y">10Y</button><button type="button" data-period="Max">Max</button>
+          </div>
+        </div>
+        <svg id="chart-svg" viewBox="0 0 600 200" preserveAspectRatio="none" role="img" aria-label="PRTA price chart"></svg>
+        <div class="chart-tip" id="chart-tip" hidden></div>
+        <div class="chart-range" id="chart-range"></div>
+      </div>
+      <script>
+      (function () {
+        var DATA = {"daily":[["2025-09-30",9.76],["2025-10-01",9.92],["2025-10-02",9.99],["2025-10-03",9.92],["2025-10-06",9.86],["2025-10-07",10.17],["2025-10-08",10.35],["2025-10-09",10.3],["2025-10-10",10.05],["2025-10-13",10.35],["2025-10-14",10.12],["2025-10-15",10.66],["2025-10-16",10.09],["2025-10-17",9.92],["2025-10-20",10.37],["2025-10-21",10.22],["2025-10-22",9.88],["2025-10-23",9.75],["2025-10-24",9.82],["2025-10-27",10.37],["2025-10-28",10.54],["2025-10-29",10.65],["2025-10-30",10.48],["2025-10-31",10.75],["2025-11-03",10.54],["2025-11-04",10.26],["2025-11-05",10.27],["2025-11-06",10.08],["2025-11-07",10.56],["2025-11-10",10.53],["2025-11-11",10.48],["2025-11-12",10.85],["2025-11-13",10.18],["2025-11-14",9.93],["2025-11-17",10.25],["2025-11-18",10.36],["2025-11-19",9.99],["2025-11-20",10.05],["2025-11-21",10.48],["2025-11-24",10.4],["2025-11-25",10.5],["2025-11-26",10.43],["2025-11-28",10.75],["2025-12-01",10.27],["2025-12-02",10.35],["2025-12-03",11.17],["2025-12-04",11.16],["2025-12-05",11.07],["2025-12-08",10.73],["2025-12-09",10.32],["2025-12-10",9.87],["2025-12-11",10.33],["2025-12-12",10.36],["2025-12-15",9.97],["2025-12-16",9.75],["2025-12-17",9.43],["2025-12-18",9.38],["2025-12-19",9.21],["2025-12-22",9.68],["2025-12-23",9.49],["2025-12-24",9.69],["2025-12-26",9.54],["2025-12-29",9.48],["2025-12-30",9.31],["2025-12-31",9.55],["2026-01-02",9.2],["2026-01-05",9.1],["2026-01-06",8.97],["2026-01-07",9.13],["2026-01-08",9.05],["2026-01-09",9.19],["2026-01-12",8.91],["2026-01-13",8.98],["2026-01-14",9.2],["2026-01-15",9.26],["2026-01-16",9.35],["2026-01-20",9.25],["2026-01-21",9.68],["2026-01-22",10.34],["2026-01-23",10],["2026-01-26",9.94],["2026-01-27",9.73],["2026-01-28",9.14],["2026-01-29",9.06],["2026-01-30",8.81],["2026-02-02",8.91],["2026-02-03",8.78],["2026-02-04",8.89],["2026-02-05",8.35],["2026-02-06",8.91],["2026-02-09",8.86],["2026-02-10",8.96],["2026-02-11",8.93],["2026-02-12",8.85],["2026-02-13",8.96],["2026-02-17",8.96],["2026-02-18",9.09],["2026-02-19",9.03],["2026-02-20",9.02],["2026-02-23",9.07],["2026-02-24",8.97],["2026-02-25",8.88],["2026-02-26",8.64],["2026-02-27",8.67],["2026-03-02",9.4],["2026-03-03",9.36],["2026-03-04",9.86],["2026-03-05",9.46],["2026-03-06",9.59],["2026-03-09",9.81],["2026-03-10",9.77],["2026-03-11",9.58],["2026-03-12",9.31],["2026-03-13",9.21],["2026-03-16",9.17],["2026-03-17",9],["2026-03-18",8.59],["2026-03-19",8.54],["2026-03-20",8.75],["2026-03-23",8.82],["2026-03-24",8.73],["2026-03-25",9.31],["2026-03-26",9.52],["2026-03-27",9.26],["2026-03-30",9.25],["2026-03-31",9.72],["2026-04-01",10.03],["2026-04-02",9.86],["2026-04-06",10.04],["2026-04-07",10.36],["2026-04-08",10.65],["2026-04-09",10.58],["2026-04-10",10.5],["2026-04-13",10.31],["2026-04-14",10.61],["2026-04-15",10.82],["2026-04-16",10.52],["2026-04-17",10.9],["2026-04-20",10.79],["2026-04-21",10.67],["2026-04-22",10.72],["2026-04-23",10.73],["2026-04-24",10.75],["2026-04-27",10.79],["2026-04-28",11.51],["2026-04-29",10.87],["2026-04-30",11.06],["2026-05-01",10.64],["2026-05-04",10.79],["2026-05-05",11.19],["2026-05-06",11.18],["2026-05-07",10.52],["2026-05-08",10.73],["2026-05-11",9.67],["2026-05-12",9.43],["2026-05-13",9.6],["2026-05-14",9.86],["2026-05-15",9.76],["2026-05-18",9.59],["2026-05-19",9.07],["2026-05-20",9.35],["2026-05-21",9.41],["2026-05-22",9.83],["2026-05-26",10.06],["2026-05-27",10.03],["2026-05-28",9.98],["2026-05-29",10.18],["2026-06-01",9.59],["2026-06-02",9.19],["2026-06-03",8.92],["2026-06-04",9.25],["2026-06-05",8.79],["2026-06-08",8.56],["2026-06-09",8.47],["2026-06-10",7.91],["2026-06-11",8.26],["2026-06-12",8.25],["2026-06-15",8.15],["2026-06-16",8.29],["2026-06-17",8.49],["2026-06-18",8.93],["2026-06-22",9.15],["2026-06-23",9.55],["2026-06-24",9.4],["2026-06-25",9.27],["2026-06-26",10.02],["2026-06-29",9.97],["2026-06-30",9.79],["2026-07-01",9.58],["2026-07-02",9.69],["2026-07-06",9.5],["2026-07-07",9.68],["2026-07-08",9.85],["2026-07-09",9.64],["2026-07-10",9.24],["2026-07-13",8.83],["2026-07-14",8.64],["2026-07-15",8.43],["2026-07-16",8.47],["2026-07-17",8.66],["2026-07-20",8.67],["2026-07-21",8.75],["2026-07-22",8.44],["2026-07-23",8.53],["2026-07-24",8.75],["2026-07-27",8.7],["2026-07-28",8.56],["2026-07-29",8.56],["2026-07-30",8.41],["2026-07-31",8.12],["2026-08-03",8.33],["2026-08-04",8.49],["2026-08-05",8.49],["2026-08-06",8.58],["2026-08-07",8.76],["2026-08-10",9.12],["2026-08-11",9.22],["2026-08-12",9.26],["2026-08-13",9.08],["2026-08-14",8.86],["2026-08-17",8.88],["2026-08-18",8.71],["2026-08-19",9.29],["2026-08-20",9.03],["2026-08-21",9.45],["2026-08-24",9.39],["2026-08-25",9.42],["2026-08-26",9.25],["2026-08-27",9.09],["2026-08-28",9.33],["2026-08-31",9.35],["2026-09-01",9.61],["2026-09-02",9.685],["2026-09-03",9.6],["2026-09-04",9.82],["2026-09-08",9.54],["2026-09-09",9.3],["2026-09-10",9.02],["2026-09-11",8.93],["2026-09-14",8.86],["2026-09-15",8.33],["2026-09-16",8.24],["2026-09-17",8.46],["2026-09-18",8.58],["2026-09-21",8.51],["2026-09-22",8.99],["2026-09-23",8.68],["2026-09-24",8.32],["2026-09-25",8.29],["2026-09-28",8.72],["2026-09-29",8.78]],"weekly":[["2016-09-20",61.42],["2016-09-27",63.01],["2016-10-04",61.81],["2016-10-11",58.65],["2016-10-18",53.69],["2016-10-25",52.43],["2016-11-01",47.93],["2016-11-08",47.55],["2016-11-15",66.35],["2016-11-22",59.91],["2016-11-30",59.02],["2016-12-07",53.19],["2016-12-14",52.78],["2016-12-21",50.27],["2016-12-29",49.59],["2017-01-06",55.38],["2017-01-13",50.51],["2017-01-23",49.74],["2017-01-30",46.37],["2017-02-06",50.97],["2017-02-13",52.15],["2017-02-21",55],["2017-02-28",58.65],["2017-03-07",51.85],["2017-03-14",53.6],["2017-03-21",50.79],["2017-03-28",55.01],["2017-04-04",53.7],["2017-04-11",49.89],["2017-04-19",52.45],["2017-04-26",53.95],["2017-05-03",53.28],["2017-05-10",54.47],["2017-05-17",54.2],["2017-05-24",56.23],["2017-06-01",50.72],["2017-06-08",50.56],["2017-06-15",54.24],["2017-06-22",56.99],["2017-06-29",54.45],["2017-07-07",58.89],["2017-07-14",63.66],["2017-07-21",67.24],["2017-07-28",63.46],["2017-08-04",59.87],["2017-08-11",57.16],["2017-08-18",54.59],["2017-08-25",55.74],["2017-09-01",62.1],["2017-09-11",62.44],["2017-09-18",64.63],["2017-09-25",64.37],["2017-10-02",63.27],["2017-10-09",61.44],["2017-10-16",60.32],["2017-10-23",57.95],["2017-10-30",57.89],["2017-11-06",61.93],["2017-11-13",56.83],["2017-11-20",44.6],["2017-11-28",45.25],["2017-12-05",41.99],["2017-12-12",37.96],["2017-12-19",35.61],["2017-12-27",37.23],["2018-01-04",38.29],["2018-01-11",39.62],["2018-01-19",39.52],["2018-01-26",45.04],["2018-02-02",39.6],["2018-02-09",28.19],["2018-02-16",33.2],["2018-02-26",35.1],["2018-03-05",33.84],["2018-03-12",35.02],["2018-03-19",33.17],["2018-03-26",39.34],["2018-04-03",39.27],["2018-04-10",37.12],["2018-04-17",38.49],["2018-04-24",11.09],["2018-05-01",12.16],["2018-05-08",14.25],["2018-05-15",16.48],["2018-05-22",14.64],["2018-05-30",13.9],["2018-06-06",14],["2018-06-13",14.33],["2018-06-20",15.4],["2018-06-27",14.63],["2018-07-05",14.93],["2018-07-12",14.9],["2018-07-19",15.05],["2018-07-26",14.7],["2018-08-02",13.56],["2018-08-09",14.31],["2018-08-16",14.64],["2018-08-23",15.07],["2018-08-30",15.56],["2018-09-07",14.11],["2018-09-14",13.39],["2018-09-21",13.34],["2018-09-28",13.08],["2018-10-05",13.19],["2018-10-12",12.49],["2018-10-19",12.98],["2018-10-26",12.42],["2018-11-02",13.36],["2018-11-09",12.41],["2018-11-16",11.66],["2018-11-26",12.45],["2018-12-03",12.17],["2018-12-11",11.63],["2018-12-18",10.31],["2018-12-26",10.12],["2019-01-03",10.32],["2019-01-10",11.25],["2019-01-17",11.93],["2019-01-25",11.78],["2019-02-01",11.72],["2019-02-08",12.31],["2019-02-15",13.15],["2019-02-25",13.49],["2019-03-04",14.27],["2019-03-11",13.11],["2019-03-18",14.49],["2019-03-25",11.99],["2019-04-01",11.65],["2019-04-08",12.3],["2019-04-15",10.91],["2019-04-23",11.18],["2019-04-30",10.4],["2019-05-07",10.34],["2019-05-14",9.79],["2019-05-21",9.52],["2019-05-29",9.46],["2019-06-05",9.31],["2019-06-12",9.75],["2019-06-19",10],["2019-06-26",9.71],["2019-07-03",10.45],["2019-07-11",9.79],["2019-07-18",10],["2019-07-25",9.72],["2019-08-01",9.44],["2019-08-08",8.94],["2019-08-15",7.6],["2019-08-22",7.28],["2019-08-29",8.89],["2019-09-06",8.87],["2019-09-13",8.42],["2019-09-20",8.37],["2019-09-27",7.8],["2019-10-04",7.79],["2019-10-11",7.76],["2019-10-18",7.79],["2019-10-25",8.59],["2019-11-01",9.1],["2019-11-08",9.07],["2019-11-15",10.47],["2019-11-22",10.72],["2019-12-02",12.3],["2019-12-09",12.78],["2019-12-16",12.82],["2019-12-23",17.01],["2019-12-31",15.83],["2020-01-08",15.38],["2020-01-15",15.23],["2020-01-23",13.41],["2020-01-30",12.36],["2020-02-06",13.13],["2020-02-13",12.92],["2020-02-21",11.88],["2020-02-28",10.66],["2020-03-06",10.43],["2020-03-13",10],["2020-03-20",8.97],["2020-03-27",9.6],["2020-04-03",10.35],["2020-04-13",11.22],["2020-04-20",12.51],["2020-04-27",12.31],["2020-05-04",12.08],["2020-05-11",12.07],["2020-05-18",11.31],["2020-05-26",11.52],["2020-06-02",11.52],["2020-06-09",10.78],["2020-06-16",9.73],["2020-06-23",10.51],["2020-06-30",10.46],["2020-07-08",10.92],["2020-07-15",12.4],["2020-07-22",12.68],["2020-07-29",12.54],["2020-08-05",12.28],["2020-08-12",12.6],["2020-08-19",12.37],["2020-08-26",12.64],["2020-09-02",12.62],["2020-09-10",12.17],["2020-09-17",10.4],["2020-09-24",10.02],["2020-10-01",10.31],["2020-10-08",11.04],["2020-10-15",11.45],["2020-10-22",11.82],["2020-10-29",11.26],["2020-11-05",13.73],["2020-11-12",12.36],["2020-11-19",11.79],["2020-11-27",11.29],["2020-12-04",11.53],["2020-12-11",11.17],["2020-12-18",13.06],["2020-12-28",12.88],["2021-01-05",12.37],["2021-01-12",13.46],["2021-01-20",13.56],["2021-01-27",12.07],["2021-02-03",14.16],["2021-02-10",15.73],["2021-02-18",23.75],["2021-02-25",22.6],["2021-03-04",21.18],["2021-03-11",23.81],["2021-03-18",23.9],["2021-03-25",28.24],["2021-04-01",24.74],["2021-04-09",22.78],["2021-04-16",24.85],["2021-04-23",23.8],["2021-04-30",26.54],["2021-05-07",24.62],["2021-05-14",22.98],["2021-05-21",24.42],["2021-05-28",29.17],["2021-06-07",37.23],["2021-06-14",47.65],["2021-06-21",49.41],["2021-06-28",48.73],["2021-07-06",55.71],["2021-07-13",52.34],["2021-07-20",49.57],["2021-07-27",48.2],["2021-08-03",54.1],["2021-08-10",57.89],["2021-08-17",60.83],["2021-08-24",63.98],["2021-08-31",67.12],["2021-09-08",71.27],["2021-09-15",74.82],["2021-09-22",76.06],["2021-09-29",70.81],["2021-10-06",70.94],["2021-10-13",63.98],["2021-10-20",59.96],["2021-10-27",54.68],["2021-11-03",59.38],["2021-11-10",56.09],["2021-11-17",56.5],["2021-11-24",53.64],["2021-12-02",49.67],["2021-12-09",45],["2021-12-16",43.35],["2021-12-23",48.39],["2021-12-31",49.4],["2022-01-07",41.19],["2022-01-14",39.53],["2022-01-24",35.47],["2022-01-31",34.08],["2022-02-07",34.71],["2022-02-14",35.45],["2022-02-22",34.15],["2022-03-01",33.41],["2022-03-08",30.71],["2022-03-15",33.33],["2022-03-22",37.75],["2022-03-29",38.18],["2022-04-05",37.95],["2022-04-12",35.42],["2022-04-20",35.78],["2022-04-27",27.13],["2022-05-04",31.26],["2022-05-11",24.9],["2022-05-18",25.6],["2022-05-25",25.75],["2022-06-02",26.72],["2022-06-09",26.92],["2022-06-16",22.86],["2022-06-24",27.77],["2022-07-01",27.89],["2022-07-11",29.96],["2022-07-18",30],["2022-07-25",30.88],["2022-08-01",29.7],["2022-08-08",33.01],["2022-08-15",32.66],["2022-08-22",29.84],["2022-08-29",28.3],["2022-09-06",25.16],["2022-09-13",28],["2022-09-20",30.61],["2022-09-27",30.93],["2022-10-04",57.45],["2022-10-11",53.35],["2022-10-18",59],["2022-10-25",60.35],["2022-11-01",63.45],["2022-11-08",55.92],["2022-11-15",62.17],["2022-11-22",60.82],["2022-11-30",62.51],["2022-12-07",59.58],["2022-12-14",57.97],["2022-12-21",59],["2022-12-29",59.68],["2023-01-06",53.64],["2023-01-13",56.9],["2023-01-23",55.1],["2023-01-30",54.96],["2023-02-06",58.27],["2023-02-13",53.96],["2023-02-21",51.37],["2023-02-28",55.76],["2023-03-07",52],["2023-03-14",48.46],["2023-03-21",49.12],["2023-03-28",48.12],["2023-04-04",48.52],["2023-04-12",49.18],["2023-04-19",53.14],["2023-04-26",53.33],["2023-05-03",67.06],["2023-05-10",75.15],["2023-05-17",76],["2023-05-24",69.63],["2023-06-01",66.39],["2023-06-08",69.95],["2023-06-15",72.57],["2023-06-23",69.78],["2023-06-30",68.28],["2023-07-10",65.4],["2023-07-17",70.6],["2023-07-24",64.77],["2023-07-31",68.87],["2023-08-07",62.74],["2023-08-14",61.18],["2023-08-21",57.17],["2023-08-28",55.32],["2023-09-05",54.39],["2023-09-12",55.39],["2023-09-19",52.51],["2023-09-26",47.6],["2023-10-03",47.49],["2023-10-10",47.3],["2023-10-17",47.13],["2023-10-24",42.25],["2023-10-31",36.46],["2023-11-07",36.42],["2023-11-14",35.32],["2023-11-21",32.31],["2023-11-29",33],["2023-12-06",37.09],["2023-12-13",38.44],["2023-12-20",36.92],["2023-12-28",38.47],["2024-01-05",40.66],["2024-01-12",34.67],["2024-01-22",34.07],["2024-01-29",33.76],["2024-02-05",25.05],["2024-02-12",29.43],["2024-02-20",27.53],["2024-02-27",30.3],["2024-03-05",28.35],["2024-03-12",27.54],["2024-03-19",25.09],["2024-03-26",24.75],["2024-04-03",24.26],["2024-04-10",22.82],["2024-04-17",21],["2024-04-24",20.56],["2024-05-01",21.42],["2024-05-08",23.03],["2024-05-15",22.39],["2024-05-22",21.59],["2024-05-30",20.21],["2024-06-06",21.68],["2024-06-13",21.37],["2024-06-21",21.48],["2024-06-28",20.64],["2024-07-08",20.18],["2024-07-15",22.59],["2024-07-22",24.38],["2024-07-29",23.97],["2024-08-05",19.78],["2024-08-12",20.12],["2024-08-19",21.19],["2024-08-26",21.98],["2024-09-03",21.24],["2024-09-10",20.76],["2024-09-17",21.94],["2024-09-24",22.02],["2024-10-01",16.65],["2024-10-08",16.69],["2024-10-15",16.92],["2024-10-22",16.55],["2024-10-29",18.28],["2024-11-05",16.88],["2024-11-12",17.36],["2024-11-19",14.05],["2024-11-26",15.58],["2024-12-04",14.53],["2024-12-11",14.15],["2024-12-18",11.95],["2024-12-26",15.74],["2025-01-03",13.87],["2025-01-13",13.13],["2025-01-21",14.11],["2025-01-28",15.96],["2025-02-04",14.49],["2025-02-11",13.79],["2025-02-19",14.98],["2025-02-26",14.55],["2025-03-05",14.95],["2025-03-12",13.86],["2025-03-19",12.88],["2025-03-26",13.37],["2025-04-02",12.14],["2025-04-09",10.26],["2025-04-16",9.26],["2025-04-24",9.65],["2025-05-01",8.72],["2025-05-08",7.1],["2025-05-15",6.715],["2025-05-22",6.55],["2025-05-30",4.59],["2025-06-06",5.41],["2025-06-13",5.08],["2025-06-23",6.06],["2025-06-30",6.07],["2025-07-08",6.52],["2025-07-15",6.22],["2025-07-22",6.53],["2025-07-29",6.93],["2025-08-05",7.03],["2025-08-12",7.54],["2025-08-19",8.52],["2025-08-26",8.35],["2025-09-03",8.39],["2025-09-10",8.305],["2025-09-17",8.06],["2025-09-24",9.32]],"price":8.78,"returns":{"1M":-5.89,"6M":-5.18,"YTD":-5.69,"1Y":-10.04,"3Y":-81.8,"5Y":-87.6,"10Y":-84.9}};
+        var all = DATA.weekly.concat(DATA.daily);
+        var svg = document.getElementById('chart-svg');
+        var tip = document.getElementById('chart-tip');
+        var W = 600, H = 200, PAD = 8;
+        var points = [];
+
+        function startDate(period) {
+          var d = new Date();
+          if (period === 'Max') return all[0][0];
+          if (period === 'YTD') return (d.getFullYear() - 1) + '-12-31';
+          var months = { '1M': 1, '6M': 6, '1Y': 12, '3Y': 36, '5Y': 60, '10Y': 120 }[period];
+          d.setMonth(d.getMonth() - months);
+          return d.toISOString().slice(0, 10);
+        }
+
+        function fmtDate(iso) {
+          return new Date(iso + 'T12:00:00Z').toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+        }
+
+        function draw(period) {
+          var start = startDate(period);
+          var src = ['1M', '6M', 'YTD', '1Y'].indexOf(period) >= 0 || (period === 'Max' && !DATA.weekly.length) ? DATA.daily : all;
+          // Start from the last close on or before the start date, like the returns calculation
+          var first = 0;
+          for (var i = 0; i < src.length; i++) { if (src[i][0] <= start) first = i; else break; }
+          var rows = src.slice(first);
+          if (DATA.price != null) rows = rows.concat([[new Date().toISOString().slice(0, 10), DATA.price]]);
+          var change = document.getElementById('chart-change');
+          if (rows.length < 2 || all[0][0] > start) {
+            svg.innerHTML = '';
+            change.textContent = 'Not enough price history for ' + period;
+            change.style.color = '#6b7280';
+            document.getElementById('chart-range').textContent = '';
+            points = [];
+            return;
+          }
+          var vals = rows.map(function (r) { return r[1]; });
+          var min = Math.min.apply(null, vals), max = Math.max.apply(null, vals);
+          var span = max - min || 1;
+          points = rows.map(function (r, i) {
+            return { x: PAD + (i / (rows.length - 1)) * (W - 2 * PAD), y: PAD + (1 - (r[1] - min) / span) * (H - 2 * PAD), d: r[0], v: r[1] };
+          });
+          var up = (DATA.returns[period] != null ? DATA.returns[period] : vals[vals.length - 1] - vals[0]) >= 0;
+          var color = up ? '#059669' : '#dc2626';
+          var line = points.map(function (p, i) { return (i ? 'L' : 'M') + p.x.toFixed(1) + ' ' + p.y.toFixed(1); }).join(' ');
+          var area = line + ' L' + points[points.length - 1].x.toFixed(1) + ' ' + H + ' L' + points[0].x.toFixed(1) + ' ' + H + ' Z';
+          svg.innerHTML =
+            '<defs><linearGradient id="fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="' + color + '" stop-opacity="0.18"/><stop offset="1" stop-color="' + color + '" stop-opacity="0"/></linearGradient></defs>' +
+            '<path d="' + area + '" fill="url(#fill)"/>' +
+            '<path d="' + line + '" fill="none" stroke="' + color + '" stroke-width="2" vector-effect="non-scaling-stroke"/>' +
+            '<line id="chart-cursor" y1="0" y2="' + H + '" stroke="#9ca3af" stroke-width="1" vector-effect="non-scaling-stroke" visibility="hidden"/>';
+          var official = DATA.returns[period];
+          var pct = official != null ? official : (vals[vals.length - 1] / vals[0] - 1) * 100;
+          change.textContent = (pct >= 0 ? '+' : '') + pct.toFixed(2) + '% ' + (period === 'Max' ? 'since ' + fmtDate(rows[0][0]) : 'over ' + period);
+          change.style.color = color;
+          document.getElementById('chart-range').textContent =
+            fmtDate(rows[0][0]) + ' – today · Low $' + min.toFixed(2) + ' · High $' + max.toFixed(2);
+        }
+
+        svg.addEventListener('mousemove', function (e) {
+          if (!points.length) return;
+          var box = svg.getBoundingClientRect();
+          var x = (e.clientX - box.left) / box.width * W;
+          var p = points.reduce(function (best, q) { return Math.abs(q.x - x) < Math.abs(best.x - x) ? q : best; });
+          var cursor = document.getElementById('chart-cursor');
+          cursor.setAttribute('x1', p.x); cursor.setAttribute('x2', p.x); cursor.setAttribute('visibility', 'visible');
+          tip.hidden = false;
+          tip.textContent = fmtDate(p.d) + ' · $' + p.v.toFixed(2);
+          tip.style.left = Math.min(Math.max(p.x / W * box.width - 60, 0), box.width - 130) + 'px';
+        });
+        svg.addEventListener('mouseleave', function () {
+          tip.hidden = true;
+          var cursor = document.getElementById('chart-cursor');
+          if (cursor) cursor.setAttribute('visibility', 'hidden');
+        });
+        var buttons = document.querySelectorAll('#price-chart .chart-periods button');
+        function select(period) {
+          buttons.forEach(function (b) { b.classList.toggle('active', b.dataset.period === period); });
+          draw(period);
+        }
+        // Grey out periods the stock's history doesn't cover (e.g. recent IPOs)
+        buttons.forEach(function (b) {
+          if (b.dataset.period !== 'Max' && all[0][0] > startDate(b.dataset.period)) b.disabled = true;
+        });
+        document.querySelector('#price-chart .chart-periods').addEventListener('click', function (e) {
+          var btn = e.target.closest('button');
+          if (btn && !btn.disabled) select(btn.dataset.period);
+        });
+        // Open on 1Y, or Max when the stock hasn't traded that long
+        select(document.querySelector('#price-chart button[data-period="1Y"]').disabled ? 'Max' : '1Y');
+      })();
+      </script>
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-subtitle">Stock Price</div>
+          <div class="card-value" data-field="price">$8.78</div>
+        </div>
+        <div class="card">
+          <div class="card-subtitle">Market Cap</div>
+          <div class="card-value" data-field="marketCap">$451M</div>
+        </div>
+        <div class="card">
+          <div class="card-subtitle">Cash Position</div>
+          <div class="card-value" data-field="cashPosition">$288M</div>
+        </div>
+        <div class="card">
+          <div class="card-subtitle">YTD Return</div>
+          <div class="card-value" data-field="ytd" style="color: #dc2626">-5.69%</div>
+        </div>
+        <div class="card">
+          <div class="card-subtitle">Monthly Burn</div>
+          <div class="card-subtitle">Operating cash outflow, latest qtr</div>
+          <div class="card-value" data-field="monthlyBurn">$8.3M/mo</div>
+        </div>
+        <div class="card">
+          <div class="card-subtitle">Cash Runway</div>
+          <div class="card-value" data-field="runway">35 months</div>
+        </div>
+      </div>
+      <div class="returns">
+        <div class="return"><div class="return-label">1D</div><div class="return-value" style="color: #059669">+0.69%</div></div>
+        <div class="return"><div class="return-label">5D</div><div class="return-value" style="color: #dc2626">-2.34%</div></div>
+        <div class="return"><div class="return-label">1M</div><div class="return-value" style="color: #dc2626">-5.89%</div></div>
+        <div class="return"><div class="return-label">6M</div><div class="return-value" style="color: #dc2626">-5.18%</div></div>
+        <div class="return"><div class="return-label">YTD</div><div class="return-value" style="color: #dc2626">-5.69%</div></div>
+        <div class="return"><div class="return-label">1Y</div><div class="return-value" style="color: #dc2626">-10.04%</div></div>
+        <div class="return"><div class="return-label">3Y</div><div class="return-value" style="color: #dc2626">-81.80%</div></div>
+        <div class="return"><div class="return-label">5Y</div><div class="return-value" style="color: #dc2626">-87.60%</div></div>
+        <div class="return"><div class="return-label">10Y</div><div class="return-value" style="color: #dc2626">-84.90%</div></div>
+      </div>
+      <div class="meta-line">Next earnings: <strong>Nov 5, 2026</strong> (estimated)</div>
+    </div>
+
+    <!-- Insider Trading -->
+    <div class="section">
+      <h2>Insider Trading Activity</h2>
+      <div style="overflow-x: auto;">
+      <table>
+        <thead>
+          <tr>
+            <th>Insider</th>
+            <th>Relationship</th>
+            <th>Date</th>
+            <th>Type</th>
+            <th>Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>William P Scully</td>
+            <td>10% Owner</td>
+            <td>Sep 18, 2026</td>
+            <td><span class="insider-buy">BUY</span></td>
+            <td>$843,460 · 100,000 shares</td>
+          </tr>
+          <tr>
+            <td>William P Scully</td>
+            <td>10% Owner</td>
+            <td>Sep 2, 2026</td>
+            <td><span class="insider-buy">BUY</span></td>
+            <td>$255,739 · 27,000 shares</td>
+          </tr>
+          <tr>
+            <td>William P Scully</td>
+            <td>10% Owner</td>
+            <td>Aug 20, 2026</td>
+            <td><span class="insider-buy">BUY</span></td>
+            <td>$439,430 · 50,000 shares</td>
+          </tr>
+          <tr>
+            <td>William P Scully</td>
+            <td>10% Owner</td>
+            <td>Aug 18, 2026</td>
+            <td><span class="insider-other">GIFT</span></td>
+            <td>627,553 shares</td>
+          </tr>
+          <tr>
+            <td>William P Scully</td>
+            <td>10% Owner</td>
+            <td>Aug 7, 2026</td>
+            <td><span class="insider-buy">BUY</span></td>
+            <td>$323,220 · 37,500 shares</td>
+          </tr>
+          <tr>
+            <td>Anne Evans Kingston</td>
+            <td>Officer</td>
+            <td>Jul 29, 2026</td>
+            <td><span class="insider-sell">SELL</span></td>
+            <td>$64,919 · 7,662 shares</td>
+          </tr>
+          <tr>
+            <td>Michael John Isaacs</td>
+            <td>General Counsel</td>
+            <td>Jul 29, 2026</td>
+            <td><span class="insider-sell">SELL</span></td>
+            <td>$71,055 · 8,386 shares</td>
+          </tr>
+          <tr>
+            <td>William P Scully</td>
+            <td>10% Owner</td>
+            <td>Jun 16, 2026</td>
+            <td><span class="insider-buy">BUY</span></td>
+            <td>$157,990 · 20,000 shares</td>
+          </tr>
+          <tr>
+            <td>William P Scully</td>
+            <td>10% Owner</td>
+            <td>Jun 15, 2026</td>
+            <td><span class="insider-other">GIFT</span></td>
+            <td>325,000 shares</td>
+          </tr>
+          <tr>
+            <td>William P Scully</td>
+            <td>10% Owner</td>
+            <td>Jun 11, 2026</td>
+            <td><span class="insider-buy">BUY</span></td>
+            <td>$1.0M · 125,000 shares</td>
+          </tr>
+          <tr>
+            <td>William P Scully</td>
+            <td>10% Owner</td>
+            <td>Jun 4, 2026</td>
+            <td><span class="insider-buy">BUY</span></td>
+            <td>$465,295 · 50,000 shares</td>
+          </tr>
+          <tr>
+            <td>William P Scully</td>
+            <td>10% Owner</td>
+            <td>Jun 2, 2026</td>
+            <td><span class="insider-buy">BUY</span></td>
+            <td>$471,300 · 50,000 shares</td>
+          </tr>
+          <tr>
+            <td>William P Scully</td>
+            <td>10% Owner</td>
+            <td>May 22, 2026</td>
+            <td><span class="insider-buy">BUY</span></td>
+            <td>$981,300 · 100,000 shares</td>
+          </tr>
+          <tr>
+            <td>Karin Lorraine Walker</td>
+            <td>Officer</td>
+            <td>Jul 28, 2025</td>
+            <td><span class="insider-other">AWARD</span></td>
+            <td>25,000 shares</td>
+          </tr>
+          <tr>
+            <td>Tran Bryan Nguyen</td>
+            <td>Chief Financial Officer</td>
+            <td>Jul 28, 2025</td>
+            <td><span class="insider-other">AWARD</span></td>
+            <td>95,000 shares</td>
+          </tr>
+          <tr>
+            <td>Gene G Ph.d. Kinney</td>
+            <td>Chief Executive Officer</td>
+            <td>Jul 28, 2025</td>
+            <td><span class="insider-other">AWARD</span></td>
+            <td>140,000 shares</td>
+          </tr>
+          <tr>
+            <td>Wagner M Zago</td>
+            <td>Officer</td>
+            <td>Jul 28, 2025</td>
+            <td><span class="insider-other">AWARD</span></td>
+            <td>85,000 shares</td>
+          </tr>
+          <tr>
+            <td>Michael J. Malecek</td>
+            <td>Officer</td>
+            <td>Jul 28, 2025</td>
+            <td><span class="insider-other">AWARD</span></td>
+            <td>80,000 shares</td>
+          </tr>
+          <tr>
+            <td>Brandon S Smith</td>
+            <td>Chief Operating Officer</td>
+            <td>Jul 28, 2025</td>
+            <td><span class="insider-other">AWARD</span></td>
+            <td>130,000 shares</td>
+          </tr>
+          <tr>
+            <td>Chad Ph.d. Swanson</td>
+            <td>Officer</td>
+            <td>Jul 28, 2025</td>
+            <td><span class="insider-other">AWARD</span></td>
+            <td>85,000 shares</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+      <p class="note"><strong>Summary:</strong> Last 6 months: 9 purchases ($5.0M) and 2 sales ($135,974). Net buying by insiders is generally read as a positive signal. Source: SEC Form 4 filings via Yahoo Finance.</p>
+    </div>
+
+    <!-- Financial Health -->
+    <div class="section">
+      <h2>Financial Health & Runway</h2>
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-title">Cash & Equivalents</div>
+          <div class="card-value" data-field="cashPosition">$288M</div>
+          <div class="card-subtitle" data-field="cashAsOf">As of Jun 30, 2026 (cash + marketable securities)</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Monthly Burn Rate</div>
+          <div class="card-value" data-field="burnRate">$8.3M</div>
+          <div class="card-subtitle">Latest quarter's operating cash outflow ÷ 3</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Estimated Runway</div>
+          <div class="card-value" data-field="runway">35 months</div>
+          <div class="card-subtitle">At the latest quarter's burn rate</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Headcount</div>
+          <div class="card-value">~67 employees</div>
+          <div class="card-subtitle">Full-time</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Leadership -->
+    <div class="section">
+      <h2>Leadership</h2>
+      <ul class="item-list">
+        <li><strong>Dr. Gene G. Kinney Ph.D.</strong> <span class="item-meta">— President, CEO &amp; Director</span></li>
+        <li><strong>Tran B. Nguyen M.B.A.</strong> <span class="item-meta">— Chief Financial Officer</span></li>
+        <li><strong>Brandon S. Smith</strong> <span class="item-meta">— Chief Operating Officer</span></li>
+        <li><strong>Dr. Wagner M. Zago Ph.D.</strong> <span class="item-meta">— Chief Scientific Officer</span></li>
+        <li><strong>Dr. Chad H. Swanson Ph.D.</strong> <span class="item-meta">— Chief Development Officer</span></li>
+      </ul>
+    </div>
+
+    <!-- Latest News -->
+    <div class="section">
+      <h2>Latest News</h2>
+      <ul class="item-list">
+        <li><a href="https://news.google.com/rss/articles/CBMisgFBVV95cUxOdjFjQjFYcm04dDhMZmZFOFBDdzM4V29RRXJSR21GekVENDB3OEZLdDNEMHNUUVJIUFFaWVZITW5KLUJDVGhzcHpscEVPNXlmYkhtb1QwMXpNQ1FxS0M3N1FXZjlpbElIYzFxV0xfbnBlbW1PbzRjZFJxMEtSUWRucktYc2JUT3EzT29FX0JSdHlnQWJrd3lucDh3SkpzVk44aVVON0NXNDBtWkZ6aE94bGtR?oc=5" target="_blank" rel="noopener">Form 4 PROTHENA CORP PUBLIC LTD CO For: 29 September By Investing.com</a><div class="item-meta">Investing.com UK · Sep 29, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMisgFBVV95cUxQVkFkVzJSSWl5UXAyUWxOTkIxcnV1T0dtZXgxV2hTV1RpMjduUzhDMFk4eGtQT05kMFNJZTlybFgyNzZhdnBIYkdtZ3F5LW9rVGI4bGFxWHBqejBoOGR0aTZYa1laZnMyLVNhMjlGV3VjX2lkMVJxSXFnOUlMd1NfNEVGeUNOUHZFS3JCZ0U3Z0oydDdkVmlWeTRoYzFpblRUQWFFRU1aZjBVMWZfUnNmWmtB?oc=5" target="_blank" rel="noopener">Prothena Corporation stock reports a narrower Q2 loss</a><div class="item-meta">AD HOC NEWS · Sep 28, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMiugFBVV95cUxPMlFjVFFmUEk3TXFhWVBnMl94YU1Wa2kwTDJpTURISGtpdFJtOWpOZ0ZHVEFlbXBrcHozWEZZTUZ3SE1qNGZsZ1hxalByY0EwRmMwaU96WERmRnQyY0dIRTd3UTBCRV9HaWRVS1JNLUZsNWpDNjYyNGdBMTZvN1FxT3RoZnhPU2N5MVQ1Mzg4QkZTNFV6dWo4NE44SWZ3SjZhQW85OEtMdzUzcmZ4a1JsOTVkQ0g2cHZEOGc?oc=5" target="_blank" rel="noopener">Prothena stock falls to USD 8.51 as earnings beat estimates</a><div class="item-meta">AD HOC NEWS · Sep 22, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMioAFBVV95cUxOMmRfdUxremFVZGVZa1Iza2h1bmtyNkJfbHYtaXlVb0c2UnJvakFzMlJWdGd5VmNFQkswTEtrc045V2ZvN0VfME0zR3l6OTktaVY4TUtDZnl1UldKLWMwQU9vaE10YlE0REluSm1IQ2ZlVE9JYTJzV1pzdWZYQk5xM2w4ZGN1ZlIzYnVHdzR5UVF0MlNBWGllLXgzLXR4Y0NY?oc=5" target="_blank" rel="noopener">Prothena (PRTA) Stock: Falls -2.58% — Where's the Floor? 2026-09-10 - Fear Greed Extreme</a><div class="item-meta">siam.in · Sep 10, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMiuwFBVV95cUxOb2pwMEJLWC1PWkxyUHV4VVVyVEg3cENFWXJrRkYxaFJQcGR2MGZkX2hEZF90NHVSSkFUSDQ5UlpJNGc1SnhyVFpmUGVwa0VMUFdNNndLU3VxS0g4N182WEFFdTkyOGl1RFVHOGQwQTF1NE9USFUzZ1BURlNQNHlLckNKQ2tpd0QyOGE4QTJxTGNLVmxfQ1ljNHFEdnBuUUtRZjZtOTE0cXRIMDYwdXpxNUFOb0VrUEJDamFz?oc=5" target="_blank" rel="noopener">A biotech company's leaders will speak live in New York Sept. 16</a><div class="item-meta">Stock Titan · Sep 9, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMivAFBVV95cUxNVzR0aHAtOTAtLWhNa0NRSGxCU0RGOW5sMDNZQ3hVdExpSEl5NXBQY0gwM2ptNFU3d3V3XzRMOU44WWJyOE84YzZpOUdKelVYVVp4NFR3OFJrZHJmdkw1a1kwZkRyUVoxcEFzTTRoaFk4VDV6eVVBWFNpbFRoYnUxUTMxaUpHb0xtVkFMeXpIY2RqMjBnOHdQOG1zNHBwTG5iVllQWkEwSGtUVjJxOHgtc2RmN2d0R1NNSlc2SQ?oc=5" target="_blank" rel="noopener">PRTA's Q2 Loss Narrower Than Expected, Pipeline Progress in Focus</a><div class="item-meta">TradingView · Aug 7, 2026</div></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <footer class="disclaimer">
+    <nav class="site-footer" aria-label="Site links">
+      <div><strong>Life Science Investor</strong><a href="../index.html">Dashboard</a><a href="../beaten-down.html">Beaten Down, Not Out</a><a href="../calendar.html">Catalyst &amp; Earnings Calendar</a></div>
+      <div><strong>Themes</strong><a href="../themes/obesity-and-metabolic.html">Obesity & Metabolic</a><a href="../themes/gene-editing-and-rna.html">Gene Editing & RNA</a><a href="../themes/cell-therapy.html">Cell Therapy</a><a href="../themes/melanoma.html">Melanoma</a><a href="../themes/oncolytic-viruses.html">Oncolytic Viruses</a><a href="../themes/bladder-and-prostate-cancer.html">Bladder & Prostate Cancer</a><a href="../themes/targeted-oncology.html">Targeted Oncology</a><a href="../themes/infectious-disease.html">Infectious Disease</a><a href="../themes/neurology.html">Neurology</a><a href="../themes/ai-drug-discovery.html">AI Drug Discovery</a><a href="../themes/rare-disease.html">Rare Disease</a><a href="../themes/immunology-and-inflammation.html">Immunology & Inflammation</a><a href="../themes/ophthalmology.html">Ophthalmology</a></div>
+    </nav>
+    <p>For informational purposes only — not investment advice. Prices, returns and financials come from Yahoo Finance and company filings and may be delayed, incomplete or inaccurate. Company profiles are editorial summaries and may not reflect the latest developments. Do your own research and consult a licensed financial advisor before making investment decisions.</p>
+  </footer>
+
+</body>
+
+</html>

@@ -10,7 +10,10 @@
     "Targeted Oncology",
     "Infectious Disease",
     "Neurology",
-    "AI Drug Discovery"
+    "AI Drug Discovery",
+    "Rare Disease",
+    "Immunology & Inflammation",
+    "Ophthalmology"
   ],
   "stocks": [
     {
@@ -256,6 +259,450 @@
       "name": "Ovid Therapeutics",
       "themes": [
         "Neurology"
+      ]
+    },
+    {
+      "symbol": "AARD",
+      "name": "Aardvark Therapeutics",
+      "themes": [
+        "Obesity & Metabolic",
+        "Rare Disease"
+      ]
+    },
+    {
+      "symbol": "MLYS",
+      "name": "Mineralys Therapeutics",
+      "themes": [
+        "Obesity & Metabolic"
+      ]
+    },
+    {
+      "symbol": "LXRX",
+      "name": "Lexicon Pharmaceuticals",
+      "themes": [
+        "Obesity & Metabolic"
+      ]
+    },
+    {
+      "symbol": "EDIT",
+      "name": "Editas Medicine",
+      "themes": [
+        "Gene Editing & RNA"
+      ]
+    },
+    {
+      "symbol": "DYN",
+      "name": "Dyne Therapeutics",
+      "themes": [
+        "Gene Editing & RNA",
+        "Rare Disease"
+      ]
+    },
+    {
+      "symbol": "STOK",
+      "name": "Stoke Therapeutics",
+      "themes": [
+        "Gene Editing & RNA",
+        "Rare Disease",
+        "Neurology"
+      ]
+    },
+    {
+      "symbol": "ARCT",
+      "name": "Arcturus Therapeutics",
+      "themes": [
+        "Gene Editing & RNA",
+        "Rare Disease",
+        "Infectious Disease"
+      ]
+    },
+    {
+      "symbol": "SANA",
+      "name": "Sana Biotechnology",
+      "themes": [
+        "Cell Therapy",
+        "Gene Editing & RNA"
+      ]
+    },
+    {
+      "symbol": "KYTX",
+      "name": "Kyverna Therapeutics",
+      "themes": [
+        "Cell Therapy",
+        "Immunology & Inflammation"
+      ]
+    },
+    {
+      "symbol": "CABA",
+      "name": "Cabaletta Bio",
+      "themes": [
+        "Cell Therapy",
+        "Immunology & Inflammation"
+      ]
+    },
+    {
+      "symbol": "NKTX",
+      "name": "Nkarta",
+      "themes": [
+        "Cell Therapy",
+        "Immunology & Inflammation"
+      ]
+    },
+    {
+      "symbol": "LYEL",
+      "name": "Lyell Immunopharma",
+      "themes": [
+        "Cell Therapy"
+      ]
+    },
+    {
+      "symbol": "VERA",
+      "name": "Vera Therapeutics",
+      "themes": [
+        "Immunology & Inflammation"
+      ]
+    },
+    {
+      "symbol": "ANAB",
+      "name": "AnaptysBio",
+      "themes": [
+        "Immunology & Inflammation"
+      ]
+    },
+    {
+      "symbol": "ARQT",
+      "name": "Arcutis Biotherapeutics",
+      "themes": [
+        "Immunology & Inflammation"
+      ]
+    },
+    {
+      "symbol": "AUPH",
+      "name": "Aurinia Pharmaceuticals",
+      "themes": [
+        "Immunology & Inflammation"
+      ]
+    },
+    {
+      "symbol": "ARVN",
+      "name": "Arvinas",
+      "themes": [
+        "Targeted Oncology",
+        "Bladder & Prostate Cancer"
+      ]
+    },
+    {
+      "symbol": "ORIC",
+      "name": "ORIC Pharmaceuticals",
+      "themes": [
+        "Bladder & Prostate Cancer",
+        "Targeted Oncology"
+      ]
+    },
+    {
+      "symbol": "SNDX",
+      "name": "Syndax Pharmaceuticals",
+      "themes": [
+        "Targeted Oncology"
+      ]
+    },
+    {
+      "symbol": "KURA",
+      "name": "Kura Oncology",
+      "themes": [
+        "Targeted Oncology"
+      ]
+    },
+    {
+      "symbol": "ERAS",
+      "name": "Erasca",
+      "themes": [
+        "Targeted Oncology"
+      ]
+    },
+    {
+      "symbol": "BCYC",
+      "name": "Bicycle Therapeutics",
+      "themes": [
+        "Targeted Oncology"
+      ]
+    },
+    {
+      "symbol": "TYRA",
+      "name": "Tyra Biosciences",
+      "themes": [
+        "Bladder & Prostate Cancer",
+        "Rare Disease"
+      ]
+    },
+    {
+      "symbol": "MGNX",
+      "name": "MacroGenics",
+      "themes": [
+        "Targeted Oncology"
+      ]
+    },
+    {
+      "symbol": "CGEM",
+      "name": "Cullinan Therapeutics",
+      "themes": [
+        "Targeted Oncology",
+        "Immunology & Inflammation"
+      ]
+    },
+    {
+      "symbol": "ELVN",
+      "name": "Enliven Therapeutics",
+      "themes": [
+        "Targeted Oncology"
+      ]
+    },
+    {
+      "symbol": "OLMA",
+      "name": "Olema Pharmaceuticals",
+      "themes": [
+        "Targeted Oncology"
+      ]
+    },
+    {
+      "symbol": "IMNM",
+      "name": "Immunome",
+      "themes": [
+        "Targeted Oncology"
+      ]
+    },
+    {
+      "symbol": "ADCT",
+      "name": "ADC Therapeutics",
+      "themes": [
+        "Targeted Oncology"
+      ]
+    },
+    {
+      "symbol": "GERN",
+      "name": "Geron",
+      "themes": [
+        "Targeted Oncology"
+      ]
+    },
+    {
+      "symbol": "RIGL",
+      "name": "Rigel Pharmaceuticals",
+      "themes": [
+        "Targeted Oncology",
+        "Immunology & Inflammation"
+      ]
+    },
+    {
+      "symbol": "NVAX",
+      "name": "Novavax",
+      "themes": [
+        "Infectious Disease"
+      ]
+    },
+    {
+      "symbol": "ASMB",
+      "name": "Assembly Biosciences",
+      "themes": [
+        "Infectious Disease"
+      ]
+    },
+    {
+      "symbol": "XENE",
+      "name": "Xenon Pharmaceuticals",
+      "themes": [
+        "Neurology"
+      ]
+    },
+    {
+      "symbol": "ACAD",
+      "name": "Acadia Pharmaceuticals",
+      "themes": [
+        "Neurology"
+      ]
+    },
+    {
+      "symbol": "DNLI",
+      "name": "Denali Therapeutics",
+      "themes": [
+        "Neurology",
+        "Rare Disease"
+      ]
+    },
+    {
+      "symbol": "PRTA",
+      "name": "Prothena",
+      "themes": [
+        "Neurology"
+      ]
+    },
+    {
+      "symbol": "ALEC",
+      "name": "Alector",
+      "themes": [
+        "Neurology"
+      ]
+    },
+    {
+      "symbol": "CMPS",
+      "name": "Compass Pathways",
+      "themes": [
+        "Neurology"
+      ]
+    },
+    {
+      "symbol": "ANNX",
+      "name": "Annexon",
+      "themes": [
+        "Neurology",
+        "Ophthalmology"
+      ]
+    },
+    {
+      "symbol": "HRMY",
+      "name": "Harmony Biosciences",
+      "themes": [
+        "Neurology",
+        "Rare Disease"
+      ]
+    },
+    {
+      "symbol": "VYGR",
+      "name": "Voyager Therapeutics",
+      "themes": [
+        "Neurology",
+        "Gene Editing & RNA"
+      ]
+    },
+    {
+      "symbol": "SDGR",
+      "name": "Schrödinger",
+      "themes": [
+        "AI Drug Discovery"
+      ]
+    },
+    {
+      "symbol": "ABSI",
+      "name": "Absci",
+      "themes": [
+        "AI Drug Discovery"
+      ]
+    },
+    {
+      "symbol": "ABCL",
+      "name": "AbCellera Biologics",
+      "themes": [
+        "AI Drug Discovery"
+      ]
+    },
+    {
+      "symbol": "SRPT",
+      "name": "Sarepta Therapeutics",
+      "themes": [
+        "Rare Disease"
+      ]
+    },
+    {
+      "symbol": "RGNX",
+      "name": "REGENXBIO",
+      "themes": [
+        "Rare Disease",
+        "Ophthalmology"
+      ]
+    },
+    {
+      "symbol": "QURE",
+      "name": "uniQure",
+      "themes": [
+        "Rare Disease",
+        "Neurology"
+      ]
+    },
+    {
+      "symbol": "SLDB",
+      "name": "Solid Biosciences",
+      "themes": [
+        "Rare Disease"
+      ]
+    },
+    {
+      "symbol": "TSHA",
+      "name": "Taysha Gene Therapies",
+      "themes": [
+        "Rare Disease",
+        "Neurology"
+      ]
+    },
+    {
+      "symbol": "BCRX",
+      "name": "BioCryst Pharmaceuticals",
+      "themes": [
+        "Rare Disease"
+      ]
+    },
+    {
+      "symbol": "AMLX",
+      "name": "Amylyx Pharmaceuticals",
+      "themes": [
+        "Rare Disease",
+        "Obesity & Metabolic"
+      ]
+    },
+    {
+      "symbol": "ABEO",
+      "name": "Abeona Therapeutics",
+      "themes": [
+        "Rare Disease"
+      ]
+    },
+    {
+      "symbol": "RARE",
+      "name": "Ultragenyx Pharmaceutical",
+      "themes": [
+        "Rare Disease"
+      ]
+    },
+    {
+      "symbol": "AGIO",
+      "name": "Agios Pharmaceuticals",
+      "themes": [
+        "Rare Disease"
+      ]
+    },
+    {
+      "symbol": "OMER",
+      "name": "Omeros",
+      "themes": [
+        "Rare Disease"
+      ]
+    },
+    {
+      "symbol": "IRWD",
+      "name": "Ironwood Pharmaceuticals",
+      "themes": [
+        "Rare Disease"
+      ]
+    },
+    {
+      "symbol": "OCUL",
+      "name": "Ocular Therapeutix",
+      "themes": [
+        "Ophthalmology"
+      ]
+    },
+    {
+      "symbol": "EYPT",
+      "name": "EyePoint",
+      "themes": [
+        "Ophthalmology"
+      ]
+    },
+    {
+      "symbol": "VRDN",
+      "name": "Viridian Therapeutics",
+      "themes": [
+        "Ophthalmology",
+        "Immunology & Inflammation"
       ]
     }
   ]

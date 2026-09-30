@@ -15,16 +15,6 @@
       }
     },
     {
-      "symbol": "FATE",
-      "added": "2026-09-29",
-      "reviewed": "2026-09-29",
-      "thesis": {
-        "whyItFell": "Fate was a 2021 cell-therapy darling at over $100 a share. In January 2023 Janssen ended their collaboration, and Fate cut more than half its workforce and dropped most of its cancer programs. Off-the-shelf NK-cell therapies struggled to show durable responses, and the stock lost about 98% from its peak.",
-        "whyItCouldRecover": "Fate has moved into autoimmune disease with FT819, an off-the-shelf CAR T cell made from induced pluripotent stem cells. It needs no collection of the patient's own cells and is given as a single dose. Phase 1 data in 16 lupus patients showed no dose-limiting toxicities, no severe cytokine release and no neurotoxicity, plus improvements in disease activity and kidney protein levels. The first patient in RECLAIM-LN, a potentially registrational Phase 2 in lupus nephritis, has been dosed as an outpatient. Cash of $154M funds operations into 2028, over half the ~$280M market cap.",
-        "whatBreaksIt": "Responses that fade without the deep B-cell reset that autologous CAR T achieves, or safety problems as more patients are treated. Faster progress from competitors, such as in-vivo CAR T or T-cell engagers in lupus, would also hurt. Another large equity raise before RECLAIM-LN reads out would dilute holders heavily."
-      }
-    },
-    {
       "symbol": "ALT",
       "added": "2026-09-29",
       "reviewed": "2026-09-29",
@@ -70,6 +60,11 @@
       "symbol": "OVID",
       "date": "2026-09-29",
       "reason": "Only ~38% below its 5-year high and doubled off its low."
+    },
+    {
+      "symbol": "FATE",
+      "date": "2026-09-29",
+      "reason": "Only ~24% below its 18-month high (Jul 2026): the lupus pivot has already rerated it. Thesis text kept in git history if it falls again."
     }
   ]
 }

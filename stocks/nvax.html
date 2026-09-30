@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Novavax (NVAX) — Stock Profile | Life Science Investor</title>
+  <meta name="description" content="Novavax, Inc., a biotechnology company, engages in the discovery, development, and commercialization of vaccines to prevent serious infectious diseases in the United States, Europe, and internationally. The company commercializes Nuvaxovid, a COVID-19 vaccine; and R21 Matrix-M adjuvant malaria vacci">
+  <meta property="og:title" content="Novavax (NVAX) — Stock Profile">
+  <meta property="og:description" content="Novavax, Inc., a biotechnology company, engages in the discovery, development, and commercialization of vaccines to prevent serious infectious diseases in the United States, Europe, and internationally. The company commercializes Nuvaxovid, a COVID-19 vaccine; and R21 Matrix-M adjuvant malaria vacci">
+  <meta property="og:type" content="article">
+  <link rel="canonical" href="https://kiruijk.github.io/biotech-stock-digest/stocks/nvax.html">
+  <meta property="og:url" content="https://kiruijk.github.io/biotech-stock-digest/stocks/nvax.html">
+  <meta property="og:site_name" content="Life Science Investor">
+  <style>
+    :root {
+      color-scheme: light;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f5f7fa;
+      color: #1a1a1a;
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(135deg, #0052cc 0%, #0066ff 100%);
+      color: white;
+      padding: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      font-size: 1.6rem;
+    }
+
+    .back-btn {
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      border: 1px solid white;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .back-btn:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1rem 3rem;
+    }
+
+    /* Section Styling */
+    .section {
+      background: white;
+      border-radius: 10px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    .section h2 {
+      font-size: 1.3rem;
+      margin-bottom: 1.5rem;
+      color: #1a1a1a;
+      border-bottom: 2px solid #0052cc;
+      padding-bottom: 0.5rem;
+    }
+
+    /* Grid layouts */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    /* Card styling */
+    .card {
+      padding: 1rem;
+      background: #f9fafb;
+      border-radius: 6px;
+      border-left: 3px solid #0052cc;
+    }
+
+    .card-title {
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 0.3rem;
+    }
+
+    .card-subtitle {
+      font-size: 0.85rem;
+      color: #6b7280;
+    }
+
+    .card-value {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #0052cc;
+      margin-top: 0.3rem;
+    }
+
+    /* Badge styling */
+    .badge {
+      display: inline-block;
+      padding: 0.25rem 0.65rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .badge-green {
+      background: #d1fae5;
+      color: #059669;
+    }
+
+    .badge-red {
+      background: #fee2e2;
+      color: #dc2626;
+    }
+
+    .badge-yellow {
+      background: #fef3c7;
+      color: #d97706;
+    }
+
+    /* Table styling */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+
+    th,
+    td {
+      padding: 0.8rem;
+      text-align: left;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    th {
+      background: #f9fafb;
+      font-weight: 700;
+    }
+
+    /* Insider Trading */
+    .insider-buy {
+      color: #059669;
+      font-weight: 600;
+    }
+
+    .insider-sell {
+      color: #dc2626;
+      font-weight: 600;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .grid-2,
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Price chart */
+    .chart {
+      position: relative;
+      margin-bottom: 1.25rem;
+    }
+
+    .chart-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .chart-change {
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .chart-periods {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25rem;
+    }
+
+    .chart-periods button {
+      border: 1px solid #d1d5db;
+      background: white;
+      border-radius: 5px;
+      padding: 0.2rem 0.55rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #374151;
+      cursor: pointer;
+    }
+
+    .chart-periods button:disabled {
+      color: #d1d5db;
+      border-color: #eef0f3;
+      cursor: default;
+    }
+
+    .chart-periods button.active {
+      background: #0052cc;
+      border-color: #0052cc;
+      color: white;
+    }
+
+    #chart-svg {
+      width: 100%;
+      height: 200px;
+      display: block;
+      cursor: crosshair;
+    }
+
+    .chart-tip {
+      position: absolute;
+      top: 2.4rem;
+      width: 130px;
+      text-align: center;
+      background: #1a1a1a;
+      color: white;
+      font-size: 0.72rem;
+      padding: 0.2rem 0.4rem;
+      border-radius: 4px;
+      pointer-events: none;
+    }
+
+    .chart-range {
+      font-size: 0.75rem;
+      color: #9ca3af;
+      margin-top: 0.3rem;
+    }
+
+    /* Text */
+    .para {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: #374151;
+      margin-bottom: 1.2rem;
+    }
+
+    .note {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: #6b7280;
+    }
+
+    /* Returns row */
+    .returns {
+      display: grid;
+      grid-template-columns: repeat(9, 1fr);
+      gap: 0.3rem;
+      margin-top: 1rem;
+    }
+
+    .return {
+      text-align: center;
+      padding: 0.45rem 0.1rem;
+      background: #f9fafb;
+      border-radius: 6px;
+    }
+
+    .return-label {
+      color: #6b7280;
+      font-size: 0.68rem;
+      text-transform: uppercase;
+    }
+
+    .return-value {
+      font-weight: 700;
+      font-size: 0.8rem;
+      white-space: nowrap;
+    }
+
+    /* Notices */
+    .notice {
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+    }
+
+    .notice-stale {
+      background: #fef3c7;
+      color: #92400e;
+    }
+
+    .notice-tracked {
+      background: #e0ebff;
+      color: #1e3a8a;
+    }
+
+    .notice-beaten {
+      background: #fff1e6;
+      color: #7c2d12;
+    }
+
+    .notice-beaten a {
+      color: inherit;
+      font-weight: 600;
+    }
+
+    .meta-line {
+      font-size: 0.85rem;
+      color: #6b7280;
+      margin-top: 0.75rem;
+    }
+
+    .theme-tag {
+      color: white;
+      text-decoration: none;
+      display: inline-block;
+      padding: 0.1rem 0.5rem;
+      margin-right: 0.3rem;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.2);
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    /* Insider labels */
+    .insider-other {
+      color: #6b7280;
+      font-weight: 600;
+    }
+
+    /* News & leadership lists */
+    .item-list {
+      list-style: none;
+    }
+
+    .item-list li {
+      padding: 0.75rem 0;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .item-list li:last-child {
+      border-bottom: none;
+    }
+
+    .item-list a {
+      color: #0052cc;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .item-list a:hover {
+      text-decoration: underline;
+    }
+
+    .item-meta {
+      font-size: 0.8rem;
+      color: #6b7280;
+    }
+
+    .disclaimer {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem 2rem;
+      font-size: 0.75rem;
+      color: #9ca3af;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 900px) {
+      .returns {
+        grid-template-columns: repeat(5, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .returns {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .theme-tag:hover {
+      background: rgba(255, 255, 255, 0.35);
+    }
+
+    /* Theme pages */
+    .science h3 {
+      font-size: 1.05rem;
+      margin: 1.25rem 0 0.5rem;
+      color: #1a1a1a;
+    }
+
+    .science h3:first-child {
+      margin-top: 0;
+    }
+
+    .science p,
+    .science li {
+      color: #374151;
+      line-height: 1.75;
+    }
+
+    .science ul {
+      padding-left: 1.25rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .num {
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    td a {
+      color: #0052cc;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    /* Phones: tighter spacing, two-column stats, compact header */
+    @media (max-width: 600px) {
+      header {
+        padding: 1rem;
+        align-items: flex-start;
+        gap: 0.6rem;
+      }
+
+      header h1 {
+        font-size: 1.25rem;
+        line-height: 1.3;
+      }
+
+      .back-btn {
+        padding: 0.3rem 0.7rem;
+        font-size: 0.8rem;
+      }
+
+      .container {
+        padding: 1rem 0.75rem 2rem;
+      }
+
+      .section {
+        padding: 1.1rem 1rem;
+        margin-bottom: 1rem;
+        border-radius: 8px;
+      }
+
+      .section h2 {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+      }
+
+      .grid-3 {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.6rem;
+      }
+
+      .grid-2 {
+        gap: 0.75rem;
+      }
+
+      .card {
+        padding: 0.75rem;
+      }
+
+      .card-value {
+        font-size: 1rem;
+      }
+
+      .para {
+        font-size: 0.95rem;
+        line-height: 1.65;
+        margin-bottom: 1rem;
+      }
+
+      th,
+      td {
+        padding: 0.55rem 0.5rem;
+        font-size: 0.85rem;
+      }
+    }
+
+    .site-nav {
+      background: #0b1f44;
+      color: white;
+      font-size: 0.88rem;
+    }
+
+    .site-nav-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0.55rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+    }
+
+    .site-nav a {
+      color: #c7d7fe;
+      text-decoration: none;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .site-nav a:hover,
+    .site-nav a.current {
+      color: white;
+    }
+
+    .site-nav .brand {
+      color: white;
+      font-weight: 800;
+      margin-right: auto;
+      letter-spacing: -0.01em;
+    }
+
+    .site-nav details {
+      position: relative;
+    }
+
+    .site-nav summary {
+      white-space: nowrap;
+      cursor: pointer;
+      color: #c7d7fe;
+      font-weight: 600;
+      list-style: none;
+    }
+
+    .site-nav summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .site-nav summary::after {
+      content: ' ▾';
+      font-size: 0.75rem;
+    }
+
+    .site-nav details[open] summary,
+    .site-nav summary:hover {
+      color: white;
+    }
+
+    .site-nav .menu {
+      position: absolute;
+      right: 0;
+      top: 1.9rem;
+      z-index: 20;
+      min-width: 230px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+      padding: 0.4rem 0;
+    }
+
+    .site-nav .menu a {
+      display: block;
+      padding: 0.45rem 1rem;
+      color: #1a1a1a;
+      font-weight: 500;
+    }
+
+    .site-nav .menu a:hover {
+      background: #f3f4f6;
+      color: #0052cc;
+    }
+
+    .site-footer {
+      border-top: 1px solid #e5e7eb;
+      margin-top: 1rem;
+      padding: 1.25rem 1rem 0.5rem;
+      font-size: 0.82rem;
+      line-height: 1.9;
+    }
+
+    .site-footer a {
+      color: #4b5563;
+      text-decoration: none;
+      margin-right: 1rem;
+      white-space: nowrap;
+    }
+
+    .site-footer a:hover {
+      color: #0052cc;
+    }
+
+    .site-footer strong {
+      color: #374151;
+      margin-right: 0.75rem;
+    }
+
+    @media (max-width: 600px) {
+      .site-nav-inner {
+        flex-wrap: wrap;
+        gap: 0.35rem 0.9rem;
+        padding: 0.5rem 0.75rem;
+      }
+
+      .site-nav .brand {
+        font-size: 0.85rem;
+      }
+
+      /* The brand already links home */
+      .site-nav .nav-home {
+        display: none;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+  <!-- Generated by update-stocks.js from data/profiles and live market data. Do not edit by hand. -->
+  <!-- Last updated: 2026-09-30T01:24:30.234Z -->
+  <nav class="site-nav" aria-label="Site">
+    <div class="site-nav-inner">
+      <a class="brand" href="../index.html">Life Science Investor</a>
+      <a class="nav-home" href="../index.html">Dashboard</a>
+      <details>
+        <summary>Themes</summary>
+        <div class="menu">
+          <a href="../themes/obesity-and-metabolic.html">Obesity & Metabolic</a>
+          <a href="../themes/gene-editing-and-rna.html">Gene Editing & RNA</a>
+          <a href="../themes/cell-therapy.html">Cell Therapy</a>
+          <a href="../themes/melanoma.html">Melanoma</a>
+          <a href="../themes/oncolytic-viruses.html">Oncolytic Viruses</a>
+          <a href="../themes/bladder-and-prostate-cancer.html">Bladder & Prostate Cancer</a>
+          <a href="../themes/targeted-oncology.html">Targeted Oncology</a>
+          <a href="../themes/infectious-disease.html">Infectious Disease</a>
+          <a href="../themes/neurology.html">Neurology</a>
+          <a href="../themes/ai-drug-discovery.html">AI Drug Discovery</a>
+          <a href="../themes/rare-disease.html">Rare Disease</a>
+          <a href="../themes/immunology-and-inflammation.html">Immunology & Inflammation</a>
+          <a href="../themes/ophthalmology.html">Ophthalmology</a>
+        </div>
+      </details>
+      <a href="../beaten-down.html">Beaten Down</a>
+      <a href="../calendar.html">Calendar</a>
+    </div>
+  </nav>
+
+  <header>
+    <div>
+      <h1>Novavax (NVAX)</h1>
+      <div><a class="theme-tag" href="../themes/infectious-disease.html">Infectious Disease</a></div>
+    </div>
+  </header>
+
+  <div class="container">
+
+    <div class="notice notice-tracked">Data-only page: prices, financials, insider trades and news update automatically. Editorial analysis (catalysts, risks, competitors) is not yet available for this company.</div>
+
+    <!-- Company Overview -->
+    <div class="section">
+      <h2>Company Overview</h2>
+      <p class="para">Novavax, Inc., a biotechnology company, engages in the discovery, development, and commercialization of vaccines to prevent serious infectious diseases in the United States, Europe, and internationally. The company commercializes Nuvaxovid, a COVID-19 vaccine; and R21 Matrix-M adjuvant malaria vaccine. It has license and collaboration agreements with Sanofi, Pfizer Inc., Takeda Pharmaceutical Company Limited, and Serum Life Sciences Limited for the to develop, manufacture, and commercialize the COVID-19 vaccine. The company was incorporated in 1987 and is headquartered in Gaithersburg, Maryland.</p>
+      <div class="meta-line">Business description from Yahoo Finance.</div>
+      <div class="meta-line">Headquarters: Gaithersburg, MD · ~749 employees · <a href="https://www.novavax.com" target="_blank" rel="noopener">www.novavax.com</a></div>
+    </div>
+
+    <!-- Quick Stats -->
+    <div class="section">
+      <h2>Quick Stats</h2>
+      <div class="chart" id="price-chart">
+        <div class="chart-head">
+          <div class="chart-change" id="chart-change"></div>
+          <div class="chart-periods" role="group" aria-label="Chart period">
+            <button type="button" data-period="1M">1M</button><button type="button" data-period="6M">6M</button><button type="button" data-period="YTD">YTD</button><button type="button" data-period="1Y">1Y</button><button type="button" data-period="3Y">3Y</button><button type="button" data-period="5Y">5Y</button><button type="button" data-period="10Y">10Y</button><button type="button" data-period="Max">Max</button>
+          </div>
+        </div>
+        <svg id="chart-svg" viewBox="0 0 600 200" preserveAspectRatio="none" role="img" aria-label="NVAX price chart"></svg>
+        <div class="chart-tip" id="chart-tip" hidden></div>
+        <div class="chart-range" id="chart-range"></div>
+      </div>
+      <script>
+      (function () {
+        var DATA = {"daily":[["2025-09-30",8.67],["2025-10-01",9.5],["2025-10-02",9.55],["2025-10-03",9.46],["2025-10-06",9.08],["2025-10-07",9.22],["2025-10-08",8.9],["2025-10-09",8.59],["2025-10-10",8.33],["2025-10-13",8.62],["2025-10-14",8.89],["2025-10-15",8.91],["2025-10-16",8.48],["2025-10-17",8.1],["2025-10-20",8.79],["2025-10-21",8.59],["2025-10-22",8.46],["2025-10-23",8.36],["2025-10-24",8.52],["2025-10-27",8.7],["2025-10-28",8.52],["2025-10-29",8.38],["2025-10-30",8.43],["2025-10-31",8.4],["2025-11-03",7.91],["2025-11-04",7.51],["2025-11-05",7.69],["2025-11-06",7.59],["2025-11-07",7.44],["2025-11-10",7.11],["2025-11-11",7.44],["2025-11-12",7.2],["2025-11-13",7.06],["2025-11-14",6.97],["2025-11-17",6.8],["2025-11-18",6.57],["2025-11-19",6.34],["2025-11-20",6.22],["2025-11-21",6.47],["2025-11-24",6.63],["2025-11-25",6.69],["2025-11-26",6.95],["2025-11-28",7.05],["2025-12-01",6.69],["2025-12-02",6.6],["2025-12-03",6.84],["2025-12-04",6.86],["2025-12-05",6.91],["2025-12-08",6.78],["2025-12-09",6.66],["2025-12-10",6.74],["2025-12-11",6.69],["2025-12-12",6.57],["2025-12-15",6.58],["2025-12-16",6.54],["2025-12-17",6.53],["2025-12-18",6.68],["2025-12-19",6.66],["2025-12-22",6.89],["2025-12-23",6.8],["2025-12-24",6.94],["2025-12-26",6.83],["2025-12-29",6.82],["2025-12-30",6.72],["2025-12-31",6.72],["2026-01-02",7.13],["2026-01-05",7.25],["2026-01-06",7.44],["2026-01-07",7.62],["2026-01-08",7.34],["2026-01-09",7.27],["2026-01-12",7.75],["2026-01-13",8.67],["2026-01-14",8.19],["2026-01-15",7.78],["2026-01-16",8.01],["2026-01-20",8.2],["2026-01-21",9.9],["2026-01-22",9.75],["2026-01-23",9.17],["2026-01-26",9.63],["2026-01-27",9.82],["2026-01-28",9.23],["2026-01-29",9.44],["2026-01-30",8.85],["2026-02-02",8.69],["2026-02-03",8.37],["2026-02-04",8.27],["2026-02-05",7.87],["2026-02-06",8.25],["2026-02-09",8.7],["2026-02-10",8.75],["2026-02-11",8.97],["2026-02-12",8.42],["2026-02-13",8.7],["2026-02-17",8.65],["2026-02-18",8.69],["2026-02-19",9.23],["2026-02-20",9.2],["2026-02-23",9.36],["2026-02-24",9.46],["2026-02-25",9.53],["2026-02-26",11.19],["2026-02-27",10.14],["2026-03-02",10.11],["2026-03-03",9.49],["2026-03-04",9.89],["2026-03-05",9.99],["2026-03-06",9.98],["2026-03-09",10.55],["2026-03-10",10.69],["2026-03-11",10.8],["2026-03-12",10.3],["2026-03-13",10.24],["2026-03-16",10.08],["2026-03-17",10.64],["2026-03-18",10.01],["2026-03-19",9.74],["2026-03-20",9.62],["2026-03-23",9.72],["2026-03-24",9.26],["2026-03-25",9.34],["2026-03-26",8.95],["2026-03-27",8.45],["2026-03-30",8.09],["2026-03-31",8.14],["2026-04-01",8.02],["2026-04-02",7.7],["2026-04-06",7.97],["2026-04-07",7.98],["2026-04-08",8.42],["2026-04-09",8.54],["2026-04-10",8.12],["2026-04-13",8.11],["2026-04-14",8.39],["2026-04-15",8.69],["2026-04-16",8.64],["2026-04-17",8.84],["2026-04-20",8.67],["2026-04-21",8.49],["2026-04-22",8.45],["2026-04-23",8.15],["2026-04-24",8.22],["2026-04-27",8.07],["2026-04-28",7.92],["2026-04-29",7.97],["2026-04-30",7.93],["2026-05-01",8.04],["2026-05-04",8.03],["2026-05-05",8.1],["2026-05-06",9.36],["2026-05-07",9.23],["2026-05-08",10.11],["2026-05-11",9.5],["2026-05-12",9.62],["2026-05-13",9.23],["2026-05-14",9.35],["2026-05-15",9.06],["2026-05-18",8.93],["2026-05-19",8.9],["2026-05-20",9.27],["2026-05-21",8.98],["2026-05-22",9.21],["2026-05-26",10.46],["2026-05-27",11.09],["2026-05-28",10.32],["2026-05-29",10.97],["2026-06-01",10.51],["2026-06-02",10.21],["2026-06-03",10.2],["2026-06-04",10.19],["2026-06-05",9.49],["2026-06-08",8.62],["2026-06-09",8.67],["2026-06-10",8.56],["2026-06-11",9.03],["2026-06-12",8.88],["2026-06-15",9.21],["2026-06-16",9.2],["2026-06-17",9.5],["2026-06-18",9.13],["2026-06-22",9],["2026-06-23",9],["2026-06-24",8.9],["2026-06-25",8.56],["2026-06-26",8.88],["2026-06-29",9.36],["2026-06-30",9.42],["2026-07-01",9.46],["2026-07-02",9.74],["2026-07-06",9.35],["2026-07-07",9.46],["2026-07-08",9.35],["2026-07-09",9.4],["2026-07-10",9.33],["2026-07-13",8.91],["2026-07-14",8.42],["2026-07-15",8.43],["2026-07-16",8.24],["2026-07-17",8.21],["2026-07-20",7.88],["2026-07-21",8.08],["2026-07-22",7.91],["2026-07-23",7.83],["2026-07-24",7.46],["2026-07-27",7.49],["2026-07-28",7.37],["2026-07-29",7.34],["2026-07-30",7.44],["2026-07-31",7.32],["2026-08-03",7.41],["2026-08-04",7.66],["2026-08-05",7.7],["2026-08-06",7.74],["2026-08-07",7.95],["2026-08-10",7.89],["2026-08-11",7.95],["2026-08-12",7.96],["2026-08-13",8.14],["2026-08-14",8.05],["2026-08-17",8.07],["2026-08-18",7.93],["2026-08-19",8.79],["2026-08-20",8.42],["2026-08-21",8.94],["2026-08-24",8.86],["2026-08-25",9.44],["2026-08-26",9.21],["2026-08-27",9.05],["2026-08-28",9.26],["2026-08-31",9.37],["2026-09-01",10.12],["2026-09-02",10.32],["2026-09-03",10.34],["2026-09-04",10.22],["2026-09-08",10.19],["2026-09-09",9.85],["2026-09-10",9.3],["2026-09-11",9.42],["2026-09-14",9.59],["2026-09-15",9.23],["2026-09-16",9.35],["2026-09-17",10],["2026-09-18",10.11],["2026-09-21",10.41],["2026-09-22",10.83],["2026-09-23",10.55],["2026-09-24",10.6],["2026-09-25",10.63],["2026-09-28",10.8],["2026-09-29",10.82]],"weekly":[["2016-09-20",29.2],["2016-09-27",45.6],["2016-10-04",40],["2016-10-11",35.4],["2016-10-18",31.8],["2016-10-25",31],["2016-11-01",29],["2016-11-08",29],["2016-11-15",27.2],["2016-11-22",25.2],["2016-11-30",24.2],["2016-12-07",26.6],["2016-12-14",25.8],["2016-12-21",27.6],["2016-12-29",25.8],["2017-01-06",27.4],["2017-01-13",28.6],["2017-01-23",27],["2017-01-30",25.6],["2017-02-06",26.6],["2017-02-13",27.4],["2017-02-21",29],["2017-02-28",30.2],["2017-03-07",28.4],["2017-03-14",27.6],["2017-03-21",24.4],["2017-03-28",25.8],["2017-04-04",23.2],["2017-04-11",17.8],["2017-04-19",16.6],["2017-04-26",16.6],["2017-05-03",15.6],["2017-05-10",16.6],["2017-05-17",20.6],["2017-05-24",20.4],["2017-06-01",20.8],["2017-06-08",20.8],["2017-06-15",20.8],["2017-06-22",23.8],["2017-06-29",23],["2017-07-07",23.6],["2017-07-14",23.4],["2017-07-21",29.6],["2017-07-28",19.2],["2017-08-04",20.2],["2017-08-11",20],["2017-08-18",20],["2017-08-25",21.2],["2017-09-01",22],["2017-09-11",23],["2017-09-18",22.4],["2017-09-25",24.2],["2017-10-02",23.4],["2017-10-09",23.2],["2017-10-16",22.4],["2017-10-23",20.6],["2017-10-30",20.4],["2017-11-06",22.6],["2017-11-13",24.4],["2017-11-20",27.2],["2017-11-28",27.2],["2017-12-05",29.2],["2017-12-12",26.2],["2017-12-19",21.8],["2017-12-27",25.2],["2018-01-04",26.4],["2018-01-11",39.6],["2018-01-19",39.4],["2018-01-26",41.8],["2018-02-02",40],["2018-02-09",39.6],["2018-02-16",46.8],["2018-02-26",47],["2018-03-05",41.6],["2018-03-12",43],["2018-03-19",41.8],["2018-03-26",42.2],["2018-04-03",43.8],["2018-04-10",42],["2018-04-17",37.2],["2018-04-24",31.6],["2018-05-01",31],["2018-05-08",32.4],["2018-05-15",33.4],["2018-05-22",33.8],["2018-05-30",33.4],["2018-06-06",32.2],["2018-06-13",32.2],["2018-06-20",32.2],["2018-06-27",26.8],["2018-07-05",27.4],["2018-07-12",28],["2018-07-19",28.4],["2018-07-26",24.2],["2018-08-02",23.8],["2018-08-09",29.4],["2018-08-16",25.8],["2018-08-23",26.2],["2018-08-30",30],["2018-09-07",29.8],["2018-09-14",28.4],["2018-09-21",32],["2018-09-28",37.6],["2018-10-05",41.4],["2018-10-12",39.4],["2018-10-19",37.8],["2018-10-26",35.6],["2018-11-02",38.4],["2018-11-09",35.8],["2018-11-16",36.4],["2018-11-26",37],["2018-12-03",43.8],["2018-12-11",44.6],["2018-12-18",43.2],["2018-12-26",40],["2019-01-03",40.8],["2019-01-10",44.6],["2019-01-17",42],["2019-01-25",43.8],["2019-02-01",46],["2019-02-08",45.4],["2019-02-15",42.6],["2019-02-25",40.4],["2019-03-04",12.6],["2019-03-11",10.2],["2019-03-18",10.4],["2019-03-25",10.4],["2019-04-01",11.2],["2019-04-08",11.4],["2019-04-15",11],["2019-04-23",10.4],["2019-04-30",10.6],["2019-05-07",8],["2019-05-14",7.13],["2019-05-21",6.25],["2019-05-29",5.79],["2019-06-05",6.12],["2019-06-12",4.93],["2019-06-19",5.14],["2019-06-26",5.54],["2019-07-03",5.08],["2019-07-11",5.02],["2019-07-18",4.64],["2019-07-25",4.38],["2019-08-01",4.54],["2019-08-08",4.37],["2019-08-15",6.62],["2019-08-22",6.63],["2019-08-29",6.2],["2019-09-06",5.5],["2019-09-13",6.32],["2019-09-20",6.55],["2019-09-27",5.64],["2019-10-04",5],["2019-10-11",4.56],["2019-10-18",4.49],["2019-10-25",4.47],["2019-11-01",4.31],["2019-11-08",4.59],["2019-11-15",4.11],["2019-11-22",3.76],["2019-12-02",5.22],["2019-12-09",4.16],["2019-12-16",4],["2019-12-23",4],["2019-12-31",3.98],["2020-01-08",4.28],["2020-01-15",4.38],["2020-01-23",7.66],["2020-01-30",7],["2020-02-06",6.84],["2020-02-13",7.79],["2020-02-21",7.72],["2020-02-28",16],["2020-03-06",12.48],["2020-03-13",8.41],["2020-03-20",10.35],["2020-03-27",13.05],["2020-04-03",15.61],["2020-04-13",17.64],["2020-04-20",23.8],["2020-04-27",21.01],["2020-05-04",18.06],["2020-05-11",24.5],["2020-05-18",56.96],["2020-05-26",48.17],["2020-06-02",49.64],["2020-06-09",45.93],["2020-06-16",52.15],["2020-06-23",69.66],["2020-06-30",83.35],["2020-07-08",98.3],["2020-07-15",111.2],["2020-07-22",146.4],["2020-07-29",145.4],["2020-08-05",173.5],["2020-08-12",124.4],["2020-08-19",147.1],["2020-08-26",114.6],["2020-09-02",102.9],["2020-09-10",92.86],["2020-09-17",115.5],["2020-09-24",102.4],["2020-10-01",104.9],["2020-10-08",111],["2020-10-15",111.4],["2020-10-22",93.59],["2020-10-29",87.63],["2020-11-05",93.11],["2020-11-12",90.87],["2020-11-19",86.4],["2020-11-27",125.7],["2020-12-04",126.3],["2020-12-11",124.9],["2020-12-18",124.8],["2020-12-28",116.8],["2021-01-05",116.2],["2021-01-12",124.1],["2021-01-20",125.1],["2021-01-27",131.2],["2021-02-03",284.2],["2021-02-10",298.4],["2021-02-18",265.3],["2021-02-25",221.5],["2021-03-04",158.1],["2021-03-11",187.6],["2021-03-18",217.3],["2021-03-25",178.2],["2021-04-01",185.8],["2021-04-09",179.7],["2021-04-16",227.4],["2021-04-23",207.6],["2021-04-30",236.9],["2021-05-07",176],["2021-05-14",131.7],["2021-05-21",143],["2021-05-28",147.6],["2021-06-07",195],["2021-06-14",207.7],["2021-06-21",181],["2021-06-28",194.5],["2021-07-06",215.2],["2021-07-13",184.2],["2021-07-20",207.2],["2021-07-27",179],["2021-08-03",188.6],["2021-08-10",230.2],["2021-08-17",234.6],["2021-08-24",233],["2021-08-31",238.5],["2021-09-08",266.8],["2021-09-15",232.3],["2021-09-22",232],["2021-09-29",203.5],["2021-10-06",161.9],["2021-10-13",166.4],["2021-10-20",136.9],["2021-10-27",141.6],["2021-11-03",195.2],["2021-11-10",164.2],["2021-11-17",184],["2021-11-24",200.1],["2021-12-02",162],["2021-12-09",177.4],["2021-12-16",194.9],["2021-12-23",177.3],["2021-12-31",143.1],["2022-01-07",126.7],["2022-01-14",110.8],["2022-01-24",79.47],["2022-01-31",93.7],["2022-02-07",94.8],["2022-02-14",80.11],["2022-02-22",79.39],["2022-03-01",83.74],["2022-03-08",72.79],["2022-03-15",73.8],["2022-03-22",83.8],["2022-03-29",78.83],["2022-04-05",65.23],["2022-04-12",58.1],["2022-04-20",53.69],["2022-04-27",46.46],["2022-05-04",62.73],["2022-05-11",42.92],["2022-05-18",52.11],["2022-05-25",46.13],["2022-06-02",55.97],["2022-06-09",41.48],["2022-06-16",37.66],["2022-06-24",51.67],["2022-07-01",57.15],["2022-07-11",67.15],["2022-07-18",51.97],["2022-07-25",55.51],["2022-08-01",53.92],["2022-08-08",57.25],["2022-08-15",42.3],["2022-08-22",35.47],["2022-08-29",36.27],["2022-09-06",28.53],["2022-09-13",30.78],["2022-09-20",27.46],["2022-09-27",20.04],["2022-10-04",19.4],["2022-10-11",18.97],["2022-10-18",18.62],["2022-10-25",22.58],["2022-11-01",22],["2022-11-08",19.65],["2022-11-15",23.22],["2022-11-22",16.92],["2022-11-30",16.49],["2022-12-07",17.22],["2022-12-14",17.23],["2022-12-21",10.38],["2022-12-29",9.72],["2023-01-06",11.02],["2023-01-13",12.29],["2023-01-23",11.92],["2023-01-30",10.65],["2023-02-06",11.09],["2023-02-13",9.78],["2023-02-21",9.39],["2023-02-28",9.26],["2023-03-07",6.97],["2023-03-14",6.27],["2023-03-21",6.02],["2023-03-28",6.16],["2023-04-04",7.34],["2023-04-12",9.04],["2023-04-19",8.96],["2023-04-26",7.53],["2023-05-03",7.15],["2023-05-10",8.99],["2023-05-17",7.75],["2023-05-24",7.29],["2023-06-01",7.72],["2023-06-08",7.69],["2023-06-15",8.06],["2023-06-23",6.7],["2023-06-30",7.43],["2023-07-10",9.36],["2023-07-17",8.16],["2023-07-24",7.97],["2023-07-31",9.28],["2023-08-07",7.52],["2023-08-14",7.24],["2023-08-21",8.07],["2023-08-28",8.35],["2023-09-05",9.05],["2023-09-12",7.91],["2023-09-19",7.68],["2023-09-26",7.11],["2023-10-03",7.67],["2023-10-10",7.38],["2023-10-17",6.45],["2023-10-24",6.25],["2023-10-31",6.66],["2023-11-07",7.09],["2023-11-14",6.24],["2023-11-21",5.35],["2023-11-29",5.56],["2023-12-06",5.58],["2023-12-13",5.36],["2023-12-20",4.91],["2023-12-28",4.91],["2024-01-05",5],["2024-01-12",4.58],["2024-01-22",4.18],["2024-01-29",4.19],["2024-02-05",3.76],["2024-02-12",4.15],["2024-02-20",4.13],["2024-02-27",6.02],["2024-03-05",5.57],["2024-03-12",5.06],["2024-03-19",4.94],["2024-03-26",4.71],["2024-04-03",4.54],["2024-04-10",4.26],["2024-04-17",3.89],["2024-04-24",4.15],["2024-05-01",4.67],["2024-05-08",4.47],["2024-05-15",12.9],["2024-05-22",15.7],["2024-05-30",15.25],["2024-06-06",19.56],["2024-06-13",15.05],["2024-06-21",14],["2024-06-28",12.66],["2024-07-08",12.06],["2024-07-15",15.12],["2024-07-22",14.94],["2024-07-29",16.42],["2024-08-05",11.38],["2024-08-12",11.85],["2024-08-19",13.9],["2024-08-26",11.51],["2024-09-03",12.67],["2024-09-10",12.7],["2024-09-17",12.93],["2024-09-24",13.29],["2024-10-01",12.32],["2024-10-08",13.04],["2024-10-15",12.6],["2024-10-22",10.12],["2024-10-29",10.07],["2024-11-05",9.44],["2024-11-12",8.46],["2024-11-19",8],["2024-11-26",8.75],["2024-12-04",8.3],["2024-12-11",8.82],["2024-12-18",8.63],["2024-12-26",8.47],["2025-01-03",8.85],["2025-01-13",8.61],["2025-01-21",8.81],["2025-01-28",9.52],["2025-02-04",8.44],["2025-02-11",8.08],["2025-02-19",8.02],["2025-02-26",7.32],["2025-03-05",7.89],["2025-03-12",8.1],["2025-03-19",7.91],["2025-03-26",7.39],["2025-04-02",5.98],["2025-04-09",6.75],["2025-04-16",6.2],["2025-04-24",7.07],["2025-05-01",6.41],["2025-05-08",6.66],["2025-05-15",6.29],["2025-05-22",7.29],["2025-05-30",7.34],["2025-06-06",7.45],["2025-06-13",6.94],["2025-06-23",6.31],["2025-06-30",6.3],["2025-07-08",7.04],["2025-07-15",6.88],["2025-07-22",7.22],["2025-07-29",7.01],["2025-08-05",6.73],["2025-08-12",8.48],["2025-08-19",9.52],["2025-08-26",7.5],["2025-09-03",7.4],["2025-09-10",7.96],["2025-09-17",8.39],["2025-09-24",8.64]],"price":10.82,"returns":{"1M":16.85,"6M":28.05,"YTD":61.01,"1Y":26.25,"3Y":49.45,"5Y":-94.68,"10Y":-73.74}};
+        var all = DATA.weekly.concat(DATA.daily);
+        var svg = document.getElementById('chart-svg');
+        var tip = document.getElementById('chart-tip');
+        var W = 600, H = 200, PAD = 8;
+        var points = [];
+
+        function startDate(period) {
+          var d = new Date();
+          if (period === 'Max') return all[0][0];
+          if (period === 'YTD') return (d.getFullYear() - 1) + '-12-31';
+          var months = { '1M': 1, '6M': 6, '1Y': 12, '3Y': 36, '5Y': 60, '10Y': 120 }[period];
+          d.setMonth(d.getMonth() - months);
+          return d.toISOString().slice(0, 10);
+        }
+
+        function fmtDate(iso) {
+          return new Date(iso + 'T12:00:00Z').toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+        }
+
+        function draw(period) {
+          var start = startDate(period);
+          var src = ['1M', '6M', 'YTD', '1Y'].indexOf(period) >= 0 || (period === 'Max' && !DATA.weekly.length) ? DATA.daily : all;
+          // Start from the last close on or before the start date, like the returns calculation
+          var first = 0;
+          for (var i = 0; i < src.length; i++) { if (src[i][0] <= start) first = i; else break; }
+          var rows = src.slice(first);
+          if (DATA.price != null) rows = rows.concat([[new Date().toISOString().slice(0, 10), DATA.price]]);
+          var change = document.getElementById('chart-change');
+          if (rows.length < 2 || all[0][0] > start) {
+            svg.innerHTML = '';
+            change.textContent = 'Not enough price history for ' + period;
+            change.style.color = '#6b7280';
+            document.getElementById('chart-range').textContent = '';
+            points = [];
+            return;
+          }
+          var vals = rows.map(function (r) { return r[1]; });
+          var min = Math.min.apply(null, vals), max = Math.max.apply(null, vals);
+          var span = max - min || 1;
+          points = rows.map(function (r, i) {
+            return { x: PAD + (i / (rows.length - 1)) * (W - 2 * PAD), y: PAD + (1 - (r[1] - min) / span) * (H - 2 * PAD), d: r[0], v: r[1] };
+          });
+          var up = (DATA.returns[period] != null ? DATA.returns[period] : vals[vals.length - 1] - vals[0]) >= 0;
+          var color = up ? '#059669' : '#dc2626';
+          var line = points.map(function (p, i) { return (i ? 'L' : 'M') + p.x.toFixed(1) + ' ' + p.y.toFixed(1); }).join(' ');
+          var area = line + ' L' + points[points.length - 1].x.toFixed(1) + ' ' + H + ' L' + points[0].x.toFixed(1) + ' ' + H + ' Z';
+          svg.innerHTML =
+            '<defs><linearGradient id="fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="' + color + '" stop-opacity="0.18"/><stop offset="1" stop-color="' + color + '" stop-opacity="0"/></linearGradient></defs>' +
+            '<path d="' + area + '" fill="url(#fill)"/>' +
+            '<path d="' + line + '" fill="none" stroke="' + color + '" stroke-width="2" vector-effect="non-scaling-stroke"/>' +
+            '<line id="chart-cursor" y1="0" y2="' + H + '" stroke="#9ca3af" stroke-width="1" vector-effect="non-scaling-stroke" visibility="hidden"/>';
+          var official = DATA.returns[period];
+          var pct = official != null ? official : (vals[vals.length - 1] / vals[0] - 1) * 100;
+          change.textContent = (pct >= 0 ? '+' : '') + pct.toFixed(2) + '% ' + (period === 'Max' ? 'since ' + fmtDate(rows[0][0]) : 'over ' + period);
+          change.style.color = color;
+          document.getElementById('chart-range').textContent =
+            fmtDate(rows[0][0]) + ' – today · Low $' + min.toFixed(2) + ' · High $' + max.toFixed(2);
+        }
+
+        svg.addEventListener('mousemove', function (e) {
+          if (!points.length) return;
+          var box = svg.getBoundingClientRect();
+          var x = (e.clientX - box.left) / box.width * W;
+          var p = points.reduce(function (best, q) { return Math.abs(q.x - x) < Math.abs(best.x - x) ? q : best; });
+          var cursor = document.getElementById('chart-cursor');
+          cursor.setAttribute('x1', p.x); cursor.setAttribute('x2', p.x); cursor.setAttribute('visibility', 'visible');
+          tip.hidden = false;
+          tip.textContent = fmtDate(p.d) + ' · $' + p.v.toFixed(2);
+          tip.style.left = Math.min(Math.max(p.x / W * box.width - 60, 0), box.width - 130) + 'px';
+        });
+        svg.addEventListener('mouseleave', function () {
+          tip.hidden = true;
+          var cursor = document.getElementById('chart-cursor');
+          if (cursor) cursor.setAttribute('visibility', 'hidden');
+        });
+        var buttons = document.querySelectorAll('#price-chart .chart-periods button');
+        function select(period) {
+          buttons.forEach(function (b) { b.classList.toggle('active', b.dataset.period === period); });
+          draw(period);
+        }
+        // Grey out periods the stock's history doesn't cover (e.g. recent IPOs)
+        buttons.forEach(function (b) {
+          if (b.dataset.period !== 'Max' && all[0][0] > startDate(b.dataset.period)) b.disabled = true;
+        });
+        document.querySelector('#price-chart .chart-periods').addEventListener('click', function (e) {
+          var btn = e.target.closest('button');
+          if (btn && !btn.disabled) select(btn.dataset.period);
+        });
+        // Open on 1Y, or Max when the stock hasn't traded that long
+        select(document.querySelector('#price-chart button[data-period="1Y"]').disabled ? 'Max' : '1Y');
+      })();
+      </script>
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-subtitle">Stock Price</div>
+          <div class="card-value" data-field="price">$10.82</div>
+        </div>
+        <div class="card">
+          <div class="card-subtitle">Market Cap</div>
+          <div class="card-value" data-field="marketCap">$1.8B</div>
+        </div>
+        <div class="card">
+          <div class="card-subtitle">Cash Position</div>
+          <div class="card-value" data-field="cashPosition">$719M</div>
+        </div>
+        <div class="card">
+          <div class="card-subtitle">YTD Return</div>
+          <div class="card-value" data-field="ytd" style="color: #059669">+61.01%</div>
+        </div>
+        <div class="card">
+          <div class="card-subtitle">Monthly Burn</div>
+          <div class="card-subtitle">Operating cash outflow, latest qtr</div>
+          <div class="card-value" data-field="monthlyBurn">$24.3M/mo</div>
+        </div>
+        <div class="card">
+          <div class="card-subtitle">Cash Runway</div>
+          <div class="card-value" data-field="runway">30 months</div>
+        </div>
+      </div>
+      <div class="returns">
+        <div class="return"><div class="return-label">1D</div><div class="return-value" style="color: #059669">+0.19%</div></div>
+        <div class="return"><div class="return-label">5D</div><div class="return-value" style="color: #dc2626">-0.09%</div></div>
+        <div class="return"><div class="return-label">1M</div><div class="return-value" style="color: #059669">+16.85%</div></div>
+        <div class="return"><div class="return-label">6M</div><div class="return-value" style="color: #059669">+28.05%</div></div>
+        <div class="return"><div class="return-label">YTD</div><div class="return-value" style="color: #059669">+61.01%</div></div>
+        <div class="return"><div class="return-label">1Y</div><div class="return-value" style="color: #059669">+26.25%</div></div>
+        <div class="return"><div class="return-label">3Y</div><div class="return-value" style="color: #059669">+49.45%</div></div>
+        <div class="return"><div class="return-label">5Y</div><div class="return-value" style="color: #dc2626">-94.68%</div></div>
+        <div class="return"><div class="return-label">10Y</div><div class="return-value" style="color: #dc2626">-73.74%</div></div>
+      </div>
+      <div class="meta-line">Next earnings: <strong>Nov 5, 2026</strong> (estimated)</div>
+    </div>
+
+    <!-- Insider Trading -->
+    <div class="section">
+      <h2>Insider Trading Activity</h2>
+      <div style="overflow-x: auto;">
+      <table>
+        <thead>
+          <tr>
+            <th>Insider</th>
+            <th>Relationship</th>
+            <th>Date</th>
+            <th>Type</th>
+            <th>Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Margaret G Mcglynn</td>
+            <td>Director</td>
+            <td>Dec 31, 2024</td>
+            <td><span class="insider-other">AWARD</span></td>
+            <td>$39,952 · 4,698 shares</td>
+          </tr>
+          <tr>
+            <td>Gregg H Alton</td>
+            <td>Director</td>
+            <td>Dec 31, 2024</td>
+            <td><span class="insider-other">AWARD</span></td>
+            <td>$67,308 · 7,915 shares</td>
+          </tr>
+          <tr>
+            <td>James Francis Young</td>
+            <td>Director</td>
+            <td>Dec 31, 2024</td>
+            <td><span class="insider-sell">SELL</span></td>
+            <td>$82,208 · 10,000 shares</td>
+          </tr>
+          <tr>
+            <td>Rachel K King</td>
+            <td>Director</td>
+            <td>Dec 13, 2024</td>
+            <td><span class="insider-sell">SELL</span></td>
+            <td>$37,435 · 4,150 shares</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+      <p class="note"><strong>Summary:</strong> Last 6 months: no purchases and no sales. Source: SEC Form 4 filings via Yahoo Finance.</p>
+    </div>
+
+    <!-- Financial Health -->
+    <div class="section">
+      <h2>Financial Health & Runway</h2>
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-title">Cash & Equivalents</div>
+          <div class="card-value" data-field="cashPosition">$719M</div>
+          <div class="card-subtitle" data-field="cashAsOf">As of Jun 30, 2026 (cash + marketable securities)</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Monthly Burn Rate</div>
+          <div class="card-value" data-field="burnRate">$24.3M</div>
+          <div class="card-subtitle">Latest quarter's operating cash outflow ÷ 3</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Estimated Runway</div>
+          <div class="card-value" data-field="runway">30 months</div>
+          <div class="card-subtitle">At the latest quarter's burn rate</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Headcount</div>
+          <div class="card-value">~749 employees</div>
+          <div class="card-subtitle">Full-time</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Leadership -->
+    <div class="section">
+      <h2>Leadership</h2>
+      <ul class="item-list">
+        <li><strong>John Charles Jacobs M.B.A.</strong> <span class="item-meta">— President, CEO &amp; Director</span></li>
+        <li><strong>James Patrick Kelly C.F.A.</strong> <span class="item-meta">— Executive VP, CFO &amp; Treasurer</span></li>
+        <li><strong>Mark J. Casey Esq., J.D.</strong> <span class="item-meta">— Executive VP, Chief Legal Officer &amp; Corporate Secretary</span></li>
+        <li><strong>Elaine O'Hara</strong> <span class="item-meta">— Executive VP &amp; Chief Strategy Officer</span></li>
+        <li><strong>Richard P. Crowley</strong> <span class="item-meta">— Executive VP &amp; COO</span></li>
+      </ul>
+    </div>
+
+    <!-- Latest News -->
+    <div class="section">
+      <h2>Latest News</h2>
+      <ul class="item-list">
+        <li><a href="https://news.google.com/rss/articles/CBMi2AFBVV95cUxNaDBIb2lLdEtrRE5NNXhOVGJWUzRTVy1OaUhOM3NDOUE5MnJtZnc3R0laU2o2OE1GZDNYaC1GUHI1UlZtZjRnNVg2dXNzeGdLLWt2M0dCRWlJM21OM0VRWjNDeFYtNXVhXzNpNElDU09BcjJCRVU0d0dNYnhaRWlQMnVOR185TC05V0RCQkw1MkhkMUY2SldySkUtVjl1UG1nZl8yd1k5R0pFUi1lM2oxY2twTVl6TFBzOWRPSjF4ZXh0RTFreHNFUnE5NHpvRnR6QjBwOHEyX3Q?oc=5" target="_blank" rel="noopener">Novavax Inc. stock outperforms competitors on strong trading day</a><div class="item-meta">marketwatch.com · Sep 28, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMinAFBVV95cUxNRXhfYVhNR3JueHRkcjVrZXBKUHVPRVhMckptRDV4alpsY0tiYmdWMmUzdlNpNWxzWVNYRW1JVTRSa1FBWDM0Um1jZjJuTUhXRGs1bEpmMTR2cHBFZm84RnFNci0tcHRLbnd5aG9FcTFzOVp1c01vaHpIdnFjYVNkTjk2ZnNpUVc3WkIyTXNtWV94bnBwR19iM2hQX2s?oc=5" target="_blank" rel="noopener">Novavax (NVAX) Rises As Market Takes a Dip: Key Facts</a><div class="item-meta">Yahoo Finance · Sep 28, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMihwFBVV95cUxNaU1sb1RpTGlsbEZtM1ExWEx3Q2w4RUUzV0lSQTJRQVczNVpad1Z6Q3pLOTJ3YlFRcVliLWU2OXBlR0F4UTktV0FybUtPYzNqcUJZc1NEUS1nRkVsWWpEOG1SZkQxZk9KNlllX3JIakpBTjVnRjRFeEpxaVA3RVBWNm10VGlPcmc?oc=5" target="_blank" rel="noopener">Novavax, Inc. (NVAX) Is a Trending Stock: Facts to Know Before Betting on It</a><div class="item-meta">Yahoo Finance UK · Sep 28, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMiygFBVV95cUxORG9kZkRSeWJra0x5S05qSDFGY01oN1JfODFRMnZwckJNMWRaQ01haXZQa3F5Z21xbllhU1MwVDdqYWRTaDMwWTdfNTAtME1mWXhEeE9kQy1zVk5zZThteURORExQVVZaWWVadlRYS3VwNE5XMXZFTjJ0dEV2ZlIzLTZVTVRBRGNGVFpwMy1ITkdYYTZ5N3RaaGQ5MUlpS2VPU2t4Y2twQlBDVXJoU0F6TVVMZ1NMczNySkFqQ1Q5cUFDWUZCQTc1aEZ30gHPAUFVX3lxTFBlRkJpS1BGYV9uanlyRk5Bc25vYUZsY1NjN3I2dkRwVGJLNWlYLU1YSzRYS295Vk5JVF85cUhBSzltNEtsRGxZN29KSVdMS1RMSUFReTFGRGtOcEhZOGhnLU05S180S0JHRHY4WHFVUjg0N092aWlJVzZReFdQdVZLN1ZoVWFQZDJrb08zenJ4cW9MVHlYRWNZUFRYVDFEVmhveHNCbmEzNUYxNDhqRzVGc2xoTEVHNG0wTldySVNCRlRVWVVOZkQtVDZ6S3hraw?oc=5" target="_blank" rel="noopener">What Is Drawing Fresh Attention To Novavax (NVAX)?</a><div class="item-meta">simplywall.st · Sep 27, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMi7AFBVV95cUxPY1JPSldLQVNnd0FCS0ptOUszZkVYMzN3dXdtMUs3R2hNZkF3RFBzaTBHbkMwdGlheHd2ZGItb2ktQUd4MVFDTXEtX1UxYUVKUlpwSnl3bVZxQVlELWpSaHlNVEtpYkRTUFhMTFlXRFAxaHhmeE9tdThPRU9kZHpKZ0xUdzNPWFhwc3pBTGhLUVlIT2FzdUFwdjJNVHdvU1ZPUUtqTEREUUh0OWU0QlRpdUZkYmRNNUM4VVdHTFQ2V3lTWGtTMENhUnlRTlVXeVNpUWRaSjl2cjBNTlFSWkd0UldSUmVsWHNyQk1mRg?oc=5" target="_blank" rel="noopener">NVAX Stock Rises Overnight Ahead Of Q4 Print With Pfizer Tailwinds — Analyst Warns Of 20% Crash</a><div class="item-meta">Stocktwits · Sep 26, 2026</div></li>
+        <li><a href="https://news.google.com/rss/articles/CBMipgFBVV95cUxObzgzeFd0WjMyd3B4cWxHcXoydjRHaFZlYkdVWEZMbzZzaFFfQTFkWnBWUG00SXlzX2dhQ1o1Z1pQQmJNVVZoamp6dDlJNlhrVzZRZzgxcktZaG44bkdpbEU2U1pHRjViXzNtWUszRFJmWnpnSHI0VXJlaGtuUXA0Q19seGZvZWx4TXdLdThQUU1zQXRRa21OMnZsSW1SYUo1UXMyMXl3?oc=5" target="_blank" rel="noopener">Novavax Stock Climbs Monday: What's Going On? - Novavax (NASDAQ:NVAX)</a><div class="item-meta">Benzinga · Aug 31, 2026</div></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <footer class="disclaimer">
+    <nav class="site-footer" aria-label="Site links">
+      <div><strong>Life Science Investor</strong><a href="../index.html">Dashboard</a><a href="../beaten-down.html">Beaten Down, Not Out</a><a href="../calendar.html">Catalyst &amp; Earnings Calendar</a></div>
+      <div><strong>Themes</strong><a href="../themes/obesity-and-metabolic.html">Obesity & Metabolic</a><a href="../themes/gene-editing-and-rna.html">Gene Editing & RNA</a><a href="../themes/cell-therapy.html">Cell Therapy</a><a href="../themes/melanoma.html">Melanoma</a><a href="../themes/oncolytic-viruses.html">Oncolytic Viruses</a><a href="../themes/bladder-and-prostate-cancer.html">Bladder & Prostate Cancer</a><a href="../themes/targeted-oncology.html">Targeted Oncology</a><a href="../themes/infectious-disease.html">Infectious Disease</a><a href="../themes/neurology.html">Neurology</a><a href="../themes/ai-drug-discovery.html">AI Drug Discovery</a><a href="../themes/rare-disease.html">Rare Disease</a><a href="../themes/immunology-and-inflammation.html">Immunology & Inflammation</a><a href="../themes/ophthalmology.html">Ophthalmology</a></div>
+    </nav>
+    <p>For informational purposes only — not investment advice. Prices, returns and financials come from Yahoo Finance and company filings and may be delayed, incomplete or inaccurate. Company profiles are editorial summaries and may not reflect the latest developments. Do your own research and consult a licensed financial advisor before making investment decisions.</p>
+  </footer>
+
+</body>
+
+</html>
