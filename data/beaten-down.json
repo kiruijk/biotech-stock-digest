@@ -53,6 +53,36 @@
         "whyItCouldRecover": "Ronde-cel is a dual-targeting CD19/CD20 CAR T for large B-cell lymphoma. Targeting two proteins is designed to reduce relapses in which the cancer stops expressing CD19. Data in more than 100 patients at EHA 2026 showed no grade 3 or higher cytokine release syndrome and low rates of severe neurotoxicity, which supports outpatient treatment and could make it easier for community centers to adopt. PiNACLE reports more data in the second half of 2026 and pivotal data in mid-2027, with a BLA planned for the second half of 2027. A head-to-head Phase 3 against approved CAR Ts in second-line patients is also running. The market values Lyell at about its cash ($228M against a ~$235M market cap), so a drug with pivotal data due in 2027 is priced close to zero.",
         "whatBreaksIt": "Cash lasts only into Q3 2027, before the BLA, so a sizable raise is likely and could be dilutive if the stock is still near its lows. Third-line-plus lymphoma is crowded: Yescarta and Breyanzi are established, and off-the-shelf bispecifics like glofitamab and epcoritamab are taking share from CAR T. Pivotal response or durability data that aren't clearly better than approved CAR Ts, or any new safety signal, would leave little reason to own it."
       }
+    },
+    {
+      "symbol": "WVE",
+      "added": "2026-09-29",
+      "reviewed": "2026-09-29",
+      "thesis": {
+        "whyItFell": "Wave ran up to about $21 in December 2025 as investors bet on WVE-007, its RNA-based obesity drug. On March 26, 2026, higher-dose data disappointed: the 240 mg dose produced only about 0.9% placebo-adjusted weight loss at six months, even with a ~14% cut in visceral fat. The stock fell about 50% in a day and kept sliding as obesity hopes faded, with revenue down as collaboration payments dropped.",
+        "whyItCouldRecover": "The obesity program was hiding the more important asset. WVE-006 achieved the first therapeutic RNA editing in humans. In alpha-1 antitrypsin deficiency it cuts harmful Z-AAT and restores protective M-AAT to levels like those of healthy carriers, with subcutaneous dosing and good safety. Updated September 2026 data were positive. GSK handed back full rights, and Wave plans to seek accelerated approval, which would make it the first RNA-editing drug with a regulatory path. $491M in cash (no debt) funds operations into Q3 2028, so the market (about $720M) values the entire RNA platform at about $230M.",
+        "whatBreaksIt": "The FDA declining accelerated approval based on protein levels and requiring a long lung-function outcomes trial. Durability or safety problems with repeat dosing of WVE-006. Competing alpha-1 approaches (RNA editing from Korro and Beam's base editing) moving faster. Spending heavily to keep WVE-007 alive despite weak weight-loss data would also weigh on the stock."
+      }
+    },
+    {
+      "symbol": "ENGN",
+      "added": "2026-09-29",
+      "reviewed": "2026-09-29",
+      "thesis": {
+        "whyItFell": "enGene peaked near $12 in January 2026 ahead of pivotal data for detalimogene, a non-viral gene therapy delivered directly into the bladder for BCG-unresponsive non-muscle-invasive bladder cancer. The May 7, 2026 update showed a 54% complete response rate at any time and 43% at six months, but durability disappointed: the estimated 12-month complete response rate was 25%, with a median response duration of 37 weeks. The stock fell about 76%.",
+        "whyItCouldRecover": "The market now values enGene below its cash: about $266M in cash and investments (July 31, 2026) with about $25M of debt, against a ~$130M market cap. The drug still works in a meaningful share of patients, rarely lets disease progress to muscle-invasive cancer (3.2%), and is easy to give without special handling. A BLA submission is planned to begin in Q4 2026 after a pre-BLA meeting, so a first approval could come within about 18 months. The interim chief medical officer bought shares at $1.97 in September 2026.",
+        "whatBreaksIt": "The FDA treating a 25% 12-month response rate as too weak for approval, or approving it with a narrow label. Even if approved, the market is crowded with more durable options: J&J's TAR-200 (Inlexzo), Ferring's Adstiladrin and CG Oncology's cretostimogene. Management spending the cash on a hard-to-win launch, not preserving value, would also break the case."
+      }
+    },
+    {
+      "symbol": "OLMA",
+      "added": "2026-09-29",
+      "reviewed": "2026-09-29",
+      "thesis": {
+        "whyItFell": "Olema peaked near $36 in December 2025 on enthusiasm for palazestrant, its oral estrogen-receptor drug for breast cancer. In August 2026, top-line data from the pivotal OPERA-01 trial slipped from 2026 to the first quarter of 2027. In September, AstraZeneca's SERENA-4 trial of camizestrant (a first-line combination) missed its primary endpoint, casting doubt on the whole oral SERD class. Olema fell 15% that day, and Stifel cut its target.",
+        "whyItCouldRecover": "Nothing Olema owns has failed. OPERA-01 is fully enrolled and tests palazestrant alone in second- and third-line ER+/HER2- breast cancer, a different setting from SERENA-4, and oral SERDs have already won approval in later-line settings. A second Phase 3, OPERA-02, is testing it with a CDK4/6 inhibitor in first-line patients. The company has $461M in cash and almost no debt, with a pivotal readout months away, so about 60% of its ~$750M value is cash.",
+        "whatBreaksIt": "OPERA-01 missing its primary endpoint in Q1 2027, or winning by too small a margin to compete with approved oral SERDs such as Lilly's imlunestrant and Menarini's elacestrant. Further class-wide setbacks that shrink the market, or a large raise before the readout, would also hurt."
+      }
     }
   ],
   "passed": [
@@ -80,6 +110,11 @@
       "symbol": "ADCT",
       "date": "2026-09-29",
       "reason": "Passes both screens, but the FDA flagged 'substantial concerns' over LOTIS-5 deaths (13.2% vs 4.6%) in Aug 2026, blocking Zynlonta's earlier-line expansion; revenue growth is price-only (+3%), and $300M of royalty-backed financing from HealthCare Royalty offsets the cash. A falling knife, not a turnaround."
+    },
+    {
+      "symbol": "EYPT",
+      "date": "2026-09-29",
+      "reason": "Phase 3 LUGANO (Duravyu vs aflibercept in wet AMD) missed its primary endpoint in Aug 2026; the second trial, LUCIA, reads out in Q4 2026, making this a binary bet rather than an intact thesis. Revisit after LUCIA."
     }
   ]
 }

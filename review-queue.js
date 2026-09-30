@@ -17,7 +17,7 @@
 const fs = require('fs');
 const { isPast } = require('./lib/catalyst-timing');
 const { themeSlug } = require('./lib/themes');
-const { drawdownStats, listedFlag, candidateSetup, isSectorSelloff } = require('./lib/drawdown');
+const { drawdownStats, listedFlag, candidateSetup, netCash, hasLargeDeferred, isSectorSelloff } = require('./lib/drawdown');
 
 const REVIEW_AFTER_DAYS = 90;
 const BIG_MOVE_PCT = 30;
@@ -82,10 +82,13 @@ if (beatenDown) {
     if (listed.has(symbol) || !stock || (pass && daysSince(pass.date) <= REVIEW_AFTER_DAYS)) continue;
     const stats = drawdownStats(readHistory(symbol), stock.price);
     const setup = candidateSetup(stock, stats);
+    const deferred = hasLargeDeferred(stock)
+      ? ` (plus $${Math.round(stock.deferredLiabilities / 1e6)}M deferred liabilities — royalty financing or partner prepayment?)`
+      : '';
     if (setup === 'near-cash') {
-      items.candidates.push(`${symbol}: ${stats.fromPeak}% from its 18-month high, cash ${Math.round((stock.cashPosition / stock.marketCap) * 100)}% of market cap — worth a thesis?`);
+      items.candidates.push(`${symbol}: ${stats.fromPeak}% from its 18-month high, net cash ${Math.round((netCash(stock) / stock.marketCap) * 100)}% of market cap${deferred} — worth a thesis?`);
     } else if (setup === 'commercial') {
-      items.candidates.push(`${symbol}: ${stats.fromPeak}% from its 18-month high, revenue $${Math.round(stock.revenueTTM / 1e6)}M (+${stock.revenueGrowth}% y/y) at ${(stock.marketCap / stock.revenueTTM).toFixed(1)}x sales — commercial turnaround?`);
+      items.candidates.push(`${symbol}: ${stats.fromPeak}% from its 18-month high, revenue $${Math.round(stock.revenueTTM / 1e6)}M (+${stock.revenueGrowth}% y/y) at ${(stock.marketCap / stock.revenueTTM).toFixed(1)}x sales${deferred} — commercial turnaround?`);
     }
   }
   if (daysSince(beatenDown.reviewed) > REVIEW_AFTER_DAYS) items.staleReviews.push(`Beaten Down list: last reviewed ${beatenDown.reviewed}`);

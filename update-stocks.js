@@ -358,6 +358,11 @@ function financialsFromRows(rows, fx) {
     const longTerm = bs.investmentinFinancialAssets ?? bs.investmentsAndAdvances ?? 0;
     result.cashPosition = (bs.cashCashEquivalentsAndShortTermInvestments + longTerm) * fx;
     result.cashAsOf = new Date(bs.date).toISOString().slice(0, 10);
+    // Borrowings (loans, convertible notes) net of facility leases, for net cash. Deferred
+    // liabilities are kept separately: they can be royalty financing that works like debt
+    // (ADCT) or partnership prepayments that don't (KURA), so they're only flagged.
+    result.debt = Math.max(0, (bs.totalDebt ?? 0) - (bs.capitalLeaseObligations ?? 0)) * fx;
+    result.deferredLiabilities = (bs.nonCurrentDeferredLiabilities ?? 0) * fx;
   }
 
   const cf = latest('operatingCashFlow');

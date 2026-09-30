@@ -244,6 +244,14 @@ test('Beaten Down review flags: rebound, shallow drawdown, slump, candidates', (
   assert.equal(candidateSetup({ ...iova, marketCap: 1.5e9 }, deep), null, 'too expensive vs sales');
   assert.equal(candidateSetup({ ...iova, revenueTTM: 10e6, marketCap: 40e6, cashPosition: 5e6 }, deep), null, 'revenue too small');
 
+  // Net cash: borrowings count against cash (ADCT: $219M cash, $116M borrowings, $157M cap)
+  const adct = { cashPosition: 219e6, debt: 116e6, marketCap: 157e6, deferredLiabilities: 299e6 };
+  assert.equal(candidateSetup({ ...adct, debt: 200e6 }, deep), null, 'borrowings eat the cash');
+  assert.equal(candidateSetup(adct, deep), 'near-cash');
+  const { hasLargeDeferred } = require('../lib/drawdown');
+  assert.equal(hasLargeDeferred(adct), true);
+  assert.equal(hasLargeDeferred({ marketCap: 100e6, deferredLiabilities: 5e6 }), false);
+
   assert.equal(isSectorSelloff({ fromPeak: -35 }), true);
   assert.equal(isSectorSelloff({ fromPeak: -10 }), false);
   assert.equal(isSectorSelloff(null), false);
@@ -254,6 +262,9 @@ test('revenue: trailing four quarters and year-over-year growth of the latest qu
   const rows = [q('2025-06-30', 60e6), q('2025-09-30', 67e6), q('2025-12-31', 87e6), q('2026-03-31', 71e6), q('2026-06-30', 99e6)];
   const r = u.financialsFromRows(rows, 1);
   assert.equal(r.revenueTTM, 324e6);
+  const bs = u.financialsFromRows([{ date: new Date('2026-06-30'), cashCashEquivalentsAndShortTermInvestments: 219e6, totalDebt: 118e6, capitalLeaseObligations: 1e6, nonCurrentDeferredLiabilities: 300e6 }], 1);
+  assert.equal(bs.debt, 117e6, 'borrowings exclude leases');
+  assert.equal(bs.deferredLiabilities, 300e6);
   assert.equal(r.revenueGrowth, 65);
   assert.equal(u.financialsFromRows(rows.slice(0, 3), 1).revenueTTM, undefined, 'fewer than four quarters');
   assert.equal(u.financialsFromRows(rows.slice(1), 1).revenueGrowth, undefined, 'no year-ago quarter');

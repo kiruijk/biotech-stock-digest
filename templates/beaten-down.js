@@ -56,7 +56,8 @@ const BEATEN_CSS = `
 `;
 
 const signed = (v) => (v == null ? '—' : `${v > 0 ? '+' : ''}${v}%`);
-const cashToCap = (s) => (s.cashPosition && s.marketCap ? `${Math.round((s.cashPosition / s.marketCap) * 100)}%` : '—');
+// Net cash (cash − borrowings) as a share of market cap
+const cashToCap = (s) => (s.cashPosition != null && s.marketCap ? `${Math.round(((s.cashPosition - (s.debt || 0)) / s.marketCap) * 100)}%` : '—');
 const hasThesis = (t) => THESIS_PARTS.some(([key]) => t?.[key]);
 
 // One-line biotech sector gauge (XBI vs its 18-month high), or '' without data
@@ -85,7 +86,7 @@ function renderBeatenDown(list, entries, themes = [], siteUrl = null, sector = n
 
   const cards = byDrawdown.map(({ stock: s, stats, thesis }) => `      <div class="thesis-card" id="${s.symbol.toLowerCase()}">
         <h3><a href="stocks/${s.symbol.toLowerCase()}.html">${escapeHtml(s.name)} (${s.symbol})</a></h3>
-        <div class="item-meta">${signed(stats?.fromPeak)} from its 18-month high · ${signed(stats?.fromLow)} off its 52-week low · cash ${cashToCap(s)} of market cap</div>
+        <div class="item-meta">${signed(stats?.fromPeak)} from its 18-month high · ${signed(stats?.fromLow)} off its 52-week low · net cash ${cashToCap(s)} of market cap</div>
 ${hasThesis(thesis)
     ? THESIS_PARTS.filter(([key]) => thesis[key]).map(([key, label]) => `        <h4>${label}</h4>\n        <p class="para">${thesis[key]}</p>`).join('\n')
     : '        <p class="para thesis-pending">Thesis coming soon.</p>'}
@@ -139,7 +140,7 @@ ${sectorLine(sector) ? `      <div class="meta-line">${sectorLine(sector)}. The 
             <th class="num">Off 52W low</th>
             <th class="num">Since added</th>
             <th class="num">Mkt Cap</th>
-            <th class="num">Cash ÷ Cap</th>
+            <th class="num">Net cash ÷ Cap</th>
             <th class="num">Runway</th>
           </tr>
         </thead>
@@ -148,7 +149,7 @@ ${rows}
         </tbody>
       </table>
       </div>
-      <p class="note">Sorted by distance from high. "From 18M high" compares today's price with the highest close in the last 18 months. Cash ÷ Cap is cash and investments as a share of market value; a high figure means the market values the pipeline at little more than the cash. Runway = cash ÷ latest quarter's operating cash burn.</p>
+      <p class="note">Sorted by distance from high. "From 18M high" compares today's price with the highest close in the last 18 months. Net cash ÷ Cap is cash and investments minus borrowings, as a share of market value; a high figure means the market values the pipeline at little more than the cash. Runway = cash ÷ latest quarter's operating cash burn.</p>
     </div>
 
     <div class="section">
