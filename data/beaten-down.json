@@ -43,6 +43,16 @@
         "whyItCouldRecover": "The pipeline is now narrower and mostly in cancer, with the first real tests coming. Phase 2 data for REC-4881 in familial adenomatous polyposis are due in November 2026, alongside an FDA update on a registrational path. Partnerships with Roche/Genentech, Sanofi and Bayer bring milestone payments. A restructured Tempus deal in September 2026 cut Recursion's data costs and added a $12M license for its RNA model. Cash of $557M lasts into early 2028. For ~$2.1B, investors get one of the largest biological datasets in the industry, and a single clinical win for an AI-designed drug would change how the market values it.",
         "whatBreaksIt": "Weak REC-4881 data or an unclear path to approval. Continued pipeline cuts would suggest the platform isn't producing better drugs. If burn stays above $30M a month without clinical wins, another dilutive raise before 2028 becomes likely."
       }
+    },
+    {
+      "symbol": "LYEL",
+      "added": "2026-09-29",
+      "reviewed": "2026-09-29",
+      "thesis": {
+        "whyItFell": "Lyell spiked to about $45 in December 2025 after a milestone in its pivotal PiNACLE trial and a round of analyst upgrades, then gave back about three-quarters of that. No trial failed. The fall reflects the spike unwinding, a cash balance that dropped from $384M at the end of 2024 to $228M by June 2026, and investor fatigue with autologous CAR T, which requires making each dose from the patient's own cells.",
+        "whyItCouldRecover": "Ronde-cel is a dual-targeting CD19/CD20 CAR T for large B-cell lymphoma. Targeting two proteins is designed to reduce relapses in which the cancer stops expressing CD19. Data in more than 100 patients at EHA 2026 showed no grade 3 or higher cytokine release syndrome and low rates of severe neurotoxicity, which supports outpatient treatment and could make it easier for community centers to adopt. PiNACLE reports more data in the second half of 2026 and pivotal data in mid-2027, with a BLA planned for the second half of 2027. A head-to-head Phase 3 against approved CAR Ts in second-line patients is also running. The market values Lyell at about its cash ($228M against a ~$235M market cap), so a drug with pivotal data due in 2027 is priced close to zero.",
+        "whatBreaksIt": "Cash lasts only into Q3 2027, before the BLA, so a sizable raise is likely and could be dilutive if the stock is still near its lows. Third-line-plus lymphoma is crowded: Yescarta and Breyanzi are established, and off-the-shelf bispecifics like glofitamab and epcoritamab are taking share from CAR T. Pivotal response or durability data that aren't clearly better than approved CAR Ts, or any new safety signal, would leave little reason to own it."
+      }
     }
   ],
   "passed": [
@@ -65,6 +75,11 @@
       "symbol": "FATE",
       "date": "2026-09-29",
       "reason": "Only ~24% below its 18-month high (Jul 2026): the lupus pivot has already rerated it. Thesis text kept in git history if it falls again."
+    },
+    {
+      "symbol": "ADCT",
+      "date": "2026-09-29",
+      "reason": "Passes both screens, but the FDA flagged 'substantial concerns' over LOTIS-5 deaths (13.2% vs 4.6%) in Aug 2026, blocking Zynlonta's earlier-line expansion; revenue growth is price-only (+3%), and $300M of royalty-backed financing from HealthCare Royalty offsets the cash. A falling knife, not a turnaround."
     }
   ]
 }
