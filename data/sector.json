@@ -1,13 +1,13 @@
 {
   "symbol": "XBI",
   "name": "SPDR S&P Biotech ETF",
-  "price": 157.68,
-  "updatedAt": "2026-09-30T20:29:34.753Z",
+  "price": 154.51,
+  "updatedAt": "2026-10-01T20:31:02.449Z",
   "stats": {
     "peak": 169.6,
     "peakDate": "2026-08-19",
-    "fromPeak": -7,
-    "fromLow": 57,
+    "fromPeak": -9,
+    "fromLow": 52,
     "sinceAdded": null
   }
 }
